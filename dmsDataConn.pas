@@ -11,7 +11,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
   FireDAC.VCLUI.Wait, FireDAC.VCLUI.Error, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL,
-  FireDAC.Moni.FlatFile, FireDAC.Moni.Base, FireDAC.Moni.RemoteClient, FireDAC.Comp.UI;
+  FireDAC.Moni.FlatFile, FireDAC.Moni.Base, FireDAC.Moni.RemoteClient, FireDAC.Comp.UI,
+  siComp;
 
   Const VIDA_WOOD_CLIENTNO = 741 ;
 
@@ -44,6 +45,7 @@ type
     FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
+    siLang_dmsConnector: TsiLang;
     procedure DataModuleDestroy          (Sender: TObject);
   private
     { Private declarations }

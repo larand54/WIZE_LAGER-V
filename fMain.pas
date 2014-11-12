@@ -34,7 +34,8 @@ uses
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, Vcl.Menus,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxButtons,
   cxGridLevel, cxGridCustomView, cxGrid, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White  ;
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  System.Actions  ;
 
 
 
@@ -322,8 +323,9 @@ begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
  showmessage('Ändra till H:\');
+   ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
- ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+// ThisUser.Database:= 'vis.vida.se:vis_vida' ;
 // ThisUser.Database:= 'alvesql03:vis_vida' ;
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then
