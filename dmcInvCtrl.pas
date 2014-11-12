@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, kbmMemTable, SqlTimSt, VidaType,
-  Controls, Dialogs, Forms, Variants, uADStanIntf, uADStanOption, uADStanParam,
-  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADCompDataSet,
-  uADCompClient, uADStanAsync, uADDAptManager, DB ;
+  Controls, Dialogs, Forms, Variants, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FireDAC.Stan.Async, FireDAC.DApt, DB ;
 
 
 type
@@ -123,7 +123,7 @@ type
     ds_SicRow_PG: TDataSource;
     ds_InvCtrlListSIC: TDataSource;
     ds_CreditInLev: TDataSource;
-    cds_InvCtrlGrp: TADQuery;
+    cds_InvCtrlGrp: TFDQuery;
     cds_InvCtrlGrpIC_grpno: TIntegerField;
     cds_InvCtrlGrpPhyInvPointNameNo: TIntegerField;
     cds_InvCtrlGrpOwnerNo: TIntegerField;
@@ -137,7 +137,7 @@ type
     cds_InvCtrlGrpCreatedUser: TIntegerField;
     cds_InvCtrlGrpDateCreated: TSQLTimeStampField;
     cds_InvCtrlGrpNamn: TStringField;
-    cds_InvCtrlList: TADQuery;
+    cds_InvCtrlList: TFDQuery;
     cds_InvCtrlListINVENTERINGSNR: TIntegerField;
     cds_InvCtrlListINVENTERINGSDATUM: TSQLTimeStampField;
     cds_InvCtrlListSTATUS: TStringField;
@@ -145,7 +145,7 @@ type
     cds_InvCtrlListNAMN: TStringField;
     cds_InvCtrlListLager: TStringField;
     cds_InvCtrlListSkapadAv: TStringField;
-    cds_InvCtrlMetod2: TADQuery;
+    cds_InvCtrlMetod2: TFDQuery;
     cds_InvCtrlMetod2IC_grpNo: TIntegerField;
     cds_InvCtrlMetod2LogicalInventoryPointNo: TIntegerField;
     cds_InvCtrlMetod2InventeringsMetod: TIntegerField;
@@ -158,12 +158,12 @@ type
     cds_InvCtrlMetod2AvgPricePerNM3: TFloatField;
     cds_InvCtrlMetod2PIPNo: TIntegerField;
     cds_InvCtrlMetod2Metod: TStringField;
-    cds_InvCtrl_LagerStallen: TADQuery;
+    cds_InvCtrl_LagerStallen: TFDQuery;
     cds_InvCtrl_LagerStallenIC_grpno: TIntegerField;
     cds_InvCtrl_LagerStallenPhysicalInventoryPointNo: TIntegerField;
     cds_InvCtrl_LagerStallenOwnerName: TStringField;
     cds_InvCtrl_LagerStallenLagerStalle: TStringField;
-    cds_InvenRow: TADQuery;
+    cds_InvenRow: TFDQuery;
     cds_InvenRowIC_GrpNo: TIntegerField;
     cds_InvenRowLogicalInventoryPointNo: TIntegerField;
     cds_InvenRowInventeringsMetod: TIntegerField;
@@ -183,20 +183,20 @@ type
     cds_InvenRowAM3: TFloatField;
     cds_InvenRowNM3: TFloatField;
     cds_InvenRowKälla: TStringField;
-    cds_PhysInv: TADQuery;
+    cds_PhysInv: TFDQuery;
     cds_PhysInvPhyInvPointNameNo: TIntegerField;
     cds_PhysInvLagerStalle: TStringField;
     cds_PhysInvPhysicalInventoryPointNo: TIntegerField;
     cds_PhysInvClientName: TStringField;
     cds_PhysInvCITYNAME: TStringField;
-    cds_SurfGrpHdr: TADQuery;
+    cds_SurfGrpHdr: TFDQuery;
     cds_SurfGrpHdrSurfacingGroupNo: TIntegerField;
     cds_SurfGrpHdrClientNo: TIntegerField;
     cds_SurfGrpHdrSurfacingGroupName: TStringField;
     cds_SurfGrpHdrDateCreated: TSQLTimeStampField;
     cds_SurfGrpHdrCreatedUser: TIntegerField;
     cds_SurfGrpHdrLIPNo: TIntegerField;
-    cds_InvenRow_all: TADQuery;
+    cds_InvenRow_all: TFDQuery;
     cds_InvenRow_allIC_GrpNo: TIntegerField;
     cds_InvenRow_allLogicalInventoryPointNo: TIntegerField;
     cds_InvenRow_allInventeringsMetod: TIntegerField;
@@ -216,12 +216,12 @@ type
     cds_InvenRow_allAM3: TFloatField;
     cds_InvenRow_allNM3: TFloatField;
     cds_InvenRow_allKälla: TStringField;
-    cds_GP: TADQuery;
+    cds_GP: TFDQuery;
     cds_GPPriceGroupNo: TIntegerField;
     cds_GPIC_GrpNo: TIntegerField;
     cds_GPPricePerNM3: TFloatField;
     cds_GPMaxDatum: TSQLTimeStampField;
-    cds_CreateInvs: TADQuery;
+    cds_CreateInvs: TFDQuery;
     cds_CreateInvsInventera: TIntegerField;
     cds_CreateInvsInvNr: TIntegerField;
     cds_CreateInvsÄgare: TStringField;
@@ -242,12 +242,12 @@ type
     cds_CreateInvsVärde: TFloatField;
     cds_CreateInvsNM3: TFloatField;
     cds_CreateInvsMedelpris: TFloatField;
-    cds_Lager: TADQuery;
+    cds_Lager: TFDQuery;
     cds_LagerLIPNo: TIntegerField;
     cds_LagerLager: TStringField;
     cds_LagerCITYNAME: TStringField;
     cds_LagerLogicalInventoryName: TStringField;
-    cds_InvCtrlListSIC: TADQuery;
+    cds_InvCtrlListSIC: TFDQuery;
     cds_InvCtrlListSICINVENTERINGSNR: TIntegerField;
     cds_InvCtrlListSICINVENTERINGSDATUM: TSQLTimeStampField;
     cds_InvCtrlListSICSTATUS: TStringField;
@@ -255,7 +255,7 @@ type
     cds_InvCtrlListSICNAMN: TStringField;
     cds_InvCtrlListSICLager: TStringField;
     cds_InvCtrlListSICSkapadAv: TStringField;
-    cds_CtrlList: TADQuery;
+    cds_CtrlList: TFDQuery;
     cds_CtrlListIC_GrpNo: TIntegerField;
     cds_CtrlListLogicalInventoryPointNo: TIntegerField;
     cds_CtrlListInventeringsMetod: TIntegerField;
@@ -275,7 +275,7 @@ type
     cds_CtrlListAM3: TFloatField;
     cds_CtrlListNM3: TFloatField;
     cds_CtrlListKälla: TStringField;
-    cds_SicHdr: TADQuery;
+    cds_SicHdr: TFDQuery;
     cds_SicHdrSic_No: TIntegerField;
     cds_SicHdrDescription: TStringField;
     cds_SicHdrVerkNo: TIntegerField;
@@ -285,7 +285,7 @@ type
     cds_SicHdrInvYear: TIntegerField;
     cds_SicHdrInvMonth: TIntegerField;
     cds_SicHdrVerk: TStringField;
-    cds_GetPrdBefore: TADQuery;
+    cds_GetPrdBefore: TFDQuery;
     cds_GetPrdBeforeIC_GrpNo: TIntegerField;
     cds_GetPrdBeforePackageNo: TIntegerField;
     cds_GetPrdBeforeSupplierCode: TStringField;
@@ -302,7 +302,7 @@ type
     cds_GetPrdBeforeAM3: TFloatField;
     cds_GetPrdBeforeNM3: TFloatField;
     cds_GetPrdBeforeLager: TStringField;
-    cds_GetAvrBefore: TADQuery;
+    cds_GetAvrBefore: TFDQuery;
     cds_GetAvrBeforeIC_GrpNo: TIntegerField;
     cds_GetAvrBeforePackageNo: TIntegerField;
     cds_GetAvrBeforeSupplierCode: TStringField;
@@ -319,7 +319,7 @@ type
     cds_GetAvrBeforeAM3: TFloatField;
     cds_GetAvrBeforeNM3: TFloatField;
     cds_GetAvrBeforeLager: TStringField;
-    cds_GetAvrRegPrd: TADQuery;
+    cds_GetAvrRegPrd: TFDQuery;
     cds_GetAvrRegPrdIC_GrpNo: TIntegerField;
     cds_GetAvrRegPrdPackageNo: TIntegerField;
     cds_GetAvrRegPrdSupplierCode: TStringField;
@@ -336,7 +336,7 @@ type
     cds_GetAvrRegPrdAM3: TFloatField;
     cds_GetAvrRegPrdNM3: TFloatField;
     cds_GetAvrRegPrdLager: TStringField;
-    cds_ChgPkg: TADQuery;
+    cds_ChgPkg: TFDQuery;
     cds_ChgPkgIC_GrpNo: TIntegerField;
     cds_ChgPkgPackageNo: TIntegerField;
     cds_ChgPkgSupplierCode: TStringField;
@@ -353,7 +353,7 @@ type
     cds_ChgPkgAM3: TFloatField;
     cds_ChgPkgNM3: TFloatField;
     cds_ChgPkgLager: TStringField;
-    cds_GetPrd: TADQuery;
+    cds_GetPrd: TFDQuery;
     cds_GetPrdIC_GrpNo: TIntegerField;
     cds_GetPrdPackageNo: TIntegerField;
     cds_GetPrdSupplierCode: TStringField;
@@ -371,7 +371,7 @@ type
     cds_GetPrdNM3: TFloatField;
     cds_GetPrdLager: TStringField;
     cds_GetPrdLO: TIntegerField;
-    cds_UtLev: TADQuery;
+    cds_UtLev: TFDQuery;
     cds_UtLevIC_GrpNo: TIntegerField;
     cds_UtLevPackageNo: TIntegerField;
     cds_UtLevSupplierCode: TStringField;
@@ -388,7 +388,7 @@ type
     cds_UtLevAM3: TFloatField;
     cds_UtLevNM3: TFloatField;
     cds_UtLevInCtrlList: TIntegerField;
-    cds_InLev: TADQuery;
+    cds_InLev: TFDQuery;
     cds_InLevIC_GrpNo: TIntegerField;
     cds_InLevPackageNo: TIntegerField;
     cds_InLevSupplierCode: TStringField;
@@ -405,7 +405,7 @@ type
     cds_InLevAM3: TFloatField;
     cds_InLevNM3: TFloatField;
     cds_InLevLager: TStringField;
-    cds_InvCtrl_PaReg: TADQuery;
+    cds_InvCtrl_PaReg: TFDQuery;
     cds_InvCtrl_PaRegIC_GrpNo: TIntegerField;
     cds_InvCtrl_PaRegPackageNo: TIntegerField;
     cds_InvCtrl_PaRegSupplierCode: TStringField;
@@ -422,7 +422,7 @@ type
     cds_InvCtrl_PaRegAM3: TFloatField;
     cds_InvCtrl_PaRegNM3: TFloatField;
     cds_InvCtrl_PaRegLager: TStringField;
-    cds_InvCtrl_Pkgs: TADQuery;
+    cds_InvCtrl_Pkgs: TFDQuery;
     cds_InvCtrl_PkgsIC_GrpNo: TIntegerField;
     cds_InvCtrl_PkgsPackageNo: TIntegerField;
     cds_InvCtrl_PkgsSupplierCode: TStringField;
@@ -440,13 +440,13 @@ type
     cds_InvCtrl_PkgsNM3: TFloatField;
     cds_InvCtrl_PkgsLager: TStringField;
     cds_InvCtrl_PkgsProducerad: TSQLTimeStampField;
-    cds_PriceGroup: TADQuery;
+    cds_PriceGroup: TFDQuery;
     cds_PriceGroupPriceGroupNo: TIntegerField;
     cds_PriceGroupPriceGroupName: TStringField;
     cds_PriceGroupOwnerNo: TIntegerField;
     cds_PriceGroupDateCreated: TSQLTimeStampField;
     cds_PriceGroupCreatedUser: TIntegerField;
-    cds_SicRow: TADQuery;
+    cds_SicRow: TFDQuery;
     cds_SicRowSic_No: TIntegerField;
     cds_SicRowRowName: TStringField;
     cds_SicRowLIPGroupNo: TStringField;
@@ -459,13 +459,13 @@ type
     cds_SicRowKilnDryingCost: TFloatField;
     cds_SicRowCalcPrice: TFloatField;
     cds_SicRowTotalValue: TFloatField;
-    cds_Sic_IC_grp: TADQuery;
+    cds_Sic_IC_grp: TFDQuery;
     cds_Sic_IC_grpSic_No: TIntegerField;
     cds_Sic_IC_grpIC_grpno: TIntegerField;
     cds_Sic_IC_grpINVENTERINGSDATUM: TSQLTimeStampField;
     cds_Sic_IC_grpMAXDATUM: TSQLTimeStampField;
     cds_Sic_IC_grpNAMN: TStringField;
-    cds_Sic_LIP: TADQuery;
+    cds_Sic_LIP: TFDQuery;
     cds_Sic_LIPSic_No: TIntegerField;
     cds_Sic_LIPLIPNo: TIntegerField;
     cds_Sic_LIPLIPGroupNo: TStringField;
@@ -474,15 +474,15 @@ type
     cds_Sic_LIPInventeratNM3: TFloatField;
     cds_Sic_LIPCalcNM3: TFloatField;
     cds_Sic_LIPOriginalLIPNo: TIntegerField;
-    cds_LIP: TADQuery;
+    cds_LIP: TFDQuery;
     cds_LIPLIPNo: TIntegerField;
     cds_LIPLAGER: TStringField;
     cds_LIPKOD: TStringField;
-    cds_ClientList: TADQuery;
+    cds_ClientList: TFDQuery;
     cds_ClientListNAMN: TStringField;
     cds_ClientListSÖKNAMN: TStringField;
     cds_ClientListClientNo: TIntegerField;
-    cds_SicRow_PG: TADQuery;
+    cds_SicRow_PG: TFDQuery;
     cds_SicRow_PGSic_No: TIntegerField;
     cds_SicRow_PGRowName: TStringField;
     cds_SicRow_PGLIPGroupNo: TStringField;
@@ -497,7 +497,7 @@ type
     cds_SicRow_PGTotalValue: TFloatField;
     cds_SicRow_PGPriceGroupNo: TIntegerField;
     cds_SicRow_PGPriceGroupName: TStringField;
-    cds_CreditInLev: TADQuery;
+    cds_CreditInLev: TFDQuery;
     cds_CreditInLevIC_GrpNo: TIntegerField;
     cds_CreditInLevPackageNo: TIntegerField;
     cds_CreditInLevSupplierCode: TStringField;
@@ -514,11 +514,11 @@ type
     cds_CreditInLevAM3: TFloatField;
     cds_CreditInLevNM3: TFloatField;
     cds_CreditInLevLager: TStringField;
-    cds_SurGrpRow: TADQuery;
+    cds_SurGrpRow: TFDQuery;
     cds_SurGrpRowSurfacingGroupNo: TIntegerField;
     cds_SurGrpRowSurfacingNo: TIntegerField;
     cds_SurGrpRowStringField: TStringField;
-    sq_CI_NotInven: TADQuery;
+    sq_CI_NotInven: TFDQuery;
     sq_CI_NotInvenInventera: TIntegerField;
     sq_CI_NotInvenInvNr: TIntegerField;
     sq_CI_NotInvenÄgare: TStringField;
@@ -539,7 +539,7 @@ type
     sq_CI_NotInvenVärde: TBCDField;
     sq_CI_NotInvenNM3: TBCDField;
     sq_CI_NotInvenMedelpris: TBCDField;
-    sq_CI_Inven: TADQuery;
+    sq_CI_Inven: TFDQuery;
     sq_CI_InvenInventera: TIntegerField;
     sq_CI_InvenInvNr: TIntegerField;
     sq_CI_InvenÄgare: TStringField;
@@ -560,7 +560,7 @@ type
     sq_CI_InvenVärde: TFloatField;
     sq_CI_InvenNM3: TFloatField;
     sq_CI_InvenMedelpris: TFloatField;
-    sq_CI_All: TADQuery;
+    sq_CI_All: TFDQuery;
     sq_CI_AllInventera: TIntegerField;
     sq_CI_AllInvNr: TIntegerField;
     sq_CI_AllÄgare: TStringField;
@@ -581,25 +581,25 @@ type
     sq_CI_AllVärde: TFloatField;
     sq_CI_AllNM3: TFloatField;
     sq_CI_AllMedelpris: TFloatField;
-    sq_AssignProdToPG: TADQuery;
-    sq_updGroupPrice: TADQuery;
-    sq_GenSic_Lip: TADQuery;
-    sq_InsPriceNM3: TADQuery;
-    sq_updPriceNM3: TADQuery;
-    sq_PkgInInvLager: TADQuery;
+    sq_AssignProdToPG: TFDQuery;
+    sq_updGroupPrice: TFDQuery;
+    sq_GenSic_Lip: TFDQuery;
+    sq_InsPriceNM3: TFDQuery;
+    sq_updPriceNM3: TFDQuery;
+    sq_PkgInInvLager: TFDQuery;
     sq_PkgInInvLagerPACKAGENO: TIntegerField;
-    sq_SaveInvLista_PktNr: TADQuery;
-    sq_CopyRows: TADQuery;
-    sq_InsHlpRows: TADQuery;
-    sq_PkgInCtrlList: TADQuery;
+    sq_SaveInvLista_PktNr: TFDQuery;
+    sq_CopyRows: TFDQuery;
+    sq_InsHlpRows: TFDQuery;
+    sq_PkgInCtrlList: TFDQuery;
     sq_PkgInCtrlListpackageNo: TIntegerField;
-    sq_UpdLIPCtrlPkg: TADQuery;
-    sq_PkgStatus: TADQuery;
+    sq_UpdLIPCtrlPkg: TFDQuery;
+    sq_PkgStatus: TFDQuery;
     sq_PkgStatusStatus: TIntegerField;
-    sq_CopyManSicRows: TADQuery;
-    sq_PkgTypExistIn_InvCtrlPkt: TADQuery;
+    sq_CopyManSicRows: TFDQuery;
+    sq_PkgTypExistIn_InvCtrlPkt: TFDQuery;
     sq_PkgTypExistIn_InvCtrlPktPackageTypeNo: TIntegerField;
-    sq_OnePkg: TADQuery;
+    sq_OnePkg: TFDQuery;
     sq_OnePkgPRODUCT: TStringField;
     sq_OnePkgPACKAGENO: TIntegerField;
     sq_OnePkgPACKAGETYPENO: TIntegerField;
@@ -611,57 +611,57 @@ type
     sq_OnePkgLager: TStringField;
     sq_OnePkgOwnerNo: TIntegerField;
     sq_OnePkgProducerad: TSQLTimeStampField;
-    sq_InsPkgType_NoOfPkgs: TADQuery;
-    sq_SaveInvListaPktTyp: TADQuery;
-    sq_DelCreditedPkgs: TADQuery;
-    sq_PkgExistInHlp: TADQuery;
+    sq_InsPkgType_NoOfPkgs: TFDQuery;
+    sq_SaveInvListaPktTyp: TFDQuery;
+    sq_DelCreditedPkgs: TFDQuery;
+    sq_PkgExistInHlp: TFDQuery;
     sq_PkgExistInHlpOperation: TIntegerField;
-    sq_InsertToInvCtrl_Pkgs: TADQuery;
-    sq_prelAvrLaster: TADQuery;
-    sq_SUM_SIC: TADQuery;
-    sq_GetCtrlPkgs: TADQuery;
-    sq_copyall: TADQuery;
-    sq_DelCtrlRowPktNr: TADQuery;
-    sq_CleanICR: TADQuery;
-    sq_AddToICR: TADQuery;
-    sq_RemFromICR: TADQuery;
-    sq_GetChangesToPackages: TADQuery;
-    sq_NotInvLoads: TADQuery;
-    sq_SetNoOfPkg_PKTTYP: TADQuery;
-    sq_DelCtrlRowPktTyp: TADQuery;
-    sq_InsHlpRows_II: TADQuery;
-    sq_TrackDuplicates: TADQuery;
-    sq_GenSicPG: TADQuery;
-    sq_InsAllHlpRows: TADQuery;
-    sq_PkgExistInKL: TADQuery;
+    sq_InsertToInvCtrl_Pkgs: TFDQuery;
+    sq_prelAvrLaster: TFDQuery;
+    sq_SUM_SIC: TFDQuery;
+    sq_GetCtrlPkgs: TFDQuery;
+    sq_copyall: TFDQuery;
+    sq_DelCtrlRowPktNr: TFDQuery;
+    sq_CleanICR: TFDQuery;
+    sq_AddToICR: TFDQuery;
+    sq_RemFromICR: TFDQuery;
+    sq_GetChangesToPackages: TFDQuery;
+    sq_NotInvLoads: TFDQuery;
+    sq_SetNoOfPkg_PKTTYP: TFDQuery;
+    sq_DelCtrlRowPktTyp: TFDQuery;
+    sq_InsHlpRows_II: TFDQuery;
+    sq_TrackDuplicates: TFDQuery;
+    sq_GenSicPG: TFDQuery;
+    sq_InsAllHlpRows: TFDQuery;
+    sq_PkgExistInKL: TFDQuery;
     sq_PkgExistInKLStatus: TIntegerField;
-    sq_PkgExist: TADQuery;
+    sq_PkgExist: TFDQuery;
     sq_PkgExistStatus: TIntegerField;
-    sq_PkgExitsInInv: TADQuery;
+    sq_PkgExitsInInv: TFDQuery;
     sq_PkgExitsInInvStatus: TIntegerField;
     sq_PkgExitsInInvIC_GrpNo: TIntegerField;
-    sp_CalcInvAvgPrice: TADStoredProc;
-    sq_GetSortOrderNo: TADQuery;
+    sp_CalcInvAvgPrice: TFDStoredProc;
+    sq_GetSortOrderNo: TFDQuery;
     sq_GetSortOrderNoCurrentSortOrderNo: TIntegerField;
-    sq_GenInvListaII: TADQuery;
-    sq_SetSTDkoppling: TADQuery;
-    sq_SUM_SIC_PG: TADQuery;
-    sq_SetInvStatus: TADQuery;
-    sq_SaveToInvCtrlRow_PktTyp: TADQuery;
-    sq_GetLagergrupper: TADQuery;
+    sq_GenInvListaII: TFDQuery;
+    sq_SetSTDkoppling: TFDQuery;
+    sq_SUM_SIC_PG: TFDQuery;
+    sq_SetInvStatus: TFDQuery;
+    sq_SaveToInvCtrlRow_PktTyp: TFDQuery;
+    sq_GetLagergrupper: TFDQuery;
     sq_GetLagergrupperLOGINVNAME: TStringField;
     sq_GetLagergrupperLIP: TIntegerField;
     sq_GetLagergrupperOwnerno: TIntegerField;
     sq_GetLagergrupperclientName: TStringField;
     sq_GetLagergrupperLogicalInventoryName: TStringField;
     sq_GetLagergrupperPIPNo: TIntegerField;
-    sq_SaveToInvCtrlRow_PktNr: TADQuery;
-    sq_SaveToInvCtrlRow_PktNr2: TADQuery;
-    sp_GenInvenSummary: TADStoredProc;
-    sp_PkgCngInv: TADStoredProc;
-    sp_PkgAddInv: TADStoredProc;
-    sp_RvtPkgInv: TADStoredProc;
-    cds_InvCtrlMetod: TADQuery;
+    sq_SaveToInvCtrlRow_PktNr: TFDQuery;
+    sq_SaveToInvCtrlRow_PktNr2: TFDQuery;
+    sp_GenInvenSummary: TFDStoredProc;
+    sp_PkgCngInv: TFDStoredProc;
+    sp_PkgAddInv: TFDStoredProc;
+    sp_RvtPkgInv: TFDStoredProc;
+    cds_InvCtrlMetod: TFDQuery;
     cds_InvCtrlMetodIC_grpNo: TIntegerField;
     cds_InvCtrlMetodLogicalInventoryPointNo: TIntegerField;
     cds_InvCtrlMetodInventeringsMetod: TIntegerField;
@@ -674,18 +674,18 @@ type
     cds_InvCtrlMetodAvgPricePerNM3: TFloatField;
     cds_InvCtrlMetodPIPNo: TIntegerField;
     cds_InvCtrlMetodMetod: TStringField;
-    sp_vis_invUpdControlStatus: TADStoredProc;
-    sp_vis_GenInvCountByProduct: TADStoredProc;
-    sp_vis_invByProduct: TADStoredProc;
-    sp_vis_ActivatePkgsInvCountByProduct: TADStoredProc;
-    sp_vis_InsPkgsToInvCountByProduct: TADStoredProc;
-    sp_vis_ClearInvCountFromExtData: TADStoredProc;
-    sq_GetCtrlPkgsII: TADQuery;
-    sp_Gen_CtrlList: TADStoredProc;
+    sp_vis_invUpdControlStatus: TFDStoredProc;
+    sp_vis_GenInvCountByProduct: TFDStoredProc;
+    sp_vis_invByProduct: TFDStoredProc;
+    sp_vis_ActivatePkgsInvCountByProduct: TFDStoredProc;
+    sp_vis_InsPkgsToInvCountByProduct: TFDStoredProc;
+    sp_vis_ClearInvCountFromExtData: TFDStoredProc;
+    sq_GetCtrlPkgsII: TFDQuery;
+    sp_Gen_CtrlList: TFDStoredProc;
     cds_InvenRowOriginal_Price: TFloatField;
     cds_InvenRowVärde: TFloatField;
     cds_InvCtrlGrpTypeOfInvCount: TIntegerField;
-    sp_SimulateHandHeld: TADStoredProc;
+    sp_SimulateHandHeld: TFDStoredProc;
     ds_SimulateHandHeld: TDataSource;
     sp_SimulateHandHeldId: TIntegerField;
     sp_SimulateHandHeldPackageNo: TIntegerField;
@@ -700,13 +700,13 @@ type
     sp_SimulateHandHeldProdukt: TStringField;
     sp_SimulateHandHeldLengthDesc: TStringField;
     sp_SimulateHandHeldAvgLength: TBCDField;
-    upd_SimulateHandHeld: TADUpdateSQL;
-    sp_copyCtrlPkgswstatusNotAct: TADStoredProc;
-    sp_InsHlpPkgswstatusNotAct: TADStoredProc;
-    sp_GenListfromPkgsnotact: TADStoredProc;
+    upd_SimulateHandHeld: TFDUpdateSQL;
+    sp_copyCtrlPkgswstatusNotAct: TFDStoredProc;
+    sp_InsHlpPkgswstatusNotAct: TFDStoredProc;
+    sp_GenListfromPkgsnotact: TFDStoredProc;
     cds_CtrlListMaxlängd: TFloatField;
     cds_CtrlListPPP: TIntegerField;
-    cds_UtLevAfterMaxdatum: TADQuery;
+    cds_UtLevAfterMaxdatum: TFDQuery;
     cds_UtLevAfterMaxdatumANTPERLÄNGD: TStringField;
     cds_UtLevAfterMaxdatumPRODUKT: TStringField;
     cds_UtLevAfterMaxdatumSTYCK: TIntegerField;
@@ -719,11 +719,11 @@ type
     cds_UtLevAfterMaxdatumLastnr: TIntegerField;
     cds_UtLevAfterMaxdatumUtlastad: TSQLTimeStampField;
     cds_UtLevAfterMaxdatumLagergrupp: TStringField;
-    sp_MoveFalseToAvreg: TADStoredProc;
+    sp_MoveFalseToAvreg: TFDStoredProc;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
-    upd_sicPG: TADUpdateSQL;
-    cds_LIPSUM: TADQuery;
+    upd_sicPG: TFDUpdateSQL;
+    cds_LIPSUM: TFDQuery;
     ds_LIPSUM: TDataSource;
     cds_LIPSUMLIPNo: TIntegerField;
     cds_LIPSUMPackageNo: TIntegerField;
@@ -731,7 +731,7 @@ type
     cds_LIPSUMCost: TFloatField;
     cds_LIPSUMVolume: TFloatField;
     cds_LIPSUMavgprice: TFloatField;
-    cds_PkgCost: TADQuery;
+    cds_PkgCost: TFDQuery;
     cds_PkgCostPackageNo: TIntegerField;
     cds_PkgCostSupplierCode: TStringField;
     cds_PkgCostLIPNo: TIntegerField;
@@ -742,7 +742,7 @@ type
     cds_PkgCostCostPerAM3: TFloatField;
     ds_PkgCost: TDataSource;
     cds_PkgCostKOSTTYP: TStringField;
-    ADQuery1: TADQuery;
+    FDQuery1: TFDQuery;
     StringField1: TStringField;
     StringField2: TStringField;
     IntegerField1: TIntegerField;
@@ -754,8 +754,8 @@ type
     IntegerField4: TIntegerField;
     SQLTimeStampField1: TSQLTimeStampField;
     StringField4: TStringField;
-    sp_LoadedAfterMaxDate: TADStoredProc;
-    sp_SicPG: TADStoredProc;
+    sp_LoadedAfterMaxDate: TFDStoredProc;
+    sp_SicPG: TFDStoredProc;
     sp_SicPGPRODUKT: TStringField;
     sp_SicPGSTYCK: TIntegerField;
     sp_SicPGAM3: TFloatField;
@@ -776,7 +776,7 @@ type
     sp_SicPGLogicalInventoryPointNo: TIntegerField;
     sp_SicPGRowValue: TFloatField;
     cds_PkgCostExclude: TIntegerField;
-    cds_InvCtrlSet: TADQuery;
+    cds_InvCtrlSet: TFDQuery;
     cds_InvCtrlSetIC_SETNo: TIntegerField;
     cds_InvCtrlSetDateCreated: TSQLTimeStampField;
     cds_InvCtrlSetCreatedUser: TIntegerField;
@@ -785,7 +785,7 @@ type
     cds_InvCtrlSetStartFilterOnMaxDate: TSQLTimeStampField;
     cds_InvCtrlSetEndFilterOnMaxDate: TSQLTimeStampField;
     cds_InvCtrlSetSetStatus: TIntegerField;
-    sp_SetInvCtrlSetStatus: TADStoredProc;
+    sp_SetInvCtrlSetStatus: TFDStoredProc;
     sp_SetMallsp_SetMallOwner: TStringField;
     sp_SetMallsp_SetMallclientno: TIntegerField;
     sp_SetMallsp_SetMallPIP: TStringField;
@@ -794,11 +794,11 @@ type
     sp_SetMallsp_SetMallAct: TIntegerField;
     sp_SetMallsp_SetMallSetMall: TIntegerField;
     ds_SetMall: TDataSource;
-    upd_SetMall: TADUpdateSQL;
-    sp_SetMall: TADStoredProc;
+    upd_SetMall: TFDUpdateSQL;
+    sp_SetMall: TFDStoredProc;
     sp_SetMallLogicalInventoryPointNo: TIntegerField;
     ds_InvCtrlSet: TDataSource;
-    cds_InvenSETLip: TADQuery;
+    cds_InvenSETLip: TFDQuery;
     cds_InvenSETLipIC_SetNo: TIntegerField;
     cds_InvenSETLipLIPNo: TIntegerField;
     cds_InvenSETLipOwnerNo: TIntegerField;
@@ -806,13 +806,13 @@ type
     cds_InvenSETLipLagerstalle: TStringField;
     cds_InvenSETLipLagergrupp: TStringField;
     cds_InvenSETLipOwnerName: TStringField;
-    sp_InsertToInvenSetLIP: TADStoredProc;
+    sp_InsertToInvenSetLIP: TFDStoredProc;
     cds_InvenSETLipGenerated: TIntegerField;
-    sp_Exec_PackageCost: TADStoredProc;
-    sp_CopyToNM3Price: TADStoredProc;
-    sp_Add_IC_GroupNo_To_Inven_Al_VW: TADStoredProc;
+    sp_Exec_PackageCost: TFDStoredProc;
+    sp_CopyToNM3Price: TFDStoredProc;
+    sp_Add_IC_GroupNo_To_Inven_Al_VW: TFDStoredProc;
     cds_CtrlListHANDELSE: TStringField;
-    sp_RemoveKilnPkgsFromInvCount: TADStoredProc;
+    sp_RemoveKilnPkgsFromInvCount: TFDStoredProc;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -846,23 +846,23 @@ type
     procedure cds_InvCtrl_LagerStallenAfterInsert(DataSet: TDataSet);
     procedure cds_SurfGrpHdrAfterInsert(DataSet: TDataSet);
     procedure cds_InvCtrlMetodAfterInsert(DataSet: TDataSet);
-    procedure cds_SicRowAfterGetRecords(DataSet: TADDataSet);
+    procedure cds_SicRowAfterGetRecords(DataSet: TFDDataSet);
     procedure cds_SicRowAfterDelete(DataSet: TDataSet);
     procedure cds_SicRowPostError(DataSet: TDataSet; E: EDatabaseError;
       var Action: TDataAction);
     procedure sp_SimulateHandHeldAfterInsert(DataSet: TDataSet);
     procedure sp_SimulateHandHeldUpdateRecord(ASender: TDataSet;
-      ARequest: TADUpdateRequest; var AAction: TADErrorAction;
-      AOptions: TADUpdateRowOptions);
+      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+      AOptions: TFDUpdateRowOptions);
     procedure ds_LIPSUMDataChange(Sender: TObject; Field: TField);
     procedure sp_SicPGCalcFields(DataSet: TDataSet);
     procedure sp_SicPGUpdateRecord(ASender: TDataSet;
-      ARequest: TADUpdateRequest; var AAction: TADErrorAction;
-      AOptions: TADUpdateRowOptions);
+      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+      AOptions: TFDUpdateRowOptions);
     procedure cds_InvCtrlSetAfterInsert(DataSet: TDataSet);
     procedure sp_SetMallUpdateRecord(ASender: TDataSet;
-      ARequest: TADUpdateRequest; var AAction: TADErrorAction;
-      AOptions: TADUpdateRowOptions);
+      ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+      AOptions: TFDUpdateRowOptions);
   private
     { Private declarations }
     FOnAmbiguousPkgNo: TAmbiguityEvent ;
@@ -1472,8 +1472,8 @@ Begin
 End ;
 
 procedure TdmInvCtrl.sp_SetMallUpdateRecord(ASender: TDataSet;
-  ARequest: TADUpdateRequest; var AAction: TADErrorAction;
-  AOptions: TADUpdateRowOptions);
+  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+  AOptions: TFDUpdateRowOptions);
 begin
  upd_SetMall.ConnectionName  := sp_SetMall.ConnectionName ;
  upd_SetMall.DataSet         := sp_SetMall ;
@@ -1488,8 +1488,8 @@ begin
 end;
 
 procedure TdmInvCtrl.sp_SicPGUpdateRecord(ASender: TDataSet;
-  ARequest: TADUpdateRequest; var AAction: TADErrorAction;
-  AOptions: TADUpdateRowOptions);
+  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+  AOptions: TFDUpdateRowOptions);
 begin
   upd_sicPG.ConnectionName  := sp_SicPG.ConnectionName;
   upd_sicPG.DataSet         := sp_SicPG;
@@ -1511,8 +1511,8 @@ begin
 end;
 
 procedure TdmInvCtrl.sp_SimulateHandHeldUpdateRecord(ASender: TDataSet;
-  ARequest: TADUpdateRequest; var AAction: TADErrorAction;
-  AOptions: TADUpdateRowOptions);
+  ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
+  AOptions: TFDUpdateRowOptions);
 begin
  upd_SimulateHandHeld.ConnectionName  := sp_SimulateHandHeld.ConnectionName;
  upd_SimulateHandHeld.DataSet         := sp_SimulateHandHeld;
@@ -3459,7 +3459,7 @@ begin
  tLIPGroupNo  := 1 ;
 end;
 
-procedure TdmInvCtrl.cds_SicRowAfterGetRecords(DataSet: TADDataSet);
+procedure TdmInvCtrl.cds_SicRowAfterGetRecords(DataSet: TFDDataSet);
 begin
  if cds_SicRow.RecordCount > 0 then
  tLIPGroupNo  := cds_SicRow.RecordCount + 1

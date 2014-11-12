@@ -745,9 +745,9 @@
     Left = 824
     Top = 544
   end
-  object cds_InvCtrlGrp: TADQuery
+  object cds_InvCtrlGrp: TFDQuery
     AfterInsert = cds_InvCtrlGrpAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.InvControlGrp'
       'WHERE IC_GrpNo = :IC_GrpNo'
@@ -823,8 +823,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object cds_InvCtrlList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_InvCtrlList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select'
       'ic.IC_grpno            AS INVENTERINGSNR,'
@@ -912,7 +912,7 @@
       Origin = 'SkapadAv'
     end
   end
-  object cds_InvCtrlMetod2: TADQuery
+  object cds_InvCtrlMetod2: TFDQuery
     Indexes = <
       item
         Active = True
@@ -923,7 +923,7 @@
     IndexName = 'cds_InvCtrlMetodIndex01'
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrlMetod'
     SQL.Strings = (
       
@@ -1020,11 +1020,11 @@
       ProviderFlags = []
     end
   end
-  object cds_InvCtrl_LagerStallen: TADQuery
+  object cds_InvCtrl_LagerStallen: TFDQuery
     AfterInsert = cds_InvCtrl_LagerStallenAfterInsert
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM'
       'dbo.InvCtrl_LagerStallen'
@@ -1066,11 +1066,11 @@
       Lookup = True
     end
   end
-  object cds_InvenRow: TADQuery
+  object cds_InvenRow: TFDQuery
     CachedUpdates = True
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -1232,8 +1232,8 @@
       DisplayFormat = '#,###,###.0'
     end
   end
-  object cds_PhysInv: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PhysInv: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT PIP.PhyInvPointNameNo,'
       'CY.CITYNAME+'#39' ('#39'+C.ClientName+'#39')'#39' AS LagerStalle,'
@@ -1286,9 +1286,9 @@
       Size = 50
     end
   end
-  object cds_SurfGrpHdr: TADQuery
+  object cds_SurfGrpHdr: TFDQuery
     AfterInsert = cds_SurfGrpHdrAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.SurfacingGroupHdr'
       'WHERE ClientNo = :ClientNo'
@@ -1329,8 +1329,8 @@
       Origin = 'LIPNo'
     end
   end
-  object cds_InvenRow_all: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_InvenRow_all: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -1475,11 +1475,11 @@
       Size = 12
     end
   end
-  object cds_GP: TADQuery
+  object cds_GP: TFDQuery
     AfterInsert = cds_GPAfterInsert
     MasterSource = ds_PriceGroup
     MasterFields = 'PriceGroupNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.GroupPrice'
     SQL.Strings = (
       'Select GP.*, icg.MaxDatum FROM dbo.GroupPrice GP'
@@ -1517,9 +1517,9 @@
       ProviderFlags = []
     end
   end
-  object cds_CreateInvs: TADQuery
+  object cds_CreateInvs: TFDQuery
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvControlGrp'
     SQL.Strings = (
       
@@ -1753,8 +1753,8 @@
       DisplayFormat = '#####.0'
     end
   end
-  object cds_Lager: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Lager: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT LIP.LogicalInventoryPointNo AS LIPNo,'
       'CY.CITYNAME+'#39'/'#39'+LIP.LogicalInventoryName AS Lager,'
@@ -1797,8 +1797,8 @@
       Size = 50
     end
   end
-  object cds_InvCtrlListSIC: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_InvCtrlListSIC: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select'
       'ic.IC_grpno            AS INVENTERINGSNR,'
@@ -1874,8 +1874,8 @@
       Origin = 'SkapadAv'
     end
   end
-  object cds_CtrlList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_CtrlList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -2083,7 +2083,7 @@
       Size = 18
     end
   end
-  object cds_SicHdr: TADQuery
+  object cds_SicHdr: TFDQuery
     AfterInsert = cds_SicHdrAfterInsert
     Indexes = <
       item
@@ -2094,7 +2094,7 @@
         Options = [soUnique, soPrimary]
       end>
     IndexName = 'cds_SicHdrIndex0'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select sh.*, C.ClientName AS Verk From dbo.SicHdr sh'
       'Inner Join dbo.Client C on C.ClientNo = sh.VerkNo'
@@ -2167,10 +2167,10 @@
       Size = 80
     end
   end
-  object cds_GetPrdBefore: TADQuery
+  object cds_GetPrdBefore: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -2306,10 +2306,10 @@
       Size = 101
     end
   end
-  object cds_GetAvrBefore: TADQuery
+  object cds_GetAvrBefore: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -2437,10 +2437,10 @@
       Size = 101
     end
   end
-  object cds_GetAvrRegPrd: TADQuery
+  object cds_GetAvrRegPrd: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -2575,14 +2575,14 @@
       Size = 101
     end
   end
-  object cds_ChgPkg: TADQuery
+  object cds_ChgPkg: TFDQuery
     AfterInsert = cds_ChgPkgAfterInsert
     BeforePost = cds_ChgPkgBeforePost
     AfterPost = cds_ChgPkgAfterPost
     BeforeDelete = cds_ChgPkgBeforeDelete
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -2720,10 +2720,10 @@
       Size = 101
     end
   end
-  object cds_GetPrd: TADQuery
+  object cds_GetPrd: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
@@ -2879,10 +2879,10 @@
       ReadOnly = True
     end
   end
-  object cds_UtLev: TADQuery
+  object cds_UtLev: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
@@ -3025,10 +3025,10 @@
       Required = True
     end
   end
-  object cds_InLev: TADQuery
+  object cds_InLev: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
@@ -3170,14 +3170,14 @@
       Size = 101
     end
   end
-  object cds_InvCtrl_PaReg: TADQuery
+  object cds_InvCtrl_PaReg: TFDQuery
     AfterInsert = cds_InvCtrl_PaRegAfterInsert
     BeforePost = cds_InvCtrl_PaRegBeforePost
     AfterPost = cds_InvCtrl_PaRegAfterPost
     BeforeDelete = cds_InvCtrl_PaRegBeforeDelete
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
@@ -3312,14 +3312,14 @@
       Size = 101
     end
   end
-  object cds_InvCtrl_Pkgs: TADQuery
+  object cds_InvCtrl_Pkgs: TFDQuery
     AfterInsert = cds_InvCtrl_PkgsAfterInsert
     BeforePost = cds_InvCtrl_PkgsBeforePost
     AfterPost = cds_InvCtrl_PkgsAfterPost
     BeforeDelete = cds_InvCtrl_PkgsBeforeDelete
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
@@ -3464,9 +3464,9 @@
       ProviderFlags = []
     end
   end
-  object cds_PriceGroup: TADQuery
+  object cds_PriceGroup: TFDQuery
     AfterInsert = cds_PriceGroupAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select spg.* FROM dbo.Sic_PriceGroup spg'
       'WHERE spg.OwnerNo = :OwnerNo'
@@ -3503,7 +3503,7 @@
       Origin = 'CreatedUser'
     end
   end
-  object cds_SicRow: TADQuery
+  object cds_SicRow: TFDQuery
     AfterInsert = cds_SicRowAfterInsert
     BeforePost = cds_SicRowBeforePost
     AfterDelete = cds_SicRowAfterDelete
@@ -3511,7 +3511,7 @@
     MasterSource = ds_SicHdr
     MasterFields = 'Sic_No'
     AfterGetRecords = cds_SicRowAfterGetRecords
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.SicRow'
       'WHERE Sic_No = :Sic_No'
@@ -3561,8 +3561,8 @@
     end
     object cds_SicRowAdmCost: TFloatField
       DisplayLabel = 'Administration'
-      FieldName = 'AdmCost'
-      Origin = 'AdmCost'
+      FieldName = 'FDmCost'
+      Origin = 'FDmCost'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,###,###.00'
     end
@@ -3609,10 +3609,10 @@
       DisplayFormat = '#,###,###.00'
     end
   end
-  object cds_Sic_IC_grp: TADQuery
+  object cds_Sic_IC_grp: TFDQuery
     AfterInsert = cds_Sic_IC_grpAfterInsert
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'Sic_IC_grp'
     SQL.Strings = (
       'Select SIC.*, icg.Inventeringsdatum   AS INVENTERINGSDATUM,'
@@ -3659,12 +3659,12 @@
       Size = 50
     end
   end
-  object cds_Sic_LIP: TADQuery
+  object cds_Sic_LIP: TFDQuery
     AfterInsert = cds_Sic_LIPAfterInsert
     BeforePost = cds_Sic_LIPBeforePost
     MasterSource = ds_SicHdr
     MasterFields = 'Sic_No'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Sic_LIP'
       'WHERE Sic_No = :Sic_No'
@@ -3730,8 +3730,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object cds_LIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT  Distinct LIP.LogicalInventoryPointNo AS LIPNo, '
       'C.CityName+'#39'/'#39'+LIP.LogicalInventoryName AS LAGER,'
@@ -3771,8 +3771,8 @@
       Size = 3
     end
   end
-  object cds_ClientList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ClientList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select C.ClientName AS NAMN,'
       'C.SearchName AS S'#214'KNAMN,'
@@ -3806,11 +3806,11 @@
       Required = True
     end
   end
-  object cds_SicRow_PG: TADQuery
+  object cds_SicRow_PG: TFDQuery
     BeforePost = cds_SicRow_PGBeforePost
     MasterSource = ds_SicHdr
     MasterFields = 'Sic_No'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.SicRow_PG'
       'WHERE Sic_No = :Sic_No'
@@ -3860,8 +3860,8 @@
     end
     object cds_SicRow_PGAdmCost: TFloatField
       DisplayLabel = 'Administration'
-      FieldName = 'AdmCost'
-      Origin = 'AdmCost'
+      FieldName = 'FDmCost'
+      Origin = 'FDmCost'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,###,###.00'
     end
@@ -3922,8 +3922,8 @@
       Size = 50
     end
   end
-  object cds_CreditInLev: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_CreditInLev: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
       'PLM.ProductDisplayName AS PRODUKT,'
@@ -4048,11 +4048,11 @@
       Size = 101
     end
   end
-  object cds_SurGrpRow: TADQuery
+  object cds_SurGrpRow: TFDQuery
     AfterInsert = cds_SurGrpRowAfterInsert
     MasterSource = ds_SurfGrpHdr
     MasterFields = 'SurfacingGroupNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.SurfacingGroupRow'
       'WHERE SurfacingGroupNo = :SurfacingGroupNo'
@@ -4087,8 +4087,8 @@
       Lookup = True
     end
   end
-  object sq_CI_NotInven: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CI_NotInven: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select 0 AS Inventera, 0 AS InvNr, C.ClientName AS '#196'gare, Cy.Cit' +
@@ -4281,8 +4281,8 @@
       Size = 1
     end
   end
-  object sq_CI_Inven: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CI_Inven: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select icg.IC_GRPNo AS Inventera, icg.IC_GRPNo AS InvNr, C.Clien' +
@@ -4463,8 +4463,8 @@
       Origin = 'Medelpris'
     end
   end
-  object sq_CI_All: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CI_All: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select icg.IC_GRPNo AS Inventera, icg.IC_GRPNo AS InvNr, C.Clien' +
@@ -4713,8 +4713,8 @@
       ReadOnly = True
     end
   end
-  object sq_AssignProdToPG: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AssignProdToPG: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Sic_ProdPriceGroup'
       'WHERE ProductNo = :ProductNo'
@@ -4762,8 +4762,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_updGroupPrice: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_updGroupPrice: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.GroupPrice'
       'Select spg.PriceGroupNo, :IC_GrpNo, 0 AS Price FROM'
@@ -4788,8 +4788,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GenSic_Lip: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GenSic_Lip: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Sic_Lip'
       'WHERE Sic_No = :Sic_No'
@@ -4833,8 +4833,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_InsPriceNM3: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsPriceNM3: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Insert into dbo.InvenPricePerNM3(IC_GrpNo, ProductNo, PricePerNM' +
@@ -4860,8 +4860,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_updPriceNM3: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_updPriceNM3: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.InvenPricePerNM3'
       'Set PricePerNM3 = :PricePerNM3'
@@ -4888,8 +4888,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgInInvLager: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgInInvLager: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'use vis_vida'
       'SELECT distinct'
@@ -4932,8 +4932,8 @@
       Required = True
     end
   end
-  object sq_SaveInvLista_PktNr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SaveInvLista_PktNr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '-- L'#228'gg till paket som producerades eller AR f'#246're max datum'
       '-- och inte finns med p'#229' icr listan '
@@ -5037,8 +5037,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_CopyRows: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CopyRows: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete FROM dbo.InvenRow'
       'WHERE IC_GrpNo = :IC_GrpNo'
@@ -5078,8 +5078,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_InsHlpRows: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsHlpRows: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.InvenRow'
       'Select'
@@ -5180,8 +5180,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgInCtrlList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgInCtrlList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select icr.packageNo'
       'from dbo.InvControlrow icr'
@@ -5214,8 +5214,8 @@
       Required = True
     end
   end
-  object sq_UpdLIPCtrlPkg: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_UpdLIPCtrlPkg: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.InvCtrl_Pkgs'
       
@@ -5256,8 +5256,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT pn.Status'
       'FROM dbo.PackageNumber PN'
@@ -5285,8 +5285,8 @@
       Origin = 'Status'
     end
   end
-  object sq_CopyManSicRows: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CopyManSicRows: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.SicRow_PG'
       'WHERE Sic_No = :Sic_No'
@@ -5294,12 +5294,12 @@
       ''
       
         'Insert into dbo.SicRow_PG(Sic_No, RowName, LIPGroupNo, NM3, Pric' +
-        'e, AdmCost, PlanerShavingsCost,'
+        'e, FDmCost, PlanerShavingsCost,'
       
         'PlaningCost, SortingCost, KilnDryingCost, CalcPrice, TotalValue,' +
         ' PriceGroupNo, PriceGroupName)'
       
-        'Select Sic_No, RowName, LIPGroupNo, NM3, Price, AdmCost, PlanerS' +
+        'Select Sic_No, RowName, LIPGroupNo, NM3, Price, FDmCost, PlanerS' +
         'havingsCost,'
       
         'PlaningCost, SortingCost, KilnDryingCost, CalcPrice, TotalValue,' +
@@ -5317,8 +5317,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgTypExistIn_InvCtrlPkt: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgTypExistIn_InvCtrlPkt: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select PackageTypeNo FROM dbo.InvCtrlRowPkt'
       'WHERE ic_grpNo = :ic_grpNo'
@@ -5350,8 +5350,8 @@
       Required = True
     end
   end
-  object sq_OnePkg: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_OnePkg: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       '        PR.ProductDisplayName           AS PRODUCT,'
@@ -5466,8 +5466,8 @@
       ReadOnly = True
     end
   end
-  object sq_InsPkgType_NoOfPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsPkgType_NoOfPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.InvCtrlrowPkt'
       '(IC_grpno,'
@@ -5524,8 +5524,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SaveInvListaPktTyp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SaveInvListaPktTyp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       ''
       'Insert into dbo.InvCtrlRowPkt'
@@ -5592,8 +5592,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_DelCreditedPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelCreditedPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.InvCtrl_Pkgs'
       'FROM'
@@ -5620,8 +5620,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgExistInHlp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgExistInHlp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.Operation'
       'FROM dbo.InvCtrl_Pkgs ICR'
@@ -5655,8 +5655,8 @@
       Required = True
     end
   end
-  object sq_InsertToInvCtrl_Pkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsertToInvCtrl_Pkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.InvCtrl_Pkgs'
       ''
@@ -5679,8 +5679,8 @@
     Left = 608
     Top = 704
   end
-  object sq_prelAvrLaster: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_prelAvrLaster: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '-- Prelimin'#228'ra F'#246'rs'#228'ljnings Avropslaster'
       'Insert into dbo.InvControlRow'
@@ -5771,13 +5771,13 @@
         ParamType = ptInput
       end>
   end
-  object sq_SUM_SIC: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SUM_SIC: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.SicRow where Sic_No = :Sic_No'
       'Insert into dbo.SicRow(Sic_No, RowName, LIPGroupNo, NM3,'
       
-        'Price, AdmCost, PlanerShavingsCost, PlaningCost, SortingCost, Ki' +
+        'Price, FDmCost, PlanerShavingsCost, PlaningCost, SortingCost, Ki' +
         'lnDryingCost'
       ')'
       'Select sicl.Sic_No, Lager, sicl.LIPGroupNo, SUM(sicl.CalcNM3),'
@@ -5795,8 +5795,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetCtrlPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetCtrlPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Inv_By_Pkg'
       'WHERE Spec_UserID = :UserID'
@@ -5975,8 +5975,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_copyall: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_copyall: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete FROM dbo.InvenRow_all'
       'WHERE IC_GrpNo = :IC_GrpNo'
@@ -6011,8 +6011,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_DelCtrlRowPktNr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelCtrlRowPktNr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete from dbo.InvControlRow'
       'where IC_grpno = :IC_grpno'
@@ -6026,8 +6026,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_CleanICR: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CleanICR: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.InvControlRow'
       'WHERE IC_grpno = :IC_grpno AND  ((Status = 3) or (Status = 4))'
@@ -6045,8 +6045,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_AddToICR: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AddToICR: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.InvControlRow'
       'WHERE'
@@ -6105,8 +6105,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_RemFromICR: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_RemFromICR: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.InvControlRow '
       'Set Status = 1'
@@ -6145,8 +6145,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetChangesToPackages: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetChangesToPackages: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.InvControlRow'
       'Set PackageTypeNo = pn.PackageTypeNo,'
@@ -6184,8 +6184,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_NotInvLoads: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_NotInvLoads: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '-- Ej fakturerade F'#246'rs'#228'ljnings Avropslaster'
       'Insert into dbo.InvControlRow'
@@ -6302,8 +6302,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SetNoOfPkg_PKTTYP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SetNoOfPkg_PKTTYP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.InvCtrlRowPkt'
       'Set NoOfPkgs = NoOfPkgs + :NoOfPkgs'
@@ -6335,8 +6335,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_DelCtrlRowPktTyp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelCtrlRowPktTyp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete from dbo.InvCtrlRowPkt'
       'where IC_grpno = :IC_grpno'
@@ -6350,8 +6350,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_InsHlpRows_II: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsHlpRows_II: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.InvenRow'
       'Select'
@@ -6412,8 +6412,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_TrackDuplicates: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_TrackDuplicates: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'delete  dbo.InvDuplPkgNr where IC_GrpNo = :IC_GrpNo'
       ''
@@ -6465,13 +6465,13 @@
         ParamType = ptInput
       end>
   end
-  object sq_GenSicPG: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GenSicPG: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.SicRow_PG where Sic_No = :Sic_No'
       'Insert into dbo.SicRow_PG(Sic_No, RowName, LIPGroupNo, NM3,'
       
-        'Price, AdmCost, PlanerShavingsCost, PlaningCost, SortingCost, Ki' +
+        'Price, FDmCost, PlanerShavingsCost, PlaningCost, SortingCost, Ki' +
         'lnDryingCost'
       ')'
       'Select sicl.Sic_No, Lager, sicl.LIPGroupNo, SUM(sicl.CalcNM3),'
@@ -6490,8 +6490,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_InsAllHlpRows: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsAllHlpRows: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.InvenRow_all'
       'Select'
@@ -6619,8 +6619,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgExistInKL: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgExistInKL: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select icr.Status FROM dbo.InvControlRow icr'
       'WHERE icr.PackageNo = :PackageNo'
@@ -6650,8 +6650,8 @@
       Origin = 'Status'
     end
   end
-  object sq_PkgExist: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgExist: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Status FROM dbo.PackageNumber'
       'WHERE PackageNo = :PkgNo'
@@ -6675,8 +6675,8 @@
       Origin = 'Status'
     end
   end
-  object sq_PkgExitsInInv: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgExitsInInv: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select pn.Status, isNull(icr.IC_GrpNo,0) AS IC_GrpNo FROM dbo.Pa' +
@@ -6719,8 +6719,8 @@
       Required = True
     end
   end
-  object sp_CalcInvAvgPrice: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_CalcInvAvgPrice: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_CalcInvAvgPrice_LIP'
     Left = 1392
     Top = 672
@@ -6745,8 +6745,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetSortOrderNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetSortOrderNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select MAX(ICR.SortOrderNo) AS CurrentSortOrderNo'
       'FROM dbo.InvCtrl_Pkgs ICR'
@@ -6772,8 +6772,8 @@
       ReadOnly = True
     end
   end
-  object sq_GenInvListaII: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GenInvListaII: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Inv_By_Pkg'
       'WHERE Spec_UserID = :UserID'
@@ -6924,8 +6924,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SetSTDkoppling: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SetSTDkoppling: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Sic_ProdPriceGroup where IC_grpno = :IC_grpno'
       ''
@@ -6965,14 +6965,14 @@
         ParamType = ptInput
       end>
   end
-  object sq_SUM_SIC_PG: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SUM_SIC_PG: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.SicRow_PG where Sic_No = :Sic_No'
       ''
       
         'Insert into dbo.SicRow_PG(Sic_No, RowName, LIPGroupNo, NM3, Pric' +
-        'e, AdmCost, PlanerShavingsCost,'
+        'e, FDmCost, PlanerShavingsCost,'
       
         'PlaningCost, SortingCost, KilnDryingCost, PriceGroupNo, PriceGro' +
         'upName)'
@@ -7029,8 +7029,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SetInvStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SetInvStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.InvControlGrp Set Status = :Status'
       'WHERE IC_GRPNo = :IC_GRPNo'
@@ -7050,8 +7050,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SaveToInvCtrlRow_PktTyp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SaveToInvCtrlRow_PktTyp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.InvCtrlRowPkt'
       'Select distinct'
@@ -7117,8 +7117,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetLagergrupper: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetLagergrupper: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       ''
       'Select distinct '
@@ -7186,8 +7186,8 @@
       Origin = 'PIPNo'
     end
   end
-  object sq_SaveToInvCtrlRow_PktNr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SaveToInvCtrlRow_PktNr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       ''
       'Insert into dbo.InvControlRow'
@@ -7264,8 +7264,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SaveToInvCtrlRow_PktNr2: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SaveToInvCtrlRow_PktNr2: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '-- spara paket till InvControlRow - paketnr metod'
       '--//LO laster status prelimin'#228'r'
@@ -7346,8 +7346,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_GenInvenSummary: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_GenInvenSummary: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.VIS_GenInvenSummary'
     Left = 1080
     Top = 384
@@ -7365,8 +7365,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_PkgCngInv: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PkgCngInv: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_PkgCngInv'
     Left = 1080
     Top = 440
@@ -7422,8 +7422,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_PkgAddInv: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PkgAddInv: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_PkgAddInv'
     Left = 1080
     Top = 496
@@ -7514,8 +7514,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_RvtPkgInv: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_RvtPkgInv: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_RvtPkgInv'
     Left = 1080
     Top = 568
@@ -7565,11 +7565,11 @@
         ParamType = ptInput
       end>
   end
-  object cds_InvCtrlMetod: TADQuery
+  object cds_InvCtrlMetod: TFDQuery
     AfterInsert = cds_InvCtrlMetodAfterInsert
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select Distinct ICM.*, LIP.PhysicalInventoryPointNo AS PIPNo FRO' +
@@ -7664,8 +7664,8 @@
       Lookup = True
     end
   end
-  object sp_vis_invUpdControlStatus: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_invUpdControlStatus: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_invUpdControlStatus'
     Left = 104
     Top = 24
@@ -7683,8 +7683,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_vis_GenInvCountByProduct: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_GenInvCountByProduct: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_GenInvCountByProduct'
     Left = 272
     Top = 8
@@ -7702,8 +7702,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_vis_invByProduct: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_invByProduct: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_invByProduct'
     Left = 424
     ParamData = <
@@ -7720,8 +7720,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_vis_ActivatePkgsInvCountByProduct: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_ActivatePkgsInvCountByProduct: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_ActivatePkgsInvCountByProduct'
     Left = 568
     Top = 24
@@ -7751,8 +7751,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_vis_InsPkgsToInvCountByProduct: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_InsPkgsToInvCountByProduct: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_InsPkgsToInvCountByProduct'
     Left = 776
     Top = 48
@@ -7782,8 +7782,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_vis_ClearInvCountFromExtData: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_ClearInvCountFromExtData: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_ClearInvCountFromExtData'
     Left = 272
     Top = 56
@@ -7801,8 +7801,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetCtrlPkgsII: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetCtrlPkgsII: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Inv_By_Pkg'
       'WHERE Spec_UserID = :UserID'
@@ -7979,8 +7979,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_Gen_CtrlList: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Gen_CtrlList: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.Vis_CtrlList'
     Left = 424
     Top = 64
@@ -8018,10 +8018,10 @@
         ParamType = ptInput
       end>
   end
-  object sp_SimulateHandHeld: TADStoredProc
+  object sp_SimulateHandHeld: TFDStoredProc
     AfterInsert = sp_SimulateHandHeldAfterInsert
     OnUpdateRecord = sp_SimulateHandHeldUpdateRecord
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InventResult'
     UpdateOptions.KeyFields = 'Id'
     StoredProcName = 'dbo.vis_SimulateHandHeld'
@@ -8135,8 +8135,8 @@
     Left = 1104
     Top = 160
   end
-  object upd_SimulateHandHeld: TADUpdateSQL
-    Connection = dmsConnector.ADConnection1
+  object upd_SimulateHandHeld: TFDUpdateSQL
+    Connection = dmsConnector.FDConnection1
     InsertSQL.Strings = (
       'INSERT INTO dbo.InventResult'
       '(PackageNo, Status, Quantity, IC_grpno, Prefix, '
@@ -8189,8 +8189,8 @@
     Left = 1104
     Top = 64
   end
-  object sp_copyCtrlPkgswstatusNotAct: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_copyCtrlPkgswstatusNotAct: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_copyCtrlPkgswstatusNotAct'
     Left = 1184
     Top = 224
@@ -8208,8 +8208,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_InsHlpPkgswstatusNotAct: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_InsHlpPkgswstatusNotAct: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_InsHlpPkgswstatusNotAct'
     Left = 1200
     Top = 296
@@ -8227,8 +8227,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_GenListfromPkgsnotact: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_GenListfromPkgsnotact: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.Vis_GenListfromPkgsnotact'
     Left = 1200
     Top = 360
@@ -8266,10 +8266,10 @@
         ParamType = ptInput
       end>
   end
-  object cds_UtLevAfterMaxdatum: TADQuery
+  object cds_UtLevAfterMaxdatum: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       ''
@@ -8404,8 +8404,8 @@
     Left = 1232
     Top = 112
   end
-  object sp_MoveFalseToAvreg: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_MoveFalseToAvreg: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_MoveFalseToAvreg'
     Left = 1200
     Top = 440
@@ -8423,8 +8423,8 @@
         ParamType = ptInput
       end>
   end
-  object upd_sicPG: TADUpdateSQL
-    Connection = dmsConnector.ADConnection1
+  object upd_sicPG: TFDUpdateSQL
+    Connection = dmsConnector.FDConnection1
     InsertSQL.Strings = (
       'INSERT INTO VIS_VIDA.dbo.InvenPricePerNM3'
       '(IC_GrpNo, ProductNo, PricePerNM3)'
@@ -8445,8 +8445,8 @@
     Left = 760
     Top = 376
   end
-  object cds_LIPSUM: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIPSUM: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT LS.[LIPNo]'
       '      ,LS.[PackageNo]'
@@ -8527,8 +8527,8 @@
     Left = 1200
     Top = 552
   end
-  object cds_PkgCost: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgCost: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT TOP 1000 [PackageNo]'
       '      ,[SupplierCode]'
@@ -8636,10 +8636,10 @@
     Left = 1200
     Top = 656
   end
-  object ADQuery1: TADQuery
+  object FDQuery1: TFDQuery
     MasterSource = ds_InvCtrlGrp
     MasterFields = 'IC_grpno'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.InvCtrl_Pkgs'
     SQL.Strings = (
       ''
@@ -8769,8 +8769,8 @@
       Size = 50
     end
   end
-  object sp_LoadedAfterMaxDate: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_LoadedAfterMaxDate: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_LoadedAfterMaxDate'
     Left = 1224
     Top = 168
@@ -8800,10 +8800,10 @@
         ParamType = ptInput
       end>
   end
-  object sp_SicPG: TADStoredProc
+  object sp_SicPG: TFDStoredProc
     OnCalcFields = sp_SicPGCalcFields
     OnUpdateRecord = sp_SicPGUpdateRecord
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateObject = upd_sicPG
     StoredProcName = 'dbo.vis_CalculatedPrice_v2'
     Left = 824
@@ -8924,9 +8924,9 @@
       Calculated = True
     end
   end
-  object cds_InvCtrlSet: TADQuery
+  object cds_InvCtrlSet: TFDQuery
     AfterInsert = cds_InvCtrlSetAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM '
       'dbo.InvCtrlSet'
@@ -8982,8 +8982,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object sp_SetInvCtrlSetStatus: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_SetInvCtrlSetStatus: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_SetInvCtrlSetStatus'
     Left = 1304
     Top = 792
@@ -9001,9 +9001,9 @@
         ParamType = ptInput
       end>
   end
-  object sp_SetMall: TADStoredProc
+  object sp_SetMall: TFDStoredProc
     OnUpdateRecord = sp_SetMallUpdateRecord
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_SetMall'
     Left = 1304
     Top = 520
@@ -9064,8 +9064,8 @@
     Left = 1304
     Top = 576
   end
-  object upd_SetMall: TADUpdateSQL
-    Connection = dmsConnector.ADConnection1
+  object upd_SetMall: TFDUpdateSQL
+    Connection = dmsConnector.FDConnection1
     ConnectionName = 'Vida'
     InsertSQL.Strings = (
       'INSERT INTO dbo.LogicalInventoryPoint'
@@ -9110,8 +9110,8 @@
     Left = 1304
     Top = 720
   end
-  object cds_InvenSETLip: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_InvenSETLip: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.InvenSETLip'
       'WHERE IC_SetNo = :IC_SetNo')
@@ -9169,8 +9169,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object sp_InsertToInvenSetLIP: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_InsertToInvenSetLIP: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_InsertToInvenSetLIP'
     Left = 1328
     Top = 280
@@ -9188,8 +9188,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_Exec_PackageCost: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Exec_PackageCost: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_Exec_PackageCost'
     Left = 1328
     Top = 224
@@ -9207,8 +9207,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_CopyToNM3Price: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_CopyToNM3Price: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_CopyToNM3Price'
     Left = 1328
     Top = 408
@@ -9226,8 +9226,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_Add_IC_GroupNo_To_Inven_Al_VW: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Add_IC_GroupNo_To_Inven_Al_VW: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_addICgrps'
     Left = 1304
     Top = 840
@@ -9257,8 +9257,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_RemoveKilnPkgsFromInvCount: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_RemoveKilnPkgsFromInvCount: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_RemoveKilnPkgsFromInvCount'
     Left = 1016
     Top = 856

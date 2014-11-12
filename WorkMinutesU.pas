@@ -4,31 +4,31 @@ interface
 
 uses
   SysUtils, Classes, Math, StrUtils, DateUtils, Variants, Dialogs,
-  uADStanIntf, uADDatSManager, uADStanOption, uADStanError, uADStanParam,
-  uADPhysIntf, uADDAptIntf, uADStanDef, uADGUIxIntf, uADCompClient,
-  uADCompDataSet, dmsDataConn ;
+  FireDAC.Stan.Intf, FireDAC.DatS, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.Stan.Param,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Def, FireDAC.UI.Intf, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet, dmsDataConn ;
 
 type TTime = type TDateTime;
 
-function GetNextMDate( dsHoliday: TADQuery;
+function GetNextMDate( dsHoliday: TFDQuery;
                        const LastMDate: TDateTime;
                        const Intervall, DriftPlatsNr : Integer;
                        Out ResolvedStartDateTime, ResolvedEndDateTime: TDateTime
                        ): TDateTime;
                        
 function WorkMinutes( DriftPlatsNr: Integer;
-                      dsHoliday: TADQuery;
+                      dsHoliday: TFDQuery;
                       StartDateTime, EndDateTime: TDateTime;
                       Out ResolvedStartDateTime, ResolvedEndDateTime: TDateTime): Double; overload;
 
 function WorkMinutes( DriftPlatsNr: Integer;
-                      dsHoliday: TADQuery;
+                      dsHoliday: TFDQuery;
                       StartDateTime, EndDateTime: TDateTime): Double; overload;
 implementation
 
 
 //Changed by LM April 7 2009
-function GetNextMDate( dsHoliday: TADQuery;
+function GetNextMDate( dsHoliday: TFDQuery;
                        const LastMDate : TDateTime;
                        const Intervall, DriftPlatsNr : Integer;
                        Out ResolvedStartDateTime, ResolvedEndDateTime: TDateTime
@@ -61,7 +61,7 @@ begin
 
 end;
 
-{function GetNextMDate(dsHoliday: TADQuery; const LastMDate :
+{function GetNextMDate(dsHoliday: TFDQuery; const LastMDate :
 TDateTime;const Intervall : Integer): TDateTime;
 var
   i: Integer;
@@ -148,7 +148,7 @@ end;
 
 
 
-function GetWorkDayWorkMinutes( ds: TADQuery;
+function GetWorkDayWorkMinutes( ds: TFDQuery;
                                 const dDate, StartDateTime, EndDateTime: TDateTime;
                                 out ResolvedStartDateTime, ResolvedEndDateTime: TDateTime): Double;
 var
@@ -354,17 +354,17 @@ end;
 
 // 2008-06-15 Comment By Jonny Zheng <<<<
 //
-//function WorkMinutes({DriftPlatsNr: Integer;   }dsHoliday: TADQuery; StartDateTime, EndDateTime: TDateTime): Double;
+//function WorkMinutes({DriftPlatsNr: Integer;   }dsHoliday: TFDQuery; StartDateTime, EndDateTime: TDateTime): Double;
 //var
 //  i, dStart, dEnd: Integer;
 //  dDate: TDateTime;
-//  ds: TADQuery;
+//  ds: TFDQuery;
 //begin
 //  Result := 0;
 //  dStart := Floor(StartDateTime);
 //  dEnd := Floor(EndDateTime);
 //
-//  ds := TADQuery.Create(nil);
+//  ds := TFDQuery.Create(nil);
 //  try
 //      ds.CloneCursor(dsHoliday, False);
 //
@@ -383,7 +383,7 @@ end;
 
 
 function WorkMinutes( DriftPlatsNr: Integer;
-                      dsHoliday: TADQuery;
+                      dsHoliday: TFDQuery;
                       StartDateTime, EndDateTime: TDateTime): Double; overload;
 var
   ResolvedStartDateTime, ResolvedEndDateTime: TDateTime;
@@ -398,14 +398,14 @@ begin
 end;
 
 function WorkMinutes( DriftPlatsNr: Integer;
-                      dsHoliday: TADQuery;
+                      dsHoliday: TFDQuery;
                       StartDateTime, EndDateTime: TDateTime;
                       Out ResolvedStartDateTime, ResolvedEndDateTime: TDateTime): Double; overload;
 var
   i, dStart, dEnd: Integer;
   dDate: TDateTime;
 
-  ds: TADQuery;
+  ds: TFDQuery;
 begin
   Result := 0;
 
@@ -415,10 +415,10 @@ begin
   dStart := Floor(StartDateTime);
   dEnd := Floor(EndDateTime);
 
-  ds := TADQuery.Create(nil);
+  ds := TFDQuery.Create(nil);
   try
       ds.CachedUpdates  := True ;
-      ds.Connection := dmsConnector.ADConnection1 ;
+      ds.Connection := dmsConnector.FDConnection1 ;
       ds.SQL.Text := dsHoliday.SQL.Text ;
       ds.ParamByName('DriftPlatsNr').AsInteger  := DriftPlatsNr ;
       ds.Active := True ;

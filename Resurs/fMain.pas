@@ -1263,8 +1263,8 @@ begin
  Begin
   dmsConnector.SQLConnection.CloseDataSets ;
   dmsConnector.SQLConnection.Connected:= False ;
-  if Length(OKHelpBottomDlg.eAD_Name.Text) > 0 then
-  ThisUser.DBUserName:= OKHelpBottomDlg.eAD_Name.Text ;
+  if Length(OKHelpBottomDlg.EFD_Name.Text) > 0 then
+  ThisUser.DBUserName:= OKHelpBottomDlg.EFD_Name.Text ;
   if Length(OKHelpBottomDlg.eDatabas.Text) > 0 then
   ThisUser.Database:= OKHelpBottomDlg.eDatabas.Text ;
 
@@ -1273,7 +1273,7 @@ begin
      else
       if dmsConnector.SQLConnection.Connected then
       Begin
-       if ((dmsConnector.Get_AD_Name <> OKHelpBottomDlg.eAD_Name.Text) and (Length(OKHelpBottomDlg.eAD_Name.Text) > 0) )
+       if ((dmsConnector.Get_AD_Name <> OKHelpBottomDlg.EFD_Name.Text) and (Length(OKHelpBottomDlg.EFD_Name.Text) > 0) )
        or ((OKHelpBottomDlg.eDatabas.Text <> dmsConnector.Org_DB_Name) and (Length(OKHelpBottomDlg.eDatabas.Text) > 0)) then
        Begin
         InitOnStartOfProgram ;

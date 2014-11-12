@@ -3,8 +3,8 @@ object dmsProduct: TdmsProduct
   OnCreate = DataModuleCreate
   Height = 633
   Width = 1017
-  object cds_ProductGroupLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProductGroupLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM'
@@ -37,8 +37,8 @@ object dmsProduct: TdmsProduct
       Origin = 'DateCreated'
     end
   end
-  object cds_ProdLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProdLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ProductLength'
       '')
@@ -103,8 +103,8 @@ object dmsProduct: TdmsProduct
       Origin = 'Act'
     end
   end
-  object sp_Packages: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Packages: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_Packages'
     Left = 96
     Top = 352
@@ -129,8 +129,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sq_DelTempPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelTempPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.SortingOrderMarkedPkgs'
       'WHERE UserID = :UserID'
@@ -144,8 +144,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sq_InsTempPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsTempPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert into dbo.SortingOrderMarkedPkgs(UserID, '
       'PackageNo, SupplierCode)'
@@ -171,8 +171,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sp_Populate_One_PkgTypeLengths: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Populate_One_PkgTypeLengths: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_Populate_One_PackageTypeLengths'
     Left = 96
     Top = 288
@@ -190,8 +190,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sp_PackageTotals: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTotals: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_PackageTotals'
     Left = 96
     Top = 240
@@ -209,8 +209,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_NewPkgNo_Price_NoPP'
     Left = 96
     Top = 184
@@ -284,8 +284,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageDetail: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageDetail: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_NewPackageDetail'
     Left = 96
     Top = 136
@@ -321,8 +321,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageType: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageType: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_NewPkgType'
     Left = 96
     Top = 80
@@ -376,8 +376,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInput
       end>
   end
-  object sp_PackageTypes: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTypes: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_PkgType_II'
     Left = 96
     Top = 24
@@ -421,8 +421,8 @@ object dmsProduct: TdmsProduct
         Size = 255
       end>
   end
-  object sp_VP_IntLO: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_VP_IntLO: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_VP_IntLO'
     Left = 240
     Top = 24
@@ -476,8 +476,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInputOutput
       end>
   end
-  object sp_newLoad_II: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_newLoad_II: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'Vis_newLoad_VP'
     Left = 240
     Top = 80
@@ -533,8 +533,8 @@ object dmsProduct: TdmsProduct
         ParamType = ptInputOutput
       end>
   end
-  object sp_vis_InsPnLog: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_InsPnLog: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_InsPnLog'
     Left = 360
     Top = 24

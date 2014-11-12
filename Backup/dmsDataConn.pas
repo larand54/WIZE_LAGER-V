@@ -8,7 +8,7 @@ uses
   DBXpress,
   SqlExpr,
   SysUtils, FMTBcd, Provider, ImgList, Controls, Dialogs, DBClient,
-  ADODB, cxClasses, cxStyles, cxGridTableView, CRSQLConnection;
+  FDODB, cxClasses, cxStyles, cxGridTableView, CRSQLConnection;
 
   Const VIDA_WOOD_CLIENTNO = 741 ;
 

@@ -8,9 +8,9 @@ uses
   cxStyles, cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage,
   cxEdit, cxDBData, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid,
-  cxLabel, cxLookAndFeels, cxLookAndFeelPainters, uADStanIntf, uADStanOption,
-  uADStanParam, uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf,
-  uADStanAsync, uADDAptManager, uADCompDataSet, uADCompClient, dxSkinsCore,
+  cxLabel, cxLookAndFeels, cxLookAndFeelPainters, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, dxSkinsCore,
   dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
   dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
   dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
@@ -41,7 +41,7 @@ type
     grdLevPaketkoderDBTableView1SupplierCodePos: TcxGridDBColumn;
     grdLevPaketkoderDBTableView1SupplierCodeLength: TcxGridDBColumn;
     grdLevPaketkoderLevel1: TcxGridLevel;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkPktNrLevKod: TStringField;

@@ -16,9 +16,9 @@ uses
   dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns, dxPSCore,
   dxPScxCommon, cxCalc, cxGridExportLink,
   cxExport, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxLookAndFeels, dxBar, uADStanIntf, uADStanOption, uADStanParam,
-  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADCompDataSet,
-  uADCompClient, dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils,
+  cxLookAndFeels, dxBar, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils,
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer,
   dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, cxCheckComboBox, dxSkinsCore,
@@ -149,17 +149,17 @@ type
     dxBarManager1: TdxBarManager;
     dxBarButton1: TdxBarButton;
     acSetMarkedAsConfirmed: TAction;
-    adm_SelectedRows: TkbmMemTable;
-    adm_SelectedRowsInventeringsNr: TIntegerField;
+    FDm_SelectedRows: TkbmMemTable;
+    FDm_SelectedRowsInventeringsNr: TIntegerField;
     acSetMarkedAsConfirmedAndPriceConfirmed: TAction;
     dxBarButton2: TdxBarButton;
     dxBarButton3: TdxBarButton;
     dxBarButton4: TdxBarButton;
     acSetMarkedRowsToBeInventerade: TAction;
-    adm_SelectedRowsLIPNo: TIntegerField;
+    FDm_SelectedRowsLIPNo: TIntegerField;
     acCreateResult: TAction;
     dxBarButton5: TdxBarButton;
-    adm_SelectedRowsStatus: TIntegerField;
+    FDm_SelectedRowsStatus: TIntegerField;
     icStatus: TcxDBImageComboBox;
     acExportInventory: TAction;
     cxButton8: TcxButton;
@@ -891,11 +891,11 @@ begin
     ADataSet.Locate('InvNr;LIPNo', RecID,[]) ;
     if ADataSet.FieldByName('Inventera').AsInteger > 1 then
     Begin
-     adm_SelectedRows.Insert ;
-     adm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName('Inventera').AsInteger ;
-     adm_SelectedRowsLIPNo.AsInteger            := ADataSet.FieldByName('LIPNo').AsInteger ;
-     adm_SelectedRowsStatus.AsInteger           := ADataSet.FieldByName('Status').AsInteger ;
-     adm_SelectedRows.Post ;
+     FDm_SelectedRows.Insert ;
+     FDm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName('Inventera').AsInteger ;
+     FDm_SelectedRowsLIPNo.AsInteger            := ADataSet.FieldByName('LIPNo').AsInteger ;
+     FDm_SelectedRowsStatus.AsInteger           := ADataSet.FieldByName('Status').AsInteger ;
+     FDm_SelectedRows.Post ;
     End ;
 
   //  dmInvCtrl.CalcInvAvgPrice(ADataSet.FieldByName('InvNr').AsInteger, ADataSet.FieldByName('LIPNo').AsInteger) ;
@@ -928,10 +928,10 @@ begin
     ADataSet.Locate('InvNr;LIPNo', RecID,[]) ;
     if ADataSet.FieldByName('Inventera').AsInteger = 0 then
     Begin
-     adm_SelectedRows.Insert ;
-     adm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName('Inventera').AsInteger ;
-     adm_SelectedRowsLIPNo.AsInteger            := ADataSet.FieldByName('LIPNo').AsInteger ;
-     adm_SelectedRows.Post ;
+     FDm_SelectedRows.Insert ;
+     FDm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName('Inventera').AsInteger ;
+     FDm_SelectedRowsLIPNo.AsInteger            := ADataSet.FieldByName('LIPNo').AsInteger ;
+     FDm_SelectedRows.Post ;
     End ;
 
   //  dmInvCtrl.CalcInvAvgPrice(ADataSet.FieldByName('InvNr').AsInteger, ADataSet.FieldByName('LIPNo').AsInteger) ;
@@ -948,20 +948,20 @@ end;
 procedure TfInvCreateManyCtrlList.acSetMarkedAsConfirmedExecute(
   Sender: TObject);
 begin
- adm_SelectedRows.Active  := False ;
- adm_SelectedRows.Active  := True ;
+ FDm_SelectedRows.Active  := False ;
+ FDm_SelectedRows.Active  := True ;
  Try
  MarkeradeInventeringar ;
 
- adm_SelectedRows.First ;
- While not adm_SelectedRows.Eof do
+ FDm_SelectedRows.First ;
+ While not FDm_SelectedRows.Eof do
  Begin
-  dmInvCtrl.SetInvStatus(adm_SelectedRowsInventeringsNr.AsInteger, 2) ;
-  adm_SelectedRows.Next ;
+  dmInvCtrl.SetInvStatus(FDm_SelectedRowsInventeringsNr.AsInteger, 2) ;
+  FDm_SelectedRows.Next ;
  End ;
  acRefreshExecute(Sender) ;
  Finally
-  adm_SelectedRows.Active  := False ;
+  FDm_SelectedRows.Active  := False ;
  End ;
 end;
 
@@ -982,20 +982,20 @@ end;
 procedure TfInvCreateManyCtrlList.acSetMarkedAsConfirmedAndPriceConfirmedExecute(
   Sender: TObject);
 begin
- adm_SelectedRows.Active  := False ;
- adm_SelectedRows.Active  := True ;
+ FDm_SelectedRows.Active  := False ;
+ FDm_SelectedRows.Active  := True ;
  Try
  MarkeradeInventeringar ;
 
- adm_SelectedRows.First ;
- While not adm_SelectedRows.Eof do
+ FDm_SelectedRows.First ;
+ While not FDm_SelectedRows.Eof do
  Begin
-  dmInvCtrl.SetInvStatus(adm_SelectedRowsInventeringsNr.AsInteger, 3) ;
-  adm_SelectedRows.Next ;
+  dmInvCtrl.SetInvStatus(FDm_SelectedRowsInventeringsNr.AsInteger, 3) ;
+  FDm_SelectedRows.Next ;
  End ;
  acRefreshExecute(Sender) ;
  Finally
-  adm_SelectedRows.Active  := False ;
+  FDm_SelectedRows.Active  := False ;
  End ;
 end;
 
@@ -1004,53 +1004,53 @@ procedure TfInvCreateManyCtrlList.acSetMarkedRowsToBeInventeradeExecute(
 begin
  With dmInvCtrl do
  Begin
- adm_SelectedRows.Active  := False ;
- adm_SelectedRows.Active  := True ;
+ FDm_SelectedRows.Active  := False ;
+ FDm_SelectedRows.Active  := True ;
  Try
  cds_CreateInvs.DisableControls ;
  MarkeradeInventeringarOnlyTakeNonInventerade ;
 
 
- adm_SelectedRows.First ;
- While not adm_SelectedRows.Eof do
+ FDm_SelectedRows.First ;
+ While not FDm_SelectedRows.Eof do
  Begin
-  if cds_CreateInvs.Locate('InvNr;LIPNo', VarArrayof([adm_SelectedRowsInventeringsNr.AsInteger, adm_SelectedRowsLIPNo.AsInteger]), []) then
+  if cds_CreateInvs.Locate('InvNr;LIPNo', VarArrayof([FDm_SelectedRowsInventeringsNr.AsInteger, FDm_SelectedRowsLIPNo.AsInteger]), []) then
   Begin
    cds_CreateInvs.Edit ;
    cds_CreateInvsInventera.AsInteger := 1 ;
    cds_CreateInvs.Post ;
   End ;
-  adm_SelectedRows.Next ;
+  FDm_SelectedRows.Next ;
  End ;
 
  Finally
   cds_CreateInvs.EnableControls ;
-  adm_SelectedRows.Active  := False ;
+  FDm_SelectedRows.Active  := False ;
  End ;
  End ;
 end;
 
 procedure TfInvCreateManyCtrlList.acCreateResultExecute(Sender: TObject);
 begin
- adm_SelectedRows.Active  := False ;
- adm_SelectedRows.Active  := True ;
+ FDm_SelectedRows.Active  := False ;
+ FDm_SelectedRows.Active  := True ;
  Try
  MarkeradeInventeringar ;
 
- adm_SelectedRows.First ;
- While not adm_SelectedRows.Eof do
+ FDm_SelectedRows.First ;
+ While not FDm_SelectedRows.Eof do
  Begin
-  if adm_SelectedRowsStatus.AsInteger = 1 then
+  if FDm_SelectedRowsStatus.AsInteger = 1 then
   Begin
-   dmInvCtrl.Open_Inventering(adm_SelectedRowsInventeringsNr.AsInteger) ;
+   dmInvCtrl.Open_Inventering(FDm_SelectedRowsInventeringsNr.AsInteger) ;
    if dmInvCtrl.cds_InvCtrlGrp.RecordCount > 0 then
    dmInvCtrl.CreateResultList ;
   End ; 
-  adm_SelectedRows.Next ;
+  FDm_SelectedRows.Next ;
  End ;
  acRefreshExecute(Sender) ;
  Finally
-  adm_SelectedRows.Active  := False ;
+  FDm_SelectedRows.Active  := False ;
  End ;
 end;
 

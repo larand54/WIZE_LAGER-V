@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, DB,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompClient,
-  uADCompDataSet, SQLTimst ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet, SQLTimst ;
 
 type
   Tdm_Booking = class(TDataModule)
@@ -20,14 +20,14 @@ type
     dsAvropInfo: TDataSource;
     dsBookingProducts: TDataSource;
     dsCarrier: TDataSource;
-    cdsCarrier: TADQuery;
+    cdsCarrier: TFDQuery;
     cdsCarrierCarrierNo: TIntegerField;
     cdsCarrierCarrierName: TStringField;
     cdsCarrierSequenceNo: TIntegerField;
     cdsCarrierCreatedUser: TSmallintField;
     cdsCarrierModifiedUser: TSmallintField;
     cdsCarrierDateCreated: TSQLTimeStampField;
-    cdsBookingProducts: TADQuery;
+    cdsBookingProducts: TFDQuery;
     cdsBookingProductsREFERENCE: TStringField;
     cdsBookingProductsDEL_ADDRESS: TStringField;
     cdsBookingProductsSUPPLIER: TStringField;
@@ -41,7 +41,7 @@ type
     cdsBookingProductsCITY_NO: TIntegerField;
     cdsBookingProductsCITY_NAME: TStringField;
     cdsBookingProductsPOSTALCODE: TStringField;
-    cdsAvropInfo: TADQuery;
+    cdsAvropInfo: TFDQuery;
     cdsAvropInfoShippingPlanNo: TIntegerField;
     cdsAvropInfoOrderNoText: TStringField;
     cdsAvropInfoReference: TStringField;
@@ -53,28 +53,28 @@ type
     cdsAvropInfoNoteForLoadSheet: TMemoField;
     cdsAvropInfoInvoiceText: TMemoField;
     cdsAvropInfoOrderType: TIntegerField;
-    cdsBookingType: TADQuery;
+    cdsBookingType: TFDQuery;
     cdsBookingTypeBookingTypeNo: TIntegerField;
     cdsBookingTypeBookingType: TStringField;
     cdsBookingTypeCreatedUser: TSmallintField;
     cdsBookingTypeModifiedUser: TSmallintField;
     cdsBookingTypeDateCreated: TSQLTimeStampField;
     cdsBookingTypeSequenceNo: TIntegerField;
-    cdsVolUnit: TADQuery;
+    cdsVolUnit: TFDQuery;
     cdsVolUnitTemplateUnitNo: TIntegerField;
     cdsVolUnitTemplateUnitName: TStringField;
     cdsVolUnitDateCreated: TSQLTimeStampField;
     cdsVolUnitCreatedUser: TSmallintField;
     cdsVolUnitModifiedUser: TSmallintField;
     cdsVolUnitSequenceNo: TIntegerField;
-    cdsCurrency: TADQuery;
+    cdsCurrency: TFDQuery;
     cdsCurrencyCurrencyNo: TIntegerField;
     cdsCurrencyCurrencyName: TStringField;
     cdsCurrencyDateCreated: TSQLTimeStampField;
     cdsCurrencyCreatedUser: TSmallintField;
     cdsCurrencyModifiedUser: TSmallintField;
     cdsCurrencySequenceNo: TIntegerField;
-    cdsVoyage: TADQuery;
+    cdsVoyage: TFDQuery;
     cdsVoyageVoyageNo: TIntegerField;
     cdsVoyageCarrierNo: TIntegerField;
     cdsVoyageETD: TSQLTimeStampField;
@@ -84,7 +84,7 @@ type
     cdsVoyageModifiedUser: TSmallintField;
     cdsVoyageDateCreated: TSQLTimeStampField;
     cdsVoyageETA: TSQLTimeStampField;
-    cdsVoyageDestination: TADQuery;
+    cdsVoyageDestination: TFDQuery;
     cdsVoyageDestinationBookingNo: TIntegerField;
     cdsVoyageDestinationDestinationNo: TIntegerField;
     cdsVoyageDestinationETA: TSQLTimeStampField;
@@ -93,7 +93,7 @@ type
     cdsVoyageDestinationCreatedUser: TSmallintField;
     cdsVoyageDestinationModifiedUser: TSmallintField;
     cdsVoyageDestinationDateCreated: TSQLTimeStampField;
-    cdsBooking: TADQuery;
+    cdsBooking: TFDQuery;
     cdsBookingBookingNo: TIntegerField;
     cdsBookingShippingPlanNo: TIntegerField;
     cdsBookingVoyageNo: TIntegerField;
@@ -122,10 +122,10 @@ type
     cdsBookingNoteForLoadSheet: TMemoField;
     cdsBookingVesselOrPort: TStringField;
     cdsBookingPanic_Note: TStringField;
-    cdsShippers: TADStoredProc;
+    cdsShippers: TFDStoredProc;
     cdsShippersClientNo: TIntegerField;
     cdsShippersClientName: TStringField;
-    SQLQuery1: TADQuery;
+    SQLQuery1: TFDQuery;
     SQLQuery1BookingNo: TIntegerField;
     SQLQuery1ShippingPlanNo: TIntegerField;
     SQLQuery1VoyageNo: TIntegerField;
@@ -154,8 +154,8 @@ type
     SQLQuery1NoteForLoadSheet: TMemoField;
     SQLQuery1VesselOrPort: TStringField;
     SQLQuery1Panic_Note: TStringField;
-    sp_Carriers: TADStoredProc;
-    sp_Cities: TADStoredProc;
+    sp_Carriers: TFDStoredProc;
+    sp_Cities: TFDStoredProc;
     procedure cdsCarrierAfterInsert(DataSet: TDataSet);
     procedure cdsVoyageDestinationAfterEdit(DataSet: TDataSet);
     procedure cdsVoyageDestinationAfterInsert(DataSet: TDataSet);

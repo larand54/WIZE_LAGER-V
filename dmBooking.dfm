@@ -52,9 +52,9 @@ object dm_Booking: Tdm_Booking
     Left = 672
     Top = 248
   end
-  object cdsCarrier: TADQuery
+  object cdsCarrier: TFDQuery
     AfterInsert = cdsCarrierAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'From dbo.Carrier'
@@ -90,12 +90,12 @@ object dm_Booking: Tdm_Booking
       Origin = 'DateCreated'
     end
   end
-  object cdsBookingProducts: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsBookingProducts: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT   '
       'SPSA.Reference'#9#9'AS REFERENCE, '
-      'AD.AddressName'#9#9'AS DEL_ADDRESS, '
+      'FD.AddressName'#9#9'AS DEL_ADDRESS, '
       'Supp.ClientName '#9'AS SUPPLIER, '
       'Loc.CityName '#9#9'AS LOADING_LOCATION,'
       'OL.OrderLineDescription'#9'AS PRODUCT_DESCRIPTION, '
@@ -104,9 +104,9 @@ object dm_Booking: Tdm_Booking
       'Un.VolumeUnitName'#9'AS VOLUNIT,'
       'Su.ActualM3Net'#9#9'AS ACTM3,'
       'SPSA.AddressNo'#9#9'AS ADDRESS_NO,'
-      'AD.CityNo'#9#9'AS CITY_NO,'
+      'FD.CityNo'#9#9'AS CITY_NO,'
       'Cy.CityName             AS CITY_NAME,'
-      'AD.PostalCode           AS POSTALCODE'
+      'FD.PostalCode           AS POSTALCODE'
       ''
       'FROM dbo.CustomerShippingPlanHeader CSH'
       
@@ -135,9 +135,9 @@ object dm_Booking: Tdm_Booking
       #9'LEFT OUTER JOIN dbo.ShippingPlan_ShippingAddress SPSA'
       ''
       
-        #9'LEFT OUTER JOIN dbo.Address'#9'AD'#9#9#9#9'ON AD.AddressNo '#9'= SPSA.Addre' +
+        #9'LEFT OUTER JOIN dbo.Address'#9'FD'#9#9#9#9'ON FD.AddressNo '#9'= SPSA.Addre' +
         'ssNo'
-      #9'LEFT OUTER JOIN dbo.City'#9'Cy'#9#9#9#9'ON Cy.CityNo'#9#9'= AD.CityNo'
+      #9'LEFT OUTER JOIN dbo.City'#9'Cy'#9#9#9#9'ON Cy.CityNo'#9#9'= FD.CityNo'
       
         #9'LEFT OUTER JOIN dbo.Country  Co'#9#9#9#9'        ON Co.CountryNo'#9#9'= A' +
         'D.CountryNo'
@@ -225,8 +225,8 @@ object dm_Booking: Tdm_Booking
       FixedChar = True
     end
   end
-  object cdsAvropInfo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsAvropInfo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT '
       'CSH.ShippingPlanNo, '
@@ -311,8 +311,8 @@ object dm_Booking: Tdm_Booking
       Origin = 'OrderType'
     end
   end
-  object cdsBookingType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsBookingType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from BookingType'
       '')
@@ -347,8 +347,8 @@ object dm_Booking: Tdm_Booking
       Origin = 'SequenceNo'
     end
   end
-  object cdsVolUnit: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsVolUnit: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from PackUnit'
       '')
@@ -382,8 +382,8 @@ object dm_Booking: Tdm_Booking
       Origin = 'SequenceNo'
     end
   end
-  object cdsCurrency: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsCurrency: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from Currency'
       '')
@@ -418,8 +418,8 @@ object dm_Booking: Tdm_Booking
       Origin = 'SequenceNo'
     end
   end
-  object cdsVoyage: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsVoyage: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from Voyage'
       'Where VoyageNo = :VoyageNo'
@@ -471,10 +471,10 @@ object dm_Booking: Tdm_Booking
       Origin = 'ETA'
     end
   end
-  object cdsVoyageDestination: TADQuery
+  object cdsVoyageDestination: TFDQuery
     AfterInsert = cdsVoyageDestinationAfterInsert
     AfterEdit = cdsVoyageDestinationAfterEdit
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from VoyageDestination'
       'Where BookingNo = :BookingNo'
@@ -524,8 +524,8 @@ object dm_Booking: Tdm_Booking
       Origin = 'DateCreated'
     end
   end
-  object cdsBooking: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsBooking: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from Booking'
       'Where ShippingPlanNo = :ShippingPlanNo'
@@ -660,8 +660,8 @@ object dm_Booking: Tdm_Booking
       Size = 50
     end
   end
-  object cdsShippers: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object cdsShippers: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_Shippers'
     Left = 48
     Top = 32
@@ -684,8 +684,8 @@ object dm_Booking: Tdm_Booking
       Size = 80
     end
   end
-  object SQLQuery1: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object SQLQuery1: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.Booking'
       ''
@@ -822,8 +822,8 @@ object dm_Booking: Tdm_Booking
       Size = 50
     end
   end
-  object sp_Carriers: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Carriers: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_Carriers'
     Left = 464
     Top = 32
@@ -835,8 +835,8 @@ object dm_Booking: Tdm_Booking
         ParamType = ptResult
       end>
   end
-  object sp_Cities: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Cities: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_Cities'
     Left = 552
     Top = 32

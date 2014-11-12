@@ -987,15 +987,15 @@ object dmVidaInvoice: TdmVidaInvoice
       'OH.CurrencyNo,'
       ''
       'OH.ClientBillingAddressNo,'
-      'ADR.AddressName'#9#9#9'AS BILL_ADDRESS_NAME,'
-      'ADR.AddressLine1,'
-      'ADR.AddressLine2,'
-      'ADR.AddressLine3,'
-      'ADR.AddressLine4,'
-      'ADR.StateOrProvince,'
-      'ADR.PostalCode,'
-      'AdrCY.CityName as AddressCity,'
-      'AdrCtry.CountryName as AddressCountry,'
+      'FDR.AddressName'#9#9#9'AS BILL_ADDRESS_NAME,'
+      'FDR.AddressLine1,'
+      'FDR.AddressLine2,'
+      'FDR.AddressLine3,'
+      'FDR.AddressLine4,'
+      'FDR.StateOrProvince,'
+      'FDR.PostalCode,'
+      'FDrCY.CityName as AddressCity,'
+      'FDrCtry.CountryName as AddressCountry,'
       ''
       ''
       'C.ClientName as CustomerName,'
@@ -1069,12 +1069,12 @@ object dmVidaInvoice: TdmVidaInvoice
       #9'INNER JOIN dbo.Orders '#9#9#9'OH'#9'ON'#9'OH.OrderNo '#9#9'= CSH.OrderNo'
       ''
       ''
-      #9'LEFT OUTER JOIN dbo.Address '#9#9'ADR'
-      #9'INNER JOIN dbo.CITY'#9#9#9'AdrCY'#9'ON'#9'AdrCY.CityNo '#9#9'= ADR.CityNo'
+      #9'LEFT OUTER JOIN dbo.Address '#9#9'FDR'
+      #9'INNER JOIN dbo.CITY'#9#9#9'FDrCY'#9'ON'#9'FDrCY.CityNo '#9#9'= FDR.CityNo'
       
-        #9'INNER JOIN dbo.Country'#9#9#9'AdrCtry'#9'ON'#9'AdrCtry.CountryNo '#9'= ADR.Co' +
+        #9'INNER JOIN dbo.Country'#9#9#9'FDrCtry'#9'ON'#9'FDrCtry.CountryNo '#9'= FDR.Co' +
         'untryNo'
-      #9#9#9#9#9#9#9'ON'#9'ADR.AddressNo'#9#9'= CSH.ClientBillingAddressNo'
+      #9#9#9#9#9#9#9'ON'#9'FDR.AddressNo'#9#9'= CSH.ClientBillingAddressNo'
       ''
       
         '        LEFT OUTER Join dbo.PaymentText PayText                 ' +
@@ -1084,7 +1084,7 @@ object dmVidaInvoice: TdmVidaInvoice
         'PayText.LanguageCode = OH.LanguageCode'
       
         '                                                        AND     ' +
-        'PayText.CountryNo = ADR.CountryNo'
+        'PayText.CountryNo = FDR.CountryNo'
       ''
       #9'LEFT OUTER JOIN dbo.Address '#9#9'Agent_ADR'
       
@@ -2437,9 +2437,9 @@ object dmVidaInvoice: TdmVidaInvoice
         'ssLine2),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.AddressLine3),'#39#39')+'#39', '#39'+isNul' +
         'l(RTRIM(Addr.AddressLine4),'#39#39')'
       
-        '+'#39', '#39'+isNull(RTRIM(AdrCY.CityName),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.Po' +
+        '+'#39', '#39'+isNull(RTRIM(FDrCY.CityName),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.Po' +
         'stalCode),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.StateOrProvince),'#39#39')+'#39', '#39'+i' +
-        'sNull(RTRIM( AdrCtry.CountryName ),'#39#39') as ADDR,'
+        'sNull(RTRIM( FDrCtry.CountryName ),'#39#39') as ADDR,'
       ''
       'Addr.AddressLine1,'
       'Addr.AddressLine2,'
@@ -2447,14 +2447,14 @@ object dmVidaInvoice: TdmVidaInvoice
       'Addr.AddressLine4,'
       'Addr.StateOrProvince    AS STATE,'
       'Addr.PostalCode         AS POSTAL_CODE,'
-      'AdrCY.CityName'#9'        AS CITY,'
-      'AdrCtry.CountryName'#9'AS COUNTRY'
+      'FDrCY.CityName'#9'        AS CITY,'
+      'FDrCtry.CountryName'#9'AS COUNTRY'
       ''
       'from dbo.InvoiceShipToAddress IST'
       ' Left Outer Join dbo.Address Addr'#9
-      ' '#9'INNER JOIN dbo.CITY'#9#9#9'AdrCY'#9'ON'#9'AdrCY.CityNo '#9#9'= Addr.CityNo'
+      ' '#9'INNER JOIN dbo.CITY'#9#9#9'FDrCY'#9'ON'#9'FDrCY.CityNo '#9#9'= Addr.CityNo'
       
-        #9'INNER JOIN dbo.Country'#9#9#9'AdrCtry'#9'ON'#9'AdrCtry.CountryNo '#9'= Addr.C' +
+        #9'INNER JOIN dbo.Country'#9#9#9'FDrCtry'#9'ON'#9'FDrCtry.CountryNo '#9'= Addr.C' +
         'ountryNo'
       '  ON Addr.AddressNo = IST.AddressNo'
       ''

@@ -341,7 +341,7 @@ type
     procedure InitializePopupWindow; override;
     function InternalGetText: string; override;
     function InternalSetText(const Value: string): Boolean; override;
-    procedure InternalValidateDisplayValue(const ADisplayValue: TcxEditValue); override;
+    procedure InternalValidateDisplayValue(const FDisplayValue: TcxEditValue); override;
     function IsEditValueStored: Boolean; override;
     procedure KeyPress(var Key: Char); override;
     procedure KeyDown(var Key: Word; Shift: TShiftState); override; //2007-09-13
@@ -1332,7 +1332,7 @@ begin
   Result := False;
 end;
 
-procedure TcxCustomCheckComboBox.InternalValidateDisplayValue(const ADisplayValue: TcxEditValue);
+procedure TcxCustomCheckComboBox.InternalValidateDisplayValue(const FDisplayValue: TcxEditValue);
 begin
 end;
 

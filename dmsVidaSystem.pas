@@ -7,9 +7,9 @@ uses
   DB,
   SysUtils,
   VidaType,  Controls, SqlTimSt, Dialogs, kbmMemTable, cxGridTableView,
-  cxCustomPivotGrid, cxDBPivotGrid, uADStanIntf, uADStanOption, uADStanParam,
-  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
-  uADDAptManager, uADCompClient, uADCompDataSet ;
+  cxCustomPivotGrid, cxDBPivotGrid, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
+  FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet ;
 
 
 
@@ -22,22 +22,22 @@ type
     var ProductNo : Integer) of object;
 
   TdmsSystem = class(TDataModule)
-    spAccessRights: TADStoredProc;
-    sp_PhysInventory: TADStoredProc;
+    spAccessRights: TFDStoredProc;
+    sp_PhysInventory: TFDStoredProc;
     sp_PhysInventoryCityName: TStringField;
     sp_PhysInventoryPhysicalInventoryPointNo: TIntegerField;
     sp_PhysInventoryPhyInvPointNameNo: TIntegerField;
-    sp_LogInventory: TADStoredProc;
+    sp_LogInventory: TFDStoredProc;
     dsrcBarCodes: TDataSource;
     dsrcGradeStamps: TDataSource;
     dsrcPaperWraps: TDataSource;
-    sp_Delete_Res_Pkgs: TADStoredProc;
-    sp_Pkg_Res: TADStoredProc;
+    sp_Delete_Res_Pkgs: TFDStoredProc;
+    sp_Pkg_Res: TFDStoredProc;
     dsrcPkgsByInvOwner: TDataSource;
-    sp_PksByInvOwner: TADStoredProc;
-    sp_PksByInvOwner_II: TADStoredProc;
+    sp_PksByInvOwner: TFDStoredProc;
+    sp_PksByInvOwner_II: TFDStoredProc;
     dsrcPkgsByInvOwner_II: TDataSource;
-    sp_OneLoad: TADStoredProc;
+    sp_OneLoad: TFDStoredProc;
     sp_OneLoadLoadNo: TIntegerField;
     sp_OneLoadSupplierNo: TIntegerField;
     sp_OneLoadSenderLoadStatus: TIntegerField;
@@ -54,11 +54,11 @@ type
     sp_OneLoadConfirmed: TIntegerField;
     sp_OneLoadInvoiced: TIntegerField;
     sp_OneLoadNotering: TMemoField;
-    sq_GetInventoryNo: TADQuery;
+    sq_GetInventoryNo: TFDQuery;
     sq_GetInventoryNoPhysicalInventoryPointNo: TIntegerField;
-    sp_pkgLog: TADStoredProc;
+    sp_pkgLog: TFDStoredProc;
     ds_pkgLog: TDataSource;
-    sq_Grade: TADQuery;
+    sq_Grade: TFDQuery;
     sq_GradeGradeNo: TIntegerField;
     sq_GradeGradeName: TStringField;
     sq_GradeLanguageCode: TIntegerField;
@@ -69,15 +69,15 @@ type
     sq_GradeMainGradeNo: TIntegerField;
     ds_Grade: TDataSource;
     sq_GradeMainGradeName: TStringField;
-    sp_PksByInventoryPlace: TADStoredProc;
+    sp_PksByInventoryPlace: TFDStoredProc;
     ds_PksByInventoryPlace: TDataSource;
-    sq_Grade_SV: TADQuery;
+    sq_Grade_SV: TFDQuery;
     ds_Grade_SV: TDataSource;
     ds_Species_SV: TDataSource;
-    sq_Species_SV: TADQuery;
-    sq_Surfacing_SV: TADQuery;
+    sq_Species_SV: TFDQuery;
+    sq_Surfacing_SV: TFDQuery;
     ds_Surfacing_SV: TDataSource;
-    sq_PkgTypeInfo: TADQuery;
+    sq_PkgTypeInfo: TFDQuery;
     sq_PkgTypeInfoPackageTypeNo: TIntegerField;
     sq_PkgTypeInfoGRADESTAMP: TStringField;
     sq_PkgTypeInfoBARCODE: TStringField;
@@ -85,27 +85,27 @@ type
     sq_PkgTypeInfoPRODUKT: TStringField;
     sq_PkgTypeInfoSTYCKETAL: TIntegerField;
     sq_PkgTypeInfoLANGD: TStringField;
-    sp_DelUserResPkgs: TADStoredProc;
-    sq_GetPkgPos: TADQuery;
+    sp_DelUserResPkgs: TFDStoredProc;
+    sq_GetPkgPos: TFDQuery;
     sq_GetPkgPosPktNrLevKod: TStringField;
     sq_GetPkgPosPaketNoPos: TIntegerField;
     sq_GetPkgPosPaketNoLength: TIntegerField;
     sq_GetPkgPosSupplierCodePos: TIntegerField;
     sq_GetPkgPosSupplierCodeLength: TIntegerField;
     sq_GetPkgPosClientCode: TStringField;
-    sp_PkgsByInventering: TADStoredProc;
+    sp_PkgsByInventering: TFDStoredProc;
     ds_PkgsByInventering: TDataSource;
-    sp_lencolpcspkgtypeno: TADStoredProc;
-    sp_PopONELengthSpec: TADStoredProc;
-    sp_PkgInfo: TADStoredProc;
+    sp_lencolpcspkgtypeno: TFDStoredProc;
+    sp_PopONELengthSpec: TFDStoredProc;
+    sp_PkgInfo: TFDStoredProc;
     sp_PkgInfoCREATED: TSQLTimeStampField;
     sp_PkgInfoCREATED_BY: TStringField;
     sp_PkgInfoOWNER: TStringField;
     sp_PkgInfoPKG_STATUS: TIntegerField;
     sp_PkgInfoINVENTORY: TStringField;
-    sp_PkgInInven: TADStoredProc;
+    sp_PkgInInven: TFDStoredProc;
     ds_PkgInInven: TDataSource;
-    sq_Language: TADQuery;
+    sq_Language: TFDQuery;
     sq_LanguageLanguageNo: TIntegerField;
     sq_LanguageLanguageName: TStringField;
     sq_LanguageSequenceNo: TIntegerField;
@@ -113,8 +113,8 @@ type
     sq_LanguageCreatedUser: TIntegerField;
     sq_LanguageModifiedUser: TIntegerField;
     ds_Language: TDataSource;
-    qryExec: TADQuery;
-    sqBarCode: TADQuery;
+    qryExec: TFDQuery;
+    sqBarCode: TFDQuery;
     sqBarCodeBarCodeNo: TIntegerField;
     sqBarCodeBarCode: TStringField;
     sqBarCodeSequenceNo: TIntegerField;
@@ -124,7 +124,7 @@ type
     sqBarCodeBarCodeID: TStringField;
     sqBarCodeAct: TIntegerField;
     sqBarCodeBarcodeCodeName: TStringField;
-    sqGradeStamp: TADQuery;
+    sqGradeStamp: TFDQuery;
     sqGradeStampGradeStampNo: TIntegerField;
     sqGradeStampGradeStamp: TStringField;
     sqGradeStampSequenceNo: TIntegerField;
@@ -134,7 +134,7 @@ type
     sqGradeStampGradeStampID: TStringField;
     sqGradeStampAct: TIntegerField;
     sqGradeStampGradeStampCodeName: TStringField;
-    sqPaperWrap: TADQuery;
+    sqPaperWrap: TFDQuery;
     sqPaperWrapWrapTypeNo: TIntegerField;
     sqPaperWrapWrapType: TStringField;
     sqPaperWrapSequenceNo: TIntegerField;
@@ -157,8 +157,8 @@ type
     mtMarkedCodesPPP: TIntegerField;
     mtMarkedCodesMarketRegionNo: TIntegerField;
     dsMarkedCodes: TDataSource;
-    sq_PkgTypes: TADQuery;
-    sq_GetPkgTypeByCode: TADQuery;
+    sq_PkgTypes: TFDQuery;
+    sq_GetPkgTypeByCode: TFDQuery;
     sq_GetPkgTypeByCodeProductGroupNo: TIntegerField;
     sq_GetPkgTypeByCodeProductNo: TIntegerField;
     sq_GetPkgTypeByCodePackageTypeNo: TIntegerField;
@@ -172,7 +172,7 @@ type
     sq_GetPkgTypeByCodeShrinkWrap: TIntegerField;
     sq_GetPkgTypeByCodeTotalNoOfPieces: TIntegerField;
     sq_GetPkgTypeByCodePkgCodePPNo: TIntegerField;
-    cds_ProductLength: TADQuery;
+    cds_ProductLength: TFDQuery;
     cds_ProductLengthProductLengthNo: TIntegerField;
     cds_ProductLengthActualLengthMM: TFloatField;
     cds_ProductLengthNominalLengthMM: TFloatField;
@@ -184,21 +184,21 @@ type
     cds_ProductLengthSequenceNo: TIntegerField;
     cds_ProductLengthProductLengthGroupNo: TIntegerField;
     cds_ProductLengthAct: TIntegerField;
-    sq_GridSettings: TADQuery;
+    sq_GridSettings: TFDQuery;
     sq_GridSettingsViewName: TStringField;
     sq_GridSettingsSets: TBlobField;
     sq_GridSettingsUserID: TIntegerField;
-    cds_PkgLogII: TADStoredProc;
+    cds_PkgLogII: TFDStoredProc;
     ds_PkgLogII: TDataSource;
-    sq_dbProps: TADQuery;
+    sq_dbProps: TFDQuery;
     sq_dbPropsHostName: TStringField;
     sq_dbPropsDatabas: TStringField;
     sq_dbPropsUserName: TStringField;
     sq_dbPropsPassword: TStringField;
     sq_dbPropsCRPath: TStringField;
-    sp_NonActivePkgs: TADStoredProc;
+    sp_NonActivePkgs: TFDStoredProc;
     ds_NonActivePkgs: TDataSource;
-    sq_Props: TADQuery;
+    sq_Props: TFDQuery;
     sq_PropsUserID: TIntegerField;
     sq_PropsForm: TStringField;
     sq_PropsImportDir: TStringField;
@@ -211,16 +211,16 @@ type
     sq_PropsLastUsedLOTemplate: TStringField;
     sq_PropsLastUsedFragaAvropTemplate: TStringField;
     sq_PropsWoodXDir: TStringField;
-    sq_GetRegPointNo: TADQuery;
+    sq_GetRegPointNo: TFDQuery;
     sq_GetRegPointNoRegPointNo: TIntegerField;
-    sq_GridSets: TADQuery;
+    sq_GridSets: TFDQuery;
     sq_GridSetsViewName: TStringField;
     sq_GridSetsSets: TBlobField;
     sq_GridSetsUserID: TIntegerField;
-    sp_prefixForChanged: TADStoredProc;
+    sp_prefixForChanged: TFDStoredProc;
     ds_prefixForChanged: TDataSource;
-    cds_AccInvParam: TADQuery;
-    cds_AccInv: TADQuery;
+    cds_AccInvParam: TFDQuery;
+    cds_AccInv: TFDQuery;
     cds_AccInvClientNo: TIntegerField;
     cds_AccInvClientName: TStringField;
     cds_AccInvYearNo: TIntegerField;
@@ -230,27 +230,27 @@ type
     cds_AccInvParamWeekNo: TIntegerField;
     ds_AccInvParam: TDataSource;
     ds_AccInv: TDataSource;
-    sq_AccStart: TADQuery;
+    sq_AccStart: TFDQuery;
     ds_AccStart: TDataSource;
     sq_AccStartYearNo: TIntegerField;
     sq_AccStartWeekNo: TIntegerField;
     cds_AccInvParamClientName: TStringField;
-    sq_LastInvDate: TADQuery;
+    sq_LastInvDate: TFDQuery;
     sq_LastInvDateInventeringsdatum: TSQLTimeStampField;
     sq_LastInvDateIC_grpno: TIntegerField;
     sq_LastInvDateMaxDatum: TSQLTimeStampField;
     sq_LastInvDateStatus: TIntegerField;
     sq_GridSettingsName: TStringField;
     sq_GridSettingsForm: TStringField;
-    sq_GridSets2: TADQuery;
+    sq_GridSets2: TFDQuery;
     sq_GridSets2ViewName: TStringField;
     sq_GridSets2UserID: TIntegerField;
     sq_GridSets2Sets: TBlobField;
     sq_GridSets2Name: TStringField;
     sq_GridSets2Form: TStringField;
-    sq_LayoutNames: TADQuery;
+    sq_LayoutNames: TFDQuery;
     sq_LayoutNamesName: TStringField;
-    sq_DeleteLayout: TADQuery;
+    sq_DeleteLayout: TFDQuery;
     StringField1: TStringField;
     mtMarkedProd: TkbmMemTable;
     mtMarkedProdProductNo: TIntegerField;
@@ -268,9 +268,9 @@ type
     mtMarkedProdSurfacingNo: TIntegerField;
     mtMarkedProdNIT: TFloatField;
     mtMarkedProdNIW: TFloatField;
-    sp_NonActivePkgEXT: TADStoredProc;
+    sp_NonActivePkgEXT: TFDStoredProc;
     ds_NonActivePkgsExt: TDataSource;
-    cds_ProdLength: TADQuery;
+    cds_ProdLength: TFDQuery;
     cds_ProdLengthNomLength: TFloatField;
     sp_pkgLogOperation: TIntegerField;
     sp_pkgLogLogicalInventoryPointNo: TIntegerField;
@@ -286,7 +286,7 @@ type
     sp_pkgLogPCS: TIntegerField;
     sp_pkgLogPKGTYPENO: TIntegerField;
     sp_pkgLogPKGTYPECREATED: TSQLTimeStampField;
-    sp_PkgInfoII: TADStoredProc;
+    sp_PkgInfoII: TFDStoredProc;
     sp_PkgInfoIIPKG_CREATED_BY: TStringField;
     sp_PkgInfoIIPKG_NO: TIntegerField;
     sp_PkgInfoIIPKG_CREATED: TSQLTimeStampField;
@@ -316,7 +316,7 @@ type
     sp_PkgInfoIIKORTAKODEN: TStringField;
     sp_PkgInfoIILANGAKODEN: TStringField;
     ds_PkgInfoII: TDataSource;
-    sp_LoadPkgInfo: TADStoredProc;
+    sp_LoadPkgInfo: TFDStoredProc;
     ds_LoadPkgInfo: TDataSource;
     sp_LoadPkgInfoLOAD_CUSTOMER: TStringField;
     sp_LoadPkgInfoLOAD_SUPPLIER: TStringField;
@@ -334,7 +334,7 @@ type
     sp_LoadPkgInfoDEBIT_CREDIT: TStringField;
     sp_LoadPkgInfoORDER_NO: TStringField;
     sp_LoadPkgInfoORDER_CUSTOMER: TStringField;
-    sp_PcsPerLength: TADStoredProc;
+    sp_PcsPerLength: TFDStoredProc;
     DataSource1: TDataSource;
     cds_PkgLogIIOperationNo: TIntegerField;
     cds_PkgLogIILIPNO: TIntegerField;
@@ -365,13 +365,13 @@ type
     cds_AccInvParamTrimFactor: TBCDField;
     mtMarkedProdSequenceNo: TIntegerField;
     mtMarkedProdALMM: TFloatField;
-    cds_ShiftLag: TADQuery;
+    cds_ShiftLag: TFDQuery;
     cds_ShiftLagShiftTeamNo: TIntegerField;
     cds_ShiftLagShiftTeamName: TStringField;
     cds_ShiftLagDateModified: TSQLTimeStampField;
     cds_ShiftLagModifiedUser: TIntegerField;
     cds_ShiftLagClientNo: TIntegerField;
-    sp_PkgLoggLinkedPackage: TADStoredProc;
+    sp_PkgLoggLinkedPackage: TFDStoredProc;
     sp_PkgLoggLinkedPackageOperationNo: TIntegerField;
     sp_PkgLoggLinkedPackageLIPNO: TIntegerField;
     sp_PkgLoggLinkedPackageDB_Bokförd: TSQLTimeStampField;
@@ -387,19 +387,19 @@ type
     sp_PkgLoggLinkedPackagePackageTypeNo: TIntegerField;
     sp_PkgLoggLinkedPackagePktTypSkapad: TSQLTimeStampField;
     sp_PkgLoggLinkedPackageRegistrerad: TSQLTimeStampField;
-    sp_Vis_PackageRunInfo: TADStoredProc;
+    sp_Vis_PackageRunInfo: TFDStoredProc;
     sp_Vis_PackageRunInfoRunNo: TIntegerField;
     sp_Vis_PackageRunInfoRegPointName: TStringField;
     sp_Vis_PackageRunInfoProducer: TStringField;
     sp_Vis_PackageRunInfoOperation: TStringField;
-    sp_PkgsExistInAvregLogg: TADStoredProc;
-    cds_Package_Size: TADQuery;
+    sp_PkgsExistInAvregLogg: TFDStoredProc;
+    cds_Package_Size: TFDQuery;
     cds_Package_SizePackageSizeNo: TIntegerField;
     cds_Package_SizePackageSizeName: TStringField;
     ds_Package_Size: TDataSource;
-    sp_PksByLIPNo: TADStoredProc;
+    sp_PksByLIPNo: TFDStoredProc;
     ds_PksByLIPNo: TDataSource;
-    sp_GetAnyPkg: TADStoredProc;
+    sp_GetAnyPkg: TFDStoredProc;
     ds_GetAnyPkg: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
 

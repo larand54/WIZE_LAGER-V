@@ -29,9 +29,9 @@ uses
   cxLookAndFeels, dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils,
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer,
-  dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, uADStanIntf,
-  uADStanOption, uADStanParam, uADStanError, uADDatSManager, uADPhysIntf,
-  uADDAptIntf, uADStanAsync, uADDAptManager, uADCompClient, uADCompDataSet,
+  dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet,
   CRAXDDRT_TLB, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
   dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
@@ -572,19 +572,19 @@ type
     cxGrid1DBBandedTableView1BL_NO: TcxGridDBBandedColumn;
     grdPkgNoTblDBBandedTableView1REFERENCE: TcxGridDBBandedColumn;
     grdPkgNoTblDBBandedTableView1BL_NO: TcxGridDBBandedColumn;
-    cds_InvCtrlList: TADQuery;
+    cds_InvCtrlList: TFDQuery;
     cds_InvCtrlListINVENTERINGSNR: TIntegerField;
     cds_InvCtrlListINVENTERINGSDATUM: TSQLTimeStampField;
     cds_InvCtrlListSTATUS: TStringField;
     cds_InvCtrlListMAXDATUM: TSQLTimeStampField;
     cds_InvCtrlListNAMN: TStringField;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkSearchName: TStringField;
     cds_VerkSalesRegionNo: TIntegerField;
     cds_VerkPktNrLevKod: TStringField;
-    cds_PLIP: TADQuery;
+    cds_PLIP: TFDQuery;
     cds_PLIPPLIP: TStringField;
     cds_PLIPInvCode: TStringField;
     cxLabel14: TcxLabel;
@@ -602,7 +602,7 @@ type
     cxButton4: TcxButton;
     cbProdPaketNr: TcxComboBox;
     acNewMall: TAction;
-    sq_UserProfile: TADQuery;
+    sq_UserProfile: TFDQuery;
     sq_UserProfileUserID: TIntegerField;
     sq_UserProfileForm: TStringField;
     sq_UserProfileName: TStringField;
@@ -673,7 +673,7 @@ type
     dsLayout: TDataSource;
     dsSpecData: TDataSource;
     acPrintPkgSpec: TAction;
-    sq_OnePkg: TADQuery;
+    sq_OnePkg: TFDQuery;
     sq_OnePkgPACKAGENO: TIntegerField;
     sq_OnePkgSUPP_CODE: TStringField;
     sq_OnePkgTotalPCS: TIntegerField;

@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, DB, SqlTimSt, Dialogs, Forms, Controls,
-  kbmMemTable, VidaType, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
-  uADDatSManager, uADPhysIntf, uADDAptIntf, uADCompDataSet, uADCompClient,
-  uADStanAsync, uADDAptManager ;
+  kbmMemTable, VidaType, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  FireDAC.Stan.Async, FireDAC.DApt ;
 
 type
   TdmLoadPlan = class(TDataModule)
@@ -26,7 +26,7 @@ type
     mtInventeringsTypInvType: TStringField;
     ds_LoadPlanHdrList: TDataSource;
     ds_PigHdrList: TDataSource;
-    cds_LoadPlanHdr: TADQuery;
+    cds_LoadPlanHdr: TFDQuery;
     cds_LoadPlanHdrLoadingNo: TIntegerField;
     cds_LoadPlanHdrStatus: TIntegerField;
     cds_LoadPlanHdrSalesRegionNo: TIntegerField;
@@ -44,7 +44,7 @@ type
     cds_LoadPlanHdrInvEndNo: TIntegerField;
     cds_LoadPlanHdrStringField: TStringField;
     cds_LoadPlanHdrMARKNAD: TStringField;
-    cds_LoadPlanRow: TADQuery;
+    cds_LoadPlanRow: TFDQuery;
     cds_LoadPlanRowLoadingNo: TIntegerField;
     cds_LoadPlanRowLoadPlanDestRowNo: TIntegerField;
     cds_LoadPlanRowPackageTypeNo: TIntegerField;
@@ -62,7 +62,7 @@ type
     cds_LoadPlanRowSöknamn: TStringField;
     cds_LoadPlanRowPPP: TIntegerField;
     cds_LoadPlanRowTotLager: TIntegerField;
-    cds_LoadPlanDest: TADQuery;
+    cds_LoadPlanDest: TFDQuery;
     cds_LoadPlanDestLoadingNo: TIntegerField;
     cds_LoadPlanDestLoadPlanDestRowNo: TIntegerField;
     cds_LoadPlanDestPIPNo: TIntegerField;
@@ -74,14 +74,14 @@ type
     cds_LoadPlanDestFörsäljningsregion: TStringField;
     cds_LoadPlanDestLAGERSTÄLLE: TStringField;
     cds_LoadPlanDestLAGERGRUPP: TStringField;
-    cdsCarrier: TADQuery;
+    cdsCarrier: TFDQuery;
     cdsCarrierCarrierNo: TIntegerField;
     cdsCarrierCarrierName: TStringField;
     cdsCarrierSequenceNo: TIntegerField;
     cdsCarrierCreatedUser: TSmallintField;
     cdsCarrierModifiedUser: TSmallintField;
     cdsCarrierDateCreated: TSQLTimeStampField;
-    cds_PkgTypes: TADQuery;
+    cds_PkgTypes: TFDQuery;
     cds_PkgTypesPackageTypeNo: TIntegerField;
     cds_PkgTypesProductNo: TIntegerField;
     cds_PkgTypesProductDisplayName: TStringField;
@@ -99,8 +99,8 @@ type
     cds_PkgTypesPcsPerPkg: TIntegerField;
     cds_PkgTypesPkgCodePPNo: TIntegerField;
     cds_PkgTypesMarketRegionNo: TIntegerField;
-    cdsMarketRegions: TADQuery;
-    cds_PigEntry: TADQuery;
+    cdsMarketRegions: TFDQuery;
+    cds_PigEntry: TFDQuery;
     cds_PigEntryPIGGroupNo: TIntegerField;
     cds_PigEntryPackageTypeNo: TIntegerField;
     cds_PigEntryPigNoPkgs1: TIntegerField;
@@ -123,11 +123,11 @@ type
     cds_PigEntryPcsPerPkg: TIntegerField;
     cds_PigEntryLoadedPkgs: TIntegerField;
     cds_PigEntryTotalAM3: TFloatField;
-    cds_PigNames: TADQuery;
+    cds_PigNames: TFDQuery;
     cds_PigNamesPigNo: TIntegerField;
     cds_PigNamesPigName: TStringField;
     cds_PigNamesActive: TIntegerField;
-    cds_PigHdr: TADQuery;
+    cds_PigHdr: TFDQuery;
     cds_PigHdrPIGGroupNo: TIntegerField;
     cds_PigHdrLIPNo: TIntegerField;
     cds_PigHdrPIPNo: TIntegerField;
@@ -141,10 +141,10 @@ type
     cds_PigHdrStringField: TStringField;
     cds_PigHdrStringField2: TStringField;
     cds_PigHdrStringField3: TStringField;
-    cds_GetPkgsPerType: TADQuery;
+    cds_GetPkgsPerType: TFDQuery;
     cds_GetPkgsPerTypePackageTypeNo: TIntegerField;
     cds_GetPkgsPerTypeNoOfPkgs: TIntegerField;
-    cds_PigHdrList: TADQuery;
+    cds_PigHdrList: TFDQuery;
     cds_PigHdrListPIGGroupNo: TIntegerField;
     cds_PigHdrListLIPNo: TIntegerField;
     cds_PigHdrListPIPNo: TIntegerField;
@@ -158,24 +158,24 @@ type
     cds_PigHdrListLagerställe: TStringField;
     cds_PigHdrListLagergrupp: TStringField;
     cds_PigHdrListInventeringstyp: TStringField;
-    cds_PhysInv: TADQuery;
+    cds_PhysInv: TFDQuery;
     cds_PhysInvPIPNo: TIntegerField;
     cds_PhysInvLAGERSTÄLLE: TStringField;
     cds_PhysInvOwnerNo: TIntegerField;
-    cds_LogInv: TADQuery;
+    cds_LogInv: TFDQuery;
     cdsMarketRegionsMarketRegionNo: TIntegerField;
     cdsMarketRegionsMarketRegionName: TStringField;
     cds_LogInvLIPNo: TIntegerField;
     cds_LogInvLAGERGRUPP: TStringField;
     cds_LogInvPIPNo: TIntegerField;
-    cds_SalesRegions: TADQuery;
+    cds_SalesRegions: TFDQuery;
     cds_SalesRegionsClientNo: TIntegerField;
     cds_SalesRegionsClientName: TStringField;
-    cds_PkgNosSub: TADQuery;
+    cds_PkgNosSub: TFDQuery;
     cds_PkgNosSubPackageNo: TIntegerField;
     cds_PkgNosSubSupplierCode: TStringField;
     cds_PkgNosSubStatus: TIntegerField;
-    cds_PkgNosAdd: TADQuery;
+    cds_PkgNosAdd: TFDQuery;
     cds_PkgNosAddPackageNo: TIntegerField;
     cds_PkgNosAddPackageTypeNo: TIntegerField;
     cds_PkgNosAddSupplierCode: TStringField;
@@ -243,7 +243,7 @@ type
     cds_PkgNosAddCreatedDate: TSQLTimeStampField;
     cds_PkgNosAddModifiedUser_2: TIntegerField;
     cds_PkgNosAddprodinstruno_1: TIntegerField;
-    cds_LoadPlanHdrList: TADQuery;
+    cds_LoadPlanHdrList: TFDQuery;
     cds_LoadPlanHdrListLoadingNo: TIntegerField;
     cds_LoadPlanHdrListStatus: TIntegerField;
     cds_LoadPlanHdrListSalesRegionNo: TIntegerField;
@@ -260,12 +260,12 @@ type
     cds_LoadPlanHdrListInvStartNo: TIntegerField;
     cds_LoadPlanHdrListInvEndNo: TIntegerField;
     cds_LoadPlanHdrListCarrierName: TStringField;
-    sq_GetPkgTypeNo: TADQuery;
+    sq_GetPkgTypeNo: TFDQuery;
     sq_GetPkgTypeNoPackageTypeNo: TIntegerField;
-    sq_UpdArPktKvar: TADQuery;
-    sp_OnePackageNo: TADStoredProc;
-    sp_VardaLager: TADStoredProc;
-    sp_NewPackageNo: TADStoredProc;
+    sq_UpdArPktKvar: TFDQuery;
+    sp_OnePackageNo: TFDStoredProc;
+    sp_VardaLager: TFDStoredProc;
+    sp_NewPackageNo: TFDStoredProc;
     cds_LoadPlanRowPaketDifferens: TIntegerField;
     cds_PigEntryCountedPkgs: TIntegerField;
     procedure ds_PigHdrDataChange(Sender: TObject; Field: TField);
@@ -286,7 +286,7 @@ type
     procedure cds_LoadPlanRowBeforePost(DataSet: TDataSet);
     procedure cds_LoadPlanRowAfterInsert(DataSet: TDataSet);
     procedure cds_LoadPlanHdrAfterInsert(DataSet: TDataSet);
-    procedure cds_LoadPlanHdrBeforeApplyUpdates(DataSet: TADDataSet);
+    procedure cds_LoadPlanHdrBeforeApplyUpdates(DataSet: TFDDataSet);
     procedure cds_PigHdrAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
@@ -327,7 +327,7 @@ begin
 
 end;
 
-procedure TdmLoadPlan.cds_LoadPlanHdrBeforeApplyUpdates(DataSet: TADDataSet);
+procedure TdmLoadPlan.cds_LoadPlanHdrBeforeApplyUpdates(DataSet: TFDDataSet);
 begin
  if cds_LoadPlanHdrPIPNo.IsNull then
  Begin

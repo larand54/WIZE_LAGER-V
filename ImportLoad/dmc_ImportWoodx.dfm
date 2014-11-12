@@ -2386,7 +2386,7 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       'WHEN PU.TemplateUnitName = '#39'Styck'#39'  THEN SUM(PTD.Pcs)'
       'WHEN PU.TemplateUnitName = '#39'AM3'#39'   THEN SUM(PTD.am3)'
       
-        '-- WHEN PU.TemplateUnitName = '#39'm3 aDxnL'#39'   THEN SUM(PTD.m3Actual' +
+        '-- WHEN PU.TemplateUnitName = '#39'm3 FDxnL'#39'   THEN SUM(PTD.m3Actual' +
         'SizeNomLength)'
       
         '-- WHEN PU.TemplateUnitName = '#39'm3 nDxaL'#39'   THEN SUM(PTD.m3NomSiz' +
@@ -2592,12 +2592,12 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       'IH.ST_CountryName'#9'AS ShipToCountry,'
       ''
       'Supp.ClientName '#9'AS SupplierName,'
-      'Ad.AddressLine1'#9#9'AS SupplierAddressLine1,'
-      'Ad.AddressLine2'#9#9'AS SupplierAddressLine2,'
-      'Ad.AddressLine3'#9#9'AS SupplierAddressLine3,'
-      'Ad.AddressLine4'#9#9'AS SupplierAddressLine4,'
-      'Ad.StateOrProvince'#9'AS SupplierStateOrProvince,'
-      'Ad.PostalCode'#9#9'AS SupplierPostalCode,'
+      'FD.AddressLine1'#9#9'AS SupplierAddressLine1,'
+      'FD.AddressLine2'#9#9'AS SupplierAddressLine2,'
+      'FD.AddressLine3'#9#9'AS SupplierAddressLine3,'
+      'FD.AddressLine4'#9#9'AS SupplierAddressLine4,'
+      'FD.StateOrProvince'#9'AS SupplierStateOrProvince,'
+      'FD.PostalCode'#9#9'AS SupplierPostalCode,'
       'City.CityName'#9#9'AS SupplierCity,'
       'Country.CountryName'#9'AS SupplierCountry,'
       'Supp.VATNo'#9#9'AS SupplierVatNo,'
@@ -2611,9 +2611,9 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       #9'inner JOIN dbo.Client Supp'#9#9'ON Supp.ClientNo = IH.SupplierNo'
       #9'Inner Join dbo.CompanyAddress CA on CA.ClientNo = Supp.ClientNo'
       #9#9#9#9#9'AND CA.AddressType = 1'
-      #9'Inner Join dbo.Address Ad on Ad.AddressNo = CA.AddressNo'
-      #9'Inner Join dbo.City on City.CityNo = Ad.CityNo'
-      #9'Inner Join dbo.Country on Country.CountryNo = Ad.CountryNo'
+      #9'Inner Join dbo.Address FD on FD.AddressNo = CA.AddressNo'
+      #9'Inner Join dbo.City on City.CityNo = FD.CityNo'
+      #9'Inner Join dbo.Country on Country.CountryNo = FD.CountryNo'
       #9
       ''
       
@@ -2831,12 +2831,12 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       'IH.ST_CountryName'#9'AS ShipToCountry,'
       ''
       'Supp.ClientName '#9'AS SupplierName,'
-      'Ad.AddressLine1'#9#9'AS SupplierAddressLine1,'
-      'Ad.AddressLine2'#9#9'AS SupplierAddressLine2,'
-      'Ad.AddressLine3'#9#9'AS SupplierAddressLine3,'
-      'Ad.AddressLine4'#9#9'AS SupplierAddressLine4,'
-      'Ad.StateOrProvince'#9'AS SupplierStateOrProvince,'
-      'Ad.PostalCode'#9#9'AS SupplierPostalCode,'
+      'FD.AddressLine1'#9#9'AS SupplierAddressLine1,'
+      'FD.AddressLine2'#9#9'AS SupplierAddressLine2,'
+      'FD.AddressLine3'#9#9'AS SupplierAddressLine3,'
+      'FD.AddressLine4'#9#9'AS SupplierAddressLine4,'
+      'FD.StateOrProvince'#9'AS SupplierStateOrProvince,'
+      'FD.PostalCode'#9#9'AS SupplierPostalCode,'
       'City.CityName'#9#9'AS SupplierCity,'
       'Country.CountryName'#9'AS SupplierCountry,'
       'Supp.VATNo'#9#9'AS SupplierVatNo,'
@@ -2850,9 +2850,9 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       #9'inner JOIN dbo.Client Supp'#9#9'ON Supp.ClientNo = IH.SupplierNo'
       #9'Inner Join dbo.CompanyAddress CA on CA.ClientNo = Supp.ClientNo'
       #9#9#9#9#9'AND CA.AddressType = 1'
-      #9'Inner Join dbo.Address Ad on Ad.AddressNo = CA.AddressNo'
-      #9'Inner Join dbo.City on City.CityNo = Ad.CityNo'
-      #9'Inner Join dbo.Country on Country.CountryNo = Ad.CountryNo'
+      #9'Inner Join dbo.Address FD on FD.AddressNo = CA.AddressNo'
+      #9'Inner Join dbo.City on City.CityNo = FD.CityNo'
+      #9'Inner Join dbo.Country on Country.CountryNo = FD.CountryNo'
       ''
       ''
       
@@ -3365,7 +3365,7 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       'WHEN PU.TemplateUnitName = '#39'Styck'#39' THEN SUM(PTD.Pcs)'
       'WHEN PU.TemplateUnitName = '#39'AM3'#39' THEN SUM(PTD.am3)'
       
-        '-- WHEN PU.TemplateUnitName = '#39'm3 aDxnL'#39' THEN SUM(PTD.m3ActualSi' +
+        '-- WHEN PU.TemplateUnitName = '#39'm3 FDxnL'#39' THEN SUM(PTD.m3ActualSi' +
         'zeNomLength)'
       
         '-- WHEN PU.TemplateUnitName = '#39'm3 nDxaL'#39' THEN SUM(PTD.m3NomSizeA' +
@@ -3516,7 +3516,7 @@ object dm_ImportWoodx: Tdm_ImportWoodx
       'WHEN PU.TemplateUnitName = '#39'Styck'#39' THEN SUM(PTD.Pcs)'
       'WHEN PU.TemplateUnitName = '#39'AM3'#39' THEN SUM(PTD.AM3)'
       
-        '-- WHEN PU.TemplateUnitName = '#39'm3 aDxnL'#39' THEN SUM(PTD.m3ActualSi' +
+        '-- WHEN PU.TemplateUnitName = '#39'm3 FDxnL'#39' THEN SUM(PTD.m3ActualSi' +
         'zeNomLength)'
       
         '-- WHEN PU.TemplateUnitName = '#39'm3 nDxaL'#39' THEN SUM(PTD.m3NomSizeA' +

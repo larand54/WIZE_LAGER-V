@@ -71,8 +71,8 @@
     Left = 1120
     Top = 64
   end
-  object cdsArrivingLoads: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsArrivingLoads: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'L.LoadAR,'
@@ -355,8 +355,8 @@
       Required = True
     end
   end
-  object cdsArrivingPackages: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsArrivingPackages: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'LSP.LoadNo,'
@@ -477,8 +477,8 @@
       FixedChar = True
     end
   end
-  object cdsConfirmed_Load: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsConfirmed_Load: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * '
       'from Confirmed_Load_EXT'
@@ -519,8 +519,8 @@
       Origin = 'ModifiedUser'
     end
   end
-  object cds_verkLaster: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_verkLaster: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       ''
@@ -610,8 +610,8 @@
       Size = 80
     end
   end
-  object cds_VerkLastPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_VerkLastPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'LSP.LoadNo,'
@@ -713,8 +713,8 @@
       Size = 255
     end
   end
-  object cdsOneLoad: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsOneLoad: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT *'
       ''
@@ -831,13 +831,13 @@
       Origin = 'LIPNo'
     end
   end
-  object cdsCurrentLoadDetails: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsCurrentLoadDetails: TFDQuery
+    Connection = dmsConnector.FDConnection1
     Left = 600
     Top = 64
   end
-  object sq_UpdatePkgStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_UpdatePkgStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'UPDATE dbo.PackageNumber'
       
@@ -866,8 +866,8 @@
         ParamType = ptInput
       end>
   end
-  object cds_Confirmed_Pkg_Log: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Confirmed_Pkg_Log: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From'
       'dbo.Confirmed_Package_Log_EXT CPL'
@@ -945,8 +945,8 @@
       Origin = 'Old_LogicalInventoryPointNo'
     end
   end
-  object sq_RevertPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_RevertPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.packagenumber'
       'Set PackageTypeNo = dbo.LoadDetail.PackageTypeNo,'
@@ -968,8 +968,8 @@
         ParamType = ptInput
       end>
   end
-  object cdsMovePkgNumber: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsMovePkgNumber: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT distinct pn.PackageNo, pn.SupplierCode, pn.LogicalInvento' +
@@ -1037,8 +1037,8 @@
       Origin = 'Status'
     end
   end
-  object cds_LoadDtlVal: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadDtlVal: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.LoadDtlVal'
       'WHERE LoadNo = :LoadNo'
@@ -1120,8 +1120,8 @@
       Origin = 'Credited'
     end
   end
-  object cdsLoadDetails: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsLoadDetails: TFDQuery
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.Loaddetail'
     SQL.Strings = (
       'SELECT'
@@ -1278,8 +1278,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object cdsLoadShippingPlan: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsLoadShippingPlan: TFDQuery
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.LoadShippingPlan'
     SQL.Strings = (
       'SELECT   DISTINCT'
@@ -1348,8 +1348,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object cdsPkgNumber: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPkgNumber: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT *'
       'FROM'
@@ -1535,8 +1535,8 @@
       Origin = 'PkgArticleNo'
     end
   end
-  object cds_LoadRow: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadRow: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'LSP.LoadNo,'
@@ -1697,8 +1697,8 @@
       Required = True
     end
   end
-  object cds_PksByInventoryPlace: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PksByInventoryPlace: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       ''
       'SELECT distinct PN.PackageNo,'
@@ -1783,8 +1783,8 @@
       Required = True
     end
   end
-  object cdsPortArrivingLoads: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPortArrivingLoads: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'ST_AdrCtry.CountryCode,'
@@ -2052,8 +2052,8 @@
       Size = 50
     end
   end
-  object cds_PIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PH.PhysicalInventoryPointNo AS PIPNO, CY.CITYNAM' +
@@ -2094,8 +2094,8 @@
       Size = 50
     end
   end
-  object cds_LIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvent' +
@@ -2124,8 +2124,8 @@
       Origin = 'PIPNo'
     end
   end
-  object sq_GetDefaultCSObjectNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetDefaultCSObjectNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select CustShipPlanDetailObjectNo'
       'FROM'
@@ -2146,8 +2146,8 @@
       Origin = 'CustShipPlanDetailObjectNo'
     end
   end
-  object sq_GetPriceOfPriceList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPriceOfPriceList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       ''
       
@@ -2188,8 +2188,8 @@
       ReadOnly = True
     end
   end
-  object sq_GetOLPrice: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetOLPrice: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ol.InternalPrice, ol.PriceListNo '
       'FROM dbo.SupplierShippingPlan ssp'
@@ -2218,12 +2218,12 @@
       Origin = 'PriceListNo'
     end
   end
-  object sq_CheckIfConfirmedPkgsValidInLoad: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CheckIfConfirmedPkgsValidInLoad: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         '--check if package is where it was when it was confirmed to a lo' +
-        'ad'
+        'FD'
       'SELECT distinct'
       'LD.LoadNo,'
       'LD.ShippingPlanNo AS LONo,'
@@ -2371,8 +2371,8 @@
       Origin = 'LogicalInventoryPointNo'
     end
   end
-  object sq_CheckPkgLog: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CheckPkgLog: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From'
       'dbo.Confirmed_Package_Log_EXT CPL'
@@ -2450,8 +2450,8 @@
       Origin = 'Old_LogicalInventoryPointNo'
     end
   end
-  object sq_Get_LoadShippingPlan: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Get_LoadShippingPlan: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       #9'  LP.LoadNo,'
@@ -2473,7 +2473,7 @@
       ''
       
         '-- INNER JOIN dbo.LoadDetailPkgLength LDP'#9#9'ON'#9'LDP.LoadNo'#9'= Ld.Lo' +
-        'adNo'
+        'FDNo'
       '--'#9#9#9#9#9#9#9'and LDP.LoadDetailNo = LDS.LoadDetailNo'
       ''
       
@@ -2540,12 +2540,12 @@
       Origin = 'LIPNo'
     end
   end
-  object sq_CheckIfConfirmedPkgsValidInInventory: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CheckIfConfirmedPkgsValidInInventory: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         '--check if package is where it was when it was confirmed to a lo' +
-        'ad'
+        'FD'
       'SELECT distinct'
       '   PN.LogicalInventoryPointNo'
       'FROM       dbo.PackageNumber  PN'
@@ -2589,8 +2589,8 @@
       Origin = 'LogicalInventoryPointNo'
     end
   end
-  object sq_Get_VWLIPNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Get_VWLIPNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select (Select Top 1 LIP2.LogicalInventoryPointNo FROM'
       'dbo.LogicalInventoryPoint LIP2'
@@ -2623,8 +2623,8 @@
       ReadOnly = True
     end
   end
-  object sq_GetVWCost: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetVWCost: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select dbo.VIS_Getvwcost( :LoadedDate)'
       '')
@@ -2642,8 +2642,8 @@
       ReadOnly = True
     end
   end
-  object sp_ArrivingLoads: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_ArrivingLoads: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_ARRIVING_LOADS_II'
     Left = 240
     Top = 416
@@ -2668,8 +2668,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_VerkLaster: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_VerkLaster: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_VerkLaster'
     Left = 240
     Top = 464
@@ -2693,8 +2693,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_LoadPackages: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_LoadPackages: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       'LD.LoadNo,'
@@ -2916,8 +2916,8 @@
       Origin = 'OverrideRL'
     end
   end
-  object sq_IsLoadInvoiced: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_IsLoadInvoiced: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'CL.NewLoadNo AS LoadNo,'
@@ -2962,8 +2962,8 @@
       Required = True
     end
   end
-  object sq_DeleteNewLoadByOldLoadNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DeleteNewLoadByOldLoadNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'DELETE dbo.Loads'
       'FROM dbo.Loads L, Confirmed_Load CL'
@@ -2982,8 +2982,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_vis_SetDateCreatedPkgsVP: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_vis_SetDateCreatedPkgsVP: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_SetDateCreatedPkgsVP'
     Left = 768
     Top = 600
@@ -3002,8 +3002,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_samLast: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_samLast: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert INTO dbo.samLastReport'
       '(SamNr, LoadNo)'
@@ -3023,8 +3023,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_deleteSamLaster: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_deleteSamLaster: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete From dbo.samLastReport'
       'WHERE SamNr =:SamLastNr'
@@ -3038,8 +3038,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_IsLoadAvraknad: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_IsLoadAvraknad: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT PL.PaymentNo,'
       'PL.LoadNo'
@@ -3069,8 +3069,8 @@
       Required = True
     end
   end
-  object sq_DeleteConfirmed_Load_Entry: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DeleteConfirmed_Load_Entry: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Confirmed_Load_EXT'
       'where'
@@ -3085,8 +3085,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SearchPkgNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SearchPkgNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'CSH.ShippingPlanNo'#9#9#9'AS'#9'LO,'
@@ -3150,8 +3150,8 @@
       Size = 50
     end
   end
-  object sp_ProcessPkgAND_Log: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_ProcessPkgAND_Log: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_ProcessPkg'
     Left = 768
     Top = 456
@@ -3218,8 +3218,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_CompareDetails: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CompareDetails: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT Count(*) AS Matching_LD'
       ''
@@ -3261,8 +3261,8 @@
       ReadOnly = True
     end
   end
-  object sq_DelNewLoads: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelNewLoads: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'DELETE dbo.Loads'
       'FROM dbo.Loads'
@@ -3285,8 +3285,8 @@
         ParamType = ptInput
       end>
   end
-  object cdsPortArrivingPackages: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPortArrivingPackages: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'LSP.LoadNo,'
@@ -3476,8 +3476,8 @@
       Size = 50
     end
   end
-  object sq_SearchLoadNoByPkgNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SearchLoadNoByPkgNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'CSH.ShippingPlanNo'#9#9#9'AS'#9'LO,'
@@ -3563,8 +3563,8 @@
       Size = 50
     end
   end
-  object sq_getMTSLLLipNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_getMTSLLLipNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select'
       '(Select Top 1 lip.LogicalInventoryPointNo From'
@@ -3595,8 +3595,8 @@
       ReadOnly = True
     end
   end
-  object sp_AR_Invoice: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_AR_Invoice: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_AR_Load_Ext'
     Left = 1040
     Top = 568
@@ -3632,8 +3632,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_InsertPkgNoLogg: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsertPkgNoLogg: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'INSERT INTO    dbo.PackageNumberLog'
       '        ('
@@ -3680,8 +3680,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_PkgInvoiced: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgInvoiced: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct MAX(LD.LoadNo) AS LoadNo, IL.InternalInvoiceNo'
       'FROM       dbo.LoadDetail              LD'
@@ -3717,8 +3717,8 @@
       Required = True
     end
   end
-  object sq_ChkPkgs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_ChkPkgs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         '--check if package is on a load larger thanwhere it was when it ' +
@@ -3759,8 +3759,8 @@
       ReadOnly = True
     end
   end
-  object sq_Check_CDS_Link: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Check_CDS_Link: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '--Check ObjectType 0 and 1'
       'SELECT DISTINCT'
@@ -3773,7 +3773,7 @@
       ''
       
         '-- INNER JOIN dbo.LoadDetailPkgLength LDP'#9'ON '#9'LDP.LoadNo = LD.Lo' +
-        'adNo'
+        'FDNo'
       '--'#9#9#9#9#9'AND '#9'LDP.LoadDetailNo = LD.LoadDetailNo'
       ''
       'WHERE'
@@ -3812,8 +3812,8 @@
       Required = True
     end
   end
-  object sq_IsLoadConfirmed: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_IsLoadConfirmed: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select CL.Confirmed_LoadNo, CL.Confirmed_ShippingPlanNo,'
       'CL.NewLoadNo, CL.NewShippingPlanNo, CL.DateCreated,'
@@ -3868,8 +3868,8 @@
       Origin = 'UserName'
     end
   end
-  object sq_CheckObject2Link: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_CheckObject2Link: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'IsNull(LD.DefsspNo,-1) AS SupplierShipPlanObjectNo,'
@@ -3919,8 +3919,8 @@
       Required = True
     end
   end
-  object sq_SetLoadAR: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SetLoadAR: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.Loads'
       'Set LoadAR = :LoadAR'
@@ -3940,8 +3940,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_PackageTypeDetail: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTypeDetail: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_PackageTypeDetail'
     Left = 872
     Top = 24
@@ -3959,8 +3959,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_Populate_One_PkgTypeLengths: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Populate_One_PkgTypeLengths: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_Populate_One_PackageTypeLengths'
     Left = 872
     Top = 72
@@ -3979,8 +3979,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_PackageTotals: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTotals: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_PackageTotals'
     Left = 872
     Top = 120
@@ -3998,8 +3998,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_ChangePkg: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_ChangePkg: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_ChangePackage_II'
     Left = 728
     Top = 184
@@ -4072,8 +4072,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageDetail: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageDetail: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_NewPackageDetail'
     Left = 728
     Top = 136
@@ -4109,8 +4109,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageType: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageType: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_NewPkgType'
     Left = 728
     Top = 88
@@ -4164,8 +4164,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_PackageTypes: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTypes: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vis_PkgType'
     Left = 728
     Top = 40

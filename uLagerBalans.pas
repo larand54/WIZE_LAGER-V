@@ -33,9 +33,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue,
   dxSkinscxPCPainter, cxNavigator, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, uADStanIntf,
-  uADStanOption, uADStanParam, uADStanError, uADDatSManager, uADPhysIntf,
-  uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet, uADCompClient  ;
+  dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client  ;
 
 type
   TfLagerBalans = class(TForm)
@@ -200,15 +200,15 @@ type
     acLBPerDay: TAction;
     pmLBPerDay: TPopupMenu;
     acLBPerDay1: TMenuItem;
-    cds_Lip: TADQuery;
+    cds_Lip: TFDQuery;
     cds_LipLIPNo: TIntegerField;
     cds_LipLAGERGRUPP: TStringField;
     cds_LipPIPNo: TIntegerField;
-    cds_PIP: TADQuery;
-    cds_LagBal: TADQuery;
-    cdsClient: TADQuery;
-    cds_SalesRegion: TADQuery;
-    cds_LagGrupp: TADQuery;
+    cds_PIP: TFDQuery;
+    cds_LagBal: TFDQuery;
+    cdsClient: TFDQuery;
+    cds_SalesRegion: TFDQuery;
+    cds_LagGrupp: TFDQuery;
     cds_PIPPIPNo: TIntegerField;
     cds_PIPORT: TStringField;
     cds_PIPClientNo: TIntegerField;
@@ -226,7 +226,7 @@ type
     cds_LagGruppGRPNAMN: TStringField;
     cds_LagGruppPIPNo: TIntegerField;
     cds_LagGruppLIPNo: TIntegerField;
-    cds_LagBalORT: TADQuery;
+    cds_LagBalORT: TFDQuery;
     cds_LagBalORTOwnerNo: TIntegerField;
     cds_LagBalORTÄGARE: TStringField;
     cds_LagBalORTORT: TStringField;
@@ -236,7 +236,7 @@ type
     cds_LagBalORTNM3_RÖRELSE_UT: TFloatField;
     cds_LagBalORTNM3_DIFF: TFloatField;
     cds_LagBalORTNM3_UTGAENDE: TFloatField;
-    cds_LBSR: TADQuery;
+    cds_LBSR: TFDQuery;
     cds_LBSRClientNo: TIntegerField;
     cds_LBSRREGION: TStringField;
     cds_LBSRNM3_INGÅENDE: TFloatField;
@@ -641,7 +641,7 @@ procedure TfLagerBalans.grdLagerBalansORTDBTableView2DataControllerDataModeContr
   const AMasterDetailKeyFieldNames: string;
   const AMasterDetailKeyValues: Variant; var AReopened: Boolean);
 begin
-  with (ADataSet as TADQuery) do
+  with (ADataSet as TFDQuery) do
   begin
     if ParamByName('PIPNo').Value = AMasterDetailKeyValues then
 

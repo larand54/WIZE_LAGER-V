@@ -21,9 +21,9 @@ uses
   cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
   dxPScxEditorProducers, dxPScxExtEditorProducers,
   dxPScxPageControlProducer, dxPScxCheckListBoxLnk, dxPSLbxLnk,
-  dxPSTextLnk, uADStanIntf, uADStanOption, uADStanParam,
-  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
-  uADDAptManager, uADCompDataSet, uADCompClient, DB, dxSkinsCore, dxSkinBlack,
+  dxPSTextLnk, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, DB, dxSkinsCore, dxSkinBlack,
   dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -286,12 +286,12 @@ type
     cxCheckBox2: TcxCheckBox;
     cxCheckBox3: TcxCheckBox;
     pivSkiftlag: TcxDBPivotGridField;
-    cds_UserProps: TADQuery;
-    cds_verk: TADQuery;
-    cds_RegPoint: TADQuery;
-    cds_Data: TADQuery;
-    cds_ProdData: TADQuery;
-    sq_ProdDataSumII: TADQuery;
+    cds_UserProps: TFDQuery;
+    cds_verk: TFDQuery;
+    cds_RegPoint: TFDQuery;
+    cds_Data: TFDQuery;
+    cds_ProdData: TFDQuery;
+    sq_ProdDataSumII: TFDQuery;
     cds_UserPropsUserID: TIntegerField;
     cds_UserPropsForm: TStringField;
     cds_UserPropsVerkNo: TIntegerField;
@@ -398,7 +398,7 @@ type
     cds_ProdDataVarugruppNamn: TStringField;
     cds_ProdDataAvgLength: TBCDField;
     cds_ProdDataShiftTeamName: TStringField;
-    cds_TorkSatser: TADQuery;
+    cds_TorkSatser: TFDQuery;
     cds_TorkSatserVerk: TStringField;
     cds_TorkSatserKilnName: TStringField;
     cds_TorkSatserStartTime: TSQLTimeStampField;
@@ -412,7 +412,7 @@ type
     cds_TorkSatserKV: TStringField;
     cds_TorkSatserUT: TStringField;
     cds_TorkSatserIMP: TStringField;
-    cds_overview: TADQuery;
+    cds_overview: TFDQuery;
     cds_overviewItem: TStringField;
     cds_overviewNM3: TFloatField;
     sq_ProdDataSumIIProdukt: TStringField;
@@ -442,7 +442,7 @@ type
     sq_ProdDataSumIIVarugruppNamn: TStringField;
     sq_ProdDataSumIIAvgLength: TFloatField;
     sq_ProdDataSumIIShiftTeamName: TStringField;
-    sq_ProdDataSum: TADQuery;
+    sq_ProdDataSum: TFDQuery;
     sq_ProdDataSumProdukt: TStringField;
     sq_ProdDataSumALMM: TFloatField;
     sq_ProdDataSumNLMM: TFloatField;
@@ -470,7 +470,7 @@ type
     sq_ProdDataSumVarugruppNamn: TStringField;
     sq_ProdDataSumAvgLength: TFloatField;
     sq_ProdDataSumShiftTeamName: TStringField;
-    cds_Kap: TADQuery;
+    cds_Kap: TFDQuery;
     cds_KapProducerat: TSQLTimeStampField;
     cds_KapTONr: TIntegerField;
     cds_KapRavaru_Produkt: TStringField;
@@ -526,7 +526,7 @@ type
     acNewStoppTidMall: TAction;
     acSaveStoppTidMall: TAction;
     acRemoveStoppTidMall: TAction;
-    cds_StoppTid: TADQuery;
+    cds_StoppTid: TFDQuery;
     ds_StoppTid: TDataSource;
     cds_StoppTidRegPointName: TStringField;
     cds_StoppTidStoppTidsNamn: TStringField;
@@ -568,7 +568,7 @@ type
     pvStoppTidVecka: TcxDBPivotGridField;
     cds_StoppTidStoppStartNoTime: TSQLTimeStampField;
     acCalcWorkingTime: TAction;
-    cdsStandardHours: TADQuery;
+    cdsStandardHours: TFDQuery;
     cdsStandardHoursDriftPlatsNr: TIntegerField;
     cdsStandardHoursType: TIntegerField;
     cdsStandardHoursTypeValue: TStringField;
@@ -582,19 +582,19 @@ type
     cxButton19: TcxButton;
     lcProdUnit: TcxDBLookupComboBox;
     cxLabel4: TcxLabel;
-    cds_ProdUnits: TADQuery;
+    cds_ProdUnits: TFDQuery;
     cds_ProdUnitsRegPointName: TStringField;
     cds_ProdUnitsRegPointNo: TIntegerField;
     cds_ProdUnitsProductionUnitNo: TIntegerField;
     cds_UserPropsProdUnit: TStringField;
     acPrintSawcoStyleReport: TAction;
     frxReport1: TfrxReport;
-    sp_StoppTid01: TADStoredProc;
+    sp_StoppTid01: TFDStoredProc;
     frxDBDataset1: TfrxDBDataset;
     cxButton20: TcxButton;
     cxButton21: TcxButton;
     acStoppTidParam: TAction;
-    cds_StoppSetup: TADQuery;
+    cds_StoppSetup: TFDQuery;
     ds_StoppSetup: TDataSource;
     sp_StoppTid01Arbetstid: TStringField;
     sp_StoppTid01TotalArbetstidHours: TFloatField;
@@ -2066,16 +2066,16 @@ begin
 end;
 
 procedure TfAnalyseraLeveranser.acYesterdayExecute(Sender: TObject);
-Var AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond: Word;
+Var AYear, AMonth, FDay, AHour, AMinute, ASecond, AMilliSecond: Word;
     EndDate, StartDate : TDateTime ;
 begin
  StartDate  := Date - 1 ;
- DecodeDateTime(StartDate, AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond);
- TryEncodeDateTime(AYear, AMonth, ADay, 0, 0, 0, 0,  StartDate) ;
+ DecodeDateTime(StartDate, AYear, AMonth, FDay, AHour, AMinute, ASecond, AMilliSecond);
+ TryEncodeDateTime(AYear, AMonth, FDay, 0, 0, 0, 0,  StartDate) ;
 
  EndDate  := Date - 1 ;
- DecodeDateTime(EndDate, AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond);
- TryEncodeDateTime(AYear, AMonth, ADay, 23, 59, 59, 0,  EndDate) ;
+ DecodeDateTime(EndDate, AYear, AMonth, FDay, AHour, AMinute, ASecond, AMilliSecond);
+ TryEncodeDateTime(AYear, AMonth, FDay, 23, 59, 59, 0,  EndDate) ;
 
 
  if cds_UserProps.State = dsBrowse then

@@ -70,10 +70,10 @@
     Left = 328
     Top = 400
   end
-  object cds_SumKilnChargeRows: TADQuery
+  object cds_SumKilnChargeRows: TFDQuery
     MasterSource = ds_KilnChargeHdr
     MasterFields = 'KilnChargeNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select distinct kr.KilnChargeNo, prl.ProductDisplayName AS Produ' +
@@ -140,8 +140,8 @@
       Origin = 'productno'
     end
   end
-  object cds_Verk: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Verk: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct C.ClientNo, C.ClientName, C.SearchName, C.Sales' +
@@ -179,8 +179,8 @@
       Origin = 'SalesRegionNo'
     end
   end
-  object cds_LIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvent' +
@@ -209,8 +209,8 @@
       Origin = 'PIPNo'
     end
   end
-  object cds_PIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PH.PhysicalInventoryPointNo AS PIPNO, CY.CITYNAM' +
@@ -241,9 +241,9 @@
       Origin = 'OwnerNo'
     end
   end
-  object cds_KilnProps: TADQuery
+  object cds_KilnProps: TFDQuery
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.KilnProps'
       'WHERE ClientNo = :ClientNo'
@@ -330,12 +330,12 @@
       Lookup = True
     end
   end
-  object cds_KilnChargeRow: TADQuery
+  object cds_KilnChargeRow: TFDQuery
     AfterInsert = cds_KilnChargeRowAfterInsert
     MasterSource = ds_KilnChargeHdr
     MasterFields = 'KilnChargeNo'
     DetailFields = 'KilnChargeNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
@@ -406,10 +406,10 @@
       Size = 150
     end
   end
-  object cds_KilnChargeHdr: TADQuery
+  object cds_KilnChargeHdr: TFDQuery
     AfterInsert = cds_KilnChargeHdrAfterInsert
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select KCH.*, KP.Kiln_PIPNo, KP.[BeforeKiln_LIPNo], KP.[Kiln_LIP' +
@@ -500,10 +500,10 @@
       ProviderFlags = []
     end
   end
-  object cds_Kilns: TADQuery
+  object cds_Kilns: TFDQuery
     AfterInsert = cds_KilnsAfterInsert
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Kilns'
       'WHERE ClientNo = :ClientNo'
@@ -553,8 +553,8 @@
       ProviderFlags = [pfInUpdate]
     end
   end
-  object sq_SeTKilnToComplete: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SeTKilnToComplete: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.KilnChargeHdr'
       'Set Status = 1, '
@@ -616,8 +616,8 @@
       BlobType = ftMemo
     end
   end
-  object sq_GetPrevKilnChargeNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPrevKilnChargeNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select KilnChargeNo'
       'From dbo.KilnChargeHdr'
@@ -639,8 +639,8 @@
       Required = True
     end
   end
-  object sq_MoveToAfterKiln: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_MoveToAfterKiln: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.PackageNumber'
       'Set LogicalInventoryPointNo = :LIPNo'
@@ -665,8 +665,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetPkgNosOfKilnCharge: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgNosOfKilnCharge: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct pn.PackageNo, pn.SupplierCode'
       'From'
@@ -719,8 +719,8 @@
       Size = 3
     end
   end
-  object sq_DeleteKChargeRows: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DeleteKChargeRows: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.KilnChargeRows'
       'WHERE'
@@ -747,8 +747,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_MovePkgsToLip: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_MovePkgsToLip: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update PackageNumber'
       'Set LogicalInventoryPointNo = :LIPNo'
@@ -775,8 +775,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetPkgNos: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgNos: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo, pn.SupplierCode From'
       'dbo.Product p'
@@ -832,8 +832,8 @@
       Size = 3
     end
   end
-  object sq_LastKilnChNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_LastKilnChNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select  max(KilnChargeNo) AS KilnChargeNo FROM dbo.KilnChargeHdr'
       'WHERE ClientNo = :ClientNo'
@@ -853,8 +853,8 @@
       ReadOnly = True
     end
   end
-  object sq_GetPkgNosNoLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgNosNoLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo, pn.SupplierCode From'
       'dbo.Product p'
@@ -917,7 +917,7 @@
       Size = 3
     end
   end
-  object cds_KilnChargeHeader: TADQuery
+  object cds_KilnChargeHeader: TFDQuery
     AfterInsert = cds_KilnChargeHeaderAfterInsert
     Indexes = <
       item
@@ -929,7 +929,7 @@
     IndexName = 'cds_KC'
     MasterSource = ds_Kilns
     MasterFields = 'KilnNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select KCH.*'
       'FROM dbo.KilnChargeHdr KCH'

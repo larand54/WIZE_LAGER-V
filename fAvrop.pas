@@ -611,7 +611,7 @@ Begin
 
    sq_GetFreightCost.Close ;
 
-    if cdsInvoiceDetailPriceUnit.AsString = 'm3 aDxaL' then
+    if cdsInvoiceDetailPriceUnit.AsString = 'm3 FDxaL' then
      Begin
       cdsInvoiceDetailProductValue.AsFloat:= RoundTo(M3Net*cdsInvoiceDetailPrice.AsFloat, -3) ;
 //      cdsInvoiceDetailProductValue.AsFloat                := M3Net *  cdsInvoiceDetailPrice.AsFloat ;
@@ -670,7 +670,7 @@ Begin
     cdsInvoiceDetailVolumeUnit.AsString                 := cdsInvoiceLOInvoiceAdditionUnitNo.AsString ;//Get unit name ;
 //    cdsInvoiceDetailProductValue.AsFloat                := cdsInvoiceLOInvoiceAdditionAmount.AsFloat ;
 
-    if cdsInvoiceDetailPriceUnit.AsString = 'm3 aDxaL' then
+    if cdsInvoiceDetailPriceUnit.AsString = 'm3 FDxaL' then
      Begin
       cdsInvoiceDetailProductValue.AsFloat:= RoundTo(M3Net*cdsInvoiceDetailPrice.AsFloat, -2) ;
 //      cdsInvoiceDetailProductValue.AsFloat                := M3Net *  cdsInvoiceDetailPrice.AsFloat ;

@@ -20,9 +20,9 @@ uses
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer, Menus, cxButtons,
   dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk,
-  uADStanIntf, uADStanOption, uADStanParam,
-  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync,
-  uADDAptManager, uADCompDataSet, uADCompClient, dxSkinsCore, dxSkinBlack,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, dxSkinsCore, dxSkinBlack,
   dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -154,7 +154,7 @@ type
     cxButton8: TcxButton;
     cxButton9: TcxButton;
     acExportPerLagerOchPrisGrupp: TAction;
-    cds_InvenRow: TADQuery;
+    cds_InvenRow: TFDQuery;
     cds_InvenRowIC_GrpNo: TIntegerField;
     cds_InvenRowLogicalInventoryPointNo: TIntegerField;
     cds_InvenRowInventeringsMetod: TIntegerField;

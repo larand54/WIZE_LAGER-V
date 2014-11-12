@@ -3,9 +3,9 @@ unit dmcVidaPayment;
 interface
 
 uses
-  SysUtils, Classes, DB, uADStanIntf,
-  uADStanOption, uADStanParam, uADStanError, uADDatSManager, uADPhysIntf,
-  uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet, uADCompClient ;
+  SysUtils, Classes, DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client ;
 
 
 type
@@ -15,12 +15,12 @@ type
     dsPaymentHead: TDataSource;
     dsPaymentLoadList: TDataSource;
     dsPayHead: TDataSource;
-    cds_LoadDetailPkgLength: TADQuery;
-    sq_FindAvr: TADQuery;
+    cds_LoadDetailPkgLength: TFDQuery;
+    sq_FindAvr: TFDQuery;
     sq_FindAvrAVRAKNING_NO: TIntegerField;
     sq_FindAvrVerk: TStringField;
     sq_FindAvrVerkNo: TIntegerField;
-    cds_LoadHead: TADQuery;
+    cds_LoadHead: TFDQuery;
     cds_LoadHeadLoadNo: TIntegerField;
     cds_LoadHeadSupplierNo: TIntegerField;
     cds_LoadHeadLoadedDate: TSQLTimeStampField;
@@ -44,22 +44,22 @@ type
     cds_LoadHeadShippingPlanNo: TIntegerField;
     cds_LoadHeadPIPNo: TIntegerField;
     cds_LoadHeadLIPNo: TIntegerField;
-    cds_LoadRemAvr: TADQuery;
+    cds_LoadRemAvr: TFDQuery;
     cds_LoadRemAvrLoadNo: TIntegerField;
     cds_LoadRemAvrDateCreated: TSQLTimeStampField;
     cds_LoadRemAvrCreatedUser: TSmallintField;
-    sq_LO_Type: TADQuery;
+    sq_LO_Type: TFDQuery;
     sq_LO_TypeObjectType: TIntegerField;
     sq_LO_TypeOrderType: TIntegerField;
-    sq_LoadPackages: TADQuery;
+    sq_LoadPackages: TFDQuery;
     sq_LoadPackagesLogicalInventoryPointNo: TIntegerField;
     sq_LoadPackagesPackageNo: TIntegerField;
     sq_LoadPackagesSupplierCode: TStringField;
-    sq_ChangeLOnrInPaymentLoad: TADQuery;
-    sq_DelConPkgLog: TADQuery;
-    sq_GetNewLIPno: TADQuery;
+    sq_ChangeLOnrInPaymentLoad: TFDQuery;
+    sq_DelConPkgLog: TFDQuery;
+    sq_GetNewLIPno: TFDQuery;
     sq_GetNewLIPnoNew_LogicalInventoryPointNo: TIntegerField;
-    cds_IntOrderHead: TADQuery;
+    cds_IntOrderHead: TFDQuery;
     cds_IntOrderHeadOrderNo: TIntegerField;
     cds_IntOrderHeadShippingPlanNo: TIntegerField;
     cds_IntOrderHeadCustomerNo: TIntegerField;
@@ -101,17 +101,17 @@ type
     cds_IntOrderHeadObjecttype: TIntegerField;
     cds_IntOrderHeadOrderNoExt: TIntegerField;
     cds_IntOrderHeadCustomerNoExt: TIntegerField;
-    sq_NoOfLoads_LO: TADQuery;
+    sq_NoOfLoads_LO: TFDQuery;
     sq_NoOfLoads_LONoOfLoads: TIntegerField;
     cds_LoadDetailPkgLengthSupplierShipPlanObjectNo: TIntegerField;
-    cds_LoadDetailMatch: TADQuery;
+    cds_LoadDetailMatch: TFDQuery;
     cds_LoadDetailMatchLoadNo: TIntegerField;
     cds_LoadDetailMatchLoadDetailNo: TIntegerField;
     cds_LoadDetailMatchSupplierShipPlanObjectNo: TIntegerField;
     cds_LoadDetailMatchPackageNo: TIntegerField;
     cds_LoadDetailMatchSupplierCode: TStringField;
     cds_LoadDetailMatchCustShipPlanDetailObjectNo: TIntegerField;
-    cds_LoadDetail: TADQuery;
+    cds_LoadDetail: TFDQuery;
     cds_LoadDetailLoadDetailNo: TIntegerField;
     cds_LoadDetailLoadNo: TIntegerField;
     cds_LoadDetailShippingPlanNo: TIntegerField;
@@ -131,7 +131,7 @@ type
     cds_LoadDetailOverrideRL: TIntegerField;
     cds_LoadDetailOldPackageTypeNo: TIntegerField;
     cds_LoadDetailCustomPcs: TIntegerField;
-    cds_LS: TADQuery;
+    cds_LS: TFDQuery;
     cds_LSLoadNo: TIntegerField;
     cds_LSShippingPlanNo: TIntegerField;
     cds_LSConfirmedByReciever: TIntegerField;
@@ -142,7 +142,7 @@ type
     cds_LSInvoiced: TIntegerField;
     cds_LSLoadingLocationNo: TIntegerField;
     cds_LSShipToInvPointNo: TIntegerField;
-    cdsPaymentLoadList: TADQuery;
+    cdsPaymentLoadList: TFDQuery;
     cdsPaymentLoadListAVRAKNING_NO: TIntegerField;
     cdsPaymentLoadListINITIALS: TStringField;
     cdsPaymentLoadListVIS_FS: TIntegerField;
@@ -165,7 +165,7 @@ type
     cdsPaymentLoadListCountryNo: TIntegerField;
     cdsPaymentLoadListGRADENAME: TStringField;
     cdsPaymentLoadListMILL_INVOICE_NO: TStringField;
-    cdsPaymentHead: TADQuery;
+    cdsPaymentHead: TFDQuery;
     cdsPaymentHeadPaymentNo: TIntegerField;
     cdsPaymentHeadSenderStatus: TSmallintField;
     cdsPaymentHeadReceiverStatus: TSmallintField;
@@ -177,7 +177,7 @@ type
     cdsPaymentHeadCustomerNo: TIntegerField;
     cdsPaymentHeadMILL_InvoiceNo: TStringField;
     cdsPaymentHeadCustName: TStringField;
-    cdsConfirmed_Load: TADQuery;
+    cdsConfirmed_Load: TFDQuery;
     cdsConfirmed_LoadConfirmed_LoadNo: TIntegerField;
     cdsConfirmed_LoadConfirmed_ShippingPlanNo: TIntegerField;
     cdsConfirmed_LoadNewLoadNo: TIntegerField;
@@ -185,8 +185,8 @@ type
     cdsConfirmed_LoadDateCreated: TSQLTimeStampField;
     cdsConfirmed_LoadCreatedUser: TIntegerField;
     cdsConfirmed_LoadModifiedUser: TIntegerField;
-    cds_ConfLoad: TADQuery;
-    cdsPayHead: TADQuery;
+    cds_ConfLoad: TFDQuery;
+    cdsPayHead: TFDQuery;
     cdsPayHeadPaymentNo: TIntegerField;
     cdsPayHeadSenderStatus: TSmallintField;
     cdsPayHeadReceiverStatus: TSmallintField;
@@ -197,7 +197,7 @@ type
     cdsPayHeadSupplierNo: TIntegerField;
     cdsPayHeadCustomerNo: TIntegerField;
     cdsPayHeadMILL_InvoiceNo: TStringField;
-    cdsPaymentLoads: TADQuery;
+    cdsPaymentLoads: TFDQuery;
     cdsPaymentLoadsPaymentNo: TIntegerField;
     cdsPaymentLoadsLoadNo: TIntegerField;
     cdsPaymentLoadsTypeOf: TSmallintField;
@@ -214,7 +214,7 @@ type
     cdsPaymentLoadsNOM_Thick: TFloatField;
     cdsPaymentLoadsNOM_Width: TFloatField;
     cdsPaymentLoadsGradeName: TStringField;
-    cdsArrivingPackages: TADQuery;
+    cdsArrivingPackages: TFDQuery;
     cdsArrivingPackagesLO: TIntegerField;
     cdsArrivingPackagesPACKAGE_NO: TIntegerField;
     cdsArrivingPackagesSUPPLIERCODE: TStringField;
@@ -230,7 +230,7 @@ type
     cdsArrivingPackagesPRICE: TFloatField;
     cdsArrivingPackagesNOM_LINEAL_METER: TFloatField;
     cdsArrivingPackagesEND_CUSTOMER: TStringField;
-    cdsArrivingLoads: TADQuery;
+    cdsArrivingLoads: TFDQuery;
     cdsArrivingLoadsINVPOINTNO: TIntegerField;
     cdsArrivingLoadsINVPOINTNAME: TStringField;
     cdsArrivingLoadsINITIALS: TStringField;
@@ -242,7 +242,7 @@ type
     cdsArrivingLoadsCUSTOMERNO: TIntegerField;
     cdsArrivingLoadsSUPPLIER_NO: TIntegerField;
     cdsArrivingLoadsSKATTE_UPPLAG: TIntegerField;
-    sq_SummaryLoadDetails: TADQuery;
+    sq_SummaryLoadDetails: TFDQuery;
     sq_SummaryLoadDetailsAKT_THICK: TFloatField;
     sq_SummaryLoadDetailsAKT_WIDTH: TFloatField;
     sq_SummaryLoadDetailsACT_M3: TFloatField;
@@ -254,9 +254,9 @@ type
     sq_SummaryLoadDetailsPRICE: TFloatField;
     sq_SummaryLoadDetailsLO: TIntegerField;
     sq_SummaryLoadDetailsGRADENAME: TStringField;
-    sq_SSP_Exist: TADQuery;
+    sq_SSP_Exist: TFDQuery;
     sq_SSP_ExistSupplierShipPlanObjectNo: TIntegerField;
-    sq_INS_PaymentLoad_ST: TADQuery;
+    sq_INS_PaymentLoad_ST: TFDQuery;
     procedure dsrcArrivingLoadsDataChange(Sender: TObject; Field: TField);
     procedure dsPaymentHeadDataChange(Sender: TObject; Field: TField);
   private

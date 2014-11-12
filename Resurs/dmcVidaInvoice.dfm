@@ -1134,15 +1134,15 @@ object dmVidaInvoice: TdmVidaInvoice
       'OH.CurrencyNo,'
       ''
       'OH.ClientBillingAddressNo,'
-      'ADR.AddressName'#9#9#9'AS BILL_ADDRESS_NAME,'
-      'ADR.AddressLine1,'
-      'ADR.AddressLine2,'
-      'ADR.AddressLine3,'
-      'ADR.AddressLine4,'
-      'ADR.StateOrProvince,'
-      'ADR.PostalCode,'
-      'AdrCY.CityName as AddressCity,'
-      'AdrCtry.CountryName as AddressCountry,'
+      'FDR.AddressName'#9#9#9'AS BILL_ADDRESS_NAME,'
+      'FDR.AddressLine1,'
+      'FDR.AddressLine2,'
+      'FDR.AddressLine3,'
+      'FDR.AddressLine4,'
+      'FDR.StateOrProvince,'
+      'FDR.PostalCode,'
+      'FDrCY.CityName as AddressCity,'
+      'FDrCtry.CountryName as AddressCountry,'
       ''
       ''
       'C.ClientName as CustomerName,'
@@ -1219,12 +1219,12 @@ object dmVidaInvoice: TdmVidaInvoice
       #9'INNER JOIN dbo.Orders '#9#9#9'OH'#9'ON'#9'OH.OrderNo '#9#9'= CSH.OrderNo'
       ''
       ''
-      #9'LEFT OUTER JOIN dbo.Address '#9#9'ADR'
-      #9'INNER JOIN dbo.CITY'#9#9#9'AdrCY'#9'ON'#9'AdrCY.CityNo '#9#9'= ADR.CityNo'
+      #9'LEFT OUTER JOIN dbo.Address '#9#9'FDR'
+      #9'INNER JOIN dbo.CITY'#9#9#9'FDrCY'#9'ON'#9'FDrCY.CityNo '#9#9'= FDR.CityNo'
       
-        #9'INNER JOIN dbo.Country'#9#9#9'AdrCtry'#9'ON'#9'AdrCtry.CountryNo '#9'= ADR.Co' +
+        #9'INNER JOIN dbo.Country'#9#9#9'FDrCtry'#9'ON'#9'FDrCtry.CountryNo '#9'= FDR.Co' +
         'untryNo'
-      #9#9#9#9#9#9#9'ON'#9'ADR.AddressNo'#9#9'= CSH.ClientBillingAddressNo'
+      #9#9#9#9#9#9#9'ON'#9'FDR.AddressNo'#9#9'= CSH.ClientBillingAddressNo'
       ''
       
         '        LEFT OUTER Join dbo.PaymentText PayText                 ' +
@@ -1234,7 +1234,7 @@ object dmVidaInvoice: TdmVidaInvoice
         'PayText.LanguageCode = OH.LanguageCode'
       
         '                                                        AND     ' +
-        'PayText.CountryNo = ADR.CountryNo'
+        'PayText.CountryNo = FDR.CountryNo'
       ''
       #9'LEFT OUTER JOIN dbo.Address '#9#9'Agent_ADR'
       
@@ -2658,9 +2658,9 @@ object dmVidaInvoice: TdmVidaInvoice
         'ssLine2),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.AddressLine3),'#39#39')+'#39', '#39'+isNul' +
         'l(RTRIM(Addr.AddressLine4),'#39#39')'
       
-        '+'#39', '#39'+isNull(RTRIM(AdrCY.CityName),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.Po' +
+        '+'#39', '#39'+isNull(RTRIM(FDrCY.CityName),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.Po' +
         'stalCode),'#39#39')+'#39', '#39'+isNull(RTRIM(Addr.StateOrProvince),'#39#39')+'#39', '#39'+i' +
-        'sNull(RTRIM( AdrCtry.CountryName ),'#39#39') as ADDR,'
+        'sNull(RTRIM( FDrCtry.CountryName ),'#39#39') as ADDR,'
       ''
       'Addr.AddressLine1,'
       'Addr.AddressLine2,'
@@ -2668,14 +2668,14 @@ object dmVidaInvoice: TdmVidaInvoice
       'Addr.AddressLine4,'
       'Addr.StateOrProvince    AS STATE,'
       'Addr.PostalCode         AS POSTAL_CODE,'
-      'AdrCY.CityName'#9'        AS CITY,'
-      'AdrCtry.CountryName'#9'AS COUNTRY'
+      'FDrCY.CityName'#9'        AS CITY,'
+      'FDrCtry.CountryName'#9'AS COUNTRY'
       ''
       'from dbo.InvoiceShipToAddress IST'
       ' Left Outer Join dbo.Address Addr'#9
-      ' '#9'INNER JOIN dbo.CITY'#9#9#9'AdrCY'#9'ON'#9'AdrCY.CityNo '#9#9'= Addr.CityNo'
+      ' '#9'INNER JOIN dbo.CITY'#9#9#9'FDrCY'#9'ON'#9'FDrCY.CityNo '#9#9'= Addr.CityNo'
       
-        #9'INNER JOIN dbo.Country'#9#9#9'AdrCtry'#9'ON'#9'AdrCtry.CountryNo '#9'= Addr.C' +
+        #9'INNER JOIN dbo.Country'#9#9#9'FDrCtry'#9'ON'#9'FDrCtry.CountryNo '#9'= Addr.C' +
         'ountryNo'
       '  ON Addr.AddressNo = IST.AddressNo'
       ''
@@ -4713,7 +4713,7 @@ object dmVidaInvoice: TdmVidaInvoice
       ''
       'WHEN VU.VolumeUnitName = '#39'Stycketal'#39' THEN PTD.NoOfPieces'
       ''
-      'WHEN VU.VolumeUnitName = '#39'm3 aDxaL'#39' THEN'
+      'WHEN VU.VolumeUnitName = '#39'm3 FDxaL'#39' THEN'
       'CASE'
       ' WHEN PG.SequenceNo = 0 THEN'
       
@@ -4789,7 +4789,7 @@ object dmVidaInvoice: TdmVidaInvoice
       
         '-- m3ActualSizeNomLength ***************************************' +
         '******'
-      'WHEN VU.VolumeUnitName = '#39'm3 aDxnL'#39' THEN'
+      'WHEN VU.VolumeUnitName = '#39'm3 FDxnL'#39' THEN'
       'CASE'
       'WHEN PG.SequenceNo = 0 THEN'
       'CASE'
@@ -4938,7 +4938,7 @@ object dmVidaInvoice: TdmVidaInvoice
       ''
       'WHEN PU.TemplateUnitName = '#39'Stycketal'#39' THEN PTD.NoOfPieces'
       ''
-      'WHEN PU.TemplateUnitName = '#39'm3 aDxaL'#39' THEN '
+      'WHEN PU.TemplateUnitName = '#39'm3 FDxaL'#39' THEN '
       'CASE WHEN PG.SequenceNo = 0 THEN '
       'ROUND(CAST(('
       'PTD.NoOfPieces * PG.ActualThicknessMM * PG.ActualWidthMM *'
@@ -5012,7 +5012,7 @@ object dmVidaInvoice: TdmVidaInvoice
       
         '-- m3ActualSizeNomLength ***************************************' +
         '******'
-      'WHEN PU.TemplateUnitName = '#39'm3 aDxnL'#39' THEN'
+      'WHEN PU.TemplateUnitName = '#39'm3 FDxnL'#39' THEN'
       'CASE WHEN PG.SequenceNo = 0 THEN'
       'CASE'
       '-- random length'
@@ -7040,10 +7040,10 @@ object dmVidaInvoice: TdmVidaInvoice
         'Select PaymentText FROM dbo.PaymentText PayText, dbo.Address '#9#9'A' +
         'DR'
       'WHERE'
-      'ADR.AddressNo = :AddressNo'
+      'FDR.AddressNo = :AddressNo'
       'AND PayText.CurrencyNo = :CurrencyNo'
       'AND     PayText.LanguageCode = :LanguageCode'
-      'AND     PayText.CountryNo = ADR.CountryNo'
+      'AND     PayText.CountryNo = FDR.CountryNo'
       ''
       '')
     SQLConnection = dmsConnector.SQLConnection
@@ -9040,7 +9040,7 @@ object dmVidaInvoice: TdmVidaInvoice
         'WHEN VU.VolumeUnitName = '#39'Lopm a'#39' THEN ROUND(CAST((       PTD.Li' +
         'nealMeterActualLength )   As decimal(10,3)),3)'
       'WHEN VU.VolumeUnitName = '#39'Stycketal'#39' THEN PTD.NoOfPieces'
-      'WHEN VU.VolumeUnitName = '#39'm3 aDxaL'#39' THEN ROUND(CAST(('
+      'WHEN VU.VolumeUnitName = '#39'm3 FDxaL'#39' THEN ROUND(CAST(('
       'PTD.NoOfPieces * PG.ActualThicknessMM * PG.ActualWidthMM *'
       ' PL.ActualLengthMM) / (1000 * 1000 * 1000) As decimal(10,3)),3)'
       ''
@@ -9089,7 +9089,7 @@ object dmVidaInvoice: TdmVidaInvoice
       
         '-- m3ActualSizeNomLength ***************************************' +
         '******'
-      'WHEN VU.VolumeUnitName = '#39'm3 aDxnL'#39' THEN'
+      'WHEN VU.VolumeUnitName = '#39'm3 FDxnL'#39' THEN'
       'CASE'
       '-- random length'
       'WHEN PL_CSD.ProductLengthGroupNo > 0 AND OL.OverrideRL = 0 THEN'
@@ -9189,7 +9189,7 @@ object dmVidaInvoice: TdmVidaInvoice
         'WHEN PU.TemplateUnitName = '#39'Lopm a'#39' THEN ROUND(CAST((       PTD.' +
         'LinealMeterActualLength )   As decimal(10,3)),3)'
       'WHEN PU.TemplateUnitName = '#39'Stycketal'#39' THEN PTD.NoOfPieces'
-      'WHEN PU.TemplateUnitName = '#39'm3 aDxaL'#39' THEN ROUND(CAST(('
+      'WHEN PU.TemplateUnitName = '#39'm3 FDxaL'#39' THEN ROUND(CAST(('
       'PTD.NoOfPieces * PG.ActualThicknessMM * PG.ActualWidthMM *'
       'CASE WHEN 0 > 0.05'
       
@@ -9243,7 +9243,7 @@ object dmVidaInvoice: TdmVidaInvoice
       
         '-- m3ActualSizeNomLength ***************************************' +
         '******'
-      'WHEN PU.TemplateUnitName = '#39'm3 aDxnL'#39' THEN'
+      'WHEN PU.TemplateUnitName = '#39'm3 FDxnL'#39' THEN'
       'CASE'
       '-- random length'
       'WHEN PL_CSD.ProductLengthGroupNo > 0 AND OL.OverrideRL = 0 THEN'
@@ -11135,7 +11135,7 @@ object dmVidaInvoice: TdmVidaInvoice
       'MINLENGTH'
       'Pcs'
       'Mark')
-    About = '(About EMS AdvancedExport)'
+    About = '(About EMS FDvancedExport)'
     _Version = '3.40'
     FileName = 'C:\Projects\VIS\VIS Trusted III\VIS 1211\TestExport.xls'
     Options.PageFooter = 'Page &P of &N'
@@ -11171,7 +11171,7 @@ object dmVidaInvoice: TdmVidaInvoice
       'MINLENGTH'
       'Pcs'
       'Mark')
-    About = '(About EMS AdvancedExport)'
+    About = '(About EMS FDvancedExport)'
     _Version = '3.40'
     OnBeforeExportRow = QExport3ASCII1BeforeExportRow
     UserFormats.Strings = (

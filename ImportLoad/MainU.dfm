@@ -226,19 +226,19 @@ object XMLImportExport: TXMLImportExport
       Kind = bkCancel
     end
   end
-  object ADOConnection1: TADOConnection
+  object FDOConnection1: TFDOConnection
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
       'fo=False;Initial Catalog=vis_vida;Data Source=ALVESQL01;Extended' +
       ' Properties="uid=sa;"'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
-    BeforeConnect = ADOConnection1BeforeConnect
+    BeforeConnect = FDOConnection1BeforeConnect
     Left = 528
     Top = 193
   end
-  object dsInfo: TADODataSet
-    Connection = ADOConnection1
+  object dsInfo: TFDODataSet
+    Connection = FDOConnection1
     Parameters = <>
     Left = 560
     Top = 193
@@ -258,8 +258,8 @@ object XMLImportExport: TXMLImportExport
     Left = 492
     Top = 193
   end
-  object ADOQuery1: TADOQuery
-    Connection = ADOConnection1
+  object FDOQuery1: TFDOQuery
+    Connection = FDOConnection1
     Parameters = <>
     Left = 596
     Top = 193

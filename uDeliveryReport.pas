@@ -24,9 +24,9 @@ uses
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer,
   dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, CRAXDDRT_TLB,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet,
-  uADCompClient,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
 
 
   Grids,
@@ -259,7 +259,7 @@ type
     cxButton13: TcxButton;
     cxButton14: TcxButton;
     cbProdSUM: TcxComboBox;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkSearchName: TStringField;
@@ -268,7 +268,7 @@ type
     grdProdPaketNrLevel1: TcxGridLevel;
     grdProdPaketNr: TcxGrid;
     cxLookupComboBox1: TcxLookupComboBox;
-    sq_UserProfile: TADQuery;
+    sq_UserProfile: TFDQuery;
     sq_UserProfileUserID: TIntegerField;
     sq_UserProfileForm: TStringField;
     sq_UserProfileName: TStringField;
@@ -360,7 +360,7 @@ type
     frxReport2: TfrxReport;
     acUlrikaRapport: TAction;
     cxButton16: TcxButton;
-    sq_ST_Del_Stat: TADQuery;
+    sq_ST_Del_Stat: TFDQuery;
     frxCrossObject1: TfrxCrossObject;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
@@ -1287,16 +1287,16 @@ begin
 end;
 
 procedure TfDeliveryReport.SetDateFields ;
-Var AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond: Word;
+Var AYear, AMonth, FDay, AHour, AMinute, ASecond, AMilliSecond: Word;
     EndDate, StartDate : TDateTime ;
 begin
 // StartDate  := Date - 1 ;
- DecodeDateTime(mtUserPropStartPeriod.AsDateTime, AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond);
- TryEncodeDateTime(AYear, AMonth, ADay, 0, 0, 0, 0,  StartDate) ;
+ DecodeDateTime(mtUserPropStartPeriod.AsDateTime, AYear, AMonth, FDay, AHour, AMinute, ASecond, AMilliSecond);
+ TryEncodeDateTime(AYear, AMonth, FDay, 0, 0, 0, 0,  StartDate) ;
 
 // EndDate  := Date - 1 ;
- DecodeDateTime(mtUserPropEndPeriod.AsDateTime, AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond);
- TryEncodeDateTime(AYear, AMonth, ADay, 23, 59, 59, 0,  EndDate) ;
+ DecodeDateTime(mtUserPropEndPeriod.AsDateTime, AYear, AMonth, FDay, AHour, AMinute, ASecond, AMilliSecond);
+ TryEncodeDateTime(AYear, AMonth, FDay, 23, 59, 59, 0,  EndDate) ;
 
   mtUserProp.Edit ;
   mtUserPropStartPeriod.AsSQLTimeStamp    := DateTimeToSQLTimeStamp(StartDate) ;

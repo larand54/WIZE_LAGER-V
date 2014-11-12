@@ -28,9 +28,9 @@ uses
   dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
-  dxSkinXmas2008Blue, dxSkinsdxNavBarPainter, dxSkinsdxBarPainter, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
-  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager,
-  Data.DB, uADCompDataSet, uADCompClient, dxSkinscxPCPainter, cxCustomData,
+  dxSkinXmas2008Blue, dxSkinsdxNavBarPainter, dxSkinsdxBarPainter, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, Vcl.Menus,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxButtons,
   cxGridLevel, cxGridCustomView, cxGrid, dxSkinMetropolis, dxSkinMetropolisDark,
@@ -329,11 +329,11 @@ begin
    if not ThisUser.Logon then
     Close
      else
-      if dmsConnector.ADConnection1.Connected then
+      if dmsConnector.FDConnection1.Connected then
       Begin
        Caption  := Forms.Application.Title + '/' + dmsConnector.GetCompanyName (ThisUser.CompanyNo) +'/' + ThisUser.UserName +' ver '+GetVersion
-       + ' - ' + dmsConnector.ADConnection1.Params.Values['Server']
-       + '/' + dmsConnector.ADConnection1.Params.Values['Database'] + ' ' ;
+       + ' - ' + dmsConnector.FDConnection1.Params.Values['Server']
+       + '/' + dmsConnector.FDConnection1.Params.Values['Database'] + ' ' ;
 
        dm_UserProps:= Tdm_UserProps.Create(nil);
        dmcSystem.OpenUserProfile ;
@@ -446,7 +446,7 @@ Try
  With dmsSystem do
  Begin
   Try
-  if dmsConnector.ADConnection1.Connected then
+  if dmsConnector.FDConnection1.Connected then
   Delete_UserReservedPkgs ;
   Except
   End ;
@@ -880,19 +880,19 @@ begin
  try
  if OKHelpBottomDlg.ShowModal = mrOK then
  Begin
-//  dmsConnector.ADConnection1. .CloseDataSets ;
-  dmsConnector.ADConnection1.Connected:= False ;
-  if Length(OKHelpBottomDlg.eAD_Name.Text) > 0 then
-  ThisUser.DBUserName:= OKHelpBottomDlg.eAD_Name.Text ;
+//  dmsConnector.FDConnection1. .CloseDataSets ;
+  dmsConnector.FDConnection1.Connected:= False ;
+  if Length(OKHelpBottomDlg.EFD_Name.Text) > 0 then
+  ThisUser.DBUserName:= OKHelpBottomDlg.EFD_Name.Text ;
   if Length(OKHelpBottomDlg.eDatabas.Text) > 0 then
   ThisUser.Database:= OKHelpBottomDlg.eDatabas.Text ;
 
    if not ThisUser.Logon then
     Close
      else
-      if dmsConnector.ADConnection1.Connected then
+      if dmsConnector.FDConnection1.Connected then
       Begin
-       if ((dmsConnector.Get_AD_Name <> OKHelpBottomDlg.eAD_Name.Text) and (Length(OKHelpBottomDlg.eAD_Name.Text) > 0) )
+       if ((dmsConnector.Get_AD_Name <> OKHelpBottomDlg.EFD_Name.Text) and (Length(OKHelpBottomDlg.EFD_Name.Text) > 0) )
        or ((OKHelpBottomDlg.eDatabas.Text <> dmsConnector.Org_DB_Name) and (Length(OKHelpBottomDlg.eDatabas.Text) > 0)) then
        Begin
         Timer1.Enabled:= True ;
@@ -903,8 +903,8 @@ begin
 //        dxSideBar1.BkGround.EndColor:= clGreen ;
         Forms.Application.Title:= 'VIS_LAGER' ;
         a:= Forms.Application.Title+'/'+dmsConnector.GetCompanyName (ThisUser.CompanyNo) +'/' + ThisUser.UserName +' ver '+GetVersion
-        +' - '+dmsConnector.ADConnection1.Params.Values['Server']
-        +'/'+dmsConnector.ADConnection1.Params.Values['Database']+' ' ;
+        +' - '+dmsConnector.FDConnection1.Params.Values['Server']
+        +'/'+dmsConnector.FDConnection1.Params.Values['Database']+' ' ;
          dmcSystem.OpenUserProfile ;
        End
        else
@@ -917,8 +917,8 @@ begin
 //        dxSideBar1.BkGround.EndColor:= clMaroon ;
         Forms.Application.Title:= 'VIS_LAGER' ;
         frmMain.Caption:= Forms.Application.Title+'/'+dmsConnector.GetCompanyName (ThisUser.CompanyNo) +'/' + ThisUser.UserName +' ver '+GetVersion
-        +' - '+dmsConnector.ADConnection1.Params.Values['Server']
-        +'/'+dmsConnector.ADConnection1.Params.Values['Database']+' ' ;
+        +' - '+dmsConnector.FDConnection1.Params.Values['Server']
+        +'/'+dmsConnector.FDConnection1.Params.Values['Database']+' ' ;
          dmcSystem.OpenUserProfile ;
        End ;
 

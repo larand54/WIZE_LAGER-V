@@ -166,8 +166,8 @@
     Left = 992
     Top = 152
   end
-  object cds_ProdList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProdList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT pd.ProductNo, pg.ProductGroupNo, gd.GradeName,'
       'sc.SpeciesName, sf.SurfacingName, pc.ProductCategoryName,'
@@ -291,10 +291,10 @@
       Origin = 'NominalWidthINCH'
     end
   end
-  object cds_PrdGrp: TADQuery
+  object cds_PrdGrp: TFDQuery
     AfterInsert = cds_PrdGrpAfterInsert
     BeforePost = cds_PrdGrpBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ProductGroup'
       '')
@@ -406,10 +406,10 @@
       Lookup = True
     end
   end
-  object cds_Products: TADQuery
+  object cds_Products: TFDQuery
     AfterInsert = cds_ProductsAfterInsert
     BeforePost = cds_ProductsBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Product'
       'WHERE ProductGroupNo = :ProductGroupNo'
@@ -502,10 +502,10 @@
       Lookup = True
     end
   end
-  object cds_ProductGroupLengths: TADQuery
+  object cds_ProductGroupLengths: TFDQuery
     AfterInsert = cds_ProductGroupLengthsAfterInsert
     BeforePost = cds_ProductGroupLengthsBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select PGL.ProductGroupNo,'
       'PGL.ProductLengthNo,'
@@ -586,8 +586,8 @@
       Origin = 'FJ'
     end
   end
-  object cds_PrdGrpList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PrdGrpList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT pg.act, pd.ProductNo, pg.ProductGroupNo, '
       'sc.SpeciesName AS TS,'
@@ -690,8 +690,8 @@
       Origin = 'NBI'
     end
   end
-  object cds_CliProdList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_CliProdList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select cpd.ClientProductDisplayText AS PRODUKT,'
       'cpd.LengthDescription AS L'#196'NGD,'
@@ -812,8 +812,8 @@
       Origin = 'LengthTyp'
     end
   end
-  object cds_ProdLengthRow: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProdLengthRow: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT *  FROM dbo.ProductLengthGroup PLG'
       
@@ -904,8 +904,8 @@
       Origin = 'Act'
     end
   end
-  object cds_PrdGrpLO: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PrdGrpLO: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select '
       'ProductGroupNo,'
@@ -950,8 +950,8 @@
       Origin = 'NominalWidthINCH'
     end
   end
-  object cds_Prod_Lengths: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Prod_Lengths: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct plg.GroupName, pl.*'
       'FROM dbo.ProductLength pl'
@@ -1026,10 +1026,10 @@
       Origin = 'Act'
     end
   end
-  object cds_ProdLengthGrp: TADQuery
+  object cds_ProdLengthGrp: TFDQuery
     AfterInsert = cds_ProdLengthGrpAfterInsert
     BeforePost = cds_ProdLengthGrpBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ProductLengthGroupName'
       '')
@@ -1067,10 +1067,10 @@
       Origin = 'Changed'
     end
   end
-  object cds_CSDLRow: TADQuery
+  object cds_CSDLRow: TFDQuery
     AfterInsert = cds_CSDLRowAfterInsert
     BeforePost = cds_CSDLRowBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.CustomSalesDimListRows'
       'WHERE CustomSalesDimListNo = :CustomSalesDimListNo'
@@ -1124,8 +1124,8 @@
       Origin = 'NL'
     end
   end
-  object cdsClient: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsClient: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT C.ClientNo,     '
       '       C.ClientName,'
@@ -1158,10 +1158,10 @@
       Size = 80
     end
   end
-  object cds_LengthRuleGrp: TADQuery
+  object cds_LengthRuleGrp: TFDQuery
     AfterInsert = cds_LengthRuleGrpAfterInsert
     BeforePost = cds_LengthRuleGrpBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.LengthRuleGrp'
       '')
@@ -1221,10 +1221,10 @@
       Lookup = True
     end
   end
-  object cds_Species: TADQuery
+  object cds_Species: TFDQuery
     AfterInsert = cds_SpeciesAfterInsert
     BeforePost = cds_SpeciesBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select S.*,'
       'CASE WHEN s.speciescode is null then'
@@ -1308,10 +1308,10 @@
       Lookup = True
     end
   end
-  object cds_grade: TADQuery
+  object cds_grade: TFDQuery
     AfterInsert = cds_gradeAfterInsert
     BeforePost = cds_gradeBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select G.*,'
       ''
@@ -1396,10 +1396,10 @@
       Lookup = True
     end
   end
-  object cds_Surfacing: TADQuery
+  object cds_Surfacing: TFDQuery
     AfterInsert = cds_SurfacingAfterInsert
     BeforePost = cds_SurfacingBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select S.*,'
       'CASE WHEN s.Surfacingcode is null then'
@@ -1484,10 +1484,10 @@
       Lookup = True
     end
   end
-  object cds_ProdCatg: TADQuery
+  object cds_ProdCatg: TFDQuery
     AfterInsert = cds_ProdCatgAfterInsert
     BeforePost = cds_ProdCatgBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pc.*,'
       ''
@@ -1566,8 +1566,8 @@
       Size = 48
     end
   end
-  object cds_IntPriceGrp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_IntPriceGrp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.InteralPriceGroup'
       '')
@@ -1602,8 +1602,8 @@
       Origin = 'DateCreated'
     end
   end
-  object cds_ProdLo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProdLo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select ProductGroupNo, ProductNo, ProductDisplayName FROM dbo.Pr' +
@@ -1635,8 +1635,8 @@
       Size = 150
     end
   end
-  object cds_PL: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PL: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT Distinct'
       'plg.GroupName,'
@@ -1715,9 +1715,9 @@
       Required = True
     end
   end
-  object cds_CSDL: TADQuery
+  object cds_CSDL: TFDQuery
     AfterInsert = cds_CSDLAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.CustomSalesDimListGrp'
       '')
@@ -1744,8 +1744,8 @@
       Origin = 'CreatedUser'
     end
   end
-  object cds_ProductLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProductLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ProductLength'
       'Order by ActualLengthMM'
@@ -1819,8 +1819,8 @@
       Lookup = True
     end
   end
-  object cds_PkgCode: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgCode: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select Distinct PC.PkgCodePPNo, PC.PackageTypeNo, PC.packagecode' +
@@ -1879,10 +1879,10 @@
       Origin = 'MarketRegionNo'
     end
   end
-  object cds_LinkProd: TADQuery
+  object cds_LinkProd: TFDQuery
     MasterSource = ds_Products
     MasterFields = 'ProductNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.AvrALOProdCopy'
       'WHERE AvrProductNo = :ProductNo'
@@ -1917,12 +1917,12 @@
       Lookup = True
     end
   end
-  object cds_intPrice: TADQuery
+  object cds_intPrice: TFDQuery
     AfterInsert = cds_intPriceAfterInsert
     BeforePost = cds_intPriceBeforePost
     MasterSource = ds_IntPriceGrp
     MasterFields = 'InteralPriceGroupNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.InteralPrice'
       'Where InteralPriceGroupNo = :InteralPriceGroupNo'
@@ -1974,10 +1974,10 @@
       Origin = 'DateCreated'
     end
   end
-  object cds_StatCode: TADQuery
+  object cds_StatCode: TFDQuery
     AfterInsert = cds_StatCodeAfterInsert
     BeforePost = cds_StatCodeBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.StatCode'
       '')
@@ -2018,8 +2018,8 @@
       Origin = 'ModifiedUser'
     end
   end
-  object cds_ProdListCust: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProdListCust: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT CSDLR.NT, CSDLR.NW, pd.ProductNo, pg.ProductGroupNo, gd.G' +
@@ -2133,12 +2133,12 @@
       FieldName = 'NW'
     end
   end
-  object cds_LengthRuleRow: TADQuery
+  object cds_LengthRuleRow: TFDQuery
     AfterInsert = cds_LengthRuleRowAfterInsert
     BeforePost = cds_LengthRuleRowBeforePost
     MasterSource = ds_LengthRuleGrp
     MasterFields = 'LengthRuleNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.LengthRuleRow'
       'WHERE LengthRuleNo = :LengthRuleNo'
@@ -2196,11 +2196,11 @@
       Required = True
     end
   end
-  object cds_gradeII: TADQuery
+  object cds_gradeII: TFDQuery
     AfterInsert = cds_gradeIIAfterInsert
     BeforePost = cds_gradeIIBeforePost
     OnPostError = cds_gradeIIPostError
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Grade'
       '')
@@ -2260,8 +2260,8 @@
       Size = 2
     end
   end
-  object cds_SurfacingII: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_SurfacingII: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Surfacing'
       '')
@@ -2331,8 +2331,8 @@
       Lookup = True
     end
   end
-  object cds_SpeciesII: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_SpeciesII: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Species'
       '')
@@ -2401,8 +2401,8 @@
       Lookup = True
     end
   end
-  object cds_Lengths: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Lengths: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select distinct plg.GroupName, pl.*, productgroupno FROM dbo.Pro' +
@@ -2516,8 +2516,8 @@
       Required = True
     end
   end
-  object sq_ProductGroupLengths: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_ProductGroupLengths: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ProductGroupLengths'
       'WHERE ProductGroupNo = :ProductGroupNo'
@@ -2556,8 +2556,8 @@
       Origin = 'DateCreated'
     end
   end
-  object sq_LengExist: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_LengExist: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select productLengthNo FROM dbo.ProductLength'
       'WHERE ActualLengthMM = :ALMM'
@@ -2609,8 +2609,8 @@
       Required = True
     end
   end
-  object sq_GetPkgTypeByCode: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgTypeByCode: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select p.ProductGroupNo, p.ProductNo, '
       'pt.PackageTypeNo, '
@@ -2703,8 +2703,8 @@
       Required = True
     end
   end
-  object sq_GetPkgType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select p.ProductGroupNo, pt.ProductNo FROM dbo.PackageType pt'
       'Inner Join dbo.Product p on p.productno = pt.productno'
@@ -2728,8 +2728,8 @@
       Origin = 'ProductNo'
     end
   end
-  object sq_GetPkgAttrPkgTypeNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgAttrPkgTypeNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select p.ProductGroupNo, p.ProductNo, '
       'pt.PackageTypeNo, '
@@ -2815,8 +2815,8 @@
       Origin = 'TotalNoOfPieces'
     end
   end
-  object sq_GetPkgTypeByVariantNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgTypeByVariantNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select p.ProductGroupNo, p.ProductNo, '
       'pt.PackageTypeNo, '
@@ -2916,8 +2916,8 @@
       Size = 40
     end
   end
-  object sq_DeActProd: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DeActProd: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.product'
       'Set Act = G.Act'

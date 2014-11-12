@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, DB, SqlTimSt,
-  kbmMemTable, Dialogs, Forms, Controls, uADStanIntf, uADStanOption,
-  uADStanParam, uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf,
-  uADCompDataSet, uADCompClient, uADStanAsync, uADDAptManager, VidaType ;
+  kbmMemTable, Dialogs, Forms, Controls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Stan.Async, FireDAC.DApt, VidaType ;
 
 type
   Tdm_DryKiln = class(TDataModule)
@@ -21,21 +21,21 @@ type
     mtPkgNosPackageNo: TIntegerField;
     mtPkgNosSupplierCode: TStringField;
     ds_SumKilnChargeRows: TDataSource;
-    cds_SumKilnChargeRows: TADQuery;
-    cds_Verk: TADQuery;
+    cds_SumKilnChargeRows: TFDQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkSearchName: TStringField;
     cds_VerkSalesRegionNo: TIntegerField;
-    cds_LIP: TADQuery;
+    cds_LIP: TFDQuery;
     cds_LIPLIPNo: TIntegerField;
     cds_LIPLIPName: TStringField;
     cds_LIPPIPNo: TIntegerField;
-    cds_PIP: TADQuery;
+    cds_PIP: TFDQuery;
     cds_PIPPIPNO: TIntegerField;
     cds_PIPPIPNAME: TStringField;
     cds_PIPOwnerNo: TIntegerField;
-    cds_KilnProps: TADQuery;
+    cds_KilnProps: TFDQuery;
     cds_KilnPropsClientNo: TIntegerField;
     cds_KilnPropsKiln_PIPNo: TIntegerField;
     cds_KilnPropsBeforeKiln_LIPNo: TIntegerField;
@@ -46,14 +46,14 @@ type
     cds_KilnPropsStringField3: TStringField;
     cds_KilnPropsStringField4: TStringField;
     cds_KilnPropsStringField5: TStringField;
-    cds_KilnChargeRow: TADQuery;
+    cds_KilnChargeRow: TFDQuery;
     cds_KilnChargeRowKilnChargeNo: TIntegerField;
     cds_KilnChargeRowPackageNo: TIntegerField;
     cds_KilnChargeRowSupplierCode: TStringField;
     cds_KilnChargeRowNoOfPkgs: TIntegerField;
     cds_KilnChargeRowDateCreated: TSQLTimeStampField;
     cds_KilnChargeRowCreatedUser: TIntegerField;
-    cds_KilnChargeHdr: TADQuery;
+    cds_KilnChargeHdr: TFDQuery;
     cds_KilnChargeHdrClientNo: TIntegerField;
     cds_KilnChargeHdrKilnChargeNo: TIntegerField;
     cds_KilnChargeHdrKilnNo: TIntegerField;
@@ -65,11 +65,11 @@ type
     cds_KilnChargeHdrStatus: TIntegerField;
     cds_KilnChargeHdrNote: TMemoField;
     cds_KilnChargeHdrStringField: TStringField;
-    cds_Kilns: TADQuery;
+    cds_Kilns: TFDQuery;
     cds_KilnsClientNo: TIntegerField;
     cds_KilnsKilnNo: TIntegerField;
     cds_KilnsKilnName: TStringField;
-    sq_SeTKilnToComplete: TADQuery;
+    sq_SeTKilnToComplete: TFDQuery;
     sq_SeTKilnToCompleteKilnChargeNo: TIntegerField;
     sq_SeTKilnToCompleteKilnNo: TIntegerField;
     sq_SeTKilnToCompleteStartTime: TSQLTimeStampField;
@@ -80,18 +80,18 @@ type
     sq_SeTKilnToCompleteClientNo: TIntegerField;
     sq_SeTKilnToCompleteStatus: TIntegerField;
     sq_SeTKilnToCompleteNote: TMemoField;
-    sq_GetPrevKilnChargeNo: TADQuery;
+    sq_GetPrevKilnChargeNo: TFDQuery;
     sq_GetPrevKilnChargeNoKilnChargeNo: TIntegerField;
-    sq_MoveToAfterKiln: TADQuery;
-    sq_GetPkgNosOfKilnCharge: TADQuery;
+    sq_MoveToAfterKiln: TFDQuery;
+    sq_GetPkgNosOfKilnCharge: TFDQuery;
     sq_GetPkgNosOfKilnChargePackageNo: TIntegerField;
     sq_GetPkgNosOfKilnChargeSupplierCode: TStringField;
-    sq_DeleteKChargeRows: TADQuery;
-    sq_MovePkgsToLip: TADQuery;
-    sq_GetPkgNos: TADQuery;
+    sq_DeleteKChargeRows: TFDQuery;
+    sq_MovePkgsToLip: TFDQuery;
+    sq_GetPkgNos: TFDQuery;
     sq_GetPkgNosPackageNo: TIntegerField;
     sq_GetPkgNosSupplierCode: TStringField;
-    sq_LastKilnChNo: TADQuery;
+    sq_LastKilnChNo: TFDQuery;
     sq_LastKilnChNoKilnChargeNo: TIntegerField;
     cds_SumKilnChargeRowsKilnChargeNo: TIntegerField;
     cds_SumKilnChargeRowsProdukt: TStringField;
@@ -106,12 +106,12 @@ type
     cds_KilnChargeHdrKiln_LIPNo: TIntegerField;
     cds_KilnChargeHdrAfterKiln_LIPNo: TIntegerField;
     cds_KilnChargeRowProductDisplayName: TStringField;
-    sq_GetPkgNosNoLength: TADQuery;
+    sq_GetPkgNosNoLength: TFDQuery;
     sq_GetPkgNosNoLengthPackageNo: TIntegerField;
     sq_GetPkgNosNoLengthSupplierCode: TStringField;
     cds_KilnsNoOfVagnar: TIntegerField;
     cds_KilnsTypeOfKiln: TIntegerField;
-    cds_KilnChargeHeader: TADQuery;
+    cds_KilnChargeHeader: TFDQuery;
     cds_KilnChargeHeaderClientNo: TIntegerField;
     cds_KilnChargeHeaderKilnChargeNo: TIntegerField;
     cds_KilnChargeHeaderKilnNo: TIntegerField;

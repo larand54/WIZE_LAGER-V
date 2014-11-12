@@ -176,9 +176,9 @@
     Left = 231
     Top = 192
   end
-  object cds_PcsPerLen: TADQuery
+  object cds_PcsPerLen: TFDQuery
     OnCalcFields = cds_PcsPerLenCalcFields
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '-- Antal per l'#228'ngd'
       'Select distinct '
@@ -310,8 +310,8 @@
       ReadOnly = True
     end
   end
-  object cds_InvSum: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_InvSum: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       ''
       'Select distinct '
@@ -440,9 +440,9 @@
       Origin = 'PIPNo'
     end
   end
-  object cds_PkgList: TADQuery
+  object cds_PkgList: TFDQuery
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'VIS_VIDA.dbo.PackageNumber'
     SQL.Strings = (
       'Select distinct'
@@ -1063,8 +1063,8 @@
       Size = 3
     end
   end
-  object cds_PkgNoList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgNoList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
       '0 AS PKT,'
@@ -1596,9 +1596,9 @@
       Size = 30
     end
   end
-  object cds_Props: TADQuery
+  object cds_Props: TFDQuery
     AfterInsert = cds_PropsAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.userprops'
       'WHERE UserID = :UserID'
@@ -1802,8 +1802,8 @@
       Size = 50
     end
   end
-  object cds_OtherLengths: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_OtherLengths: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select distinct Count(pn.PackageNo) AS PKT, LS.NoOfLengths AS An' +
@@ -1891,8 +1891,8 @@
       Required = True
     end
   end
-  object cds_ProductLengthInGroup: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProductLengthInGroup: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT ActualLengthMM AS ALMM,'
       'NominalLengthMM AS NLMM,'
@@ -1934,8 +1934,8 @@
       Size = 15
     end
   end
-  object cds_LengthGroup: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LengthGroup: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT distinct PG.GroupNo, GroupName, Count(PLG.ProductLengthNo' +
@@ -1967,8 +1967,8 @@
       ReadOnly = True
     end
   end
-  object sq_Varugrupp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Varugrupp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select  s.VarugruppNamn, S.VarugruppNo,'
       'S.VarugruppNo AS VarugruppID'
@@ -1994,8 +1994,8 @@
       Required = True
     end
   end
-  object sq_UpdatePrice: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_UpdatePrice: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'UPDATE dbo.PackageNumber'
       'SET Original_Price = :Price,'
@@ -2030,8 +2030,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_OneUniquePkg: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_OneUniquePkg: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       '        PR.ProductDisplayName           AS PRODUCT,'
@@ -2261,15 +2261,15 @@
       Origin = 'Status'
     end
   end
-  object sq_Temp_Inventory: TADQuery
+  object sq_Temp_Inventory: TFDQuery
     AutoCalcFields = False
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     Left = 888
     Top = 144
   end
-  object sq_LogInvByOwnerCity: TADQuery
+  object sq_LogInvByOwnerCity: TFDQuery
     AutoCalcFields = False
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select LIP.LogicalInventoryName, LIP.LogicalInventoryPointNo'
       'FROM'
@@ -2308,8 +2308,8 @@
       Required = True
     end
   end
-  object sq_Grades: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Grades: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select GradeName, GradeNo'
       'From Grade'
@@ -2332,8 +2332,8 @@
       Required = True
     end
   end
-  object sq_Species: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Species: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select SpeciesName, SpeciesNo'
       'From Species'
@@ -2355,8 +2355,8 @@
       Required = True
     end
   end
-  object sq_GroupLengths: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GroupLengths: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct pl.ActualLengthMM'
       'FROM dbo.ProductLengthGroup PLG'
@@ -2380,8 +2380,8 @@
       Required = True
     end
   end
-  object sq_PkgType_InvoiceByCSD: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgType_InvoiceByCSD: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.PkgType_Invoice'
       'FROM dbo.PkgType_Invoice'
@@ -2708,7 +2708,7 @@
       ''
       'WHEN VU.VolumeUnitName = '#39'Stycketal'#39' THEN PTD.NoOfPieces'
       ''
-      'WHEN VU.VolumeUnitName = '#39'm3 aDxaL'#39' THEN'
+      'WHEN VU.VolumeUnitName = '#39'm3 FDxaL'#39' THEN'
       'CASE'
       ' WHEN PG.SequenceNo = 0 THEN'
       
@@ -2784,7 +2784,7 @@
       
         '-- m3ActualSizeNomLength ***************************************' +
         '******'
-      'WHEN VU.VolumeUnitName = '#39'm3 aDxnL'#39' THEN'
+      'WHEN VU.VolumeUnitName = '#39'm3 FDxnL'#39' THEN'
       'CASE'
       'WHEN PG.SequenceNo = 0 THEN'
       'CASE'
@@ -2933,7 +2933,7 @@
       ''
       'WHEN PU.TemplateUnitName = '#39'Stycketal'#39' THEN PTD.NoOfPieces'
       ''
-      'WHEN PU.TemplateUnitName = '#39'm3 aDxaL'#39' THEN '
+      'WHEN PU.TemplateUnitName = '#39'm3 FDxaL'#39' THEN '
       'CASE WHEN PG.SequenceNo = 0 THEN '
       'ROUND(CAST(('
       'PTD.NoOfPieces * PG.ActualThicknessMM * PG.ActualWidthMM *'
@@ -3007,7 +3007,7 @@
       
         '-- m3ActualSizeNomLength ***************************************' +
         '******'
-      'WHEN PU.TemplateUnitName = '#39'm3 aDxnL'#39' THEN'
+      'WHEN PU.TemplateUnitName = '#39'm3 FDxnL'#39' THEN'
       'CASE WHEN PG.SequenceNo = 0 THEN'
       'CASE'
       '-- random length'
@@ -3107,8 +3107,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_DelPkgType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelPkgType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.PkgType_Invoice'
       'WHERE LoadNo = :LoadNo'
@@ -3124,8 +3124,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_AL: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AL: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT Distinct'
       'PL.ActualLengthMM AS AL'
@@ -3145,8 +3145,8 @@
       Required = True
     end
   end
-  object sq_BarCode: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_BarCode: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select  s.BarCodeID, S.BarCodeNo,'
       'CASE WHEN s.BarCodeID is null then'
@@ -3178,8 +3178,8 @@
       Size = 25
     end
   end
-  object sq_AB: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AB: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct ActualWidthMM AS AB FROM dbo.ProductGroup'
       'Order By ActualWidthMM'
@@ -3191,8 +3191,8 @@
       Origin = 'AB'
     end
   end
-  object sq_Specie: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Specie: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select  s.speciescode, S.SpeciesNo,'
       'CASE WHEN s.speciescode is null then'
@@ -3225,8 +3225,8 @@
       Size = 38
     end
   end
-  object sq_GradeStamp: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GradeStamp: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select  s.GradeStampID, S.GradeStampNo,'
       'CASE WHEN s.GradeStampID is null then'
@@ -3258,8 +3258,8 @@
       Size = 25
     end
   end
-  object sq_AT: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AT: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct ActualThicknessMM AS AT FROM dbo.ProductGroup'
       'Order By ActualThicknessMM'
@@ -3271,8 +3271,8 @@
       Origin = '[AT]'
     end
   end
-  object sq_Grade: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Grade: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
       'CASE WHEN g.gradecode is null then'
@@ -3336,8 +3336,8 @@
       Size = 30
     end
   end
-  object sq_Surfacing: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Surfacing: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct  s.Surfacingcode, S.SurfacingNo,'
       'CASE WHEN s.Surfacingcode is null then'
@@ -3401,8 +3401,8 @@
       Size = 30
     end
   end
-  object sq_PC2: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PC2: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct s.ImpCode, S.ProductCategoryNo,'
       'CASE WHEN s.ImpCode is null then'
@@ -3440,8 +3440,8 @@
       Size = 40
     end
   end
-  object cds_PC: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PC: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct s.ImpCode, S.ProductCategoryNo,'
       'CASE WHEN s.ImpCode is null then'
@@ -3507,8 +3507,8 @@
       Size = 40
     end
   end
-  object sq_GetHighPcsNoLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetHighPcsNoLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select top 1 pt.ProductNo, pn.PackageTypeNo,pl.ActualLengthMM, p' +
@@ -3594,8 +3594,8 @@
       ReadOnly = True
     end
   end
-  object sq_GetHighPcs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetHighPcs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select top 1 pt.ProductNo, pn.PackageTypeNo,pl.ActualLengthMM, p' +
@@ -3672,8 +3672,8 @@
       ReadOnly = True
     end
   end
-  object sq_GetPkgNosNoLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgNosNoLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo, pn.SupplierCode From'
       'dbo.Product p'
@@ -3732,8 +3732,8 @@
       Size = 3
     end
   end
-  object sq_GetPkgNos: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgNos: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo, pn.SupplierCode From'
       'dbo.Product p'
@@ -3795,8 +3795,8 @@
       Size = 3
     end
   end
-  object sp_OnePackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_OnePackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_OnePackageNo'
     Left = 143
     Top = 248
@@ -3821,8 +3821,8 @@
         Size = 3
       end>
   end
-  object sp_NewPackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_AddVardPkg_II'
     Left = 143
     Top = 192
@@ -3877,8 +3877,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_VardaLager: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_VardaLager: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_VLneg'
     Left = 143
     Top = 144
@@ -3915,8 +3915,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_Kund: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Kund: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct C.ClientNo, C.ClientName, C.SearchName'
       'From'
@@ -3944,8 +3944,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_Land: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Land: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct ST_AdrCtry.CountryNo, ST_AdrCtry.CountryName'
       'From'
@@ -3972,8 +3972,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_Matpunkt: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Matpunkt: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pu.ProductionUnitNo,  rp.RegPointName , rp.RegPointNo'
       'FROM dbo.ProductionUnit pu'
@@ -3992,8 +3992,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_SkiftLag: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SkiftLag: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT st.[ShiftTeamNo]'
       '      ,st.[ShiftTeamName]'
@@ -4010,16 +4010,16 @@
         ParamType = ptInput
       end>
   end
-  object sq_NT: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_NT: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct NominalThicknessMM AS NT FROM dbo.ProductGroup'
       'Order By NominalThicknessMM')
     Left = 469
     Top = 336
   end
-  object sq_NB: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_NB: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct NominalWidthMM AS NB FROM dbo.ProductGroup'
       'Order By NominalWidthMM')
@@ -4041,9 +4041,9 @@
     Left = 711
     Top = 200
   end
-  object cds_ProductionByPackageNo: TADQuery
+  object cds_ProductionByPackageNo: TFDQuery
     AutoCalcFields = False
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
       'CASE'
@@ -4273,9 +4273,9 @@
       Size = 66
     end
   end
-  object cds_ProductionByProduct: TADQuery
+  object cds_ProductionByProduct: TFDQuery
     AutoCalcFields = False
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct '
       'CASE'
@@ -4504,9 +4504,9 @@
       Size = 66
     end
   end
-  object cds_DeliveryStat: TADQuery
+  object cds_DeliveryStat: TFDQuery
     AutoCalcFields = False
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct Kund.ClientName AS Kund, '
       'pd.ProductNo,'
@@ -4584,8 +4584,8 @@
     Left = 712
     Top = 152
   end
-  object sq_PC2old: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PC2old: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct s.ImpCode, S.ProductCategoryNo,'
       'CASE WHEN s.ImpCode is null then'
@@ -4651,7 +4651,7 @@
       Size = 40
     end
   end
-  object cds_SpecLayout: TADQuery
+  object cds_SpecLayout: TFDQuery
     Indexes = <
       item
         Active = True
@@ -4660,7 +4660,7 @@
         Fields = 'PackageLogLayoutNo'
       end>
     IndexName = 'cds_SpecLayout_Index01'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select PackageLogLayoutNo, '
       'PackageLogLayoutName,'
@@ -4776,8 +4776,8 @@
     Left = 1016
     Top = 384
   end
-  object cds_KilnVagnar: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_KilnVagnar: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select distinct '#39'Radnr '#39' + CAST(kcr.RowNo AS Varchar(2)) AS Rad,' +
@@ -5152,8 +5152,8 @@
     Left = 840
     Top = 592
   end
-  object cds_GetAntalVagnar: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_GetAntalVagnar: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select K.[ClientNo]'
       '      ,K.[KilnNo]'
@@ -5193,8 +5193,8 @@
       Origin = 'NoOfVagnar'
     end
   end
-  object cds_AntalVagnarPerStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_AntalVagnarPerStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT     Count(*) AS AntalVagnar'
       'FROM       dbo.KilnVagn kv'
@@ -5223,8 +5223,8 @@
       ReadOnly = True
     end
   end
-  object cds_GetSistaVagnNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_GetSistaVagnNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT     Max(kv.VagnNo) AS SistaVagnNo'
       'FROM       dbo.KilnVagn kv'
@@ -5247,8 +5247,8 @@
       ReadOnly = True
     end
   end
-  object cds_Vagnar: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Vagnar: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct top 10 kv.VagnNo'
       'FROM dbo.KilnChargeHdr KCH'
@@ -5270,7 +5270,7 @@
       Required = True
     end
   end
-  object cds_KilnChargeRows: TADQuery
+  object cds_KilnChargeRows: TFDQuery
     AfterInsert = cds_KilnChargeRowsAfterInsert
     AfterPost = cds_KilnChargeRowsAfterPost
     BeforeDelete = cds_KilnChargeRowsBeforeDelete
@@ -5282,7 +5282,7 @@
         Fields = 'RowNo'
       end>
     IndexName = 'cds_KilnChargeRowsIndexRowNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select kcr.*, P.ProductDisplayName,'
       
@@ -5377,8 +5377,8 @@
       Size = 255
     end
   end
-  object cds_KilnChargeHdr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_KilnChargeHdr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select KCH.*, KP.Kiln_PIPNo, KP.[BeforeKiln_LIPNo], KP.[Kiln_LIP' +
@@ -5469,9 +5469,9 @@
     Left = 1032
     Top = 88
   end
-  object sq_PkgExistInInventory: TADQuery
+  object sq_PkgExistInInventory: TFDQuery
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     FetchOptions.AssignedValues = [evCache]
     SQL.Strings = (
       'SELECT PN.PackageNo'
@@ -5508,8 +5508,8 @@
       Required = True
     end
   end
-  object cds_SelectProgressKiln: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_SelectProgressKiln: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select KP.KilnName + '#39' - '#39' + KCH.Info + '#39'  ['#39' + CAST(ISNULL(KCH.' +
@@ -5550,10 +5550,10 @@
       Size = 93
     end
   end
-  object cds_KilnVagn: TADQuery
+  object cds_KilnVagn: TFDQuery
     AfterInsert = cds_KilnVagnAfterInsert
     BeforePost = cds_KilnVagnBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.KilnVagn'
       'WHERE KilnChargeNo = :KilnChargeNo'
@@ -5604,8 +5604,8 @@
       Origin = 'DateCreated'
     end
   end
-  object sp_MoveVagn: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_MoveVagn: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_MoveVagn'
     Left = 704
     Top = 624
@@ -5641,8 +5641,8 @@
         ParamType = ptInput
       end>
   end
-  object cds_GetLastVagnNoPerVagnStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_GetLastVagnNoPerVagnStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select MIN(kv.VagnNo) AS VagnNo FROM dbo.KilnVagn kv'
       'WHERE kv.VagnStatus = :VagnStatus'
@@ -5667,8 +5667,8 @@
       ReadOnly = True
     end
   end
-  object cds_VagnStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_VagnStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.KilnVagn'
       'WHERE VagnNo = :VagnNo'
@@ -5719,8 +5719,8 @@
       Origin = 'CreatedUser'
     end
   end
-  object cds_GetFirstVagnNoPerVagnStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_GetFirstVagnNoPerVagnStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select MAX(kv.VagnNo) AS VagnNo FROM dbo.KilnVagn kv'
       'WHERE kv.VagnStatus = :VagnStatus'
@@ -5865,8 +5865,8 @@
       FieldName = 'L6'
     end
   end
-  object sc_GetProductNoByPackageNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sc_GetProductNoByPackageNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT pt.productno'
       'FROM  dbo.PackageNumber PN'
@@ -5894,8 +5894,8 @@
       Origin = 'productno'
     end
   end
-  object cds_PkgCost: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgCost: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT TOP 1000 [PackageNo]'
       '      ,[SupplierCode]'
@@ -6003,8 +6003,8 @@
     Left = 1232
     Top = 288
   end
-  object sp_Manuell_LipSum: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Manuell_LipSum: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_Manuell_LipSum_v2'
     Left = 328
     Top = 304
@@ -6048,8 +6048,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_MovePackage: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_MovePackage: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_MovePackage'
     Left = 1088
     Top = 640
@@ -6092,8 +6092,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_PkgExistInLIP: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PkgExistInLIP: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_PkgExistInLIP'
     Left = 1272
     Top = 32

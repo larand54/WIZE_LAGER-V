@@ -86,15 +86,15 @@ object dmModule1: TdmModule1
       'CU.CurrencyNo,'
       ''
       'CU.CurrencyName'#9#9#9'AS CURRENCYNAME,'
-      'ADR.AddressName'#9#9#9'AS BILL_ADDRESS_NAME,'
-      'ADR.AddressLine1'#9#9'AS BILL_ADDRESSLINE1,'
-      'ADR.AddressLine2'#9#9'AS BILL_ADDRESSLINE2,'
-      'ADR.AddressLine3'#9#9'AS BILL_ADDRESSLINE3,'
-      'ADR.AddressLine4'#9#9'AS BILL_ADDRESSLINE4,'
-      'ADR.StateOrProvince'#9#9'AS BILL_STATEORPROVINCE,'
-      'ADR.PostalCode'#9#9#9'AS BILL_POSTALCODE,'
-      'AdrCY.CityName '#9#9#9'AS BILL_ADDRESSCITY,'
-      'AdrCtry.CountryName '#9#9'AS BILL_ADDRESSCOUNTRY,'
+      'FDR.AddressName'#9#9#9'AS BILL_ADDRESS_NAME,'
+      'FDR.AddressLine1'#9#9'AS BILL_ADDRESSLINE1,'
+      'FDR.AddressLine2'#9#9'AS BILL_ADDRESSLINE2,'
+      'FDR.AddressLine3'#9#9'AS BILL_ADDRESSLINE3,'
+      'FDR.AddressLine4'#9#9'AS BILL_ADDRESSLINE4,'
+      'FDR.StateOrProvince'#9#9'AS BILL_STATEORPROVINCE,'
+      'FDR.PostalCode'#9#9#9'AS BILL_POSTALCODE,'
+      'FDrCY.CityName '#9#9#9'AS BILL_ADDRESSCITY,'
+      'FDrCtry.CountryName '#9#9'AS BILL_ADDRESSCOUNTRY,'
       ''
       'ST_ADR.AddressName'#9#9#9'AS SHIPTO_ADDRESS_NAME,'
       'ST_ADR.AddressLine1'#9#9#9'AS SHIPTO_ADDRESSLINE1,'
@@ -131,11 +131,11 @@ object dmModule1: TdmModule1
       ''
       ''
       
-        #9'INNER JOIN dbo.Address '#9#9'ADR'#9#9'ON'#9'ADR.AddressNo'#9#9'= CP.DefaultBil' +
+        #9'INNER JOIN dbo.Address '#9#9'FDR'#9#9'ON'#9'FDR.AddressNo'#9#9'= CP.DefaultBil' +
         'lingAddressNo'
-      #9'INNER JOIN dbo.CITY'#9#9'AdrCY'#9#9'ON'#9'AdrCY.CityNo '#9#9'= ADR.CityNo'
+      #9'INNER JOIN dbo.CITY'#9#9'FDrCY'#9#9'ON'#9'FDrCY.CityNo '#9#9'= FDR.CityNo'
       
-        #9'INNER JOIN dbo.Country'#9#9'AdrCtry'#9#9'ON'#9'AdrCtry.CountryNo '#9'= ADR.Co' +
+        #9'INNER JOIN dbo.Country'#9#9'FDrCtry'#9#9'ON'#9'FDrCtry.CountryNo '#9'= FDR.Co' +
         'untryNo'
       ''
       #9'LEFT OUTER JOIN dbo.Address '#9#9'ST_ADR'#9#9
@@ -1306,7 +1306,7 @@ object dmModule1: TdmModule1
     Left = 120
     Top = 168
   end
-  object tblLoadFreight: TADMemTable
+  object tblLoadFreight: TFDMemTable
     AfterInsert = tblLoadFreightAfterInsert
     OnCalcFields = tblLoadFreightCalcFields
     IndexName = 'tblLoadFreightIndex1'
@@ -2338,7 +2338,7 @@ object dmModule1: TdmModule1
     Left = 360
     Top = 440
   end
-  object mtShippers: TADMemTable
+  object mtShippers: TFDMemTable
     IndexFieldNames = 'Shipper'
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll

@@ -375,7 +375,7 @@ object fPickPkgNoTork: TfPickPkgNoTork
     Left = 360
     Top = 272
   end
-  object mtFilter: TADMemTable
+  object mtFilter: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -416,8 +416,8 @@ object fPickPkgNoTork: TfPickPkgNoTork
       Color = clGreen
     end
   end
-  object sq_GetPkgNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct pn.PackageNo,'
       'pn.SupplierCode AS LEVKOD,'
@@ -514,8 +514,8 @@ object fPickPkgNoTork: TfPickPkgNoTork
       Origin = 'productno'
     end
   end
-  object sq_GetInActive: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetInActive: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo AS PackageNo,'
       'pn.SupplierCode AS LEVKOD,'
@@ -622,8 +622,8 @@ object fPickPkgNoTork: TfPickPkgNoTork
       Origin = 'ProductNo'
     end
   end
-  object sq_GetAllProducts: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetAllProducts: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct pd.ProductDisplayName, pd.ProductNo,'
       'pd.ActualThicknessMM, pd.ActualWidthMM, pd.GradeName,'
@@ -686,8 +686,8 @@ object fPickPkgNoTork: TfPickPkgNoTork
       Size = 30
     end
   end
-  object cds_Products: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Products: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct pd.ProductDisplayName, pd.ProductNo,'
       'pd.ActualThicknessMM, pd.ActualWidthMM, pd.GradeName,'

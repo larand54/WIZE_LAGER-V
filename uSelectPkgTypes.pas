@@ -24,9 +24,9 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, dxSkinsdxBarPainter,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet,
-  uADCompClient;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TfSelectPkgTypes = class(TForm)
@@ -73,7 +73,7 @@ type
     grdPkgTypesDBTableView1PPP: TcxGridDBColumn;
     grdPkgTypeLoadPlanDBTableView1PPP: TcxGridDBColumn;
     grdPkgTypesDBTableView1Column1: TcxGridDBColumn;
-    cds_Surfacing_SV: TADQuery;
+    cds_Surfacing_SV: TFDQuery;
     cds_Surfacing_SVPackageTypeNo: TIntegerField;
     cds_Surfacing_SVProductDisplayName: TStringField;
     cds_Surfacing_SVBarCodeID: TStringField;

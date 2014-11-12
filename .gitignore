@@ -58,6 +58,7 @@ Source/Win32
 # Delphi history and backups
 __history/
 *.~*
+*.bak
 
 # Some scrap?
 *.scs

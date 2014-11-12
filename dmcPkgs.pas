@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, DB, kbmMemTable, Dialogs,
-  VidaType, Controls, Forms, uADStanIntf, uADStanOption, uADStanParam,
-  uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf, uADCompDataSet,
-  uADCompClient, uADStanAsync, uADDAptManager, SQLtimst ;
+  VidaType, Controls, Forms, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FireDAC.Stan.Async, FireDAC.DApt, SQLtimst ;
 
 type
 
@@ -59,7 +59,7 @@ type
     mtPcsPerLengthUserID: TIntegerField;
     mtPcsPerLengthALMM: TFloatField;
     mtLoadPackagesInvNr: TIntegerField;
-    sq_OneUniquePkgExt: TADQuery;
+    sq_OneUniquePkgExt: TFDQuery;
     sq_OneUniquePkgExtPRODUCT: TStringField;
     sq_OneUniquePkgExtPACKAGENO: TIntegerField;
     sq_OneUniquePkgExtPACKAGETYPENO: TIntegerField;
@@ -91,24 +91,24 @@ type
     sq_OneUniquePkgExtPIP: TIntegerField;
     sq_OneUniquePkgExtStatus: TIntegerField;
     sq_OneUniquePkgExtSurfacingNo: TIntegerField;
-    cds_PkgStatus: TADQuery;
+    cds_PkgStatus: TFDQuery;
     cds_PkgStatusSupplierCode: TStringField;
     cds_PkgStatusLIPGroupNo: TIntegerField;
     cds_PkgStatusInvenType: TIntegerField;
     cds_PkgStatusLIPNo: TIntegerField;
     cds_PkgStatusAvReg: TIntegerField;
     cds_PkgStatusPkgRealLIPNo: TIntegerField;
-    cds_Prod_In_LO: TADQuery;
+    cds_Prod_In_LO: TFDQuery;
     cds_Prod_In_LOPRODUCT: TStringField;
     cds_Prod_In_LOPRODUCTNO: TIntegerField;
-    sq_PkgAvReg: TADQuery;
+    sq_PkgAvReg: TFDQuery;
     sq_PkgAvRegRegPointName: TStringField;
     sq_PkgAvRegProductionDate: TSQLTimeStampField;
-    sq_PkgNoAvail: TADQuery;
+    sq_PkgNoAvail: TFDQuery;
     sq_PkgNoAvailPackageNo: TIntegerField;
     sq_PkgNoAvailSupplierCode: TStringField;
     sq_PkgNoAvailPackageTypeNo: TIntegerField;
-    sq_ProductLengths: TADQuery;
+    sq_ProductLengths: TFDQuery;
     sq_ProductLengthsProductLengthNo: TIntegerField;
     sq_ProductLengthsActualLengthMM: TFloatField;
     sq_ProductLengthsNominalLengthMM: TFloatField;
@@ -116,7 +116,7 @@ type
     sq_ProductLengthsActualLengthINCH: TStringField;
     sq_ProductLengthsPET: TIntegerField;
     sq_ProductLengthsFingerJoint: TIntegerField;
-    sq_GetPkgsByLONo: TADQuery;
+    sq_GetPkgsByLONo: TFDQuery;
     sq_GetPkgsByLONoPRODUCT: TStringField;
     sq_GetPkgsByLONoPACKAGENO: TIntegerField;
     sq_GetPkgsByLONoPACKAGETYPENO: TIntegerField;
@@ -160,7 +160,7 @@ type
     sq_GetPkgsByLONoLOADING_LOCATION: TStringField;
     sq_GetPkgsByLONoSHIP_TO: TStringField;
     sq_GetPkgsByLONoSurfacingNo: TIntegerField;
-    sq_OnePkgDetailData: TADQuery;
+    sq_OnePkgDetailData: TFDQuery;
     sq_OnePkgDetailDataPRODUCT: TStringField;
     sq_OnePkgDetailDataPACKAGENO: TIntegerField;
     sq_OnePkgDetailDataPACKAGETYPENO: TIntegerField;
@@ -190,7 +190,7 @@ type
     sq_OnePkgDetailDataSUPPLIERNO: TIntegerField;
     sq_OnePkgDetailDataOLD_PACKAGETYPENO: TIntegerField;
     sq_OnePkgDetailDataSurfacingNo: TIntegerField;
-    sq_OneUniquePkg: TADQuery;
+    sq_OneUniquePkg: TFDQuery;
     sq_OneUniquePkgPRODUCT: TStringField;
     sq_OneUniquePkgPACKAGENO: TIntegerField;
     sq_OneUniquePkgPACKAGETYPENO: TIntegerField;
@@ -222,10 +222,10 @@ type
     sq_OneUniquePkgPIP: TIntegerField;
     sq_OneUniquePkgStatus: TIntegerField;
     sq_OneUniquePkgSurfacingNo: TIntegerField;
-    sq_PkgInLoad: TADQuery;
+    sq_PkgInLoad: TFDQuery;
     sq_PkgInLoadLastNr: TIntegerField;
     sq_PkgInLoadLO: TIntegerField;
-    sq_OnePkg: TADQuery;
+    sq_OnePkg: TFDQuery;
     sq_OnePkgPRODUCT: TStringField;
     sq_OnePkgPACKAGENO: TIntegerField;
     sq_OnePkgPACKAGETYPENO: TIntegerField;
@@ -254,29 +254,29 @@ type
     sq_OnePkgWRAPTYPENO: TIntegerField;
     sq_OnePkgSUPPLIERNO: TIntegerField;
     sq_OnePkgOLD_PACKAGETYPENO: TIntegerField;
-    sp_PackageTypes: TADStoredProc;
-    sp_NewPackageType: TADStoredProc;
-    sp_NewPackageDetail: TADStoredProc;
-    sp_ExtMovePkg: TADStoredProc;
-    sp_changePkgInventering: TADStoredProc;
-    sp_MovePkg: TADStoredProc;
-    sp_updateFelReg: TADStoredProc;
-    sp_Del_PkgProd: TADStoredProc;
-    sp_ChangePkg: TADStoredProc;
-    sp_ChgPkgVard: TADStoredProc;
-    sp_StandardLengths: TADStoredProc;
-    sp_ProdLeng: TADStoredProc;
-    sp_PkgInfo: TADStoredProc;
-    sp_PackageTotals: TADStoredProc;
-    sp_NewPackageNo: TADStoredProc;
-    sp_Populate_One_PkgTypeLengths: TADStoredProc;
-    sp_PackageTypeDetail: TADStoredProc;
-    sp_VardaBortPaket: TADStoredProc;
-    sp_RemovePackageFromInventory: TADStoredProc;
-    sp_DeletePackage: TADStoredProc;
-    sp_PaRegPaket: TADStoredProc;
-    sp_AktiveraPktExt: TADStoredProc;
-    sp_OnePackageNo: TADStoredProc;
+    sp_PackageTypes: TFDStoredProc;
+    sp_NewPackageType: TFDStoredProc;
+    sp_NewPackageDetail: TFDStoredProc;
+    sp_ExtMovePkg: TFDStoredProc;
+    sp_changePkgInventering: TFDStoredProc;
+    sp_MovePkg: TFDStoredProc;
+    sp_updateFelReg: TFDStoredProc;
+    sp_Del_PkgProd: TFDStoredProc;
+    sp_ChangePkg: TFDStoredProc;
+    sp_ChgPkgVard: TFDStoredProc;
+    sp_StandardLengths: TFDStoredProc;
+    sp_ProdLeng: TFDStoredProc;
+    sp_PkgInfo: TFDStoredProc;
+    sp_PackageTotals: TFDStoredProc;
+    sp_NewPackageNo: TFDStoredProc;
+    sp_Populate_One_PkgTypeLengths: TFDStoredProc;
+    sp_PackageTypeDetail: TFDStoredProc;
+    sp_VardaBortPaket: TFDStoredProc;
+    sp_RemovePackageFromInventory: TFDStoredProc;
+    sp_DeletePackage: TFDStoredProc;
+    sp_PaRegPaket: TFDStoredProc;
+    sp_AktiveraPktExt: TFDStoredProc;
+    sp_OnePackageNo: TFDStoredProc;
     sp_ProdLengProductLengthNo: TIntegerField;
     sp_StandardLengthsProductLengthNo: TIntegerField;
     sp_StandardLengthsActualLengthMM: TFloatField;
@@ -292,8 +292,8 @@ type
     sq_OneUniquePkgActualWidthMM: TFloatField;
     sq_OneUniquePkgNominalThicknessMM: TFloatField;
     sq_OneUniquePkgNominalWidthMM: TFloatField;
-    sp_vida_updateProdStat: TADStoredProc;
-    sp_PaRegPaket_II: TADStoredProc;
+    sp_vida_updateProdStat: TFDStoredProc;
+    sp_PaRegPaket_II: TFDStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure mtPackagesBeforePost(DataSet: TDataSet);
     procedure mtLoadPackagesAfterInsert(DataSet: TDataSet);
@@ -611,8 +611,8 @@ begin
  mtLoadPackages.DisableControls ;
 
  Try
-//  if dmsConnector.ADConnection1.InTransaction then
-//   dmsConnector.ADConnection1.Rollback ;
+//  if dmsConnector.FDConnection1.InTransaction then
+//   dmsConnector.FDConnection1.Rollback ;
 
 //  dmsConnector.StartTransaction;
   try

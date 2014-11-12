@@ -29,8 +29,8 @@ object dmcPayment: TdmcPayment
     Left = 376
     Top = 112
   end
-  object cds_LoadDetailPkgLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadDetailPkgLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM dbo.LoadDetailPkgLength'
@@ -49,8 +49,8 @@ object dmcPayment: TdmcPayment
       FieldName = 'SupplierShipPlanObjectNo'
     end
   end
-  object sq_FindAvr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_FindAvr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'PL.PaymentNo'#9#9#9#9'AS'#9'AVRAKNING_NO,'
@@ -89,8 +89,8 @@ object dmcPayment: TdmcPayment
       Required = True
     end
   end
-  object cds_LoadHead: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadHead: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM dbo.Loads'
@@ -205,8 +205,8 @@ object dmcPayment: TdmcPayment
       Origin = 'LIPNo'
     end
   end
-  object cds_LoadRemAvr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadRemAvr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.LoadRemAvr'
       '')
@@ -227,8 +227,8 @@ object dmcPayment: TdmcPayment
       Origin = 'CreatedUser'
     end
   end
-  object sq_LO_Type: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_LO_Type: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT distinct   ISNULL(SSP.ObjectType,-1) AS ObjectType,  OH.O' +
@@ -275,8 +275,8 @@ object dmcPayment: TdmcPayment
       Origin = 'OrderType'
     end
   end
-  object sq_LoadPackages: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_LoadPackages: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       'PN.LogicalInventoryPointNo , PN.PackageNo, PN.SupplierCode'
@@ -317,8 +317,8 @@ object dmcPayment: TdmcPayment
       Size = 3
     end
   end
-  object sq_ChangeLOnrInPaymentLoad: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_ChangeLOnrInPaymentLoad: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'UPDATE dbo.PaymentLoad'
       'SET ShippingPlanNo = :NewLO'
@@ -347,8 +347,8 @@ object dmcPayment: TdmcPayment
         ParamType = ptInput
       end>
   end
-  object sq_DelConPkgLog: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelConPkgLog: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.Confirmed_Package_Log'
       'Where Confirmed_LoadNo =:LoadNo'
@@ -368,8 +368,8 @@ object dmcPayment: TdmcPayment
         ParamType = ptInput
       end>
   end
-  object sq_GetNewLIPno: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetNewLIPno: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       '(Select LIP2.LogicalInventoryPointNo'
@@ -419,8 +419,8 @@ object dmcPayment: TdmcPayment
       ReadOnly = True
     end
   end
-  object cds_IntOrderHead: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_IntOrderHead: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From '
       'dbo.InternalOrderHead'
@@ -599,8 +599,8 @@ object dmcPayment: TdmcPayment
       Origin = 'CustomerNoExt'
     end
   end
-  object sq_NoOfLoads_LO: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_NoOfLoads_LO: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT  count(distinct Ld.LoadNo)AS NoOfLoads'
       ''
@@ -640,9 +640,9 @@ object dmcPayment: TdmcPayment
       FieldName = 'NoOfLoads'
     end
   end
-  object cds_LoadDetailMatch: TADQuery
+  object cds_LoadDetailMatch: TFDQuery
     IndexName = 'cds_LoadDetailMatchIndex1'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM dbo.LoadDetailMatch'
@@ -681,8 +681,8 @@ object dmcPayment: TdmcPayment
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
   end
-  object cds_LoadDetail: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadDetail: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.LoadDetail'
       'WHERE '
@@ -781,8 +781,8 @@ object dmcPayment: TdmcPayment
       Origin = 'CustomPcs'
     end
   end
-  object cds_LS: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LS: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from'
       'dbo.LoadShippingPlan'
@@ -841,8 +841,8 @@ object dmcPayment: TdmcPayment
       Origin = 'ShipToInvPointNo'
     end
   end
-  object cdsPaymentLoadList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPaymentLoadList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'PL.PaymentNo'#9#9#9#9'AS'#9'AVRAKNING_NO,'
@@ -1054,8 +1054,8 @@ object dmcPayment: TdmcPayment
       Size = 50
     end
   end
-  object cdsPaymentHead: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPaymentHead: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT * FROM PAYMENTHEAD'
       'WHERE SupplierNo = :SupplierNo'
@@ -1128,8 +1128,8 @@ object dmcPayment: TdmcPayment
       Size = 50
     end
   end
-  object cdsConfirmed_Load: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsConfirmed_Load: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * '
       'from Confirmed_Load'
@@ -1169,8 +1169,8 @@ object dmcPayment: TdmcPayment
       Origin = 'ModifiedUser'
     end
   end
-  object cds_ConfLoad: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ConfLoad: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.Confirmed_Load'
       'SET Confirmed_ShippingPlanNo = :LO_No'
@@ -1191,8 +1191,8 @@ object dmcPayment: TdmcPayment
         ParamType = ptInput
       end>
   end
-  object cdsPayHead: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPayHead: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT * FROM PAYMENTHEAD'
       'WHERE PaymentNo = :PaymentNo'
@@ -1249,8 +1249,8 @@ object dmcPayment: TdmcPayment
       Size = 50
     end
   end
-  object cdsPaymentLoads: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPaymentLoads: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT * FROM PaymentLoad'
       '')
@@ -1342,8 +1342,8 @@ object dmcPayment: TdmcPayment
       Size = 50
     end
   end
-  object cdsArrivingPackages: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsArrivingPackages: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'SSP.SupplierNo,'
@@ -1490,8 +1490,8 @@ object dmcPayment: TdmcPayment
       Size = 80
     end
   end
-  object cdsArrivingLoads: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsArrivingLoads: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       'isNull(SSP.ShipToInvPointNo,-1)'#9#9'AS'#9'INVPOINTNO,'
@@ -1707,8 +1707,8 @@ object dmcPayment: TdmcPayment
       Required = True
     end
   end
-  object sq_SummaryLoadDetails: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SummaryLoadDetails: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT DISTINCT'
       ''
@@ -1833,8 +1833,8 @@ object dmcPayment: TdmcPayment
       Size = 30
     end
   end
-  object sq_SSP_Exist: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SSP_Exist: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT Distinct SSP.SupplierShipPlanObjectNo'
       ''
@@ -1901,8 +1901,8 @@ object dmcPayment: TdmcPayment
       Required = True
     end
   end
-  object sq_INS_PaymentLoad_ST: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_INS_PaymentLoad_ST: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'INSERT INTO PaymentLoad_ST (PaymentNo, LoadNo, ProductNo, Produc' +

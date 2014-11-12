@@ -157,8 +157,8 @@ object dm_UserProps: Tdm_UserProps
     Left = 48
     Top = 488
   end
-  object cds_UserDir: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_UserDir: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.UserDir '
       'WHERE UserID = :UserID'
@@ -246,8 +246,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 255
     end
   end
-  object cds_PLIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PLIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct isNull(LIP.InvCode,'#39#39')+'#39' '#39'+RTRIM(CY.CITYNAME)+'#39'/' +
@@ -321,8 +321,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 3
     end
   end
-  object cds_LIP2: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIP2: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvent' +
@@ -353,8 +353,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 50
     end
   end
-  object cds_PIP2: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PIP2: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PH.PhysicalInventoryPointNo AS PIPNO, CY.CITYNAM' +
@@ -397,8 +397,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 50
     end
   end
-  object cds_Props: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Props: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.userprops'
       'WHERE UserID = :UserID'
@@ -607,8 +607,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 255
     end
   end
-  object cds_Customer: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Customer: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct C.ClientNo, C.ClientName, C.SearchName, C.Sales' +
@@ -644,8 +644,8 @@ object dm_UserProps: Tdm_UserProps
       Origin = 'SalesRegionNo'
     end
   end
-  object cds_SR: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_SR: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT  Distinct C.ClientNo, C.ClientName, C.SearchName'
       ''
@@ -676,8 +676,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 80
     end
   end
-  object cds_VU: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_VU: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.UnitName'
       '')
@@ -712,8 +712,8 @@ object dm_UserProps: Tdm_UserProps
       Origin = 'SequenceNo'
     end
   end
-  object cdsGradeStamps: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsGradeStamps: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select GS.*,'
       'CASE WHEN gs.GradeStampID is null then'
@@ -771,8 +771,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 25
     end
   end
-  object cdsBarCodes: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsBarCodes: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select bc.*,'
       'CASE WHEN bc.BarCodeID is null then'
@@ -829,8 +829,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 25
     end
   end
-  object cds_LengthGroup: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LengthGroup: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT  Distinct GroupNo, GroupName '
       'FROM dbo.ProductLengthGroupName '
@@ -850,8 +850,8 @@ object dm_UserProps: Tdm_UserProps
       FixedChar = True
     end
   end
-  object cds_RegPoint: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_RegPoint: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT   Distinct RP.RegPointName AS ProductionUnitName,'
       'PU.RegistrationPointNo'
@@ -883,8 +883,8 @@ object dm_UserProps: Tdm_UserProps
       Origin = 'RegistrationPointNo'
     end
   end
-  object cds_LIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvent' +
@@ -915,8 +915,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 50
     end
   end
-  object cds_PIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PH.PhysicalInventoryPointNo AS PIPNO, CY.CITYNAM' +
@@ -972,8 +972,8 @@ object dm_UserProps: Tdm_UserProps
       Size = 50
     end
   end
-  object cds_producer: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_producer: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT Distinct C.ClientNo, C.ClientName, C.SearchName'
       ''
@@ -1004,9 +1004,9 @@ object dm_UserProps: Tdm_UserProps
       Size = 80
     end
   end
-  object cds_Verk: TADQuery
+  object cds_Verk: TFDQuery
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct C.ClientNo, C.ClientName, C.SearchName, C.Sales' +
@@ -1044,8 +1044,8 @@ object dm_UserProps: Tdm_UserProps
       Origin = 'SalesRegionNo'
     end
   end
-  object cds_InvClient: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_InvClient: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct C.ClientNo, C.ClientName, C.SearchName, C.Sales' +

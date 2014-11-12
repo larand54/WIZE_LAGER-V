@@ -12,9 +12,9 @@ uses
   cxCheckBox, cxCalendar, cxContainer,
   cxTextEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, cxDBEdit, cxLookAndFeels, cxLookAndFeelPainters,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompClient,
-  uADCompDataSet, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
   dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -53,7 +53,7 @@ type
     LabelNoOfPkgsMarked: TLabel;
     Label4: TLabel;
     ds_Products: TDataSource;
-    mtFilter: TADMemTable;
+    mtFilter: TFDMemTable;
     mtFilterProductNo: TIntegerField;
     mtFilterProduct: TStringField;
     dsFilter: TDataSource;
@@ -65,10 +65,10 @@ type
     Label5: TLabel;
     cxGrid1DBTableView1ColumnAngeAntalPkt: TcxGridDBColumn;
     cxGrid1DBTableView1Column1: TcxGridDBColumn;
-    sq_GetPkgNo: TADQuery;
-    sq_GetInActive: TADQuery;
-    sq_GetAllProducts: TADQuery;
-    cds_Products: TADQuery;
+    sq_GetPkgNo: TFDQuery;
+    sq_GetInActive: TFDQuery;
+    sq_GetAllProducts: TFDQuery;
+    cds_Products: TFDQuery;
     sq_GetPkgNoPackageNo: TIntegerField;
     sq_GetPkgNoLEVKOD: TStringField;
     sq_GetPkgNoproductno: TIntegerField;

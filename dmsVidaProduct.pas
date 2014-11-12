@@ -5,20 +5,20 @@ interface
 uses
   Classes,   SysUtils, Controls, Forms,
   VidaType, DB, kbmMemTable, Dialogs, SqlTimSt,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet,
-  uADCompClient ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client ;
 
 
 type
   TdmsProduct = class(TDataModule)
-    cds_ProductGroupLength: TADQuery;
+    cds_ProductGroupLength: TFDQuery;
     cds_ProductGroupLengthProductGroupNo: TIntegerField;
     cds_ProductGroupLengthProductLengthNo: TIntegerField;
     cds_ProductGroupLengthCreatedUser: TSmallintField;
     cds_ProductGroupLengthModifiedUser: TSmallintField;
     cds_ProductGroupLengthDateCreated: TSQLTimeStampField;
-    cds_ProdLength: TADQuery;
+    cds_ProdLength: TFDQuery;
     cds_ProdLengthProductLengthNo: TIntegerField;
     cds_ProdLengthActualLengthMM: TFloatField;
     cds_ProdLengthNominalLengthMM: TFloatField;
@@ -32,18 +32,18 @@ type
     cds_ProdLengthSequenceNo: TIntegerField;
     cds_ProdLengthProductLengthGroupNo: TIntegerField;
     cds_ProdLengthAct: TIntegerField;
-    sp_Packages: TADStoredProc;
-    sq_DelTempPkgs: TADQuery;
-    sq_InsTempPkgs: TADQuery;
-    sp_Populate_One_PkgTypeLengths: TADStoredProc;
-    sp_PackageTotals: TADStoredProc;
-    sp_NewPackageNo: TADStoredProc;
-    sp_NewPackageDetail: TADStoredProc;
-    sp_NewPackageType: TADStoredProc;
-    sp_PackageTypes: TADStoredProc;
-    sp_VP_IntLO: TADStoredProc;
-    sp_newLoad_II: TADStoredProc;
-    sp_vis_InsPnLog: TADStoredProc;
+    sp_Packages: TFDStoredProc;
+    sq_DelTempPkgs: TFDQuery;
+    sq_InsTempPkgs: TFDQuery;
+    sp_Populate_One_PkgTypeLengths: TFDStoredProc;
+    sp_PackageTotals: TFDStoredProc;
+    sp_NewPackageNo: TFDStoredProc;
+    sp_NewPackageDetail: TFDStoredProc;
+    sp_NewPackageType: TFDStoredProc;
+    sp_PackageTypes: TFDStoredProc;
+    sp_VP_IntLO: TFDStoredProc;
+    sp_newLoad_II: TFDStoredProc;
+    sp_vis_InsPnLog: TFDStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure mtPackagesBeforeInsert(DataSet: TDataSet);
 

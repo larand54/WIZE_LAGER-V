@@ -275,9 +275,9 @@
     Left = 352
     Top = 96
   end
-  object cdscurrency: TADQuery
+  object cdscurrency: TFDQuery
     AfterInsert = cdsCurrencyAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT * FROM CURRENCY')
     Left = 24
@@ -310,10 +310,10 @@
       Origin = 'SequenceNo'
     end
   end
-  object cdsDelTerms: TADQuery
+  object cdsDelTerms: TFDQuery
     AfterInsert = cdsDelTermsAfterInsert
     BeforePost = cdsDelTermsBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT * FROM'
       'dbo.DeliveryTerm')
@@ -357,8 +357,8 @@
       Origin = 'FreightIncluded'
     end
   end
-  object cdsPaymentTerm: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPaymentTerm: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'select pt.PaymentTermsNo,  pt.PaymentTermName, pt.Discount1, pt.' +
@@ -415,9 +415,9 @@
       Required = True
     end
   end
-  object cds_PaymentText: TADQuery
+  object cds_PaymentText: TFDQuery
     AfterInsert = cds_PaymentTextAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from '
       'dbo.PaymentText'
@@ -488,9 +488,9 @@
       Lookup = True
     end
   end
-  object cds_Country: TADQuery
+  object cds_Country: TFDQuery
     AfterInsert = cds_CountryAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM dbo.Country'
@@ -547,8 +547,8 @@
       Size = 2
     end
   end
-  object cds_volunit: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_volunit: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.UnitName')
     Left = 320
@@ -582,8 +582,8 @@
       Origin = 'SequenceNo'
     end
   end
-  object cdsPriceUnit: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsPriceUnit: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.PackUnit')
     Left = 392
@@ -616,9 +616,9 @@
       Origin = 'SequenceNo'
     end
   end
-  object cdsClientPrefDocs: TADQuery
+  object cdsClientPrefDocs: TFDQuery
     AfterInsert = cdsClientPrefDocsAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.ClientPrefDoc'
       'WHERE ClientNo = :ClientNo'
@@ -698,8 +698,8 @@
       Lookup = True
     end
   end
-  object cdsRptNames: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsRptNames: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.ReportNames'
       '')
@@ -724,8 +724,8 @@
       Size = 100
     end
   end
-  object cds_Agent: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Agent: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct C.ClientNo,'
       '       C.ClientName,'
@@ -790,8 +790,8 @@
       Required = True
     end
   end
-  object cds_ProductionUnit: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProductionUnit: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM dbo.ProductionUnit'
@@ -922,9 +922,9 @@
       Lookup = True
     end
   end
-  object cds_RegPoints: TADQuery
+  object cds_RegPoints: TFDQuery
     AfterInsert = cds_RegPointsAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT RegPointNo, RegPointName, CreatedUser, ModifiedUser, Date' +
@@ -964,8 +964,8 @@
       Origin = 'SequenceNo'
     end
   end
-  object cds_RoleType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_RoleType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From DBO.RoleType'
       '')
@@ -1003,9 +1003,9 @@
       Origin = 'DateCreated'
     end
   end
-  object cds_Market: TADQuery
+  object cds_Market: TFDQuery
     AfterInsert = cds_MarketAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct * '
       'FROM   dbo.MarketRegion'
@@ -1043,9 +1043,9 @@
       Origin = 'ModifiedUser'
     end
   end
-  object cds_City: TADQuery
+  object cds_City: TFDQuery
     AfterInsert = cds_CityAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM dbo.City'
@@ -1085,9 +1085,9 @@
       Origin = 'ImpVerk'
     end
   end
-  object cds_SalesGrpRow: TADQuery
+  object cds_SalesGrpRow: TFDQuery
     AfterInsert = cds_SalesGrpRowAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.SalesManGroupRow'
       'WHERE SalesGroupNo = :SalesGroupNo'
@@ -1142,8 +1142,8 @@
       Lookup = True
     end
   end
-  object cds_user: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_user: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * from dbo.users')
     Left = 1187
@@ -1171,10 +1171,10 @@
       Size = 10
     end
   end
-  object cds_CliDoc: TADQuery
+  object cds_CliDoc: TFDQuery
     MasterSource = dsClient
     MasterFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.ClientDocTypeOrder'
       'WHERE ClientNo = :ClientNo'
@@ -1211,9 +1211,9 @@
       Size = 10
     end
   end
-  object cds_PayTerm: TADQuery
+  object cds_PayTerm: TFDQuery
     AfterInsert = cds_PayTermAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select *'
       'from dbo.PaymentTerms pt'
@@ -1276,11 +1276,11 @@
       Origin = 'CommissionPaidByCustomer'
     end
   end
-  object cds_PayDesc: TADQuery
+  object cds_PayDesc: TFDQuery
     AfterInsert = cds_PayDescAfterInsert
     MasterSource = ds_PayTerm
     MasterFields = 'PaymentTermsNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select *'
       'from dbo.PaymentTermDesc'
@@ -1334,12 +1334,12 @@
       Lookup = True
     end
   end
-  object cds_AdrLO: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_AdrLO: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
-      'Select adr.*, ci.CityName, cy.CountryName From DBO.Address adr'
-      'Inner Join dbo.City ci on ci.CityNo = adr.CityNo'
-      'Inner Join dbo.Country cy on cy.CountryNo = adr.CountryNo'
+      'Select FDr.*, ci.CityName, cy.CountryName From DBO.Address FDr'
+      'Inner Join dbo.City ci on ci.CityNo = FDr.CityNo'
+      'Inner Join dbo.Country cy on cy.CountryNo = FDr.CountryNo'
       '')
     Left = 400
     Top = 496
@@ -1467,18 +1467,18 @@
       Size = 30
     end
   end
-  object cds_Comp_DelAdr: TADQuery
+  object cds_Comp_DelAdr: TFDQuery
     AfterInsert = cds_Comp_DelAdrAfterInsert
     MasterSource = ds_Client
     MasterFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
-        'Select distinct ca.*, ad.*, ci.CityName, cy.CountryName  From DB' +
+        'Select distinct ca.*, FD.*, ci.CityName, cy.CountryName  From DB' +
         'O.CompanyAddress CA'
-      'INNER JOIN dbo.Address ad on ad.AddressNo = ca.AddressNo'
-      'Inner Join dbo.City ci on ci.CityNo = ad.CityNo'
-      'Inner Join dbo.Country cy on cy.CountryNo = ad.CountryNo'
+      'INNER JOIN dbo.Address FD on FD.AddressNo = ca.AddressNo'
+      'Inner Join dbo.City ci on ci.CityNo = FD.CityNo'
+      'Inner Join dbo.Country cy on cy.CountryNo = FD.CountryNo'
       ''
       ''
       ''
@@ -1648,18 +1648,18 @@
       Size = 30
     end
   end
-  object cds_CompAdr: TADQuery
+  object cds_CompAdr: TFDQuery
     AfterInsert = cds_CompAdrAfterInsert
     MasterSource = ds_Client
     MasterFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
-        'Select distinct ca.*, ad.*, ci.CityName, cy.CountryName  From DB' +
+        'Select distinct ca.*, FD.*, ci.CityName, cy.CountryName  From DB' +
         'O.CompanyAddress CA'
-      'INNER JOIN dbo.Address ad on ad.AddressNo = ca.AddressNo'
-      'Inner Join dbo.City ci on ci.CityNo = ad.CityNo'
-      'Inner Join dbo.Country cy on cy.CountryNo = ad.CountryNo'
+      'INNER JOIN dbo.Address FD on FD.AddressNo = ca.AddressNo'
+      'Inner Join dbo.City ci on ci.CityNo = FD.CityNo'
+      'Inner Join dbo.Country cy on cy.CountryNo = FD.CountryNo'
       ''
       ''
       ''
@@ -1829,9 +1829,9 @@
       Size = 30
     end
   end
-  object cds_Address: TADQuery
+  object cds_Address: TFDQuery
     AfterInsert = cds_AddressAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From DBO.Address'
       '')
@@ -1950,14 +1950,14 @@
       Size = 50
     end
   end
-  object cds_AdrSearch: TADQuery
+  object cds_AdrSearch: TFDQuery
     AfterInsert = cds_AdrSearchAfterInsert
     BeforePost = cds_AdrSearchBeforePost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
-      'Select distinct adr.*'
+      'Select distinct FDr.*'
       'From '
-      'dbo.Address adr '
+      'dbo.Address FDr '
       'WHERE AddressNo = 0'
       '')
     Left = 672
@@ -2097,18 +2097,18 @@
       Lookup = True
     end
   end
-  object cds_ClientSearch: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ClientSearch: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT C.ClientNo, C.ClientName AS F'#246'retagsnamn, C.ClientCode AS' +
         ' KlientKod, C.SearchName AS S'#246'knamn, '
-      'ADR.AddressLine1 AS Addressrad1, ADR.PostalCode AS PostNr,'
+      'FDR.AddressLine1 AS Addressrad1, FDR.PostalCode AS PostNr,'
       'C.VATNO AS VatNr, Cy.CityName AS Stad'
       'FROM dbo.Client C'
       'Inner Join dbo.CompanyAddress CA on CA.ClientNo = C.ClientNo'
-      'Inner Join dbo.Address ADR ON ADR.AddressNo = CA.AddressNo'
-      'Inner Join dbo.City Cy on Cy.CityNo = ADR.CityNo'
+      'Inner Join dbo.Address FDR ON FDR.AddressNo = CA.AddressNo'
+      'Inner Join dbo.City Cy on Cy.CityNo = FDR.CityNo'
       ''
       'WHERE C.ClientNo > 200'
       '')
@@ -2157,8 +2157,8 @@
       Size = 50
     end
   end
-  object cds_AllAgent: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_AllAgent: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT C.ClientNo,'
       '       C.ClientName,'
@@ -2214,11 +2214,11 @@
       Origin = 'SendInvoiceToAgent'
     end
   end
-  object cds_ClientLL: TADQuery
+  object cds_ClientLL: TFDQuery
     AfterInsert = cds_ClientLLAfterInsert
     MasterSource = ds_Client
     MasterFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.Client_LoadingLocation'
       'WHERE ClientNo = :ClientNo'
@@ -2269,11 +2269,11 @@
       Lookup = True
     end
   end
-  object cds_ExchangeRate: TADQuery
+  object cds_ExchangeRate: TFDQuery
     AfterInsert = cds_ExchangeRateAfterInsert
     MasterSource = dsCurrency
     MasterFields = 'CurrencyNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From DBO.ExchangeRate'
       'WHERE CurrencyNo = :CurrencyNo'
@@ -2321,11 +2321,11 @@
       Origin = 'DateCreated'
     end
   end
-  object cdsExtPP: TADQuery
+  object cdsExtPP: TFDQuery
     AfterInsert = cdsExtPPAfterInsert
     MasterSource = ds_ProductionUnit
     MasterFields = 'ClientNo;RegistrationPointNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ExtraPrintParam'
       'WHERE ClientNo = :ClientNo'
@@ -2381,9 +2381,9 @@
       Size = 5
     end
   end
-  object cds_SalesGrp: TADQuery
+  object cds_SalesGrp: TFDQuery
     AfterInsert = cds_SalesGrpAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.SalesmanGroup'
       '')
@@ -2401,11 +2401,11 @@
       Size = 15
     end
   end
-  object cds_Contact: TADQuery
+  object cds_Contact: TFDQuery
     AfterInsert = cds_ContactAfterInsert
     MasterSource = dsClient
     MasterFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Contact'
       'WHERE ClientNo =:ClientNo'
@@ -2478,11 +2478,11 @@
       FixedChar = True
     end
   end
-  object cdsContRole: TADQuery
+  object cdsContRole: TFDQuery
     AfterInsert = cdsContRoleAfterInsert
     MasterSource = ds_Contact
     MasterFields = 'ClientNo;ContactNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ContactRole'
       'WHERE'
@@ -2547,8 +2547,8 @@
       Lookup = True
     end
   end
-  object cdsContRoleType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsContRoleType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ContactRoleType'
       '')
@@ -2582,10 +2582,10 @@
       Origin = 'DateCreated'
     end
   end
-  object cdsClient: TADQuery
+  object cdsClient: TFDQuery
     AfterInsert = cdsClientAfterInsert
     AfterPost = cdsClientAfterPost
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * from dbo.client'
       '')
@@ -2742,14 +2742,14 @@
       Origin = 'StatistikLandNr'
     end
   end
-  object cds_ClientRole: TADQuery
+  object cds_ClientRole: TFDQuery
     AfterInsert = cds_ClientRoleAfterInsert
     BeforePost = cds_ClientRoleBeforePost
     BeforeDelete = cds_ClientRoleBeforeDelete
     MasterSource = dsClient
     MasterFields = 'ClientNo'
     DetailFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
@@ -2811,11 +2811,11 @@
       Lookup = True
     end
   end
-  object cds_Pref: TADQuery
+  object cds_Pref: TFDQuery
     AfterInsert = cds_PrefAfterInsert
     MasterSource = ds_ClientRole
     MasterFields = 'ClientNo;RoleType'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ClientPreference '
       'WHERE ClientNo = :ClientNo '
@@ -2977,8 +2977,8 @@
       Lookup = True
     end
   end
-  object cds_points: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_points: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct CY.CITYNO, CY.CITYNAME '
       'FROM'
@@ -3008,11 +3008,11 @@
       Size = 50
     end
   end
-  object cds_GrpInv: TADQuery
+  object cds_GrpInv: TFDQuery
     AfterInsert = cds_GrpInvAfterInsert
     MasterSource = ds_PhysInv
     MasterFields = 'PhysicalInventoryPointNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from '
       'dbo.LogicalInventoryPoint'
@@ -3078,12 +3078,12 @@
       Size = 3
     end
   end
-  object cds_PhysInv: TADQuery
+  object cds_PhysInv: TFDQuery
     AfterInsert = cds_PhysInvAfterInsert
     MasterSource = dsClient
     MasterFields = 'ClientNo'
     AfterApplyUpdates = cds_PhysInvAfterApplyUpdates
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
@@ -3146,8 +3146,8 @@
       Lookup = True
     end
   end
-  object cds_ClientList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ClientList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select str(c.Clientno)+'#39','#39'+str(cr.Roletype)+str(isnull(CAL.Agent' +
@@ -3158,15 +3158,15 @@
       'rt.RoleDescription AS ROLL,'
       'cn.CountryName AS LAND, c.Clientno,'
       'MR.MarketRegionName AS MARKNAD,'
-      'ad.AddressLine1 AS ADRESSRAD1,'
-      'ad.AddressLine2 AS ADRESSRAD2,'
-      'ad.AddressLine3 AS ADRESSRAD3,'
-      'ad.AddressLine4 AS ADRESSRAD4,'
+      'FD.AddressLine1 AS ADRESSRAD1,'
+      'FD.AddressLine2 AS ADRESSRAD2,'
+      'FD.AddressLine3 AS ADRESSRAD3,'
+      'FD.AddressLine4 AS ADRESSRAD4,'
       'ci.CityName AS ORT,'
       'a.ClientName AS AGENT,'
-      'ad.Phone1 AS TELE1,'
-      'ad.Fax AS FAX,'
-      'ad.EMAIL,'
+      'FD.Phone1 AS TELE1,'
+      'FD.Fax AS FAX,'
+      'FD.EMAIL,'
       'cr.Roletype'
       ''
       'From dbo.Client c'
@@ -3175,11 +3175,11 @@
         'ketRegionNo'
       'Inner Join dbo.ClientRole cr ON cr.ClientNo = c.Clientno'
       'Inner Join dbo.RoleType rt ON rt.RoleType = cr.Roletype'
-      'Left Outer Join dbo.Address ad ON ad.AddressNo ='
+      'Left Outer Join dbo.Address FD ON FD.AddressNo ='
       '(Select DefaultBillingAddressNo From dbo.ClientPreference'
       'WHERE Clientno = cr.ClientNo AND RoleType = cr.RoleType)'
-      'Left Outer Join dbo.Country cn ON cn.CountryNo = ad.CountryNo'
-      'Left Outer Join dbo.City ci ON ci.CityNo = ad.CityNo'
+      'Left Outer Join dbo.Country cn ON cn.CountryNo = FD.CountryNo'
+      'Left Outer Join dbo.City ci ON ci.CityNo = FD.CityNo'
       'Left Outer Join dbo.ClientAgentList CAL '
       'Inner Join dbo.Client a on a.ClientNo = CAL.AgentNo'
       'ON CAL.ClientNo  = C.ClientNo'
@@ -3287,11 +3287,11 @@
       Required = True
     end
   end
-  object cds_AgentList: TADQuery
+  object cds_AgentList: TFDQuery
     MasterSource = dsClient
     MasterFields = 'ClientNo'
     DetailFields = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
@@ -3344,8 +3344,8 @@
       Lookup = True
     end
   end
-  object cds_LL_Verk: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LL_Verk: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct PH.PhyInvPointNameNo, CY.CITYNAME, PH.OwnerNo'
       'FROM'
@@ -3372,8 +3372,8 @@
       Origin = 'OwnerNo'
     end
   end
-  object cds_PhysInvByCityNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PhysInvByCityNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct PH.PhyInvPointNameNo, CY.CITYNAME, PH.OwnerNo'
       'FROM'
@@ -3401,8 +3401,8 @@
       Origin = 'OwnerNo'
     end
   end
-  object sq_ClientCode: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_ClientCode: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * from dbo.client'
       'Where ClientCode =:ClientCode'
@@ -3572,8 +3572,8 @@
       Origin = 'StatistikLandNr'
     end
   end
-  object sq_name: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_name: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * from dbo.client'
       'Where clientname =:clientname'
@@ -3743,8 +3743,8 @@
       Origin = 'StatistikLandNr'
     end
   end
-  object sq_Searchname: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Searchname: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * from dbo.client'
       'Where searchname =:searchname'
@@ -3914,8 +3914,8 @@
       Origin = 'StatistikLandNr'
     end
   end
-  object sq_GetPIPByClientNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPIPByClientNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct PIP.PhysicalInventoryPointNo AS PIPNO'
       'FROM dbo.PhysicalInventoryPoint PIP'
@@ -3938,8 +3938,8 @@
       Required = True
     end
   end
-  object sq_GetSuppCodeByPktLevKod: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetSuppCodeByPktLevKod: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select C.ClientCode from dbo.client C'
       ''
@@ -3960,8 +3960,8 @@
       Size = 3
     end
   end
-  object sq_Get_PktNrLevKod: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Get_PktNrLevKod: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select PktNrLevKod from dbo.client'
       'WHERE ClientNo = :ClientNo'
@@ -3980,8 +3980,8 @@
       Size = 5
     end
   end
-  object sq_GetCityNoPIPNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetCityNoPIPNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct PIP.PhyInvPointNameNo AS CityNO'
       'FROM dbo.PhysicalInventoryPoint PIP'
@@ -4001,8 +4001,8 @@
       Origin = 'CityNO'
     end
   end
-  object SQLQuery1: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object SQLQuery1: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT PH.PhysicalInventoryPointNo, CY.CITYNAME, CR.RoleType'
       'FROM'
@@ -4038,8 +4038,8 @@
       Required = True
     end
   end
-  object sq_LogInv: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_LogInv: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT LogicalInventoryPointNo, LogicalInventoryName'
       'FROM dbo.LOGICALINVENTORYPOINT'
@@ -4067,8 +4067,8 @@
       Size = 50
     end
   end
-  object sq_GetPIPNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPIPNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct LIP.PhysicalInventoryPointNo AS PIPNO'
       'FROM dbo.LogicalInventoryPoint LIP'
@@ -4088,8 +4088,8 @@
       Origin = 'PIPNO'
     end
   end
-  object sq_InsCliEtik: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InsCliEtik: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Insert dbo.ClientEtikett'
       'VALUES(:UserID, :ClientNo, :RoleType)'
@@ -4113,8 +4113,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_GetSRNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetSRNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select SalesRegionNo from dbo.client'
       'WHERE  ClientNo = :ClientNo'
@@ -4132,8 +4132,8 @@
       Origin = 'SalesRegionNo'
     end
   end
-  object sq_DelCliEtik: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelCliEtik: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete FROM dbo.ClientEtikett'
       'WHERE UserID = :UserID'
@@ -4147,8 +4147,8 @@
         ParamType = ptInput
       end>
   end
-  object sqDelCompAdr: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sqDelCompAdr: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete DBO.CompanyAddress '
       'WHERE AddressNo = :AddressNo'
@@ -4163,34 +4163,34 @@
         ParamType = ptInput
       end>
   end
-  object sqAdrDepend: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sqAdrDepend: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
-      'Select addressNo from dbo.Address ad'
-      'WHERE ad.AddressNo = :AddressNo'
+      'Select addressNo from dbo.Address FD'
+      'WHERE FD.AddressNo = :AddressNo'
       ''
       
-        'and ad.AddressNo not in (Select AddressNo from dbo.ShippingPlan_' +
+        'and FD.AddressNo not in (Select AddressNo from dbo.ShippingPlan_' +
         'ShippingAddress'
-      'WHERE AddressNo = ad.AddressNo)'
+      'WHERE AddressNo = FD.AddressNo)'
       ''
-      'and ad.AddressNo not in (Select DestinationNo from dbo.Orders'
-      'WHERE DestinationNo = ad.AddressNo)'
+      'and FD.AddressNo not in (Select DestinationNo from dbo.Orders'
+      'WHERE DestinationNo = FD.AddressNo)'
       ''
       
-        'and ad.AddressNo not in (Select ClientBillingAddressNo from dbo.' +
+        'and FD.AddressNo not in (Select ClientBillingAddressNo from dbo.' +
         'Orders'
-      'WHERE ClientBillingAddressNo = ad.AddressNo)'
+      'WHERE ClientBillingAddressNo = FD.AddressNo)'
       ''
       
-        'and ad.AddressNo not in (Select AddressNo from dbo.InvoiceShipTo' +
+        'and FD.AddressNo not in (Select AddressNo from dbo.InvoiceShipTo' +
         'Address'
-      'WHERE AddressNo = ad.AddressNo)'
+      'WHERE AddressNo = FD.AddressNo)'
       ''
       
-        'and ad.AddressNo not in (Select ClientBillingAddressNo from dbo.' +
+        'and FD.AddressNo not in (Select ClientBillingAddressNo from dbo.' +
         'CustomerShippingPlanHeader'
-      'WHERE ClientBillingAddressNo = ad.AddressNo)'
+      'WHERE ClientBillingAddressNo = FD.AddressNo)'
       ''
       ''
       '')
@@ -4209,8 +4209,8 @@
       Required = True
     end
   end
-  object sq_GetPkgPrefix: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgPrefix: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct pf.PkgPrefix'
       'FROM dbo.PkgPrefix pf '
@@ -4229,8 +4229,8 @@
       Size = 3
     end
   end
-  object sq_AdrName: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AdrName: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * From DBO.Address'
       'Where AddressName =:AddressName'
@@ -4362,8 +4362,8 @@
       Size = 50
     end
   end
-  object sqGetDocs: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sqGetDocs: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.ClientPrefDoc cpd'
       'Inner Join dbo.ReportNames rn on rn.ReportNo = cpd.ReportNo'
@@ -4448,8 +4448,8 @@
       Size = 100
     end
   end
-  object sq_GetCityNoFromPIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetCityNoFromPIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select  PhyInvPointNameNo'
       'FROM dbo.PhysicalInventoryPoint'
@@ -4468,8 +4468,8 @@
       Origin = 'PhyInvPointNameNo'
     end
   end
-  object sq_GetSalesRegionNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetSalesRegionNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select * from dbo.client'
       '')
@@ -4626,8 +4626,8 @@
       Origin = 'StatistikLandNr'
     end
   end
-  object sq_DelClient: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_DelClient: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Delete dbo.client'
       'WHERE ClientNo = :ClientNo'
@@ -4641,8 +4641,8 @@
         ParamType = ptInput
       end>
   end
-  object sq_IsClientMarkedAsIntVerk: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_IsClientMarkedAsIntVerk: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select C.IntVerk FROM dbo.Client C'
       'Where C.ClientNo = :ClientNo'
@@ -4660,8 +4660,8 @@
       Origin = 'IntVerk'
     end
   end
-  object sq_GetLanguageID: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetLanguageID: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       'LanguageCode'
@@ -4681,8 +4681,8 @@
       Origin = 'LanguageCode'
     end
   end
-  object sq_IsRoleType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_IsRoleType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select CR.ClientNo from ClientRole CR'
       'Where'
@@ -4710,8 +4710,8 @@
       Required = True
     end
   end
-  object sq_PhysInvForLIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PhysInvForLIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT PH.PhysicalInventoryPointNo, CY.CITYNAME, CR.RoleType'
       'FROM'
@@ -4747,9 +4747,9 @@
       Required = True
     end
   end
-  object cds_Verk: TADStoredProc
+  object cds_Verk: TFDStoredProc
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_VerkCodeName'
     Left = 80
     Top = 32
@@ -4778,8 +4778,8 @@
       Size = 3
     end
   end
-  object cds_SR: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object cds_SR: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_ClientsSN'
     Left = 24
     Top = 32
@@ -4813,8 +4813,8 @@
       Size = 80
     end
   end
-  object cds_Client: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object cds_Client: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_ClientsSN'
     Left = 24
     Top = 136
@@ -4848,8 +4848,8 @@
       Size = 80
     end
   end
-  object cds_Frakt: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object cds_Frakt: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_ClientsSN'
     Left = 80
     Top = 136
@@ -4883,8 +4883,8 @@
       Size = 80
     end
   end
-  object sp_ClientCode: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_ClientCode: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_GetClientCode_CSD'
     Left = 392
     Top = 408

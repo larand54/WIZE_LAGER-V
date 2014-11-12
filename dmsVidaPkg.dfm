@@ -736,8 +736,8 @@ object dmsPkg: TdmsPkg
     Left = 40
     Top = 376
   end
-  object cds_Props: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Props: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.userprops'
       'WHERE UserID = :UserID'
@@ -941,8 +941,8 @@ object dmsPkg: TdmsPkg
       Size = 50
     end
   end
-  object cds_LengthGroup: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LengthGroup: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT  Distinct GroupNo, GroupName '
       'FROM dbo.ProductLengthGroupName '
@@ -962,8 +962,8 @@ object dmsPkg: TdmsPkg
       FixedChar = True
     end
   end
-  object cds_RegPoint: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_RegPoint: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT   Distinct RP.RegPointName AS ProductionUnitName,'
       'PU.RegistrationPointNo'
@@ -995,8 +995,8 @@ object dmsPkg: TdmsPkg
       Origin = 'RegistrationPointNo'
     end
   end
-  object cds_LIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT  Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvent' +
@@ -1025,8 +1025,8 @@ object dmsPkg: TdmsPkg
       Size = 50
     end
   end
-  object cds_PIP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PIP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PH.PhysicalInventoryPointNo AS PIPNO, CY.CITYNAM' +
@@ -1067,8 +1067,8 @@ object dmsPkg: TdmsPkg
       Size = 50
     end
   end
-  object cds_producer: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_producer: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT Distinct C.ClientNo, C.ClientName, C.SearchName'
       ''
@@ -1099,8 +1099,8 @@ object dmsPkg: TdmsPkg
       Size = 80
     end
   end
-  object cds_Verk: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Verk: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT  Distinct C.ClientNo, C.ClientName, C.SearchName'
       ''
@@ -1132,8 +1132,8 @@ object dmsPkg: TdmsPkg
       Size = 80
     end
   end
-  object cds_ProductGroupLength: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProductGroupLength: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'FROM'
@@ -1166,9 +1166,9 @@ object dmsPkg: TdmsPkg
       Origin = 'DateCreated'
     end
   end
-  object cds_ProdLength: TADQuery
+  object cds_ProdLength: TFDQuery
     AfterInsert = cds_ProdLengthAfterInsert
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.ProductLength'
       '')
@@ -1233,8 +1233,8 @@ object dmsPkg: TdmsPkg
       Origin = 'Act'
     end
   end
-  object sq_GetPkgTypeNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgTypeNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pt.PackageTypeNo FROM'
       'dbo.PackageType pt'
@@ -1282,8 +1282,8 @@ object dmsPkg: TdmsPkg
       Required = True
     end
   end
-  object sq_PkgExist: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_PkgExist: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo FROM'
       'dbo.PackageNumber pn'
@@ -1310,8 +1310,8 @@ object dmsPkg: TdmsPkg
       Required = True
     end
   end
-  object sq_ProductLengths: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_ProductLengths: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PL.ProductLengthNo, PL.ActualLengthMM, PL.Nomina' +
@@ -1330,8 +1330,8 @@ object dmsPkg: TdmsPkg
       Required = True
     end
   end
-  object sp_ProdLeng: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_ProdLeng: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.VIDA_ProdLeng'
     Left = 152
     Top = 192
@@ -1354,8 +1354,8 @@ object dmsPkg: TdmsPkg
       Required = True
     end
   end
-  object sp_StandardLengths: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_StandardLengths: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_StandardLengths'
     Left = 152
     Top = 136
@@ -1396,8 +1396,8 @@ object dmsPkg: TdmsPkg
       Required = True
     end
   end
-  object sp_PkgInfo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PkgInfo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_OnePackage_Info'
     Left = 152
     Top = 32
@@ -1445,8 +1445,8 @@ object dmsPkg: TdmsPkg
       Size = 50
     end
   end
-  object sp_OnePackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_OnePackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_OnePackageNo'
     Left = 152
     Top = 88
@@ -1471,8 +1471,8 @@ object dmsPkg: TdmsPkg
         Size = 3
       end>
   end
-  object sp_NewPkgNoNoProdLogg: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPkgNoNoProdLogg: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_NewPkgNo_Price_NoPP_II'
     Left = 280
     Top = 392
@@ -1552,8 +1552,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_Populate_One_PkgTypeLengths: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_Populate_One_PkgTypeLengths: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_Populate_One_PackageTypeLengths'
     Left = 280
     Top = 328
@@ -1571,8 +1571,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_PackageTotals: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTotals: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_PackageTotals'
     Left = 280
     Top = 272
@@ -1590,8 +1590,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_NewPkgNo_Price_PP_III'
     Left = 280
     Top = 224
@@ -1695,8 +1695,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageDetail: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageDetail: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_NewPackageDetail'
     Left = 280
     Top = 168
@@ -1732,8 +1732,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageType: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageType: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_NewPkgType'
     Left = 280
     Top = 120
@@ -1787,8 +1787,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_PackageTypeDetail: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTypeDetail: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_PackageTypeDetail'
     Left = 280
     Top = 72
@@ -1806,8 +1806,8 @@ object dmsPkg: TdmsPkg
         ParamType = ptInput
       end>
   end
-  object sp_PackageTypes: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_PackageTypes: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_PkgType_II'
     Left = 280
     Top = 24
@@ -1850,13 +1850,13 @@ object dmsPkg: TdmsPkg
         Size = 255
       end>
   end
-  object ADQuery1: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object FDQuery1: TFDQuery
+    Connection = dmsConnector.FDConnection1
     Left = 616
     Top = 360
   end
-  object cds_Package_Size: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Package_Size: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.PackageSize'
       'WHERE LanguageCode = 1'

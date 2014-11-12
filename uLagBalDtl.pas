@@ -32,9 +32,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue,
   dxSkinscxPCPainter, dxBarBuiltInMenu, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, uADStanIntf,
-  uADStanOption, uADStanParam, uADStanError, uADDatSManager, uADPhysIntf,
-  uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet, uADCompClient,
+  dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr ;
 
 type
@@ -248,11 +248,11 @@ type
     cbxSortByField: TcxComboBox;
     Edit1: TEdit;
     Memo2: TMemo;
-    sq_CSDLev: TADQuery;
-    cds_RegPoint: TADQuery;
+    sq_CSDLev: TFDQuery;
+    cds_RegPoint: TFDQuery;
     cds_RegPointRegPointName: TStringField;
     cds_RegPointRegPointNo: TIntegerField;
-    cds_ProdData: TADQuery;
+    cds_ProdData: TFDQuery;
     cds_ProdDataMätpunkt: TStringField;
     cds_ProdDataDatum: TStringField;
     cds_ProdDataVerk: TStringField;
@@ -270,11 +270,11 @@ type
     cds_ProdDataSTYCK: TIntegerField;
     cds_ProdDataPktNr: TIntegerField;
     cds_ProdDataPrefix: TStringField;
-    cds_verk: TADQuery;
+    cds_verk: TFDQuery;
     cds_verkClientNo: TIntegerField;
     cds_verkClientName: TStringField;
     cds_verkSearchName: TStringField;
-    cds_Data: TADQuery;
+    cds_Data: TFDQuery;
     cds_DataMarknad: TStringField;
     cds_DataLeverantör: TStringField;
     cds_DataKund: TStringField;
@@ -294,7 +294,7 @@ type
     cds_DataPktNr: TIntegerField;
     cds_DataPrefix: TStringField;
     cds_DataExt_Kund: TStringField;
-    cds_UserProps: TADQuery;
+    cds_UserProps: TFDQuery;
     cds_UserPropsUserID: TIntegerField;
     cds_UserPropsForm: TStringField;
     cds_UserPropsVerkNo: TIntegerField;

@@ -63,7 +63,7 @@ object fAnalyzeVerkDeliveries: TfAnalyzeVerkDeliveries
             CalculatedMembers = <>
             MemberGroups = <>
           end>
-        UniqueName = '{CED58F03-AD49-4705-940D-F2FF57B530D6}'
+        UniqueName = '{CED58F03-FD49-4705-940D-F2FF57B530D6}'
       end>
     Align = alClient
     OLAPGridSettings.CellCaption.ImagePosition = ipLeftOnText
@@ -520,7 +520,7 @@ object fAnalyzeVerkDeliveries: TfAnalyzeVerkDeliveries
             UniqueName = '{C684A106-A7B4-4578-95DD-04242A53F739}'
             InfoAttributes = <>
           end>
-        UniqueName = '{CED58F03-AD49-4705-940D-F2FF57B530D6}'
+        UniqueName = '{CED58F03-FD49-4705-940D-F2FF57B530D6}'
       end>
     Measures = <
       item

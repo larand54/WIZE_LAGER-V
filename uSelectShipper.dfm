@@ -68,7 +68,7 @@ object fSelectShipper: TfSelectShipper
       Kind = bkCancel
     end
   end
-  object mtShipper: TADMemTable
+  object mtShipper: TFDMemTable
     DesignActivation = True
     AttachedAutoRefresh = True
     AttachMaxCount = 1

@@ -5,9 +5,9 @@ interface
 uses
   Classes,
   SysUtils,
-  VidaType, DB, uADStanIntf, uADStanOption,
-  uADStanParam, uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf,
-  uADStanAsync, uADDAptManager, uADCompClient, uADCompDataSet;
+  VidaType, DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet;
 
 
 type
@@ -22,7 +22,7 @@ type
     ds_Products: TDataSource;
     ds_PkgProd_Rep: TDataSource;
     ds_InvoiceGroup: TDataSource;
-    cds_InvoiceGroup: TADQuery;
+    cds_InvoiceGroup: TFDQuery;
     cds_InvoiceGroupInvoiceGroupNo: TIntegerField;
     cds_InvoiceGroupOriginalInvNos: TStringField;
     cds_InvoiceGroupOrdernos: TStringField;
@@ -55,7 +55,7 @@ type
     cds_InvoiceGroupSUM_FreigthCost: TFloatField;
     cds_InvoiceGroupTotal_Product_Value_No_Freight: TFloatField;
     cds_InvoiceGroupInv_Value_To_Be_Paid_2: TFloatField;
-    cds_PkgProd_Rep: TADStoredProc;
+    cds_PkgProd_Rep: TFDStoredProc;
     cds_PkgProd_RepUNIQUEKEY: TStringField;
     cds_PkgProd_RepProductionDate: TSQLTimeStampField;
     cds_PkgProd_RepClientName: TStringField;
@@ -97,7 +97,7 @@ type
     cds_PkgProd_RepProductNo: TIntegerField;
     cds_PkgProd_RepPackageTypeNo: TIntegerField;
     cds_PkgProd_RepProductionUnitNo: TIntegerField;
-    sq_GetProductDesc: TADQuery;
+    sq_GetProductDesc: TFDQuery;
     sq_GetProductDescProductNo: TIntegerField;
     sq_GetProductDescProductGroupNo: TIntegerField;
     sq_GetProductDescGradeName: TStringField;
@@ -115,8 +115,8 @@ type
     sq_GetProductDescSurfacingNo: TIntegerField;
     sq_GetProductDescNominalThicknessINCH: TStringField;
     sq_GetProductDescNominalWidthINCH: TStringField;
-    sq_PkgTypeForAvr: TADQuery;
-    cds_Products: TADQuery;
+    sq_PkgTypeForAvr: TFDQuery;
+    cds_Products: TFDQuery;
     cds_ProductsProductNo: TIntegerField;
     cds_ProductsProductGroupNo: TIntegerField;
     cds_ProductsGradeName: TStringField;
@@ -134,34 +134,34 @@ type
     cds_ProductsSurfacingNo: TIntegerField;
     cds_ProductsNominalThicknessINCH: TStringField;
     cds_ProductsNominalWidthINCH: TStringField;
-    qryExec: TADQuery;
-    cdsLogInventory: TADQuery;
-    cdsPhysInventory: TADQuery;
-    cdsPaperWraps: TADQuery;
-    cdsGradeStamps: TADQuery;
-    cdsBarCodes: TADQuery;
-    sq_PkgType_InvoiceByLO: TADQuery;
-    sq_DelPkgType: TADQuery;
-    sq_PkgType_Invoice: TADQuery;
-    sq_AllRegPoints: TADQuery;
+    qryExec: TFDQuery;
+    cdsLogInventory: TFDQuery;
+    cdsPhysInventory: TFDQuery;
+    cdsPaperWraps: TFDQuery;
+    cdsGradeStamps: TFDQuery;
+    cdsBarCodes: TFDQuery;
+    sq_PkgType_InvoiceByLO: TFDQuery;
+    sq_DelPkgType: TFDQuery;
+    sq_PkgType_Invoice: TFDQuery;
+    sq_AllRegPoints: TFDQuery;
     sq_AllRegPointsRegPointNo: TIntegerField;
     sq_AllRegPointsRegPointName: TStringField;
-    sq_RegPoint: TADQuery;
+    sq_RegPoint: TFDQuery;
     sq_RegPointProductionUnitNo: TIntegerField;
     sq_RegPointProductionUnitName: TStringField;
     sq_RegPointRegistrationPointNo: TIntegerField;
-    sq_LengthGroup: TADQuery;
+    sq_LengthGroup: TFDQuery;
     sq_LengthGroupGroupNo: TIntegerField;
     sq_LengthGroupGroupName: TStringField;
-    cds_Client: TADQuery;
+    cds_Client: TFDQuery;
     cds_ClientClientNo: TIntegerField;
     cds_ClientClientName: TStringField;
     cds_ClientSearchName: TStringField;
-    cds_verk: TADQuery;
+    cds_verk: TFDQuery;
     cds_verkClientNo: TIntegerField;
     cds_verkClientName: TStringField;
     cds_verkSearchName: TStringField;
-    cds_PhysInv: TADQuery;
+    cds_PhysInv: TFDQuery;
     cds_PhysInvOwnerNo: TIntegerField;
     cds_PhysInvPhysicalInventoryPointNo: TIntegerField;
     cds_PhysInvTypeOfInventory: TIntegerField;
@@ -171,21 +171,21 @@ type
     cds_PhysInvModifiedUser: TSmallintField;
     cds_PhysInvCreatedUser: TSmallintField;
     cds_PhysInvCityName: TStringField;
-    cds_PIP: TADQuery;
+    cds_PIP: TFDQuery;
     cds_PIPPIPNo: TIntegerField;
     cds_PIPPhyInvPointNameNo: TIntegerField;
     cds_PIPCITYNAME: TStringField;
     cds_PIPOwnerNo: TIntegerField;
-    cds_LIP: TADQuery;
+    cds_LIP: TFDQuery;
     cds_LIPLIPNo: TIntegerField;
     cds_LIPLIPName: TStringField;
     cds_LIPCityNo: TIntegerField;
     cds_LIPOwnerNo: TIntegerField;
     cds_LIPPIPNo: TIntegerField;
-    sq_GetStdUserProfile: TADQuery;
+    sq_GetStdUserProfile: TFDQuery;
     sq_GetStdUserProfileForm: TStringField;
     sq_GetStdUserProfileName: TStringField;
-    cds_UserProfile: TADQuery;
+    cds_UserProfile: TFDQuery;
     cds_UserProfileUserID: TIntegerField;
     cds_UserProfileForm: TStringField;
     cds_UserProfileName: TStringField;

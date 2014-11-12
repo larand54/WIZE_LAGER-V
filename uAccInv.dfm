@@ -281,8 +281,8 @@
       BuiltInReportLink = True
     end
   end
-  object cds_AccInv: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_AccInv: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'select dbo.AccInv.*, dbo.AccInv.IntInDel + dbo.AccInv.ExtInDel A' +
@@ -420,8 +420,8 @@
       Size = 4
     end
   end
-  object sq_InvWeeks: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_InvWeeks: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct iw.YearNo, iw.WeekNo'
       'from dbo.InvWeeks iw'
@@ -454,8 +454,8 @@
       Required = True
     end
   end
-  object sq_StartPeriod: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_StartPeriod: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select Distinct'
       'CASE WHEN acs.WeekNo < 10 THEN'
@@ -475,8 +475,8 @@
       ReadOnly = True
     end
   end
-  object sq_AccInvParam: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_AccInvParam: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select accp.* FROM dbo.AccInvParam accp'
       'WHERE accp.ClientNo = :ClientNo')

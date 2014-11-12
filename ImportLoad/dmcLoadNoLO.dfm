@@ -2032,11 +2032,11 @@ object dmLoadNoLO: TdmLoadNoLO
     Params = <>
     SQL.Strings = (
       
-        'Select distinct ca.*, ad.*, ci.CityName, cy.CountryName  From DB' +
+        'Select distinct ca.*, FD.*, ci.CityName, cy.CountryName  From DB' +
         'O.CompanyAddress CA'
-      'INNER JOIN dbo.Address ad on ad.AddressNo = ca.AddressNo'
-      'Inner Join dbo.City ci on ci.CityNo = ad.CityNo'
-      'Inner Join dbo.Country cy on cy.CountryNo = ad.CountryNo'
+      'INNER JOIN dbo.Address FD on FD.AddressNo = ca.AddressNo'
+      'Inner Join dbo.City ci on ci.CityNo = FD.CityNo'
+      'Inner Join dbo.Country cy on cy.CountryNo = FD.CountryNo'
       ''
       ''
       ''

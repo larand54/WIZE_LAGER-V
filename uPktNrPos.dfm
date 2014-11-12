@@ -104,8 +104,8 @@ object fPktNrPos: TfPktNrPos
     Left = 328
     Top = 216
   end
-  object cds_Verk: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Verk: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select C.ClientNo, C.ClientName, C.PktNrLevKod,'
       

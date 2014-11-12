@@ -723,7 +723,7 @@ type
 { IXMLNameAddress }
 
   IXMLNameAddress = interface(IXMLNode)
-    ['{60CBA6BE-AD9D-49C6-987A-7DD9DBFAE5AD}']
+    ['{60CBA6BE-FD9D-49C6-987A-7DD9DBFAE5AD}']
     { Property Accessors }
     function Get_CommunicationRole: WideString;
     function Get_Name1: WideString;
@@ -2168,7 +2168,7 @@ type
 { IXMLInsurance }
 
   IXMLInsurance = interface(IXMLNode)
-    ['{B705385A-3042-4499-ADAD-E3349E05D313}']
+    ['{B705385A-3042-4499-FDAD-E3349E05D313}']
     { Property Accessors }
     function Get_Insurer: WideString;
     function Get_InsuranceContractNo: WideString;
@@ -2654,7 +2654,7 @@ type
 { IXMLProofInformationalQuantity }
 
   IXMLProofInformationalQuantity = interface(IXMLNode)
-    ['{F2C2D66C-ADA3-4F01-BD5B-29B208308E6C}']
+    ['{F2C2D66C-FDA3-4F01-BD5B-29B208308E6C}']
     { Property Accessors }
     function Get_ProofType: WideString;
     function Get_Quantity: IXMLQuantity;
@@ -3452,7 +3452,7 @@ type
 { IXMLCoreStrengthCode }
 
   IXMLCoreStrengthCode = interface(IXMLNode)
-    ['{ADF4D5C0-4C53-4B2B-B406-10D988864ACE}']
+    ['{FDF4D5C0-4C53-4B2B-B406-10D988864ACE}']
     { Property Accessors }
     function Get_Agency: WideString;
     procedure Set_Agency(Value: WideString);
@@ -3608,7 +3608,7 @@ type
 { IXMLSlitReelReference }
 
   IXMLSlitReelReference = interface(IXMLNode)
-    ['{1695087D-C3DC-4413-AD1A-5411332C072C}']
+    ['{1695087D-C3DC-4413-FD1A-5411332C072C}']
     { Property Accessors }
     function Get_SlitReelReferenceType: WideString;
     function Get_AssignedBy: WideString;
@@ -4390,7 +4390,7 @@ type
 { IXMLBendingStiffness }
 
   IXMLBendingStiffness = interface(IXMLDetailMeasurement)
-    ['{9A07F517-50D9-419F-AD1E-352A4ACF7179}']
+    ['{9A07F517-50D9-419F-FD1E-352A4ACF7179}']
     { Property Accessors }
     function Get_TestMethod: WideString;
     function Get_TestAgency: WideString;
@@ -4441,7 +4441,7 @@ type
 { IXMLBrightnessList }
 
   IXMLBrightnessList = interface(IXMLNodeCollection)
-    ['{FA2C705D-F468-481A-AD6F-F36B191D8290}']
+    ['{FA2C705D-F468-481A-FD6F-F36B191D8290}']
     { Methods & Properties }
     function Add: IXMLBrightness;
     function Insert(const Index: Integer): IXMLBrightness;
@@ -4514,7 +4514,7 @@ type
 { IXMLCoatWeight }
 
   IXMLCoatWeight = interface(IXMLDetailMeasurement)
-    ['{713CD815-31D8-4BFD-A76E-ADBC96EBD35E}']
+    ['{713CD815-31D8-4BFD-A76E-FDBC96EBD35E}']
     { Property Accessors }
     function Get_TestMethod: WideString;
     function Get_TestAgency: WideString;
@@ -5815,7 +5815,7 @@ type
 { IXMLTEA }
 
   IXMLTEA = interface(IXMLDetailMeasurement)
-    ['{5103B7A5-AD26-4949-A2F6-18FDBFCF3BAB}']
+    ['{5103B7A5-FD26-4949-A2F6-18FDBFCF3BAB}']
     { Property Accessors }
     function Get_TestMethod: WideString;
     function Get_TestAgency: WideString;
@@ -6172,7 +6172,7 @@ type
 { IXMLPlySet }
 
   IXMLPlySet = interface(IXMLNode)
-    ['{1208BD82-AD40-4356-AE84-7E8C3E6BACF7}']
+    ['{1208BD82-FD40-4356-AE84-7E8C3E6BACF7}']
     { Property Accessors }
     function Get_EdgePaddable: WideString;
     function Get_NumberOfPlies: IXMLNni1List;
@@ -7450,7 +7450,7 @@ type
 { IXMLPlywoodOSBSupplementalClass }
 
   IXMLPlywoodOSBSupplementalClass = interface(IXMLNodeCollection)
-    ['{F007E302-AD71-4319-9457-142009A42695}']
+    ['{F007E302-FD71-4319-9457-142009A42695}']
     { Property Accessors }
     function Get_SupplementalSpecification: WideString;
     function Get_AdditionalText(Index: Integer): WideString;
@@ -7540,7 +7540,7 @@ type
 { IXMLPackageInformationClass }
 
   IXMLPackageInformationClass = interface(IXMLNode)
-    ['{1093AD45-FDFF-43D6-AD34-4EA707B16BA3}']
+    ['{1093AD45-FDFF-43D6-FD34-4EA707B16BA3}']
     { Property Accessors }
     function Get_PackageType: WideString;
     function Get_MixedProductPalletIndicator: WideString;

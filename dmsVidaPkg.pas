@@ -8,9 +8,9 @@ uses
   Controls,
   Forms,
   VidaType, DB, kbmMemTable, Dialogs,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADCompDataSet, uADCompClient, uADStanAsync,
-  uADDAptManager, SqlTimSt, Math ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Stan.Async,
+  FireDAC.DApt, SqlTimSt, Math ;
 
 
 type
@@ -111,7 +111,7 @@ type
     mtUserPropStartPeriod: TDateTimeField;
     mtUserPropEndPeriod: TDateTimeField;
     mtUserPropPris: TFloatField;
-    cds_Props: TADQuery;
+    cds_Props: TFDQuery;
     cds_PropsUserID: TIntegerField;
     cds_PropsForm: TStringField;
     cds_PropsVerkNo: TIntegerField;
@@ -156,33 +156,33 @@ type
     cds_PropsShowProduct: TIntegerField;
     cds_PropsName: TStringField;
     cds_PropsFilter1: TStringField;
-    cds_LengthGroup: TADQuery;
+    cds_LengthGroup: TFDQuery;
     cds_LengthGroupGroupNo: TIntegerField;
     cds_LengthGroupGroupName: TStringField;
-    cds_RegPoint: TADQuery;
+    cds_RegPoint: TFDQuery;
     cds_RegPointProductionUnitName: TStringField;
     cds_RegPointRegistrationPointNo: TIntegerField;
-    cds_LIP: TADQuery;
+    cds_LIP: TFDQuery;
     cds_LIPLIPNo: TIntegerField;
     cds_LIPLIPName: TStringField;
-    cds_PIP: TADQuery;
+    cds_PIP: TFDQuery;
     cds_PIPPIPNO: TIntegerField;
     cds_PIPPIPNAME: TStringField;
-    cds_producer: TADQuery;
+    cds_producer: TFDQuery;
     cds_producerClientNo: TIntegerField;
     cds_producerClientName: TStringField;
     cds_producerSearchName: TStringField;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkSearchName: TStringField;
-    cds_ProductGroupLength: TADQuery;
+    cds_ProductGroupLength: TFDQuery;
     cds_ProductGroupLengthProductGroupNo: TIntegerField;
     cds_ProductGroupLengthProductLengthNo: TIntegerField;
     cds_ProductGroupLengthCreatedUser: TSmallintField;
     cds_ProductGroupLengthModifiedUser: TSmallintField;
     cds_ProductGroupLengthDateCreated: TSQLTimeStampField;
-    cds_ProdLength: TADQuery;
+    cds_ProdLength: TFDQuery;
     cds_ProdLengthProductLengthNo: TIntegerField;
     cds_ProdLengthActualLengthMM: TFloatField;
     cds_ProdLengthNominalLengthMM: TFloatField;
@@ -196,24 +196,24 @@ type
     cds_ProdLengthSequenceNo: TIntegerField;
     cds_ProdLengthProductLengthGroupNo: TIntegerField;
     cds_ProdLengthAct: TIntegerField;
-    sq_GetPkgTypeNo: TADQuery;
+    sq_GetPkgTypeNo: TFDQuery;
     sq_GetPkgTypeNoPackageTypeNo: TIntegerField;
-    sq_PkgExist: TADQuery;
+    sq_PkgExist: TFDQuery;
     sq_PkgExistPackageNo: TIntegerField;
-    sq_ProductLengths: TADQuery;
+    sq_ProductLengths: TFDQuery;
     sq_ProductLengthsActualLengthMM: TFloatField;
-    sp_ProdLeng: TADStoredProc;
-    sp_StandardLengths: TADStoredProc;
-    sp_PkgInfo: TADStoredProc;
-    sp_OnePackageNo: TADStoredProc;
-    sp_NewPkgNoNoProdLogg: TADStoredProc;
-    sp_Populate_One_PkgTypeLengths: TADStoredProc;
-    sp_PackageTotals: TADStoredProc;
-    sp_NewPackageNo: TADStoredProc;
-    sp_NewPackageDetail: TADStoredProc;
-    sp_NewPackageType: TADStoredProc;
-    sp_PackageTypeDetail: TADStoredProc;
-    sp_PackageTypes: TADStoredProc;
+    sp_ProdLeng: TFDStoredProc;
+    sp_StandardLengths: TFDStoredProc;
+    sp_PkgInfo: TFDStoredProc;
+    sp_OnePackageNo: TFDStoredProc;
+    sp_NewPkgNoNoProdLogg: TFDStoredProc;
+    sp_Populate_One_PkgTypeLengths: TFDStoredProc;
+    sp_PackageTotals: TFDStoredProc;
+    sp_NewPackageNo: TFDStoredProc;
+    sp_NewPackageDetail: TFDStoredProc;
+    sp_NewPackageType: TFDStoredProc;
+    sp_PackageTypeDetail: TFDStoredProc;
+    sp_PackageTypes: TFDStoredProc;
     sp_StandardLengthsProductLengthNo: TIntegerField;
     sp_StandardLengthsActualLengthMM: TFloatField;
     sp_StandardLengthsPET: TIntegerField;
@@ -227,8 +227,8 @@ type
     mtUserPropSkiftLag: TStringField;
     mtUserPropALMM: TFloatField;
     mtUserPropNOM_WIDTH: TFloatField;
-    ADQuery1: TADQuery;
-    cds_Package_Size: TADQuery;
+    FDQuery1: TFDQuery;
+    cds_Package_Size: TFDQuery;
     cds_Package_SizePackageSizeNo: TIntegerField;
     cds_Package_SizePackageSizeName: TStringField;
     ds_Package_Size: TDataSource;

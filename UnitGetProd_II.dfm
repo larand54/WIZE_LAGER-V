@@ -122,7 +122,7 @@ object frmGetProd_II: TfrmGetProd_II
         9400CEA59400CEAD9400F7C69400F7CE94009C9C9C00BD9C9C00CE9C9C00D69C
         9C00CEA59C00F7CE9C00F7D69C003973A500C6A5A500ADADA500D6ADA500D6B5
         A500D6BDA500F7D6A500C6ADAD00D6B5AD00D6C6AD00DEC6AD00E7C6AD00E7CE
-        AD00F7D6AD00F7DEAD00FFDEAD001873B5002173B5006394B500E7CEB500EFD6
+        FD00F7D6AD00F7DEAD00FFDEAD001873B5002173B5006394B500E7CEB500EFD6
         B500EFDEB500F7DEB500FFE7B5001873BD00E7D6BD00F7DEBD00F7E7BD00FFE7
         BD00FFEFBD00FFF7BD00EFDEC600EFE7C600FFEFC600FFF7C600FFF7CE003184
         D600FFFFD600C6CEDE00F7EFDE00FFEFDE00FFFFDE00EFEFE700FFF7E700FFFF
@@ -1232,9 +1232,9 @@ object frmGetProd_II: TfrmGetProd_II
     Left = 414
     Top = 379
   end
-  object cds_ProdList: TADQuery
+  object cds_ProdList: TFDQuery
     Active = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT pg.SequenceNo, pd.ProductNo, pg.ProductGroupNo, gd.GradeN' +
@@ -1417,8 +1417,8 @@ object frmGetProd_II: TfrmGetProd_II
       Origin = 'GradeAct'
     end
   end
-  object cds_Species: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Species: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select S.*,'
       
@@ -1452,8 +1452,8 @@ object frmGetProd_II: TfrmGetProd_II
       Size = 38
     end
   end
-  object cds_Grade: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Grade: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select G.*,'
       
@@ -1493,8 +1493,8 @@ object frmGetProd_II: TfrmGetProd_II
       Size = 38
     end
   end
-  object cds_Surfacing: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Surfacing: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select S.*,'
       
@@ -1528,8 +1528,8 @@ object frmGetProd_II: TfrmGetProd_II
       Size = 38
     end
   end
-  object cds_ProdCatg: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_ProdCatg: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pc.*,'
       ''

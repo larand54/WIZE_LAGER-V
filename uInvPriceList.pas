@@ -11,9 +11,9 @@ uses
   cxCalendar, StdCtrls, kbmMemTable, cxGridBandedTableView,
   cxGridDBBandedTableView, cxContainer, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxLabel,
-  cxCurrencyEdit, cxLookAndFeels, cxLookAndFeelPainters, uADStanIntf,
-  uADStanOption, uADStanParam, uADStanError, uADDatSManager, uADPhysIntf,
-  uADDAptIntf, uADCompDataSet, uADCompClient;
+  cxCurrencyEdit, cxLookAndFeels, cxLookAndFeelPainters, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfInvPriceList = class(TForm)

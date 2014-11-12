@@ -107,11 +107,11 @@
     Left = 943
     Top = 88
   end
-  object cds_LoadPlanHdr: TADQuery
+  object cds_LoadPlanHdr: TFDQuery
     AfterInsert = cds_LoadPlanHdrAfterInsert
     CachedUpdates = True
     BeforeApplyUpdates = cds_LoadPlanHdrBeforeApplyUpdates
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.LoadPlanHdr'
       'WHERE LoadingNo = :LoadingNo'
@@ -224,12 +224,12 @@
       Lookup = True
     end
   end
-  object cds_LoadPlanRow: TADQuery
+  object cds_LoadPlanRow: TFDQuery
     AfterInsert = cds_LoadPlanRowAfterInsert
     BeforePost = cds_LoadPlanRowBeforePost
     OnCalcFields = cds_LoadPlanRowCalcFields
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.LoadPlanRow'
     SQL.Strings = (
       'Select LPR.LoadingNo,'
@@ -376,7 +376,7 @@
       Calculated = True
     end
   end
-  object cds_LoadPlanDest: TADQuery
+  object cds_LoadPlanDest: TFDQuery
     AfterInsert = cds_LoadPlanDestAfterInsert
     BeforePost = cds_LoadPlanDestBeforePost
     BeforeScroll = cds_LoadPlanDestBeforeScroll
@@ -384,7 +384,7 @@
     CachedUpdates = True
     MasterSource = ds_LoadPlanHdr
     MasterFields = 'LoadingNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     FetchOptions.AssignedValues = [evCache]
     SQL.Strings = (
       'Select * FROM dbo.LoadPlanDest'
@@ -476,8 +476,8 @@
       Lookup = True
     end
   end
-  object cdsCarrier: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsCarrier: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select *'
       'From dbo.Carrier'
@@ -513,8 +513,8 @@
       Origin = 'DateCreated'
     end
   end
-  object cds_PkgTypes: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgTypes: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.PktTypeByPP'
       '')
@@ -613,8 +613,8 @@
       Origin = 'MarketRegionNo'
     end
   end
-  object cdsMarketRegions: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cdsMarketRegions: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT M.MarketRegionNo, M.MarketRegionName'
       'FROM dbo.MarketRegion M'
@@ -636,7 +636,7 @@
       Size = 10
     end
   end
-  object cds_PigEntry: TADQuery
+  object cds_PigEntry: TFDQuery
     AfterInsert = cds_PigEntryAfterInsert
     BeforePost = cds_PigEntryBeforePost
     BeforeScroll = cds_PigEntryBeforeScroll
@@ -645,7 +645,7 @@
     CachedUpdates = True
     MasterSource = ds_PigHdr
     MasterFields = 'PIGGroupNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.PigEntry'
     SQL.Strings = (
       
@@ -813,10 +813,10 @@
       Calculated = True
     end
   end
-  object cds_PigNames: TADQuery
+  object cds_PigNames: TFDQuery
     AfterInsert = cds_PigNamesAfterInsert
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.PigName'
       'Order By PigNo'
@@ -839,7 +839,7 @@
       Origin = 'Active'
     end
   end
-  object cds_PigHdr: TADQuery
+  object cds_PigHdr: TFDQuery
     AfterInsert = cds_PigHdrAfterInsert
     CachedUpdates = True
     Indexes = <
@@ -850,7 +850,7 @@
         Fields = 'PIGGroupNo'
       end>
     IndexName = 'cds_PigHdrIndex01'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.PigGroup'
       'WHERE PIGGroupNo = :PIGGroupNo'
@@ -937,8 +937,8 @@
       Lookup = True
     end
   end
-  object cds_GetPkgsPerType: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_GetPkgsPerType: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pp.PkgCodePPNo AS PackageTypeNo, Count(*)  AS NoOfPkgs'
       'From dbo.PackageNumber pn'
@@ -975,8 +975,8 @@
       ReadOnly = True
     end
   end
-  object cds_PigHdrList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PigHdrList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select pg.*, C.CityName AS Lagerst'#228'lle, LIP.LogicalInventoryName' +
@@ -1055,8 +1055,8 @@
       Size = 50
     end
   end
-  object cds_PhysInv: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PhysInv: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct PH.PhysicalInventoryPointNo AS PIPNo, CY.CITYNAM' +
@@ -1084,8 +1084,8 @@
       Origin = 'OwnerNo'
     end
   end
-  object cds_LogInv: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LogInv: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'SELECT Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvento' +
@@ -1112,8 +1112,8 @@
       Origin = 'PIPNo'
     end
   end
-  object cds_SalesRegions: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_SalesRegions: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'select C.ClientNo, C.ClientName'
       'FROM   dbo.Client        C,'
@@ -1137,8 +1137,8 @@
       Size = 80
     end
   end
-  object cds_PkgNosSub: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgNosSub: TFDQuery
+    Connection = dmsConnector.FDConnection1
     UpdateOptions.UpdateTableName = 'dbo.PackageNumber'
     SQL.Strings = (
       
@@ -1186,8 +1186,8 @@
       Origin = 'Status'
     end
   end
-  object cds_PkgNosAdd: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_PkgNosAdd: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.PackageNumber pn'
       
@@ -1497,8 +1497,8 @@
       Origin = 'prodinstruno'
     end
   end
-  object cds_LoadPlanHdrList: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_LoadPlanHdrList: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select LPH.*, Ca.CarrierName FROM dbo.LoadPlanHdr LPH'
       'Inner Join dbo.Carrier Ca on Ca.CarrierNo = LPH.VesselNo'
@@ -1576,8 +1576,8 @@
       Size = 50
     end
   end
-  object sq_GetPkgTypeNo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_GetPkgTypeNo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pp.PackageTypeNo FROM '
       'dbo.Packagecode_printparams'#9'PP '
@@ -1600,8 +1600,8 @@
       Required = True
     end
   end
-  object sq_UpdArPktKvar: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_UpdArPktKvar: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.LoadPlanRow'
       'Set PktKvar = pe.SumCountedPkgs ,'
@@ -1637,7 +1637,7 @@
         'ackageTypeNo'
       
         'Inner Join dbo.LoadPlanHdr LPH on LPH.LoadingNo = LoadPlanRow.Lo' +
-        'adingNo'
+        'FDingNo'
       ''
       
         'Left Outer Join dbo.PIGGroup pigStart on pigStart.PIGGroupNo = L' +
@@ -1663,8 +1663,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_OnePackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_OnePackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_OnePackageNo'
     Left = 56
     Top = 464
@@ -1689,8 +1689,8 @@
         Size = 3
       end>
   end
-  object sp_VardaLager: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_VardaLager: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_VLneg'
     Left = 56
     Top = 328
@@ -1727,8 +1727,8 @@
         ParamType = ptInput
       end>
   end
-  object sp_NewPackageNo: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object sp_NewPackageNo: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_AddVardPkg_II'
     Left = 56
     Top = 392

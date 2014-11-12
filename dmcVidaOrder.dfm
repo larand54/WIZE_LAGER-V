@@ -42,9 +42,9 @@
     Left = 40
     Top = 88
   end
-  object cdsSawmillLoadOrders: TADQuery
+  object cdsSawmillLoadOrders: TFDQuery
     IndexFieldNames = 'SupplierShipPlanObjectNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       
@@ -608,10 +608,10 @@
       ReadOnly = True
     end
   end
-  object cdsBooking: TADQuery
+  object cdsBooking: TFDQuery
     IndexFieldNames = 'shippingplanno'
     MasterFields = 'LONumber'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT'
       '         Cr.CarrierName            ,           -- Char 50'
@@ -708,8 +708,8 @@
       Size = 50
     end
   end
-  object sq_Product: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_Product: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.PktTypeByPP_SV pr'
       'WHERE'
@@ -820,9 +820,9 @@
       Origin = 'PcsPerPkg'
     end
   end
-  object cds_ProducerUser: TADQuery
+  object cds_ProducerUser: TFDQuery
     IndexFieldNames = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'select Distinct c.ClientNo, c.ClientName, c.SearchName from dbo.' +
@@ -852,8 +852,8 @@
       Size = 80
     end
   end
-  object cds_RegPointUser: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_RegPointUser: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select Distinct pu.ClientNo, rp.RegPointNo, rp.RegPointName FROM' +
@@ -881,8 +881,8 @@
       Size = 30
     end
   end
-  object cds_AOUserRP: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_AOUserRP: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.AOUserRegPoints '
       'WHERE UserID = :UserID'
@@ -962,8 +962,8 @@
       Lookup = True
     end
   end
-  object cds_RegPoint: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_RegPoint: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
         'Select Distinct pu.ClientNo, rp.RegPointNo, rp.RegPointName FROM' +
@@ -999,9 +999,9 @@
       Size = 30
     end
   end
-  object cds_Producer: TADQuery
+  object cds_Producer: TFDQuery
     IndexFieldNames = 'ClientNo'
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '--Show only producers linked to user'
       
@@ -1038,8 +1038,8 @@
       Size = 80
     end
   end
-  object cds_User: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_User: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select UserID, UserName FROM dbo.Users'
       '')
@@ -1057,8 +1057,8 @@
       Required = True
     end
   end
-  object cds_volunit: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_volunit: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * from dbo.UnitName'
       '')
@@ -1093,8 +1093,8 @@
       Origin = 'SequenceNo'
     end
   end
-  object cdsLoadsForLO: TADStoredProc
-    Connection = dmsConnector.ADConnection1
+  object cdsLoadsForLO: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
     StoredProcName = 'vida_LoadsForLO_IIII'
     Left = 264
     Top = 32
@@ -1188,8 +1188,8 @@
       ReadOnly = True
     end
   end
-  object sq_SearchALOByMainLO: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SearchALOByMainLO: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
       'SP.ShippingPlanNo'
@@ -1221,8 +1221,8 @@
       Origin = 'ShippingPlanNo'
     end
   end
-  object sq_FindLONo: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_FindLONo: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT'
       'LS.ShippingPlanNo AS LONo'
@@ -1246,8 +1246,8 @@
       Required = True
     end
   end
-  object sq_SetLOStatus: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object sq_SetLOStatus: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Update dbo.SupplierShippingPlan'
       'Set ShippingPlanStatus = :Status'
@@ -1269,8 +1269,8 @@
         ParamType = ptInput
       end>
   end
-  object SQLQuery1: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object SQLQuery1: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       '--Purchase'
       'SELECT distinct'

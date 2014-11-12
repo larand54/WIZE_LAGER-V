@@ -18,9 +18,9 @@ uses
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer,
   dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk,
-  SqlExpr, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
-  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager,
-  uADCompDataSet, uADCompClient, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  SqlExpr, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, dxSkinsCore, dxSkinBlack, dxSkinBlue,
   dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -66,10 +66,10 @@ type
     UppdateraF61: TMenuItem;
     dxComponentPrinter1: TdxComponentPrinter;
     dxComponentPrinter1Link1: TdxSpreadSheetBookReportLink;
-    cds_AccInv: TADQuery;
-    sq_InvWeeks: TADQuery;
-    sq_StartPeriod: TADQuery;
-    sq_AccInvParam: TADQuery;
+    cds_AccInv: TFDQuery;
+    sq_InvWeeks: TFDQuery;
+    sq_StartPeriod: TFDQuery;
+    sq_AccInvParam: TFDQuery;
     sq_AccInvParamClientNo: TIntegerField;
     sq_AccInvParamIngoingInv: TBCDField;
     sq_AccInvParamTrimFactor: TBCDField;

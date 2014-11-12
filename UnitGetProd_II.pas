@@ -13,9 +13,9 @@ uses
   cxSplitter, cxPC, cxLookAndFeels, cxLabel, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Menus,
   cxLookAndFeelPainters, ActnList, cxButtons, cxGroupBox, cxRadioGroup,
-  cxDBEdit, cxGridCustomPopupMenu, cxGridPopupMenu, uADStanIntf, uADStanOption, uADStanParam, uADStanError,
-  uADDatSManager, uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager,
-  cxImageComboBox, uADCompDataSet, uADCompClient, dxSkinsCore, dxSkinBlack,
+  cxDBEdit, cxGridCustomPopupMenu, cxGridPopupMenu, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  cxImageComboBox, FireDAC.Comp.DataSet, FireDAC.Comp.Client, dxSkinsCore, dxSkinBlack,
   dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -178,11 +178,11 @@ type
     ds_Surfacing: TDataSource;
     ds_ProdCatg: TDataSource;
     ds_ProdList: TDataSource;
-    cds_ProdList: TADQuery;
-    cds_Species: TADQuery;
-    cds_Grade: TADQuery;
-    cds_Surfacing: TADQuery;
-    cds_ProdCatg: TADQuery;
+    cds_ProdList: TFDQuery;
+    cds_Species: TFDQuery;
+    cds_Grade: TFDQuery;
+    cds_Surfacing: TFDQuery;
+    cds_ProdCatg: TFDQuery;
     cds_GradeGradeNo: TIntegerField;
     cds_GradeGradeName: TStringField;
     cds_GradeGradeCode: TStringField;
@@ -270,7 +270,7 @@ uses VidaUtils, VidaConst, VidaUser, dmsDataConn ,
 
 function ReplaceCommas_II(S : String) : String ;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1828 or $6ECA0000; xor eax,eax; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1828 or $6ECA0000; xor eax,eax; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
   { Convert commas to period }
 // if StrToFloatDef(S,0) = 0 then
   while Pos(',', S) > 0 do
@@ -279,15 +279,15 @@ begin
   while Pos('.', S) > 0 do
     S[Pos('.', S)] := ',';
  Result:= S ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1828; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1828; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 
 procedure TfrmGetProd_II.grdProductListDblClick(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1829 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1829 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  ModalResult:= mrOk;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1829; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1829; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.BuildSQL(Sender: TObject);
@@ -295,7 +295,7 @@ Var AT, AB : Double ;
  TS, kv, ut : String ;
  sAND : Boolean ;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1830 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1830 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  sAnd:= False ;
  Try
  AT:= StrToFloatDef(meAT.Text,0) ;
@@ -370,12 +370,12 @@ begin
 //  if ThisUser.UserID = 8 then cds_ProdList.SQL.SaveToFile('cds_ProdList.txt') ;
 
 // End ; //with
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1830; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1830; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 End ;
 
 procedure TfrmGetProd_II.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1831 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1831 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 if Key = #13 then begin
     Key := #0;
 //    if (Sender is TdxdBGrid) then
@@ -383,24 +383,24 @@ if Key = #13 then begin
 //    else
       Perform(Wm_NextDlgCtl,0,0);
   end;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1831; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1831; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.FormCreate(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1832 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1832 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  EnableProductRegisterButton  := True ;
  Try                                                          
   dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdProdListDBTableView1.Name, grdProdListDBTableView1) ;
   dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdCustDimProdDBTableView1.Name, grdCustDimProdDBTableView1) ;
  Except
  End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1832; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1832; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.FormShow(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1833 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1833 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 
  mtProduct.Active := True ;
  mtProduct.Insert ;
@@ -428,12 +428,12 @@ begin
   cds_ProdList.Active:= False ;
 
   meAT.SetFocus ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1833; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1833; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.grdProdListDBTableView1DblClick(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1834 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1834 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 // Begin
   if cds_ProdListGradeNo.AsInteger > 1 then
@@ -463,13 +463,13 @@ begin
   End ;
 // End ; //With...
 
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1834; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1834; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1837 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1837 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 //Kolla så att inte
  Try
 
@@ -479,14 +479,14 @@ begin
  End ;
 
  CanClose:= True ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1837; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1837; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.RefreshSok(Sender: TObject);
 Var
  Save_Cursor : TCursor;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1840 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1840 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  Save_Cursor := Screen.Cursor;
  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
  Try
@@ -499,27 +499,27 @@ begin
  Finally
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1840; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1840; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.acDeleteSelectedProductExecute(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1841 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1841 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 // Begin
   dmsSystem.mtMarkedProd.Delete ;
 // End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1841; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1841; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.acDeleteSelectedProductUpdate(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1842 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1842 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 // Begin
   acDeleteSelectedProduct.Enabled:= (dmsSystem.mtMarkedProd.Active) and (dmsSystem.mtMarkedProd.RecordCount > 0) ;
 // End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1842; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1842; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.InsertToSelectedProducts(const ProductNo, ProductGroupNo : Integer;
@@ -528,7 +528,7 @@ const Produkt : String;
 const SequenceNo, CheckAktiv : Integer;
 const NIT, NIW  : String) ;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1843 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1843 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 // Begin
   if CheckAktiv = 1 then
@@ -598,7 +598,7 @@ begin
   End ;
   End ;//dmsSystem
 // End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1843; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1843; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 End ;
 
 
@@ -607,7 +607,7 @@ Var
  Save_Cursor : TCursor;
  SQL : AnsiString ;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1844 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1844 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 
   if mtProductVaruSlag.IsNull then
   Begin
@@ -639,7 +639,7 @@ begin
 //  dmProduct.cds_ProdList.SQL.Text:= SQL ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1844; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1844; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.acProductRegisterExecute(Sender: TObject);
@@ -647,7 +647,7 @@ procedure TfrmGetProd_II.acProductRegisterExecute(Sender: TObject);
 //    ProductGroupNo  : Integer ;
 //    NT, NB          : Double;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1845 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1845 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 (*
  Begin
@@ -736,13 +736,13 @@ begin
  End ;
  End ; //with
  *)
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1845; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1845; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 End;
 
 procedure TfrmGetProd_II.acClearFilterExecute(Sender: TObject);
 Var Varuslag : Integer ;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1846 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1846 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  icvaruslag.Properties.OnChange:= nil ;
  Try
  Varuslag         := mtProductVaruSlag.AsInteger ;
@@ -759,13 +759,13 @@ begin
  Finally
   icvaruslag.Properties.OnChange:= icVaruSlagPropertiesChange ;
  End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1846; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1846; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.grdProdListDBTableView1KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1847 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1847 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  //ShowMessage(inttostr(key));
  if Key = 32 then
 // With dmProduct do
@@ -795,22 +795,22 @@ begin
   cds_ProdListNominalWidthINCH.AsString    ) ;
   End ;
 
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1847; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1847; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.acOKUpdate(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1848 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1848 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 // Begin
   acOK.Enabled:= (cds_ProdList.Active) and (cds_ProdListGradeNo.AsInteger > 1) ;
 // End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1848; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1848; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.bbOKClick(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1849 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1849 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
  Begin
   if PageControl.HideTabs = True then
@@ -836,14 +836,14 @@ begin
   cds_ProdListNominalWidthINCH.AsString  ) ;
   End ;
  End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1849; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1849; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.GtillATfltet1Click(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1851 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1851 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
  meAT.SetFocus ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1851; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1851; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.icVaruslagPropertiesChange(Sender: TObject);
@@ -890,7 +890,7 @@ procedure TfrmGetProd_II.acCreateProductExecute(Sender: TObject);
 //    ProductGroupNo  : Integer ;
 //    NT, NB          : Double;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1852 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1852 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 (* Begin
   if mtProductVaruSlag.IsNull then
@@ -942,17 +942,17 @@ begin
  mtProductProductCategoryNo.AsInteger) ;
  End ; //with
  *)
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1852; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1852; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 End;
 
 procedure TfrmGetProd_II.acCreateProductUpdate(Sender: TObject);
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1853 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1853 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 // With dmProduct do
 // Begin
   acCreateProduct.Enabled:= (cds_ProdList.Active) and (cds_ProdList.RecordCount = 0) ;
 // End ;
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1853; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1853; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
 procedure TfrmGetProd_II.acProductRegisterUpdate(Sender: TObject);
@@ -964,7 +964,7 @@ procedure TfrmGetProd_II.acEditProduktExecute(Sender: TObject);
 //var fProductForm    : TfProductForm ;
 //    ProductGroupNo  : Integer ;
 begin
-{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1845 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; {$ENDIF}
+{$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1845 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 (* With dmProduct do
  Begin
 
@@ -993,7 +993,7 @@ begin
  End ;
  End ; //with
  *)
-{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1845; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; adc[ecx].4,edx; end; end; {$ENDIF}
+{$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1845; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 End;
 
 procedure TfrmGetProd_II.acEditProduktUpdate(Sender: TObject);

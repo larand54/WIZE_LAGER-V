@@ -9,9 +9,9 @@ uses
   Forms,
   Controls,
   Vidatype, Variants, SqlTimSt, kbmMemTable, DateUtils,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompClient,
-  uADCompDataSet ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet ;
 const
  Const_SupplierShippingPlan = 'SupplierShippingPlan' ;
  Const_Booking                  = 'Booking' ;
@@ -27,7 +27,7 @@ type
     ds_RegPointUser: TDataSource;
     ds_volunit: TDataSource;
     dsrcSawmillLoadOrders: TDataSource;
-    cdsSawmillLoadOrders: TADQuery;
+    cdsSawmillLoadOrders: TFDQuery;
     cdsSawmillLoadOrdersKONTRAKTSBESKRIVNING: TStringField;
     cdsSawmillLoadOrdersShippersShipDate: TSQLTimeStampField;
     cdsSawmillLoadOrdersREADYDATE: TStringField;
@@ -80,7 +80,7 @@ type
     cdsSawmillLoadOrdersRADREFERENS: TStringField;
     cdsSawmillLoadOrdersPkgCodePPNo: TIntegerField;
     cdsSawmillLoadOrdersVolumeUnitNo: TIntegerField;
-    cdsBooking: TADQuery;
+    cdsBooking: TFDQuery;
     cdsBookingCarrierName: TStringField;
     cdsBookingETD: TSQLTimeStampField;
     cdsBookingBookingNo: TIntegerField;
@@ -92,7 +92,7 @@ type
     cdsBookingClientName: TStringField;
     cdsBookingshippingplanno: TIntegerField;
     cdsBookingPanic_Note: TStringField;
-    sq_Product: TADQuery;
+    sq_Product: TFDQuery;
     sq_ProductAT: TFloatField;
     sq_ProductAB: TFloatField;
     sq_ProductPkgCodePPNo: TIntegerField;
@@ -111,15 +111,15 @@ type
     sq_ProductExternkod: TStringField;
     sq_ProductSöknamn: TStringField;
     sq_ProductPcsPerPkg: TIntegerField;
-    cds_ProducerUser: TADQuery;
+    cds_ProducerUser: TFDQuery;
     cds_ProducerUserClientNo: TIntegerField;
     cds_ProducerUserClientName: TStringField;
     cds_ProducerUserSearchName: TStringField;
-    cds_RegPointUser: TADQuery;
+    cds_RegPointUser: TFDQuery;
     cds_RegPointUserClientNo: TIntegerField;
     cds_RegPointUserRegPointNo: TIntegerField;
     cds_RegPointUserRegPointName: TStringField;
-    cds_AOUserRP: TADQuery;
+    cds_AOUserRP: TFDQuery;
     cds_AOUserRPUserID: TIntegerField;
     cds_AOUserRPProducerNo: TIntegerField;
     cds_AOUserRPRegPointNo: TIntegerField;
@@ -131,26 +131,26 @@ type
     cds_AOUserRPStringField: TStringField;
     cds_AOUserRPStringField2: TStringField;
     cds_AOUserRPStringField3: TStringField;
-    cds_RegPoint: TADQuery;
+    cds_RegPoint: TFDQuery;
     cds_RegPointClientNo: TIntegerField;
     cds_RegPointRegPointNo: TIntegerField;
     cds_RegPointRegPointName: TStringField;
-    cds_Producer: TADQuery;
+    cds_Producer: TFDQuery;
     cds_ProducerUserID: TIntegerField;
     cds_ProducerClientNo: TIntegerField;
     cds_ProducerClientName: TStringField;
     cds_ProducerSearchName: TStringField;
-    cds_User: TADQuery;
+    cds_User: TFDQuery;
     cds_UserUserID: TIntegerField;
     cds_UserUserName: TStringField;
-    cds_volunit: TADQuery;
+    cds_volunit: TFDQuery;
     cds_volunitVolumeUnit_No: TIntegerField;
     cds_volunitVolumeUnitName: TStringField;
     cds_volunitDateCreated: TSQLTimeStampField;
     cds_volunitCreatedUser: TSmallintField;
     cds_volunitModifiedUser: TSmallintField;
     cds_volunitSequenceNo: TIntegerField;
-    cdsLoadsForLO: TADStoredProc;
+    cdsLoadsForLO: TFDStoredProc;
     cdsLoadsForLOFS: TStringField;
     cdsLoadsForLOShippingPlanNo: TIntegerField;
     cdsLoadsForLOLoadNo: TIntegerField;
@@ -164,12 +164,12 @@ type
     cdsLoadsForLOMFBM: TFloatField;
     cdsLoadsForLOVERK: TStringField;
     cdsLoadsForLOANTPKT: TIntegerField;
-    sq_SearchALOByMainLO: TADQuery;
+    sq_SearchALOByMainLO: TFDQuery;
     sq_SearchALOByMainLOShippingPlanNo: TIntegerField;
-    sq_FindLONo: TADQuery;
+    sq_FindLONo: TFDQuery;
     sq_FindLONoLONo: TIntegerField;
-    sq_SetLOStatus: TADQuery;
-    SQLQuery1: TADQuery;
+    sq_SetLOStatus: TFDQuery;
+    SQLQuery1: TFDQuery;
     SQLQuery1READYDATE: TStringField;
     SQLQuery1INITIALS: TStringField;
     SQLQuery1ShippingPlanStatus: TIntegerField;

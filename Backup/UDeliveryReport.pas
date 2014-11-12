@@ -24,9 +24,9 @@ uses
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer,
   dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, CRAXDDRT_TLB,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet,
-  uADCompClient,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
 
 
   Grids,
@@ -256,7 +256,7 @@ type
     cxButton13: TcxButton;
     cxButton14: TcxButton;
     cbProdSUM: TcxComboBox;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkSearchName: TStringField;
@@ -265,7 +265,7 @@ type
     grdProdPaketNrLevel1: TcxGridLevel;
     grdProdPaketNr: TcxGrid;
     cxLookupComboBox1: TcxLookupComboBox;
-    sq_UserProfile: TADQuery;
+    sq_UserProfile: TFDQuery;
     sq_UserProfileUserID: TIntegerField;
     sq_UserProfileForm: TStringField;
     sq_UserProfileName: TStringField;

@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, FMTBcd, DB, DBClient, Provider, SqlExpr, kbmMemTable,
-  dxmdaset, SqlTimSt, Dialogs, Controls, uADStanIntf, uADStanOption,
-  uADStanParam, uADStanError, uADDatSManager, uADPhysIntf, uADDAptIntf,
-  uADCompDataSet, uADCompClient ;
+  dxmdaset, SqlTimSt, Dialogs, Controls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client ;
 
 type
   TdmModule1 = class(TDataModule)
@@ -190,7 +190,7 @@ type
     sq_LoadFreightCostMODIFIEDUSER: TIntegerField;
     sq_LoadFreightCostDATECREATED: TSQLTimeStampField;
     sq_LoadFreightCostDATEMODIFIED: TSQLTimeStampField;
-    tblLoadFreight: TADMemTable;
+    tblLoadFreight: TFDMemTable;
     tblLoadFreightLOADNO: TIntegerField;
     tblLoadFreightLOADID: TStringField;
     tblLoadFreightLOADEDDATE: TDateTimeField;
@@ -363,7 +363,7 @@ type
     cds_genfreightENHET: TStringField;
     sq_genfreightscrow: TIntegerField;
     cds_genfreightscrow: TIntegerField;
-    mtShippers: TADMemTable;
+    mtShippers: TFDMemTable;
     mtShippersShipper: TStringField;
     mtShippersShippersInvoiceNo: TStringField;
     dsShippers: TDataSource;

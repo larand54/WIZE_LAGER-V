@@ -4,9 +4,9 @@ interface
 
 uses
   SysUtils, Classes, DB, kbmMemTable, SqlTimSt,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADCompDataSet, uADCompClient, uADStanAsync,
-  uADDAptManager ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Stan.Async,
+  FireDAC.DApt ;
 
 type
   Tdm_UserProps = class(TDataModule)
@@ -32,7 +32,7 @@ type
     ds_PLIP: TDataSource;
     ds_InvClient: TDataSource;
     ds_Customer: TDataSource;
-    cds_UserDir: TADQuery;
+    cds_UserDir: TFDQuery;
     cds_UserDirUserID: TIntegerField;
     cds_UserDirForm: TStringField;
     cds_UserDirImportDir: TStringField;
@@ -46,20 +46,20 @@ type
     cds_UserDirLastUsedFragaAvropTemplate: TStringField;
     cds_UserDirWoodXDir: TStringField;
     cds_UserDirImportUSA_Faktura_Dir: TStringField;
-    cds_PLIP: TADQuery;
+    cds_PLIP: TFDQuery;
     cds_PLIPPLIP: TStringField;
     cds_PLIPLIPNo: TIntegerField;
     cds_PLIPPIPNO: TIntegerField;
     cds_PLIPCITYNAME: TStringField;
     cds_PLIPLogicalInventoryName: TStringField;
     cds_PLIPInvCode: TStringField;
-    cds_LIP2: TADQuery;
+    cds_LIP2: TFDQuery;
     cds_LIP2LIPNo: TIntegerField;
     cds_LIP2LIPName: TStringField;
-    cds_PIP2: TADQuery;
+    cds_PIP2: TFDQuery;
     cds_PIP2PIPNO: TIntegerField;
     cds_PIP2PIPNAME: TStringField;
-    cds_Props: TADQuery;
+    cds_Props: TFDQuery;
     cds_PropsUserID: TIntegerField;
     cds_PropsForm: TStringField;
     cds_PropsVerkNo: TIntegerField;
@@ -104,23 +104,23 @@ type
     cds_PropsShowProduct: TIntegerField;
     cds_PropsName: TStringField;
     cds_PropsFilter1: TStringField;
-    cds_Customer: TADQuery;
+    cds_Customer: TFDQuery;
     cds_CustomerClientNo: TIntegerField;
     cds_CustomerClientName: TStringField;
     cds_CustomerSearchName: TStringField;
     cds_CustomerSalesRegionNo: TIntegerField;
-    cds_SR: TADQuery;
+    cds_SR: TFDQuery;
     cds_SRClientNo: TIntegerField;
     cds_SRClientName: TStringField;
     cds_SRSearchName: TStringField;
-    cds_VU: TADQuery;
+    cds_VU: TFDQuery;
     cds_VUVolumeUnit_No: TIntegerField;
     cds_VUVolumeUnitName: TStringField;
     cds_VUDateCreated: TSQLTimeStampField;
     cds_VUCreatedUser: TSmallintField;
     cds_VUModifiedUser: TSmallintField;
     cds_VUSequenceNo: TIntegerField;
-    cdsGradeStamps: TADQuery;
+    cdsGradeStamps: TFDQuery;
     cdsGradeStampsGradeStampNo: TIntegerField;
     cdsGradeStampsGradeStamp: TStringField;
     cdsGradeStampsSequenceNo: TIntegerField;
@@ -130,7 +130,7 @@ type
     cdsGradeStampsGradeStampID: TStringField;
     cdsGradeStampsAct: TIntegerField;
     cdsGradeStampsGradeStampCodeName: TStringField;
-    cdsBarCodes: TADQuery;
+    cdsBarCodes: TFDQuery;
     cdsBarCodesBarCodeNo: TIntegerField;
     cdsBarCodesBarCode: TStringField;
     cdsBarCodesSequenceNo: TIntegerField;
@@ -140,28 +140,28 @@ type
     cdsBarCodesBarCodeID: TStringField;
     cdsBarCodesAct: TIntegerField;
     cdsBarCodesBarcodeCodeName: TStringField;
-    cds_LengthGroup: TADQuery;
+    cds_LengthGroup: TFDQuery;
     cds_LengthGroupGroupNo: TIntegerField;
     cds_LengthGroupGroupName: TStringField;
-    cds_RegPoint: TADQuery;
+    cds_RegPoint: TFDQuery;
     cds_RegPointProductionUnitName: TStringField;
     cds_RegPointRegistrationPointNo: TIntegerField;
-    cds_LIP: TADQuery;
+    cds_LIP: TFDQuery;
     cds_LIPLIPNo: TIntegerField;
     cds_LIPLIPName: TStringField;
-    cds_PIP: TADQuery;
+    cds_PIP: TFDQuery;
     cds_PIPPIPNO: TIntegerField;
     cds_PIPPIPNAME: TStringField;
-    cds_producer: TADQuery;
+    cds_producer: TFDQuery;
     cds_producerClientNo: TIntegerField;
     cds_producerClientName: TStringField;
     cds_producerSearchName: TStringField;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkSearchName: TStringField;
     cds_VerkSalesRegionNo: TIntegerField;
-    cds_InvClient: TADQuery;
+    cds_InvClient: TFDQuery;
     cds_InvClientClientNo: TIntegerField;
     cds_InvClientClientName: TStringField;
     cds_InvClientSearchName: TStringField;

@@ -5,9 +5,9 @@ interface
 uses
   SysUtils, Classes, DB,
   Forms,  Controls,  kbmMemTable, SqlTimSt, Dialogs,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADStanAsync, uADDAptManager, uADCompDataSet,
-  uADCompClient ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client ;
 
 type
   TdmProduct = class(TDataModule)
@@ -43,7 +43,7 @@ type
     ds_LengthRuleGrp: TDataSource;
     ds_LengthRuleRow: TDataSource;
     dsClient: TDataSource;
-    cds_ProdList: TADQuery;
+    cds_ProdList: TFDQuery;
     cds_ProdListProductNo: TIntegerField;
     cds_ProdListProductGroupNo: TIntegerField;
     cds_ProdListGradeName: TStringField;
@@ -61,7 +61,7 @@ type
     cds_ProdListSurfacingNo: TIntegerField;
     cds_ProdListNominalThicknessINCH: TStringField;
     cds_ProdListNominalWidthINCH: TStringField;
-    cds_PrdGrp: TADQuery;
+    cds_PrdGrp: TFDQuery;
     cds_PrdGrpProductGroupNo: TIntegerField;
     cds_PrdGrpActualThicknessMM: TFloatField;
     cds_PrdGrpActualWidthMM: TFloatField;
@@ -84,7 +84,7 @@ type
     cds_PrdGrpAct: TIntegerField;
     cds_PrdGrpTS: TStringField;
     cds_PrdGrpUT: TStringField;
-    cds_Products: TADQuery;
+    cds_Products: TFDQuery;
     cds_ProductsProductNo: TIntegerField;
     cds_ProductsProductGroupNo: TIntegerField;
     cds_ProductsGradeNo: TIntegerField;
@@ -101,7 +101,7 @@ type
     cds_ProductsVP_ProductCode: TStringField;
     cds_ProductsVarugruppNo: TIntegerField;
     cds_ProductsKVALITET: TStringField;
-    cds_ProductGroupLengths: TADQuery;
+    cds_ProductGroupLengths: TFDQuery;
     cds_ProductGroupLengthsProductGroupNo: TIntegerField;
     cds_ProductGroupLengthsProductLengthNo: TIntegerField;
     cds_ProductGroupLengthsCreatedUser: TSmallintField;
@@ -113,7 +113,7 @@ type
     cds_ProductGroupLengthsAI: TStringField;
     cds_ProductGroupLengthsPET: TIntegerField;
     cds_ProductGroupLengthsFJ: TIntegerField;
-    cds_PrdGrpList: TADQuery;
+    cds_PrdGrpList: TFDQuery;
     cds_PrdGrpListact: TIntegerField;
     cds_PrdGrpListProductNo: TIntegerField;
     cds_PrdGrpListProductGroupNo: TIntegerField;
@@ -130,7 +130,7 @@ type
     cds_PrdGrpListSurfacingNo: TIntegerField;
     cds_PrdGrpListNTI: TStringField;
     cds_PrdGrpListNBI: TStringField;
-    cds_CliProdList: TADQuery;
+    cds_CliProdList: TFDQuery;
     cds_CliProdListPRODUKT: TStringField;
     cds_CliProdListLÄNGD: TStringField;
     cds_CliProdListPKTKOD: TStringField;
@@ -148,7 +148,7 @@ type
     cds_CliProdListPackageTypeNo: TIntegerField;
     cds_CliProdListProdInstruNo: TIntegerField;
     cds_CliProdListLengthTyp: TStringField;
-    cds_ProdLengthRow: TADQuery;
+    cds_ProdLengthRow: TFDQuery;
     cds_ProdLengthRowGroupNo: TIntegerField;
     cds_ProdLengthRowProductLengthNo: TIntegerField;
     cds_ProdLengthRowCreatedUser: TSmallintField;
@@ -167,7 +167,7 @@ type
     cds_ProdLengthRowSequenceNo: TIntegerField;
     cds_ProdLengthRowProductLengthGroupNo: TIntegerField;
     cds_ProdLengthRowAct: TIntegerField;
-    cds_PrdGrpLO: TADQuery;
+    cds_PrdGrpLO: TFDQuery;
     cds_PrdGrpLOProductGroupNo: TIntegerField;
     cds_PrdGrpLOActualThicknessMM: TFloatField;
     cds_PrdGrpLOActualWidthMM: TFloatField;
@@ -175,7 +175,7 @@ type
     cds_PrdGrpLONominalWidthMM: TFloatField;
     cds_PrdGrpLONominalThicknessINCH: TStringField;
     cds_PrdGrpLONominalWidthINCH: TStringField;
-    cds_Prod_Lengths: TADQuery;
+    cds_Prod_Lengths: TFDQuery;
     cds_Prod_LengthsGroupName: TStringField;
     cds_Prod_LengthsProductLengthNo: TIntegerField;
     cds_Prod_LengthsActualLengthMM: TFloatField;
@@ -190,7 +190,7 @@ type
     cds_Prod_LengthsSequenceNo: TIntegerField;
     cds_Prod_LengthsProductLengthGroupNo: TIntegerField;
     cds_Prod_LengthsAct: TIntegerField;
-    cds_ProdLengthGrp: TADQuery;
+    cds_ProdLengthGrp: TFDQuery;
     cds_ProdLengthGrpGroupNo: TIntegerField;
     cds_ProdLengthGrpGroupName: TStringField;
     cds_ProdLengthGrpSequenceNo: TIntegerField;
@@ -198,7 +198,7 @@ type
     cds_ProdLengthGrpCreatedUser: TIntegerField;
     cds_ProdLengthGrpModifiedUser: TIntegerField;
     cds_ProdLengthGrpChanged: TIntegerField;
-    cds_CSDLRow: TADQuery;
+    cds_CSDLRow: TFDQuery;
     cds_CSDLRowCustomSalesDimListNo: TIntegerField;
     cds_CSDLRowProductNo: TIntegerField;
     cds_CSDLRowNT: TFloatField;
@@ -208,11 +208,11 @@ type
     cds_CSDLRowCreatedUser: TIntegerField;
     cds_CSDLRowModifiedUser: TIntegerField;
     cds_CSDLRowNL: TFloatField;
-    cdsClient: TADQuery;
+    cdsClient: TFDQuery;
     cdsClientClientNo: TIntegerField;
     cdsClientClientName: TStringField;
     cdsClientSearchName: TStringField;
-    cds_LengthRuleGrp: TADQuery;
+    cds_LengthRuleGrp: TFDQuery;
     cds_LengthRuleGrpLengthRuleNo: TIntegerField;
     cds_LengthRuleGrpSurfacingNo: TIntegerField;
     cds_LengthRuleGrpMinNTmm: TFloatField;
@@ -224,7 +224,7 @@ type
     cds_LengthRuleGrpClientNo: TIntegerField;
     cds_LengthRuleGrpSetNo: TIntegerField;
     cds_LengthRuleGrpStringField: TStringField;
-    cds_Species: TADQuery;
+    cds_Species: TFDQuery;
     cds_SpeciesSpeciesNo: TIntegerField;
     cds_SpeciesSpeciesName: TStringField;
     cds_SpeciesLanguageCode: TIntegerField;
@@ -238,7 +238,7 @@ type
     cds_SpeciesDKCode: TStringField;
     cds_SpeciesSpeciesCodeName: TStringField;
     cds_SpeciesStringField: TStringField;
-    cds_grade: TADQuery;
+    cds_grade: TFDQuery;
     cds_gradeGradeNo: TIntegerField;
     cds_gradeGradeName: TStringField;
     cds_gradeLanguageCode: TIntegerField;
@@ -252,7 +252,7 @@ type
     cds_gradeDKCode: TStringField;
     cds_gradeGradeCodeName: TStringField;
     cds_gradeStringField: TStringField;
-    cds_Surfacing: TADQuery;
+    cds_Surfacing: TFDQuery;
     cds_SurfacingSurfacingNo: TIntegerField;
     cds_SurfacingSurfacingName: TStringField;
     cds_SurfacingLanguageCode: TIntegerField;
@@ -266,7 +266,7 @@ type
     cds_SurfacingKortNamn: TStringField;
     cds_SurfacingSurfacingCodeName: TStringField;
     cds_SurfacingStringField: TStringField;
-    cds_ProdCatg: TADQuery;
+    cds_ProdCatg: TFDQuery;
     cds_ProdCatgProductCategoryNo: TIntegerField;
     cds_ProdCatgProductCategoryName: TStringField;
     cds_ProdCatgProductCategoryExternalCode: TIntegerField;
@@ -280,18 +280,18 @@ type
     cds_ProdCatgLanguageCode: TIntegerField;
     cds_ProdCatgDKCode: TStringField;
     cds_ProdCatgImpCodeName: TStringField;
-    cds_IntPriceGrp: TADQuery;
+    cds_IntPriceGrp: TFDQuery;
     cds_IntPriceGrpInteralPriceGroupNo: TIntegerField;
     cds_IntPriceGrpPriceGroupName: TStringField;
     cds_IntPriceGrpSequenceNo: TIntegerField;
     cds_IntPriceGrpCreatedUser: TSmallintField;
     cds_IntPriceGrpModifiedUser: TSmallintField;
     cds_IntPriceGrpDateCreated: TSQLTimeStampField;
-    cds_ProdLo: TADQuery;
+    cds_ProdLo: TFDQuery;
     cds_ProdLoProductGroupNo: TIntegerField;
     cds_ProdLoProductNo: TIntegerField;
     cds_ProdLoProductDisplayName: TStringField;
-    cds_PL: TADQuery;
+    cds_PL: TFDQuery;
     cds_PLGroupName: TStringField;
     cds_PLLNO: TIntegerField;
     cds_PLAMM: TFloatField;
@@ -301,12 +301,12 @@ type
     cds_PLPET: TIntegerField;
     cds_PLFJ: TIntegerField;
     cds_PLGL: TIntegerField;
-    cds_CSDL: TADQuery;
+    cds_CSDL: TFDQuery;
     cds_CSDLCustomSalesDimListNo: TIntegerField;
     cds_CSDLCustomSalesDimListName: TStringField;
     cds_CSDLDateCreated: TSQLTimeStampField;
     cds_CSDLCreatedUser: TIntegerField;
-    cds_ProductLength: TADQuery;
+    cds_ProductLength: TFDQuery;
     cds_ProductLengthProductLengthNo: TIntegerField;
     cds_ProductLengthActualLengthMM: TFloatField;
     cds_ProductLengthNominalLengthMM: TFloatField;
@@ -321,16 +321,16 @@ type
     cds_ProductLengthProductLengthGroupNo: TIntegerField;
     cds_ProductLengthAct: TIntegerField;
     cds_ProductLengthStringField: TStringField;
-    cds_PkgCode: TADQuery;
+    cds_PkgCode: TFDQuery;
     cds_PkgCodePkgCodePPNo: TIntegerField;
     cds_PkgCodePackageTypeNo: TIntegerField;
     cds_PkgCodepackagecodeno: TStringField;
     cds_PkgCodeMarketRegionNo: TIntegerField;
-    cds_LinkProd: TADQuery;
+    cds_LinkProd: TFDQuery;
     cds_LinkProdAvrProductNo: TIntegerField;
     cds_LinkProdALOProductNo: TIntegerField;
     cds_LinkProdStringField: TStringField;
-    cds_intPrice: TADQuery;
+    cds_intPrice: TFDQuery;
     cds_intPriceInteralPriceGroupNo: TIntegerField;
     cds_intPriceSawmillNo: TIntegerField;
     cds_intPricePrice: TFloatField;
@@ -338,7 +338,7 @@ type
     cds_intPriceModifiedUser: TSmallintField;
     cds_intPriceDateCreated: TSQLTimeStampField;
     cds_intPriceINTERNVERK: TStringField;
-    cds_StatCode: TADQuery;
+    cds_StatCode: TFDQuery;
     cds_StatCodeStatCodeNo: TIntegerField;
     cds_StatCodeStatCodeName: TStringField;
     cds_StatCodeStatCode: TStringField;
@@ -346,7 +346,7 @@ type
     cds_StatCodeDateCreated: TSQLTimeStampField;
     cds_StatCodeCreatedUser: TSmallintField;
     cds_StatCodeModifiedUser: TSmallintField;
-    cds_ProdListCust: TADQuery;
+    cds_ProdListCust: TFDQuery;
     cds_ProdListCustProductNo: TIntegerField;
     cds_ProdListCustProductGroupNo: TIntegerField;
     cds_ProdListCustGradeName: TStringField;
@@ -366,7 +366,7 @@ type
     cds_ProdListCustNominalWidthINCH: TStringField;
     cds_ProdListCustNT: TFloatField;
     cds_ProdListCustNW: TFloatField;
-    cds_LengthRuleRow: TADQuery;
+    cds_LengthRuleRow: TFDQuery;
     cds_LengthRuleRowLengthRuleNo: TIntegerField;
     cds_LengthRuleRowMinActLength: TFloatField;
     cds_LengthRuleRowMaxActLength: TFloatField;
@@ -376,7 +376,7 @@ type
     cds_LengthRuleRowDateCreated: TSQLTimeStampField;
     cds_LengthRuleRowDateModified: TSQLTimeStampField;
     cds_LengthRuleRowSetNo: TIntegerField;
-    cds_gradeII: TADQuery;
+    cds_gradeII: TFDQuery;
     cds_gradeIIGradeNo: TIntegerField;
     cds_gradeIIGradeName: TStringField;
     cds_gradeIILanguageCode: TIntegerField;
@@ -388,7 +388,7 @@ type
     cds_gradeIIAct: TIntegerField;
     cds_gradeIIGradeCode: TStringField;
     cds_gradeIIDKCode: TStringField;
-    cds_SurfacingII: TADQuery;
+    cds_SurfacingII: TFDQuery;
     cds_SurfacingIISurfacingNo: TIntegerField;
     cds_SurfacingIISurfacingName: TStringField;
     cds_SurfacingIILanguageCode: TIntegerField;
@@ -401,7 +401,7 @@ type
     cds_SurfacingIIDKCode: TStringField;
     cds_SurfacingIIKortNamn: TStringField;
     cds_SurfacingIIStringField: TStringField;
-    cds_SpeciesII: TADQuery;
+    cds_SpeciesII: TFDQuery;
     cds_SpeciesIISpeciesNo: TIntegerField;
     cds_SpeciesIISpeciesName: TStringField;
     cds_SpeciesIILanguageCode: TIntegerField;
@@ -414,7 +414,7 @@ type
     cds_SpeciesIISpeciesShortName: TStringField;
     cds_SpeciesIIDKCode: TStringField;
     cds_SpeciesIIStringField: TStringField;
-    cds_Lengths: TADQuery;
+    cds_Lengths: TFDQuery;
     cds_LengthsGroupName: TStringField;
     cds_LengthsProductLengthNo: TIntegerField;
     cds_LengthsActualLengthMM: TFloatField;
@@ -430,15 +430,15 @@ type
     cds_LengthsProductLengthGroupNo: TIntegerField;
     cds_LengthsAct: TIntegerField;
     cds_Lengthsproductgroupno: TIntegerField;
-    sq_ProductGroupLengths: TADQuery;
+    sq_ProductGroupLengths: TFDQuery;
     sq_ProductGroupLengthsProductGroupNo: TIntegerField;
     sq_ProductGroupLengthsProductLengthNo: TIntegerField;
     sq_ProductGroupLengthsCreatedUser: TSmallintField;
     sq_ProductGroupLengthsModifiedUser: TSmallintField;
     sq_ProductGroupLengthsDateCreated: TSQLTimeStampField;
-    sq_LengExist: TADQuery;
+    sq_LengExist: TFDQuery;
     sq_LengExistproductLengthNo: TIntegerField;
-    sq_GetPkgTypeByCode: TADQuery;
+    sq_GetPkgTypeByCode: TFDQuery;
     sq_GetPkgTypeByCodeProductGroupNo: TIntegerField;
     sq_GetPkgTypeByCodeProductNo: TIntegerField;
     sq_GetPkgTypeByCodePackageTypeNo: TIntegerField;
@@ -452,10 +452,10 @@ type
     sq_GetPkgTypeByCodeShrinkWrap: TIntegerField;
     sq_GetPkgTypeByCodeTotalNoOfPieces: TIntegerField;
     sq_GetPkgTypeByCodePkgCodePPNo: TIntegerField;
-    sq_GetPkgType: TADQuery;
+    sq_GetPkgType: TFDQuery;
     sq_GetPkgTypeProductGroupNo: TIntegerField;
     sq_GetPkgTypeProductNo: TIntegerField;
-    sq_GetPkgAttrPkgTypeNo: TADQuery;
+    sq_GetPkgAttrPkgTypeNo: TFDQuery;
     sq_GetPkgAttrPkgTypeNoProductGroupNo: TIntegerField;
     sq_GetPkgAttrPkgTypeNoProductNo: TIntegerField;
     sq_GetPkgAttrPkgTypeNoPackageTypeNo: TIntegerField;
@@ -468,7 +468,7 @@ type
     sq_GetPkgAttrPkgTypeNoWrapType: TIntegerField;
     sq_GetPkgAttrPkgTypeNoShrinkWrap: TIntegerField;
     sq_GetPkgAttrPkgTypeNoTotalNoOfPieces: TIntegerField;
-    sq_GetPkgTypeByVariantNo: TADQuery;
+    sq_GetPkgTypeByVariantNo: TFDQuery;
     sq_GetPkgTypeByVariantNoProductGroupNo: TIntegerField;
     sq_GetPkgTypeByVariantNoProductNo: TIntegerField;
     sq_GetPkgTypeByVariantNoPackageTypeNo: TIntegerField;
@@ -482,7 +482,7 @@ type
     sq_GetPkgTypeByVariantNoShrinkWrap: TIntegerField;
     sq_GetPkgTypeByVariantNoTotalNoOfPieces: TIntegerField;
     sq_GetPkgTypeByVariantNoPackageCodeNo: TStringField;
-    sq_DeActProd: TADQuery;
+    sq_DeActProd: TFDQuery;
     mtFilter: TkbmMemTable;
     mtFilterClientNo: TIntegerField;
     mtFilterVERK: TStringField;

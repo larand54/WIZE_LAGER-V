@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, ADODB, xmldom, XMLIntf, msxmldom, XMLDoc, PackageExportU,
+  Dialogs, StdCtrls, DB, FDODB, xmldom, XMLIntf, msxmldom, XMLDoc, PackageExportU,
   ComCtrls, ExtCtrls, Buttons, FMTBcd, DBClient, Provider, SqlExpr,
   cxShellBrowserDialog, ActnList, cxControls, cxContainer, cxEdit,
   cxCheckBox, clTcpClient, clFtp, cxGraphics, cxLookAndFeels,
@@ -13,8 +13,8 @@ uses
 type
 
   TXMLImportExport = class(TForm)
-    ADOConnection1: TADOConnection;
-    dsInfo: TADODataSet;
+    FDOConnection1: TFDOConnection;
+    dsInfo: TFDODataSet;
     PageControl1: TPageControl;
     Panel1: TPanel;
     TabSheet1: TTabSheet;
@@ -42,7 +42,7 @@ type
     Panel2: TPanel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
-    ADOQuery1: TADOQuery;
+    FDOQuery1: TFDOQuery;
     Button1: TButton;
     cxShellBrowserDialog1: TcxShellBrowserDialog;
     ActionList1: TActionList;
@@ -55,7 +55,7 @@ type
     cbEmaila: TcxCheckBox;
     clFtp1: TclFtp;
     procedure btnImportClick(Sender: TObject);
-    procedure ADOConnection1BeforeConnect(Sender: TObject);
+    procedure FDOConnection1BeforeConnect(Sender: TObject);
     procedure btnConnectionClick(Sender: TObject);
     procedure btnClearEmptyNodeClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -268,15 +268,15 @@ begin
   InPutPackageFileName := edtFileToImport.Text;
 //Lars get GetDeliveryMessageNumber
 //Delete old data
-  ADOConnection1.Open;
+  FDOConnection1.Open;
   DeliveryMessageNumber:= DoGetNo(GetDeliveryMessageNumber) ;
-  ADOQuery1.Close;
-  ADOQuery1.SQL.Add('Delete From dbo.DeliveryMessageWoodHeader WHERE DeliveryMessageNumber = '+QuotedStr(DeliveryMessageNumber)) ;
-  ADOQuery1.ExecSQL ;
-  ADOConnection1.Close;
+  FDOQuery1.Close;
+  FDOQuery1.SQL.Add('Delete From dbo.DeliveryMessageWoodHeader WHERE DeliveryMessageNumber = '+QuotedStr(DeliveryMessageNumber)) ;
+  FDOQuery1.ExecSQL ;
+  FDOConnection1.Close;
 
-  ADOConnection1.Open;
-  ADOConnection1.BeginTrans;
+  FDOConnection1.Open;
+  FDOConnection1.BeginTrans;
   try
       DoImportExport('select * from dbo.DeliveryMessageWoodHeader', ImportDeliveryWoordHeader);
       DoImportExport('select * from dbo.DeliveryMessageReference', ImportDeliveryMessageReference);
@@ -290,9 +290,9 @@ begin
       DoImportExport('select * from dbo.TransportPackageInformation', ImportTransportPackageInformation);
       DoImportExport('select * from dbo.LengthSpecification', ImportLengthSpecification);
       DoImportExport('select * from dbo.InformationalQuantity', ImportInformationalQuantity);
-      ADOConnection1.CommitTrans;
+      FDOConnection1.CommitTrans;
   except
-      ADOConnection1.RollbackTrans;
+      FDOConnection1.RollbackTrans;
   end;
 end;
 
@@ -367,9 +367,9 @@ begin
   end;
 end;
          
-procedure TXMLImportExport.ADOConnection1BeforeConnect(Sender: TObject);
+procedure TXMLImportExport.FDOConnection1BeforeConnect(Sender: TObject);
 begin
-  ADOConnection1.ConnectionString := edtConnectionString.Text;
+  FDOConnection1.ConnectionString := edtConnectionString.Text;
 end;
 
 procedure TXMLImportExport.btnConnectionClick(Sender: TObject);
@@ -436,22 +436,22 @@ begin
   InPutPackageFileName := edtFileToImport.Text;
 //Lars get GetDeliveryMessageNumber
 //Delete old data
-  ADOConnection1.Open;
+  FDOConnection1.Open;
   DeliveryMessageNumber:= DoGetNo(GetDeliveryMessageNumber) ;
   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-  ADOQuery1.Close;
-  ADOQuery1.SQL.Clear ;
-  ADOQuery1.SQL.Add('Delete From dbo.DeliveryMessageWoodHeader2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
-  ADOQuery1.SQL.Add('Delete From dbo.ProductIdentifier2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
-  ADOQuery1.SQL.Add('Delete From dbo.PartyIdentifier2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
-  ADOQuery1.SQL.Add('Delete From dbo.NameAddress2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
-  ADOQuery1.SQL.Add('Delete From dbo.DeliveryShipmentDeliveryMessageReference2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
+  FDOQuery1.Close;
+  FDOQuery1.SQL.Clear ;
+  FDOQuery1.SQL.Add('Delete From dbo.DeliveryMessageWoodHeader2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
+  FDOQuery1.SQL.Add('Delete From dbo.ProductIdentifier2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
+  FDOQuery1.SQL.Add('Delete From dbo.PartyIdentifier2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
+  FDOQuery1.SQL.Add('Delete From dbo.NameAddress2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
+  FDOQuery1.SQL.Add('Delete From dbo.DeliveryShipmentDeliveryMessageReference2 WHERE DeliveryMessageNumber = ' + QuotedStr(DeliveryMessageNumber)) ;
 
-  ADOQuery1.ExecSQL ;
-  ADOConnection1.Close;
+  FDOQuery1.ExecSQL ;
+  FDOConnection1.Close;
   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-  ADOConnection1.Open;
-  ADOConnection1.BeginTrans;
+  FDOConnection1.Open;
+  FDOConnection1.BeginTrans;
   try
       DoImportExport('select * from dbo.DeliveryMessageWoodHeader2', ImportDeliveryWoordHeader);
       Screen.Cursor := crSQLWait;    { Show hourglass cursor }
@@ -473,14 +473,14 @@ begin
       DoImportExport('select * from dbo.ProductIdentifier2', ImportProductIdentifier);//Moved after TransportPackageInformation2 beacuse it is related to it
       Screen.Cursor := crSQLWait;    { Show hourglass cursor }
 //      DoImportExport('select * from InformationalQuantity2', ImportInformationalQuantity);
-      ADOConnection1.CommitTrans;
+      FDOConnection1.CommitTrans;
       Screen.Cursor := crSQLWait;    { Show hourglass cursor }
       ShowMessage('Inläsning av woodxfil OK') ;
 
    except
       On E: Exception do
       Begin
-       ADOConnection1.RollbackTrans ;
+       FDOConnection1.RollbackTrans ;
        dmsSystem.FDoLog(E.Message+' :DoRelaxedImport') ;
        ShowMessage('Error vid inläsning av woodxfil') ;
        Raise ;

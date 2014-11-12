@@ -351,7 +351,7 @@ Begin
   cbLengthSpec.Properties.Items.Clear ;
   TcxComboBoxProperties(grdSelectedProductsDBTableView1LengthDesc.Properties).Items.Clear ;
 //  TcxComboBoxProperties(grdAvropRowTVLengthSpec.Properties).Items.Clear ;
-  with ad_LenGrpName do
+  with FD_LenGrpName do
   begin
 //    DisableControls;
     Active  := True ;

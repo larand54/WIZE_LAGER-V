@@ -8,9 +8,9 @@ uses
   Controls,
   Forms,
   VidaType, DB, kbmMemTable, Dialogs, SqlTimSt,
-  uADStanIntf, uADStanOption, uADStanParam, uADStanError, uADDatSManager,
-  uADPhysIntf, uADDAptIntf, uADCompDataSet, uADCompClient, uADStanAsync,
-  uADDAptManager ;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Stan.Async,
+  FireDAC.DApt ;
 
 
 type
@@ -67,7 +67,7 @@ type
     mtSinglePkgProducerNo: TIntegerField;
     mtLengthsALMM: TFloatField;
     mtSinglePkgSurfacingNo: TIntegerField;
-    cds_Leverant: TADQuery;
+    cds_Leverant: TFDQuery;
     cds_LeverantClientNo: TIntegerField;
     cds_LeverantClientName: TStringField;
     cds_LeverantPktNrLevKod: TStringField;
@@ -75,7 +75,7 @@ type
     cds_LeverantPaketNoLength: TIntegerField;
     cds_LeverantSupplierCodePos: TIntegerField;
     cds_LeverantSupplierCodeLength: TIntegerField;
-    cds_Verk: TADQuery;
+    cds_Verk: TFDQuery;
     cds_VerkClientNo: TIntegerField;
     cds_VerkClientName: TStringField;
     cds_VerkPktNrLevKod: TStringField;
@@ -83,7 +83,7 @@ type
     cds_VerkPaketNoLength: TIntegerField;
     cds_VerkSupplierCodePos: TIntegerField;
     cds_VerkSupplierCodeLength: TIntegerField;
-    cds_ProdLength: TADQuery;
+    cds_ProdLength: TFDQuery;
     cds_ProdLengthProductLengthNo: TIntegerField;
     cds_ProdLengthActualLengthMM: TFloatField;
     cds_ProdLengthNominalLengthMM: TFloatField;
@@ -97,7 +97,7 @@ type
     cds_ProdLengthSequenceNo: TIntegerField;
     cds_ProdLengthProductLengthGroupNo: TIntegerField;
     cds_ProdLengthAct: TIntegerField;
-    sq_Products: TADQuery;
+    sq_Products: TFDQuery;
     sq_ProductsPackageTypeNo: TIntegerField;
     sq_ProductsTotalNoOfPieces: TIntegerField;
     sq_ProductsBarCodeID: TIntegerField;
@@ -115,25 +115,25 @@ type
     sq_ProductsPhysicalInventoryPointNo: TIntegerField;
     sq_ProductsLogicalInventoryPointNo: TIntegerField;
     sq_ProductsSurfacingNo: TIntegerField;
-    sq_pcsPerlength: TADQuery;
+    sq_pcsPerlength: TFDQuery;
     sq_pcsPerlengthPcsPerLength: TStringField;
-    cds_ProductGroupLength: TADQuery;
+    cds_ProductGroupLength: TFDQuery;
     cds_ProductGroupLengthProductGroupNo: TIntegerField;
     cds_ProductGroupLengthProductLengthNo: TIntegerField;
     cds_ProductGroupLengthCreatedUser: TSmallintField;
     cds_ProductGroupLengthModifiedUser: TSmallintField;
     cds_ProductGroupLengthDateCreated: TSQLTimeStampField;
-    cds_RegPoints: TADQuery;
+    cds_RegPoints: TFDQuery;
     cds_RegPointsRegPointNo: TIntegerField;
     cds_RegPointsRegPointName: TStringField;
-    sq_PkgTypeLength: TADQuery;
+    sq_PkgTypeLength: TFDQuery;
     sq_PkgTypeLengthProductLengthNo: TIntegerField;
     sq_PkgTypeLengthNoOfPieces: TIntegerField;
     sq_PkgTypeLengthALMM: TFloatField;
-    cdsLengthGroup: TADQuery;
+    cdsLengthGroup: TFDQuery;
     cdsLengthGroupGroupNo: TIntegerField;
     cdsLengthGroupGroupName: TStringField;
-    cdsProdLength: TADQuery;
+    cdsProdLength: TFDQuery;
     cdsProdLengthAM3: TBCDField;
     cdsProdLengthAM1: TBCDField;
     cdsProdLengthGroupNo: TIntegerField;
@@ -145,22 +145,22 @@ type
     cdsProdLengthTUM: TStringField;
     cdsProdLengthPET: TIntegerField;
     cdsProdLengthFJ: TIntegerField;
-    cds_PhysInv: TADQuery;
+    cds_PhysInv: TFDQuery;
     cds_PhysInvPhysicalInventoryPointNo: TIntegerField;
     cds_PhysInvLagerställe: TStringField;
-    cds_LogInv: TADQuery;
+    cds_LogInv: TFDQuery;
     cds_LogInvLIPNo: TIntegerField;
     cds_LogInvLagergrupp: TStringField;
-    sp_OnePackageNo: TADStoredProc;
-    sp_Populate_One_PkgTypeLengths: TADStoredProc;
-    sp_changePkgInventering: TADStoredProc;
-    sp_PackageTotals: TADStoredProc;
-    sp_NewPackageNo: TADStoredProc;
-    sp_NewPackageDetail: TADStoredProc;
-    sp_NewPackageType: TADStoredProc;
-    sp_PackageTypeDetail: TADStoredProc;
-    sp_PackageTypes: TADStoredProc;
-    sp_PkgInfo: TADStoredProc;
+    sp_OnePackageNo: TFDStoredProc;
+    sp_Populate_One_PkgTypeLengths: TFDStoredProc;
+    sp_changePkgInventering: TFDStoredProc;
+    sp_PackageTotals: TFDStoredProc;
+    sp_NewPackageNo: TFDStoredProc;
+    sp_NewPackageDetail: TFDStoredProc;
+    sp_NewPackageType: TFDStoredProc;
+    sp_PackageTypeDetail: TFDStoredProc;
+    sp_PackageTypes: TFDStoredProc;
+    sp_PkgInfo: TFDStoredProc;
     sp_PkgInfoCREATED: TSQLTimeStampField;
     sp_PkgInfoCREATED_BY: TStringField;
     sp_PkgInfoOWNER: TStringField;

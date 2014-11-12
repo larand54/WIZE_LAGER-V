@@ -1730,9 +1730,9 @@
     Left = 88
     Top = 312
   end
-  object sq_CSDLev: TADQuery
+  object sq_CSDLev: TFDQuery
     Active = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
       ''
@@ -1869,9 +1869,9 @@
         ParamType = ptInput
       end>
   end
-  object cds_RegPoint: TADQuery
+  object cds_RegPoint: TFDQuery
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct rp.RegPointName, rp.RegPointNo '
       'FROM dbo.RegistrationPoint rp'
@@ -1891,9 +1891,9 @@
       Required = True
     end
   end
-  object cds_ProdData: TADQuery
+  object cds_ProdData: TFDQuery
     Active = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct PU.RegPointName AS M'#228'tpunkt,'
       'CONVERT(CHAR(10),pp.ProductionDate, 110) AS Datum,'
@@ -2117,10 +2117,10 @@
       Size = 3
     end
   end
-  object cds_verk: TADQuery
+  object cds_verk: TFDQuery
     Active = True
     CachedUpdates = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct C.ClientNo, C.ClientName, C.SearchName'
       'FROM dbo.ClientRole CR'
@@ -2148,8 +2148,8 @@
       Size = 80
     end
   end
-  object cds_Data: TADQuery
-    Connection = dmsConnector.ADConnection1
+  object cds_Data: TFDQuery
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
       ''
@@ -2393,9 +2393,9 @@
       Size = 80
     end
   end
-  object cds_UserProps: TADQuery
+  object cds_UserProps: TFDQuery
     Active = True
-    Connection = dmsConnector.ADConnection1
+    Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.UserProps'
       'WHERE UserID = :UserID'
