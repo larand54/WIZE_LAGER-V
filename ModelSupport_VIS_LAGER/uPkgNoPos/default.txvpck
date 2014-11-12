@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="h8bbmubzu7bzc87xq_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uPkgNoPos.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.@unitclass.fPkgNoPos" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:uPkgNoPos.@unitclass.fPkgNoPos" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.ePktnrPos" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.Label2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.Label3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.Label4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.eAntPosPktNr" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.eLevKodPos" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.eAntPosLevKod" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.Bevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPkgNoPos.TfPkgNoPos.BitBtn2" />
+    </reference>
+  </view>
+</nodeSet>

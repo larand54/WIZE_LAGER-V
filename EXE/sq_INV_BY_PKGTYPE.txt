@@ -1,0 +1,114 @@
+Insert INTO dbo.INV_BY_PKGTYPE
+(UserID,
+INVENTORY,
+SUPPCODE,
+INTERN_CODE,
+EXTERN_CODE,
+PRODUCT,
+NOOFPKGS,
+PCSPERPKG,
+GRADESTAMP,
+BARCODE,
+SPECIES,
+SURFACING,
+GRADE,
+PCSPERLENGTH,
+SLENGTH,
+TOT_PCS,
+TOT_AM3,
+TOT_NM3,
+TOT_ALPM,
+TOT_MFBM,
+TOT_KVM,
+ATHICK,
+AWIDTH,
+ALENGTH,
+PACKAGETYPENO,
+STD_Length,
+PRODUCTLENGTHNO,
+PCS_PER_LENGTH)
+Select distinct 
+8,
+CASE WHEN RTRIM(LIP.LogicalInventoryName) = RTRIM(Cy.CityName) THEN Cy.CityName 
+ELSE RTRIM(Cy.CityName)  +' / '+ RTRIM(LIP.LogicalInventoryName) END AS INVENTORY,
+pn.SupplierCode,
+PC.PackageCodeNo,
+PC.PackageMainCode,
+pd.ProductDisplayName,
+count(pn.PackageNo)  AS NOOFPKGS2,
+pt.TotalNoOfPieces AS PCSPERPKG,
+gs.GradeStamp,
+bc.BarCode,
+SPE.SpeciesName, 
+SUR.SurfacingName, 
+Gr.GradeName,
+PTL.PcsPerLength,
+CASE WHEN 0 = 0 THEN RTRIM(CONVERT(varchar(10), pdl.ActualLengthMM)) +' Amm'
+ WHEN 0 = 1 THEN RTRIM(CONVERT(varchar(10), pdl.NominalLengthMM)) +' Nmm'
+ WHEN 0 = 2 THEN 
+ CASE WHEN RTRIM( pdl.ActualLengthINCH) > ' ' THEN 
+   RTRIM(CONVERT(varchar(10), pdl.ActualLengthINCH))+' inch'
+  ELSE 
+  CASE WHEN pdl.NominalLengthFEET > 0 THEN 
+  RTRIM(CONVERT(varchar(10), pdl.NominalLengthFEET)) +'  feet'
+  ELSE 
+ RTRIM(CONVERT(varchar(10), pdl.ActualLengthMM))+' Amm'  END
+  END 
+  END AS SLENGTH, 
+  SUM(ptd.NoOfPieces) AS TOT_PCS, 
+  SUM(ptd.m3Actual)  AS TOT_AM3, 
+  SUM(ptd.m3Nominal) AS TOT_NM3, 
+  SUM(ptd.LinealMeterActualLength) AS TOT_ALPM, 
+  SUM(ptd.MFBMNominal) AS TOT_MFBM, 
+  SUM(ptd.SQMofActualWidth) AS TOT_KVM, 
+pg.ActualThicknessMM,
+pg.ActualWidthMM,
+pdl.ActualLengthMM,
+pps.PackageTypeNo AS PackageTypeNo,
+PTL.STD_Length,
+PDL.ProductLengthNo,
+ptd.NoOfPieces
+FROM  dbo.Client Verk
+Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
+Inner Join dbo.LogicalInventoryPoint lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
+INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = pn.PackageTypeNo
+Left Outer JOIN dbo.Packagecode_printparams	PPs ON pps.PkgCodePPNo = pt.ShrinkWrap
+Left Outer Join dbo.PkgVarCode PC ON PC.PkgCodePPNo = pps.PkgCodePPNo
+Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.packageTypeLengths PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.productLength PDL ON PDL.ProductLengthNo = ptd.ProductLengthNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
+LEFT OUTER JOIN dbo.Client cl ON cl.ClientNo = pip.OwnerNo
+LEFT OUTER JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp
+LEFT OUTER JOIN dbo.BarCode bc ON bc.BarCodeNo = pt.BarCodeID
+WHERE pn.Status = 1
+AND PIP.SequenceNo = 1 AND LIP.SequenceNo = 1
+AND Verk.SalesRegionNo = 741
+
+ AND ( Verk.PktNrLevKod = 10 ) 
+
+
+
+
+
+
+
+
+
+GROUP BY PTL.STD_Length, PTL.PcsPerLength,  
+PDL.ProductLengthNo, pd.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM, 
+pdl.ActualLengthMM, pdl.NominalLengthMM, pdl.NominalLengthFEET, pdl.ActualLengthINCH,  
+lip.LogicalInventoryPointNo, pt.TotalNoOfPieces, pn.SupplierCode, 
+gs.GradeStamp, bc.BarCode, SPE.SpeciesName, SUR.SurfacingName, Gr.GradeName, 
+Cy.CityName, LIP.LogicalInventoryName, ptd.NoOfPieces, PC.PackageCodeNo, PC.PackageMainCode, pps.PackageTypeNo 

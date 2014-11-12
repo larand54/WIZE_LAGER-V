@@ -1,0 +1,3 @@
+Insert INTO dbo.Inv_By_LengthFilter (Userid, Filter)
+Values (8,
+'Lagerställe: VIMMERBY Grupp:VIMMERBY AT: 22,  AB: 100, ')

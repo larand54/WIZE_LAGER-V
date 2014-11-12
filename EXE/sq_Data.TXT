@@ -1,0 +1,19 @@
+Select *, 0.0 AS M_Pris from dbo.LevSituationer_II
+WHERE ((supplier = 'MÖCKELNS')
+OR (supplier = 'Alla')
+OR (supplier = 'AT')
+OR (supplier = 'BTB')
+OR (supplier = 'BTH')
+OR (supplier = 'DK')
+OR (supplier = 'LT')
+OR (supplier = 'NEIKTER')
+OR (supplier = 'STD')
+OR (supplier = 'TLT')
+OR (supplier = 'TVT')
+OR (supplier = 'VDK')
+OR (supplier = 'NIAB')
+OR (supplier = 'VT')
+OR (supplier = 'VW')
+)
+AND Utlastad >= :StartPeriod
+AND Utlastad <= :EndPeriod

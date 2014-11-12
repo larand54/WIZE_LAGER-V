@@ -1,0 +1,58 @@
+Insert INTO dbo.Inv_By_Length
+(UserID,
+ProductLengthNo,
+ACT_L,
+NOM_L,
+FEET,
+INCH,
+PCS,
+AM3,
+NM3,
+LPM,
+MFBM,
+KVM)
+Select distinct 
+8,
+0,
+pdl.ActualLengthMM,
+pdl.ActualLengthMM,
+'0',
+'0',
+SUM(ptd.NoOfPieces),
+SUM(ptd.m3Actual) ,
+SUM(ptd.m3Nominal),
+SUM(ptd.LinealMeterActualLength),
+SUM(ptd.MFBMNominal),
+SUM(ptd.SQMofActualWidth)
+FROM  Client Verk
+Inner Join PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
+Inner Join LogicalInventoryPoint lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
+INNER JOIN PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+Inner Join PackageType pt 	ON pt.PackageTypeNo = pn.PackageTypeNo
+Inner Join PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join productLength PDL ON PDL.ProductLengthNo = ptd.ProductLengthNo
+Inner Join Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+WHERE pn.Status = 1 AND LIP.SequenceNo = 1
+AND Verk.SalesRegionNo = 741
+AND pip.PhysicalInventoryPointNo = 10053
+AND Verk.ClientNo  = 741
+ AND ( SPE.SpeciesCode = '01' OR  SPE.SpeciesCode = '02' ) 
+ AND ( GR.GradeCode = '02' OR  GR.GradeCode = '04' OR  GR.GradeCode = '05' ) 
+ AND ( SUR.SurfacingCode = '01' OR  SUR.SurfacingCode = '02' OR  SUR.SurfacingCode = '03' OR  SUR.SurfacingCode = '05' ) 
+ AND ( imp.ImpCode = '33' OR  imp.ImpCode = '7' ) 
+
+
+ AND ( pg.ActualThicknessMM = 50 ) 
+ AND ( pg.ActualWidthMM = 100 ) 
+ AND ( PDL.ActualLengthMM = 4200 ) 
+group by pdl.ActualLengthMM
+Order by pdl.ActualLengthMM

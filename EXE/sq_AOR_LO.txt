@@ -1,0 +1,15 @@
+Select Distinct AOROW.*, pr.AT, pr.AB, pr.GradeName, pr.SpeciesName, pr.SurfacingName, pr.BarcodeID, pr.GradeStamp, pr.Langd, pr.PcsPerPkg,
+C.SearchName AS Producent, rp.RegPointName AS Mätpunkt, AORun.Status AS RunStatus, AORun.StartDateTime AS Start,
+AORun.EndDateTime AS Slut,
+AORun.StartYearWeekNo AS Vecka,
+AORun.RunTime AS Körtid,
+AORun.StopTime AS Stopptid,
+AORun.ProducerNo, -1 AS sspNo
+FROM dbo.AOUserRegPoints AOUser
+Inner Join dbo.AORun on AORun.ProducerNo = AOUser.ProducerNo
+Inner Join dbo.AORow on AORow.RunNo = AORun.RunNo
+Inner Join dbo.PktTypeByPP_SV pr on pr.PkgCodePPNo = AORow.PkgCodePPNo
+Inner Join dbo.Client C on C.ClientNo = AORun.ProducerNo
+Inner Join dbo.RegistrationPoint rp on rp.RegPointNo = AORun.RegPointNo
+WHERE AORun.Status = 1
+AND AOUser.UserID = 8

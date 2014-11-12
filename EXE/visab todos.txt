@@ -1,0 +1,149 @@
+Har sammanfattat lite punkter som vi har att jobba med i VISAB
+ 
+Mvh Johan 
+ 
+Summering VISAB
+den 13 juni 2014
+08:58
+Att göra Vi försökte hitta en bokning. Då visade det sig att den vid ett tilfälle blivit tillagt till en körning och därefter borttagen. Trots detta syntes den i körodervylistan som en av de ingående LO. För att få bort den var vi tvungna att ta bort bokningen och lägga till den på nytt.
+Att göra Om man ger en rad statusen hyvlas ej borde produktradens skapade paket automatiskt hamna in under sågat justerat lagret.
+Att göra Bokningen trillar bort från bokningen så fort något litet körts mot en rad faller den bort från bokningsvyn.
+Att göra Om man skriver i texter eller råvara så och gör en ändring utan att man skriver ett tecken som när man ändrar till fetstilt eller klistrar in från interna noteringar sparas inte det man gjort.
+Att göra Komplettera bokningen med stöd precis som finns i Lo bufferten att du kan generera längd specificerade rader utifrån en längdbeskrivning enligt standard formatet.  Man kan då använda detta och ta fram del längder som stöd för bokningen.
+Att göra Kunna skapa en eller flera delbokning som visas i planeringsvyn (där man kan sätta tänkt volym eller antal)
+Att göra Kunna se hur mycket volym som är planerat av en bokning så man inte över producerar mot en delbokning.
+Att göra Bokningsmodellen, se nedan
+Att göra Intern LO
+Att göra Plasttyp och Täckning, se nedan
+Att göra Om certifiering skall skrivas ut länkat till Vispack med logotyper Se tidigare mail.
+Att göra Code 128 utöka Crystal .Net med detta
+Att göra Status planerad
+Att göra Aktivera pågående för Vislanda
+Att göra Flytta bokningar mellan veckorna men ändå kunna se ursprungsveckan
+Att göra Filter som visar Planerade, Klara att köra samt Pågående
+Att göra Visa planerade i gantvyn
+Att göra Använda färdigvaran för att styra längden på körningen i Ganttvyn
+Att göra Gruppera bokningar och Planderade bokningar
+Att göra I veckovyns körorderradsvisning: Ej visa de rader som skriv ut är borttaget från
+Att göra I veckovyn körorderradsvisning: Sortera och visa på samma sätt som utskriften med prio om det är satt därefter produkt längd osv
+Att göra Kunna välja att inte visa någon kvalité visa intern numret, visa söknummret eller som idag i klartext.
+Att göra Om man grupperar ihop flera lorader till en körrad ska dessa fyllas med färdigvaror utifrån den prioordning som satts i körordern. Bokningar ska inte falla bort när ordern sätts som avslutad om den inte är fullkörd. Borde i samband med en godkännande av en körorder få frågan rad XXX med XX är körd XX vill du fortsätta köra/skapa delprodukt?
+Att göra Få med om det ska vara Tum/Feet från LO/VIS/VISK
+Att göra Korrigera torkhanteringen med för många rader mm.
+Att göra Lägga till en ny position sammanlyft för Alvesta
+Att göra Kunna visa "Viktig info på LO" direkt i körorder vyn på något sätt. Då slipper man skriva ut eller förhandsgranska pappersversionen.
+Att göra Kontroll så att inget lustigt språk är valt - Alvesta hade en körning där språk var satt till Danish i stället för Swedish = ingen lapp skrevs ut.
+ 
+Att göra Färgkodning i VISAB lo lista
+Gula när körorder gjord
+Röda är producerat klart
+Gröna är det är klart utlevererat
+Att göra När man väljer marknad ska lo uppdateras direkt
+Att göra Vid ny från mall skall dagensdatum hamna in på den nya körorden. Kolla även så att statusen inte hänger med.
+Att göra Summeringar ligga kvar längst ner.
+Att göra I bokningsvyn kunna maximera samt ha flikarna här med.
+ 
+Att göra Default på verknivå vilket lager som det ska in på hyvlat men om ohyvlat samt urlägg i klickat ska man kunna välja en annan som standard.
+Att göra Destination syns inte längre på körorden
+ 
+ 
+Mer om Bokningen
+·         Kunna se hur mycket som är bokat totalt
+·         Kunna se hur stor den aktuella bokningen är
+·         Kunna se hur mycket som är producerat för den aktuella bokningen inklusive andra delbokningar och sig självt
+·         Kunna komma åt bokningsvyn direkt i körordern
+·         Kunna dela upp en fler längdad lo rad i samband med bokningen i sina olika dellängder likt man gör när man accepterar lo i Lo buffert.
+ 
+·         Om en bokning flyttas i vecko planeringen skall givetvis belastningen i tillgångs/brist vyn flyttas
+·         Kunna se vilka bokningar som belastar respektiver rad, längd eller 0 längd för en produkt
+·         Om en produkt där man bokat 0 längd skall man se den sammantagna tillgången bristen inklusive lägdspecade brister i 0längds kolumnen.
+·         Kunna radera en bokning från veckovyn
+·         Raderar man en bokning i en körning försvinner den helt. Ska då hamna tillbaka till veckovyn
+ 
+Mer om plasttyp och Täckning
+Ha med även plasttyp till VISK
+Kunna gå in och ändra/lägga till benämning
+ 
+Idag
+Täckning:
+ENGLAND PLAST
+ 
+ 
+USA PLAST
+ 
+ 
+TOP COVER
+ 
+ 
+COVERED 5 SIDES
+ 
+ 
+HC/USA PLAST
+ 
+ 
+JAPAN PLAST
+ 
+ 
+NEUTRAL PLAST
+ 
+ 
+KUNDENS PLAST
+ 
+ 
+TOPPTÄCKNING
+ 
+ 
+TÄCKT 5 SIDOR
+ 
+ 
+INGEN PLAST
+ 
+ 
+BROOKS PLAST
+ 
+ 
+Topp + Ändar
+ 
+ 
+ 
+ 
+Plast typ:
+Vida plast
+ 
+ 
+Vida väv
+ 
+ 
+Neutral
+ 
+ 
+ 
+Mål
+Täckning:
+TOPPTÄCKNING
+ 
+TÄCKT 5 SIDOR
+ 
+INGEN PLAST
+ 
+TOPP + ÄNDAR
+ 
+HUV
+ 
+ 
+ 
+ 
+Plast typ:
+VIDA VÄV
+ 
+VIDA PLAST
+ 
+NEUTRAL PLAST
+ 
+ENGLAND PLAST
+ 
+USA PLAST
+ 
+JAPAN PLAST
+ 
+KUNDENS PLAST

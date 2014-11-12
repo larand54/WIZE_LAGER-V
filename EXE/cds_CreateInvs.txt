@@ -1,0 +1,88 @@
+Select icg.IC_GRPNo AS Inventera, icg.IC_GRPNo AS InvNr, C.ClientName AS Ägare, Cy.CityName AS LS, LIP.LogicalInventoryName AS LG,
+(Select Count(icr.PackageNo) FROM dbo.InvControlrow icr
+WHERE icr.IC_GRPNo = icm.IC_GRPNo
+AND icr.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo) AS KontrollistaPkt,
+
+(Select SUM(pt.Totalm3Nominal) FROM dbo.InvControlrow icr
+Inner Join dbo.PackageType pt on pt.PackageTypeNo = icr.PackageTypeNo
+WHERE icr.IC_GRPNo = icm.IC_GRPNo
+AND icr.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo) AS KontrollistaNM3,
+
+(Select Count(icr.PackageNo) FROM dbo.Invenrow icr
+WHERE icr.IC_GRPNo = icm.IC_GRPNo
+AND icr.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo) AS ResultalistaPkt,
+
+(Select SUM(pt.Totalm3Nominal) FROM dbo.Invenrow icr
+Inner Join dbo.PackageType pt on pt.PackageTypeNo = icr.PackageTypeNo
+WHERE icr.IC_GRPNo = icm.IC_GRPNo
+AND icr.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo) AS ResultatlistaNM3,
+LIP.LogicalInventoryPointNo AS LIPNo,
+C.IntVerk,
+PIP.OwnerNo,
+LIP.PhysicalInventoryPointNo AS PIPNo,
+icg.Inventeringsdatum,
+icg.maxdatum,
+icg.Status,
+person.UserName AS SkapadAv,
+icm.InventoryValue AS Värde,
+icm.TotalNM3 AS NM3,
+icm.AvgPricePerNM3 AS Medelpris
+
+FROM dbo.LogicalInventoryPoint LIP
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+Inner Join dbo.Client C on C.ClientNo = PIP.OwnerNo
+Inner Join dbo.City Cy on Cy.CityNo = PIP.PhyInvPointNameNo
+Inner Join dbo.InvCtrlMetod icm on icm.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo
+Inner Join dbo.InvControlGrp icg on icg.IC_GRPNo = icm.IC_GRPNo
+Left Outer Join dbo.Users person on person.UserID = icg.CreatedUser
+
+WHERE Icg.MaxDatum >= :StartDate
+AND Icg.MaxDatum <= :EndDate
+AND ((PIP.OwnerNo = :OwnerNo) or (0 = :OwnerNo))
+AND ((icg.Status = :Status) or (5 = :Status))
+
+
+UNION
+
+Select 0 AS Inventera, 0 AS InvNr, C.ClientName AS Ägare, Cy.CityName AS LS, LIP.LogicalInventoryName AS LG,
+
+(Select Count(pn.PackageNo) FROM dbo.PackageNumber pn
+WHERE pn.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo
+AND pn.Status = 1) AS KontrollistaPkt,
+
+(Select SUM(pt.Totalm3Nominal) FROM dbo.PackageNumber pn
+Inner Join dbo.PackageType pt on pt.PackageTypeNo = pn.PackageTypeNo
+WHERE pn.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo
+AND pn.Status = 1) AS KontrollistaNM3,
+
+0 AS ResultalistaPkt,
+
+0 AS ResultatlistaNM3,
+
+LIP.LogicalInventoryPointNo AS LIPNo,
+C.IntVerk,
+PIP.OwnerNo,
+LIP.PhysicalInventoryPointNo AS PIPNo,
+'' AS Inventeringsdatum,
+'' AS maxdatum,
+-1 AS Status,
+'N/A' AS SkapadAv,
+0.0 AS Värde,
+0.0 AS NM3,
+0.0 AS Medelpris
+
+FROM dbo.LogicalInventoryPoint LIP
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+Inner Join dbo.Client C on C.ClientNo = PIP.OwnerNo
+Inner Join dbo.City Cy on Cy.CityNo = PIP.PhyInvPointNameNo
+
+WHERE
+((PIP.OwnerNo = :OwnerNo) or (0 = :OwnerNo))
+AND LIP.LogicalInventoryPointNo not in (Select icm.LogicalInventoryPointNo
+FROM dbo.InvCtrlMetod icm
+Inner Join dbo.InvControlGrp icg on icg.IC_GRPNo = icm.IC_GRPNo
+WHERE Icg.MaxDatum >= :StartDate
+AND Icg.MaxDatum <= :EndDate
+AND Icg.OwnerNo = PIP.OwnerNo)
+
+

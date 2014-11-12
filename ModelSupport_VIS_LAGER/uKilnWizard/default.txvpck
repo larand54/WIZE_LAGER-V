@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="9299tvm0sfbe0ua2t_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uKilnWizard.TfKilnWizard">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.cxLabel20" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.deStartTime" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.cxLabel17" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.cxLabel19" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.mePlannedDuration" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.cxLabel22" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.icStatus" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.lcTork" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.BitBtn2" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnWizard.TfKilnWizard.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnWizard.TfKilnWizard.BitBtn2Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnWizard.TfKilnWizard.BitBtn1Click(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnWizard.TfKilnWizard.CancelClicked" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uKilnWizard.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

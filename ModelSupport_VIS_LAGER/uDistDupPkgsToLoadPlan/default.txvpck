@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="0079o97pvtapbcgoo_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uDistDupPkgsToLoadPlan.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.@unitclass.fDistDupPkgsToLoadPlan" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:uDistDupPkgsToLoadPlan.@unitclass.fDistDupPkgsToLoadPlan" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlan" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1LAGERSTLLE" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1LAGERGRUPP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1PRODUKT" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1LNGD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1BARCODE" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1GRADESTAMP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1SKNAMN" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsNoOfPkgsLastInv" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsARAfterDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1TotalLager" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsConfirmedDest" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsDiffDest" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1DateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1CreatedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1LoadPlanDestRowNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1LoadingNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1PackageTypeNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsPlanned" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1Tot" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsLoaded" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1NoOfPkgsLeft" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxLabel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView1PPP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGrid1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn5" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn6" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn7" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn8" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn9" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn10" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn11" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn12" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn13" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn16" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn17" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn18" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn19" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridDBBandedColumn21" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2LoadingNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2LoadPlanDestRowNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2PackageTypeNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsPlanned" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsBeforeDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsLoaded" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsARAfterDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsAfterDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsConfirmedDest" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsDiffDest" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2CreatedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2LAGERSTLLE" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2LAGERGRUPP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2PRODUKT" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2BARCODE" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2SKNAMN" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2LNGD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2GRADESTAMP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2SALDO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2PaketDifferens" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsLeft" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2NoOfPkgsLastInv" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2TotalLager" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2DateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2LastInvCount" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2AR" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.grdLoadPlanDBBandedTableView2TotLager" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uDistDupPkgsToLoadPlan.TfDistDupPkgsToLoadPlan.cxGridLevel1" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,109 @@
+Insert INTO dbo.PROD_BY_PKG
+(UserID,
+ProductionDate,
+ClientName,
+ProductionUnitName,
+STD_Length,
+ProductDisplayName,
+PackageNo,
+SupplierCode,
+ActualThicknessMM,
+ActualWidthMM,
+NominalThicknessMM,
+NominalWidthMM,
+PcsPerLength,
+L1800,
+L2100,
+L2400,
+L2700,
+L3000,
+L3300,
+L3600,
+L3900,
+L4200,
+L4500,
+L4800,
+L5100,
+L5400,
+L5700,
+L6000,
+ActualM3,
+NominalM3,
+LinealMeter,
+MFBMNominal,
+SQMofActualWidth,
+TotalNoOfPieces,
+FilterDateStart,
+FilterDateEnd,
+Operation)
+Select Distinct 
+8,
+pp.ProductionDate,
+Verk.ClientName,
+PU.RegPointName AS ProductionUnitName,
+PTL.STD_Length,
+pd.ProductDisplayName,
+PP.PackageNo,
+PP.SupplierCode,
+pg.ActualThicknessMM,
+pg.ActualWidthMM,
+pg.NominalThicknessMM,
+pg.NominalWidthMM,
+PTL.PcsPerLength,
+PTL.L18,
+PTL.L21,
+PTL.L24,
+PTL.L27,
+PTL.L30,
+PTL.L33,
+PTL.L36,
+PTL.L39,
+PTL.L42,
+PTL.L45,
+PTL.L48,
+PTL.L51,
+PTL.L54,
+PTL.L57,
+PTL.L60,
+pt.Totalm3Actual,
+pt.Totalm3Nominal,
+pt.TotalLinealMeterActualLength,
+pt.TotalMFBMNominal,
+pt.TotalSQMofActualWidth,
+pt.TotalNoOfPieces,
+'2010-04-02 00:00:00',
+'2012-04-09 00:00:00',
+pp.Operation
+FROM  Package_Production PP
+Inner Join PackageNumber pn 	ON pn.PackageNo = PP.PackageNo
+AND pn.SupplierCode = PP.SupplierCode
+Inner Join RegistrationPoint PU ON PU.RegPointNo = PP.ProductionUnitNo
+Inner Join Client Verk ON Verk.ClientNo = PP.SupplierNo
+Inner Join PackageType pt 	ON pt.PackageTypeNo = PP.PackageTypeNo
+Inner Join PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
+Inner Join packageTypeLengths PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
+Inner Join Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.Grade G ON G.GradeNo = pd.GradeNo
+AND G.LanguageCode = 1
+Inner Join ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+AND SUR.LanguageCode = 1
+WHERE pp.ProductionDate >= '2010-04-02 00:00:00'
+AND pp.ProductionDate <= '2012-04-09 00:00:00'
+
+ AND ( Verk.PktNrLevKod = 12 ) 
+
+
+
+
+
+
+
+
+
+

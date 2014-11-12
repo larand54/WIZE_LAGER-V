@@ -1,0 +1,26 @@
+Få med statistiken för vandringstorken
+Att göra Kunna se totalvolym i torksatser för vandringstorken men inte kunna avsluta eller flytta till lagergrupp efter tork.
+Att göra Kvalitén saknas fortfarande
+Att göra Kunna justera radhöjden
+Att göra Ändra Före tork till In till tork
+Att göra Paket som läggs till Före tork (In till tork) skall hamna i lagergruppen i tork
+Att göra Ha det senast tillagda paketet överst i tabellen
+Att göra Minska storleken på rubriken i Tork mm.
+Att göra Ta bort kolumnen Row räcker väl med Rad?
+Att göra Även tid för när torken gick in.
+Att göra Om ändring av vagnar In till tork görs och paket tas bort ska paketet hamna i otorkade lagret
+Att göra Vid plocka paket kunna filtrera på längd
+Att göra Ha en bock som gör att om ifylld filtrerar man på både produkt och längd!
+Att göra Drar man ihop kolumnerna Rad och Row så sparas inte detta. Dessa behöver ju inte vara så breda som Vagn lägerna
+Att göra Hamna högst upp i tabellen i plocka paket.
+Att göra Sortering i plocka paket på i förstahand maxlängd (inte st/längd) därefter paketnr.
+ 
+ 
+Statistiken
+Att göra Leveranstatistiken där man använt C14-T0 samt C24-T2 är inte längre sökbar. Bästa om man omvandlar den till C14 resp C24
+Att göra Paket stämmer inte i  antal blir så många som 10 paket i ett paket i pivotvyn
+Att göra Marcus problem med att veckobrytningen är fel
+Att göra Få in nya längdgridden alternativt lägga med alla Vislandas längder
+Att göra Utskriftshantering med nya .Net Crystal
+Att göra Kunna skapa paket med en fördefinierad paketnr serie.
+Att göra  

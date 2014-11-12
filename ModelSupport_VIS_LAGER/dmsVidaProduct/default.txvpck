@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="twuemaa0e2a01pqjg_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:dmsVidaProduct.TdmsProduct">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProductGroupLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProductGroupLengthProductGroupNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProductGroupLengthProductLengthNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProductGroupLengthCreatedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProductGroupLengthModifiedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProductGroupLengthDateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthProductLengthNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthActualLengthMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthNominalLengthMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthNominalLengthFEET" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthActualLengthINCH" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthPET" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthFingerJoint" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthCreatedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthModifiedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthDateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthSequenceNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthProductLengthGroupNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.cds_ProdLengthAct" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_Packages" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sq_DelTempPkgs" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sq_InsTempPkgs" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_Populate_One_PkgTypeLengths" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_PackageTotals" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_NewPackageNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_NewPackageDetail" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_NewPackageType" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_PackageTypes" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_VP_IntLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.sp_newLoad_II" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.DataModuleCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.mtPackagesBeforeInsert(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.y" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.GlobalCounter" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.OldProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.OldProductGroupNo" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.GetLengthsEntered()" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.SupplierNo" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.Create_newLoad_II(System.Integer,System.Integer,System.string,System.string,SqlTimSt.TSQLTimeStamp)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.Create_VP_IntLO(System.Integer,System.Integer,System.Integer,System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.InsertPkgsToTempTable()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsVidaProduct.TdmsProduct.SaveImportedPackages(kbmMemTable.TkbmMemTable)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:dmsVidaProduct.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsVidaProduct.@unitclass.dmsProduct" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:dmsVidaProduct.@unitclass.dmsProduct" />
+    </reference>
+  </view>
+</nodeSet>

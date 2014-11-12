@@ -1,0 +1,16 @@
+SELECT Distinct CY.CITYNAME, CY.CITYNAME + '/'  + RTRIM(LIP.LogicalInventoryName) AS PLIP,
+LIP.InvCode, LIP.LogicalInventoryName, LIP.LogicalInventoryPointNo AS LIPNo
+FROM
+dbo.PHYSICALINVENTORYPOINT PH
+Inner Join dbo.LOGICALINVENTORYPOINT LIP on LIP.PhysicalInventoryPointNo = PH.PhysicalInventoryPointNo
+Inner Join dbo.CITY CY ON CY.CITYNO = PH.PhyInvPointNameNo
+Inner Join dbo.ClientRole CR ON CR.ClientNo = PH.OwnerNo
+Inner Join dbo.Client C ON C.ClientNo = PH.OwnerNo
+WHERE
+LIP.SequenceNo = 1
+AND PH.SequenceNo = 1
+AND PH.PhyInvPointNameNo in (Select PH2.PhyInvPointNameNo
+FROM dbo.PHYSICALINVENTORYPOINT PH2
+WHERE PH2.OwnerNo = 123)
+ AND ( C.PktNrLevKod = 10 ) 
+Order By  CY.CITYNAME, LIP.LogicalInventoryName

@@ -1,0 +1,21 @@
+SELECT distinct
+L.LoadNo				AS	LASTNR,
+L.FS				AS	FS,
+L.LoadedDate			AS	DATUM,
+L.SenderLoadStatus		AS	STATUS,
+L.LoadID				AS	LOAD_ID,
+ShipTo.CityName                 	AS INT_DEST,
+Loading.CityName                 AS LASTSTALLE,
+SUPP.ClientName			AS VERK,
+CUST.ClientName			AS INT_KUND
+FROM dbo.Loads L
+INNER JOIN dbo.LoadShippingPlan LSP 		ON 	LSP.LoadNo = L.LoadNo
+INNER JOIN dbo.SupplierShippingPlan       SP   ON  SP.ShippingPlanNo = LSP.ShippingPlanNo
+					AND     L.supplierno 		= SP.SUPPLIERno
+					AND     L.CustomerNo 		= SP.CustomerNo
+LEFT OUTER JOIN dbo.CITY                     Shipto         ON ShipTo.CityNo 	           = SP.ShipToInvPointNo
+LEFT OUTER JOIN dbo.CITY                     Loading         ON Loading.CityNo 	           = SP.LoadingLocationNo
+INNER JOIN dbo.Client                     SUPP   ON  SUPP.ClientNo            = L.SupplierNo
+INNER JOIN dbo.Client                     CUST   ON  CUST.ClientNo            = L.CustomerNo
+WHERE  L.SupplierNo = 232
+AND L.LoadedDate >= '2005-11-21 00:00:00'

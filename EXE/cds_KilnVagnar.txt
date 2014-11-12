@@ -1,0 +1,241 @@
+Select distinct 'Radnr' + CAST(kcr.RowNo AS Varchar(2)) AS Rad, kcr.RowNo
+,CAST(Max(CASE WHEN kcr.VagnNo = 30 THEN Cast(kcr.PackageNo AS Varchar(7))+ '- ' + CAST(gr.GradeName AS Varchar(5)) + '- ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ ' x' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' x' + Cast(ML.MaxLength AS Varchar(7)) ELSE ''  END) AS VARCHAR(36)) AS L1
+,CAST(Max(CASE WHEN kcr.VagnNo = 26 THEN Cast(kcr.PackageNo AS Varchar(7))+ '- ' + CAST(gr.GradeName AS Varchar(5)) + '- ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ ' x' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' x' + Cast(ML.MaxLength AS Varchar(7)) ELSE ''  END) AS VARCHAR(36)) AS L2
+,CAST(Max(CASE WHEN kcr.VagnNo = 25 THEN Cast(kcr.PackageNo AS Varchar(7))+ '- ' + CAST(gr.GradeName AS Varchar(5)) + '- ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ ' x' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' x' + Cast(ML.MaxLength AS Varchar(7)) ELSE ''  END) AS VARCHAR(36)) AS L3
+,CAST(Max(CASE WHEN kcr.VagnNo = 22 THEN Cast(kcr.PackageNo AS Varchar(7))+ '- ' + CAST(gr.GradeName AS Varchar(5)) + '- ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ ' x' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' x' + Cast(ML.MaxLength AS Varchar(7)) ELSE ''  END) AS VARCHAR(36)) AS L4
+,CAST(Max(CASE WHEN kcr.VagnNo = 21 THEN Cast(kcr.PackageNo AS Varchar(7))+ '- ' + CAST(gr.GradeName AS Varchar(5)) + '- ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ ' x' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' x' + Cast(ML.MaxLength AS Varchar(7)) ELSE ''  END) AS VARCHAR(36)) AS L5
+,CAST(Max(CASE WHEN kcr.VagnNo = 19 THEN Cast(kcr.PackageNo AS Varchar(7))+ '- ' + CAST(gr.GradeName AS Varchar(5)) + '- ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ ' x' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' x' + Cast(ML.MaxLength AS Varchar(7)) ELSE ''  END) AS VARCHAR(36)) AS L6
+,CAST('' AS VARCHAR(15)) AS L7
+,CAST('' AS VARCHAR(15)) AS L8
+,CAST('' AS VARCHAR(15)) AS L9
+,CAST('' AS VARCHAR(15)) AS L10
+,CAST('' AS VARCHAR(15)) AS L11
+,CAST('' AS VARCHAR(15)) AS L12
+,CAST('' AS VARCHAR(15)) AS L13
+,CAST('' AS VARCHAR(15)) AS L14
+,CAST('' AS VARCHAR(15)) AS L15
+,CAST('' AS VARCHAR(15)) AS L16
+,CAST('' AS VARCHAR(15)) AS L17
+,CAST('' AS VARCHAR(15)) AS L18
+,CAST('' AS VARCHAR(15)) AS L19
+,CAST('' AS VARCHAR(15)) AS L20
+,CAST('' AS VARCHAR(15)) AS L21
+,CAST('' AS VARCHAR(15)) AS L22
+,CAST('' AS VARCHAR(15)) AS L23
+,CAST('' AS VARCHAR(15)) AS L24
+,CAST('' AS VARCHAR(15)) AS L25
+,CAST('' AS VARCHAR(15)) AS L26
+,CAST('' AS VARCHAR(15)) AS L27
+,CAST('' AS VARCHAR(15)) AS L28
+,CAST('' AS VARCHAR(15)) AS L29
+,CAST('' AS VARCHAR(15)) AS L30
+,CAST('' AS VARCHAR(15)) AS L31
+,CAST('' AS VARCHAR(15)) AS L32
+,CAST('' AS VARCHAR(15)) AS L33
+,CAST('' AS VARCHAR(15)) AS L34
+,CAST('' AS VARCHAR(15)) AS L35
+,CAST('' AS VARCHAR(15)) AS L36
+,CAST('' AS VARCHAR(15)) AS L37
+,CAST('' AS VARCHAR(15)) AS L38
+,CAST('' AS VARCHAR(15)) AS L39
+,CAST('' AS VARCHAR(15)) AS L40
+,CAST('' AS VARCHAR(15)) AS L41
+,CAST('' AS VARCHAR(15)) AS L42
+,CAST('' AS VARCHAR(15)) AS L43
+,CAST('' AS VARCHAR(15)) AS L44
+,CAST('' AS VARCHAR(15)) AS L45
+FROM dbo.KilnChargeHdr KCH
+Inner join dbo.Kilns K on K.KilnNo = KCH.KilnNo
+Inner join dbo.KilnChargeRows kcr on kcr.KilnChargeNo = KCH.KilnChargeNo
+inner JOIN dbo.PackageNumber pn ON pn.PackageNo = kcr.packageno
+and pn.SupplierCode = kcr.SupplierCode
+inner join dbo.KilnVagn KV on KV.KilnChargeNo = KCH.KilnChargeNo
+and kv.VagnNo = kcr.VagnNo
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
+inner join [dbo].[visv_GetMaxLength] ML on ML.PackageTypeNo = pn.PackageTypeNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.Grade gr ON gr.GradeNo = pd.GradeNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+WHERE
+KCH.KilnChargeNo = 6346 and  KV.VagnNo >=  19
+GROUP BY kcr.RowNo
+UNION
+Select distinct 'STATUS',  91 AS RowNo
+,CAST(Max(CASE WHEN kcr.VagnNo = 30 THEN Cast(KV.VagnStatus AS char(1))   END) AS VARCHAR(1)) AS L1
+,CAST(Max(CASE WHEN kcr.VagnNo = 26 THEN Cast(KV.VagnStatus AS char(1))   END) AS VARCHAR(1)) AS L2
+,CAST(Max(CASE WHEN kcr.VagnNo = 25 THEN Cast(KV.VagnStatus AS char(1))   END) AS VARCHAR(1)) AS L3
+,CAST(Max(CASE WHEN kcr.VagnNo = 22 THEN Cast(KV.VagnStatus AS char(1))   END) AS VARCHAR(1)) AS L4
+,CAST(Max(CASE WHEN kcr.VagnNo = 21 THEN Cast(KV.VagnStatus AS char(1))   END) AS VARCHAR(1)) AS L5
+,CAST(Max(CASE WHEN kcr.VagnNo = 19 THEN Cast(KV.VagnStatus AS char(1))   END) AS VARCHAR(1)) AS L6
+,CAST('3' AS VARCHAR(1)) AS L7
+,CAST('3' AS VARCHAR(1)) AS L8
+,CAST('3' AS VARCHAR(1)) AS L9
+,CAST('3' AS VARCHAR(1)) AS L10
+,CAST('3' AS VARCHAR(1)) AS L11
+,CAST('3' AS VARCHAR(1)) AS L12
+,CAST('3' AS VARCHAR(1)) AS L13
+,CAST('3' AS VARCHAR(1)) AS L14
+,CAST('3' AS VARCHAR(1)) AS L15
+,CAST('3' AS VARCHAR(1)) AS L16
+,CAST('3' AS VARCHAR(1)) AS L17
+,CAST('3' AS VARCHAR(1)) AS L18
+,CAST('3' AS VARCHAR(1)) AS L19
+,CAST('3' AS VARCHAR(1)) AS L20
+,CAST('3' AS VARCHAR(1)) AS L21
+,CAST('3' AS VARCHAR(1)) AS L22
+,CAST('3' AS VARCHAR(1)) AS L23
+,CAST('3' AS VARCHAR(1)) AS L24
+,CAST('3' AS VARCHAR(1)) AS L25
+,CAST('3' AS VARCHAR(1)) AS L26
+,CAST('3' AS VARCHAR(1)) AS L27
+,CAST('3' AS VARCHAR(1)) AS L28
+,CAST('3' AS VARCHAR(1)) AS L29
+,CAST('3' AS VARCHAR(1)) AS L30
+,CAST('3' AS VARCHAR(1)) AS L31
+,CAST('3' AS VARCHAR(1)) AS L32
+,CAST('3' AS VARCHAR(1)) AS L33
+,CAST('3' AS VARCHAR(1)) AS L34
+,CAST('3' AS VARCHAR(1)) AS L35
+,CAST('3' AS VARCHAR(1)) AS L36
+,CAST('3' AS VARCHAR(1)) AS L37
+,CAST('3' AS VARCHAR(1)) AS L38
+,CAST('3' AS VARCHAR(1)) AS L39
+,CAST('3' AS VARCHAR(1)) AS L40
+,CAST('3' AS VARCHAR(1)) AS L41
+,CAST('3' AS VARCHAR(1)) AS L42
+,CAST('3' AS VARCHAR(1)) AS L43
+,CAST('3' AS VARCHAR(1)) AS L44
+,CAST('3' AS VARCHAR(1)) AS L45
+FROM dbo.KilnChargeHdr KCH
+Inner join dbo.Kilns K on K.KilnNo = KCH.KilnNo
+Inner join dbo.KilnChargeRows kcr on kcr.KilnChargeNo = KCH.KilnChargeNo
+inner JOIN dbo.PackageNumber pn ON pn.PackageNo = kcr.packageno
+and pn.SupplierCode = kcr.SupplierCode
+inner join dbo.KilnVagn KV on KV.KilnChargeNo = KCH.KilnChargeNo
+and kv.VagnNo = kcr.VagnNo
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
+inner join [dbo].[visv_GetMaxLength] ML on ML.PackageTypeNo = pn.PackageTypeNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+WHERE
+KCH.KilnChargeNo = 6346
+UNION
+Select distinct 'Indatum',  90 AS RowNo
+,CAST(Max(CASE WHEN kcr.VagnNo = 30 THEN Cast(KV.InDate AS char(19))   END) AS VARCHAR(19)) AS L1
+,CAST(Max(CASE WHEN kcr.VagnNo = 26 THEN Cast(KV.InDate AS char(19))   END) AS VARCHAR(19)) AS L2
+,CAST(Max(CASE WHEN kcr.VagnNo = 25 THEN Cast(KV.InDate AS char(19))   END) AS VARCHAR(19)) AS L3
+,CAST(Max(CASE WHEN kcr.VagnNo = 22 THEN Cast(KV.InDate AS char(19))   END) AS VARCHAR(19)) AS L4
+,CAST(Max(CASE WHEN kcr.VagnNo = 21 THEN Cast(KV.InDate AS char(19))   END) AS VARCHAR(19)) AS L5
+,CAST(Max(CASE WHEN kcr.VagnNo = 19 THEN Cast(KV.InDate AS char(19))   END) AS VARCHAR(19)) AS L6
+,CAST('3' AS VARCHAR(6)) AS L7
+,CAST('3' AS VARCHAR(6)) AS L8
+,CAST('3' AS VARCHAR(6)) AS L9
+,CAST('3' AS VARCHAR(6)) AS L10
+,CAST('3' AS VARCHAR(6)) AS L11
+,CAST('3' AS VARCHAR(6)) AS L12
+,CAST('3' AS VARCHAR(6)) AS L13
+,CAST('3' AS VARCHAR(6)) AS L14
+,CAST('3' AS VARCHAR(6)) AS L15
+,CAST('3' AS VARCHAR(6)) AS L16
+,CAST('3' AS VARCHAR(6)) AS L17
+,CAST('3' AS VARCHAR(6)) AS L18
+,CAST('3' AS VARCHAR(6)) AS L19
+,CAST('3' AS VARCHAR(6)) AS L20
+,CAST('3' AS VARCHAR(6)) AS L21
+,CAST('3' AS VARCHAR(6)) AS L22
+,CAST('3' AS VARCHAR(6)) AS L23
+,CAST('3' AS VARCHAR(6)) AS L24
+,CAST('3' AS VARCHAR(6)) AS L25
+,CAST('3' AS VARCHAR(6)) AS L26
+,CAST('3' AS VARCHAR(6)) AS L27
+,CAST('3' AS VARCHAR(6)) AS L28
+,CAST('3' AS VARCHAR(6)) AS L29
+,CAST('3' AS VARCHAR(6)) AS L30
+,CAST('3' AS VARCHAR(6)) AS L31
+,CAST('3' AS VARCHAR(6)) AS L32
+,CAST('3' AS VARCHAR(6)) AS L33
+,CAST('3' AS VARCHAR(6)) AS L34
+,CAST('3' AS VARCHAR(6)) AS L35
+,CAST('3' AS VARCHAR(6)) AS L36
+,CAST('3' AS VARCHAR(6)) AS L37
+,CAST('3' AS VARCHAR(6)) AS L38
+,CAST('3' AS VARCHAR(6)) AS L39
+,CAST('3' AS VARCHAR(6)) AS L40
+,CAST('3' AS VARCHAR(6)) AS L41
+,CAST('3' AS VARCHAR(6)) AS L42
+,CAST('3' AS VARCHAR(6)) AS L43
+,CAST('3' AS VARCHAR(6)) AS L44
+,CAST('3' AS VARCHAR(6)) AS L45
+FROM dbo.KilnChargeHdr KCH
+Inner join dbo.Kilns K on K.KilnNo = KCH.KilnNo
+Inner join dbo.KilnChargeRows kcr on kcr.KilnChargeNo = KCH.KilnChargeNo
+inner JOIN dbo.PackageNumber pn ON pn.PackageNo = kcr.packageno
+and pn.SupplierCode = kcr.SupplierCode
+inner join dbo.KilnVagn KV on KV.KilnChargeNo = KCH.KilnChargeNo
+and kv.VagnNo = kcr.VagnNo
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
+inner join [dbo].[visv_GetMaxLength] ML on ML.PackageTypeNo = pn.PackageTypeNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+WHERE
+KCH.KilnChargeNo = 6346
+UNION
+Select distinct 'VagnID',  92 AS RowNo
+,CAST(Max(CASE WHEN kcr.VagnNo = 30 THEN Cast(KV.VagnNo AS char(6))   END) AS VARCHAR(6)) AS L1
+,CAST(Max(CASE WHEN kcr.VagnNo = 26 THEN Cast(KV.VagnNo AS char(6))   END) AS VARCHAR(6)) AS L2
+,CAST(Max(CASE WHEN kcr.VagnNo = 25 THEN Cast(KV.VagnNo AS char(6))   END) AS VARCHAR(6)) AS L3
+,CAST(Max(CASE WHEN kcr.VagnNo = 22 THEN Cast(KV.VagnNo AS char(6))   END) AS VARCHAR(6)) AS L4
+,CAST(Max(CASE WHEN kcr.VagnNo = 21 THEN Cast(KV.VagnNo AS char(6))   END) AS VARCHAR(6)) AS L5
+,CAST(Max(CASE WHEN kcr.VagnNo = 19 THEN Cast(KV.VagnNo AS char(6))   END) AS VARCHAR(6)) AS L6
+,CAST('3' AS VARCHAR(6)) AS L7
+,CAST('3' AS VARCHAR(6)) AS L8
+,CAST('3' AS VARCHAR(6)) AS L9
+,CAST('3' AS VARCHAR(6)) AS L10
+,CAST('3' AS VARCHAR(6)) AS L11
+,CAST('3' AS VARCHAR(6)) AS L12
+,CAST('3' AS VARCHAR(6)) AS L13
+,CAST('3' AS VARCHAR(6)) AS L14
+,CAST('3' AS VARCHAR(6)) AS L15
+,CAST('3' AS VARCHAR(6)) AS L16
+,CAST('3' AS VARCHAR(6)) AS L17
+,CAST('3' AS VARCHAR(6)) AS L18
+,CAST('3' AS VARCHAR(6)) AS L19
+,CAST('3' AS VARCHAR(6)) AS L20
+,CAST('3' AS VARCHAR(6)) AS L21
+,CAST('3' AS VARCHAR(6)) AS L22
+,CAST('3' AS VARCHAR(6)) AS L23
+,CAST('3' AS VARCHAR(6)) AS L24
+,CAST('3' AS VARCHAR(6)) AS L25
+,CAST('3' AS VARCHAR(6)) AS L26
+,CAST('3' AS VARCHAR(6)) AS L27
+,CAST('3' AS VARCHAR(6)) AS L28
+,CAST('3' AS VARCHAR(6)) AS L29
+,CAST('3' AS VARCHAR(6)) AS L30
+,CAST('3' AS VARCHAR(6)) AS L31
+,CAST('3' AS VARCHAR(6)) AS L32
+,CAST('3' AS VARCHAR(6)) AS L33
+,CAST('3' AS VARCHAR(6)) AS L34
+,CAST('3' AS VARCHAR(6)) AS L35
+,CAST('3' AS VARCHAR(6)) AS L36
+,CAST('3' AS VARCHAR(6)) AS L37
+,CAST('3' AS VARCHAR(6)) AS L38
+,CAST('3' AS VARCHAR(6)) AS L39
+,CAST('3' AS VARCHAR(6)) AS L40
+,CAST('3' AS VARCHAR(6)) AS L41
+,CAST('3' AS VARCHAR(6)) AS L42
+,CAST('3' AS VARCHAR(6)) AS L43
+,CAST('3' AS VARCHAR(6)) AS L44
+,CAST('3' AS VARCHAR(6)) AS L45
+FROM dbo.KilnChargeHdr KCH
+Inner join dbo.Kilns K on K.KilnNo = KCH.KilnNo
+Inner join dbo.KilnChargeRows kcr on kcr.KilnChargeNo = KCH.KilnChargeNo
+inner JOIN dbo.PackageNumber pn ON pn.PackageNo = kcr.packageno
+and pn.SupplierCode = kcr.SupplierCode
+inner join dbo.KilnVagn KV on KV.KilnChargeNo = KCH.KilnChargeNo
+and kv.VagnNo = kcr.VagnNo
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
+inner join [dbo].[visv_GetMaxLength] ML on ML.PackageTypeNo = pn.PackageTypeNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+WHERE
+KCH.KilnChargeNo = 6346

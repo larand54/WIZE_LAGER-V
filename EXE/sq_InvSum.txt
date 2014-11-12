@@ -1,0 +1,45 @@
+Select distinct 
+8,
+Cy.CityName AS LAGERSTÄLLE,
+SPE.SpeciesName AS TS,
+IMP.ProductCategoryName AS IMP,
+Gr.GradeName AS KV,
+pg.ActualThicknessMM AS ATMM, pg.ActualWidthMM AS ABMM,
+SUR.SurfacingName AS UT,
+SUM(pt.Totalm3Actual) AS AM3,
+SUM(pt.TotalMFBMNominal) AS MFBM,
+SUM(pt.TotalNoOfPieces) AS STYCK,
+count(pn.PackageNo) AS PAKET,
+pt.ProductNo,
+lip.PhysicalInventoryPointNo AS PIPNo
+FROM  dbo.Client Verk
+Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
+Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
+INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = pn.PackageTypeNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.ProductCategory	IMP	ON IMP.ProductCategoryNo = pg.ProductCategoryNo
+				AND IMP.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
+WHERE pn.Status = 1 AND LIP.SequenceNo = 1
+AND Verk.SalesRegionNo = 741
+ AND ( LIP.InvCode = '100' ) 
+ AND ( Verk.PktNrLevKod = 12 ) 
+
+
+
+
+
+
+
+
+
+ Group by SPE.SpeciesName, Gr.GradeName, pg.ActualThicknessMM, pg.ActualWidthMM, SUR.SurfacingName,
+ pt.ProductNo, lip.LogicalInventoryPointNo, Cy.CityName, lip.PhysicalInventoryPointNo, IMP.ProductCategoryName

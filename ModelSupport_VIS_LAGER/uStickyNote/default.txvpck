@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="bf9qlq6hp9ajfouns_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uStickyNote.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uStickyNote.@unitclass.frmStickyNote" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:uStickyNote.@unitclass.frmStickyNote" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uStickyNote.TfrmStickyNote">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uStickyNote.TfrmStickyNote.mStickyNote" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uStickyNote.TfrmStickyNote.FormClose(System.TObject,ref@Forms.TCloseAction)" />
+    </reference>
+  </view>
+</nodeSet>

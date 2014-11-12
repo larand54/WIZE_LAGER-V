@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="7g0yuvr5r3al8doet_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uAOUser.TfAOUser">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.Panel3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.Panel4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.Panel5" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1UserID" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1ProducerNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1RegPointNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1DateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1DateModified" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1ModifiedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1Producent" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1Mtpunkt" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1StandardRegPoint" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.Panel6" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.ActionList1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.acAdd" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.acDelete" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.BitBtn2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.BitBtn3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1VoEnhet" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAOUser.TfAOUser.acAddExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAOUser.TfAOUser.acDeleteExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAOUser.TfAOUser.BitBtn1Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1MtpunktPropertiesInitPopup(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAOUser.TfAOUser.grdAOUserRPDBTableView1MtpunktPropertiesCloseUp(System.TObject)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uAOUser.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

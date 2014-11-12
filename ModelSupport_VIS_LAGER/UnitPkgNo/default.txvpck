@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="a6tc8udfz8b3zrlxh_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitPkgNo.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.OKBtn" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.CancelBtn" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.Bevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.Label2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.dxMaskPackageNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.dxMaskSupplierCode" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitPkgNo.TfrmPkgNo.CancelBtnClick(System.TObject)" />
+    </reference>
+  </view>
+</nodeSet>

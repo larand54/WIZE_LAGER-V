@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="7xi5dm5c5iarn9esf_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uChangeLogins.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.eAD_Name" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.Button1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.eDatabas" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.Label2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.Button2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.BitBtn2" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.HelpBtnClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.Button1Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uChangeLogins.TOKHelpBottomDlg.Button2Click(System.TObject)" />
+    </reference>
+  </view>
+</nodeSet>

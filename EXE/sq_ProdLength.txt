@@ -1,0 +1,16 @@
+Select distinct LRR.NomLength
+FROM dbo.LengthRuleRow LRR
+Inner Join dbo.LengthRuleGrp LRG ON LRG.LengthRuleNo = LRR.LengthRuleNo
+WHERE
+LRG.ClientNo = 741
+AND LRG.MinNTmm <= :MinNTmm
+AND LRG.MaxNTmm >= :MaxNTmm
+AND ((LRG.SurfacingNo = :SurfacingNo)
+or ((LRG.SurfacingNo = 0)
+AND (:SurfacingNo not in (Select LRG2.SurfacingNo from dbo.LengthRuleGrp LRG2
+Inner Join dbo.LengthRuleRow LRR2 ON LRR2.LengthRuleNo = LRG2.LengthRuleNo
+WHERE
+LRG2.MinNTmm <= :MinNTmm
+AND LRG2.MaxNTmm >= :MaxNTmm )) ))
+AND LRR.MinActLength <= :ALMM
+AND LRR.MaxActLength >= :ALMM

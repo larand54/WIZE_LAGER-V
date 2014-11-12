@@ -1,0 +1,108 @@
+ SELECT DISTINCT
+0 AS Shipping,
+LS.LoadNo,
+SSP.SupplierNo,
+LS.ShippingPlanNo,
+C.ClientName AS CUSTOMER,
+SC.ClientName					AS SHIPPER,
+isNull(Bk.PreliminaryRequestedPeriod,' ')	AS READYDATE,
+isNull(Cr.CarrierName,' ')			AS VESSEL,
+Vg.ETD						AS ETD,
+Vd.ETA						AS ETA,
+Bk.SupplierReference				AS SHIPPER_REF,
+Bk.ShippingCompanyBookingID			AS SHIPPERID,
+Bk.ShippersShipDate				AS SHIPPERS_SHIPDATE,
+Bk.ShippersShipTime				AS SHIPPERS_SHIPTIME,
+OH.OrderNoText					AS ORDERNO,
+CASE WHEN OH.OrderType = 0 then 'SALES'
+ELSE 'PURCHASE'
+END AS ORDERTYPE,
+LS.CreatedUser,
+LS.ModifiedUser,
+LS.DateCreated,
+SSP.CustomerNo,
+Supp.ClientName AS SUPPLIER,
+LocCust.ClientName AS LOC_CUST,
+SSP.ObjectType,
+CSH.CustomerNo AS Avrop_CustomerNo,
+SSP.LoadingLocationNo,
+SSP.ShipToInvPointNo,
+Loading.CityName AS LOADING_LOCATION,
+ShipTo.CityName AS SHIP_TO
+FROM dbo.LoadShippingPlan LS
+        Inner Join dbo.Loads L                          ON      L.LoadNo = LS.LoadNo
+        Inner Join dbo.SupplierShippingPlan SSP 	ON 	SSP.ShippingPlanNo = LS.ShippingPlanNo
+        						AND 	SSP.SupplierNo = L.SupplierNo
+    AND 	SSP.CustomerNo = L.CustomerNo
+                                                        AND SSP.LoadingLocationNo = LS.LoadingLocationNo
+                                                        AND SSP.ShipToInvPointNo = LS.ShipToInvPointNo
+	Inner Join dbo.City	Loading		ON Loading.CityNo = SSP.LoadingLocationNo
+	Inner Join dbo.City	ShipTo		ON ShipTo.CityNo = SSP.ShipToInvPointNo
+	Inner Join dbo.Client		Supp 	ON  	Supp.ClientNo	= SSP.SupplierNo
+	Inner Join dbo.Client		LocCust	ON  	LocCust.ClientNo	= SSP.CustomerNo
+        Inner Join dbo.CustomerShippingPlanHeader CSH
+       	Inner Join dbo.Client		C 	ON  	C.ClientNo	= CSH.CustomerNo
+                                                ON      CSH.ShippingPlanNo = SSP.ShippingPlanNo
+       	Inner JOIN dbo.Orders 		OH	ON	OH.OrderNo 		= CSH.OrderNo
+       	LEFT OUTER JOIN dbo.Booking		Bk
+	LEFT OUTER JOIN dbo.VoyageDestination	VD 	ON  	Bk.BookingNo		= vd.BookingNo
+	Left Outer JOIN dbo.Voyage		Vg 	ON  	Bk.VoyageNo		= Vg.VoyageNo
+	Left Outer JOIN dbo.Client		SC 	ON  	Bk.ShippingCompanyNo 	= SC.ClientNo
+	Left outer JOIN dbo.Carrier            	Cr 	ON  	Vg.CarrierNo    	= Cr.CarrierNo
+							ON  	Bk.ShippingPlanNo	= SSP.ShippingPlanNo
+WHERE
+LS.LoadNo = 23030
+AND L.SupplierNo = 232
+AND L.CustomerNo = 741
+AND OH.OrderType = 0
+UNION
+SELECT DISTINCT
+0 AS Shipping, 
+LS.LoadNo,
+SSP.SupplierNo,
+LS.ShippingPlanNo,
+' ' AS CUSTOMER,
+' '					AS SHIPPER,
+' '	AS READYDATE,
+' '			AS VESSEL,
+0						AS ETD,
+0						AS ETA,
+' '				AS SHIPPER_REF,
+' '			AS SHIPPERID,
+0				AS SHIPPERS_SHIPDATE,
+-1				AS SHIPPERS_SHIPTIME,
+' '					AS ORDERNO,
+'SALES' ORDERTYPE,
+LS.CreatedUser,
+LS.ModifiedUser,
+LS.DateCreated,
+SSP.CustomerNo,
+Supp.ClientName AS SUPPLIER,
+LocCust.ClientName AS LOC_CUST,
+SSP.ObjectType,
+-1 AS Avrop_CustomerNo,
+SSP.LoadingLocationNo,
+SSP.ShipToInvPointNo,
+Loading.CityName AS LOADING_LOCATION,
+ShipTo.CityName AS SHIP_TO
+FROM dbo.LoadShippingPlan LS
+        Inner Join dbo.Loads L                          ON      L.LoadNo = LS.LoadNo
+        Inner Join dbo.SupplierShippingPlan SSP 	ON 	SSP.ShippingPlanNo = LS.ShippingPlanNo
+        						AND 	SSP.SupplierNo = L.SupplierNo
+    AND 	SSP.CustomerNo = L.CustomerNo
+                                                        AND SSP.LoadingLocationNo = LS.LoadingLocationNo
+                                                        AND SSP.ShipToInvPointNo = LS.ShipToInvPointNo
+	Inner Join dbo.City	Loading		ON Loading.CityNo = SSP.LoadingLocationNo
+	Inner Join dbo.City	ShipTo		ON ShipTo.CityNo = SSP.ShipToInvPointNo
+	Inner Join dbo.Client		Supp 	ON  	Supp.ClientNo	= SSP.SupplierNo
+	Inner Join dbo.Client		LocCust	ON  	LocCust.ClientNo	= SSP.CustomerNo
+Inner Join dbo.Client_LoadingLocation CLL	ON CLL.ClientNo = L.SupplierNo
+AND CLL.PhyInvPointNameNo = SSP.LoadingLocationNo 
+WHERE
+LS.LoadNo = 23030
+AND L.SupplierNo = 232
+AND L.CustomerNo = 741
+AND (SSP.CustShipPlanDetailObjectNo NOT IN
+(Select dsa.CustShipPlanDetailObjectNo
+ From  dbo.CustomerShippingPlanDetails dsa
+ ) OR SSP.CustShipPlanDetailObjectNo is null)

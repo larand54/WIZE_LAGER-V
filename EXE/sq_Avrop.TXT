@@ -1,0 +1,38 @@
+SELECT
+OH.CurrencyNo,
+CSH.ShippingPlanStatus				AS STATUS,
+CSH.ShippingPlanNo 				AS LO,
+OH.OrderNoText					AS ORDERNUMBER,
+isNull(CSH.Reference,' ')			AS REFERENCE,
+isnull(CSH.ETDYearWeek,-1) 			AS FROMWEEK,
+isnull(CSH.ETDWeekEnd,-1) 			AS TOWEEK,
+C.ClientName 					AS CLIENT, 
+isNull(AG.ClientName,' ')			AS AGENT,
+isNull(CSD.Reference,' ')			AS MARK,
+OL.OrderLineDescription 			AS PRODUCT,
+CSD.LengthDescription 				AS LENGTH,
+isnull(CSD.NoOfUnits,0) 			AS VOLUME ,
+VU.VolumeUnitName				AS VOLUNIT,
+isNull(Cy.CityName,' ')			AS DESTINATION,
+CSH.OrderNo 					AS ORDERNO,
+CSH.CustomerNo					AS CLIENTNO,
+CSH.DestinationNo				AS DESTINATIONNO,
+CSD.CustShipPlanDetailObjectNo 			AS UNIQUERECORDNO,
+OH.SalesRegionNo				AS SALESREGIONNO,
+OH.OrderType					AS ORDERTYPE
+FROM dbo.CustomerShippingPlanHeader CSH
+	INNER JOIN dbo.CustomerShippingPlanDetails CSD 	ON  	CSD.ShippingPlanNo 	= CSH.ShippingPlanNo
+	LEFT OUTER JOIN ShippingPlan_ShippingAddress SSAD
+	INNER JOIN Address	ADDR			ON	ADDR.ADDRESSNO	= SSAD.ADDRESSNO
+	Left Outer JOIN dbo.City		Cy 		ON  	ADDR.CityNo	= Cy.CityNo
+								ON SSAD.ShippingPlanNo = CSD.ShippingPlanNo
+								AND SSAD.Reference	= CSD.REFERENCE
+	INNER JOIN dbo.Client 			C	ON 	C.ClientNo		= CSH.CustomerNo
+	INNER JOIN dbo.Orders 			OH	ON	OH.OrderNo 		= CSH.OrderNo
+	INNER JOIN dbo.OrderLine 		OL	ON	OL.OrderNo 		= CSD.OrderNo
+							AND 	OL.OrderLineNo 		= CSD.OrderLineNo
+	INNER JOIN dbo.UnitName 		VU	ON 	VU.VolumeUnit_No 	= OL.VolumeUnitNo
+	LEFT  OUTER JOIN dbo.Client		AG	ON  	OH.AgentNo	       	= AG.ClientNo
+WHERE
+CSH.SHIPPINGPLANSTATUS = 1
+AND OH.OrderType = 0

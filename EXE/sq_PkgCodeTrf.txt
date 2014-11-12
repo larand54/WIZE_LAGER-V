@@ -1,0 +1,94 @@
+Select Distinct pcp.PkgCodePPNo, pcp.PackageCode, pcp.PackageTypeNo, pcp.ArtikelKod,
+Sp.SpeciesName, Su.SurfacingName, Gr.GradeName, pcp.ModifiedDate,
+SpSV.SpeciesName AS TSSV,  SuSV.SurfacingName AS UTSV, GrSV.GradeName AS KVSV,
+Case
+WHEN pcp.SizeFormat = 1 THEN CAST((  pg.ActualThicknessMM  ) As varchar(7))
+WHEN pcp.SizeFormat = 2 THEN CAST((  pg.NominalThicknessMM  ) As varchar(7))
+WHEN pcp.SizeFormat = 3 THEN CAST((  pg.NominalThicknessINCH  ) As varchar(7))
+WHEN pcp.SizeFormat = 4 THEN pcp.oThickness
+END AS Thickness,
+Case
+WHEN pcp.SizeFormat = 1 THEN CAST((  pg.ActualWidthMM  ) As varchar(7))
+WHEN pcp.SizeFormat = 2 THEN CAST((  pg.NominalWidthMM  ) As varchar(7))
+WHEN pcp.SizeFormat = 3 THEN CAST((  pg.NominalWidthINCH  ) As varchar(7))
+WHEN pcp.SizeFormat = 4 THEN pcp.oWidth
+END AS Width,
+Case
+WHEN pcp.LengthFormat = 1 THEN CAST((  pl.ActualLengthMM  ) As varchar(7))
+WHEN pcp.LengthFormat = 2 THEN CAST((  pl.NominalLengthMM  ) As varchar(7))
+WHEN pcp.LengthFormat = 3 THEN CAST((  pl.NominalLengthFEET  ) As varchar(7))
+WHEN pcp.LengthFormat = 4 THEN CAST((  pl.ActualLengthINCH  ) As varchar(7))
+WHEN pcp.LengthFormat = 5 THEN pcp.oLength
+END AS Length,
+Case
+WHEN pcp.VolumeFormat = 1 THEN CAST((    pt.Totalm3Actual  ) As decimal(18,3))
+WHEN pcp.VolumeFormat = 2 THEN pt.Totalm3Nominal
+WHEN pcp.VolumeFormat = 3 THEN pt.TotalMFBMNominal
+END AS Volume,
+PT.TotalNoOfPieces AS TotalPieces,
+PT.TotalLinealMeterActualLength AS Runm,
+pcp.oThickness, pcp.oWidth, pcp.oLength, pcp.Languagecode, pcp.SizeFormat, pcp.LengthFormat, pcp.VolumeFormat,
+IsNull(sp.SpeciesCode,'**') AS TS,
+Case
+WHEN pg.ActualThicknessMM*10 < 1000 THEN '0'+CAST((  pg.ActualThicknessMM*10  ) As varchar(7))
+ELSE
+CAST((  pg.ActualThicknessMM*10  ) As varchar(7))
+END AS AT,
+Case
+WHEN pg.ActualWidthMM*10 < 1000 THEN '0'+CAST((  pg.ActualWidthMM*10  ) As varchar(7))
+ELSE
+CAST((  pg.ActualWidthMM*10  ) As varchar(7))
+END AS AB,
+IsNull(Gr.GradeCode,'**') AS KV,
+Case
+WHEN isnull(pl.ActualLengthMM*10,0) = 0 THEN '000000'
+WHEN pl.ActualLengthMM*10 < 1000 THEN '0'+CAST((  isnull(pl.ActualLengthMM*10,0)  ) As varchar(15))
+WHEN pl.ActualLengthMM*10 > 9999 THEN '0'+CAST((  isnull(pl.ActualLengthMM*10,0)  ) As varchar(15))
+ELSE
+CAST((  isnull(pl.ActualLengthMM*10,0)  ) As varchar(15))
+END AS AL,
+Case
+WHEN isnull(PT.TotalNoOfPieces,0) = 0 THEN '0000'
+WHEN PT.TotalNoOfPieces < 10 THEN '000'+CAST((  PT.TotalNoOfPieces  ) As varchar(7))
+WHEN PT.TotalNoOfPieces < 100 THEN '00'+CAST((  PT.TotalNoOfPieces  ) As varchar(7))
+WHEN PT.TotalNoOfPieces < 1000 THEN '0'+CAST((  PT.TotalNoOfPieces  ) As varchar(7))
+else
+CAST((  PT.TotalNoOfPieces  ) As varchar(7))
+END AS ANTAL,
+IsNull(Su.SurfacingCode,'***') AS UT,
+isnull(BC.BarCodeID,'00') As BarCode,
+isnull(GS.GradeStampID,'00') As GradeStamp,
+isnull(pl.PET,0) AS PET,
+isnull(pl.FingerJoint,0) AS FJ,
+BC.BarCode AS BARCODENAME,
+GS.GradeStamp AS GRADESTAMPNAME,
+CAST((  pl.ActualLengthMM  ) As varchar(7)) AS ALMM,
+pg.ActualThicknessMM AS F_AT,
+pg.ActualWidthMM AS F_AB,
+pt.ProdInstruNo, pt.BarCodeID AS BarCodeIDNo, pt.GradeStamp AS GradeStampNo, pg.ProductGroupNo,
+Sp.Speciesno, Su.Surfacingno, Gr.Gradeno, pco.PkgCodePPNo AS ClientPkgCodePPNo, pco.ClientNo, pcp.TagNo
+FROM dbo.PackageType pt
+Inner Join dbo.Packagecode_printparams pcp on pcp.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.PkgcodeOwners pco on pco.PkgCodePPNo = pcp.PkgCodePPNo
+Left Outer Join dbo.Barcode BC ON BC.BarCodeNo = pt.BarCodeID
+Left Outer Join dbo.GradeStamp GS ON GS.GradeStampNo = pt.GradeStamp
+Left Outer Join dbo.PackageTypeDetail ptd
+Inner Join dbo.ProductLength pl on pl.ProductLengthNo = ptd.ProductLengthNo
+on ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.Product p on p.productno = pt.productno
+Inner Join dbo.Productgroup pg on pg.productgroupno = p.productgroupno
+Inner Join dbo.Species Sp on Sp.Speciesno = pg.Speciesno
+Inner Join dbo.Surfacing Su on Su.Surfacingno = pg.Surfacingno
+Inner Join dbo.Grade Gr on Gr.Gradeno = p.Gradeno
+Inner Join dbo.Species SpSV on SpSV.Speciesno = pg.Speciesno
+AND SpSV.Languagecode = 1
+Inner Join dbo.Surfacing SuSV on SuSV.Surfacingno = pg.Surfacingno
+AND SuSV.Languagecode = 1
+Inner Join dbo.Grade GrSV on GrSV.Gradeno = p.Gradeno
+AND GrSV.Languagecode = 1
+Inner Join dbo.PkgVarCode pc on pc.PkgCodePPNo = pcp.PkgCodePPNo
+WHERE
+Sp.Languagecode = pcp.Languagecode
+AND Su.Languagecode = pcp.Languagecode
+AND Gr.Languagecode = pcp.Languagecode
+AND pco.ClientNo = 741

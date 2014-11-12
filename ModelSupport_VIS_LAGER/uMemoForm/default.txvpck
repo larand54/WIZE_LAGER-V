@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="osc60di6x037robk_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uMemoForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uMemoForm.TfMemoForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uMemoForm.TfMemoForm.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uMemoForm.TfMemoForm.Memo1" />
+    </reference>
+  </view>
+</nodeSet>

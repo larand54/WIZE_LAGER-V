@@ -1,0 +1,24 @@
+|TILLVERKAD| |DATEADD(dd, DATEDIFF(dd, 0, pp.ProductionDate), 0) AS TILLVERKAD,| |pp.ProductionDate|
+|PaketNr| |pp.PackageNo AS PaketNr,| |pp.PackageNo|
+|Prefix| |RTRIM(pp.SupplierCode) AS Prefix,| |pp.SupplierCode|
+|PRODUKT| |pd.ProductDisplayName AS PRODUKT,| |pd.ProductDisplayName|
+|NomDim| |CAST(pg.NominalThicknessMM AS VARCHAR(10)) + 'x' + CAST(pg.NominalWidthMM AS VARCHAR(10)) AS NomDim,| |pg.NominalThicknessMM, pg.NominalWidthMM|
+|AktDim| |CAST(pg.ActualThicknessMM AS VARCHAR(10)) + 'x' + CAST(pg.ActualWidthMM AS VARCHAR(10)) AS AktDim,| |pg.ActualThicknessMM, pg.ActualWidthMM|
+|TS| |SPE.SpeciesName AS TS,| |SPE.SpeciesName|
+|PC| |imp.ProductCategoryName AS PC,| |imp.ProductCategoryName|
+|KV| |Gr.GradeName AS KV,| |Gr.GradeName|
+|UT| |SUR.SurfacingName AS UT,| |SUR.SurfacingName|
+|AT| |pg.ActualThicknessMM AS AT,| |pg.ActualThicknessMM|
+|AB| |pg.ActualWidthMM AS AB,| |pg.ActualWidthMM|
+|NT| |pg.NominalThicknessMM AS NT,| |pg.NominalThicknessMM|
+|NB| |pg.NominalWidthMM AS NB,| |pg.NominalWidthMM|
+|PackageTypeNo| |pt.PackageTypeNo,| |pt.PackageTypeNo|
+|ProductNo| |pd.ProductNo,| |pd.ProductNo|
+|Operation| |CASE WHEN pp.Operation = 0 THEN  + 'PÅREGISTRERAT' WHEN pp.Operation = 3 THEN  + 'AVREGISTRERAT' END AS Operation,| |pp.Operation|
+|OwnerNo| |pp.SupplierNo AS OwnerNo,| |pp.SupplierNo|
+|ShiftTeamName| |st.ShiftTeamName,| |st.ShiftTeamName|
+|RegPointName| |rp.RegPointName,| |rp.RegPointName|
+|MP_SkiftLag| |ISNULL(RTRIM(rp.RegPointName), '') + '/' + ISNULL(st.ShiftTeamName, 'NA') AS MP_SkiftLag,| |rp.RegPointName, st.ShiftTeamName|
+|AM1| |pt.TotalLinealMeterActualLength AS AM1,| |pt.TotalLinealMeterActualLength|
+|MFBM| |pt.TotalMFBMNominal AS MFBM,| |pt.TotalMFBMNominal|
+|AM2| |pt.TotalSQMofActualWidth AS AM2,| |pt.TotalSQMofActualWidth|

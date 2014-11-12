@@ -1,0 +1,25 @@
+Insert into dbo.InvCtrl_Pkgs
+Select Distinct 208
+,LD.PackageNo, LD.SupplierCode, 14, GetDate(), LD.LIPNo, 0 AS Sortorderno, -1,
+LD.ShippingPlanNo, IL.InternalInvoiceNo
+FROM dbo.Loads L 
+Inner Join dbo.Invoiced_Load IL ON IL.LoadNo = L.LoadNo 
+Inner Join dbo.InvoiceHeader IH ON IH.InternalInvoiceNo = IL.InternalInvoiceNo
+Inner Join dbo.LoadDetail LD ON LD.LoadNo = L.LoadNo 
+Inner Join dbo.LoadShippingPlan LSP ON LSP.LoadNo = LD.LoadNo
+AND LSP.ShippingPlanNo = LD.ShippingPlanNo
+Inner Join dbo.CustomerShippingPlanDetails CSD on CSD.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo
+Inner Join dbo.CustomerShippingPlanHeader SSP on SSP.ShippingPlanNo = CSD.ShippingPlanNo
+Inner Join dbo.Orders OH on OH.OrderNo = SSP.OrderNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo 
+AND pn.SupplierCode = LD.SupplierCode
+WHERE L.SupplierNo = 741
+AND OH.OrderType = 0
+AND IH.Debit_Credit = 1
+AND IH.InvoiceDate <= '2011-04-17 00:00:00'
+AND IH.InvoiceDate >= '2011-04-10 01:14:53'
+AND L.SenderLoadStatus <> 0 
+AND LD.LIPNo in (Select ICM.LogicalInventoryPointNo FROM dbo.InvCtrlMetod ICM
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = ICM.LogicalInventoryPointNo
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+WHERE ICM.IC_grpno = 208)

@@ -1,0 +1,8 @@
+SELECT Distinct PL.ProductLengthNo, PL.ActualLengthMM, PL.NominalLengthMM, PL.NominalLengthFEET ,
+PL.ActualLengthINCH , PL.PET , PL.FingerJoint
+FROM   dbo.ProductLengthGroup PGL
+INNER JOIN ProductLength PL ON PL.ProductLengthNo = PGL.ProductLengthNo
+WHERE  PGL.GroupNo = 1
+ AND PL.ActualLengthMM > 0.5
+ AND PL.Act = 1
+ ORDER BY PL.ActualLengthMM 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="1wwl1u6hkv0unbjhr_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uUserProfiles.TfUserProfiles">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.PanelStatus" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxLabel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcPRODUCER" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxLabel3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcOwner" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfiles" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1VerkNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1OwnerNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1UserID" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1Form" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1Name" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1Producer" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1Owner" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1NewItemRow" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.ActionList1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acNewProfile" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxButton1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxButton2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acDeleteProfile" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxButton3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acSaveProfile" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acClose" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcPIP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxLabel5" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcLIP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxLabel6" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1PIPNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1LIPNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1RegPointNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1PIP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1LIP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxGridPopupMenu1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.grdProfilesDBTableView1ProducerNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.teName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxButton4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcRawPIP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uUserProfiles.TfUserProfiles.cxLabel9" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acNewProfileExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acDeleteProfileExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acSaveProfileExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acCloseExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acSaveProfileUpdate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.acDeleteProfileUpdate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcPIPEnter(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcPIPExit(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcLIPEnter(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcLIPExit(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcRawPIPEnter(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcRawPIPExit(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcRawLIPEnter(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.lcRawLIPExit(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uUserProfiles.TfUserProfiles.SavedOK()" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uUserProfiles.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

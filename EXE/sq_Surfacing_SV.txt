@@ -1,0 +1,21 @@
+SELECT Distinct
+PP.PkgCodePPNo AS PackageTypeNo,
+pbypp.ProductDisplayName,
+pbypp.BarCodeID,
+pbypp.GradeStamp,
+pbypp.Söknamn,
+pbypp.Langd  AS LANGD,
+pbypp.PcsPerPkg AS PPP
+FROM  dbo.PkgVarCode pcd
+Inner Join	dbo.PackageType pt ON pt.PackageTypeNo = pcd.PackageTypeNo
+INNER JOIN dbo.Packagecode_printparams	PP ON PP.PkgCodePPNo = PT.ShrinkWrap
+Inner Join  dbo.PktTypeByPP pbypp on pbypp.PackageTypeno = pp.PackageTypeno
+WHERE
+pcd.MarketRegionNo = :MarketRegionNo
+AND PP.PkgCodePPNo not in (Select PackageTypeNo FROM
+dbo.LoadPlanDest LPD
+Inner Join dbo.LoadPlanRow LPR on LPR.LoadingNo = LPD.LoadingNo
+                              AND LPR.LoadPlanDestRowNo = LPD.LoadPlanDestRowNo
+WHERE
+LPD.LoadingNo = :LoadingNo
+AND LPD.LoadPlanDestRowNo = :LoadPlanDestRowNo)

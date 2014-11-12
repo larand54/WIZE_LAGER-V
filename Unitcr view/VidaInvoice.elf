@@ -1,0 +1,1340 @@
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+------------------------------------------------------------------------------------------------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:35:29 +0200
+  2.2 Address: 00557FC9
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EdxEditInvalidInput
+  2.5 Message: Package no already exist. 1/VWS It was created by jenjoh               at: 2003-01-16 14:44:48 inventory: CW SLATING.
+
+Active Controls:
+-----------------------------------------------
+  3.1 Form Class   : TfrmPkgEntry
+  3.2 Form Text    : Registrera paket
+  3.3 Control Class: TdxInplaceTreeListTextEdit
+  3.4 Control Text : 1
+
+Computer:
+---------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 183 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 27 minutes, 13 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------------------------------------------------------------------------------------------------
+  6.1 IP Address: 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.2 Submask   : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.3 Gateway   : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.6 DHCP      : ON              - ON              - ON              - ON              - ON              - ON             
+
+Call Stack Information:
+--------------------------------------------------------------------------------
+|Address |Module         |Unit           |Class   |Procedure/Method       |Line|
+--------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                          |
+|------------------------------------------------------------------------------|
+|77D3EB03|user32.dll     |               |        |CallNextHookEx         |    |
+|7C9010ED|ntdll.dll      |               |        |RtlLeaveCriticalSection|    |
+|77D4F3DE|user32.dll     |               |        |SendMessageA           |    |
+|77D396C2|user32.dll     |               |        |DispatchMessageA       |    |
+|77D396B8|user32.dll     |               |        |DispatchMessageA       |    |
+|009F6E91|VidaInvoice.exe|fMain.pas      |TfrmMain|bbAddPackageClick      |798 |
+|009F6E14|VidaInvoice.exe|fMain.pas      |TfrmMain|bbAddPackageClick      |789 |
+|009F61DB|VidaInvoice.exe|fMain.pas      |TfrmMain|dxSideBar1ItemClick    |538 |
+|100013DB|IadHide5.dll   |               |        |_MyCBTProc@12          |    |
+|77D394DA|user32.dll     |               |        |GetCapture             |    |
+|77D396C2|user32.dll     |               |        |DispatchMessageA       |    |
+|77D396B8|user32.dll     |               |        |DispatchMessageA       |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr|        |                       |140 |
+|7C90E64C|ntdll.dll      |               |        |NtSetInformationThread |    |
+--------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name           |Description                                                   |Version         |Size    |Modified           |Path                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe|Vida shipping and invoicing                                   |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL    |TMEEJMD                                                       |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll   |                                                              |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|10000000|IadHide5.dll   |IAdHide                                                       |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|4DAE0000|midas.dll      |Borland MIDAS Component Package                               |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4FF20000|sqloledb.dll   |Microsoft OLE DB Provider for SQL Server                      |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|5B270000|UxTheme.dll    |Bibliotek för Microsoft UxTheme                               |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll   |Common Controls Library                                       |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll   |                                                              |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60940000|NETAPI32.dll   |Net Win32 API DLL                                             |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll    |Microsoft Data Access - OLE DB Implementation Support Routines|2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|698B0000|hnetcfg.dll    |Hanteraren för konfiguration av hemnätverk                    |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL   |Winsock Oriented Net DLL for SQL Clients                      |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll    |Tjänstprovider för Microsoft Windows Sockets 2.0              |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll   |Windows Sockets Helper DLL                                    |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll    |Windows Socket 2.0 Helper for Windows NT                      |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll     |Windows Socket 2.0 32-Bit DLL                                 |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll    |32-bitars DLL-fil för Windows Socket                          |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll   |Security Support Provider Interface                           |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv   |Drivrutin för Windows-bufferthanterare                        |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll    |Microsoft Data Access - OLE DB Core Services                  |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|746F0000|MSCTF.dll      |DLL-fil för MSCTF-servern                                     |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL   |Rich Text Edit Control, v3.0                                  |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL   |Microsoft Data Access - Resurser för OLE DB Core Services     |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75D80000|MLANG.dll      |Multi Language Support DLL                                    |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll   |DLL-fil med vanliga dialogrutor                               |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll     |Agent för frånkopplat nätverk                                 |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL     |Microsoft Data Access - OLE DB Runtime Routines               |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll    |NT5DS                                                         |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll      |MCI API DLL                                                   |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL      |Process Status Helper                                         |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll   |API för IP Helper                                             |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll     |DNS Client API DLL                                            |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll    |Win32 LDAP API DLL                                            |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll     |LDAP RnR Provider DLL                                         |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll   |Remote Access AutoDial Helper                                 |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL    |                                                              |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll     |                                                              |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll   |                                                              |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll   |User Experience Controls Library                              |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll      |Microsoft OLE för Windows                                     |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|77910000|SETUPAPI.dll   |API för installationsprogrammet för Windows                   |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll      |Client Side Caching UI                                        |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll    |32-bitars kryptografi-API                                     |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll     |ASN.1 Runtime APIs                                            |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll    |Application Compatibility Client Library                      |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll    |Version Checking and File Installation Libraries              |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll     |Windows NT CRT DLL                                            |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll     |Microsoft Authentication Package v1.0                         |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll     |Klient-DLL-fil för Windows XP                                 |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll   |Advanced Windows 32 Base API                                  |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll     |Remote Procedure Call Runtime                                 |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll      |GDI Client DLL                                                |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll    |Shell Light-weight Utility Library                            |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll    |Security Support Provider Interface                           |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll   |Klient-DLL för Windows NT BASE API                            |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll      |DLL-fil för NT Layer                                          |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll    |DLL-fil för Windows-gränssnittet                              |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 02602D50   EDI: 0012FA38
+EBX: 026029B4   ESI: 0055860C
+ECX: 00000000   ESP: 0012F838
+EDX: 00557FCE   EIP: 00557FC9
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F838: 0012FA08   00557FC9: E8 2E C7 EA FF 33 C0 5A 59 59 64 89 10 68 EB 7F  .....3.ZYYd..h..
+0012F83C: 00404630   00557FD9: 55 00 8D 45 F8 E8 9D CD EA FF C3 E9 17 C6 EA FF  U..E............
+0012F840: 0012F850   00557FE9: EB F0 5B 59 59 5D C3 53 56 57 55 83 C4 F0 8B D9  ..[YY].SVWU.....
+0012F844: 02602901   00557FF9: 8B FA 8B C3 33 C9 BA 4C 00 00 00 E8 CF B3 EA FF  ....3..L........
+0012F848: 00000000   00558009: BE 02 00 00 00 80 7F 11 00 74 07 C7 43 04 02 00  .........t..C...
+0012F84C: 0012F874   00558019: 00 00 56 57 8D 77 24 8D 7B 08 A5 A5 A5 A5 5F 5E  ..VW.w$.{....._^
+0012F850: 0012F868   00558029: 8B 43 14 2B C6 8B 6B 04 2B C5 50 8D 44 24 04 50  .C.+..k.+.P.D$.P
+0012F854: 00558666   00558039: 8B 4B 10 2B CE 2B CD 8B 53 0C 03 D6 8B 43 08 03  .K.+.+..S....C..
+0012F858: 02602901   00558049: C6 E8 71 75 EC FF 56 57 8D 74 24 08 8D 7B 18 A5  ..qu..VW.t$..{..
+0012F85C: 0012FA38   00558059: A5 A5 A5 5F 5E 8A 47 0C FE C8 74 0B FE C8 74 13  ..._^.G...t...t.
+0012F860: 0012FA3C   00558069: 48 2C 02 72 0A EB 0E C7 03 01 00 00 00 EB 06 89  H,.r............
+0012F864: 026029B4   00558079: 33 EB 02 89 33 83 C4 10 5D 5F 5E 5B C3 8B C0 55  3...3...]_^[...U
+0012F868: 0182E448   00558089: 8B EC 83 C4 E8 53 56 57 88 4D FF 8B F2 8B F8 8B  .....SVW.M......
+0012F86C: 0048B9EC   00558099: 5D 08 8B CB 8B D6 8B C7 E8 4A FF FF FF 80 7D FF  ]........J....}.
+0012F870: 00559900   005580A9: 00 74 73 C7 45 F8 02 00 00 00 8D 4D E8 8B D6 8B  .ts.E......M....
+0012F874: 0012F9C0   005580B9: C7 FF 90 B8 01 00 00 8D 45 E8 50 E8 97 04 EB FF  ........E.P.....
+
+
+
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+-------------------------------------------------------------------------------------------------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:39:53 +0200
+  2.2 Address: 00557FC9
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EdxEditInvalidInput
+  2.5 Message: Package no already exist. 98766/VWS It was created by eliaug               at: 2003-11-14 11:16:11 inventory: URSHULT.
+
+Active Controls:
+-------------------------------------------------
+  3.1 Form Class   : TfrmPkgsByPktType
+  3.2 Form Text    : PAKETINMATNING PER PAKETKOD
+  3.3 Control Class: TdxInplaceDBTreeListMaskEdit
+  3.4 Control Text : 98766
+
+Computer:
+---------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 170 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 31 minutes, 36 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------
+  6.1 IP Address: 000.000.000.000
+  6.2 Submask   : 000.000.000.000
+  6.3 Gateway   : 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000
+  6.6 DHCP      : ON             
+
+Call Stack Information:
+-----------------------------------------------------------------------------------------------
+|Address |Module         |Unit                 |Class            |Procedure/Method       |Line|
+-----------------------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                                         |
+|---------------------------------------------------------------------------------------------|
+|77D3EB03|user32.dll     |                     |                 |CallNextHookEx         |    |
+|7C9010ED|ntdll.dll      |                     |                 |RtlLeaveCriticalSection|    |
+|77D4F3DE|user32.dll     |                     |                 |SendMessageA           |    |
+|77D396C2|user32.dll     |                     |                 |DispatchMessageA       |    |
+|77D396B8|user32.dll     |                     |                 |DispatchMessageA       |    |
+|0083B4D1|VidaInvoice.exe|UnitPkgsByPktType.pas|TfrmPkgsByPktType|StartProc              |114 |
+|0083B474|VidaInvoice.exe|UnitPkgsByPktType.pas|TfrmPkgsByPktType|StartProc              |107 |
+|009F755F|VidaInvoice.exe|fMain.pas            |TfrmMain         |PaketInmatningPerPktKod|939 |
+|009F753C|VidaInvoice.exe|fMain.pas            |TfrmMain         |PaketInmatningPerPktKod|936 |
+|009F57FA|VidaInvoice.exe|fMain.pas            |TfrmMain         |dxSideBar1ItemClick    |269 |
+|100013DB|IadHide5.dll   |                     |                 |_MyCBTProc@12          |    |
+|77D394DA|user32.dll     |                     |                 |GetCapture             |    |
+|77D396C2|user32.dll     |                     |                 |DispatchMessageA       |    |
+|77D396B8|user32.dll     |                     |                 |DispatchMessageA       |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr      |                 |                       |140 |
+|7C90E64C|ntdll.dll      |                     |                 |NtSetInformationThread |    |
+-----------------------------------------------------------------------------------------------
+
+Modules Information:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name            |Description                                                       |Version         |Size    |Modified           |Path                                                                                                |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe |Vida shipping and invoicing                                       |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL     |TMEEJMD                                                           |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll    |                                                                  |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|02420000|crheapalloc.dll |Heap Allocator DLL.                                               |9.2.0.2         |53248   |2002-07-05 06:33:48|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02450000|keycode.dll     |keycode Module                                                    |9.0.0.147       |221184  |2002-07-05 06:13:16|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|024E0000|ufmanager.dll   |ufmanager DLL                                                     |9.0.0.1         |225280  |2002-07-16 16:37:36|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02620000|msi.dll         |Windows Installer                                                 |3.1.4000.2435   |2890240 |2005-05-04 14:45:32|C:\WINDOWS\system32                                                                                 |
+|029F0000|crqe.dll        |Crystal Query Engine                                              |9.2.0.580       |1417289 |2002-07-06 01:44:46|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03270000|crtowords_en.dll|Crystal Reports ToWords DLL                                       |9.2.0.14        |24576   |2002-07-05 05:14:54|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03280000|u2l2000.dll     |UFL to convert 20th century dates to 21st century dates           |9.2.0.8         |24576   |2002-07-05 05:12:42|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03290000|u2lcom.dll      |Crystal Reports COM UFL Manager DLL                               |9.2.0.5         |106496  |2002-07-05 05:12:26|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|033B0000|u2ldts.dll      |Date Time String User Function Library                            |9.2.0.5         |24576   |2002-07-05 05:13:40|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|033C0000|u2lexch.dll     |User Function Library for Exchange                                |9.2.0.16        |28672   |2002-07-05 05:14:00|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|033D0000|u2lfinra.dll    |32-bit UFL to calculate financial ratios                          |9.2.0.4         |69632   |2002-07-05 05:14:18|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03400000|u252000.dll     |UF5 to convert 20th century dates to 21st century dates           |9.2.0.7         |24576   |2002-07-05 05:13:12|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03410000|u25dts.dll      |Date Time String User Function Library                            |9.2.0.8         |24576   |2002-07-05 05:13:28|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03440000|msadcer.dll     |Microsoft Data Access - Resurser för OLE DB Cursor Engine         |2.81.1117.0     |20480   |2004-08-04 10:31:16|C:\Program\Delade filer\System\msadc                                                                |
+|03450000|xpsp2res.dll    |Service Pack 2-meddelanden                                        |5.1.2600.2180   |2917888 |2004-08-04 10:32:38|C:\WINDOWS\system32                                                                                 |
+|03820000|u25samp1.dll    |Sample User Function Library                                      |9.2.0.15        |24576   |2002-07-05 05:14:36|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03F70000|msader15.dll    |Microsoft Data Access -Resurser för ActiveX Data Objects          |2.81.1117.0     |28672   |2004-08-04 10:31:16|C:\Program\Delade filer\System\ado                                                                  |
+|10000000|IadHide5.dll    |IAdHide                                                           |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|1B5D0000|MSWSTR10.DLL    |Microsoft Jet Sort-bibliotek                                      |4.0.8905.0      |614429  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|20000000|unires.dll      |Resurs-DLL för Unidrv-skrivardrivrutin                            |0.3.1296.1      |619520  |2004-08-04 10:32:50|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|3C0B0000|craxdrt9.dll    |Crystal Reports 9 ActiveX Designer Runtime Support                |9.2.0.448       |6135873 |2002-07-15 04:42:22|C:\Program\Crystal Decisions\Report Designer Component                                              |
+|4CA90000|msadrh15.dll    |Microsoft Data Access - ActiveX Data Objects Rowset Helper        |2.81.1117.0     |57344   |2004-08-04 10:33:44|C:\Program\Delade filer\System\ado                                                                  |
+|4DAE0000|midas.dll       |Borland MIDAS Component Package                                   |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4DD40000|msado15.dll     |Microsoft Data Access - ActiveX Data Objects                      |2.81.1117.0     |536576  |2004-08-04 10:33:42|C:\Program\Delade filer\System\ado                                                                  |
+|4EAF0000|crdb_ado.dll    |Crystal Reports database driver for Microsoft ActiveX Data Objects|9.2.0.512       |368704  |2002-07-17 01:44:36|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|4EC40000|querybuilder.dll|Crystal Query Builder                                             |9.2.0.498       |163911  |2002-07-05 01:50:06|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|4FF20000|sqloledb.dll    |Microsoft OLE DB Provider for SQL Server                          |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|59F50000|DBGHELP.dll     |Windows Image Helper                                              |5.1.2600.2180   |640000  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5B270000|UxTheme.dll     |Bibliotek för Microsoft UxTheme                                   |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll    |Common Controls Library                                           |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll    |                                                                  |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60000000|crviewer9.dll   |Crystal Report Viewer                                             |9.2.0.528       |770816  |2002-07-05 06:14:30|C:\Program\Delade filer\Crystal Decisions\2.0\crystalreportviewers\ActiveXViewer                    |
+|60940000|NETAPI32.dll    |Net Win32 API DLL                                                 |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll     |Microsoft Data Access - OLE DB Implementation Support Routines    |2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|68770000|hpfui50.dll     |Windows Unidrv-plugin                                             |1.0.0.1         |32768   |2001-09-06 20:33:16|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|68780000|hpfud50.dll     |Windows Unidrv Plugin                                             |1.0.0.1         |87552   |2004-08-04 10:33:38|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|698B0000|hnetcfg.dll     |Hanteraren för konfiguration av hemnätverk                        |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL    |Winsock Oriented Net DLL for SQL Clients                          |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll     |Tjänstprovider för Microsoft Windows Sockets 2.0                  |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll    |Windows Sockets Helper DLL                                        |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll     |Windows Socket 2.0 Helper for Windows NT                          |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll      |Windows Socket 2.0 32-Bit DLL                                     |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll     |32-bitars DLL-fil för Windows Socket                              |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll    |Security Support Provider Interface                               |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv    |Drivrutin för Windows-bufferthanterare                            |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73B00000|mscms.dll       |Microsoft Color Matching System DLL                               |5.1.2600.2709   |74240   |2005-06-29 03:53:08|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll     |Microsoft Data Access - OLE DB Core Services                      |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|73FC0000|msadce.dll      |Microsoft Data Access - OLE DB Cursor Engine                      |2.81.1117.0     |331776  |2004-08-04 10:33:42|C:\Program\Delade filer\System\msadc                                                                |
+|746F0000|MSCTF.dll       |DLL-fil för MSCTF-servern                                         |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74D00000|oledlg.dll      |Användargränssnittsstöd för Microsoft Windows(TM) OLE 2.0         |5.1.2600.0      |117760  |2001-09-07 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL    |Rich Text Edit Control, v3.0                                      |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL    |Microsoft Data Access - Resurser för OLE DB Core Services         |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75080000|RESUTILS.DLL    |Microsoft Cluster Resource Utility DLL                            |5.1.2600.2180   |58880   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|750C0000|MTXCLU.DLL      |MS DTC amd MTS clustering support DLL                             |2001.12.4414.308|66560   |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|75100000|colbact.DLL     |                                                                  |2001.12.4414.308|60416   |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|75530000|usp10.dll       |Uniscribe Unicode script processor                                |1.420.2600.2180 |406528  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|75D80000|MLANG.dll       |Multi Language Support DLL                                        |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|75E70000|SXS.DLL         |Fusion 2.5                                                        |5.1.2600.2180   |712192  |2004-08-04 10:33:58|C:\WINDOWS\system32                                                                                 |
+|76060000|MSVCP60.dll     |Microsoft (R) C++ Runtime Library                                 |6.2.3104.0      |413696  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|760D0000|comsvcs.dll     |                                                                  |2001.12.4414.308|1267200 |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll    |DLL-fil med vanliga dialogrutor                                   |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll      |Agent för frånkopplat nätverk                                     |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL      |Microsoft Data Access - OLE DB Runtime Routines                   |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll     |NT5DS                                                             |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76830000|UNIDRVUI.DLL    |Användargränssnitt för UniDriver                                  |0.3.1296.1      |197632  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|769B0000|USERENV.dll     |Userenv                                                           |5.1.2600.2180   |724480  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|76B10000|ATL.DLL         |ATL Module for Windows XP (Unicode)                               |3.5.2284.0      |58880   |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll       |MCI API DLL                                                       |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL       |Process Status Helper                                             |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll    |API för IP Helper                                                 |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76D90000|CLUSAPI.DLL     |Cluster API Library                                               |5.1.2600.2180   |57856   |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll      |DNS Client API DLL                                                |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll     |Win32 LDAP API DLL                                                |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll      |LDAP RnR Provider DLL                                             |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll    |Remote Access AutoDial Helper                                     |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL     |                                                                  |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll      |                                                                  |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll    |                                                                  |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll    |User Experience Controls Library                                  |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll       |Microsoft OLE för Windows                                         |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|778C0000|UNIDRV.DLL      |Unidrv Printer Driver                                             |0.3.1296.4      |264704  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|77910000|SETUPAPI.dll    |API för installationsprogrammet för Windows                       |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll       |Client Side Caching UI                                            |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll     |32-bitars kryptografi-API                                         |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll      |ASN.1 Runtime APIs                                                |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll     |Application Compatibility Client Library                          |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll     |Version Checking and File Installation Libraries                  |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll      |Windows NT CRT DLL                                                |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll      |Microsoft Authentication Package v1.0                             |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll      |Klient-DLL-fil för Windows XP                                     |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll    |Advanced Windows 32 Base API                                      |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll      |Remote Procedure Call Runtime                                     |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll       |GDI Client DLL                                                    |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll     |Shell Light-weight Utility Library                                |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll     |Security Support Provider Interface                               |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll    |Klient-DLL för Windows NT BASE API                                |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll       |DLL-fil för NT Layer                                              |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll     |DLL-fil för Windows-gränssnittet                                  |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 01817038   EDI: 0012FA1C
+EBX: 01814C90   ESI: 0056029C
+ECX: 00000000   ESP: 0012F800
+EDX: 00557FCE   EIP: 00557FC9
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F800: 0012F820   00557FC9: E8 2E C7 EA FF 33 C0 5A 59 59 64 89 10 68 EB 7F  .....3.ZYYd..h..
+0012F804: 00404630   00557FD9: 55 00 8D 45 F8 E8 9D CD EA FF C3 E9 17 C6 EA FF  U..E............
+0012F808: 0012F818   00557FE9: EB F0 5B 59 59 5D C3 53 56 57 55 83 C4 F0 8B D9  ..[YY].SVWU.....
+0012F80C: 01814C90   00557FF9: 8B FA 8B C3 33 C9 BA 4C 00 00 00 E8 CF B3 EA FF  ....3..L........
+0012F810: 00000000   00558009: BE 02 00 00 00 80 7F 11 00 74 07 C7 43 04 02 00  .........t..C...
+0012F814: 00FDD000   00558019: 00 00 56 57 8D 77 24 8D 7B 08 A5 A5 A5 A5 5F 5E  ..VW.w$.{....._^
+0012F818: 0012F838   00558029: 8B 43 14 2B C6 8B 6B 04 2B C5 50 8D 44 24 04 50  .C.+..k.+.P.D$.P
+0012F81C: 00560003   00558039: 8B 4B 10 2B CE 2B CD 8B 53 0C 03 D6 8B 43 08 03  .K.+.+..S....C..
+0012F820: 0012F9EC   00558049: C6 E8 71 75 EC FF 56 57 8D 74 24 08 8D 7B 18 A5  ..qu..VW.t$..{..
+0012F824: 00404630   00558059: A5 A5 A5 5F 5E 8A 47 0C FE C8 74 0B FE C8 74 13  ..._^.G...t...t.
+0012F828: 0012F838   00558069: 48 2C 02 72 0A EB 0E C7 03 01 00 00 00 EB 06 89  H,.r............
+0012F82C: 0012FA20   00558079: 33 EB 02 89 33 83 C4 10 5D 5F 5E 5B C3 8B C0 55  3...3...]_^[...U
+0012F830: 0012F858   00558089: 8B EC 83 C4 E8 53 56 57 88 4D FF 8B F2 8B F8 8B  .....SVW.M......
+0012F834: 00000000   00558099: 5D 08 8B CB 8B D6 8B C7 E8 4A FF FF FF 80 7D FF  ]........J....}.
+0012F838: 0012F84C   005580A9: 00 74 73 C7 45 F8 02 00 00 00 8D 4D E8 8B D6 8B  .ts.E......M....
+0012F83C: 005602F5   005580B9: C7 FF 90 B8 01 00 00 8D 45 E8 50 E8 97 04 EB FF  ........E.P.....
+
+
+
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+----------------------------------------------------------------------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:41:23 +0200
+  2.2 Address: 004106DC
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EAccessViolation
+  2.5 Message: Access violation at address 004106DC in module 'VidaInvoice.exe'. Read of address 00000184.
+
+Active Controls:
+----------------------------------------
+  3.1 Form Class   : TfrmMain
+  3.2 Form Text    : VIS / VIDA WOOD AB1
+  3.3 Control Class: TfrmMain
+  3.4 Control Text : VIS / VIDA WOOD AB1
+
+Computer:
+--------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 171 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 33 minutes, 6 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------
+  6.1 IP Address: 000.000.000.000
+  6.2 Submask   : 000.000.000.000
+  6.3 Gateway   : 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000
+  6.6 DHCP      : ON             
+
+Call Stack Information:
+---------------------------------------------------------------------------------------
+|Address |Module         |Unit              |Class        |Procedure/Method      |Line|
+---------------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                                 |
+|-------------------------------------------------------------------------------------|
+|7C90EAF5|ntdll.dll      |                  |             |KiUserApcDispatcher   |    |
+|7C9134D1|ntdll.dll      |                  |             |RtlValidSid           |    |
+|7C90253A|ntdll.dll      |                  |             |memmove               |    |
+|77F643CB|SHLWAPI.dll    |                  |             |SHRegGetValueW        |    |
+|77F643D8|SHLWAPI.dll    |                  |             |SHRegGetValueW        |    |
+|7C81EB2D|kernel32.dll   |                  |             |RaiseException        |    |
+|006BCDBD|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |Load_Int_and_Lego     |661 |
+|006BCD94|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |Load_Int_and_Lego     |660 |
+|009C5792|VidaInvoice.exe|fLoadOrder.pas    |TfrmLoadOrder|FormCreate            |744 |
+|77D3BEFD|user32.dll     |                  |             |InflateRect           |    |
+|009F5CDD|VidaInvoice.exe|fMain.pas         |TfrmMain     |dxSideBar1ItemClick   |397 |
+|100013DB|IadHide5.dll   |                  |             |_MyCBTProc@12         |    |
+|77D394DA|user32.dll     |                  |             |GetCapture            |    |
+|77D396C2|user32.dll     |                  |             |DispatchMessageA      |    |
+|77D396B8|user32.dll     |                  |             |DispatchMessageA      |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr   |             |                      |140 |
+|7C90E64C|ntdll.dll      |                  |             |NtSetInformationThread|    |
+---------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name           |Description                                                   |Version         |Size    |Modified           |Path                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe|Vida shipping and invoicing                                   |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL    |TMEEJMD                                                       |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll   |                                                              |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|02420000|crheapalloc.dll|Heap Allocator DLL.                                           |9.2.0.2         |53248   |2002-07-05 06:33:48|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02450000|keycode.dll    |keycode Module                                                |9.0.0.147       |221184  |2002-07-05 06:13:16|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02620000|msi.dll        |Windows Installer                                             |3.1.4000.2435   |2890240 |2005-05-04 14:45:32|C:\WINDOWS\system32                                                                                 |
+|029F0000|crqe.dll       |Crystal Query Engine                                          |9.2.0.580       |1417289 |2002-07-06 01:44:46|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03440000|msadcer.dll    |Microsoft Data Access - Resurser för OLE DB Cursor Engine     |2.81.1117.0     |20480   |2004-08-04 10:31:16|C:\Program\Delade filer\System\msadc                                                                |
+|03450000|xpsp2res.dll   |Service Pack 2-meddelanden                                    |5.1.2600.2180   |2917888 |2004-08-04 10:32:38|C:\WINDOWS\system32                                                                                 |
+|03F70000|msader15.dll   |Microsoft Data Access -Resurser för ActiveX Data Objects      |2.81.1117.0     |28672   |2004-08-04 10:31:16|C:\Program\Delade filer\System\ado                                                                  |
+|10000000|IadHide5.dll   |IAdHide                                                       |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|1B5D0000|MSWSTR10.DLL   |Microsoft Jet Sort-bibliotek                                  |4.0.8905.0      |614429  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|3C0B0000|craxdrt9.dll   |Crystal Reports 9 ActiveX Designer Runtime Support            |9.2.0.448       |6135873 |2002-07-15 04:42:22|C:\Program\Crystal Decisions\Report Designer Component                                              |
+|4CA90000|msadrh15.dll   |Microsoft Data Access - ActiveX Data Objects Rowset Helper    |2.81.1117.0     |57344   |2004-08-04 10:33:44|C:\Program\Delade filer\System\ado                                                                  |
+|4DAE0000|midas.dll      |Borland MIDAS Component Package                               |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4DD40000|msado15.dll    |Microsoft Data Access - ActiveX Data Objects                  |2.81.1117.0     |536576  |2004-08-04 10:33:42|C:\Program\Delade filer\System\ado                                                                  |
+|4FF20000|sqloledb.dll   |Microsoft OLE DB Provider for SQL Server                      |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|5B270000|UxTheme.dll    |Bibliotek för Microsoft UxTheme                               |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll   |Common Controls Library                                       |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll   |                                                              |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60000000|crviewer9.dll  |Crystal Report Viewer                                         |9.2.0.528       |770816  |2002-07-05 06:14:30|C:\Program\Delade filer\Crystal Decisions\2.0\crystalreportviewers\ActiveXViewer                    |
+|60940000|NETAPI32.dll   |Net Win32 API DLL                                             |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll    |Microsoft Data Access - OLE DB Implementation Support Routines|2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|698B0000|hnetcfg.dll    |Hanteraren för konfiguration av hemnätverk                    |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL   |Winsock Oriented Net DLL for SQL Clients                      |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll    |Tjänstprovider för Microsoft Windows Sockets 2.0              |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll   |Windows Sockets Helper DLL                                    |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll    |Windows Socket 2.0 Helper for Windows NT                      |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll     |Windows Socket 2.0 32-Bit DLL                                 |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll    |32-bitars DLL-fil för Windows Socket                          |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll   |Security Support Provider Interface                           |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv   |Drivrutin för Windows-bufferthanterare                        |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73B00000|mscms.dll      |Microsoft Color Matching System DLL                           |5.1.2600.2709   |74240   |2005-06-29 03:53:08|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll    |Microsoft Data Access - OLE DB Core Services                  |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|73FC0000|msadce.dll     |Microsoft Data Access - OLE DB Cursor Engine                  |2.81.1117.0     |331776  |2004-08-04 10:33:42|C:\Program\Delade filer\System\msadc                                                                |
+|746F0000|MSCTF.dll      |DLL-fil för MSCTF-servern                                     |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74D00000|oledlg.dll     |Användargränssnittsstöd för Microsoft Windows(TM) OLE 2.0     |5.1.2600.0      |117760  |2001-09-07 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL   |Rich Text Edit Control, v3.0                                  |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL   |Microsoft Data Access - Resurser för OLE DB Core Services     |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75080000|RESUTILS.DLL   |Microsoft Cluster Resource Utility DLL                        |5.1.2600.2180   |58880   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|750C0000|MTXCLU.DLL     |MS DTC amd MTS clustering support DLL                         |2001.12.4414.308|66560   |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|75100000|colbact.DLL    |                                                              |2001.12.4414.308|60416   |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|753F0000|SQLOLEDB.RLL   |Microsoft OLE DB-provider för SQL Server                      |2000.85.1117.0  |65536   |2004-07-17 20:32:22|C:\Program\Delade filer\System\Ole DB                                                               |
+|75530000|usp10.dll      |Uniscribe Unicode script processor                            |1.420.2600.2180 |406528  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|75D80000|MLANG.dll      |Multi Language Support DLL                                    |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|75E70000|SXS.DLL        |Fusion 2.5                                                    |5.1.2600.2180   |712192  |2004-08-04 10:33:58|C:\WINDOWS\system32                                                                                 |
+|760D0000|comsvcs.dll    |                                                              |2001.12.4414.308|1267200 |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll   |DLL-fil med vanliga dialogrutor                               |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll     |Agent för frånkopplat nätverk                                 |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL     |Microsoft Data Access - OLE DB Runtime Routines               |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll    |NT5DS                                                         |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76830000|UNIDRVUI.DLL   |Användargränssnitt för UniDriver                              |0.3.1296.1      |197632  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|769B0000|USERENV.dll    |Userenv                                                       |5.1.2600.2180   |724480  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|76B10000|ATL.DLL        |ATL Module for Windows XP (Unicode)                           |3.5.2284.0      |58880   |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll      |MCI API DLL                                                   |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL      |Process Status Helper                                         |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll   |API för IP Helper                                             |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76D90000|CLUSAPI.DLL    |Cluster API Library                                           |5.1.2600.2180   |57856   |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll     |DNS Client API DLL                                            |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll    |Win32 LDAP API DLL                                            |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll     |LDAP RnR Provider DLL                                         |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll   |Remote Access AutoDial Helper                                 |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL    |                                                              |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll     |                                                              |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll   |                                                              |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll   |User Experience Controls Library                              |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll      |Microsoft OLE för Windows                                     |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|778C0000|UNIDRV.DLL     |Unidrv Printer Driver                                         |0.3.1296.4      |264704  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|77910000|SETUPAPI.dll   |API för installationsprogrammet för Windows                   |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll      |Client Side Caching UI                                        |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll    |32-bitars kryptografi-API                                     |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll     |ASN.1 Runtime APIs                                            |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll    |Application Compatibility Client Library                      |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll    |Version Checking and File Installation Libraries              |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll     |Windows NT CRT DLL                                            |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll     |Microsoft Authentication Package v1.0                         |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll     |Klient-DLL-fil för Windows XP                                 |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll   |Advanced Windows 32 Base API                                  |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll     |Remote Procedure Call Runtime                                 |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll      |GDI Client DLL                                                |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll    |Shell Light-weight Utility Library                            |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll    |Security Support Provider Interface                           |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll   |Klient-DLL för Windows NT BASE API                            |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll      |DLL-fil för NT Layer                                          |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll    |DLL-fil för Windows-gränssnittet                              |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000184   EDI: 013B8800
+EBX: 00000000   ESI: 00000000
+ECX: 0065A6E4   ESP: 0012F03C
+EDX: 00000000   EIP: 004106DC
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F03C: 0065A456   004106DC: 8B 10 33 C9 89 08 8B C2 E8 83 37 FF FF C3 8B C0  ..3.......7.....
+0012F040: 00000000   004106EC: 53 56 57 8B F9 8B F2 8B D8 85 DB 74 0B 57 56 53  SVW........t.WVS
+0012F044: 00000000   004106FC: 8B 03 FF 10 85 C0 74 04 33 C0 EB 02 B0 01 5F 5E  ......t.3....._^
+0012F048: 00000000   0041070C: 5B C3 8B C0 55 8B EC 6A 00 53 56 57 8B F9 8B F2  [...U..j.SVW....
+0012F04C: 0065A6DE   0041071C: 8B D8 33 C0 55 68 87 07 41 00 64 FF 30 64 89 20  ..3.Uh..A.d.0d. 
+0012F050: 0040462C   0041072C: 85 DB 74 39 8D 45 FC E8 80 68 FF FF 8B C8 BA 98  ..t9.E...h......
+0012F054: 0012F084   0041073C: 07 41 00 8B C3 E8 DA 37 FF FF 84 C0 74 10 8B CF  .A.....7....t...
+0012F058: 00000000   0041074C: 8B D6 8B 45 FC E8 96 FF FF FF 84 C0 75 13 8B CF  ...E........u...
+0012F05C: 00000000   0041075C: 8B D6 8B C3 E8 BB 37 FF FF 84 C0 75 04 33 C0 EB  ......7....u.3..
+0012F060: 00000000   0041076C: 02 B0 01 8B D8 33 C0 5A 59 59 64 89 10 68 8E 07  .....3.ZYYd..h..
+0012F064: 7C9037BF   0041077C: 41 00 8D 45 FC E8 32 68 FF FF C3 E9 74 3E FF FF  A..E..2h....t>..
+0012F068: 0012F56C   0041078C: EB F0 8B C3 5F 5E 5B 59 5D C3 00 00 00 00 00 00  ...._^[Y].......
+0012F06C: 0012F978   0041079C: 00 00 00 00 C0 00 00 00 00 00 00 46 55 8B EC 6A  ...........FU..j
+0012F070: 0012F17C   004107AC: 00 53 56 8B F2 8B D8 33 C0 55 68 EC 07 41 00 64  .SV....3.Uh..A.d
+0012F074: 0012F170   004107BC: FF 30 64 89 20 8D 45 FC E8 EF 67 FF FF 8B C8 8B  .0d. .E...g.....
+0012F078: 0012F978   004107CC: D6 8B C3 E8 3C FF FF FF 8B D8 33 C0 5A 59 59 64  ....<.....3.ZYYd
+
+
+
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:44:10 +0200
+  2.2 Address: 0059AE30
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EDatabaseError
+  2.5 Message: Anslutningen bröts.
+
+Active Controls:
+----------------------------------------
+  3.1 Form Class   : TfrmMain
+  3.2 Form Text    : VIS / VIDA WOOD AB1
+  3.3 Control Class: TfrmMain
+  3.4 Control Text : VIS / VIDA WOOD AB1
+
+Computer:
+---------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 171 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 35 minutes, 52 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------------------------
+  6.1 IP Address: 000.000.000.000 - 000.000.000.000
+  6.2 Submask   : 000.000.000.000 - 000.000.000.000
+  6.3 Gateway   : 000.000.000.000 - 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000 - 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000 - 000.000.000.000
+  6.6 DHCP      : ON              - ON             
+
+Call Stack Information:
+---------------------------------------------------------------------------------------
+|Address |Module         |Unit              |Class        |Procedure/Method      |Line|
+---------------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                                 |
+|-------------------------------------------------------------------------------------|
+|006BDE1F|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |IsClientLego          |988 |
+|006BDDE8|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |IsClientLego          |985 |
+|009C4CA5|VidaInvoice.exe|fLoadOrder.pas    |TfrmLoadOrder|CreateCo              |464 |
+|009C4B9C|VidaInvoice.exe|fLoadOrder.pas    |TfrmLoadOrder|CreateCo              |448 |
+|009F5D00|VidaInvoice.exe|fMain.pas         |TfrmMain     |dxSideBar1ItemClick   |398 |
+|100013DB|IadHide5.dll   |                  |             |_MyCBTProc@12         |    |
+|77D394DA|user32.dll     |                  |             |GetCapture            |    |
+|77D396C2|user32.dll     |                  |             |DispatchMessageA      |    |
+|77D396B8|user32.dll     |                  |             |DispatchMessageA      |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr   |             |                      |140 |
+|7C90E64C|ntdll.dll      |                  |             |NtSetInformationThread|    |
+---------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name           |Description                                                   |Version         |Size    |Modified           |Path                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe|Vida shipping and invoicing                                   |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL    |TMEEJMD                                                       |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll   |                                                              |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|02420000|crheapalloc.dll|Heap Allocator DLL.                                           |9.2.0.2         |53248   |2002-07-05 06:33:48|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02450000|keycode.dll    |keycode Module                                                |9.0.0.147       |221184  |2002-07-05 06:13:16|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02620000|msi.dll        |Windows Installer                                             |3.1.4000.2435   |2890240 |2005-05-04 14:45:32|C:\WINDOWS\system32                                                                                 |
+|029F0000|crqe.dll       |Crystal Query Engine                                          |9.2.0.580       |1417289 |2002-07-06 01:44:46|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03440000|msadcer.dll    |Microsoft Data Access - Resurser för OLE DB Cursor Engine     |2.81.1117.0     |20480   |2004-08-04 10:31:16|C:\Program\Delade filer\System\msadc                                                                |
+|03450000|xpsp2res.dll   |Service Pack 2-meddelanden                                    |5.1.2600.2180   |2917888 |2004-08-04 10:32:38|C:\WINDOWS\system32                                                                                 |
+|03F70000|msader15.dll   |Microsoft Data Access -Resurser för ActiveX Data Objects      |2.81.1117.0     |28672   |2004-08-04 10:31:16|C:\Program\Delade filer\System\ado                                                                  |
+|10000000|IadHide5.dll   |IAdHide                                                       |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|1B5D0000|MSWSTR10.DLL   |Microsoft Jet Sort-bibliotek                                  |4.0.8905.0      |614429  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|3C0B0000|craxdrt9.dll   |Crystal Reports 9 ActiveX Designer Runtime Support            |9.2.0.448       |6135873 |2002-07-15 04:42:22|C:\Program\Crystal Decisions\Report Designer Component                                              |
+|4CA90000|msadrh15.dll   |Microsoft Data Access - ActiveX Data Objects Rowset Helper    |2.81.1117.0     |57344   |2004-08-04 10:33:44|C:\Program\Delade filer\System\ado                                                                  |
+|4DAE0000|midas.dll      |Borland MIDAS Component Package                               |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4DD40000|msado15.dll    |Microsoft Data Access - ActiveX Data Objects                  |2.81.1117.0     |536576  |2004-08-04 10:33:42|C:\Program\Delade filer\System\ado                                                                  |
+|4FF20000|sqloledb.dll   |Microsoft OLE DB Provider for SQL Server                      |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|5B270000|UxTheme.dll    |Bibliotek för Microsoft UxTheme                               |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll   |Common Controls Library                                       |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll   |                                                              |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60000000|crviewer9.dll  |Crystal Report Viewer                                         |9.2.0.528       |770816  |2002-07-05 06:14:30|C:\Program\Delade filer\Crystal Decisions\2.0\crystalreportviewers\ActiveXViewer                    |
+|60940000|NETAPI32.dll   |Net Win32 API DLL                                             |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll    |Microsoft Data Access - OLE DB Implementation Support Routines|2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|698B0000|hnetcfg.dll    |Hanteraren för konfiguration av hemnätverk                    |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL   |Winsock Oriented Net DLL for SQL Clients                      |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll    |Tjänstprovider för Microsoft Windows Sockets 2.0              |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll   |Windows Sockets Helper DLL                                    |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll    |Windows Socket 2.0 Helper for Windows NT                      |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll     |Windows Socket 2.0 32-Bit DLL                                 |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll    |32-bitars DLL-fil för Windows Socket                          |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll   |Security Support Provider Interface                           |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv   |Drivrutin för Windows-bufferthanterare                        |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73B00000|mscms.dll      |Microsoft Color Matching System DLL                           |5.1.2600.2709   |74240   |2005-06-29 03:53:08|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll    |Microsoft Data Access - OLE DB Core Services                  |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|73FC0000|msadce.dll     |Microsoft Data Access - OLE DB Cursor Engine                  |2.81.1117.0     |331776  |2004-08-04 10:33:42|C:\Program\Delade filer\System\msadc                                                                |
+|746F0000|MSCTF.dll      |DLL-fil för MSCTF-servern                                     |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74D00000|oledlg.dll     |Användargränssnittsstöd för Microsoft Windows(TM) OLE 2.0     |5.1.2600.0      |117760  |2001-09-07 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL   |Rich Text Edit Control, v3.0                                  |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL   |Microsoft Data Access - Resurser för OLE DB Core Services     |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75080000|RESUTILS.DLL   |Microsoft Cluster Resource Utility DLL                        |5.1.2600.2180   |58880   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|750C0000|MTXCLU.DLL     |MS DTC amd MTS clustering support DLL                         |2001.12.4414.308|66560   |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|75100000|colbact.DLL    |                                                              |2001.12.4414.308|60416   |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|753F0000|SQLOLEDB.RLL   |Microsoft OLE DB-provider för SQL Server                      |2000.85.1117.0  |65536   |2004-07-17 20:32:22|C:\Program\Delade filer\System\Ole DB                                                               |
+|75530000|usp10.dll      |Uniscribe Unicode script processor                            |1.420.2600.2180 |406528  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|75D80000|MLANG.dll      |Multi Language Support DLL                                    |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|75E70000|SXS.DLL        |Fusion 2.5                                                    |5.1.2600.2180   |712192  |2004-08-04 10:33:58|C:\WINDOWS\system32                                                                                 |
+|760D0000|comsvcs.dll    |                                                              |2001.12.4414.308|1267200 |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll   |DLL-fil med vanliga dialogrutor                               |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll     |Agent för frånkopplat nätverk                                 |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL     |Microsoft Data Access - OLE DB Runtime Routines               |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll    |NT5DS                                                         |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76830000|UNIDRVUI.DLL   |Användargränssnitt för UniDriver                              |0.3.1296.1      |197632  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|769B0000|USERENV.dll    |Userenv                                                       |5.1.2600.2180   |724480  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|76B10000|ATL.DLL        |ATL Module for Windows XP (Unicode)                           |3.5.2284.0      |58880   |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll      |MCI API DLL                                                   |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL      |Process Status Helper                                         |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll   |API för IP Helper                                             |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76D90000|CLUSAPI.DLL    |Cluster API Library                                           |5.1.2600.2180   |57856   |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll     |DNS Client API DLL                                            |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll    |Win32 LDAP API DLL                                            |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll     |LDAP RnR Provider DLL                                         |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll   |Remote Access AutoDial Helper                                 |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL    |                                                              |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll     |                                                              |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll   |                                                              |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll   |User Experience Controls Library                              |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll      |Microsoft OLE för Windows                                     |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|778C0000|UNIDRV.DLL     |Unidrv Printer Driver                                         |0.3.1296.4      |264704  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|77910000|SETUPAPI.dll   |API för installationsprogrammet för Windows                   |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll      |Client Side Caching UI                                        |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll    |32-bitars kryptografi-API                                     |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll     |ASN.1 Runtime APIs                                            |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll    |Application Compatibility Client Library                      |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll    |Version Checking and File Installation Libraries              |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll     |Windows NT CRT DLL                                            |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll     |Microsoft Authentication Package v1.0                         |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll     |Klient-DLL-fil för Windows XP                                 |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll   |Advanced Windows 32 Base API                                  |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll     |Remote Procedure Call Runtime                                 |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll      |GDI Client DLL                                                |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll    |Shell Light-weight Utility Library                            |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll    |Security Support Provider Interface                           |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll   |Klient-DLL för Windows NT BASE API                            |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll      |DLL-fil för NT Layer                                          |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll    |DLL-fil för Windows-gränssnittet                              |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 025C57E4   EDI: 02586704
+EBX: 00000000   ESI: 02584FE0
+ECX: 00000000   ESP: 0012FAE4
+EDX: 0059AE35   EIP: 0059AE30
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FAE4: 0012FB14   0059AE30: E8 C7 98 E6 FF 33 C0 5A 59 59 64 89 10 68 52 AE  .....3.ZYYd..hR.
+0012FAE8: 00404630   0059AE40: 59 00 8D 45 FC E8 36 9F E6 FF C3 E9 B0 97 E6 FF  Y..E..6.........
+0012FAEC: 0012FB0C   0059AE50: EB F0 5E 5B 8B E5 5D C3 FF FF FF FF 06 00 00 00  ..^[..].........
+0012FAF0: 01407DC4   0059AE60: 25 73 3A 20 25 73 00 00 55 8B EC 6A 00 53 56 57  %s: %s..U..j.SVW
+0012FAF4: 01A8FFFF   0059AE70: 8B F9 8B F2 8B D8 33 C0 55 68 B4 AE 59 00 64 FF  ......3.Uh..Y.d.
+0012FAF8: 01407DC4   0059AE80: 30 64 89 20 8D 45 FC 50 8B D6 8B CF 8B C3 E8 89  0d. .E.P........
+0012FAFC: 01A8FFFF   0059AE90: 09 E7 FF 8B 45 FC 8B 55 08 E8 1E FF FF FF 33 C0  ....E..U......3.
+0012FB00: 00000000   0059AEA0: 5A 59 59 64 89 10 68 BB AE 59 00 8D 45 FC E8 CD  ZYYd..h..Y..E...
+0012FB04: 0012FB38   0059AEB0: 9E E6 FF C3 E9 47 97 E6 FF EB F0 5F 5E 5B 59 5D  .....G....._^[Y]
+0012FB08: 00000000   0059AEC0: C2 04 00 90 55 8B EC 83 C4 F4 53 56 57 33 DB 89  ....U.....SVW3..
+0012FB0C: 0012FB38   0059AED0: 5D FC 8B F1 8B FA 33 D2 55 68 2B AF 59 00 64 FF  ].....3.Uh+.Y.d.
+0012FB10: 0065BEB4   0059AEE0: 32 64 89 22 8B D6 E8 95 DD 00 00 8B D8 85 DB 75  2d."...........u
+0012FB14: 0012FB54   0059AEF0: 24 57 8D 55 FC A1 28 2D A0 00 E8 A1 C5 E6 FF 8B  $W.U..(-........
+0012FB18: 00404630   0059AF00: 45 FC 50 89 75 F4 C6 45 F8 0B 8D 55 F4 33 C9 58  E.P.u..E...U.3.X
+0012FB1C: 0012FB38   0059AF10: E8 53 FF FF FF 33 C0 5A 59 59 64 89 10 68 32 AF  .S...3.ZYYd..h2.
+0012FB20: 013AAFD0   0059AF20: 59 00 8D 45 FC E8 56 9E E6 FF C3 E9 D0 96 E6 FF  Y..E..V.........
+
+
+
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:45:03 +0200
+  2.2 Address: 00420DAD
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EListError
+  2.5 Message: List index out of bounds (0).
+
+Active Controls:
+----------------------------------------
+  3.1 Form Class   : TfrmMain
+  3.2 Form Text    : VIS / VIDA WOOD AB1
+  3.3 Control Class: TfrmMain
+  3.4 Control Text : VIS / VIDA WOOD AB1
+
+Computer:
+---------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 171 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 36 minutes, 46 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------------------------------------------------------------------------------------------------------------------
+  6.1 IP Address: 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.2 Submask   : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.3 Gateway   : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000 - 000.000.000.000
+  6.6 DHCP      : ON              - ON              - ON              - ON              - ON              - ON              - ON             
+
+Call Stack Information:
+---------------------------------------------------------------------------------------
+|Address |Module         |Unit              |Class        |Procedure/Method      |Line|
+---------------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                                 |
+|-------------------------------------------------------------------------------------|
+|006BCDBD|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |Load_Int_and_Lego     |661 |
+|006BCD94|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |Load_Int_and_Lego     |660 |
+|009C5792|VidaInvoice.exe|fLoadOrder.pas    |TfrmLoadOrder|FormCreate            |744 |
+|009F5CDD|VidaInvoice.exe|fMain.pas         |TfrmMain     |dxSideBar1ItemClick   |397 |
+|100013DB|IadHide5.dll   |                  |             |_MyCBTProc@12         |    |
+|77D394DA|user32.dll     |                  |             |GetCapture            |    |
+|77D396C2|user32.dll     |                  |             |DispatchMessageA      |    |
+|77D396B8|user32.dll     |                  |             |DispatchMessageA      |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr   |             |                      |140 |
+|7C90E64C|ntdll.dll      |                  |             |NtSetInformationThread|    |
+---------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name           |Description                                                   |Version         |Size    |Modified           |Path                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe|Vida shipping and invoicing                                   |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL    |TMEEJMD                                                       |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll   |                                                              |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|02420000|crheapalloc.dll|Heap Allocator DLL.                                           |9.2.0.2         |53248   |2002-07-05 06:33:48|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02450000|keycode.dll    |keycode Module                                                |9.0.0.147       |221184  |2002-07-05 06:13:16|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02620000|msi.dll        |Windows Installer                                             |3.1.4000.2435   |2890240 |2005-05-04 14:45:32|C:\WINDOWS\system32                                                                                 |
+|029F0000|crqe.dll       |Crystal Query Engine                                          |9.2.0.580       |1417289 |2002-07-06 01:44:46|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03440000|msadcer.dll    |Microsoft Data Access - Resurser för OLE DB Cursor Engine     |2.81.1117.0     |20480   |2004-08-04 10:31:16|C:\Program\Delade filer\System\msadc                                                                |
+|03450000|xpsp2res.dll   |Service Pack 2-meddelanden                                    |5.1.2600.2180   |2917888 |2004-08-04 10:32:38|C:\WINDOWS\system32                                                                                 |
+|03F70000|msader15.dll   |Microsoft Data Access -Resurser för ActiveX Data Objects      |2.81.1117.0     |28672   |2004-08-04 10:31:16|C:\Program\Delade filer\System\ado                                                                  |
+|10000000|IadHide5.dll   |IAdHide                                                       |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|1B5D0000|MSWSTR10.DLL   |Microsoft Jet Sort-bibliotek                                  |4.0.8905.0      |614429  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|3C0B0000|craxdrt9.dll   |Crystal Reports 9 ActiveX Designer Runtime Support            |9.2.0.448       |6135873 |2002-07-15 04:42:22|C:\Program\Crystal Decisions\Report Designer Component                                              |
+|4CA90000|msadrh15.dll   |Microsoft Data Access - ActiveX Data Objects Rowset Helper    |2.81.1117.0     |57344   |2004-08-04 10:33:44|C:\Program\Delade filer\System\ado                                                                  |
+|4DAE0000|midas.dll      |Borland MIDAS Component Package                               |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4DD40000|msado15.dll    |Microsoft Data Access - ActiveX Data Objects                  |2.81.1117.0     |536576  |2004-08-04 10:33:42|C:\Program\Delade filer\System\ado                                                                  |
+|4FF20000|sqloledb.dll   |Microsoft OLE DB Provider for SQL Server                      |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|5B270000|UxTheme.dll    |Bibliotek för Microsoft UxTheme                               |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll   |Common Controls Library                                       |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll   |                                                              |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60000000|crviewer9.dll  |Crystal Report Viewer                                         |9.2.0.528       |770816  |2002-07-05 06:14:30|C:\Program\Delade filer\Crystal Decisions\2.0\crystalreportviewers\ActiveXViewer                    |
+|60940000|NETAPI32.dll   |Net Win32 API DLL                                             |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll    |Microsoft Data Access - OLE DB Implementation Support Routines|2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|698B0000|hnetcfg.dll    |Hanteraren för konfiguration av hemnätverk                    |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL   |Winsock Oriented Net DLL for SQL Clients                      |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll    |Tjänstprovider för Microsoft Windows Sockets 2.0              |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll   |Windows Sockets Helper DLL                                    |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll    |Windows Socket 2.0 Helper for Windows NT                      |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll     |Windows Socket 2.0 32-Bit DLL                                 |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll    |32-bitars DLL-fil för Windows Socket                          |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll   |Security Support Provider Interface                           |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv   |Drivrutin för Windows-bufferthanterare                        |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73B00000|mscms.dll      |Microsoft Color Matching System DLL                           |5.1.2600.2709   |74240   |2005-06-29 03:53:08|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll    |Microsoft Data Access - OLE DB Core Services                  |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|73FC0000|msadce.dll     |Microsoft Data Access - OLE DB Cursor Engine                  |2.81.1117.0     |331776  |2004-08-04 10:33:42|C:\Program\Delade filer\System\msadc                                                                |
+|746F0000|MSCTF.dll      |DLL-fil för MSCTF-servern                                     |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74D00000|oledlg.dll     |Användargränssnittsstöd för Microsoft Windows(TM) OLE 2.0     |5.1.2600.0      |117760  |2001-09-07 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL   |Rich Text Edit Control, v3.0                                  |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL   |Microsoft Data Access - Resurser för OLE DB Core Services     |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75080000|RESUTILS.DLL   |Microsoft Cluster Resource Utility DLL                        |5.1.2600.2180   |58880   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|750C0000|MTXCLU.DLL     |MS DTC amd MTS clustering support DLL                         |2001.12.4414.308|66560   |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|75100000|colbact.DLL    |                                                              |2001.12.4414.308|60416   |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|753F0000|SQLOLEDB.RLL   |Microsoft OLE DB-provider för SQL Server                      |2000.85.1117.0  |65536   |2004-07-17 20:32:22|C:\Program\Delade filer\System\Ole DB                                                               |
+|75530000|usp10.dll      |Uniscribe Unicode script processor                            |1.420.2600.2180 |406528  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|75D80000|MLANG.dll      |Multi Language Support DLL                                    |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|75E70000|SXS.DLL        |Fusion 2.5                                                    |5.1.2600.2180   |712192  |2004-08-04 10:33:58|C:\WINDOWS\system32                                                                                 |
+|760D0000|comsvcs.dll    |                                                              |2001.12.4414.308|1267200 |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll   |DLL-fil med vanliga dialogrutor                               |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll     |Agent för frånkopplat nätverk                                 |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL     |Microsoft Data Access - OLE DB Runtime Routines               |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll    |NT5DS                                                         |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76830000|UNIDRVUI.DLL   |Användargränssnitt för UniDriver                              |0.3.1296.1      |197632  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|769B0000|USERENV.dll    |Userenv                                                       |5.1.2600.2180   |724480  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|76B10000|ATL.DLL        |ATL Module for Windows XP (Unicode)                           |3.5.2284.0      |58880   |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll      |MCI API DLL                                                   |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL      |Process Status Helper                                         |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll   |API för IP Helper                                             |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76D90000|CLUSAPI.DLL    |Cluster API Library                                           |5.1.2600.2180   |57856   |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll     |DNS Client API DLL                                            |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll    |Win32 LDAP API DLL                                            |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll     |LDAP RnR Provider DLL                                         |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll   |Remote Access AutoDial Helper                                 |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL    |                                                              |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll     |                                                              |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll   |                                                              |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll   |User Experience Controls Library                              |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll      |Microsoft OLE för Windows                                     |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|778C0000|UNIDRV.DLL     |Unidrv Printer Driver                                         |0.3.1296.4      |264704  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|77910000|SETUPAPI.dll   |API för installationsprogrammet för Windows                   |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll      |Client Side Caching UI                                        |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll    |32-bitars kryptografi-API                                     |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll     |ASN.1 Runtime APIs                                            |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll    |Application Compatibility Client Library                      |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll    |Version Checking and File Installation Libraries              |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll     |Windows NT CRT DLL                                            |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll     |Microsoft Authentication Package v1.0                         |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll     |Klient-DLL-fil för Windows XP                                 |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll   |Advanced Windows 32 Base API                                  |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll     |Remote Procedure Call Runtime                                 |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll      |GDI Client DLL                                                |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll    |Shell Light-weight Utility Library                            |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll    |Security Support Provider Interface                           |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll   |Klient-DLL för Windows NT BASE API                            |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll      |DLL-fil för NT Layer                                          |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll    |DLL-fil för Windows-gränssnittet                              |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 01806EF8   EDI: 00000000
+EBX: 0258C178   ESI: 00000000
+ECX: 00000000   ESP: 0012F90C
+EDX: 00420DB2   EIP: 00420DAD
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F90C: 00000000   00420DAD: E8 1E FF FF FF 8B 43 04 8B 04 B0 5E 5B C3 90 8B  ......C....^[...
+0012F910: 00000000   00420DBD: 50 0C 83 FA 40 7E 0E 8B CA 85 C9 79 03 83 C1 03  P...@~.....y....
+0012F914: 00000000   00420DCD: C1 F9 02 EB 11 83 FA 08 7E 07 B9 10 00 00 00 EB  ........~.......
+0012F918: 0041B760   00420DDD: 05 B9 04 00 00 00 03 CA 8B D1 E8 94 01 00 00 C3  ................
+0012F91C: 00420D02   00420DED: 8D 40 00 53 33 C9 EB 01 41 3B 48 08 7D 08 8B 58  .@.S3...A;H.}..X
+0012F920: 0012F94C   00420DFD: 04 3B 14 8B 75 F2 3B 48 08 75 03 83 C9 FF 8B C1  .;..u.;H.u......
+0012F924: 00404630   00420E0D: 5B C3 90 53 56 57 8B F9 8B F2 8B D8 85 F6 7C 05  [..SVW........|.
+0012F928: 0012F938   00420E1D: 3B 73 08 7E 0F 8B 15 DC 2B A0 00 8B CE 8B 03 E8  ;s.~....+.......
+0012F92C: 00000000   00420E2D: 9F FE FF FF 8B 43 08 3B 43 0C 75 06 8B C3 8B 10  .....C.;C.u.....
+0012F930: 025BE550   00420E3D: FF 12 8B 43 08 3B F0 7D 19 2B C6 8B C8 C1 E1 02  ...C.;.}.+......
+0012F934: 00000000   00420E4D: 8B 43 04 8D 54 B0 04 8B 43 04 8D 04 B0 E8 B1 1C  .C..T...C.......
+0012F938: 0012F9E0   00420E5D: FE FF 8B 43 04 89 3C B0 FF 43 08 85 FF 74 0B 33  ...C..<..C...t.3
+0012F93C: 00420DB2   00420E6D: C9 8B D7 8B C3 8B 18 FF 53 04 5F 5E 5B C3 90 8B  ........S._^[...
+0012F940: 013F8B30   00420E7D: 50 08 4A E8 0F FF FF FF C3 8B C0 53 56 57 55 8B  P.J........SVWU.
+0012F944: 00000006   00420E8D: F1 8B FA 8B D8 3B F7 74 45 85 F6 7C 05 3B 73 08  .....;.tE..|.;s.
+0012F948: 006575BF   00420E9D: 7C 0F 8B 15 DC 2B A0 00 8B CE 8B 03 E8 22 FE FF  |....+......."..
+
+
+
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:45:59 +0200
+  2.2 Address: 0059AE30
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EDatabaseError
+  2.5 Message: Anslutningen bröts.
+
+Active Controls:
+----------------------------------------
+  3.1 Form Class   : TfrmMain
+  3.2 Form Text    : VIS / VIDA WOOD AB1
+  3.3 Control Class: TfrmMain
+  3.4 Control Text : VIS / VIDA WOOD AB1
+
+Computer:
+---------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 171 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 37 minutes, 42 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------------------------
+  6.1 IP Address: 000.000.000.000 - 000.000.000.000
+  6.2 Submask   : 000.000.000.000 - 000.000.000.000
+  6.3 Gateway   : 000.000.000.000 - 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000 - 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000 - 000.000.000.000
+  6.6 DHCP      : ON              - ON             
+
+Call Stack Information:
+---------------------------------------------------------------------------------------
+|Address |Module         |Unit              |Class        |Procedure/Method      |Line|
+---------------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                                 |
+|-------------------------------------------------------------------------------------|
+|006BDE1F|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |IsClientLego          |988 |
+|006BDDE8|VidaInvoice.exe|dmsVidaContact.pas|TdmsContact  |IsClientLego          |985 |
+|009C4CA5|VidaInvoice.exe|fLoadOrder.pas    |TfrmLoadOrder|CreateCo              |464 |
+|009C4B9C|VidaInvoice.exe|fLoadOrder.pas    |TfrmLoadOrder|CreateCo              |448 |
+|009F5D00|VidaInvoice.exe|fMain.pas         |TfrmMain     |dxSideBar1ItemClick   |398 |
+|100013DB|IadHide5.dll   |                  |             |_MyCBTProc@12         |    |
+|77D394DA|user32.dll     |                  |             |GetCapture            |    |
+|77D396C2|user32.dll     |                  |             |DispatchMessageA      |    |
+|77D396B8|user32.dll     |                  |             |DispatchMessageA      |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr   |             |                      |140 |
+|7C90E64C|ntdll.dll      |                  |             |NtSetInformationThread|    |
+---------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name           |Description                                                   |Version         |Size    |Modified           |Path                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe|Vida shipping and invoicing                                   |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL    |TMEEJMD                                                       |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll   |                                                              |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|02420000|crheapalloc.dll|Heap Allocator DLL.                                           |9.2.0.2         |53248   |2002-07-05 06:33:48|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02450000|keycode.dll    |keycode Module                                                |9.0.0.147       |221184  |2002-07-05 06:13:16|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02620000|msi.dll        |Windows Installer                                             |3.1.4000.2435   |2890240 |2005-05-04 14:45:32|C:\WINDOWS\system32                                                                                 |
+|029F0000|crqe.dll       |Crystal Query Engine                                          |9.2.0.580       |1417289 |2002-07-06 01:44:46|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03440000|msadcer.dll    |Microsoft Data Access - Resurser för OLE DB Cursor Engine     |2.81.1117.0     |20480   |2004-08-04 10:31:16|C:\Program\Delade filer\System\msadc                                                                |
+|03450000|xpsp2res.dll   |Service Pack 2-meddelanden                                    |5.1.2600.2180   |2917888 |2004-08-04 10:32:38|C:\WINDOWS\system32                                                                                 |
+|03F70000|msader15.dll   |Microsoft Data Access -Resurser för ActiveX Data Objects      |2.81.1117.0     |28672   |2004-08-04 10:31:16|C:\Program\Delade filer\System\ado                                                                  |
+|10000000|IadHide5.dll   |IAdHide                                                       |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|1B5D0000|MSWSTR10.DLL   |Microsoft Jet Sort-bibliotek                                  |4.0.8905.0      |614429  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|3C0B0000|craxdrt9.dll   |Crystal Reports 9 ActiveX Designer Runtime Support            |9.2.0.448       |6135873 |2002-07-15 04:42:22|C:\Program\Crystal Decisions\Report Designer Component                                              |
+|4CA90000|msadrh15.dll   |Microsoft Data Access - ActiveX Data Objects Rowset Helper    |2.81.1117.0     |57344   |2004-08-04 10:33:44|C:\Program\Delade filer\System\ado                                                                  |
+|4DAE0000|midas.dll      |Borland MIDAS Component Package                               |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4DD40000|msado15.dll    |Microsoft Data Access - ActiveX Data Objects                  |2.81.1117.0     |536576  |2004-08-04 10:33:42|C:\Program\Delade filer\System\ado                                                                  |
+|4FF20000|sqloledb.dll   |Microsoft OLE DB Provider for SQL Server                      |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|5B270000|UxTheme.dll    |Bibliotek för Microsoft UxTheme                               |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll   |Common Controls Library                                       |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll   |                                                              |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60000000|crviewer9.dll  |Crystal Report Viewer                                         |9.2.0.528       |770816  |2002-07-05 06:14:30|C:\Program\Delade filer\Crystal Decisions\2.0\crystalreportviewers\ActiveXViewer                    |
+|60940000|NETAPI32.dll   |Net Win32 API DLL                                             |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll    |Microsoft Data Access - OLE DB Implementation Support Routines|2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|698B0000|hnetcfg.dll    |Hanteraren för konfiguration av hemnätverk                    |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL   |Winsock Oriented Net DLL for SQL Clients                      |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll    |Tjänstprovider för Microsoft Windows Sockets 2.0              |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll   |Windows Sockets Helper DLL                                    |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll    |Windows Socket 2.0 Helper for Windows NT                      |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll     |Windows Socket 2.0 32-Bit DLL                                 |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll    |32-bitars DLL-fil för Windows Socket                          |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll   |Security Support Provider Interface                           |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv   |Drivrutin för Windows-bufferthanterare                        |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73B00000|mscms.dll      |Microsoft Color Matching System DLL                           |5.1.2600.2709   |74240   |2005-06-29 03:53:08|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll    |Microsoft Data Access - OLE DB Core Services                  |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|73FC0000|msadce.dll     |Microsoft Data Access - OLE DB Cursor Engine                  |2.81.1117.0     |331776  |2004-08-04 10:33:42|C:\Program\Delade filer\System\msadc                                                                |
+|746F0000|MSCTF.dll      |DLL-fil för MSCTF-servern                                     |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74D00000|oledlg.dll     |Användargränssnittsstöd för Microsoft Windows(TM) OLE 2.0     |5.1.2600.0      |117760  |2001-09-07 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL   |Rich Text Edit Control, v3.0                                  |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL   |Microsoft Data Access - Resurser för OLE DB Core Services     |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75080000|RESUTILS.DLL   |Microsoft Cluster Resource Utility DLL                        |5.1.2600.2180   |58880   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|750C0000|MTXCLU.DLL     |MS DTC amd MTS clustering support DLL                         |2001.12.4414.308|66560   |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|75100000|colbact.DLL    |                                                              |2001.12.4414.308|60416   |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|753F0000|SQLOLEDB.RLL   |Microsoft OLE DB-provider för SQL Server                      |2000.85.1117.0  |65536   |2004-07-17 20:32:22|C:\Program\Delade filer\System\Ole DB                                                               |
+|75530000|usp10.dll      |Uniscribe Unicode script processor                            |1.420.2600.2180 |406528  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|75D80000|MLANG.dll      |Multi Language Support DLL                                    |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|75E70000|SXS.DLL        |Fusion 2.5                                                    |5.1.2600.2180   |712192  |2004-08-04 10:33:58|C:\WINDOWS\system32                                                                                 |
+|760D0000|comsvcs.dll    |                                                              |2001.12.4414.308|1267200 |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll   |DLL-fil med vanliga dialogrutor                               |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll     |Agent för frånkopplat nätverk                                 |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL     |Microsoft Data Access - OLE DB Runtime Routines               |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll    |NT5DS                                                         |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76830000|UNIDRVUI.DLL   |Användargränssnitt för UniDriver                              |0.3.1296.1      |197632  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|769B0000|USERENV.dll    |Userenv                                                       |5.1.2600.2180   |724480  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|76B10000|ATL.DLL        |ATL Module for Windows XP (Unicode)                           |3.5.2284.0      |58880   |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll      |MCI API DLL                                                   |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL      |Process Status Helper                                         |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll   |API för IP Helper                                             |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76D90000|CLUSAPI.DLL    |Cluster API Library                                           |5.1.2600.2180   |57856   |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll     |DNS Client API DLL                                            |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll    |Win32 LDAP API DLL                                            |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll     |LDAP RnR Provider DLL                                         |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll   |Remote Access AutoDial Helper                                 |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL    |                                                              |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll     |                                                              |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll   |                                                              |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll   |User Experience Controls Library                              |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll      |Microsoft OLE för Windows                                     |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|778C0000|UNIDRV.DLL     |Unidrv Printer Driver                                         |0.3.1296.4      |264704  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|77910000|SETUPAPI.dll   |API för installationsprogrammet för Windows                   |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll      |Client Side Caching UI                                        |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll    |32-bitars kryptografi-API                                     |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll     |ASN.1 Runtime APIs                                            |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll    |Application Compatibility Client Library                      |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll    |Version Checking and File Installation Libraries              |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll     |Windows NT CRT DLL                                            |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll     |Microsoft Authentication Package v1.0                         |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll     |Klient-DLL-fil för Windows XP                                 |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll   |Advanced Windows 32 Base API                                  |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll     |Remote Procedure Call Runtime                                 |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll      |GDI Client DLL                                                |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll    |Shell Light-weight Utility Library                            |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll    |Security Support Provider Interface                           |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll   |Klient-DLL för Windows NT BASE API                            |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll      |DLL-fil för NT Layer                                          |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll    |DLL-fil för Windows-gränssnittet                              |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 01842D08   EDI: 017EB3B8
+EBX: 00000000   ESI: 025B8084
+ECX: 00000000   ESP: 0012FAE4
+EDX: 0059AE35   EIP: 0059AE30
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FAE4: 0012FB14   0059AE30: E8 C7 98 E6 FF 33 C0 5A 59 59 64 89 10 68 52 AE  .....3.ZYYd..hR.
+0012FAE8: 00404630   0059AE40: 59 00 8D 45 FC E8 36 9F E6 FF C3 E9 B0 97 E6 FF  Y..E..6.........
+0012FAEC: 0012FB0C   0059AE50: EB F0 5E 5B 8B E5 5D C3 FF FF FF FF 06 00 00 00  ..^[..].........
+0012FAF0: 01407DC4   0059AE60: 25 73 3A 20 25 73 00 00 55 8B EC 6A 00 53 56 57  %s: %s..U..j.SVW
+0012FAF4: 0000FFFF   0059AE70: 8B F9 8B F2 8B D8 33 C0 55 68 B4 AE 59 00 64 FF  ......3.Uh..Y.d.
+0012FAF8: 0000FFFF   0059AE80: 30 64 89 20 8D 45 FC 50 8B D6 8B CF 8B C3 E8 89  0d. .E.P........
+0012FAFC: 00000000   0059AE90: 09 E7 FF 8B 45 FC 8B 55 08 E8 1E FF FF FF 33 C0  ....E..U......3.
+0012FB00: 0012FB38   0059AEA0: 5A 59 59 64 89 10 68 BB AE 59 00 8D 45 FC E8 CD  ZYYd..h..Y..E...
+0012FB04: 00402853   0059AEB0: 9E E6 FF C3 E9 47 97 E6 FF EB F0 5F 5E 5B 59 5D  .....G....._^[Y]
+0012FB08: 00000000   0059AEC0: C2 04 00 90 55 8B EC 83 C4 F4 53 56 57 33 DB 89  ....U.....SVW3..
+0012FB0C: 0012FB38   0059AED0: 5D FC 8B F1 8B FA 33 D2 55 68 2B AF 59 00 64 FF  ].....3.Uh+.Y.d.
+0012FB10: 0065BEB4   0059AEE0: 32 64 89 22 8B D6 E8 95 DD 00 00 8B D8 85 DB 75  2d."...........u
+0012FB14: 0012FB54   0059AEF0: 24 57 8D 55 FC A1 28 2D A0 00 E8 A1 C5 E6 FF 8B  $W.U..(-........
+0012FB18: 00404630   0059AF00: 45 FC 50 89 75 F4 C6 45 F8 0B 8D 55 F4 33 C9 58  E.P.u..E...U.3.X
+0012FB1C: 0012FB38   0059AF10: E8 53 FF FF FF 33 C0 5A 59 59 64 89 10 68 32 AF  .S...3.ZYYd..h2.
+0012FB20: 013AAFD0   0059AF20: 59 00 8D 45 FC E8 56 9E E6 FF C3 E9 D0 96 E6 FF  Y..E..V.........
+
+
+
+EurekaLog 5.0.4
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Fri, 28 Oct 2005 23:35:07 +0200
+  1.2 Name/Description: Vida shipping and invoicing
+  1.3 Version Number  : 3.53.1.95
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 28 Oct 2005 23:35:02 +0200
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Fri, 28 Oct 2005 23:46:10 +0200
+  2.2 Address: 00420DAD
+  2.3 Module : VidaInvoice.exe
+  2.4 Type   : EListError
+  2.5 Message: List index out of bounds (0).
+
+Active Controls:
+----------------------------------------
+  3.1 Form Class   : TfrmMain
+  3.2 Form Text    : VIS / VIDA WOOD AB1
+  3.3 Control Class: TfrmMain
+  3.4 Control Text : VIS / VIDA WOOD AB1
+
+Computer:
+---------------------------------------------------------------
+  4.1 Name          : CARMAK-SAT
+  4.2 User          : Administratör
+  4.3 Total Memory  : 511 Mb
+  4.4 Free Memory   : 171 Mb
+  4.5 Total Disk    : 18,65 Gb
+  4.6 Free Disk     : 9,46 Gb
+  4.7 System Up Time: 12 days, 20 hours, 37 minutes, 53 seconds
+  4.8 Processor     : Intel(R) Pentium(R) 4 Mobile CPU 1.70GHz
+  4.9 Display Mode  : 1024 x 768, 32 bit
+
+Operating System:
+------------------------------------
+  5.1 Type    : Microsoft Windows XP
+  5.2 Build # : 2600
+  5.3 Update  : Service Pack 2
+  5.4 Language: Swedish
+
+Network:
+---------------------------------
+  6.1 IP Address: 000.000.000.000
+  6.2 Submask   : 000.000.000.000
+  6.3 Gateway   : 000.000.000.000
+  6.4 DNS 1     : 000.000.000.000
+  6.5 DNS 2     : 000.000.000.000
+  6.6 DHCP      : ON             
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------
+|Address |Module         |Unit                |Class           |Procedure/Method       |Line|
+---------------------------------------------------------------------------------------------
+| Running Thread: ID=3380; Priority=0; Class=; [Main]                                       |
+|-------------------------------------------------------------------------------------------|
+|7C9010ED|ntdll.dll      |                    |                |RtlLeaveCriticalSection|    |
+|006BCDBD|VidaInvoice.exe|dmsVidaContact.pas  |TdmsContact     |Load_Int_and_Lego      |661 |
+|006BCD94|VidaInvoice.exe|dmsVidaContact.pas  |TdmsContact     |Load_Int_and_Lego      |660 |
+|008C4AE3|VidaInvoice.exe|UnitLoadArrivals.pas|TfrmLoadArrivals|CreateCo               |163 |
+|008C4A30|VidaInvoice.exe|UnitLoadArrivals.pas|TfrmLoadArrivals|CreateCo               |150 |
+|009F5F0E|VidaInvoice.exe|fMain.pas           |TfrmMain        |dxSideBar1ItemClick    |458 |
+|100013DB|IadHide5.dll   |                    |                |_MyCBTProc@12          |    |
+|77D394DA|user32.dll     |                    |                |GetCapture             |    |
+|77D396C2|user32.dll     |                    |                |DispatchMessageA       |    |
+|77D396B8|user32.dll     |                    |                |DispatchMessageA       |    |
+|009F8AD8|VidaInvoice.exe|VidaInvoice.dpr     |                |                       |140 |
+|7C90E64C|ntdll.dll      |                    |                |NtSetInformationThread |    |
+---------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name           |Description                                                   |Version         |Size    |Modified           |Path                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|VidaInvoice.exe|Vida shipping and invoicing                                   |3.53.1.95       |10631680|2005-10-28 23:35:04|C:\projects\VIS\Lars 21 d7ver2\VIS 1211\EXE                                                         |
+|01510000|TMEEJMD.DLL    |TMEEJMD                                                       |1.0.0.4         |53248   |2002-02-05 09:30:24|C:\Program\TOSHIBA\TME3                                                                             |
+|01900000|dbexpsda.dll   |                                                              |1.86.0.0        |182784  |2003-10-07 08:41:56|C:\WINDOWS\system32                                                                                 |
+|02420000|crheapalloc.dll|Heap Allocator DLL.                                           |9.2.0.2         |53248   |2002-07-05 06:33:48|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02450000|keycode.dll    |keycode Module                                                |9.0.0.147       |221184  |2002-07-05 06:13:16|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|02620000|msi.dll        |Windows Installer                                             |3.1.4000.2435   |2890240 |2005-05-04 14:45:32|C:\WINDOWS\system32                                                                                 |
+|029F0000|crqe.dll       |Crystal Query Engine                                          |9.2.0.580       |1417289 |2002-07-06 01:44:46|C:\Program\Delade filer\Crystal Decisions\2.0\bin                                                   |
+|03440000|msadcer.dll    |Microsoft Data Access - Resurser för OLE DB Cursor Engine     |2.81.1117.0     |20480   |2004-08-04 10:31:16|C:\Program\Delade filer\System\msadc                                                                |
+|03450000|xpsp2res.dll   |Service Pack 2-meddelanden                                    |5.1.2600.2180   |2917888 |2004-08-04 10:32:38|C:\WINDOWS\system32                                                                                 |
+|03F70000|msader15.dll   |Microsoft Data Access -Resurser för ActiveX Data Objects      |2.81.1117.0     |28672   |2004-08-04 10:31:16|C:\Program\Delade filer\System\ado                                                                  |
+|10000000|IadHide5.dll   |IAdHide                                                       |6.3.2.62        |24613   |2005-06-17 19:18:26|C:\DOCUME~1\ADMINI~1\LOKALA~1\Temp                                                                  |
+|1B5D0000|MSWSTR10.DLL   |Microsoft Jet Sort-bibliotek                                  |4.0.8905.0      |614429  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|3C0B0000|craxdrt9.dll   |Crystal Reports 9 ActiveX Designer Runtime Support            |9.2.0.448       |6135873 |2002-07-15 04:42:22|C:\Program\Crystal Decisions\Report Designer Component                                              |
+|4CA90000|msadrh15.dll   |Microsoft Data Access - ActiveX Data Objects Rowset Helper    |2.81.1117.0     |57344   |2004-08-04 10:33:44|C:\Program\Delade filer\System\ado                                                                  |
+|4DAE0000|midas.dll      |Borland MIDAS Component Package                               |6.0.10.157      |293888  |2002-02-15 14:02:00|C:\WINDOWS\system32                                                                                 |
+|4DD40000|msado15.dll    |Microsoft Data Access - ActiveX Data Objects                  |2.81.1117.0     |536576  |2004-08-04 10:33:42|C:\Program\Delade filer\System\ado                                                                  |
+|4FF20000|sqloledb.dll   |Microsoft OLE DB Provider for SQL Server                      |2000.85.1117.0  |528384  |2004-08-04 10:33:56|C:\Program\Delade filer\System\Ole DB                                                               |
+|5B270000|UxTheme.dll    |Bibliotek för Microsoft UxTheme                               |6.0.2900.2180   |219136  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|5D5B0000|comctl32.dll   |Common Controls Library                                       |5.82.2900.2180  |611328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|5F2F0000|olepro32.dll   |                                                              |5.1.2600.2180   |83456   |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|60000000|crviewer9.dll  |Crystal Report Viewer                                         |9.2.0.528       |770816  |2002-07-05 06:14:30|C:\Program\Delade filer\Crystal Decisions\2.0\crystalreportviewers\ActiveXViewer                    |
+|60940000|NETAPI32.dll   |Net Win32 API DLL                                             |5.1.2600.2180   |332288  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|61350000|MSDATL3.dll    |Microsoft Data Access - OLE DB Implementation Support Routines|2.81.1117.0     |94208   |2004-08-04 10:33:44|C:\Program\Delade filer\System\Ole DB                                                               |
+|698B0000|hnetcfg.dll    |Hanteraren för konfiguration av hemnätverk                    |5.1.2600.2180   |344576  |2004-08-04 10:33:38|C:\WINDOWS\system32                                                                                 |
+|6DA80000|DBNETLIB.DLL   |Winsock Oriented Net DLL for SQL Clients                      |2000.85.1117.0  |110592  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|71A40000|mswsock.dll    |Tjänstprovider för Microsoft Windows Sockets 2.0              |5.1.2600.2180   |247296  |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|71A80000|wshtcpip.dll   |Windows Sockets Helper DLL                                    |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\System32                                                                                 |
+|71A90000|WS2HELP.dll    |Windows Socket 2.0 Helper for Windows NT                      |5.1.2600.2180   |19968   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AA0000|WS2_32.dll     |Windows Socket 2.0 32-Bit DLL                                 |5.1.2600.2180   |82944   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71AC0000|wsock32.dll    |32-bitars DLL-fil för Windows Socket                          |5.1.2600.2180   |24576   |2004-08-04 10:34:04|C:\WINDOWS\system32                                                                                 |
+|71F70000|security.dll   |Security Support Provider Interface                           |5.1.2600.2180   |5632    |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|72FD0000|winspool.drv   |Drivrutin för Windows-bufferthanterare                        |5.1.2600.2180   |146944  |2004-08-04 10:34:56|C:\WINDOWS\system32                                                                                 |
+|73B00000|mscms.dll      |Microsoft Color Matching System DLL                           |5.1.2600.2709   |74240   |2005-06-29 03:53:08|C:\WINDOWS\system32                                                                                 |
+|73F40000|oledb32.dll    |Microsoft Data Access - OLE DB Core Services                  |2.81.1117.0     |487424  |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|73FC0000|msadce.dll     |Microsoft Data Access - OLE DB Cursor Engine                  |2.81.1117.0     |331776  |2004-08-04 10:33:42|C:\Program\Delade filer\System\msadc                                                                |
+|746F0000|MSCTF.dll      |DLL-fil för MSCTF-servern                                     |5.1.2600.2180   |294400  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|74D00000|oledlg.dll     |Användargränssnittsstöd för Microsoft Windows(TM) OLE 2.0     |5.1.2600.0      |117760  |2001-09-07 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74E00000|RICHED20.DLL   |Rich Text Edit Control, v3.0                                  |5.30.23.1221    |431616  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|75010000|OLEDB32R.DLL   |Microsoft Data Access - Resurser för OLE DB Core Services     |2.81.1117.0     |69632   |2004-08-04 10:33:50|C:\Program\Delade filer\System\Ole DB                                                               |
+|75080000|RESUTILS.DLL   |Microsoft Cluster Resource Utility DLL                        |5.1.2600.2180   |58880   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|750C0000|MTXCLU.DLL     |MS DTC amd MTS clustering support DLL                         |2001.12.4414.308|66560   |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|75100000|colbact.DLL    |                                                              |2001.12.4414.308|60416   |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|753F0000|SQLOLEDB.RLL   |Microsoft OLE DB-provider för SQL Server                      |2000.85.1117.0  |65536   |2004-07-17 20:32:22|C:\Program\Delade filer\System\Ole DB                                                               |
+|75530000|usp10.dll      |Uniscribe Unicode script processor                            |1.420.2600.2180 |406528  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|75D80000|MLANG.dll      |Multi Language Support DLL                                    |6.0.2900.2180   |586240  |2004-08-04 10:33:42|C:\WINDOWS\system32                                                                                 |
+|75E70000|SXS.DLL        |Fusion 2.5                                                    |5.1.2600.2180   |712192  |2004-08-04 10:33:58|C:\WINDOWS\system32                                                                                 |
+|760D0000|comsvcs.dll    |                                                              |2001.12.4414.308|1267200 |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|76390000|comdlg32.dll   |DLL-fil med vanliga dialogrutor                               |6.0.2900.2180   |279040  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|765E0000|CSCDLL.dll     |Agent för frånkopplat nätverk                                 |5.1.2600.2180   |101888  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|76600000|MSDART.DLL     |Microsoft Data Access - OLE DB Runtime Routines               |2.81.1117.0     |151552  |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|76790000|ntdsapi.dll    |NT5DS                                                         |5.1.2600.2180   |67072   |2004-08-04 10:33:48|C:\WINDOWS\system32                                                                                 |
+|76830000|UNIDRVUI.DLL   |Användargränssnitt för UniDriver                              |0.3.1296.1      |197632  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|769B0000|USERENV.dll    |Userenv                                                       |5.1.2600.2180   |724480  |2004-08-04 10:34:00|C:\WINDOWS\system32                                                                                 |
+|76B10000|ATL.DLL        |ATL Module for Windows XP (Unicode)                           |3.5.2284.0      |58880   |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|76B30000|winmm.dll      |MCI API DLL                                                   |5.1.2600.2180   |176640  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76BE0000|PSAPI.DLL      |Process Status Helper                                         |5.1.2600.2180   |23040   |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76D50000|iphlpapi.dll   |API för IP Helper                                             |5.1.2600.2180   |94720   |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|76D90000|CLUSAPI.DLL    |Cluster API Library                                           |5.1.2600.2180   |57856   |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|76F10000|DNSAPI.dll     |DNS Client API DLL                                            |5.1.2600.2180   |148480  |2004-08-04 10:33:34|C:\WINDOWS\system32                                                                                 |
+|76F50000|WLDAP32.dll    |Win32 LDAP API DLL                                            |5.1.2600.2180   |172544  |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|76FA0000|winrnr.dll     |LDAP RnR Provider DLL                                         |5.1.2600.2180   |16896   |2004-08-04 10:34:02|C:\WINDOWS\System32                                                                                 |
+|76FB0000|rasadhlp.dll   |Remote Access AutoDial Helper                                 |5.1.2600.2180   |8192    |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|76FC0000|CLBCATQ.DLL    |                                                              |2001.12.4414.308|498688  |2005-07-26 06:42:48|C:\WINDOWS\system32                                                                                 |
+|77040000|COMRes.dll     |                                                              |2001.12.4414.258|803328  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77110000|oleaut32.dll   |                                                              |5.1.2600.2180   |553472  |2004-08-04 10:33:50|C:\WINDOWS\system32                                                                                 |
+|773C0000|comctl32.dll   |User Experience Controls Library                              |6.0.2900.2180   |1050624 |2004-08-04 10:30:06|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9|
+|774D0000|ole32.dll      |Microsoft OLE för Windows                                     |5.1.2600.2726   |1284608 |2005-07-26 06:42:50|C:\WINDOWS\system32                                                                                 |
+|778C0000|UNIDRV.DLL     |Unidrv Printer Driver                                         |0.3.1296.4      |264704  |2004-08-04 10:33:58|C:\WINDOWS\System32\spool\DRIVERS\W32X86\3                                                          |
+|77910000|SETUPAPI.dll   |API för installationsprogrammet för Windows                   |5.1.2600.2180   |991232  |2004-08-04 01:33:56|C:\WINDOWS\system32                                                                                 |
+|77A10000|cscui.dll      |Client Side Caching UI                                        |5.1.2600.2180   |329216  |2004-08-04 10:33:32|C:\WINDOWS\System32                                                                                 |
+|77A70000|crypt32.dll    |32-bitars kryptografi-API                                     |5.131.2600.2180 |600576  |2004-08-04 10:33:32|C:\WINDOWS\system32                                                                                 |
+|77B10000|MSASN1.dll     |ASN.1 Runtime APIs                                            |5.1.2600.2180   |57344   |2004-08-04 10:33:44|C:\WINDOWS\system32                                                                                 |
+|77B30000|appHelp.dll    |Application Compatibility Client Library                      |5.1.2600.2180   |126976  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77BF0000|version.dll    |Version Checking and File Installation Libraries              |5.1.2600.2180   |18944   |2004-08-04 10:34:02|C:\WINDOWS\system32                                                                                 |
+|77C00000|msvcrt.dll     |Windows NT CRT DLL                                            |7.0.2600.2180   |343040  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77C60000|msv1_0.dll     |Microsoft Authentication Package v1.0                         |5.1.2600.2180   |129536  |2004-08-04 10:33:46|C:\WINDOWS\system32                                                                                 |
+|77D30000|user32.dll     |Klient-DLL-fil för Windows XP                                 |5.1.2600.2622   |577024  |2005-03-02 20:19:18|C:\WINDOWS\system32                                                                                 |
+|77DC0000|advapi32.dll   |Advanced Windows 32 Base API                                  |5.1.2600.2180   |680960  |2004-08-04 10:33:28|C:\WINDOWS\system32                                                                                 |
+|77E70000|RPCRT4.dll     |Remote Procedure Call Runtime                                 |5.1.2600.2180   |581120  |2004-08-04 10:33:52|C:\WINDOWS\system32                                                                                 |
+|77F10000|GDI32.dll      |GDI Client DLL                                                |5.1.2600.2180   |278016  |2004-08-04 10:33:36|C:\WINDOWS\system32                                                                                 |
+|77F60000|SHLWAPI.dll    |Shell Light-weight Utility Library                            |6.0.2900.2753   |473600  |2005-09-03 01:55:06|C:\WINDOWS\system32                                                                                 |
+|77FE0000|Secur32.dll    |Security Support Provider Interface                           |5.1.2600.2180   |55808   |2004-08-04 10:33:56|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll   |Klient-DLL för Windows NT BASE API                            |5.1.2600.2180   |997376  |2004-08-04 10:33:40|C:\WINDOWS\system32                                                                                 |
+|7C900000|ntdll.dll      |DLL-fil för NT Layer                                          |5.1.2600.2180   |712704  |2004-08-04 10:33:22|C:\WINDOWS\system32                                                                                 |
+|7C9C0000|shell32.dll    |DLL-fil för Windows-gränssnittet                              |6.0.2900.2763   |8458240 |2005-09-23 05:07:46|C:\WINDOWS\system32                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 0182AD00   EDI: 00000000
+EBX: 0180B4C8   ESI: 00000000
+ECX: 00000000   ESP: 0012FA58
+EDX: 00420DB2   EIP: 00420DAD
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FA58: 00000000   00420DAD: E8 1E FF FF FF 8B 43 04 8B 04 B0 5E 5B C3 90 8B  ......C....^[...
+0012FA5C: 00000000   00420DBD: 50 0C 83 FA 40 7E 0E 8B CA 85 C9 79 03 83 C1 03  P...@~.....y....
+0012FA60: 00000000   00420DCD: C1 F9 02 EB 11 83 FA 08 7E 07 B9 10 00 00 00 EB  ........~.......
+0012FA64: 0041B760   00420DDD: 05 B9 04 00 00 00 03 CA 8B D1 E8 94 01 00 00 C3  ................
+0012FA68: 00420D02   00420DED: 8D 40 00 53 33 C9 EB 01 41 3B 48 08 7D 08 8B 58  .@.S3...A;H.}..X
+0012FA6C: 0012FA98   00420DFD: 04 3B 14 8B 75 F2 3B 48 08 75 03 83 C9 FF 8B C1  .;..u.;H.u......
+0012FA70: 00404630   00420E0D: 5B C3 90 53 56 57 8B F9 8B F2 8B D8 85 F6 7C 05  [..SVW........|.
+0012FA74: 0012FA84   00420E1D: 3B 73 08 7E 0F 8B 15 DC 2B A0 00 8B CE 8B 03 E8  ;s.~....+.......
+0012FA78: 00000000   00420E2D: 9F FE FF FF 8B 43 08 3B 43 0C 75 06 8B C3 8B 10  .....C.;C.u.....
+0012FA7C: 025BE550   00420E3D: FF 12 8B 43 08 3B F0 7D 19 2B C6 8B C8 C1 E1 02  ...C.;.}.+......
+0012FA80: 00000000   00420E4D: 8B 43 04 8D 54 B0 04 8B 43 04 8D 04 B0 E8 B1 1C  .C..T...C.......
+0012FA84: 0012FB2C   00420E5D: FE FF 8B 43 04 89 3C B0 FF 43 08 85 FF 74 0B 33  ...C..<..C...t.3
+0012FA88: 00420DB2   00420E6D: C9 8B D7 8B C3 8B 18 FF 53 04 5F 5E 5B C3 90 8B  ........S._^[...
+0012FA8C: 013F8B30   00420E7D: 50 08 4A E8 0F FF FF FF C3 8B C0 53 56 57 55 8B  P.J........SVWU.
+0012FA90: 00000006   00420E8D: F1 8B FA 8B D8 3B F7 74 45 85 F6 7C 05 3B 73 08  .....;.tE..|.;s.
+0012FA94: 006575BF   00420E9D: 7C 0F 8B 15 DC 2B A0 00 8B CE 8B 03 E8 22 FE FF  |....+......."..
+
+
+

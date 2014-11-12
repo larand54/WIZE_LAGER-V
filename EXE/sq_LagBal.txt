@@ -1,0 +1,161 @@
+Select 0 AS SortOrder, 'INGÅENDE BALANS' AS GRUPP, 'INGÅENDE BALANS' AS ITEM, SUM(pt.Totalm3Actual*NoOfPkgs) AS AM3, 0.0 AS SubTotal
+FROM dbo.InvStatus ins
+Inner Join dbo.PackageType pt on pt.PackageTypeNo = ins.PackageTypeNo
+Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInventoryPointNo = ins.LogicalInventoryPointNo
+WHERE ins.InvDate >= :StartInBalDate
+AND ins.InvDate <= :EndInBalDate
+AND ins.OwnerNo = :ClientNo
+AND ((ins.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+
+UNION
+
+Select 1 AS SortOrder, 'INKÖP' AS GRUPP, 'EXTERNA INKÖP' AS ITEM, SUM(pt.Totalm3Actual) AS AM3, 0.0 AS SubTotal
+FROM dbo.Loads L
+Inner Join dbo.Confirmed_Load cl on cl.Confirmed_LoadNo = L.LoadNo
+INNER JOIN dbo.Loaddetail LD ON LD.LoadNo = L.LoadNo
+				AND LD.ShippingPlanNo = cl.Confirmed_ShippingPlanNo
+Inner Join dbo.Packagetype pt on pt.packagetypeno = ld.packagetypeno
+
+ INNER JOIN dbo.Confirmed_Package_Log cpl on cpl.Confirmed_LoadNo = ld.LoadNo
+			AND cpl.Confirmed_ShippingPlanNo = ld.ShippingPlanNo
+			AND cpl.PackageNo = ld.PackageNo
+			AND cpl.SupplierCode = ld.SupplierCode
+Inner Join dbo.LogicalInventoryPoint LIP on lip.LogicalInventoryPointNo = cpl.LogicalInventoryPointNo
+INNER JOIN dbo.CustomerShippingPlanDetails CSD ON CSD.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo
+
+INNER JOIN dbo.Orders OH ON OH.OrderNo = CSD.OrderNo
+
+WHERE OH.OrderType = 1
+AND cl.DateCreated >= :StartDate
+AND cl.DateCreated <= :EndDate
+AND OH.SalesRegionNo = :ClientNo
+AND ((cpl.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+
+UNION
+
+Select 1 AS SortOrder, 'INKÖP' AS GRUPP, 'INTERNA INKÖP' AS ITEM, SUM(pt.Totalm3Actual) AS AM3, 0.0 AS SubTotal
+FROM dbo.Loads L
+Inner Join dbo.Confirmed_Load cl on cl.Confirmed_LoadNo = L.LoadNo
+Inner Join dbo.Invoiced_Load inl on inl.LoadNo = L.LoadNo
+Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl.InternalInvoiceNo
+Inner Join dbo.InvoiceNumber invno on invno.InternalInvoiceNo = inl.InternalInvoiceNo
+
+INNER JOIN dbo.Loaddetail LD ON LD.LoadNo = inl.LoadNo
+				AND LD.ShippingPlanNo = inl.ShippingPlanNo
+
+ INNER JOIN dbo.Confirmed_Package_Log cpl on cpl.Confirmed_LoadNo = ld.LoadNo
+			AND cpl.Confirmed_ShippingPlanNo = ld.ShippingPlanNo
+			AND cpl.PackageNo = ld.PackageNo
+			AND cpl.SupplierCode = ld.SupplierCode
+
+INNER JOIN dbo.PackageNumber pn on pn.PackageNo = LD.PackageNo
+				AND pn.SupplierCode = LD.SupplierCode
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = pn.LogicalInventoryPointNo
+Inner Join dbo.Packagetype pt on pt.packagetypeno = ld.packagetypeno
+
+INNER JOIN dbo.CustomerShippingPlanDetails CSD ON CSD.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo
+INNER JOIN dbo.Orders OH ON OH.OrderNo = CSD.OrderNo
+
+WHERE
+OH.OrderType = 0
+AND cl.DateCreated >= :StartDate
+AND cl.DateCreated <= :EndDate
+AND OH.CustomerNo = :ClientNo
+AND ((cpl.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+
+
+UNION
+
+Select 2 AS SortOrder, 'FÖRBRUKNING' AS GRUPP, rp.RegPointName AS ITEM, -1*SUM(pt.Totalm3Actual) AS AM3, 0.0 AS SubTotal
+FROM dbo.Package_Production pp
+Inner Join dbo.Packagetype pt on pt.packagetypeno = pp.packagetypeno
+Inner Join dbo.RegistrationPoint rp on rp.RegPointNo = pp.ProductionUnitNo
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = pp.LogicalInventoryPointNo
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+
+WHERE
+pp.Operation = 3
+AND pp.ProductionDate >= :StartDate
+AND pp.ProductionDate <= :EndDate
+AND PIP.OwnerNo = :ClientNo
+AND ((pp.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+
+GROUP BY rp.RegPointName
+
+UNION
+
+Select 3 AS SortOrder, 'PRODUKTION' AS GRUPP, rp.RegPointName AS ITEM, SUM(pt.Totalm3Actual) AS AM3, 0.0 AS SubTotal
+FROM dbo.Package_Production pp
+Inner Join dbo.Packagetype pt on pt.packagetypeno = pp.packagetypeno
+Inner Join dbo.RegistrationPoint rp on rp.RegPointNo = pp.ProductionUnitNo
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = pp.LogicalInventoryPointNo
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+
+WHERE
+pp.Operation = 0
+AND pp.ProductionDate >= :StartDate
+AND pp.ProductionDate <= :EndDate
+AND PIP.OwnerNo = :ClientNo
+AND ((pp.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+
+GROUP BY rp.RegPointName
+
+UNION
+
+Select 4 AS SortOrder, 'FÖRSÄLJNING' AS GRUPP, 'EXTERN FÖRSÄLJNING' AS ITEM, -1*SUM(pt.Totalm3Actual) AS AM3, 0.0 AS SubTotal
+FROM dbo.Loads L
+Inner Join dbo.Invoiced_Load inl on inl.LoadNo = L.LoadNo
+Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl.InternalInvoiceNo
+Inner Join dbo.InvoiceNumber invno on invno.InternalInvoiceNo = inl.InternalInvoiceNo
+Inner Join dbo.InvoiceNumber inno on inno.InternalInvoiceNo = inl.InternalInvoiceNo
+INNER JOIN dbo.Loaddetail LD ON LD.LoadNo = inl.LoadNo
+				AND LD.ShippingPlanNo = inl.ShippingPlanNo
+INNER JOIN dbo.PackageNumber pn on pn.PackageNo = LD.PackageNo
+				AND pn.SupplierCode = LD.SupplierCode
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = pn.LogicalInventoryPointNo
+Inner Join dbo.Packagetype pt on pt.packagetypeno = ld.packagetypeno
+
+INNER JOIN dbo.CustomerShippingPlanDetails CSD ON CSD.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo
+INNER JOIN dbo.Orders OH ON OH.OrderNo = CSD.OrderNo
+
+WHERE OH.OrderType = 0
+AND OH.CustomerNo not in (Select cr.ClientNo From dbo.ClientRole cr Where
+cr.RoleType = 9)
+AND ih.InvoiceDate >= :StartDate
+AND ih.InvoiceDate <= :EndDate
+AND OH.SalesRegionNo = :ClientNo
+AND ((pn.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+
+UNION
+
+Select 4 AS SortOrder, 'FÖRSÄLJNING' AS GRUPP, 'INTERN FÖRSÄLJNING' AS ITEM, -1*SUM(pt.Totalm3Actual) AS AM3, 0.0 AS SubTotal
+FROM dbo.Loads L
+Inner Join dbo.Invoiced_Load inl on inl.LoadNo = L.LoadNo
+Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl.InternalInvoiceNo
+Inner Join dbo.InvoiceNumber invno on invno.InternalInvoiceNo = inl.InternalInvoiceNo
+Inner Join dbo.InvoiceNumber inno on inno.InternalInvoiceNo = inl.InternalInvoiceNo
+INNER JOIN dbo.Loaddetail LD ON LD.LoadNo = inl.LoadNo
+				AND LD.ShippingPlanNo = inl.ShippingPlanNo
+INNER JOIN dbo.PackageNumber pn on pn.PackageNo = LD.PackageNo
+				AND pn.SupplierCode = LD.SupplierCode
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = pn.LogicalInventoryPointNo
+Inner Join dbo.Packagetype pt on pt.packagetypeno = ld.packagetypeno
+
+INNER JOIN dbo.CustomerShippingPlanDetails CSD ON CSD.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo
+INNER JOIN dbo.Orders OH ON OH.OrderNo = CSD.OrderNo
+
+WHERE OH.OrderType = 0
+AND OH.CustomerNo in (Select cr.ClientNo From dbo.ClientRole cr Where
+cr.RoleType = 9)
+AND ih.InvoiceDate >= :StartDate
+AND ih.InvoiceDate <= :EndDate
+AND OH.SalesRegionNo = :ClientNo
+AND ((pn.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))
+AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))
+ 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="nnmdm01ih0bupofbf_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uKilnCharges.TfKilnCharges">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel6" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarDockControl1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarDockControl2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarManager1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.ActionList1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acClose" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.imglistActions" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnCharges" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acNew" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acSave" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acCancelChanges" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel5" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1KilnChargeNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1KilnNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1StartTime" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1EndTime" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1PlannedDuration" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1CreatedDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1CreatedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1Tork" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1ClientNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1Status" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acMovePkgsToAfterKiln" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton5" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgs" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acDeleteKilnCharge" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton6" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsDBTableView1Produkt" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsDBTableView1Antalperlngd" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsDBTableView1Paket" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsDBTableView1AM3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnPkgsDBTableView1KilnChargeNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acKilnChargeNote" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.grdKilnChargesDBTableView1Note" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarPopupMenu1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.Panel7" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acEditNote" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton7" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.rgStatus" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acRefresh" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uKilnCharges.TfKilnCharges.dxBarLargeButton8" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acCloseExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acSaveExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acSaveUpdate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acMovePkgsToAfterKilnExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acMovePkgsToAfterKilnUpdate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acDeleteKilnChargeExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acDeleteKilnChargeUpdate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acCancelChangesUpdate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acCancelChangesExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acKilnChargeNoteExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acEditNoteExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.rgStatusPropertiesChange(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.acRefreshExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uKilnCharges.TfKilnCharges.DataSaved()" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uKilnCharges.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

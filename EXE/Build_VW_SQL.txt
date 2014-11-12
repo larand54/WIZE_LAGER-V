@@ -1,0 +1,37 @@
+SELECT DISTINCT
+isNull(SSP.ShipToInvPointNo,-1)		AS	INVPOINTNO,
+isNull(IName.CityName, '')		AS	INVPOINTNAME,
+US.INITIALS,
+L.LoadNo				AS	VIS_FS,
+L.FS				        AS	MILL_FS,
+L.LoadedDate				AS	LOAD_DATE,
+Mill.ClientCode                         AS      SUPPCODE,
+Cust.ClientCode                         AS      INT_CUSTOMER,
+Cust.ClientNo                         AS      CUSTOMERNO,
+Mill.ClientNo                      AS       SUPPLIER_NO,
+0                      AS      SKATTE_UPPLAG
+FROM dbo.Loads L 
+INNER JOIN dbo.Client Mill			ON	Mill.ClientNo 		= L.SupplierNo
+INNER JOIN dbo.Client Cust			ON	Cust.ClientNo 		= L.CustomerNo
+INNER JOIN dbo.LoadShippingPlan LS			ON	LS.LoadNo		= L.LoadNo
+INNER JOIN dbo.SupplierShippingPlan SSP		ON 	SSP.ShippingPlanNo	= LS.ShippingPlanNo
+  AND SSP.ShiptoInvPointNo = LS.ShipToInvPointNo
+inner JOIN dbo.City IName			ON	IName.CityNo = SSP.ShipToInvPointNo
+LEFT OUTER JOIN dbo.CustomerShippingPlanHeader CSH
+ INNER JOIN dbo.Orders O				ON	O.OrderNo		= CSH.OrderNo
+ LEFT OUTER JOIN dbo.ClientPreference CP		ON	CP.ClientNo		= O.CustomerNo
+ LEFT OUTER JOIN dbo.Address	A			ON	A.AddressNo = CSH.ClientBillingAddressNo
+ON	CSH.ShippingPlanNo	= LS.ShippingPlanNo
+Inner Join dbo.Confirmed_Load   CL
+Left Outer join dbo.Users	US	ON	US.UserID = cl.CreatedUser
+ON CL.Confirmed_LoadNo = L.LoadNo
+Inner Join ClientRole CR ON CR.ClientNo = L.CustomerNo
+AND CR.RoleType = 9
+WHERE
+L.LoadNo
+NOT IN (SELECT PL.LoadNo
+FROM PaymentLoad PL)
+AND
+L.LoadNo
+NOT IN (SELECT LoadNo
+FROM dbo.LoadRemAvr)

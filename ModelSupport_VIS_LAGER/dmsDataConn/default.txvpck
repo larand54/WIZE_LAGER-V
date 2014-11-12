@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="2v6qwownfwak4kk3o_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:dmsDataConn.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.@unitclass.VIDA_WOOD_CLIENTNO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.@unitclass.dmsConnector" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:dmsDataConn.@unitclass.dmsConnector" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:dmsDataConn.TdmsConnector">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ilStatus" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sp_MaxNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetCompany" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetCompanyClientName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sp_GetCurrPkgNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.imgSTD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.spGetSecondNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.Images2424" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ILStatus1616" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.cxStyleRepository1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.cxStyle1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.cxStyle2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ssOrderList" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.LOStatus1616" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.cxStyle3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.cxStyleRed" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetLoggedInUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetUserName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetUserNameUserName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetUserNamePassWord" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADConnection1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_Updater" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.sq_GetLoggedInUserLoggedInUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADGUIxFormsErrorDialog1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADGUIxWaitCursor1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADGUIxFormsQBldrDialog1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADMoniRemoteClientLink1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADMoniFlatFileClientLink1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.ADPhysMSSQLDriverLink1" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.DataModuleDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.FLastTransNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.LoginChanged" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.Org_AD_Name" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.Org_DB_Name" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dmsDataConn.TdmsConnector.DriveLetter" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.Get_AD_Name()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.GetUserNameLoggedIn(ref@System.string,ref@System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.NextSecondMaxNo(System.string,System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.ExecProcedure(uADCompClient.TADStoredProc)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.InitProcedure(uADCompClient.TADStoredProc)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.GetSecondNo(System.string,System.Integer,ref@System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.GetCurrentPkgNo(System.Integer,System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.GetCompanyName(System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.Commit(System.Cardinal)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.Rollback(System.Cardinal)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.StartTransaction()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.LogOnToDatabase(System.string,System.string,System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dmsDataConn.TdmsConnector.NextMaxNo(System.string)" />
+    </reference>
+  </view>
+</nodeSet>

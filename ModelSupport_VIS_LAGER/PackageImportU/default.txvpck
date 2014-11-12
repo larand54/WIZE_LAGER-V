@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="9v4hdvikpy0f9vffm_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:PackageImportU.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.GetDeliveryMessageNumber()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportDeliveryWoordHeader(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportDeliveryMessageReference(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportNameAddress(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportPartyIdentifier(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportDeliveryMessageShipment(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportProductIdentifier(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportDeliveryShipmentDeliveryMessageReference(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportTransportPackageInformation(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportLengthSpecification(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.ImportInformationalQuantity(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.RelaxedImportLengthSpecification(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.RelaxedImportTransportPackageInformation(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:PackageImportU.@unitclass.InPutPackageFileName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:PackageImportU.@unitclass.Fmw" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.RemoveAlpha(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.GetAlpha(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.GetInPutPackageFileName()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.mw()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.DeliveryMessageNumber()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.FImportPartyIdentifier(DB.TDataSet,DeliveryMessageWoodV2R31.IXMLParty)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageImportU.@unitclass.FImportNameAddress(DB.TDataSet,DeliveryMessageWoodV2R31.IXMLParty)" />
+    </reference>
+  </view>
+</nodeSet>

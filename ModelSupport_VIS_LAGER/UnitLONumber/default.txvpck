@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="lczmouuu8q0sauvnr_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitLONumber.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitLONumber.TfLONumber">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.eLONo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.OKBtn" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.CancelBtn" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.bGetProducts" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.grdProdLODBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.grdProdLOLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.grdProdLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.grdProdLODBTableView1PRODUCT" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitLONumber.TfLONumber.grdProdLODBTableView1PRODUCTNO" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitLONumber.TfLONumber.bGetProductsClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitLONumber.TfLONumber.FormDestroy(System.TObject)" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,71 @@
+Select distinct 
+pdl.ActualLengthMM AS AKTUELLÄNGD,
+SUM(ptd.NoOfPieces) AS STYCK,
+SUM(ptd.m3Actual) AS AM3,
+(Select COUNT(pn2.PackageNo) FROM dbo.productLength PDL2
+Inner Join dbo.PackageTypeDetail ptd2 	ON ptd2.ProductLengthNo = pdl2.ProductLengthNo
+Inner Join dbo.PackageType pt2 	ON pt2.PackageTypeNo = ptd2.PackageTypeNo
+INNER JOIN dbo.PackageNumber pn2 ON pn2.PackageTypeNo = pt2.PackageTypeNo
+Inner Join dbo.LogicalInventoryPoint lip2 ON Lip2.LogicalInventoryPointNo = pn2.LogicalInventoryPointNo
+Inner Join dbo.PhysicalInventoryPoint pip2 ON pip2.PhysicalInventoryPointNo = lip2.PhysicalInventoryPointNo
+Inner Join dbo.Client Verk2 ON verk2.ClientNo = pip2.OwnerNo
+Inner Join dbo.Product pd2 ON pd2.ProductNo = pt2.ProductNo 
+Inner Join dbo.ProductGroup pg2 ON pg2.ProductGroupNo = pd2.ProductGroupNo 
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg2.ProductCategoryNo
+				AND imp.LanguageCode = 1
+WHERE
+pdl2.ActualLengthMM = pdl.ActualLengthMM
+AND pn2.Status = 1 AND LIP2.SequenceNo = 1
+ AND ( LIP2.InvCode = '01' ) 
+AND Verk2.SalesRegionNo = 741
+ AND ( Verk2.ClientNo = 76 ) 
+) AS PAKET,
+(Select SUM(ptd2.m3Actual) FROM 
+dbo.productLength PDL2 
+Inner Join dbo.PackageTypeDetail ptd2 	ON ptd2.ProductLengthNo = pdl2.ProductLengthNo 
+Inner Join dbo.PackageType pt2 	ON pt2.PackageTypeNo = ptd2.PackageTypeNo 
+INNER JOIN dbo.PackageNumber pn2 ON pn2.PackageTypeNo = pt2.PackageTypeNo 
+Inner Join dbo.LogicalInventoryPoint lip2 ON Lip2.LogicalInventoryPointNo = pn2.LogicalInventoryPointNo 
+Inner Join dbo.PhysicalInventoryPoint pip2 ON pip2.PhysicalInventoryPointNo = lip2.PhysicalInventoryPointNo 
+Inner Join dbo.Client Verk2 ON verk2.ClientNo = pip2.OwnerNo
+Inner Join dbo.Product pd2 ON pd2.ProductNo = pt2.ProductNo 
+Inner Join dbo.ProductGroup pg2 ON pg2.ProductGroupNo = pd2.ProductGroupNo 
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg2.ProductCategoryNo
+				AND imp.LanguageCode = 1
+WHERE 
+pn2.Status = 1 AND LIP2.SequenceNo = 1
+ AND ( LIP2.InvCode = '01' ) 
+AND Verk2.SalesRegionNo = 741
+ AND ( Verk2.ClientNo = 76 ) 
+) AS TOTAL_AM3 
+FROM  dbo.Client Verk 
+Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo 
+Inner Join dbo.LogicalInventoryPoint lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo 
+INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo 
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = pn.PackageTypeNo 
+Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo 
+Inner Join dbo.productLength PDL ON PDL.ProductLengthNo = ptd.ProductLengthNo 
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo 
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo 
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+WHERE pn.Status = 1 AND LIP.SequenceNo = 1
+AND Verk.SalesRegionNo = 741
+ AND ( LIP.InvCode = '01' ) 
+ AND ( Verk.ClientNo = 76 ) 
+
+
+
+
+
+
+
+
+
+ group by pdl.ActualLengthMM Order by pdl.ActualLengthMM

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="35eag0be0ebqozmnr_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:dlgPickPkg_III.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.pnlButtons" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.pnlGrid" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.btnOK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.btnCancel" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicates" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1PackageNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1SupplierCode" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1ProductDisplayName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1LengthDescription" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1LogicalInventoryName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1ClientName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1PackageTypeNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesDBTableView1LIP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.grdPkgDuplicatesLevel1" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.btnOKClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FSupplierCode" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FSupplierNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FProductLengthNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FNoOfLengths" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FLogicalInventoryPointNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.FPackageTypeNo" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.getDataSource()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.setDataSource(DB.TDataSource)" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.DataSource" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.SupplierCodeForSelectedPkg" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.SupplierNoForSelectedpkg" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.ProductNoForSelectedpkg" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.ProductLengthNoForSelectedpkg" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.NoOfLengthsForSelectedpkg" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.PackageTypeNoForSelectedpkg" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:dlgPickPkg_III.TfrmPackagePicker_III.LogicalInventoryPointNoForSelectedpkg" />
+    </reference>
+  </view>
+</nodeSet>

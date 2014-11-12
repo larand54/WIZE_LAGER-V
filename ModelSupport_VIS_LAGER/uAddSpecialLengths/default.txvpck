@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="enbptgw5naazqbjon_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.lbSpecialLengths" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.ActionList1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.acAddLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.acRemoveLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.BitBtn2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.BitBtn3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.BitBtn4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.eLength" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.acAddLengthExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.acRemoveLengthExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.LengthInList()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uAddSpecialLengths.TfAddSpecialLengths.Pad(System.string)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uAddSpecialLengths.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

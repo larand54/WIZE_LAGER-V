@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="aatvoorya3bkaa1zh_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:frmLogon.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:frmLogon.TdlgLogOn">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.Image1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.GroupBox1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.Label2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.editPassword" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.editUserName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.ckRememberPassword" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.btnDBSetup" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.btnOK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.btnCancel" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.btnOKClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.editUserNameChange(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.btnDBSetupClick(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.FDBUserName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.FDBUserPswd" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.FDatabase" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:frmLogon.TdlgLogOn.FUserKey" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.getDBUserName()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.getDBUserPswd()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.getDatabase()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.getUserName()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.getUserPswd()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.setDatabase(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.setDBUserName(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.setDBUserPswd(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.setUsername(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.setUserPswd(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.getRemember()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.setRemember(System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:frmLogon.TdlgLogOn.Execute()" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.DBUserName" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.DBUserPswd" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.Database" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.Remember" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.UserKey" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.UserName" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:frmLogon.TdlgLogOn.UserPswd" />
+    </reference>
+  </view>
+</nodeSet>

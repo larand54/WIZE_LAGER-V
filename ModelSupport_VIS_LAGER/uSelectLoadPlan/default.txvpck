@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="zd0iwn0sdqa0ioegm_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdr" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.bbOK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.bbCancel" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1LoadingNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1Status" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1ETD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1DateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1PrintDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1Note" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.grdLoadHdrDBTableView1BT" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLoadPlan.TfSelectLoadPlan.images1616" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uSelectLoadPlan.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

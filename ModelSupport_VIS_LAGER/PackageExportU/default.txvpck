@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="rswv93u4opay7duor_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:PackageExportU.TImportExportFunction">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:PackageExportU.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.doClearEmptyNode()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.GetOutPutPackageFileName()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportDeliveryWoordHeader(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportDeliveryMessageReference(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportNameAddress(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportPartyIdentifier(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.CleareDoc()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportDeliveryMessageShipment(DB.TDataSet,System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportProductIdentifier(DB.TDataSet,PackageExportU.IXMLNode)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportDeliveryShipmentDeliveryMessageReference(DB.TDataSet,PackageExportU.IXMLNode)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportTransportPackageInformation(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportLengthSpecification(DB.TDataSet,PackageExportU.IXMLNode)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.ExportInformationalQuantity(DB.TDataSet,PackageExportU.IXMLNode)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:PackageExportU.@unitclass.OutPutPackageFileName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:PackageExportU.@unitclass.InternalInvoiceNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:PackageExportU.@unitclass.Fmw" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.DoCreateEmptyPackageFile()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.mw()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.DeleteEmptyNode(PackageExportU.IXMLNode)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.doSaveXML(System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.DeliveryMessageNumber()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.NewDataSet(System.string,DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.DoImportExport(System.string,PackageExportU.TImportExportFunction,DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.DoImportExport(System.string,PackageExportU.TExportFunctionInnerUse1,DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.DoImportExport(System.string,PackageExportU.TExportFunctionInnerUse2,DB.TDataSet,PackageExportU.IXMLNode)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.FExportPartyIdentifier(DB.TDataSet,ref@DeliveryMessageWoodV2R31.IXMLParty)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:PackageExportU.@unitclass.FExportNameAddress(DB.TDataSet,ref@DeliveryMessageWoodV2R31.IXMLParty)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:PackageExportU.TExportFunctionInnerUse2">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:PackageExportU.TExportFunctionInnerUse1">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:PackageExportU.TImportExportFunctionGetDeliveryMessageNumber">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

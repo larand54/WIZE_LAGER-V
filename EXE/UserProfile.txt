@@ -1,0 +1,12 @@
+UserProfile
+UserID	
+Form	Namn på unikt formulär
+Name	Namn på tex Mall
+
+
+[GridSettings]
+[ViewName]	Form & Name from UserProfile
+[UserID]
+[Sets]		Binären
+[Name]		
+[Form]

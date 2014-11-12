@@ -1,0 +1,71 @@
+Insert INTO dbo.PROD_By_Length
+(UserID,
+ProductLengthNo,
+ACT_L,
+NOM_L,
+FEET,
+INCH,
+PCS,
+AM3,
+NM3,
+LPM,
+MFBM,
+KVM,
+FilterDateStart,
+FilterDateEnd,
+Operation,
+ClientName,
+ProductionUnitName)
+Select Distinct 
+8,
+PDL.ProductLengthNo,
+pdl.ActualLengthMM,
+pdl.NominalLengthMM,
+pdl.NominalLengthFEET,
+pdl.ActualLengthINCH,
+SUM(ptd.NoOfPieces),
+SUM(ptd.m3Actual) ,
+SUM(ptd.m3Nominal),
+SUM(ptd.LinealMeterActualLength),
+SUM(ptd.MFBMNominal),
+SUM(ptd.SQMofActualWidth),
+'2010-04-02 00:00:00',
+'2012-04-09 00:00:00',
+pp.Operation,
+Verk.ClientName,
+PU.RegPointName AS ProductionUnitName
+FROM  dbo.Package_Production PP
+Inner Join PackageNumber pn 	ON pn.PackageNo = PP.PackageNo
+AND pn.SupplierCode = PP.SupplierCode
+Inner Join Client Verk ON Verk.ClientNo = PP.SupplierNo
+Inner Join dbo.RegistrationPoint PU ON PU.RegPointNo = PP.ProductionUnitNo
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = pp.PackageTypeNo
+Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.productLength PDL ON PDL.ProductLengthNo = ptd.ProductLengthNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.Grade G ON G.GradeNo = pd.GradeNo
+  AND G.LanguageCode = 1
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+AND SUR.LanguageCode = 1
+WHERE pp.ProductionDate >= '2010-04-02 00:00:00'
+AND pp.ProductionDate <= '2012-04-09 00:00:00'
+
+ AND ( Verk.PktNrLevKod = 12 ) 
+
+
+
+
+
+
+
+
+
+
+group by pdl.ActualLengthMM, PDL.ProductLengthNo, pdl.NominalLengthMM, pdl.NominalLengthFEET,  pdl.ActualLengthINCH, 
+pp.Operation, Verk.ClientName, PU.RegPointName
+Order by pdl.ActualLengthMM

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="z36obwyd29ajuyp0i_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:VidaUser.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.@unitclass.ThisUser()" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.@unitclass.TheOneAndOnlyUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.@unitclass.CreatingAsSingleton" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:VidaUser.@unitclass.TheOneAndOnlyUser" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:VidaUser.TUser">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FUserSpec" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FNeedsRefresh" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FDatabase" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FDBUserPswd" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FDBUserName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FHostName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FUserName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FUserPswd" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FclBackPreliminaryLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FclBackNewLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FclBackAcceptedLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FclBackRejectedLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FclBackCompletedLO" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FfLoadOrderHSplit" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:VidaUser.TUser.FLoadEntryHSplit" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.setDatabase(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.getCanModify(VidaType.TDataCategory)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.getUserID()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.getUserCompanyNo()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.LoadAccessRightsFromDB()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.getCanView(VidaType.TDataCategory)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.GetAccesValid(VidaType.TDataCategory)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.setUserName(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.setUserPswd(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.Check_UserLogOn(System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.Create()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:VidaUser.TUser.Logon()" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.CanView[VidaType.TDataCategory]" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.AccesValid[VidaType.TDataCategory]" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.CanModify[VidaType.TDataCategory]" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.clBackPreliminaryLO" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.clBackNewLO" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.clBackRejectedLO" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.clBackAcceptedLO" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.clBackCompletedLO" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.CompanyNo" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.Database" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.DBUserName" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.DBUserPswd" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.fLoadOrderHSplit" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.HostName" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.UserID" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.UserName" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.UserPswd" />
+      <reference referencedUin="delphi:e_property:src:VIS_LAGER:VidaUser.TUser.LoadEntryHSplit" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,49 @@
+Insert into dbo.InvCtrl_Pkgs
+Select Distinct 6792
+,PP.PackageNo, PP.SupplierCode, 10, GetDate(), pp.LogicalInventoryPointNo, 0 AS Sortorderno, -1,
+-1, -1
+FROM dbo.Package_Production PP 
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = PP.PackageNo 
+AND pn.SupplierCode = PP.SupplierCode
+INNER JOIN dbo.RegistrationPoint rp on rp.RegPointNo = pp.ProductionUnitNo
+WHERE PP.ProductionDate < '2012-12-20 05:17:42'
+AND PP.ProductionDate > '2012-12-28 00:00:00'
+AND PP.Operation = 0
+AND PP.SupplierNo = 76
+AND rp.SequenceNo = 1
+AND PP.PackageNo not in (Select pp3.PackageNo
+from dbo.Package_Production pp3
+WHERE pp3.SupplierCode = PP.SupplierCode
+AND pp3.ProductionDate  < '2012-12-20 05:17:42'
+AND pp3.Operation = 3
+AND pp3.SupplierNo = 76)
+AND pp.LogicalInventoryPointNo in (Select LogicalInventoryPointNo
+FROM dbo.InvCtrlMetod ICM
+WHERE ICM.IC_grpno = 6792)
+AND PP.PackageNo not in (Select PackageNo
+from dbo.InvControlrow icr
+WHERE IC_grpno = 6792
+AND PackageNo = PP.PackageNo
+AND SupplierCode = PP.SupplierCode)
+AND PP.PackageNo not in (Select PackageNo FROM dbo.InvCtrl_Pkgs
+WHERE SupplierCode = PP.SupplierCode
+AND IC_GrpNo = 6792
+AND ((Operation = 2) or (Operation = 6) or (Operation = 9)
+or (Operation = 3) or (Operation = 4) or (Operation = 5)) )
+AND PP.PackageNo not in (Select Distinct LD.PackageNo
+FROM dbo.Loads L
+Inner Join dbo.LoadDetail LD ON LD.LoadNo = L.LoadNo
+Inner Join dbo.LoadShippingPlan LSP ON LSP.LoadNo = LD.LoadNo
+AND LSP.ShippingPlanNo = LD.ShippingPlanNo
+Inner Join dbo.SupplierShippingPlan SSP on SSP.ShippingPlanNo = LSP.ShippingPlanNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo
+AND pn.SupplierCode = LD.SupplierCode
+WHERE L.SupplierNo = 76
+AND LD.SupplierCode = PP.SupplierCode
+AND L.LoadedDate <= '2012-12-20 05:17:42'
+AND SSP.LoadingLocationNo in
+(Select PIP.PhyInvPointNameNo
+FROM dbo.InvCtrlMetod ICM
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = ICM.LogicalInventoryPointNo
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+WHERE ICM.IC_grpno = 6792))

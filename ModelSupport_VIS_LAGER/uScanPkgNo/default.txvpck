@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="5irqp7yr0banru03r_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uScanPkgNo.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uScanPkgNo.@unitclass.fScanPkgNo" />
+      <reference referencedUin="delphi:l_ast:src:VIS_LAGER:uScanPkgNo.@unitclass.fScanPkgNo" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.ePktNr" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.bbOK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.cbEgenLevKod" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.ePktNrKeyPress(System.TObject,ref@System.Char)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uScanPkgNo.TfScanPkgNo.StreckKodPkgNo" />
+    </reference>
+  </view>
+</nodeSet>

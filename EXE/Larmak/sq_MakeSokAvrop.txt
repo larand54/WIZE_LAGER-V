@@ -1,0 +1,106 @@
+Insert INTO dbo.SokAvrop 
+	(UKEY, USERID, 
+     AVROP_STATUS, 
+	LO,     
+	LOADING_LOCATION, 
+	SUPPLIER, 
+	ORDER_NO, 
+	CUST_REFERENCE, -- varchar 30 
+	FROM_WEEK, --int 
+	TO_WEEK, -- int 
+	CUSTOMER, -- varchar 80       
+	AGENT, -- varchar 80          
+	DELIVERY_TERM, -- varchar 21  
+	POSTAL_CODE_DESTINATION, -- varchar 80  
+	SHIPTO_REFERENCE, -- varchar 50  
+	READY_DAY, --char 30        
+	SHIPPER, -- varchar 80      
+	SHIPPINGCOMPANYBOOKINGID, --CHAR 20      
+	SHIPPERSSHIPDATE, -- DATETIME      
+	TRANSPORT, -- char 30       
+	INVOICENO, --INT       
+	MARKET_REGION,  --char 10   
+	BookingNo,  --char 10   
+	PANIC_NOTE,   --Varchar 30   
+	VESSEL,   --Varchar 30   
+	ETD,   --Varchar 30   
+	ETA,   --Varchar 30   
+	AM3_ORDER,  
+	SupplierReference ) 
+Select DISTINCT 
+  RTRIM(CONVERT(varchar(20),isnull(CSH.ShippingPlanNo,'')))+
+RTRIM(CONVERT(varchar(20),isnull(Supp.ClientName,'')))+
+RTRIM(CONVERT(varchar(20),isnull(Bk.BookingNo,'')))+
+RTRIM(CONVERT(varchar(20),isnull(Inv.InvoiceNo,'')))+
+RTRIM(CONVERT(varchar(20),isnull(ST.Reference,'')))+
+RTRIM(CONVERT(varchar(20),isnull(LL.CityName,'')))+
+RTRIM(CONVERT(varchar(20),isnull(OH.OrderNoText,'')))+
+RTRIM(CONVERT(varchar(20),isnull(ST_AdrCY.CityName,''))) AS UKEY, 
+49,
+CASE
+WHEN CSH.SHIPPINGPLANSTATUS = 0 THEN 'CANCEL'
+WHEN CSH.SHIPPINGPLANSTATUS = 1 THEN 'PROGRESS'
+WHEN CSH.SHIPPINGPLANSTATUS = 2 THEN 'COMPLETE'
+END AS AVROP_STATUS,
+	CSH.ShippingPlanNo        	AS LO, --Int  
+	LL.CityName			AS LOADING_LOCATION, --VarChar 50  
+	Supp.SearchName			AS SUPPLIER, -- varchar 80  
+	OH.OrderNoText			AS ORDER_NO, -- varchar 20  
+	CSH.Reference			AS CUST_REFERENCE, -- varchar 30  
+	CSH.ETDYearWeek			AS FROM_WEEK, --int  
+	CSH.ETDWeekEnd			AS TO_WEEK, -- int  
+	C.SearchName            	AS CUSTOMER, -- varchar 80  
+	AG.SearchName			AS AGENT, -- varchar 80  
+	DT.DeliveryTerm			AS DELIVERY_TERM, -- varchar 21  
+	isnull(RTRIM(ST_ADR.PostalCode)+' / '   ,'')  +
+	RTRIM(CONVERT(varchar(20),isnull(ST_AdrCY.CityName,''))) AS POSTAL_CODE_DESTINATION, -- varchar
+	ST.Reference			AS SHIPTO_REFERENCE, --char 50
+	BK.PreliminaryRequestedPeriod	AS READY_DAY, --char 30  
+	SC.SearchName			AS SHIPPER, -- varchar 80  
+	Bk.ShippingCompanyBookingID	AS SHIPPINGCOMPANYBOOKINGID, --CHAR 20
+	Bk.ShippersShipDate		AS SHIPPERSSHIPDATE, -- DATETIME
+	Bt.BookingType			AS TRANSPORT, -- char 30  
+	INV.InvoiceNo			AS INVOICENO, --int 
+	MR.MarketRegionName		AS MARKET_REGION, --char 10  
+	Bk.BookingNo    		AS BookingNo, -- int
+Bk.Panic_Note AS PANIC_NOTE, 
+CR.CarrierName AS VESSEL, 
+VG.ETD, 
+VD.ETA, 
+ROUND(CAST((   SUM(CSD.m3Net)    ) As decimal(18,3)),3)  	 AS AM3,
+Bk.SupplierReference 
+FROM	dbo.CustomerShippingPlanHeader CSH 
+	INNER JOIN dbo.Client 			C	ON 	C.ClientNo		= CSH.CustomerNo 
+	LEFT OUTER JOIN dbo.MarketRegion	MR	ON	MR.MarketRegionNo	= C.MarketRegionNo 
+	LEFT OUTER JOIN dbo.InvoiceLO		IL	ON	IL.ShippingPlanNo	= CSH.ShippingPlanNo
+	LEFT OUTER JOIN dbo.InvoiceHeader       IH	ON	IH.InternalInvoiceNo	= IL.InternalInvoiceNo
+	LEFT OUTER JOIN dbo.InvoiceNumber	INV	ON	INV.InternalInvoiceNo	= IL.InternalInvoiceNo
+	Left outer JOIN dbo.CustomerShippingPlanDetails CSD 	
+	ON 	CSD.ShippingPlanNo 	= CSH.ShippingPlanNo  
+	INNER JOIN dbo.Orders 			OH 
+	LEFT OUTER JOIN dbo.Client 			AG	ON 	AG.ClientNo		= OH.AgentNo 
+	LEFT OUTER JOIN dbo.DeliveryTerm	DT	ON	DT.DeliveryTerm_No		= OH.DeliveryTermsNo 
+							ON 	OH.OrderNo			= CSH.OrderNo 
+	LEFT OUTER JOIN ShippingPlan_ShippingAddress ST 
+	INNER JOIN dbo.Address 		ST_ADR		ON	ST_ADR.AddressNo	= ST.AddressNo 
+	INNER JOIN dbo.CITY		ST_AdrCY	ON	ST_AdrCY.CityNo 	= ST_ADR.CityNo 
+	INNER JOIN dbo.Country		ST_AdrCtry	ON	ST_AdrCtry.CountryNo 	= ST_ADR.CountryNo 
+							ON	ST.ShippingPlanNo	= CSD.ShippingPlanNo 
+    	LEFT OUTER JOIN dbo.Booking		Bk 
+	LEFT OUTER JOIN dbo.VoyageDestination	VD 	ON  	Bk.BookingNo		= vd.BookingNo 
+	Left Outer JOIN dbo.Voyage		Vg 	ON  	Bk.VoyageNo		= Vg.VoyageNo 
+	Left Outer JOIN dbo.Client		SC 	ON  	Bk.ShippingCompanyNo 	= SC.ClientNo 
+	Left outer JOIN dbo.Carrier            	Cr 	ON  	Vg.CarrierNo    	= Cr.CarrierNo 
+	Left Outer Join dbo.BookingType		Bt	ON	Bt.BookingTypeNo	= Bk.BookingTypeNo 
+							ON  	CSD.ShippingPlanNo 	= Bk.ShippingPlanNo 
+	LEFT OUTER JOIN dbo.SupplierShippingPlan          SP 
+	INNER JOIN dbo.CITY		LL	ON	LL.CityNo 		= SP.LoadingLocationNo 
+	INNER JOIN dbo.Client 		Supp	ON 	Supp.ClientNo		= SP.SupplierNo 
+						ON 	SP.ShippingPlanNo 	= CSH.ShippingPlanNo 
+WHERE OH.OrderType = 0
+ AND CSH.ShippingPlanStatus = 1 
+GROUP BY CSH.SHIPPINGPLANSTATUS, CSH.ShippingPlanNo, LL.CityName, Supp.SearchName,
+OH.OrderNoText, CSH.Reference, CSH.ETDYearWeek, CSH.ETDWeekEnd, C.SearchName, AG.SearchName,
+DT.DeliveryTerm,  ST_ADR.PostalCode, ST_AdrCY.CityName, ST.Reference, BK.PreliminaryRequestedPeriod,
+SC.SearchName, Bk.ShippingCompanyBookingID, Bk.ShippersShipDate, Bt.BookingType, INV.InvoiceNo, MR.MarketRegionName,
+Bk.BookingNo, Bk.Panic_Note, CR.CarrierName, Vg.ETD, VD.ETA, Supp.ClientName, Bk.SupplierReference

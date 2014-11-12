@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="ppl64ypxsyac0brco_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uEntryPriceField.TfEntryPriceField">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryPriceField.TfEntryPriceField.mePriceField" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryPriceField.TfEntryPriceField.LabelForField" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryPriceField.TfEntryPriceField.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryPriceField.TfEntryPriceField.BitBtn2" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uEntryPriceField.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

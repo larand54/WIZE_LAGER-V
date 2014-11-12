@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="gonmpu33q9bqv0opg_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitCRPrintOneReport.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitCRPrintOneReport.TFormCRPrintOneReport">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRPrintOneReport.TFormCRPrintOneReport.Application1" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCRPrintOneReport.TFormCRPrintOneReport.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRPrintOneReport.TFormCRPrintOneReport.CRreport" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRPrintOneReport.TFormCRPrintOneReport.ReportFound" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCRPrintOneReport.TFormCRPrintOneReport.CreateCo(System.Integer,System.Boolean,System.Boolean,System.Variant[],System.string)" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="ifr3krfxofarfyncj_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uEncode.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uEncode.TVDEncode">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEncode.TVDEncode.FRegCode" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.GetCharAt(System.Char)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.ReadInteger(System.Char*,ref@System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.Create()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.Encode(System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.IsValid(System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.DecodeStr(System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uEncode.TVDEncode.EncodeStr(System.string,System.string)" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="s0tsuan7gdbzl1rag_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlList" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1IC_grpno" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1Inventeringsdatum" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1Note" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1Status" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1MaxDatum" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.bbOK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.bbCancel" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1Lager" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1SkapadAv" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserProp" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropVerkNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropOwnerNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropPIPNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLIPNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropInputOption" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropRegPointNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropRegDate" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropCopyPcs" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropRunNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropProducerNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropAutoColWidth" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropSupplierCode" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLengthOption" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLengthGroupNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropNewItemRow" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropGradeStampNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropBarCodeNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLengthGroup" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLIPName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropPIPNAME" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropREGPOINT" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropPRODUCER" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropOWNER" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropVERK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropRoleType" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropGradestamp" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropBarcode" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropProductDescription" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropProductGroupNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLIPChange" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropSalesRegionNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropVolumeUnitNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLengthFormatNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropForm" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropUserID" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropLengthVolUnitNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropSurfacingNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropNOMTHICK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropGroupByBox" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropGroupSummary" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropAgentNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropShipperNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropStartPeriod" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.mtUserPropEndPeriod" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.dsUserProp" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.deEndPeriod" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.deStartPeriod" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.cxLabel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.ActionList1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.acRefreshList" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.cxButton1" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.grdInvCtrlListDBTableView1DblClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.acRefreshListExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uInvCtrlList.TfInvCtrlList.VerkNoForList" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uInvCtrlList.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

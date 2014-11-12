@@ -1,0 +1,38 @@
+Insert into dbo.InvCtrl_Pkgs
+Select Distinct 109
+,LD.PackageNo, LD.SupplierCode, 3, GetDate(),
+LD.LIPNo AS LogicalInventoryPointNo, 0 AS Sortorderno, -1
+FROM dbo.Loads L
+Inner Join dbo.LoadDetail LD ON LD.LoadNo = L.LoadNo
+Inner Join dbo.LoadShippingPlan LSP ON LSP.LoadNo = LD.LoadNo
+AND LSP.ShippingPlanNo = LD.ShippingPlanNo
+Inner Join dbo.CustomerShippingPlanHeader SSP on SSP.ShippingPlanNo = LSP.ShippingPlanNo
+Inner Join dbo.Orders OH on OH.OrderNo = SSP.OrderNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo
+AND pn.SupplierCode = LD.SupplierCode
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = LD.LIPNo
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+Inner Join dbo.Confirmed_Load CL ON CL.NewLoadNo = L.LoadNo
+Inner Join dbo.Invoiced_Load IL ON IL.LoadNo = L.LoadNo
+Inner Join dbo.InvoiceHeader IH on IH.InternalInvoiceNo = IL.InternalInvoiceNo
+Inner Join dbo.InvoiceNumber_PO INPO on INPO.InternalInvoiceNo = IH.InternalInvoiceNo
+WHERE L.SupplierNo = 741
+AND OH.OrderType = 1
+AND IH.InvoiceDate <= '2008-08-01 00:00:00'
+AND IH.InvoiceDate >= '2008-07-02 13:35:52'
+AND LD.PackageNo not in (Select PackageNo
+from dbo.InvControlrow icr
+WHERE IC_grpno = 109
+AND PackageNo = LD.PackageNo
+AND SupplierCode = LD.SupplierCode)
+AND LD.LIPNo in
+(Select ICM.LogicalInventoryPointNo
+FROM dbo.InvCtrlMetod ICM
+WHERE ICM.IC_grpno = 109)
+AND CL.Confirmed_LoadNo not in (Select L2.LoadNo
+FROM
+dbo.Loads L2
+Inner Join dbo.Client iv on iv.ClientNo = L2.CustomerNo
+WHERE
+L2.LoadNo = CL.Confirmed_LoadNo
+AND iv.IntVerk = 1)

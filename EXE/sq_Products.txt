@@ -1,0 +1,15 @@
+SELECT pd.ProductNo, pg.ProductGroupNo, gd.GradeName,
+sc.SpeciesName, sf.SurfacingName, pc.ProductCategoryName,
+pg.ActualThicknessMM, pg.ActualWidthMM, pg.NominalThicknessMM, pg.NominalWidthMM,
+pd.ProductDisplayName, pd.GradeNo, pg.SpeciesNo, pg.ProductCategoryNo,
+pg.SurfacingNo, pg.NominalThicknessINCH, pg.NominalWidthINCH
+FROM dbo.Product pd
+INNER JOIN      dbo.ProductGroup pg ON pd.ProductGroupNo = pg.ProductGroupNo
+INNER JOIN      dbo.Grade gd ON pd.GradeNo = gd.GradeNo
+AND gd.LanguageCode = 1
+INNER JOIN      dbo.ProductCategory pc ON       pg.ProductCategoryNo = pc.ProductCategoryNo
+INNER JOIN      dbo.Species sc ON pg.SpeciesNo = sc.SpeciesNo
+AND sc.LanguageCode = 1
+INNER JOIN      dbo.Surfacing sf ON pg.SurfacingNo = sf.SurfacingNo
+AND sf.LanguageCode = 1
+WHERE pd.Act = 1 AND  pg.Act = 1 AND sc.Act = 1 AND sf.Act = 1 AND gd.Act = 1

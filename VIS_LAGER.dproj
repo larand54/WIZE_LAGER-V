@@ -1,0 +1,762 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{0E5EFB7A-5A12-4202-9598-20A6C02D6D50}</ProjectGuid>
+			<MainSource>VIS_LAGER.dpr</MainSource>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>13.4</ProjectVersion>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+			<TargetedPlatforms>1</TargetedPlatforms>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+			<Base_Win64>true</Base_Win64>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+			<Cfg_2_Win32>true</Cfg_2_Win32>
+			<CfgParent>Cfg_2</CfgParent>
+			<Cfg_2>true</Cfg_2>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<VerInfo_Build>11</VerInfo_Build>
+			<VerInfo_Debug>true</VerInfo_Debug>
+			<VerInfo_Keys>CompanyName=Carmak AB;FileDescription=VISLAG;FileVersion=2.3.1.11;InternalName=VIS_LAGER.EXE;LegalCopyright=;LegalTrademarks=;OriginalFilename=VIS_LAGER.exe;ProductName=Vida Information Systems;ProductVersion=1.0.0.0;Comments=Lagermodul</VerInfo_Keys>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_MajorVer>2</VerInfo_MajorVer>
+			<VerInfo_MinorVer>3</VerInfo_MinorVer>
+			<VerInfo_Locale>2057</VerInfo_Locale>
+			<VerInfo_Release>1</VerInfo_Release>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_ExeOutput>EXE</DCC_ExeOutput>
+			<DCC_UsePackage>vcl;rtl;dbrtl;adortl;vcldb;vclx;bdertl;vcldbx;ibxpress;dsnap;cds;bdecds;qrpt;teeui;teedb;tee;dss;teeqr;visualclx;visualdbclx;dsnapcrba;dsnapcon;VclSmp;vclshlctrls;vclie;xmlrtl;inet;inetdbbde;inetdbxpress;inetdb;nmfast;webdsnap;websnap;dbexpress;dbxcds;indy;dclOffice2k;CICS;ADOX;LECSGeneral;Harris;SqlDir60;kbmMemD6Run;$(DCC_UsePackage)</DCC_UsePackage>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_Description>Comms Component for SysMedia test app</DCC_Description>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<DCC_Define>LOGGER;EUREKALOG;EUREKALOG_VER6;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_UNSAFE_TYPE>true</DCC_UNSAFE_TYPE>
+			<DCC_K>false</DCC_K>
+			<DCC_F>false</DCC_F>
+			<DCC_S>false</DCC_S>
+			<DCC_N>true</DCC_N>
+			<DCC_E>false</DCC_E>
+			<DCC_UNSAFE_CAST>true</DCC_UNSAFE_CAST>
+			<DCC_UNSAFE_CODE>true</DCC_UNSAFE_CODE>
+			<DCC_DcuOutput>DCU</DCC_DcuOutput>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win64)'!=''">
+			<Icon_MainIcon>VIS_LAGER_Icon8.ico</Icon_MainIcon>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<Icon_MainIcon>VIS_LAGER_Icon8.ico</Icon_MainIcon>
+			<DCC_Namespace>System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<DCC_Define>_VER7;_VER7;$(DCC_Define)</DCC_Define>
+			<VerInfo_Build>90</VerInfo_Build>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=2.3.1.90;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="$(MainSource)">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="fMain.pas">
+				<Form>frmMain</Form>
+			</DCCReference>
+			<DCCReference Include="VidaConst.pas"/>
+			<DCCReference Include="frmLogon.pas">
+				<Form>dlgLogOn</Form>
+			</DCCReference>
+			<DCCReference Include="frmDBAdmin.pas">
+				<Form>dlgDBAdmin</Form>
+			</DCCReference>
+			<DCCReference Include="uEncode.pas"/>
+			<DCCReference Include="dmsVidaSystem.pas">
+				<Form>dmsSystem</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="dmcVidaSystem.pas">
+				<Form>dmcSystem</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="VidaType.pas"/>
+			<DCCReference Include="fDBForm.pas">
+				<Form>frmDBForm</Form>
+			</DCCReference>
+			<DCCReference Include="UnitCRViewReport.pas">
+				<Form>FormCRViewReport</Form>
+			</DCCReference>
+			<DCCReference Include="dmBooking.pas">
+				<Form>dm_Booking</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnitCarrier.pas">
+				<Form>FormCarrier</Form>
+			</DCCReference>
+			<DCCReference Include="dmcVidaPayment.pas">
+				<Form>dmcPayment</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnitPkgInfo.pas">
+				<Form>frmPkgInfo</Form>
+			</DCCReference>
+			<DCCReference Include="UnitPkgNo.pas">
+				<Form>frmPkgNo</Form>
+			</DCCReference>
+			<DCCReference Include="UnitInventoryReport.pas">
+				<Form>frmInventoryReport</Form>
+			</DCCReference>
+			<DCCReference Include="dm_Inventory.pas">
+				<Form>dmInventory</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="dmsVidaPkg.pas">
+				<Form>dmsPkg</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="dmcPkgs.pas">
+				<Form>dmPkgs</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnitLONumber.pas">
+				<Form>fLONumber</Form>
+			</DCCReference>
+			<DCCReference Include="UnitCRPrintReport.pas">
+				<Form>FormCRPrintReport</Form>
+			</DCCReference>
+			<DCCReference Include="uStickyNote.pas">
+				<Form>frmStickyNote</Form>
+			</DCCReference>
+			<DCCReference Include="dlgPickPkg_II.pas">
+				<Form>frmPackagePicker_II</Form>
+			</DCCReference>
+			<DCCReference Include="uEntryField.pas">
+				<Form>fEntryField</Form>
+			</DCCReference>
+			<DCCReference Include="uProductionUnit.pas">
+				<Form>frmProductionUnit</Form>
+			</DCCReference>
+			<DCCReference Include="uBasMatPunkter.pas">
+				<Form>fBasMatPunkter</Form>
+			</DCCReference>
+			<DCCReference Include="uPktNrPos.pas">
+				<Form>fPktNrPos</Form>
+			</DCCReference>
+			<DCCReference Include="UPkgNoPos.pas">
+				<Form>fPkgNoPos</Form>
+			</DCCReference>
+			<DCCReference Include="uInvCtrl.pas">
+				<Form>fInvCtrl</Form>
+			</DCCReference>
+			<DCCReference Include="dmcInvCtrl.pas">
+				<Form>dmInvCtrl</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="dlgPickPkg_III.pas">
+				<Form>frmPackagePicker_III</Form>
+			</DCCReference>
+			<DCCReference Include="uPickPkgNo.pas">
+				<Form>fPickPkgNo</Form>
+			</DCCReference>
+			<DCCReference Include="uConfirmCodeDialog.pas">
+				<Form>frmConfirmCodeDialog</Form>
+			</DCCReference>
+			<DCCReference Include="uInvCtrlList.pas">
+				<Form>fInvCtrlList</Form>
+			</DCCReference>
+			<DCCReference Include="uSelectShipper.pas">
+				<Form>fSelectShipper</Form>
+			</DCCReference>
+			<DCCReference Include="uGridSetting.pas">
+				<Form>fGridSetting</Form>
+			</DCCReference>
+			<DCCReference Include="dmsSinglePkg.pas">
+				<Form>dm_SinglePkg</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uSinglePkgEntry.pas">
+				<Form>fSinglePkgEntry</Form>
+			</DCCReference>
+			<DCCReference Include="dmcLoadPlan.pas">
+				<Form>dmLoadPlan</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uSelectLoadPlan.pas">
+				<Form>fSelectLoadPlan</Form>
+			</DCCReference>
+			<DCCReference Include="uInventeraPIG.pas">
+				<Form>fInventeraPIG</Form>
+			</DCCReference>
+			<DCCReference Include="uSelectLIP.pas">
+				<Form>fSelectLIP</Form>
+			</DCCReference>
+			<DCCReference Include="uPigNames.pas">
+				<Form>fPigNames</Form>
+			</DCCReference>
+			<DCCReference Include="uSelectInvPIG.pas">
+				<Form>fSelectInvPIG</Form>
+			</DCCReference>
+			<DCCReference Include="uDistDupPkgsToLoadPlan.pas">
+				<Form>fDistDupPkgsToLoadPlan</Form>
+			</DCCReference>
+			<DCCReference Include="uAOUser.pas">
+				<Form>fAOUser</Form>
+			</DCCReference>
+			<DCCReference Include="dmcVidaOrder.pas">
+				<Form>dmcOrder</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uAnalyseraLeveranser.pas">
+				<Form>fAnalyseraLeveranser</Form>
+			</DCCReference>
+			<DCCReference Include="uSendMapiMail.pas">
+				<Form>dm_SendMapiMail</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnitPkgEntry.pas">
+				<Form>frmPkgEntry</Form>
+			</DCCReference>
+			<DCCReference Include="dmsVidaContact.pas">
+				<Form>dmsContact</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="dmcProduct.pas">
+				<Form>dmProduct</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="dmsDataConn.pas">
+				<Form>dmsConnector</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnitRemovePkg.pas">
+				<Form>frmRemovePkg</Form>
+			</DCCReference>
+			<DCCReference Include="dmc_UserProps.pas">
+				<Form>dm_UserProps</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UfelRegPkg.pas">
+				<Form>ffelRegPkg</Form>
+			</DCCReference>
+			<DCCReference Include="UnitMovePkgs.pas">
+				<Form>frmMovePkgs</Form>
+			</DCCReference>
+			<DCCReference Include="dmc_DryKiln.pas">
+				<Form>dm_DryKiln</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uKilnProps.pas">
+				<Form>fKilnProps</Form>
+			</DCCReference>
+			<DCCReference Include="uKilnCharges.pas">
+				<Form>fKilnCharges</Form>
+			</DCCReference>
+			<DCCReference Include="uKilnChargeNote.pas">
+				<Form>fKilnChargeNote</Form>
+			</DCCReference>
+			<DCCReference Include="uScanPkgNo.pas">
+				<Form>fScanPkgNo</Form>
+			</DCCReference>
+			<DCCReference Include="uKilnWizard.pas">
+				<Form>fKilnWizard</Form>
+			</DCCReference>
+			<DCCReference Include="uSIC.pas">
+				<Form>fSIC</Form>
+			</DCCReference>
+			<DCCReference Include="uSicICgrp.pas">
+				<Form>fSicICgrp</Form>
+			</DCCReference>
+			<DCCReference Include="uModifySIC.pas">
+				<Form>fModifySIC</Form>
+			</DCCReference>
+			<DCCReference Include="uLipForSic.pas">
+				<Form>fLipForSic</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\CommonUnits\UnitAboutBox.pas">
+				<Form>AboutBox</Form>
+			</DCCReference>
+			<DCCReference Include="uInvCare.pas">
+				<Form>fuInvCare</Form>
+			</DCCReference>
+			<DCCReference Include="uChangeLogins.pas">
+				<Form>OKHelpBottomDlg</Form>
+			</DCCReference>
+			<DCCReference Include="uVardaBortPkt.pas">
+				<Form>fVardaBortPkt</Form>
+			</DCCReference>
+			<DCCReference Include="uchgPkgVard.pas">
+				<Form>fchgPkgVard</Form>
+			</DCCReference>
+			<DCCReference Include="VidaUtils.pas"/>
+			<DCCReference Include="uAddSpecialLengths.pas">
+				<Form>fAddSpecialLengths</Form>
+			</DCCReference>
+			<DCCReference Include="uMemoForm.pas">
+				<Form>fMemoForm</Form>
+			</DCCReference>
+			<DCCReference Include="uSokAvropMall.pas">
+				<Form>fSokAvropMall</Form>
+			</DCCReference>
+			<DCCReference Include="uInvLogs.pas">
+				<Form>fInvLogs</Form>
+			</DCCReference>
+			<DCCReference Include="uPriceListInventory.pas">
+				<Form>fPriceListInventory</Form>
+			</DCCReference>
+			<DCCReference Include="uGenInvCountForAll.pas">
+				<Form>fGenInvCountForAll</Form>
+			</DCCReference>
+			<DCCReference Include="uInvCreateManyCtrlList.pas">
+				<Form>fInvCreateManyCtrlList</Form>
+			</DCCReference>
+			<DCCReference Include="uCreateSicPriceGroups.pas">
+				<Form>fCreateSicPriceGroups</Form>
+			</DCCReference>
+			<DCCReference Include="uSicPriceGroup.pas">
+				<Form>fSicPriceGroup</Form>
+			</DCCReference>
+			<DCCReference Include="dmc_ArrivingLoads.pas">
+				<Form>dmArrivingLoads</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnitLoadArrivals.pas">
+				<Form>frmLoadArrivals</Form>
+			</DCCReference>
+			<DCCReference Include="uAnkomstRegProgress.pas">
+				<Form>fAnkomstRegProgress</Form>
+			</DCCReference>
+			<DCCReference Include="UnitCRPrintOneReport.pas">
+				<Form>FormCRPrintOneReport</Form>
+			</DCCReference>
+			<DCCReference Include="uAccInv.pas">
+				<Form>fAccInv</Form>
+			</DCCReference>
+			<DCCReference Include="uAccParams.pas">
+				<Form>fAccParams</Form>
+			</DCCReference>
+			<DCCReference Include="uEntryPriceField.pas">
+				<Form>fEntryPriceField</Form>
+			</DCCReference>
+			<DCCReference Include="UnitGetProd_II.pas">
+				<Form>frmGetProd_II</Form>
+			</DCCReference>
+			<DCCReference Include="uExtAterstall.pas">
+				<Form>fExtAterstall</Form>
+			</DCCReference>
+			<DCCReference Include="ImportLoad\PackageImportU.pas"/>
+			<DCCReference Include="ImportLoad\PackageExportU.pas"/>
+			<DCCReference Include="ImportLoad\DeliveryMessageWoodV2R31.pas"/>
+			<DCCReference Include="dmsVidaProduct.pas">
+				<Form>dmsProduct</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\..\CommonUnits\VidaUser.pas"/>
+			<DCCReference Include="UProductionReport.pas">
+				<Form>fProductionReport</Form>
+			</DCCReference>
+			<DCCReference Include="uInventeringsRapport.pas">
+				<Form>fInventeringsRapport</Form>
+			</DCCReference>
+			<DCCReference Include="uAngeNyMall.pas">
+				<Form>fAngeNyMall</Form>
+			</DCCReference>
+			<DCCReference Include="uDeliveryReport.pas">
+				<Form>fDeliveryReport</Form>
+			</DCCReference>
+			<DCCReference Include="uUserProfiles.pas">
+				<Form>fUserProfiles</Form>
+			</DCCReference>
+			<DCCReference Include="VidaDeliveryClass.pas"/>
+			<DCCReference Include="uSimulateHandHeld.pas">
+				<Form>fSimulateHandHeld</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="WorkMinutesU.pas"/>
+			<DCCReference Include="uEnterFieldValue.pas">
+				<Form>fEnterFieldValue</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="uStopptidReport.pas">
+				<Form>fStopptidReport</Form>
+			</DCCReference>
+			<DCCReference Include="fLoadPlan.pas">
+				<Form>frmLoadPlan</Form>
+			</DCCReference>
+			<DCCReference Include="uSelectPkgTypes.pas">
+				<Form>fSelectPkgTypes</Form>
+			</DCCReference>
+			<DCCReference Include="uKilnHandling.pas">
+				<Form>fkilnHandling</Form>
+			</DCCReference>
+			<DCCReference Include="uEnterKilnVagn.pas">
+				<Form>fEnterKilnVagn</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="uPickPkgNoTork.pas">
+				<Form>fPickPkgNoTork</Form>
+			</DCCReference>
+			<DCCReference Include="uPackageCostPerPkg.pas">
+				<Form>fPackageCostPerPkg</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="uSetMall.pas">
+				<Form>fSetMall</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="PrintUnit.pas"/>
+			<DCCReference Include="CR_Plugin_Import.pas"/>
+			<DCCReference Include="uLagerBalans.pas">
+				<Form>fLagerBalans</Form>
+			</DCCReference>
+			<DCCReference Include="uLagBalDtl.pas">
+				<Form>fLagBalDtl</Form>
+			</DCCReference>
+			<None Include="VIS_LAGER.todo"/>
+			<None Include="ModelSupport_VIS_LAGER\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\fMain\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\VIS_LAGER\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UExtAterstall\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaConst\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitLONumber\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitGetProd_II\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uCreateSicPriceGroups\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectShipper\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\fDBForm\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnChargeNote\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmBooking\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uInventeringsRapport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uLipForSic\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uUserProfiles\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uPickPkgNo\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcPkgs\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uMemoForm\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaSystem\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCarrier\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\PackageImportU\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uEntryField\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uConfirmCodeDialog\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitInventoryReport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvCtrl\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaProduct\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcLoadPlan\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAOUser\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcVidaSystem\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmc_DryKiln\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaType\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uBasMatPunkter\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dm_Inventory\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uPktNrPos\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uGridSetting\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uProductionReport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnProps\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaUser\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uStickyNote\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSokAvropMall\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uModifySIC\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAddSpecialLengths\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uScanPkgNo\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcProduct\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaContact\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSendMapiMail\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAnkomstRegProgress\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAnalyseraLeveranser\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitPkgInfo\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uEncode\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvLogs\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSinglePkgEntry\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAngeNyMall\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uChangeLogins\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCRPrintReport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitPkgEntry\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSIC\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsSinglePkg\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitMovePkgs\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uPriceListInventory\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAccInv\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\frmDBAdmin\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcVidaOrder\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uAccParams\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UVardaBortPkt\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\PackageExportU\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectLoadPlan\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UchgPkgVard\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaPkg\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcVidaPayment\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitLoadArrivals\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uDistDupPkgsToLoadPlan\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCRViewReport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcInvCtrl\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dlgPickPkg_II\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsDataConn\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UInvCare\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitRemovePkg\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uEntryPriceField\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uDeliveryReport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSicPriceGroup\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uInventeraPIG\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectInvPIG\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmc_ArrivingLoads\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\USicICgrp\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\frmLogon\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\DeliveryMessageWoodV2R31\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uPkgNoPos\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaUtils\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitPkgNo\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCRPrintOneReport\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnCharges\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitAboutBox\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uProductionUnit\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvCreateManyCtrlList\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\UfelRegPkg\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uGenInvCountForAll\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvCtrlList\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dlgPickPkg_III\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uPigNames\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnWizard\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectLIP\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmc_UserProps\default.txvpck"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcPkgs\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dm_Inventory\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvLogs\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcVidaSystem\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\PackageImportU\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitGetProd_II\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAngeNyMall\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAddSpecialLengths\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSendMapiMail\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcProduct\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAccInv\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectLIP\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmc_ArrivingLoads\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uPigNames\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uConfirmCodeDialog\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\frmLogon\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uCreateSicPriceGroups\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitPkgEntry\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAOUser\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaUtils\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dlgPickPkg_II\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uPkgNoPos\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UExtAterstall\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsDataConn\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UchgPkgVard\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uGridSetting\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\DeliveryMessageWoodV2R31\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaUser\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvCtrl\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uPktNrPos\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcInvCtrl\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uModifySIC\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uBasMatPunkter\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaContact\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uEncode\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\VIS_LAGER\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitPkgInfo\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnProps\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaSystem\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uInventeringsRapport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaProduct\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uProductionUnit\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UVardaBortPkt\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uInventeraPIG\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmc_UserProps\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uStickyNote\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCRViewReport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCarrier\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSIC\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uProductionReport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uUserProfiles\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uPriceListInventory\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnCharges\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaType\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectShipper\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uEntryField\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uDeliveryReport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uLipForSic\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSicPriceGroup\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitRemovePkg\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectLoadPlan\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uDistDupPkgsToLoadPlan\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSinglePkgEntry\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uScanPkgNo\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSokAvropMall\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmBooking\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\PackageExportU\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnChargeNote\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitAboutBox\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uPickPkgNo\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCRPrintOneReport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAnalyseraLeveranser\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitPkgNo\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitMovePkgs\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uEntryPriceField\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitLoadArrivals\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uKilnWizard\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsSinglePkg\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAnkomstRegProgress\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcVidaOrder\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvCreateManyCtrlList\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitLONumber\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UfelRegPkg\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmc_DryKiln\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\frmDBAdmin\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmsVidaPkg\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\fMain\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uChangeLogins\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\VidaConst\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\fDBForm\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitCRPrintReport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UnitInventoryReport\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uGenInvCountForAll\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcLoadPlan\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\USicICgrp\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uSelectInvPIG\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uInvCtrlList\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uAccParams\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\uMemoForm\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\UInvCare\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dmcVidaPayment\default.txaPackage"/>
+			<None Include="ModelSupport_VIS_LAGER\dlgPickPkg_III\default.txaPackage"/>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">VIS_LAGER.dpr</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">2</VersionInfo>
+						<VersionInfo Name="MinorVer">3</VersionInfo>
+						<VersionInfo Name="Release">1</VersionInfo>
+						<VersionInfo Name="Build">11</VersionInfo>
+						<VersionInfo Name="Debug">True</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Carmak AB</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">VISLAG</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">2.3.1.11</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">VIS_LAGER.EXE</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename">VIS_LAGER.exe</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">Vida Information Systems</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments">Lagermodul</VersionInfoKeys>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\RemObjects SDK for Delphi\Dcu\D16\win32\RemObjects_IDE_D16.bpl">RemObjects SDK - IDE Integration for Win32</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\RemObjects SDK for Delphi\Dcu\D16\win32\RemObjects_WebBroker_D16.bpl">RemObjects SDK - WebBroker Library</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\RemObjects SDK for Delphi\Dcu\D16\win32\RemObjects_Indy_D16.bpl">RemObjects SDK - Indy Library</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\Data Abstract for Delphi\Dcu\D16\win32\DataAbstract_IDE_D16.bpl">RemObjects Data Abstract - IDE Package</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\Data Abstract for Delphi\Dcu\D16\win32\DataAbstract_DBXDriver_Enterprise_D16.bpl">RemObjects Data Abstract - dbExpress Driver Enterprise</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\Hydra for Delphi\Dcu\D16\win32\Hydra_IDE_D16.bpl">RemObjects Hydra - IDE Integration</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclbindcompvcl160.bpl">Embarcadero LiveBindings Components VCL</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\Steema Software\TeeChart 2012 for RAD XE2\Delphi16.win32\Bin\DclTeePro916.bpl">TeeChart Pro 2012 VCL Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k160.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclofficexp160.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\bcboffice2k160.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\bcbofficexp160.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\9.0\BPL\QExport4DT_C16.bpl">EMS Advanced Export Component Suite (C++)</Excluded_Packages>
+						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\9.0\BPL\QImport3DT_C16.bpl">EMS Advanced Import Component Suite (C++)</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\FastReports\FastReport 4\LibD16\dclfrxtee16.bpl">(untitled)</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\RemObjects SDK for Delphi\Dcu\D16\win32\RemObjects_FMX_D16.bpl">RemObjects SDK - Core Library (FMX)</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\Data Abstract for Delphi\Dcu\D16\win32\DataAbstract_FMX_D16.bpl">RemObjects Data Abstract - FMX Library</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\Hydra for Delphi\Dcu\D16\win32\Hydra_FMX_D16.bpl">RemObjects Hydra - Core FMX Library</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\RemObjects Software\Hydra for Delphi\Dcu\D16\win32\Hydra_IDE_FMX_D16.bpl">RemObjects Hydra - IDE FMX Integration</Excluded_Packages>
+						<Excluded_Packages Name="C:\Program Files (x86)\Steema Software\TeeChart 2012 for RAD XE2\Delphi16.win32\Bin\DclFMXTeePro916.bpl">TeeChart Pro 2012 for FireMonkey Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win64">False</Platform>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+				<ModelSupport>True</ModelSupport>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
+
+<!-- EurekaLog First Line
+[Exception Log]
+EurekaLog Version=7007
+Activate=0
+atVCL=1
+DeleteMapAfterCompile=0
+dpJCL=1
+Encrypt Password=""
+idEurekaLog=1
+idEurekaLogDetailed=1
+idMSClassic=1
+idStepsToReproduce=1
+loCatchLeaks=0
+loMaxLeaks=0
+ProjectID="{1DA21ACA-5817-4ACA-B54D-53F14907F04B}"
+Sender Classes="TELMailSimpleMAPISender"
+seSMAPI=1
+sndShowFailureMsg=1
+sndSMAPITarget="lars.makiaho@vida.se"
+EurekaLog Last Line -->

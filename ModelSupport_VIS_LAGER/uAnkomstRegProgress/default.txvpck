@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="pvdtf2skhdaonfvbf_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uAnkomstRegProgress.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uAnkomstRegProgress.TfAnkomstRegProgress">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAnkomstRegProgress.TfAnkomstRegProgress.cxDBLabel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAnkomstRegProgress.TfAnkomstRegProgress.cxLabel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uAnkomstRegProgress.TfAnkomstRegProgress.cxLabel2" />
+    </reference>
+  </view>
+</nodeSet>

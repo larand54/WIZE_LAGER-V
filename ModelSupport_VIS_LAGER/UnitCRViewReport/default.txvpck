@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="kzlsi3lhauagowvql_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.Application1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.CRViewer91" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.report" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.ReportFound" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCRViewReport.TFormCRViewReport.CreateCo(System.string)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitCRViewReport.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="ql63kvg207ab3xwsl_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uGridSetting.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uGridSetting.TfGridSetting">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.BitBtn2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.teSokVagPkgTableMallar" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.bSelectFolder" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uGridSetting.TfGridSetting.cxShellBrowserDialog1" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uGridSetting.TfGridSetting.bSelectFolderClick(System.TObject)" />
+    </reference>
+  </view>
+</nodeSet>

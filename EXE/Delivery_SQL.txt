@@ -1,0 +1,95 @@
+Select distinct
+Kund.ClientName AS Kund,
+pp.PriceExist AS PrisOK,
+pp.VerkNo AS OwnerNo,
+pp.LO,
+pd.ProductNo,
+pd.ProductDisplayName AS PRODUKT,
+pg.ActualThicknessMM AS AT,
+pg.ActualWidthMM AS AB,
+pg.NominalThicknessMM AS NT,
+pg.NominalWidthMM AS NB,
+CAST(pg.NominalThicknessMM AS VARCHAR(10)) + 'x' +  CAST(pg.NominalWidthMM AS VARCHAR(10)) AS NomDim,
+CAST(pg.ActualThicknessMM AS VARCHAR(10)) + 'x' + CAST(pg.ActualWidthMM AS VARCHAR(10)) AS AktDim,
+SPE.SpeciesName AS TS,
+imp.ProductCategoryName AS PC,
+Gr.GradeName AS KV,
+vg.VarugruppNamn,
+SUR.SurfacingName AS UT,
+pp.Utlastad AS Utlastad,
+
+round(SUM(pp.AM3),2) AS AM3,
+round(SUM(pp.NM3),2) AS NM3,
+CASE
+WHEN SUM(pp.NM3) > 0 THEN
+round(SUM(pp.[Värde]) / SUM(pp.NM3),2)
+ELSE
+0
+END AS MEDELPRIS,
+round(SUM(pp.[Värde]),2) AS NETTO
+FROM dbo.ST_Deliveries pp
+Inner Join dbo.Client Kund ON Kund.ClientNo = pp.customerNo
+Inner Join dbo.Client Verk ON Verk.ClientNo = pp.VerkNo
+Inner Join dbo.Product pd ON pd.ProductNo = PP.ProductNo
+Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+Left outer join dbo.VaruGrupp vg on vg.VarugruppNo = pd.VarugruppNo
+WHERE pp.Utlastad >= '2012-04-01'
+AND pp.Utlastad <= '2012-04-30'
+ AND ( Verk.PktNrLevKod = 21 ) 
+AND pp.VerkNo <> pp.customerNo
+
+
+
+
+
+
+
+
+
+
+Group by
+Kund.ClientName
+,
+pp.PriceExist
+,
+pp.VerkNo
+,
+pp.LO
+,
+pd.ProductNo
+,
+pd.ProductDisplayName
+,
+pg.ActualThicknessMM
+,
+pg.ActualWidthMM
+,
+pg.NominalThicknessMM
+,
+pg.NominalWidthMM
+,
+pg.NominalThicknessMM, pg.NominalWidthMM
+,
+pg.ActualWidthMM, pg.ActualThicknessMM
+,
+SPE.SpeciesName
+,
+imp.ProductCategoryName
+,
+Gr.GradeName
+,
+vg.VarugruppNamn
+,
+SUR.SurfacingName
+,
+pp.Utlastad
+

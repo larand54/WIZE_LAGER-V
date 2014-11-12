@@ -1,0 +1,12 @@
+LO  BUFFERT
+Att göra Filtrera på kontrakt ska fungera när man växlar mellan olika förfrågningar.
+Att göra Även problem med att alla dim inte dyker upp trots att de finns på kontraktet. (18X45 28 ibland Bara 10)
+Att göra Om man byter certifiering under en pågående förfrågan så slår inte ändringen. Börjar man med PEFC så fortsätter det som PEFC trots man valt FSC och lagt till nya paket.
+Att göra LO gjord i VIS går det inte ändra något. Ska kunna lägga till en produkt när lo ligger i accept.
+Att göra Ta bort Generera artikelnr, ta bort 2 av uppdatera knapparna.
+Att göra Kunna flytta en lo som genererad från VISK till förfrågan?
+Att göra Kopiera kontraktstexterna till avropstexterna.
+Att göra Kunna byta fakturaadress av alla fakturaadress som finns upplagda under vald kund
+Att göra Volym på lo blir inte rätt
+Att göra Kunna maila flera.
+Att göra Få in en avropsradsreferens som man kan lägga in per avrop och rad och inte per kontrakt.

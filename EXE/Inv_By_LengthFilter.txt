@@ -1,0 +1,3 @@
+Insert INTO dbo.Inv_By_LengthFilter (Userid, Filter)
+Values (8,
+'[Lagerställe: ALVESTA Grupp:*ALLA] [AT: 50]  AB: 100]  AL: 4200]  TS: 01 - FURU, 02 - GRAN]  UT: 01 - SÅGAT, 02 - EGALISERAT, 03 - 4-HYVLAT RUNDA HÖRN, 05 - 4-HYVLAT RAKA HÖRN]  KV: 02 - S/F, 04 - VI+, 05 - V]  IMP: 33 - OIMP56, 7 - SÅGAT] ')

@@ -1,0 +1,136 @@
+Select distinct 1 AS PKT,
+pd.ProductNo,
+OL.OrderLineDescription AS PRODUKT,
+pt.PackageTypeNo,
+pn.PackageNo AS PKTNR,
+pn.SupplierCode AS LEVKOD,
+pg.ActualThicknessMM AS AT,
+pg.ActualWidthMM AS AB,
+SUM(ptd.NoOfPieces) AS STYCK,
+CASE WHEN PTL.STD_Length = 0 THEN PTL.PcsPerLength
+ELSE ''
+END AS STYCKPERLÄNGD,
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 300 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L1, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 1410 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L2, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 1420 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L3, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 1500 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L4, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 1800 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L5, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 2100 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L6, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 2400 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L7, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 2700 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L8, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3000 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L9, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3300 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L10, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3600 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L11, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3900 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L12, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 4200 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L13, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 4500 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L14, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 4800 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L15, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 5100 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L16, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 5400 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L17, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 5700 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L18, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 6000 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L19, 
+0.0 AS L20, 
+0.0 AS L21, 
+0.0 AS L22, 
+0.0 AS L23, 
+0.0 AS L24, 
+0.0 AS L25, 
+0.0 AS L26, 
+0.0 AS L27, 
+0.0 AS L28, 
+0.0 AS L29, 
+0.0 AS L30, 
+0.0 AS L31, 
+0.0 AS L32, 
+0.0 AS L33, 
+0.0 AS L34, 
+0.0 AS L35, 
+0.0 AS L36, 
+0.0 AS L37, 
+0.0 AS L38, 
+0.0 AS L39, 
+0.0 AS L40, 
+0.0 AS L41, 
+0.0 AS L42, 
+0.0 AS L43, 
+0.0 AS L44, 
+0.0 AS L45, 
+SUM(ptd.m3Actual) AS AM3,
+SUM(ptd.PriceVolume) AS NM3,
+SUM(ptd.LinealMeterActualLength) AS AM1,
+SUM(ptd.MFBMNominal) AS MFBM,
+SUM(ptd.SQMofActualWidth) AS AM2,
+pn.DateCreated AS TILLVERKAD,
+SPE.SpeciesName AS TS,
+imp.ProductCategoryName AS PC,
+Gr.GradeName AS KV,
+SUR.SurfacingName AS UT,
+PTL.STD_Length,
+IH.InternalInvoiceNo AS OwnerNo, Cast(IL.SHIPPINGPLANNO AS Varchar(101)) AS Lager,
+IH.InvoiceType AS PIPNo,
+CASE
+WHEN IH.InvoiceType = 0 THEN
+(Select INO.InvoiceNo FROM dbo.InvoiceNumber INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+WHEN IH.InvoiceType = 1 THEN
+(Select INO.ProformaInvoiceNo FROM dbo.ProformaInvoiceNumber INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+WHEN IH.InvoiceType = 2 THEN
+(Select INO.ProformaInvoiceNo FROM dbo.ProformaInvoiceNumber INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+WHEN IH.InvoiceType = 3 THEN
+(Select INO.PO_InvoiceNo FROM dbo.InvoiceNumber_PO INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+WHEN IH.InvoiceType = 4 THEN
+(Select INO.InvoiceNo FROM dbo.InvoiceNo_USA INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+WHEN IH.InvoiceType = 5 THEN
+(Select INO.InvoiceNo FROM dbo.InvNo_FW INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+END AS LIPNo,
+1 AS Status
+FROM dbo.InvoiceHeader IH 
+INNER JOIN dbo.InvoiceLO     IL 	ON  IH.InternalInvoiceNo = IL.InternalInvoiceNo
+INNER JOIN dbo.Invoiced_Load	ILo	ON Ilo.InternalInvoiceNo = IL.InternalInvoiceNo
+AND Ilo.SHIPPINGPLANNO    = IL.SHIPPINGPLANNO
+INNER JOIN dbo.Loaddetail    LD 	ON  Ilo.LoadNo            = LD.LoadNo
+AND Ilo.SHIPPINGPLANNO    = LD.SHIPPINGPLANNO
+INNER JOIN dbo.CustomerShippingPlanDetails CSD ON CSD.CustShipPlanDetailObjectNo =  LD.DefaultCustShipObjectNo
+INNER JOIN DBO.ORDERLINE	OL	ON CSD.ORDERNO = OL.ORDERNO
+AND CSD.ORDERLINENO = OL.ORDERLINENO
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo
+AND pn.SupplierCode = LD.SupplierCode
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = LD.PackageTypeNo
+Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
+inner JOIN dbo.Client C			ON C.ClientNo = PN.SupplierNo
+INNER JOIN dbo.PackUnit PU ON PU.TemplateUnitNo = OL.PriceUnitNo
+Inner Join dbo.PkgType_Invoice  PTD ON  PTD.PackageTypeNo = LD.PackageTypeNo
+AND PTD.InternalInvoiceNo = IH.InternalInvoiceNo
+AND PTD.LoadNo = ILO.LoadNo
+AND PTD.LoadDetailNo = LD.LoadDetailNo
+Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
+
+
+Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
+AND PTL.LengthGroupNo = 1
+AND PTL.VolumeType = 3
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+WHERE 
+12345
+ IN (Select INO.InvoiceNo FROM dbo.InvNo_FW INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+ OR 23456
+ IN (Select INO.InvoiceNo FROM dbo.InvNo_FW INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+ OR 34567
+ IN (Select INO.InvoiceNo FROM dbo.InvNo_FW INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+ OR 45678
+ IN (Select INO.InvoiceNo FROM dbo.InvNo_FW INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+ OR 56789
+ IN (Select INO.InvoiceNo FROM dbo.InvNo_FW INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
+Group by pd.ProductNo, OL.OrderLineDescription, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
+pg.ActualWidthMM, PTL.STD_Length, PTL.PcsPerLength, 
+pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,
+Gr.GradeName, SUR.SurfacingName, 
+IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO

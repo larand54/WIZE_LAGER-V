@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="2h0oy05m1z0kxneco_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uEntryField.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uEntryField.TfEntryField">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.bbok" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.bbcancel" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.LTitle" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.seAntalPaket" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.LExtraInfo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.PanelLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.grdOtherLengths" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.grdOtherLengthsDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.grdOtherLengthsDBTableView1ALMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.grdOtherLengthsDBTableView1AntalLngder" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.grdOtherLengthsLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uEntryField.TfEntryField.cxLabel1" />
+    </reference>
+  </view>
+</nodeSet>

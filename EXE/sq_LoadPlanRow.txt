@@ -1,0 +1,25 @@
+Select Distinct LPR.LoadingNo,
+LPR.LoadPlanDestRowNo AS LoadPlanDestRowNo,
+LPR.PackageTypeNo,
+LPR.NoOfPkgsPlanned,
+LPR.NoOfPkgsLoaded,
+LPR.NoOfPkgsLeft,
+LPR.NoOfPkgsConfirmedDest,
+LPR.PktKvar,
+LPR.ARPkgs AS AR,
+'     ' AS ORT,
+ptpp.ProductDisplayName AS Produkt,
+ptpp.LANGD,
+ptpp.BarCodeID,
+ptpp.GradeStamp,
+ptpp.Söknamn,
+ptpp.PcsPerPkg AS PPP
+FROM dbo.LoadPlanRow LPR
+Inner Join dbo.LoadPlanHdr LPH on LPH.LoadingNo = LPR.LoadingNo
+Left Outer Join dbo.PktTypeByPP ptpp on ptpp.PkgCodePPNo = LPR.PackageTypeNo
+Inner Join dbo.LoadPlanDest LPD ON LPD.LoadingNo = LPR.LoadingNo
+                                AND LPD.LoadPlanDestRowNo = LPR.LoadPlanDestRowNo
+WHERE LPR.LoadingNo = 31
+ AND LPR.LoadPlanDestRowNo = 49
+ptpp.ProductDisplayName, ptpp.LANGD, ptpp.BarCodeID, ptpp.GradeStamp,
+ptpp.Söknamn, ptpp.PcsPerPkg

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="wl07q6koj5agpjmye_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbInsert" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbRemove" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbCancelRow" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbApplyChanges" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbCancelChanges" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1RegPointNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1RegPointName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1CreatedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1ModifiedUser" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1DateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.grdBasMPDBTableView1SequenceNo" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbInsertClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbRemoveClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbCancelRowClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbApplyChangesClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.bbCancelChangesClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uBasMatPunkter.TfBasMatPunkter.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uBasMatPunkter.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

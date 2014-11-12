@@ -1,0 +1,18 @@
+Insert into dbo.InvCtrl_Pkgs
+Select Distinct 111
+,PP.PackageNo, PP.SupplierCode, 6, GetDate(), 
+pp.LogicalInventoryPointNo, 0 AS Sortorderno, -1
+FROM dbo.Package_Production PP 
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = PP.PackageNo  
+AND pn.SupplierCode = PP.SupplierCode
+WHERE PN.Status = 0
+AND PP.ProductionDate > '2008-07-04 09:55:16'
+AND PP.ProductionDate < '2008-08-01 00:00:00'
+AND PP.Operation = 3
+AND PP.PackageNo not in (Select PackageNo FROM dbo.InvCtrl_Pkgs
+WHERE SupplierCode = PP.SupplierCode
+AND Operation = 0
+AND IC_GrpNo = 111)
+AND pp.LogicalInventoryPointNo in (Select LogicalInventoryPointNo
+FROM dbo.InvCtrlMetod ICM
+WHERE ICM.IC_grpno = 111)

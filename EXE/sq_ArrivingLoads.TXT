@@ -1,0 +1,79 @@
+SELECT DISTINCT L.LoadAR,
+ST_AdrCtry.CountryCode,
+LSP.ShippingPlanNo			AS	LO,
+L.LoadNo				AS	LOADNO,
+L.FS				        AS	FS,
+L.LoadedDate				AS	LOADEDDATE,
+L.SenderLoadStatus			AS	LOAD_STATUS,
+L.LoadID				AS	LOAD_ID,
+Mill.ClientName				AS 	SUPPLIER,
+Mill.ClientCode                         AS      SUPPCODE,
+ST_AdrCY.CityName			AS	DESTINATION,
+OH.OrderNoText				AS 	ORDER_NO,
+SP.ObjectType				AS	OBJECTTYPE,
+isNull(SP.ShipToInvPointNo,-1)		AS	INVPOINTNO,
+isNull(IName.CityName, '')		AS	INVPOINTNAME,
+SP.CustomerNo                           AS      CUSTOMERNO,
+Cust.ClientCode                         AS      CUSTOMER,
+SP.SupplierNo                           AS      SUPPLIERNO,
+CSH.CustomerNo				AS	AVROP_CUSTOMERNO,
+AV_CUST.ClientName			AS	AVROP_CUSTOMER,
+ SP.OBJECTTYPE,
+(SELECT US.INITIALS
+ FROM dbo.Confirmed_Load_EXT   CL, dbo.Users	US
+WHERE CL.Confirmed_LoadNo = LSP.LoadNo
+AND CL.Confirmed_ShippingPlanNo = LSP.ShippingPlanNo
+AND US.UserID = cl.CreatedUser) AS INITIALS,
+isNull(OH.OrderType,-1) AS ORDERTYPE,
+CASE
+WHEN isNull(OH.OrderType,-1) = 0 THEN 'SALES'
+WHEN isNull(OH.OrderType,-1) = 1 THEN 'PO'
+WHEN isNull(OH.OrderType,-1) = -1 THEN 'INTERN'
+End AS TYP,
+CASE
+WHEN isNull(SP.ObjectType,-1) = 2 THEN 'LO'
+WHEN isNull(SP.ObjectType,-1) = 1 THEN 'ADD'
+WHEN isNull(SP.ObjectType,-1) = 0 THEN 'INT'
+END AS LOTYP,
+(Select Top 1 US.INITIALS
+From dbo.SupplierShippingPlan sp2
+Inner Join dbo.Users US on US.UserID = SP2.CreatedUser
+WHERE SP2.ShippingPlanNo = SP.ShippingPlanNo)
+ AS LOINI,
+Loading.CityName AS LASTSTÄLLE, 
+CASE WHEN LIP.LogicalInventoryName = 'STD' THEN -1
+ELSE isNull(SP.LipNo,-1) END AS LipNo,  isNull(OH.Trading,0) AS Trading,
+IsNull(cl.Confirmed_LoadNo,0) AS AR_LoadNo
+FROM dbo.SupplierShippingPlan       SP
+Left Outer Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = SP.LIPNo
+inner JOIN dbo.City IName			ON	IName.CityNo = SP.ShipToInvPointNo
+inner JOIN dbo.City Loading			ON	Loading.CityNo = SP.LoadingLocationNo
+INNER JOIN dbo.LoadShippingPlan LSP 		ON 	LSP.ShippingPlanNo = SP.ShippingPlanNo
+ AND LSP.LoadingLocationNo = SP.LoadingLocationNo
+LEFT OUTER JOIN dbo.Confirmed_Load_EXT cl on 
+cl.Confirmed_LoadNo = lsp.LoadNo AND cl.Confirmed_ShippingPlanNo = LSP.ShippingPlanNo
+INNER JOIN dbo.Loads L ON	LSP.LoadNo 		= L.LoadNo
+AND     L.supplierno 		= SP.SUPPLIERno
+AND     L.CustomerNo 		= SP.CustomerNo
+INNER JOIN dbo.Client Mill			ON	Mill.ClientNo 		= SP.SupplierNo
+INNER JOIN dbo.Client Cust			ON	Cust.ClientNo 		= SP.CustomerNo
+Left Outer JOIN dbo.CustomerShippingPlanDetails CSD
+INNER JOIN dbo.CustomerShippingPlanHeader CSH	ON CSH.ShippingPlanNo = CSD.ShippingPlanNo
+INNER JOIN dbo.Orders	OH			ON OH.OrderNo = CSH.OrderNo
+INNER JOIN dbo.Client AV_CUST			ON	AV_CUST.ClientNo 	=	CSH.CustomerNo
+					ON    CSD.CustShipPlanDetailObjectNo = SP.CustShipPlanDetailObjectNo
+	INNER JOIN dbo.ShippingPlan_ShippingAddress ST
+	LEFT OUTER JOIN dbo.Address 		ST_ADR		ON	ST_ADR.AddressNo	= ST.AddressNo
+	LEFT OUTER JOIN dbo.CITY		ST_AdrCY	ON	ST_AdrCY.CityNo 	= ST_ADR.CityNo
+	LEFT OUTER JOIN dbo.Country		ST_AdrCtry	ON	ST_AdrCtry.CountryNo 	= ST_ADR.CountryNo
+							ON	ST.ShippingPlanNo	= CSD.ShippingPlanNo
+							AND	ST.Reference		= CSD.Reference
+Inner Join dbo.UserArrivalPoint uap on uap.PhyInvPointNameNo = ST_ADR.CityNo
+WHERE
+CSH.CustomerNo = 1879
+AND (L.SenderLoadStatus = 2)
+AND uap.UserID = 179
+AND ST_ADR.CityNo = 193
+AND LSP.LoadNo Not in (Select cl2.Confirmed_LoadNo FROM dbo.Confirmed_Load_EXT cl2 
+WHERE cl2.Confirmed_LoadNo = LSP.LoadNo
+AND cl2.Confirmed_ShippingPlanNo = LSP.ShippingPlanNo)

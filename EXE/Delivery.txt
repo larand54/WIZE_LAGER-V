@@ -1,0 +1,20 @@
+|Kund| |Kund.ClientName AS Kund,| |Kund.ClientName|
+|PrisOK| |pp.PriceExist AS PrisOK,| |pp.PriceExist|
+|OwnerNo| |pp.VerkNo AS OwnerNo,| |pp.VerkNo|
+|LO| |pp.LO,| |pp.LO|
+|ProductNo| |pd.ProductNo,| |pd.ProductNo|
+|PRODUKT| |pd.ProductDisplayName AS PRODUKT,| |pd.ProductDisplayName|
+|AT| |pg.ActualThicknessMM AS AT,| |pg.ActualThicknessMM|
+|AB| |pg.ActualWidthMM AS AB,| |pg.ActualWidthMM|
+|NT| |pg.NominalThicknessMM AS NT,| |pg.NominalThicknessMM|
+|NB| |pg.NominalWidthMM AS NB,| |pg.NominalWidthMM|
+|NomDim| |CAST(pg.NominalThicknessMM AS VARCHAR(10)) + 'x' +  CAST(pg.NominalWidthMM AS VARCHAR(10)) AS NomDim,| |pg.NominalThicknessMM, pg.NominalWidthMM|
+|AktDim| |CAST(pg.ActualThicknessMM AS VARCHAR(10)) + 'x' + CAST(pg.ActualWidthMM AS VARCHAR(10)) AS AktDim,| |pg.ActualWidthMM, pg.ActualThicknessMM|
+|TS| |SPE.SpeciesName AS TS,| |SPE.SpeciesName|
+|PC| |imp.ProductCategoryName AS PC,| |imp.ProductCategoryName|
+|KV| |Gr.GradeName AS KV,| |Gr.GradeName|
+|VarugruppNamn| |vg.VarugruppNamn,| |vg.VarugruppNamn|
+|UT| |SUR.SurfacingName AS UT,| |SUR.SurfacingName|
+|Utlastad| |pp.Utlastad AS Utlastad,| |pp.Utlastad|
+|Supplier| |pp.Supplier AS Supplier,| |pp.Supplier|
+|Längd| |pp.Längd AS Längd,| |pp.Längd|

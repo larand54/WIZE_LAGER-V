@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="9kwyll64kgbxc2ihp_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uSelectLIP.TfSelectLIP">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcLAGERSTALLE" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcLAGERGRUPP" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.BitBtn2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.cxLabel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.cxLabel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcInventeringstyp" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uSelectLIP.TfSelectLIP.cxLabel6" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcLAGERSTALLEPropertiesCloseUp(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcLAGERSTALLEPropertiesInitPopup(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcLAGERGRUPPPropertiesCloseUp(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uSelectLIP.TfSelectLIP.lcLAGERGRUPPPropertiesInitPopup(System.TObject)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uSelectLIP.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

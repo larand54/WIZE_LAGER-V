@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="s04v6kjgiy0r05f9r_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitCarrier.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:UnitCarrier.TFormCarrier">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarDockControl1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarManager1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarLargeButton1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarLargeButton2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarLargeButton3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.grdCarrierDBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.grdCarrierLevel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.grdCarrier" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:UnitCarrier.TFormCarrier.grdCarrierDBTableView1CarrierName" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarLargeButton3Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarLargeButton2Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:UnitCarrier.TFormCarrier.dxBarLargeButton1Click(System.TObject)" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,20 @@
+Insert into dbo.InvCtrl_Pkgs
+Select Distinct 81
+,LD.PackageNo, LD.SupplierCode, 2, GetDate(),-1, 0 AS Sortorderno
+FROM dbo.Loads L 
+Inner Join dbo.LoadDetail LD ON LD.LoadNo = L.LoadNo 
+Inner Join dbo.LoadShippingPlan LSP ON LSP.LoadNo = LD.LoadNo
+AND LSP.ShippingPlanNo = LD.ShippingPlanNo
+Inner Join dbo.SupplierShippingPlan SSP on SSP.ShippingPlanNo = LSP.ShippingPlanNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo 
+AND pn.SupplierCode = LD.SupplierCode
+WHERE L.SupplierNo = 741
+AND L.LoadedDate <= '2006-04-04 00:00:00'
+AND L.LoadedDate >= '2006-04-03 13:00:18'
+AND L.SenderLoadStatus <> 0 
+AND SSP.LoadingLocationNo in
+(Select PIP.PhyInvPointNameNo
+FROM dbo.InvCtrlMetod ICM
+Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = ICM.LogicalInventoryPointNo
+Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
+WHERE ICM.IC_grpno = 81)

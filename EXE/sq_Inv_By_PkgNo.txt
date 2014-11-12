@@ -1,0 +1,115 @@
+Insert INTO dbo.Inv_By_Pkg
+(Spec_UserID,
+Spec_URI,
+SPEC_PhyInvPointNo,
+SPEC_PhyInvPointName,
+SPEC_LogicalInvName,
+SPEC_OwnerNo,
+SPEC_OwnerCode,
+SPEC_ProductNo,
+SPEC_ProductDisplayName,
+SPEC_PackageTypeNo,
+SPEC_PackageNo,
+SPEC_SupplierCode,
+SPEC_ActualThicknessMM,
+SPEC_ActualWidthMM,
+SPEC_NominalThicknessMM,
+SPEC_NominalWidthMM,
+SPEC_TotalNoOfPieces,
+SPEC_FreeForm,
+SPEC_1800,
+SPEC_2100,
+SPEC_2400,
+SPEC_2700,
+SPEC_3000,
+SPEC_3300,
+SPEC_3600,
+SPEC_3900,
+SPEC_4200,
+SPEC_4500,
+SPEC_4800,
+SPEC_5100,
+SPEC_5400,
+SPEC_5700,
+SPEC_6000,
+SPEC_ActualM3,
+SPEC_NominalM3,
+SPEC_LinealMeter,
+SPEC_MFBMNominal,
+SPEC_SQMofActualWidth,
+SPEC_CreatedDate)
+Select distinct 
+8,
+PTL.STD_Length,
+pip.PhyInvPointNameNo,
+Cy.CityName,
+LIP.LogicalInventoryName,
+pip.OwnerNo,
+Verk.ClientCode,
+pd.ProductNo,
+pd.ProductDisplayName,
+pt.PackageTypeNo,
+pn.PackageNo,
+pn.SupplierCode,
+pg.ActualThicknessMM,
+pg.ActualWidthMM,
+pg.NominalThicknessMM,
+pg.NominalWidthMM,
+pt.TotalNoOfPieces,
+PTL.PcsPerLength,
+PTL.L18,
+PTL.L21,
+PTL.L24,
+PTL.L27,
+PTL.L30,
+PTL.L33,
+PTL.L36,
+PTL.L39,
+PTL.L42,
+PTL.L45,
+PTL.L48,
+PTL.L51,
+PTL.L54,
+PTL.L57,
+PTL.L60,
+pt.Totalm3Actual,
+pt.Totalm3Nominal,
+pt.TotalLinealMeterActualLength,
+pt.TotalMFBMNominal,
+pt.TotalSQMofActualWidth,
+pn.DateCreated
+FROM  Client Verk
+Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
+Inner Join dbo.LogicalInventoryPoint lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
+INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = pn.PackageTypeNo
+Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
+Inner Join dbo.packageTypeLengths PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
+LEFT OUTER JOIN dbo.Client cl ON cl.ClientNo = pip.OwnerNo
+WHERE pn.Status = 1
+AND PIP.SequenceNo = 1 AND LIP.SequenceNo = 1
+AND Verk.SalesRegionNo = 741
+AND pip.PhysicalInventoryPointNo = 10048
+AND LIP.LogicalInventoryPointNo = 10419
+AND Verk.ClientNo  = 76
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="ww3sbk6s7w0ma4qen_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1Level1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.Panel1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.ds_SelectedPkgNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1PAKETNR" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1LEVKOD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1STYCKPERLNGD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1MARKERAD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.Panel2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1AM3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1STYCK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1REGISTRERAT" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.BitBtn1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.BitBtn2" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.bbMarkAll" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.bbUnMarkAll" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.LabelPIPName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.Label1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.LabelNoOfPkgsMarked" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.Label4" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.ds_Products" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.mtFilter" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.mtFilterProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.mtFilterProduct" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.dsFilter" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.lcProduct" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.BitBtn3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxStyleRepository1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxStyleMarkedRow" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.deProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.Label5" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1ColumnAngeAntalPkt" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1Column1" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActive" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProducts" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_Products" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoPackageNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoLEVKOD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoproductno" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoPcsPerLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoAM3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoSTYCK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetPkgNoDateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActivePackageNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActiveLEVKOD" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActiveProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActivePcsPerLength" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActiveAM3" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActiveSTYCK" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetInActiveDateCreated" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsProductDisplayName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsActualThicknessMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsActualWidthMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsGradeName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsSpeciesName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.sq_GetAllProductsSurfacingName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsProductDisplayName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsActualThicknessMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsActualWidthMM" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsGradeName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsSpeciesName" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cds_ProductsSurfacingName" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.mtSelectedPkgNoAfterInsert(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.bbMarkAllClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.bbUnMarkAllClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.ds_SelectedPkgNoDataChange(System.TObject,DB.TField)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.BitBtn3Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1StylesGetContentStyle(cxGridCustomTableView.TcxCustomGridTableView,cxGridCustomTableView.TcxCustomGridRecord,cxGridCustomTableView.TcxCustomGridTableItem,out@cxStyles.TcxStyle)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.mtFilterProductNoChange(DB.TField)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.cxGrid1DBTableView1CellClick(cxGridCustomTableView.TcxCustomGridTableView,cxGridCustomTableView.TcxGridTableDataCellViewInfo,Controls.TMouseButton,TShiftState,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.RefreshPackageList()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.RefreshInventoryPackageList()" />
+      <reference referencedUin="delphi:e_method:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.RefreshInActivePackageList()" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.ProductNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.IC_GrpNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.LIPNo" />
+      <reference referencedUin="delphi:e_field:src:VIS_LAGER:uPickPkgNo.TfPickPkgNo.PIPNo" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:VIS_LAGER:uPickPkgNo.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,38 @@
+SELECT distinct
+lo.LocalShippingCompanyNo,
+Lo.LoadNo 			AS LOAD_NO,
+Lo.FS				AS FS,
+Lo.LoadID			AS LOAD_ID,
+Lo.LoadedDate			AS LOADEDDATE,
+shipper.clientname		AS SHIPPER,
+FromPlace.CityName 		AS FROM_PLACE,
+ToPlace.CityName 		AS DESTINATION,
+SUM(PTD.Totalm3Actual) 		AS M3_NET,
+LFC.PricePerM3_NET		AS PRICE,
+LFC.TotalSUM			AS INVOICEAMOUNT,
+LFC.CreatedUser			AS CREATEDUSER,
+LFC.ModifiedUser		AS MODIFIEDUSER,
+LFC.DateCreated			AS DATECREATED,
+LFC.DateModified		AS DATEMODIFIED,
+Lo.SupplierNo			AS SUPPLIERNO
+FROM   dbo.Client_LoadingLocation     CLL
+INNER JOIN dbo.LoadShippingPlan LSP 		ON 	LSP.LoadingLocationNo = CLL.PhyInvPointNameNo
+INNER JOIN dbo.Loads LO 				ON	LO.LoadNo 		= LSP.LoadNo
+INNER JOIN dbo.Loaddetail LD ON	LD.LoadNo 		= LSP.LoadNo
+AND LD.SHIPPINGPLANNO = LSP.SHIPPINGPLANNO
+INNER JOIN dbo.PackageType PTD ON PTD.PackageTypeNo = LD.PackageTypeNo
+left  outer join Client Shipper	on shipper.clientno = lo.LocalShippingCompanyNo
+left  outer  join City FromPlace	on FromPlace.CityNo = lo.LocalLoadingLocation
+left  outer  join City ToPlace		on ToPlace.CityNo = lo.LocalDestinationNo
+left join LoadFreightCost LFC	on Lo.LoadNo = LFC.LoadNo
+Inner Join dbo.Confirmed_Load   CL ON CL.Confirmed_LoadNo = Lo.LoadNo
+Inner Join ClientRole CR ON CR.ClientNo = Lo.CustomerNo
+AND CR.RoleType = 9
+where
+CLL.ClientNo = 741
+AND lo.LocalShippingCompanyNo = 150
+AND  Lo.LoadNo NOT IN (Select LoadNo FROM LoadFreightCost)
+group by lo.LocalShippingCompanyNo,Lo.LoadNo, Lo.FS, Lo.LoadID, Lo.LoadedDate, shipper.clientname,
+FromPlace.CityName, ToPlace.CityName, LFC.PricePerM3_NET, LFC.TotalSUM,LFC.CreatedUser,
+LFC.ModifiedUser, LFC.DateCreated, LFC.DateModified, Lo.SupplierNo
+Order by Lo.LoadNo desc
