@@ -20,6 +20,8 @@ object fDeliveryReport: TfDeliveryReport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -42,6 +44,8 @@ object fDeliveryReport: TfDeliveryReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Leveranser'
       ImageIndex = 4
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -492,6 +496,8 @@ object fDeliveryReport: TfDeliveryReport
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
       TabVisible = False
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -893,6 +899,7 @@ object fDeliveryReport: TfDeliveryReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -904,20 +911,27 @@ object fDeliveryReport: TfDeliveryReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 106
-    ClientRectRight = 1259
-    ClientRectTop = 0
+    ClientRectBottom = 102
+    ClientRectLeft = 4
+    ClientRectRight = 1255
+    ClientRectTop = 4
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 1259
+      ExplicitHeight = 106
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1259
-        Height = 106
+        Width = 1251
+        Height = 98
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1259
+        ExplicitHeight = 106
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -1472,8 +1486,8 @@ object fDeliveryReport: TfDeliveryReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -2360,8 +2374,10 @@ object fDeliveryReport: TfDeliveryReport
     object dxComponentPrinter1Link1: TdxGridReportLink
       Active = True
       Component = grdProdPaketNr
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2379,7 +2395,8 @@ object fDeliveryReport: TfDeliveryReport
       PrinterPage.PaperSource = 257
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41904.816856284720000000
+      ReportDocument.CreationDate = 41960.308230648140000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2598,7 +2615,7 @@ object fDeliveryReport: TfDeliveryReport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -3196,7 +3213,7 @@ object fDeliveryReport: TfDeliveryReport
     Left = 608
     Top = 609
     Bitmap = {
-      494C01010D001100040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010D001100080018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4554,7 +4571,7 @@ object fDeliveryReport: TfDeliveryReport
     Top = 480
   end
   object frxReport2: TfrxReport
-    Version = '4.12'
+    Version = '4.15.13'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

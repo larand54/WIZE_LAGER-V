@@ -52,7 +52,7 @@ var
 implementation
 
 uses
-  DeliveryMessageWoodV2R31, Dialogs, FDODB, Classes, VidaUtils ;
+  DeliveryMessageWoodV2R31, Dialogs, ADODB, Classes, VidaUtils ;
 
 var
   Fmw: IXMLDeliveryMessageWood;
@@ -157,10 +157,10 @@ begin
   Result := mw.DeliveryMessageWoodHeader.DeliveryMessageNumber;
 end;
 
-  function NewDataSet(sSQL: string; dsInfo: TDataSet): TFDODataSet;
+  function NewDataSet(sSQL: string; dsInfo: TDataSet): TADODataSet;
   begin
-    Result := TFDODataSet.Create(nil);
-    Result.Connection := TFDODataSet(dsInfo).Connection;
+    Result := TADODataSet.Create(nil);
+    Result.Connection := TADODataSet(dsInfo).Connection;
     Result.Close;
     Result.CommandText := sSQL;
     Result.Open;
@@ -168,7 +168,7 @@ end;
 
   function DoImportExport(sSQL: string; ImpExpFunction: TImportExportFunction; dsInfo: TDataSet): Boolean; overload;
   var
-     dsADO: TFDODataSet;
+     dsADO: TADODataSet;
   begin
       dsADO := NewDataSet(sSQL, dsInfo);
       try
@@ -181,7 +181,7 @@ end;
   
   function DoImportExport(sSQL: string; ImpExpFunction: TExportFunctionInnerUse1; dsInfo: TDataSet): Boolean;  overload;
   var
-     dsADO: TFDODataSet;
+     dsADO: TADODataSet;
   begin
       dsADO := NewDataSet(sSQL, dsInfo);
       try
@@ -194,7 +194,7 @@ end;
 
   function DoImportExport(sSQL: string; ImpExpFunction: TExportFunctionInnerUse2; dsInfo: TDataSet; pNode: IXMLNode): Boolean;  overload;
   var
-     dsADO: TFDODataSet;
+     dsADO: TADODataSet;
   begin
       dsADO := NewDataSet(sSQL, dsInfo);
       try

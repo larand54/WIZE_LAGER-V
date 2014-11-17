@@ -21,6 +21,8 @@ object fStopptidReport: TfStopptidReport
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -43,6 +45,8 @@ object fStopptidReport: TfStopptidReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -394,6 +398,8 @@ object fStopptidReport: TfStopptidReport
     object tsProduktionProduktSummary: TcxTabSheet
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -840,6 +846,8 @@ object fStopptidReport: TfStopptidReport
     object tsCRReports: TcxTabSheet
       Caption = 'CR Rapporter'
       ImageIndex = 2
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -916,6 +924,7 @@ object fStopptidReport: TfStopptidReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -927,20 +936,27 @@ object fStopptidReport: TfStopptidReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 105
-    ClientRectRight = 1259
-    ClientRectTop = 0
+    ClientRectBottom = 101
+    ClientRectLeft = 4
+    ClientRectRight = 1255
+    ClientRectTop = 4
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 1259
+      ExplicitHeight = 105
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1259
-        Height = 105
+        Width = 1251
+        Height = 97
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1259
+        ExplicitHeight = 105
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -1446,8 +1462,8 @@ object fStopptidReport: TfStopptidReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -2352,9 +2368,9 @@ object fStopptidReport: TfStopptidReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2371,14 +2387,13 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2395,7 +2410,6 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2614,7 +2628,7 @@ object fStopptidReport: TfStopptidReport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -3213,7 +3227,7 @@ object fStopptidReport: TfStopptidReport
     Left = 608
     Top = 617
     Bitmap = {
-      494C01010D001100040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010D001100080018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
