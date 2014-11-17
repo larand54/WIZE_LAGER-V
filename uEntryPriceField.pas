@@ -16,7 +16,9 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, siComp, siLngLnk;
 
 type
   TfEntryPriceField = class(TForm)
@@ -24,6 +26,7 @@ type
     LabelForField: TcxLabel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    siLangLinked_fEntryPriceField: TsiLangLinked;
   private
     { Private declarations }
   public

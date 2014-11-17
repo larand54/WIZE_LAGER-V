@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls;
+  Dialogs, StdCtrls, ExtCtrls, siComp, siLngLnk;
 
 type
   TfMemoForm = class(TForm)
     Panel1: TPanel;
     Memo1: TMemo;
+    siLangLinked_fMemoForm: TsiLangLinked;
   private
     { Private declarations }
   public

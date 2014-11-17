@@ -49,7 +49,7 @@ uses
   cxNavigator, cxDateUtils, cxSpinEdit, cxButtonEdit, SqlTimSt,
   cxShellBrowserDialog, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions;
+  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk;
 
 
 type
@@ -712,6 +712,7 @@ type
     DataSource1: TDataSource;
     cxLabel42: TcxLabel;
     teSetNo: TcxTextEdit;
+    siLangLinked_frmInventoryReport: TsiLangLinked;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

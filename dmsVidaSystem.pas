@@ -401,6 +401,8 @@ type
     ds_PksByLIPNo: TDataSource;
     sp_GetAnyPkg: TFDStoredProc;
     ds_GetAnyPkg: TDataSource;
+    sq_dbPropsLangPath: TStringField;
+    sq_dbPropsFastPath: TStringField;
     procedure DataModuleCreate(Sender: TObject);
 
     procedure mtMarkedCodesAfterInsert(DataSet: TDataSet);
@@ -517,6 +519,7 @@ type
 
 
     function Pkg_Reserved(const PkgNo: Integer; const PkgSupplierCode : string3;const Modul : String;Var Res_UserName : String): String ;
+    function  GetLangPath(): String;
 
     procedure Delete_ReservedPkgs(const Modul : String) ;
     procedure Delete_UserReservedPkgs ;
@@ -637,6 +640,23 @@ begin
   sp_prefixForChanged.ParamByName('@PkgNo').AsInteger    := PkgNo ;
   sp_prefixForChanged.ParamByName('@IC_GrpNo').AsInteger := IC_GrpNo ;
 //  sp_prefixForChanged.Open;
+end;
+
+function TdmsSystem.GetLangPath: String;
+begin
+Begin
+ sq_dbProps.Open ;
+ Try
+ if not sq_dbProps.Eof then
+ Begin
+  Result    := sq_dbPropsLangPath.AsString ;
+ End
+ else
+ Result:= '' ;
+ Finally
+  sq_dbProps.Close ;
+ End;
+
 end;
 
 function TdmsSystem.GetListOfPrefixOfPkgsInControlListAndNotAvregAndNotChangedList(

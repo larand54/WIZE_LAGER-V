@@ -54,7 +54,10 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, dxSkinsdxBarPainter,
-  dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxRibbonPainter ;
+  dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxRibbonPainter,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk,
+  System.Actions ;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -214,6 +217,7 @@ type
     Bevel1: TBevel;
     teInvStartNo: TcxDBTextEdit;
     teInvEndNo: TcxDBTextEdit;
+    siLangLinked_frmLoadPlan: TsiLangLinked;
     procedure atNewLoadPlanExecute     (Sender: TObject);
 
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

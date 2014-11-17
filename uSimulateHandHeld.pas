@@ -20,7 +20,9 @@ uses
   cxDataStorage, cxEdit, Data.DB, cxDBData, cxGridLevel, cxClasses,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, Vcl.ExtCtrls, Vcl.ActnList, Vcl.Menus, Vcl.StdCtrls, cxButtons,
-  cxLabel, cxTextEdit;
+  cxLabel, cxTextEdit, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  cxNavigator, siComp, siLngLnk, System.Actions;
 
 type
   TfSimulateHandHeld = class(TForm)
@@ -47,6 +49,7 @@ type
     cxButton1: TcxButton;
     acDeleteRow: TAction;
     cxButton2: TcxButton;
+    siLangLinked_fSimulateHandHeld: TsiLangLinked;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

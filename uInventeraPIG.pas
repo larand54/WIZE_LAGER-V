@@ -31,7 +31,9 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxBarPainter, cxNavigator,
   dxPScxExtDBEditorLnks, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  dxSkinsdxRibbonPainter, dxPSContainerLnk ;
+  dxSkinsdxRibbonPainter, dxPSContainerLnk, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, siComp, siLngLnk, System.Actions ;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -124,6 +126,7 @@ type
     dxBarButton6: TdxBarButton;
     dxComponentPrinter1: TdxComponentPrinter;
     dxComponentPrinter1Link1: TdxGridReportLink;
+    siLangLinked_fInventeraPIG: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure acWysiwygExecute(Sender: TObject);
     procedure grdPIGDBBandedTableView1PigNoPkgs1CustomDrawHeader(

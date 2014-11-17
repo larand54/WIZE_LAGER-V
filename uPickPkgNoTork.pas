@@ -27,7 +27,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, VidaType,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White ;
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk ;
 
 type
   TfPickPkgNoTork = class(TForm)
@@ -117,6 +117,7 @@ type
     cxStyle9: TcxStyle;
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
+    siLangLinked_fPickPkgNoTork: TsiLangLinked;
     procedure mtSelectedPkgNoAfterInsert(DataSet: TDataSet);
     procedure bbMarkAllClick(Sender: TObject);
     procedure bbUnMarkAllClick(Sender: TObject);

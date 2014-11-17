@@ -35,7 +35,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxButtons,
   cxGridLevel, cxGridCustomView, cxGrid, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  System.Actions  ;
+  System.Actions, siComp, siLngLnk  ;
 
 
 
@@ -160,6 +160,7 @@ type
     nviStoppTid: TdxNavBarItem;
     acProgressKiln: TAction;
     nviProgressKiln: TdxNavBarItem;
+    siLangLinked_frmMain: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure atExitExecute(Sender: TObject);
     procedure atAboutExecute(Sender: TObject);

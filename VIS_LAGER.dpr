@@ -119,7 +119,9 @@ uses
   PrintUnit in 'PrintUnit.pas',
   CR_Plugin_Import in 'CR_Plugin_Import.pas',
   uLagerBalans in 'uLagerBalans.pas' {fLagerBalans},
-  uLagBalDtl in 'uLagBalDtl.pas' {fLagBalDtl};
+  uLagBalDtl in 'uLagBalDtl.pas' {fLagBalDtl},
+  udmLanguage in 'udmLanguage.pas' {dmLanguage: TDataModule},
+  ufrmChangeLanguage in 'ufrmChangeLanguage.pas' {frmChangeLanguage};
 
 {$R *.res}
 begin
@@ -134,5 +136,7 @@ begin
   Application.CreateForm(TdmcOrder, dmcOrder);
   Application.CreateForm(TdmsContact, dmsContact);
   Application.CreateForm(TdmInventory, dmInventory);
+  Application.CreateForm(TdmLanguage, dmLanguage);
+  Application.CreateForm(TfrmChangeLanguage, frmChangeLanguage);
   Application.Run
 end.

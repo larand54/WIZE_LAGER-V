@@ -40,7 +40,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, frxClass, frxDBSet,
   cxNavigator, frxExportPDF, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu ;
+  dxBarBuiltInMenu, siComp, siLngLnk, System.Actions ;
 
 type
   TfAnalyseraLeveranser = class(TForm)
@@ -676,6 +676,7 @@ type
     cds_TorkSatserDateOnly: TDateField;
     pivKDNoOfPkgs: TcxDBPivotGridField;
     pivKDDateOnly: TcxDBPivotGridField;
+    siLangLinked_fAnalyseraLeveranser: TsiLangLinked;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);

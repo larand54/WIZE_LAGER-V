@@ -5,12 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, OleCtrls, OleServer,
-  StdCtrls, CrystalActiveXReportViewerLib11_5_TLB, CRAXDRT_TLB;
+  StdCtrls, CrystalActiveXReportViewerLib11_5_TLB, CRAXDRT_TLB, siComp, siLngLnk;
 
 type
   TFormCRViewReport = class(TForm)
     Application1: TApplication;
     CRViewer91: TCrystalActiveXReportViewer;
+    siLangLinked_FormCRViewReport: TsiLangLinked;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

@@ -62,7 +62,7 @@ uses
   Forms,
   ImgList,
   ToolWin,
-  Windows;
+  Windows, siComp, siLngLnk, System.Actions;
 
 //  Db,
 //  Dialogs,
@@ -90,6 +90,7 @@ type
     toolbtn_DBForm_1: TToolButton;
     toolbtn_DBForm_2: TToolButton;
     toolbtn_DBForm_3: TToolButton;
+    siLangLinked_frmDBForm: TsiLangLinked;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure atExitExecute(Sender: TObject);

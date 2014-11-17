@@ -42,7 +42,7 @@ uses
   dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxRibbonPainter, cxNavigator,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu,
-  System.Actions ;
+  System.Actions, siComp, siLngLnk ;
 
 
 type
@@ -366,6 +366,7 @@ type
     mtUserPropFilter2: TStringField;
     PaketnrF21: TMenuItem;
     AntalstlngdF31: TMenuItem;
+    siLangLinked_fProductionReport: TsiLangLinked;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
