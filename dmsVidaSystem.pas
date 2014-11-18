@@ -644,7 +644,6 @@ end;
 
 function TdmsSystem.GetLangPath: String;
 begin
-Begin
  sq_dbProps.Open ;
  Try
  if not sq_dbProps.Eof then
@@ -656,7 +655,6 @@ Begin
  Finally
   sq_dbProps.Close ;
  End;
-
 end;
 
 function TdmsSystem.GetListOfPrefixOfPkgsInControlListAndNotAvregAndNotChangedList(
