@@ -5,21 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, cxControls, cxContainer, cxEdit, cxCheckBox, StdCtrls, Buttons,
-  ExtCtrls, cxTextEdit, cxShellBrowserDialog, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
-  dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, siComp,
-  siLngLnk, cxClasses;
+  ExtCtrls, cxTextEdit, cxShellBrowserDialog;
 
 type
   TfGridSetting = class(TForm)
@@ -30,7 +16,6 @@ type
     teSokVagPkgTableMallar: TcxTextEdit;
     bSelectFolder: TBitBtn;
     cxShellBrowserDialog1: TcxShellBrowserDialog;
-    siLangLinked_fGridSetting: TsiLangLinked;
     procedure bSelectFolderClick(Sender: TObject);
   private
     { Private declarations }

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, siComp, siLngLnk;
+  Dialogs, StdCtrls, Buttons;
 
 type
   TfScanPkgNo = class(TForm)
@@ -12,7 +12,6 @@ type
     bbOK: TBitBtn;
     Label1: TLabel;
     cbEgenLevKod: TCheckBox;
-    siLangLinked_fScanPkgNo: TsiLangLinked;
     procedure ePktNrKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
   private

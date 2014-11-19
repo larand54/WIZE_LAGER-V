@@ -9,21 +9,7 @@ uses
   cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, ActnList, cxPC, ExtCtrls, Menus,
   cxLookAndFeelPainters, StdCtrls, cxButtons, cxLabel, cxContainer,
-  cxTextEdit, cxMaskEdit, cxSpinEdit, cxDBEdit, cxCalc, cxLookAndFeels,
-  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter, dxBarBuiltInMenu, cxNavigator, siComp,
-  siLngLnk, System.Actions;
+  cxTextEdit, cxMaskEdit, cxSpinEdit, cxDBEdit, cxCalc, cxLookAndFeels;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -72,7 +58,6 @@ type
     acAddBorgstena: TAction;
     acRemoveBorgstena: TAction;
     cxButton4: TcxButton;
-    siLangLinked_fAccParams: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acSaveExecute(Sender: TObject);

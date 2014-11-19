@@ -452,15 +452,6 @@
         <DCCReference Include="uLagBalDtl.pas">
             <Form>fLagBalDtl</Form>
         </DCCReference>
-        <DCCReference Include="udmLanguage.pas">
-            <Form>dmLanguage</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="ufrmChangeLanguage.pas">
-            <Form>frmChangeLanguage</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <None Include="VIS_LAGER.todo"/>
         <None Include="ModelSupport_VIS_LAGER\default.txaPackage"/>
         <None Include="ModelSupport_VIS_LAGER\default.txvpck"/>

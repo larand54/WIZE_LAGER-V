@@ -38,7 +38,7 @@ uses
   dxSkinsdxRibbonPainter, dxPScxPivotGridLnk, dxPScxSSLnk, cxButtons,
   cxGroupBox, cxRadioGroup, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions ;
+  dxBarBuiltInMenu ;
 
 type
   TfInvCtrl = class(TForm)
@@ -1489,14 +1489,14 @@ begin
 
   if FormCRViewReport.ReportFound then
   Begin
-(*   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
    FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger);
    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
    FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }   
    FormCRViewReport.ShowModal ;
-*)  End ;
+  End ;
  Finally
   FreeAndNil(FormCRViewReport)  ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -2559,13 +2559,13 @@ begin
   FormCRViewReport.CreateCo('InvenSummary.RPT') ;
   if FormCRViewReport.ReportFound then
   Begin
-(*   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlGrpIC_grpno.AsInteger);
    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
    FormCRViewReport.CRViewer91.ViewReport ;
    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.ShowModal ;
-*)  End ;
+  End ;
  Finally
   FreeAndNil(FormCRViewReport)  ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -3101,12 +3101,12 @@ begin
   FormCRViewReport.CreateCo('ChkPriceList.RPT') ;
   if FormCRViewReport.ReportFound then
   Begin
-(*   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlGrpIC_grpno.AsInteger);
    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
    FormCRViewReport.CRViewer91.ViewReport ;
    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-*)   FormCRViewReport.ShowModal ;
+   FormCRViewReport.ShowModal ;
   End ;
  Finally
   FreeAndNil(FormCRViewReport)  ;
@@ -3585,14 +3585,14 @@ begin
 
   if FormCRViewReport.ReportFound then
   Begin
-(*   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
    FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger);
    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
    FormCRViewReport.CRViewer91.ViewReport ;
    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.ShowModal ;
-*)  End ;
+  End ;
  Finally
   FreeAndNil(FormCRViewReport)  ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -3643,14 +3643,14 @@ begin
 
   if FormCRViewReport.ReportFound then
   Begin
-(*   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
 //  FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString);
    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
    FormCRViewReport.CRViewer91.ViewReport ;
    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.ShowModal ;
-*)  End ;
+  End ;
  Finally
   FreeAndNil(FormCRViewReport)  ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -3717,13 +3717,13 @@ begin
    FormCRViewReport.CreateCo('InvCtrlByPkgNo.rpt') ;
    if FormCRViewReport.ReportFound then
    Begin
-(*    Screen.Cursor := crSQLWait;
+    Screen.Cursor := crSQLWait;
     FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
     FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
     FormCRViewReport.CRViewer91.ViewReport ;
     Screen.Cursor := crSQLWait;
     FormCRViewReport.ShowModal ;
-*)   End ;
+   End ;
   Finally
    FreeAndNil(FormCRViewReport)  ;
    Screen.Cursor := Save_Cursor;
@@ -4472,13 +4472,13 @@ begin
    FormCRViewReport.CreateCo('INVENT_BY_PKGNo.rpt') ;
    if FormCRViewReport.ReportFound then
    Begin
-(*    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
     FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
     FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
     FormCRViewReport.CRViewer91.ViewReport ;
     Screen.Cursor := crSQLWait;    { Show hourglass cursor }
     FormCRViewReport.ShowModal ;
-*)   End ;
+   End ;
   Finally
    FreeAndNil(FormCRViewReport)  ;
    Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -4677,13 +4677,13 @@ begin
     FormCRViewReport.CreateCo(ReportName) ;
    if FormCRViewReport.ReportFound then
    Begin
-(*    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
     FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
     FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
     FormCRViewReport.CRViewer91.ViewReport ;
     Screen.Cursor := crSQLWait;    { Show hourglass cursor }
     FormCRViewReport.ShowModal ;
-*)   End ;
+   End ;
   Finally
    FreeAndNil(FormCRViewReport)  ;
    Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -4707,13 +4707,13 @@ begin
     FormCRViewReport.CreateCo(ReportName) ;
    if FormCRViewReport.ReportFound then
    Begin
-(*    Screen.Cursor := crSQLWait;
+    Screen.Cursor := crSQLWait;
     FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
     FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
     FormCRViewReport.CRViewer91.ViewReport ;
     Screen.Cursor := crSQLWait;
     FormCRViewReport.ShowModal ;
-*)   End ;
+   End ;
   Finally
    FreeAndNil(FormCRViewReport)  ;
    Screen.Cursor := Save_Cursor;
@@ -5911,14 +5911,14 @@ begin
 
   if FormCRViewReport.ReportFound then
   Begin
-(*   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
    FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger);
    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
    FormCRViewReport.CRViewer91.ViewReport ;
    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
    FormCRViewReport.ShowModal ;
-*)  End ;
+  End ;
  Finally
   FreeAndNil(FormCRViewReport)  ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }

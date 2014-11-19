@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, siComp, siLngLnk ;
+  Dialogs, StdCtrls, Buttons, ExtCtrls ;
 
 type
   TfPkgNoPos = class(TForm)
@@ -19,7 +19,6 @@ type
     eAntPosLevKod: TEdit;
     Bevel1: TBevel;
     BitBtn2: TBitBtn;
-    siLangLinked_fPkgNoPos: TsiLangLinked;
   private
     { Private declarations }
   public

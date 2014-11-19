@@ -17,7 +17,7 @@ uses
   cxShellBrowserDialog, dxNavBarCollns, dxNavBarBase, dxNavBar,
   cxStyles, dxNavBarStyles, cxControls, cxSplitter, cxClasses,
   OleServer, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  cxLookAndFeelPainters, CRAXDDRT_TLB, dxSkinsCore, dxSkinBlack, dxSkinBlue,
   dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,

@@ -22,8 +22,7 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk ;
+  cxNavigator ;
 
 type
   TfPktNrPos = class(TForm)
@@ -51,7 +50,6 @@ type
     cds_VerkSupplierCodePos: TIntegerField;
     cds_VerkSupplierCodeLength: TIntegerField;
     cds_VerkROLL: TStringField;
-    siLangLinked_fPktNrPos: TsiLangLinked;
     procedure bbApplyChangesClick(Sender: TObject);
     procedure bbCancelChangesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

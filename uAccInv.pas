@@ -32,10 +32,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinsdxBarPainter, dxSkinscxPCPainter, dxPScxGridLnk,
-  dxPScxGridLayoutViewLnk, dxPScxPivotGridLnk, dxSkinsdxRibbonPainter,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk,
-  System.Actions ;
+  dxPScxGridLayoutViewLnk, dxPScxPivotGridLnk, dxSkinsdxRibbonPainter ;
 
 type
   TfAccInv = class(TForm)
@@ -97,7 +94,6 @@ type
     cds_AccInvPeriod: TStringField;
     cds_AccInvBolag: TStringField;
     ds_AccInv: TDataSource;
-    siLangLinked_fAccInv: TsiLangLinked;
     procedure acRefreshExecute(Sender: TObject);
     procedure acPrintExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);

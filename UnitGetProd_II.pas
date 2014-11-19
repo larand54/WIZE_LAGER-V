@@ -27,9 +27,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu, cxNavigator,
-  dxSkinsdxBarPainter, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, siComp, siLngLnk, System.Actions {$IFNDEF PROFILE};{$ELSE}{},Profint;{$ENDIF}
+  dxSkinsdxBarPainter {$IFNDEF PROFILE};{$ELSE}{},Profint;{$ENDIF}
 
 type
   TfrmGetProd_II = class(TForm)
@@ -224,7 +222,6 @@ type
     cds_ProdListGradeAct: TIntegerField;
     Label7: TLabel;
     icVaruslag: TcxDBImageComboBox;
-    siLangLinked_frmGetProd_II: TsiLangLinked;
     procedure grdProductListDblClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);

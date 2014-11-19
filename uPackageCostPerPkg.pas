@@ -21,9 +21,7 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, Data.DB, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, cxSplitter,
-  Vcl.Menus, Vcl.StdCtrls, cxButtons, cxCheckBox, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, siComp, siLngLnk;
+  Vcl.Menus, Vcl.StdCtrls, cxButtons, cxCheckBox;
 
 type
   TfPackageCostPerPkg = class(TForm)
@@ -82,7 +80,6 @@ type
     cxStyle21: TcxStyle;
     cxStyle22: TcxStyle;
     grdPackageCostDetailsDBTableView1Exclude: TcxGridDBColumn;
-    siLangLinked_fPackageCostPerPkg: TsiLangLinked;
   private
     { Private declarations }
   public

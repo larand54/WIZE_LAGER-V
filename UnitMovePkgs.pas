@@ -27,8 +27,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxBarPainter, dxCore,
   cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk,
-  System.Actions ;
+  dxSkinOffice2013LightGray, dxSkinOffice2013White ;
 
 type
   TfrmMovePkgs = class(TForm)
@@ -167,7 +166,6 @@ type
     grdPkgsDBBandedTableView1InvNr: TcxGridDBBandedColumn;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
-    siLangLinked_frmMovePkgs: TsiLangLinked;
     procedure lbCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

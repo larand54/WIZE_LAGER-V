@@ -35,8 +35,7 @@ uses
   dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr, siComp, siLngLnk,
-  System.Actions ;
+  Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr ;
 
 type
   TfLagBalDtl = class(TForm)
@@ -343,7 +342,6 @@ type
     cds_UserPropsFilter2: TStringField;
     cds_UserPropsVerk: TStringField;
     cds_UserPropsMätpunkt: TStringField;
-    siLangLinked_fLagBalDtl: TsiLangLinked;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acCloseExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);

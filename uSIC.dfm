@@ -39,7 +39,7 @@
         Left = 0
         Top = 0
         Width = 692
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -58,7 +58,7 @@
         Left = 0
         Top = 0
         Width = 73
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -232,14 +232,15 @@
     Properties.ActivePage = tsSic
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
-    ClientRectBottom = 342
-    ClientRectLeft = 4
-    ClientRectRight = 1081
-    ClientRectTop = 33
+    ClientRectBottom = 345
+    ClientRectLeft = 1
+    ClientRectRight = 1084
+    ClientRectTop = 30
     object tsSic: TcxTabSheet
       Caption = 'Sammanst'#228'llning per lager'
       ImageIndex = 3
       ExplicitLeft = 0
+      ExplicitTop = 33
       ExplicitWidth = 1085
       ExplicitHeight = 313
       object Panel1: TPanel
@@ -588,7 +589,6 @@
     Control = grdSICHdr
     Color = clMaroon
     ParentColor = False
-    ExplicitWidth = 8
   end
   object ActionList1: TActionList
     Images = imglistActions
@@ -705,7 +705,7 @@
     Left = 368
     Top = 256
     Bitmap = {
-      494C010121002500080018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010121002500040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000D800000001002000000000000044
       010000000000000000000000000000000000000000000000000000000000AD7B
       7B00B5848400B5848400B5848400B5848400B5848400B5848400B5848400B584
@@ -3392,9 +3392,9 @@
     Top = 192
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdSICRow
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
-      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -3410,13 +3410,14 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProduct
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
-      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -3427,6 +3428,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -3462,8 +3464,8 @@
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default')

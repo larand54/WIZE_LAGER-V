@@ -26,9 +26,7 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  dxSkinsdxBarPainter, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  cxNavigator, System.Actions ;
+  dxSkinsdxBarPainter ;
 
 type
   TfrmLoadArrivals = class(TForm)
@@ -818,12 +816,12 @@ begin
  FormCRViewReport.CreateCo('SAM_LAST.RPT') ;
  if FormCRViewReport.ReportFound then
  Begin
-(*  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(SamLastNr) ;
+  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(SamLastNr) ;
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
 
   FormCRViewReport.CRViewer91.ViewReport ;
   FormCRViewReport.ShowModal ;
-*) End ;
+ End ;
  Finally
     FreeAndNil(FormCRViewReport)  ;
  End ;
@@ -840,12 +838,12 @@ begin
  FormCRViewReport.CreateCo('SAM_LAST_USA.RPT') ;
  if FormCRViewReport.ReportFound then
  Begin
-(*  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(SamLastNr) ;
+  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(SamLastNr) ;
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
 
   FormCRViewReport.CRViewer91.ViewReport ;
   FormCRViewReport.ShowModal ;
-*) End ;
+ End ;
  Finally
     FreeAndNil(FormCRViewReport)  ;
  End ;
@@ -862,12 +860,12 @@ begin
  FormCRViewReport.CreateCo('SAM_LAST_PKTNR.RPT') ;
  if FormCRViewReport.ReportFound then
  Begin
-(*  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(SamLastNr) ;
+  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(SamLastNr) ;
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
 
   FormCRViewReport.CRViewer91.ViewReport ;
   FormCRViewReport.ShowModal ;
-*) End ;
+ End ;
  Finally
     FreeAndNil(FormCRViewReport)  ;
  End ;
@@ -1070,11 +1068,11 @@ begin
 
  if FormCRViewReport.ReportFound then
  Begin
-(*  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger);
+  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger);
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
 
   FormCRViewReport.CRViewer91.ViewReport ;
-*)  FormCRViewReport.ShowModal ;
+  FormCRViewReport.ShowModal ;
  End ;
   Try
   dmcSystem.sq_DelPkgType.ParamByName('LoadNo').AsInteger:= dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger ;
@@ -1121,12 +1119,12 @@ begin
 
  if FormCRViewReport.ReportFound then
  Begin
-(*  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger);
+  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger);
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
 
   FormCRViewReport.CRViewer91.ViewReport ;
   FormCRViewReport.ShowModal ;
-*) End ;
+ End ;
   Try
   dmcSystem.sq_DelPkgType.ParamByName('LoadNo').AsInteger:= dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger ;
   dmcSystem.sq_DelPkgType.ExecSQL ;
@@ -2343,11 +2341,11 @@ begin
 
  if FormCRViewReport.ReportFound then
  Begin
-(*  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger);
+  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger);
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
   FormCRViewReport.CRViewer91.ViewReport ;
   FormCRViewReport.ShowModal ;
-*) End ;
+ End ;
   Try
   dmcSystem.sq_DelPkgType.ParamByName('LoadNo').AsInteger:= dmArrivingLoads.cdsArrivingLoadsLOADNO.AsInteger ;
   dmcSystem.sq_DelPkgType.ExecSQL ;

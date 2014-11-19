@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, dxBar, dxBarExtItems, StdCtrls, ImgList, OleServer, OleCtrls,
   Menus, DB, ActnList, SqlTimSt,
-  {CrystalActiveXReportViewerLib11_TLB,} cxStyles, cxCustomData, cxGraphics,
+  CrystalActiveXReportViewerLib11_TLB, cxStyles, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxLabel, cxCheckBox,
   cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   cxContainer, cxMaskEdit, cxDropDownEdit, cxGridBandedTableView,
@@ -23,7 +23,7 @@ uses
   cxLookAndFeels, dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils,
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxPScxPageControlProducer,
-  dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk,{ CRAXDDRT_TLB,}
+  dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, CRAXDDRT_TLB,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
@@ -41,8 +41,7 @@ uses
   dxSkinsdxBarPainter, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
   dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxRibbonPainter, cxNavigator,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu,
-  CRAXDRT_TLB, System.Actions, CrystalActiveXReportViewerLib11_5_TLB ;
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu ;
 
 
 type

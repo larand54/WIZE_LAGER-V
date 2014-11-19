@@ -11,20 +11,7 @@ uses
   cxGridCustomView, cxGrid, StdCtrls, cxButtons, cxImageComboBox, cxDBEdit,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, cxLabel, ExtCtrls, ActnList, cxGridCustomPopupMenu,
-  cxGridPopupMenu, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
-  dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue,
-  dxSkinscxPCPainter, cxNavigator, siComp, siLngLnk, System.Actions;
+  cxGridPopupMenu;
 
 type
   TfUserProfiles = class(TForm)
@@ -70,7 +57,6 @@ type
     cxButton4: TcxButton;
     lcRawPIP: TcxDBLookupComboBox;
     cxLabel9: TcxLabel;
-    siLangLinked_fUserProfiles: TsiLangLinked;
     procedure acNewProfileExecute(Sender: TObject);
     procedure acDeleteProfileExecute(Sender: TObject);
     procedure acSaveProfileExecute(Sender: TObject);

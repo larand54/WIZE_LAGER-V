@@ -27,7 +27,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, cxNavigator, siComp, siLngLnk;
+  dxSkinOffice2013White, cxNavigator;
 
 type
   TfPickPkgNo = class(TForm)
@@ -97,7 +97,6 @@ type
     cds_ProductsGradeName: TStringField;
     cds_ProductsSpeciesName: TStringField;
     cds_ProductsSurfacingName: TStringField;
-    siLangLinked_fPickPkgNo: TsiLangLinked;
     procedure mtSelectedPkgNoAfterInsert(DataSet: TDataSet);
     procedure bbMarkAllClick(Sender: TObject);
     procedure bbUnMarkAllClick(Sender: TObject);

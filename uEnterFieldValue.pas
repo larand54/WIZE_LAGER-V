@@ -17,9 +17,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, cxControls,
-  cxContainer, cxEdit, cxTextEdit, cxLabel, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, siComp, siLngLnk;
+  cxContainer, cxEdit, cxTextEdit, cxLabel;
 
 type
   TfEnterFieldValue = class(TForm)
@@ -28,7 +26,6 @@ type
     cxButton2: TcxButton;
     cxLabelFieldRubrik: TcxLabel;
     teFieldValue: TcxTextEdit;
-    siLangLinked_fEnterFieldValue: TsiLangLinked;
   private
     { Private declarations }
   public

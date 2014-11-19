@@ -1,9 +1,9 @@
 object fPigNames: TfPigNames
   Left = 229
   Top = 107
+  Width = 428
+  Height = 601
   Caption = 'Lagerplatsnamn'
-  ClientHeight = 563
-  ClientWidth = 412
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object fPigNames: TfPigNames
   object Panel6: TPanel
     Left = 0
     Top = 0
-    Width = 412
+    Width = 420
     Height = 47
     Align = alTop
     BevelOuter = bvNone
@@ -34,7 +34,7 @@ object fPigNames: TfPigNames
         Left = 0
         Top = 0
         Width = 256
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -42,7 +42,7 @@ object fPigNames: TfPigNames
       end
     end
     object Panel3: TPanel
-      Left = 351
+      Left = 359
       Top = 0
       Width = 61
       Height = 47
@@ -53,7 +53,7 @@ object fPigNames: TfPigNames
         Left = 0
         Top = 0
         Width = 61
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -63,7 +63,7 @@ object fPigNames: TfPigNames
     object Panel4: TPanel
       Left = 256
       Top = 0
-      Width = 95
+      Width = 103
       Height = 47
       Align = alClient
       BevelOuter = bvNone
@@ -73,12 +73,12 @@ object fPigNames: TfPigNames
   object grdPigNames: TcxGrid
     Left = 0
     Top = 47
-    Width = 412
-    Height = 516
+    Width = 420
+    Height = 527
     Align = alClient
     TabOrder = 5
     object grdPigNamesDBTableView1: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
+      NavigatorButtons.ConfirmDelete = False
       DataController.DataSource = dmLoadPlan.ds_PigNames
       DataController.KeyFieldNames = 'PigNo'
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -120,16 +120,81 @@ object fPigNames: TfPigNames
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
+    Bars = <
+      item
+        AllowClose = False
+        AllowCustomizing = False
+        AllowQuickCustomizing = False
+        AllowReset = False
+        BorderStyle = bbsNone
+        Caption = 'Custom 1'
+        DockControl = dxBarDockControl1
+        DockedDockControl = dxBarDockControl1
+        DockedLeft = 0
+        DockedTop = 0
+        FloatLeft = 404
+        FloatTop = 232
+        FloatClientWidth = 23
+        FloatClientHeight = 22
+        ItemLinks = <
+          item
+            Item = dxBarLargeButton2
+            Visible = True
+          end
+          item
+            Item = dxBarLargeButton3
+            Visible = True
+          end
+          item
+            Item = dxBarLargeButton4
+            Visible = True
+          end>
+        Name = 'Custom 1'
+        OneOnRow = True
+        Row = 0
+        UseOwnFont = False
+        UseRestSpace = True
+        Visible = True
+        WholeRow = False
+      end
+      item
+        AllowClose = False
+        AllowCustomizing = False
+        AllowQuickCustomizing = False
+        AllowReset = False
+        BorderStyle = bbsNone
+        Caption = 'Custom 2'
+        DockControl = dxBarDockControl2
+        DockedDockControl = dxBarDockControl2
+        DockedLeft = 0
+        DockedTop = 0
+        FloatLeft = 404
+        FloatTop = 232
+        FloatClientWidth = 23
+        FloatClientHeight = 22
+        ItemLinks = <
+          item
+            Item = dxBarLargeButton1
+            Visible = True
+          end>
+        Name = 'Custom 2'
+        OneOnRow = True
+        Row = 0
+        UseOwnFont = False
+        UseRestSpace = True
+        Visible = True
+        WholeRow = False
+      end>
     Categories.Strings = (
       'Default')
     Categories.ItemsVisibles = (
       2)
     Categories.Visibles = (
       True)
-    ImageOptions.LargeImages = imglistActions
+    LargeImages = imglistActions
     PopupMenuLinks = <>
     UseSystemFont = True
     Left = 200
@@ -139,72 +204,6 @@ object fPigNames: TfPigNames
       0
       0
       0)
-    object dxBarManager1Bar1: TdxBar
-      AllowClose = False
-      AllowCustomizing = False
-      AllowQuickCustomizing = False
-      AllowReset = False
-      BorderStyle = bbsNone
-      Caption = 'Custom 1'
-      CaptionButtons = <>
-      DockControl = dxBarDockControl1
-      DockedDockControl = dxBarDockControl1
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 404
-      FloatTop = 232
-      FloatClientWidth = 23
-      FloatClientHeight = 22
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton2'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton3'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton4'
-        end>
-      OldName = 'Custom 1'
-      OneOnRow = True
-      Row = 0
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object dxBarManager1Bar2: TdxBar
-      AllowClose = False
-      AllowCustomizing = False
-      AllowQuickCustomizing = False
-      AllowReset = False
-      BorderStyle = bbsNone
-      Caption = 'Custom 2'
-      CaptionButtons = <>
-      DockControl = dxBarDockControl2
-      DockedDockControl = dxBarDockControl2
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 404
-      FloatTop = 232
-      FloatClientWidth = 23
-      FloatClientHeight = 22
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton1'
-        end>
-      OldName = 'Custom 2'
-      OneOnRow = True
-      Row = 0
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = acClose
       Category = 0
@@ -255,7 +254,7 @@ object fPigNames: TfPigNames
     Left = 368
     Top = 256
     Bitmap = {
-      494C010120002200080018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010120002200040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000D800000001002000000000000044
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2934,129 +2933,5 @@ object fPigNames: TfPigNames
       FE1FFFE0000FE07E0FE00007FFFFFFE0001FFFE01FFFFFFFFFFFFFE0003FFFF0
       7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
-  end
-  object siLangLinked_fPigNames: TsiLangLinked
-    Version = '7.2'
-    StringsTypes.Strings = (
-      'TIB_STRINGLIST'
-      'TSTRINGLIST')
-    NumOfLanguages = 2
-    ActiveLanguage = 2
-    LangDispatcher = dmLanguage.siLangDispatcher1
-    LangDelim = 1
-    LangNames.Strings = (
-      'Swedish'
-      'English')
-    Language = 'English'
-    CommonContainer = dmLanguage.siLang1
-    ExcludedProperties.Strings = (
-      'Category'
-      'SecondaryShortCuts'
-      'HelpKeyword'
-      'InitialDir'
-      'HelpKeyword'
-      'ActivePage'
-      'ImeName'
-      'DefaultExt'
-      'FileName'
-      'FieldName'
-      'PickList'
-      'DisplayFormat'
-      'EditMask'
-      'KeyList'
-      'LookupDisplayFields'
-      'DropDownSpecRow'
-      'TableName'
-      'DatabaseName'
-      'IndexName'
-      'MasterFields'
-      'SQL'
-      'DeleteSQL'
-      'UpdateSQL'
-      'ModifySQL'
-      'KeyFields'
-      'LookupKeyFields'
-      'LookupResultField'
-      'DataField'
-      'KeyField'
-      'ListField')
-    Left = 200
-    Top = 288
-    TranslationData = {
-      73007400430061007000740069006F006E0073005F0055006E00690063006F00
-      640065000D000A00540066005000690067004E0061006D006500730001004C00
-      610067006500720070006C006100740073006E0061006D006E00010001000D00
-      0A006700720064005000690067004E0061006D00650073004400420054006100
-      62006C006500560069006500770031005000690067004E0061006D0065000100
-      5000690067004E0061006D006500010001000D000A0067007200640050006900
-      67004E0061006D0065007300440042005400610062006C006500560069006500
-      7700310041006300740069007600650001004100630074006900760065000100
-      01000D000A006700720064005000690067004E0061006D006500730044004200
-      5400610062006C006500560069006500770031005000690067004E006F000100
-      5000690067004E006F00010001000D000A00640078004200610072004D006100
-      6E00610067006500720031004200610072003100010043007500730074006F00
-      6D0020003100010001000D000A00640078004200610072004D0061006E006100
-      67006500720031004200610072003200010043007500730074006F006D002000
-      3200010001000D000A006100630043006C006F0073006500010053007400E400
-      6E006700010001000D000A00610063004E006500770001004C00E40067006700
-      2000740069006C006C00010001000D000A006100630053006100760065000100
-      53007000610072006100010001000D000A0061006300430061006E0063006500
-      6C004300680061006E006700650073000100C5006E006700720061002000E400
-      6E006400720069006E00670061007200010001000D000A007300740048006900
-      6E00740073005F0055006E00690063006F00640065000D000A00730074004400
-      6900730070006C00610079004C006100620065006C0073005F0055006E006900
-      63006F00640065000D000A007300740046006F006E00740073005F0055006E00
-      690063006F00640065000D000A00540066005000690067004E0061006D006500
-      730001004D0053002000530061006E0073002000530065007200690066000100
-      01000D000A00640078004200610072004D0061006E0061006700650072003100
-      01005300650067006F006500200055004900010001000D000A00640078004200
-      610072004D0061006E0061006700650072003100420061007200310001005300
-      650067006F006500200055004900010001000D000A0064007800420061007200
-      4D0061006E006100670065007200310042006100720032000100530065006700
-      6F006500200055004900010001000D000A00730074004D0075006C0074006900
-      4C0069006E00650073005F0055006E00690063006F00640065000D000A006400
-      78004200610072004D0061006E00610067006500720031002E00430061007400
-      650067006F0072006900650073000100440065006600610075006C0074000100
-      01000D000A007300740053007400720069006E00670073005F0055006E006900
-      63006F00640065000D000A00730074004F007400680065007200530074007200
-      69006E00670073005F0055006E00690063006F00640065000D000A0067007200
-      64005000690067004E0061006D0065007300440042005400610062006C006500
-      560069006500770031005000690067004E0061006D0065002E00500072006F00
-      700065007200740069006500730043006C006100730073004E0061006D006500
-      010054006300780054006500780074004500640069007400500072006F007000
-      650072007400690065007300010001000D000A00670072006400500069006700
-      4E0061006D0065007300440042005400610062006C0065005600690065007700
-      31004100630074006900760065002E00500072006F0070006500720074006900
-      650073002E0044006900730070006C006100790043006800650063006B006500
-      640001005400720075006500010001000D000A00670072006400500069006700
-      4E0061006D0065007300440042005400610062006C0065005600690065007700
-      31004100630074006900760065002E00500072006F0070006500720074006900
-      650073002E0044006900730070006C006100790055006E006300680065006300
-      6B00650064000100460061006C0073006500010001000D000A00670072006400
-      5000690067004E0061006D0065007300440042005400610062006C0065005600
-      69006500770031004100630074006900760065002E00500072006F0070006500
-      7200740069006500730043006C006100730073004E0061006D00650001005400
-      6300780043006800650063006B0042006F007800500072006F00700065007200
-      7400690065007300010001000D000A006700720064005000690067004E006100
-      6D0065007300440042005400610062006C006500560069006500770031005000
-      690067004E006F002E00500072006F0070006500720074006900650073004300
-      6C006100730073004E0061006D00650001005400630078004C00610062006500
-      6C00500072006F007000650072007400690065007300010001000D000A006400
-      78004200610072004D0061006E00610067006500720031004200610072003100
-      2E004F006C0064004E0061006D006500010043007500730074006F006D002000
-      3100010001000D000A00640078004200610072004D0061006E00610067006500
-      7200310042006100720032002E004F006C0064004E0061006D00650001004300
-      7500730074006F006D0020003200010001000D000A007300740043006F006C00
-      6C0065006300740069006F006E0073005F0055006E00690063006F0064006500
-      0D000A0073007400430068006100720053006500740073005F0055006E006900
-      63006F00640065000D000A00540066005000690067004E0061006D0065007300
-      0100440045004600410055004C0054005F004300480041005200530045005400
-      010001000D000A00640078004200610072004D0061006E006100670065007200
-      31000100440045004600410055004C0054005F00430048004100520053004500
-      5400010001000D000A00640078004200610072004D0061006E00610067006500
-      7200310042006100720031000100440045004600410055004C0054005F004300
-      480041005200530045005400010001000D000A00640078004200610072004D00
-      61006E0061006700650072003100420061007200320001004400450046004100
-      55004C0054005F004300480041005200530045005400010001000D000A00}
   end
 end

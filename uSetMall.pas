@@ -20,9 +20,7 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, Data.DB, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons, cxCheckBox, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  siComp, siLngLnk;
+  Vcl.StdCtrls, cxButtons, cxCheckBox;
 
 type
   TfSetMall = class(TForm)
@@ -52,7 +50,6 @@ type
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
     grdSetMallDBTableView1LogicalInventoryPointNo: TcxGridDBColumn;
-    siLangLinked_fSetMall: TsiLangLinked;
   private
     { Private declarations }
   public

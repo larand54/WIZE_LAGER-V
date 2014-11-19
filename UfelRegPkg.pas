@@ -27,8 +27,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxStatusBarPainter,
   dxSkinsdxBarPainter, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  siComp, siLngLnk, System.Actions ;
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White ;
 
   Const
     CM_MOVEIT = WM_USER + 1;
@@ -246,7 +245,6 @@ type
     mtUserPropPackage_Size: TStringField;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
-    siLangLinked_ffelRegPkg: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure bcStdLenGrpChange(Sender: TObject);

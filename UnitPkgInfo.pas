@@ -21,9 +21,7 @@ uses
   dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxBarPainter, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, cxNavigator, siComp, siLngLnk, System.Actions;
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxBarPainter;
 
 type
   TfrmPkgInfo = class(TForm)
@@ -161,7 +159,6 @@ type
     cxDBTextEdit4: TcxDBTextEdit;
     Bevel1: TBevel;
     Label18: TLabel;
-    siLangLinked_frmPkgInfo: TsiLangLinked;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lbExitClick(Sender: TObject);

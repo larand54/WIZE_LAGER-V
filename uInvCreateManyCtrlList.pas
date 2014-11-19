@@ -36,8 +36,7 @@ uses
   dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxBarPainter,
   dxSkinsdxRibbonPainter , dxPScxPivotGridLnk, dxPScxSSLnk, dxCore, cxDateUtils,
   cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk,
-  System.Actions ;
+  dxSkinOffice2013LightGray, dxSkinOffice2013White ;
 
 type
   TfInvCreateManyCtrlList = class(TForm)
@@ -179,7 +178,6 @@ type
     acCopyCalcPriceToNM3: TAction;
     cxButton12: TcxButton;
     cxButton13: TcxButton;
-    siLangLinked_fInvCreateManyCtrlList: TsiLangLinked;
     procedure acRefreshExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

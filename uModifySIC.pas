@@ -22,10 +22,7 @@ uses
   dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu, cxNavigator,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu, siComp,
-  siLngLnk, System.Actions;
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu, cxNavigator;
 
 type
   TfModifySIC = class(TForm)
@@ -90,7 +87,6 @@ type
     grdSelectedInvsDBTableView1MAXDATUM: TcxGridDBColumn;
     grdSelectedInvsDBTableView1NAMN: TcxGridDBColumn;
     grdSelectedInvsLevel1: TcxGridLevel;
-    siLangLinked_fModifySIC: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);

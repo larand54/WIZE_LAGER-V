@@ -23,9 +23,7 @@ uses
   dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, siComp, siLngLnk, System.Actions ;
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator ;
 
 type
   TfInvCtrlList = class(TForm)
@@ -98,7 +96,6 @@ type
     cxButton1: TcxButton;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
-    siLangLinked_fInvCtrlList: TsiLangLinked;
     procedure grdInvCtrlListDBTableView1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

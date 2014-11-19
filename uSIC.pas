@@ -35,9 +35,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu, dxPScxGridLnk,
   dxPScxGridLayoutViewLnk, dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxBarPainter,
-  dxSkinsdxRibbonPainter, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions ;
+  dxSkinsdxRibbonPainter, cxNavigator ;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -747,11 +745,11 @@ begin
      FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(0) ;
      FormCRViewReport.report.ParameterFields.Item[3].AddCurrentValue(0) ;
     End ;
- (*   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
+    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
     FormCRViewReport.CRViewer91.ViewReport ;
     Screen.Cursor := crSQLWait;    { Show hourglass cursor }
     FormCRViewReport.ShowModal ;
-*)   End ;
+   End ;
   Finally
    FreeAndNil(FormCRViewReport)  ;
    Screen.Cursor := Save_Cursor;  { Always restore to normal }
