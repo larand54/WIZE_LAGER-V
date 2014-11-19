@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, OleCtrls, OleServer,
-  StdCtrls, CrystalActiveXReportViewerLib11_TLB, CRAXDDRT_TLB;
+  StdCtrls, CRAXDRT_TLB, CrystalActiveXReportViewerLib11_5_TLB;//, CrystalActiveXReportViewerLib11_TLB, CRAXDDRT_TLB;
 
 type
   TFormCRViewReport = class(TForm)
     Application1: TApplication;
-    CRViewer91: TCrystalActiveXReportViewer;
+//    CRViewer91: TCrystalActiveXReportViewer;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -68,7 +68,7 @@ end;
 
 procedure TFormCRViewReport.FormCreate(Sender: TObject);
 begin
- CRViewer91.EnableExportButton:= True ;
+ //CRViewer91.EnableExportButton:= True ;
 end;
 
 end.

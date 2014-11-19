@@ -22,7 +22,9 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, cxImageComboBox,
-  dxSkinsdxBarPainter, Vcl.Menus, cxButtons;
+  dxSkinsdxBarPainter, Vcl.Menus, cxButtons, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, siComp, siLngLnk, System.Actions;
 
 type
   TfKilnProps = class(TForm)
@@ -89,6 +91,7 @@ type
     grdChannelsDBTableView1Note: TcxGridDBColumn;
     grdChannelsDBTableView1Info: TcxGridDBColumn;
     grdKilnsDBTableView1NoOfVagnarBefore: TcxGridDBColumn;
+    siLangLinked_fKilnProps: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure acAddKilnExecute(Sender: TObject);

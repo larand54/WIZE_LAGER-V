@@ -27,7 +27,7 @@ uses
   dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   dxSkinsdxBarPainter,  dxCore, cxNavigator, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White ;
+  dxSkinOffice2013White, siComp, siLngLnk, System.Actions ;
 
 type
   TfVardaBortPkt = class(TForm)
@@ -165,6 +165,7 @@ type
     cxStyleRedBg: TcxStyle;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
+    siLangLinked_fVardaBortPkt: TsiLangLinked;
     procedure lbCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

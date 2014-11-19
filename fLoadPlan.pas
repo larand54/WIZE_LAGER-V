@@ -54,7 +54,9 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, dxSkinsdxBarPainter,
-  dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxRibbonPainter ;
+  dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxRibbonPainter,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, System.Actions ;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -648,14 +650,14 @@ begin
 
  if FormCRViewReport.ReportFound then
  Begin
-  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(grdLoadPlanDBBandedTableView1.DataController.DataSet.FieldByName('LONumber').AsInteger);
+{  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(grdLoadPlanDBBandedTableView1.DataController.DataSet.FieldByName('LONumber').AsInteger);
   FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(grdLoadPlanDBBandedTableView1.DataController.DataSet.FieldByName('Supplier').AsInteger);
   FormCRViewReport.report.ParameterFields.Item[3].AddCurrentValue(ThisUser.UserID);
 
   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
   FormCRViewReport.CRViewer91.ViewReport ;
   FormCRViewReport.ShowModal ;
- End ;
+ }End ;
  Finally
     FreeAndNil(FormCRViewReport)  ;
  End ;

@@ -809,7 +809,7 @@ object fInventeringsRapport: TfInventeringsRapport
             Left = 0
             Top = 0
             Width = 95
-            Height = 19
+            Height = 21
             Align = dalTop
             BarManager = dxBarManager1
           end
@@ -1004,17 +1004,18 @@ object fInventeringsRapport: TfInventeringsRapport
         TabOrder = 2
         Properties.ActivePage = tsPaketnr
         Properties.CustomButtons.Buttons = <>
-        ClientRectBottom = 198
-        ClientRectRight = 1165
+        ClientRectBottom = 194
+        ClientRectLeft = 4
+        ClientRectRight = 1161
         ClientRectTop = 24
         object tsPaketnr: TcxTabSheet
           Caption = 'Paketnr'
           ImageIndex = 0
           object grdPkgNoTbl: TcxGrid
             Left = 0
-            Top = 22
-            Width = 1165
-            Height = 152
+            Top = 24
+            Width = 1157
+            Height = 146
             Align = alClient
             BevelEdges = []
             BevelInner = bvNone
@@ -1022,6 +1023,9 @@ object fInventeringsRapport: TfInventeringsRapport
             TabOrder = 0
             LevelTabs.Images = dmsConnector.ilStatus
             LookAndFeel.Kind = lfFlat
+            ExplicitTop = 22
+            ExplicitWidth = 1165
+            ExplicitHeight = 152
             object grdPkgNoTblDBBandedTableView1: TcxGridDBBandedTableView
               Navigator.Buttons.CustomButtons = <>
               DataController.DataSource = dmInventory.ds_PkgNoList
@@ -2464,8 +2468,8 @@ object fInventeringsRapport: TfInventeringsRapport
           object dxBarDockControl2: TdxBarDockControl
             Left = 0
             Top = 0
-            Width = 1165
-            Height = 22
+            Width = 1157
+            Height = 24
             Align = dalTop
             BarManager = dxBarManager1
           end
@@ -3763,23 +3767,29 @@ object fInventeringsRapport: TfInventeringsRapport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = pgInventoryPageChanging
-    ClientRectBottom = 123
-    ClientRectRight = 1165
+    ClientRectBottom = 119
+    ClientRectLeft = 4
+    ClientRectRight = 1161
     ClientRectTop = 24
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitWidth = 1165
+      ExplicitHeight = 99
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1165
-        Height = 99
+        Width = 1157
+        Height = 95
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1165
+        ExplicitHeight = 99
         DesignSize = (
-          1165
-          99)
+          1157
+          95)
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -4062,7 +4072,7 @@ object fInventeringsRapport: TfInventeringsRapport
           OnClick = cxLabel15Click
         end
         object cxLabel16: TcxLabel
-          Left = 1006
+          Left = 998
           Top = 0
           Anchors = [akTop, akRight]
           Caption = 'St'#228'ng'
@@ -4077,9 +4087,10 @@ object fInventeringsRapport: TfInventeringsRapport
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           OnClick = cxLabel14Click
+          ExplicitLeft = 1006
         end
         object cxLabel14: TcxLabel
-          Left = 1008
+          Left = 1000
           Top = 0
           Anchors = [akTop, akRight]
           Caption = 'St'#228'ng'
@@ -4093,6 +4104,7 @@ object fInventeringsRapport: TfInventeringsRapport
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           OnClick = cxLabel14Click
+          ExplicitLeft = 1008
         end
         object cbLIP: TcxCheckComboBox
           Left = 454
@@ -4275,6 +4287,9 @@ object fInventeringsRapport: TfInventeringsRapport
     object tsFakturaSpec: TcxTabSheet
       Caption = 'Fakturaspec'
       ImageIndex = 0
+      ExplicitLeft = 0
+      ExplicitWidth = 1165
+      ExplicitHeight = 99
       object cxLabel26: TcxLabel
         Left = 24
         Top = 4
@@ -4313,6 +4328,9 @@ object fInventeringsRapport: TfInventeringsRapport
     object tsLoadOrderSpec: TcxTabSheet
       Caption = 'Lastorderspec'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitWidth = 1165
+      ExplicitHeight = 99
       object mLONos: TcxMemo
         Left = 96
         Top = 0
@@ -4331,6 +4349,9 @@ object fInventeringsRapport: TfInventeringsRapport
     object tsInventering: TcxTabSheet
       Caption = 'Inventering'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitWidth = 1165
+      ExplicitHeight = 99
       object cxLabel23: TcxLabel
         Left = 15
         Top = 13
@@ -4387,8 +4408,8 @@ object fInventeringsRapport: TfInventeringsRapport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -5409,8 +5430,10 @@ object fInventeringsRapport: TfInventeringsRapport
     Top = 233
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -5424,14 +5447,17 @@ object fInventeringsRapport: TfInventeringsRapport
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39085.979061331020000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPcsPerLength
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 274
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -5444,13 +5470,16 @@ object fInventeringsRapport: TfInventeringsRapport
       PrinterPage.PageSize.Y = 305900
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Active = True
       Component = grdInvSum
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -5463,13 +5492,16 @@ object fInventeringsRapport: TfInventeringsRapport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41918.372369953700000000
+      ReportDocument.CreationDate = 41955.682521574080000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdPkgNoTbl
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -5482,13 +5514,16 @@ object fInventeringsRapport: TfInventeringsRapport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 256
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -5501,6 +5536,7 @@ object fInventeringsRapport: TfInventeringsRapport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -5769,7 +5805,7 @@ object fInventeringsRapport: TfInventeringsRapport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -6091,7 +6127,7 @@ object fInventeringsRapport: TfInventeringsRapport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -6512,7 +6548,7 @@ object fInventeringsRapport: TfInventeringsRapport
     Left = 312
     Top = 225
     Bitmap = {
-      494C01010D001100040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010D001100080018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
