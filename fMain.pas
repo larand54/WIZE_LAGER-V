@@ -17,7 +17,7 @@ uses
   cxShellBrowserDialog, dxNavBarCollns, dxNavBarBase, dxNavBar,
   cxStyles, dxNavBarStyles, cxControls, cxSplitter, cxClasses,
   OleServer, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, CRAXDDRT_TLB, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
   dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -323,9 +323,9 @@ begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
  showmessage('Ändra till H:\');
-   ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
+ //  ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
-// ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+ ThisUser.Database:= 'vis.vida.se:vis_vida' ;
 // ThisUser.Database:= 'alvesql03:vis_vida' ;
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then

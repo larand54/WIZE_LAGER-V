@@ -70,7 +70,6 @@ uses
   uSicICgrp in 'uSicICgrp.pas' {fSicICgrp},
   uModifySIC in 'uModifySIC.pas' {fModifySIC},
   uLipForSic in 'uLipForSic.pas' {fLipForSic},
-  UnitAboutBox in '..\..\CommonUnits\UnitAboutBox.pas' {AboutBox},
   uInvCare in 'uInvCare.pas' {fuInvCare},
   uChangeLogins in 'uChangeLogins.pas' {OKHelpBottomDlg},
   uVardaBortPkt in 'uVardaBortPkt.pas' {fVardaBortPkt},
@@ -98,7 +97,6 @@ uses
   PackageExportU in 'ImportLoad\PackageExportU.pas',
   DeliveryMessageWoodV2R31 in 'ImportLoad\DeliveryMessageWoodV2R31.pas',
   dmsVidaProduct in 'dmsVidaProduct.pas' {dmsProduct: TDataModule},
-  VidaUser in '..\..\CommonUnits\VidaUser.pas',
   UProductionReport in 'UProductionReport.pas' {fProductionReport},
   uInventeringsRapport in 'uInventeringsRapport.pas' {fInventeringsRapport},
   uAngeNyMall in 'uAngeNyMall.pas' {fAngeNyMall},
@@ -119,7 +117,10 @@ uses
   PrintUnit in 'PrintUnit.pas',
   CR_Plugin_Import in 'CR_Plugin_Import.pas',
   uLagerBalans in 'uLagerBalans.pas' {fLagerBalans},
-  uLagBalDtl in 'uLagBalDtl.pas' {fLagBalDtl};
+  uLagBalDtl in 'uLagBalDtl.pas' {fLagBalDtl},
+  VidaUser in '..\CommonUnits\VidaUser.pas',
+  UnitAboutBox in '..\CommonUnits\UnitAboutBox.pas' {AboutBox},
+  uSelectInventorySET in 'uSelectInventorySET.pas' {fSelectInventorySET};
 
 {$R *.res}
 begin

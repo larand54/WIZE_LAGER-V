@@ -44,9 +44,10 @@ object fAccParams: TfAccParams
     Top = 41
     Width = 951
     Height = 476
-    ActivePage = tsAccInv
     Align = alClient
     TabOrder = 1
+    Properties.ActivePage = tsAccInv
+    Properties.CustomButtons.Buttons = <>
     ClientRectBottom = 476
     ClientRectRight = 951
     ClientRectTop = 24
@@ -97,7 +98,7 @@ object fAccParams: TfAccParams
         Align = alClient
         TabOrder = 1
         object grdAccParamsDBTableView1: TcxGridDBTableView
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dmsSystem.ds_AccInvParam
           DataController.KeyFieldNames = 'ClientNo'
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -165,7 +166,7 @@ object fAccParams: TfAccParams
         Align = alClient
         TabOrder = 1
         object grdAccInvDBTableView1: TcxGridDBTableView
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           OnEditKeyDown = grdAccInvDBTableView1EditKeyDown
           DataController.DataSource = dmsSystem.ds_AccInv
           DataController.KeyFieldNames = 'ClientNo;YearNo;WeekNo'

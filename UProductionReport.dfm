@@ -20,6 +20,8 @@ object fProductionReport: TfProductionReport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -41,6 +43,9 @@ object fProductionReport: TfProductionReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -538,6 +543,9 @@ object fProductionReport: TfProductionReport
     object tsProduktionProduktSummary: TcxTabSheet
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -984,6 +992,9 @@ object fProductionReport: TfProductionReport
     object tsCRReports: TcxTabSheet
       Caption = 'CR Rapporter'
       ImageIndex = 2
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -1060,6 +1071,7 @@ object fProductionReport: TfProductionReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -1071,31 +1083,35 @@ object fProductionReport: TfProductionReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 104
-    ClientRectLeft = 1
-    ClientRectRight = 1248
-    ClientRectTop = 1
+    ClientRectBottom = 105
+    ClientRectRight = 1249
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 1247
+      ExplicitHeight = 103
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1247
-        Height = 103
+        Width = 1249
+        Height = 105
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1247
+        ExplicitHeight = 103
         DesignSize = (
-          1247
-          103)
+          1249
+          105)
         object Bevel1: TBevel
-          Left = 1
+          Left = 3
           Top = 27
           Width = 1240
           Height = 4
           Anchors = [akTop, akRight]
-          ExplicitLeft = 3
         end
         object lcPIPNAME: TcxDBLookupComboBox
           Left = 1286
@@ -2487,6 +2503,7 @@ object fProductionReport: TfProductionReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2505,10 +2522,12 @@ object fProductionReport: TfProductionReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2527,6 +2546,7 @@ object fProductionReport: TfProductionReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2745,7 +2765,7 @@ object fProductionReport: TfProductionReport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1

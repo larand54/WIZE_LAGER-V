@@ -813,6 +813,16 @@ type
     sp_Add_IC_GroupNo_To_Inven_Al_VW: TFDStoredProc;
     cds_CtrlListHANDELSE: TStringField;
     sp_RemoveKilnPkgsFromInvCount: TFDStoredProc;
+    cds_InvCtrlSetList: TFDQuery;
+    cds_InvCtrlSetListIC_SETNo: TIntegerField;
+    cds_InvCtrlSetListDateCreated: TSQLTimeStampField;
+    cds_InvCtrlSetListCreatedUser: TIntegerField;
+    cds_InvCtrlSetListNote: TMemoField;
+    cds_InvCtrlSetListMaxDatum: TSQLTimeStampField;
+    cds_InvCtrlSetListStartFilterOnMaxDate: TSQLTimeStampField;
+    cds_InvCtrlSetListEndFilterOnMaxDate: TSQLTimeStampField;
+    cds_InvCtrlSetListSetStatus: TIntegerField;
+    ds_InvCtrlSetList: TDataSource;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);

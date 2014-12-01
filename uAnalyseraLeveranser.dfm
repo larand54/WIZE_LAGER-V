@@ -165,7 +165,7 @@
     Height = 786
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsDeliveries
+    Properties.ActivePage = tsProduction
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
@@ -702,6 +702,7 @@
         OptionsView.TotalsForSingleValues = True
         Styles.Total = cxStyle2
         TabOrder = 0
+        ExplicitTop = 87
         object fMtpunkt: TcxDBPivotGridField
           Area = faRow
           AreaIndex = 1
@@ -738,6 +739,7 @@
           AreaIndex = 6
           DataBinding.FieldName = 'PKT'
           PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.###'
           Width = 47
           UniqueName = 'PKT'
         end
@@ -799,38 +801,33 @@
           DataBinding.FieldName = 'KV'
           UniqueName = 'KV'
         end
-        object pivProduction_Krnr: TcxDBPivotGridField
-          AreaIndex = 12
-          DataBinding.FieldName = 'K'#246'rnr'
-          UniqueName = 'K'#246'rnr'
-        end
         object pivProduction_NLMM: TcxDBPivotGridField
-          AreaIndex = 13
+          AreaIndex = 12
           DataBinding.FieldName = 'NLMM'
           UniqueName = 'NLMM'
         end
         object pivProduction_Paketnr: TcxDBPivotGridField
-          AreaIndex = 14
+          AreaIndex = 13
           DataBinding.FieldName = 'Paketnr'
           UniqueName = 'Paketnr'
         end
         object pivProduction_Prefix: TcxDBPivotGridField
-          AreaIndex = 15
+          AreaIndex = 14
           DataBinding.FieldName = 'Prefix'
           UniqueName = 'Prefix'
         end
         object pivProduction_Produkt: TcxDBPivotGridField
-          AreaIndex = 16
+          AreaIndex = 15
           DataBinding.FieldName = 'Produkt'
           UniqueName = 'Produkt'
         end
         object pivProduction_TS: TcxDBPivotGridField
-          AreaIndex = 17
+          AreaIndex = 16
           DataBinding.FieldName = 'TS'
           UniqueName = 'TS'
         end
         object pivProduction_UT: TcxDBPivotGridField
-          AreaIndex = 18
+          AreaIndex = 17
           DataBinding.FieldName = 'UT'
           UniqueName = 'UT'
         end
@@ -882,20 +879,20 @@
           UniqueName = 'Datum'
         end
         object pivProductionOperation: TcxDBPivotGridField
-          AreaIndex = 19
+          AreaIndex = 18
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Operation'
           Visible = True
           UniqueName = 'Operation'
         end
         object pivProductionOrt: TcxDBPivotGridField
-          AreaIndex = 20
+          AreaIndex = 19
           DataBinding.FieldName = 'Ort'
           Visible = True
           UniqueName = 'Ort'
         end
         object pivProductionUtfall: TcxDBPivotGridField
-          AreaIndex = 21
+          AreaIndex = 20
           IsCaptionAssigned = True
           Caption = 'Utfall%'
           DataBinding.FieldName = 'NM3'
@@ -907,7 +904,7 @@
           UniqueName = 'Utfall%'
         end
         object pivVarugruppNamn: TcxDBPivotGridField
-          AreaIndex = 22
+          AreaIndex = 21
           IsCaptionAssigned = True
           Caption = 'Varugrupp'
           DataBinding.FieldName = 'VarugruppNamn'
@@ -915,7 +912,7 @@
           UniqueName = 'Varugrupp'
         end
         object pivAvgLength: TcxDBPivotGridField
-          AreaIndex = 23
+          AreaIndex = 22
           IsCaptionAssigned = True
           Caption = 'Medell'#228'ngd'
           DataBinding.FieldName = 'AvgLength'
@@ -927,10 +924,55 @@
           UniqueName = 'Medell'#228'ngd'
         end
         object pivSkiftlag: TcxDBPivotGridField
-          AreaIndex = 24
+          AreaIndex = 23
+          IsCaptionAssigned = True
+          Caption = 'Skiftlag'
           DataBinding.FieldName = 'ShiftTeamName'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'ShiftTeamName'
+        end
+        object pivKoorderID: TcxDBPivotGridField
+          AreaIndex = 24
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'SortingOrderNo'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'K'#246'rordernr'
+        end
+        object pivSortingOrderRowNo: TcxDBPivotGridField
+          AreaIndex = 25
+          AllowedAreas = [faColumn, faRow, faFilter]
+          IsCaptionAssigned = True
+          Caption = 'K'#246'rorderradnr'
+          DataBinding.FieldName = 'SortingOrderRowNo'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'K'#246'rorderradnr'
+        end
+        object pivReferens: TcxDBPivotGridField
+          AreaIndex = 26
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Referens'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Referens'
+        end
+        object pivLO: TcxDBPivotGridField
+          AreaIndex = 27
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'HeadLO'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'LO'
+        end
+        object pivKund: TcxDBPivotGridField
+          AreaIndex = 28
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'ClientName'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Kund'
         end
       end
       object Panel2: TPanel
@@ -2459,7 +2501,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 41920.385722291660000000
+      ReportDocument.CreationDate = 41963.548368356480000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2487,7 +2529,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 41920.385722303240000000
+      ReportDocument.CreationDate = 41963.548368356480000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2513,7 +2555,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 41920.385722303240000000
+      ReportDocument.CreationDate = 41963.548368368060000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2534,11 +2576,10 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41920.385722326390000000
+      ReportDocument.CreationDate = 41963.548368379630000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2552,7 +2593,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 40918.446931423610000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxCompositionReportLink
@@ -2598,7 +2638,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41920.385722754630000000
+      ReportDocument.CreationDate = 41963.548368634260000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -2665,12 +2705,13 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41920.385722766200000000
+      ReportDocument.CreationDate = 41963.548368645830000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdStoppTid
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2683,7 +2724,8 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41920.385722777780000000
+      ReportDocument.CreationDate = 41963.548368657410000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
@@ -5886,11 +5928,13 @@
       'Su.SurfacingName AS UT,'
       'PC.ProductCategoryName AS IMP,'
       'pp.ProductionDate AS Datum,'
-      'SearchName AS Verk,'
+      'sup.SearchName AS Verk,'
       'rp.RegPointName AS M'#228'tpunkt,'
       'SUM(ptd.m3Actual) AM3,'
       'SUM(ptd.m3Nominal) NM3,'
-      'Count(pt.PackageTypeNo) AS PKT,'
+      
+        'SUM(ptd.NoOfPieces) / CAST(SUM(pt.TotalNoOfPieces)  AS Float) as' +
+        ' pkt,'
       'SUM(ptd.NoOfPieces) AS STYCK,'
       'SUM(ptd.LinealMeterActualLength) AS LPM,'
       'CASE'
@@ -5900,9 +5944,31 @@
       'C.CityName AS Ort,'
       'va.VarugruppNamn,'
       '0.0 AS AvgLength,'
-      'ST.ShiftTeamName'
+      'ST.ShiftTeamName,'
+      'sop.SortingOrderNo AS K'#246'orderID,'
+      'sop.SortingOrderRowNo AS K'#246'rorderRadID,'
+      'pn.REFERENCE,'
+      'sor.HeadLO,'
+      'Cu.ClientName'
       ''
       'FROM dbo.package_production pp'
+      ''
+      'inner join dbo.PackageNumber pn on pn.PackageNo = pp.PackageNo'
+      'and pn.SupplierCode = pp.SupplierCode'
+      'Left outer join dbo.SortingOrderNewPkgs sop'
+      ''
+      
+        'Inner join dbo.SortingOrderRow sor on sor.SortingOrderNo = sop.S' +
+        'ortingOrderNo'
+      'and sor.SortingOrderRowNo = sop.SortingOrderRowNo'
+      
+        'Inner join dbo.CustomerShippingPlanHeader csh on csh.ShippingPla' +
+        'nNo = sor.HeadLO'
+      'inner join dbo.Client Cu on Cu.ClientNo = csh.CustomerNo'
+      ''
+      'on sop.PackageNo = pp.PackageNo'
+      'and sop.SupplierCode = pp.SupplierCode'
+      ''
       'Left outer join dbo.ShiftTeam ST on ST.ShiftTeamNo = pp.ShiftNo'
       
         'Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventory' +
@@ -5970,7 +6036,7 @@
       'or (pp.SupplierNo = 1879)'
       'or (pp.SupplierNo = 2124))'
       ''
-      'Group By SearchName, rp.RegPointName, pp.ProductionDate,'
+      'Group By sup.SearchName, rp.RegPointName, pp.ProductionDate,'
       'PG.ActualThicknessMM,'
       'PG.ActualWidthMM,'
       'S.SpeciesName,'
@@ -5986,7 +6052,12 @@
       'pp.Operation,'
       'C.CityName,'
       'va.VarugruppNamn,'
-      'ST.ShiftTeamName'
+      'ST.ShiftTeamName,'
+      'sop.SortingOrderNo,'
+      'sop.SortingOrderRowNo,'
+      'pn.REFERENCE,'
+      'sor.HeadLO,'
+      'Cu.ClientName'
       ''
       'UNION'
       ''
@@ -6004,11 +6075,12 @@
       'Su.SurfacingName AS UT,'
       'PC.ProductCategoryName AS IMP,'
       'pp.ProductionDate AS Datum,'
-      'SearchName AS Verk,'
+      'sup.SearchName AS Verk,'
       'rp.RegPointName AS M'#228'tpunkt,'
       'SUM(ptd.m3Actual) AM3,'
       'SUM(ptd.m3Nominal) NM3,'
-      'Count(pt.PackageTypeNo) AS PKT,'
+      'SUM(ptd.NoOfPieces)'
+      '/ CAST(SUM(pt.TotalNoOfPieces)  AS Float) as pkt,'
       'SUM(ptd.NoOfPieces) AS STYCK,'
       'SUM(ptd.LinealMeterActualLength) AS LPM,'
       'CASE'
@@ -6018,9 +6090,31 @@
       'C.CityName AS Ort,'
       'va.VarugruppNamn,'
       '0.0 AS AvgLength,'
-      'ST.ShiftTeamName'
+      'ST.ShiftTeamName,'
+      'sop.SortingOrderNo AS K'#246'orderID,'
+      'sop.SortingOrderRowNo AS K'#246'rorderRadID,'
+      'pn.REFERENCE,'
+      'sor.HeadLO,'
+      'Cu.ClientName'
       ''
       'FROM dbo.package_production pp'
+      ''
+      'inner join dbo.PackageNumber pn on pn.PackageNo = pp.PackageNo'
+      'and pn.SupplierCode = pp.SupplierCode'
+      'Left outer join dbo.SortingOrderNewPkgs sop'
+      ''
+      
+        'Inner join dbo.SortingOrderRow sor on sor.SortingOrderNo = sop.S' +
+        'ortingOrderNo'
+      'and sor.SortingOrderRowNo = sop.SortingOrderRowNo'
+      
+        'Inner join dbo.CustomerShippingPlanHeader csh on csh.ShippingPla' +
+        'nNo = sor.HeadLO'
+      'inner join dbo.Client Cu on Cu.ClientNo = csh.CustomerNo'
+      ''
+      'on sop.PackageNo = pp.PackageNo'
+      'and sop.SupplierCode = pp.SupplierCode'
+      ''
       'Left outer join dbo.ShiftTeam ST on ST.ShiftTeamNo = pp.ShiftNo'
       
         'Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventory' +
@@ -6085,7 +6179,7 @@
       'or (pp.SupplierNo = 1879)'
       'or (pp.SupplierNo = 2124))'
       ''
-      'Group By SearchName, rp.RegPointName, pp.ProductionDate,'
+      'Group By sup.SearchName, rp.RegPointName, pp.ProductionDate,'
       'PG.ActualThicknessMM,'
       'PG.ActualWidthMM,'
       'S.SpeciesName,'
@@ -6101,7 +6195,12 @@
       'pp.Operation,'
       'C.CityName,'
       'va.VarugruppNamn,'
-      'ST.ShiftTeamName'
+      'ST.ShiftTeamName,'
+      'sop.SortingOrderNo,'
+      'sop.SortingOrderRowNo,'
+      'pn.REFERENCE,'
+      'sor.HeadLO,'
+      'Cu.ClientName'
       ''
       '')
     Left = 400
@@ -6235,9 +6334,9 @@
       Origin = 'NM3'
       ReadOnly = True
     end
-    object cds_ProdDataPKT: TIntegerField
-      FieldName = 'PKT'
-      Origin = 'PKT'
+    object cds_ProdDatapkt: TFloatField
+      FieldName = 'pkt'
+      Origin = 'pkt'
       ReadOnly = True
     end
     object cds_ProdDataSTYCK: TIntegerField
@@ -6282,11 +6381,38 @@
       ReadOnly = True
       Size = 35
     end
+    object cds_ProdDataKöorderID: TIntegerField
+      FieldName = 'K'#246'orderID'
+      Origin = '[K'#246'orderID]'
+      ReadOnly = True
+    end
+    object cds_ProdDataKörorderRadID: TIntegerField
+      FieldName = 'K'#246'rorderRadID'
+      Origin = '[K'#246'rorderRadID]'
+      ReadOnly = True
+    end
+    object cds_ProdDataREFERENCE: TStringField
+      FieldName = 'REFERENCE'
+      Origin = 'REFERENCE'
+      ReadOnly = True
+      Size = 30
+    end
+    object cds_ProdDataHeadLO: TIntegerField
+      FieldName = 'HeadLO'
+      Origin = 'HeadLO'
+      ReadOnly = True
+    end
+    object cds_ProdDataClientName: TStringField
+      FieldName = 'ClientName'
+      Origin = 'ClientName'
+      ReadOnly = True
+      Size = 80
+    end
   end
   object sq_ProdDataSumII: TFDQuery
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
-      'Select * FROM dbo.ProdSumII'
+      'Select * FROM dbo.ProdSumIIV3'
       'WHERE Datum BETWEEN   :StartPeriod AND  :EndPeriod'
       'AND ((RegPointNo = :RegPointNo) or (:RegPointNo = 0))'
       'AND ((Operation = :Operation) or (:Operation = '#39'Alla'#39'))'
@@ -6351,10 +6477,6 @@
       Origin = 'Prefix'
       Size = 3
     end
-    object sq_ProdDataSumIIKörnr: TIntegerField
-      FieldName = 'K'#246'rnr'
-      Origin = '[K'#246'rnr]'
-    end
     object sq_ProdDataSumIIAT: TFloatField
       FieldName = 'AT'
       Origin = '[AT]'
@@ -6405,7 +6527,7 @@
       FieldName = 'NM3'
       Origin = 'NM3'
     end
-    object sq_ProdDataSumIIPKT: TIntegerField
+    object sq_ProdDataSumIIPKT: TFloatField
       FieldName = 'PKT'
       Origin = 'PKT'
     end
@@ -6448,6 +6570,32 @@
       FieldName = 'ShiftTeamName'
       Origin = 'ShiftTeamName'
       Size = 35
+    end
+    object sq_ProdDataSumIISortingOrderNo: TIntegerField
+      DisplayLabel = 'K'#246'rordernr'
+      FieldName = 'SortingOrderNo'
+      Origin = 'SortingOrderNo'
+    end
+    object sq_ProdDataSumIISortingOrderRowNo: TIntegerField
+      DisplayLabel = 'Radnr'
+      FieldName = 'SortingOrderRowNo'
+      Origin = 'SortingOrderRowNo'
+    end
+    object sq_ProdDataSumIIReferens: TStringField
+      FieldName = 'Referens'
+      Origin = 'Referens'
+      Size = 30
+    end
+    object sq_ProdDataSumIIHeadLO: TIntegerField
+      DisplayLabel = 'LO'
+      FieldName = 'HeadLO'
+      Origin = 'HeadLO'
+    end
+    object sq_ProdDataSumIIClientName: TStringField
+      DisplayLabel = 'Kund'
+      FieldName = 'ClientName'
+      Origin = 'ClientName'
+      Size = 80
     end
   end
   object cds_TorkSatser: TFDQuery
@@ -6848,7 +6996,7 @@
   object sq_ProdDataSum: TFDQuery
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
-      'Select * FROM dbo.ProdSumII'
+      'Select * FROM dbo.ProdSumIIV3'
       'WHERE Datum BETWEEN   :StartPeriod AND  :EndPeriod'
       'AND ((SupplierNo = :SupplierNo) or (:SupplierNo = 0))'
       'AND ((Operation = :Operation) or (:Operation = '#39'Alla'#39'))'
@@ -6885,7 +7033,7 @@
     object sq_ProdDataSumProdukt: TStringField
       FieldName = 'Produkt'
       Origin = 'Produkt'
-      Size = 150
+      Size = 100
     end
     object sq_ProdDataSumALMM: TFloatField
       FieldName = 'ALMM'
@@ -6934,7 +7082,7 @@
     object sq_ProdDataSumIMP: TStringField
       FieldName = 'IMP'
       Origin = 'IMP'
-      Size = 40
+      Size = 30
     end
     object sq_ProdDataSumDatum: TSQLTimeStampField
       FieldName = 'Datum'
@@ -6958,7 +7106,7 @@
       FieldName = 'NM3'
       Origin = 'NM3'
     end
-    object sq_ProdDataSumPKT: TIntegerField
+    object sq_ProdDataSumPKT: TFloatField
       FieldName = 'PKT'
       Origin = 'PKT'
     end
@@ -7001,6 +7149,28 @@
       FieldName = 'ShiftTeamName'
       Origin = 'ShiftTeamName'
       Size = 35
+    end
+    object sq_ProdDataSumSortingOrderNo: TIntegerField
+      FieldName = 'SortingOrderNo'
+      Origin = 'SortingOrderNo'
+    end
+    object sq_ProdDataSumSortingOrderRowNo: TIntegerField
+      FieldName = 'SortingOrderRowNo'
+      Origin = 'SortingOrderRowNo'
+    end
+    object sq_ProdDataSumReferens: TStringField
+      FieldName = 'Referens'
+      Origin = 'Referens'
+      Size = 30
+    end
+    object sq_ProdDataSumHeadLO: TIntegerField
+      FieldName = 'HeadLO'
+      Origin = 'HeadLO'
+    end
+    object sq_ProdDataSumClientName: TStringField
+      FieldName = 'ClientName'
+      Origin = 'ClientName'
+      Size = 80
     end
   end
   object cds_Kap: TFDQuery
@@ -7424,7 +7594,7 @@
       item
         Name = 'DRIFTPLATSNR'
         DataType = ftInteger
-        ADDataType = dtUInt32
+        FDDataType = dtUInt32
         ParamType = ptInput
       end>
     object cdsStandardHoursDriftPlatsNr: TIntegerField
@@ -7524,7 +7694,7 @@
     end
   end
   object frxReport1: TfrxReport
-    Version = '4.12'
+    Version = '4.15.13'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -9188,6 +9358,7 @@
     Outline = False
     Background = False
     HTMLTags = True
+    Quality = 95
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -9197,6 +9368,7 @@
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    CheckboxAsShape = False
     Left = 1112
     Top = 528
   end

@@ -35,7 +35,8 @@ uses
   dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr ;
+  Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr, System.Actions, Vcl.Menus,
+  cxButtons ;
 
 type
   TfLagBalDtl = class(TForm)
@@ -135,7 +136,6 @@ type
     fTS: TcxDBPivotGridField;
     fUT: TcxDBPivotGridField;
     fKV: TcxDBPivotGridField;
-    BitBtn2: TBitBtn;
     cxStyleclMaroon: TcxStyle;
     cxStyleclWhite: TcxStyle;
     fIMP: TcxDBPivotGridField;
@@ -166,8 +166,6 @@ type
     Memo1: TMemo;
     cds_ProdData2STYCK: TIntegerField;
     cds_ProdData2LPM: TFloatField;
-    prod_STYCK: TcxDBPivotGridField;
-    prod_LPM: TcxDBPivotGridField;
     pnSettings: TPanel;
     lbShowTop: TLabel;
     lbValues: TLabel;
@@ -177,11 +175,9 @@ type
     BitBtn3: TBitBtn;
     acExportToXLS: TAction;
     SaveDialog1: TSaveDialog;
-    BitBtn5: TBitBtn;
     dxComponentPrinter1: TdxComponentPrinter;
     dxComponentPrinter1Link1: TcxPivotGridReportLink;
     acPrint: TAction;
-    BitBtn6: TBitBtn;
     cxStyleRepository2: TcxStyleRepository;
     cxPivotGridReportLinkStyleSheet1: TcxPivotGridReportLinkStyleSheet;
     cxStyle3: TcxStyle;
@@ -231,16 +227,10 @@ type
     cds_ProdData2Produkt: TStringField;
     cds_ProdData2PktNr: TIntegerField;
     cds_ProdData2Prefix: TStringField;
-    prod_AB: TcxDBPivotGridField;
-    prod_AT: TcxDBPivotGridField;
     prod_Datum: TcxDBPivotGridField;
-    prod_IMP: TcxDBPivotGridField;
-    prod_KV: TcxDBPivotGridField;
-    prod_Lngd: TcxDBPivotGridField;
     prod_PktNr: TcxDBPivotGridField;
     prod_Prefix: TcxDBPivotGridField;
     prod_Produkt: TcxDBPivotGridField;
-    prod_TS: TcxDBPivotGridField;
     Panel3: TPanel;
     cbxSortField: TcxComboBox;
     lbSortThe: TLabel;
@@ -256,18 +246,9 @@ type
     cds_ProdDataMätpunkt: TStringField;
     cds_ProdDataDatum: TStringField;
     cds_ProdDataVerk: TStringField;
-    cds_ProdDataAT: TFloatField;
-    cds_ProdDataAB: TFloatField;
-    cds_ProdDataTS: TStringField;
-    cds_ProdDataKV: TStringField;
-    cds_ProdDataUT: TStringField;
-    cds_ProdDataIMP: TStringField;
-    cds_ProdDataLängd: TFloatField;
     cds_ProdDataProdukt: TStringField;
     cds_ProdDataAM3: TFloatField;
     cds_ProdDataNM3: TFloatField;
-    cds_ProdDataLPM: TFloatField;
-    cds_ProdDataSTYCK: TIntegerField;
     cds_ProdDataPktNr: TIntegerField;
     cds_ProdDataPrefix: TStringField;
     cds_verk: TFDQuery;
@@ -342,6 +323,20 @@ type
     cds_UserPropsFilter2: TStringField;
     cds_UserPropsVerk: TStringField;
     cds_UserPropsMätpunkt: TStringField;
+    cds_ProdDataLoadNo: TIntegerField;
+    cds_ProdDataGroupName: TStringField;
+    cds_ProdDataLagerort: TStringField;
+    cds_ProdDataLagergrupp: TStringField;
+    pivProductionLoadNo: TcxDBPivotGridField;
+    pivProductionGroupName: TcxDBPivotGridField;
+    pivProductionLagerort: TcxDBPivotGridField;
+    pivProductionLagergrupp: TcxDBPivotGridField;
+    acSaveView: TAction;
+    acLoadView: TAction;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acCloseExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -356,6 +351,8 @@ type
     procedure cbxTopValuesShowOthersPropertiesChange(Sender: TObject);
     procedure acExportToXLSExecute(Sender: TObject);
     procedure acPrintExecute(Sender: TObject);
+    procedure acSaveViewExecute(Sender: TObject);
+    procedure acLoadViewExecute(Sender: TObject);
   private
     { Private declarations }
     FLocked: Boolean;
@@ -369,7 +366,7 @@ type
   public
     { Public declarations }
     procedure RefreshInternalDeliveries(const ExternLoad : Boolean;const VerkNo, SortOrder, PIPNo, LIPNo : Integer;const StartDate, EndDate : TSQLTimeStamp) ;
-    procedure RefreshProduction(const OwnerNo, PIPNo, LIPNo, RegPointNo, Operation : Integer;const StartPeriod, EndPeriod : TSQLTimeStamp) ;
+    procedure RefreshProduction(const OwnerNo, PIPNo, LIPNo, SortOrder, Operation : Integer;const StartPeriod, EndPeriod : TSQLTimeStamp) ;
     property PivotGrid: TcxCustomPivotGrid read GetPivotGrid;
   end;
 
@@ -461,7 +458,7 @@ begin
  End ;
 end;
 
-procedure TfLagBalDtl.RefreshProduction(const OwnerNo, PIPNo, LIPNo, RegPointNo, Operation : Integer;const StartPeriod, EndPeriod : TSQLTimeStamp) ;
+procedure TfLagBalDtl.RefreshProduction(const OwnerNo, PIPNo, LIPNo, SortOrder, Operation : Integer;const StartPeriod, EndPeriod : TSQLTimeStamp) ;
 var
   Save_Cursor:TCursor;
 begin
@@ -472,8 +469,8 @@ begin
   cds_ProdData.ParamByName('OwnerNo').AsInteger            := OwnerNo ;
   cds_ProdData.ParamByName('PIPNo').AsInteger              := PIPNo ;
   cds_ProdData.ParamByName('LIPNo').AsInteger              := LIPNo ;
-  cds_ProdData.ParamByName('ProductionUnitNo').AsInteger   := RegPointNo ;
-  cds_ProdData.ParamByName('Operation').AsInteger          := Operation ;
+  cds_ProdData.ParamByName('Sortorder').AsInteger          := Sortorder ;
+//  cds_ProdData.ParamByName('Operation').AsInteger          := Operation ;
   cds_ProdData.ParamByName('StartPeriod').AsSQLTimeStamp   := StartPeriod ;
   cds_ProdData.ParamByName('EndPeriod').AsSQLTimeStamp     := EndPeriod ;
 
@@ -503,6 +500,8 @@ begin
 // cds_verk.Post ;
 
  initUserProps ;
+
+ acLoadViewExecute(Sender) ;
 
  if ThisUser.UserID <> 8 then
  Begin
@@ -625,6 +624,13 @@ begin
  End ;
 end;
 
+procedure TfLagBalDtl.acLoadViewExecute(Sender: TObject);
+begin
+ if dmsSystem.LoadPivotLayout(ThisUser.userID, pivProduction.Name, pivProduction, pivProduction.Name, 'fLagBalDtl') = False then
+ //Load Default layout
+ dmsSystem.LoadPivotLayout(8, pivProduction.Name, pivProduction, pivProduction.Name, 'fLagBalDtl')
+end;
+
 procedure TfLagBalDtl.acPrintExecute(Sender: TObject);
 begin
  if pgMain.ActivePage = tsProduction then
@@ -632,6 +638,11 @@ begin
    else
     if pgMain.ActivePage = tsDeliveries then
      PrintDeliveries ;
+end;
+
+procedure TfLagBalDtl.acSaveViewExecute(Sender: TObject);
+begin
+  dmsSystem.StorePivotLayout(ThisUser.userID, pivProduction.Name, pivProduction, pivProduction.Name, 'fLagBalDtl') ;
 end;
 
 procedure TfLagBalDtl.PrintDeliveries ;

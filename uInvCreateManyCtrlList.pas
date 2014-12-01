@@ -36,7 +36,7 @@ uses
   dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxBarPainter,
   dxSkinsdxRibbonPainter , dxPScxPivotGridLnk, dxPScxSSLnk, dxCore, cxDateUtils,
   cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White ;
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, System.Actions ;
 
 type
   TfInvCreateManyCtrlList = class(TForm)
@@ -55,11 +55,11 @@ type
     grdCreateInvsViewResultatlistaNM3: TcxGridDBBandedColumn;
     grdCreateInvsViewLIPNo: TcxGridDBBandedColumn;
     grdCreateInvsViewInventera: TcxGridDBBandedColumn;
-    cxButton1: TcxButton;
+    bRefresh: TcxButton;
     ActionList1: TActionList;
     acClose: TAction;
     acRefresh: TAction;
-    cxButton2: TcxButton;
+    bCloseForm: TcxButton;
     deStartPeriod: TcxDBDateEdit;
     mtUserProp: TkbmMemTable;
     mtUserPropVerkNo: TIntegerField;
@@ -110,7 +110,7 @@ type
     mtUserPropEndPeriod: TDateTimeField;
     deEndPeriod: TcxDBDateEdit;
     cxLabel1: TcxLabel;
-    cxButton3: TcxButton;
+    bCreateInventeringar: TcxButton;
     imglistActions: TImageList;
     acCreateMarkeradeInventeringar: TAction;
     cxLabel2: TcxLabel;
@@ -125,13 +125,13 @@ type
     grdCreateInvsViewInventeringsdatum: TcxGridDBBandedColumn;
     cxGridPopupMenu1: TcxGridPopupMenu;
     StatusBar1: TStatusBar;
-    cxButton4: TcxButton;
+    bOpenInventoryCount: TcxButton;
     grdCreateInvsViewStatus: TcxGridDBBandedColumn;
-    cxButton5: TcxButton;
+    bPrint: TcxButton;
     acPrint: TAction;
     dxComponentPrinter1: TdxComponentPrinter;
     dxComponentPrinter1Link1: TdxGridReportLink;
-    cxButton6: TcxButton;
+    bExportExcel: TcxButton;
     acExportToExcel: TAction;
     SaveDialog2: TSaveDialog;
     grdCreateInvsViewSkapadAv: TcxGridDBBandedColumn;
@@ -140,7 +140,7 @@ type
     cxLabel6: TcxLabel;
     acOpenInv: TAction;
     aUpdateAvgPrice: TAction;
-    cxButton7: TcxButton;
+    bGenerateValues: TcxButton;
     grdCreateInvsViewVrde: TcxGridDBBandedColumn;
     grdCreateInvsViewNM3: TcxGridDBBandedColumn;
     grdCreateInvsViewMedelpris: TcxGridDBBandedColumn;
@@ -162,22 +162,26 @@ type
     FDm_SelectedRowsStatus: TIntegerField;
     icStatus: TcxDBImageComboBox;
     acExportInventory: TAction;
-    cxButton8: TcxButton;
+    bExportLagerformat: TcxButton;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
-    cxButton9: TcxButton;
+    bNewFromMall: TcxButton;
     acNewInvenSET: TAction;
     acSetMall: TAction;
-    cxButton10: TcxButton;
+    bInvMALL: TcxButton;
     deMaxDatum: TcxDBDateEdit;
     teSETNo: TcxDBTextEdit;
     cxLabel8: TcxLabel;
     acPriceGroups: TAction;
-    cxButton11: TcxButton;
+    bShowPricegroups: TcxButton;
     acCollectPackageValues: TAction;
     acCopyCalcPriceToNM3: TAction;
-    cxButton12: TcxButton;
-    cxButton13: TcxButton;
+    bCopyKalkPriceToNM3: TcxButton;
+    bUpdateAvgPrice: TcxButton;
+    acSelectInventorySET: TAction;
+    bSelectInventorySet: TcxButton;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxLabel7: TcxLabel;
     procedure acRefreshExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -209,6 +213,7 @@ type
     procedure acPriceGroupsExecute(Sender: TObject);
     procedure acCollectPackageValuesExecute(Sender: TObject);
     procedure acCopyCalcPriceToNM3Execute(Sender: TObject);
+    procedure acSelectInventorySETExecute(Sender: TObject);
   private
     { Private declarations }
     procedure MarkeradeInventeringarOnlyTakeNonInventerade ;
@@ -226,7 +231,7 @@ type
 implementation
 
 uses dmcInvCtrl, dmc_UserProps, VidaUser , dmsVidaSystem, uInventeringsRapport,
-  uSetMall, uCreateSicPriceGroups;
+  uSetMall, uCreateSicPriceGroups, uSelectInventorySET;
 
 {$R *.dfm}
 
@@ -240,29 +245,29 @@ begin
   cds_CreateInvs.DisableControls ;
   try
   cds_CreateInvs.Active := False ;
+  cds_CreateInvs.ParamByName('IC_SetNo').AsInteger  := cds_InvCtrlSetIC_SETNo.AsInteger ;
 
-  if Self.mtUserPropLengthFormatNo.AsInteger = 5 then
-   cds_CreateInvs.SQL.Text := sq_CI_All.SQL.Text
+{
+    if Self.mtUserPropLengthFormatNo.AsInteger = 5 then
+     cds_CreateInvs.SQL.Text := sq_CI_All.SQL.Text
+      else
+       if Self.mtUserPropLengthFormatNo.AsInteger = 4 then
+        cds_CreateInvs.SQL.Text := sq_CI_NotInven.SQL.Text
+         else
+          cds_CreateInvs.SQL.Text := sq_CI_Inven.SQL.Text ;
+
+    cds_CreateInvs.ParamByName('StartDate').AsSQLTimeStamp := cds_InvCtrlSetStartFilterOnMaxDate.AsSQLTimeStamp ;// DateTimeToSQLTimeStamp(Self.mtUserPropStartPeriod.AsDateTime) ;
+    cds_CreateInvs.ParamByName('EndDate').AsSQLTimeStamp   := cds_InvCtrlSetEndFilterOnMaxDate.AsSQLTimeStamp ;// DateTimeToSQLTimeStamp(Self.mtUserPropEndPeriod.AsDateTime) ;
+
+    if (not Self.mtUserPropOwnerNo.IsNull) and (Self.mtUserPropOwnerNo.AsInteger > 0) then
+    cds_CreateInvs.ParamByName('OwnerNo').AsInteger        := Self.mtUserPropOwnerNo.AsInteger
     else
-     if Self.mtUserPropLengthFormatNo.AsInteger = 4 then
-      cds_CreateInvs.SQL.Text := sq_CI_NotInven.SQL.Text
-       else
-        cds_CreateInvs.SQL.Text := sq_CI_Inven.SQL.Text ;
+    cds_CreateInvs.ParamByName('OwnerNo').AsInteger        := 0 ;
 
-  cds_CreateInvs.ParamByName('StartDate').AsSQLTimeStamp := cds_InvCtrlSetStartFilterOnMaxDate.AsSQLTimeStamp ;// DateTimeToSQLTimeStamp(Self.mtUserPropStartPeriod.AsDateTime) ;
-  cds_CreateInvs.ParamByName('EndDate').AsSQLTimeStamp   := cds_InvCtrlSetEndFilterOnMaxDate.AsSQLTimeStamp ;// DateTimeToSQLTimeStamp(Self.mtUserPropEndPeriod.AsDateTime) ;
 
-  if (not Self.mtUserPropOwnerNo.IsNull) and (Self.mtUserPropOwnerNo.AsInteger > 0) then
-  cds_CreateInvs.ParamByName('OwnerNo').AsInteger        := Self.mtUserPropOwnerNo.AsInteger
-  else
-  cds_CreateInvs.ParamByName('OwnerNo').AsInteger        := 0 ;
+    cds_CreateInvs.ParamByName('Status').AsInteger         := Self.mtUserPropLengthFormatNo.AsInteger ;
+}
 
-//  if (not Self.mtUserPropLengthFormatNo.IsNull) and (Self.mtUserPropLengthFormatNo.AsInteger > 0) then
-  cds_CreateInvs.ParamByName('Status').AsInteger         := Self.mtUserPropLengthFormatNo.AsInteger ;
-//  else
-//  cds_CreateInvs.ParamByName('Status').AsInteger         := 5 ;
-
-//  cds_CreateInvs.SQL.SaveToFile('cds_CreateInvs.txt');
   cds_CreateInvs.Active := True ;
   finally
    cds_CreateInvs.EnableControls ;
@@ -272,6 +277,7 @@ begin
 end;
 
 procedure TfInvCreateManyCtrlList.FormCreate(Sender: TObject);
+Var SetNo : Integer ;
 begin
   dm_UserProps.LoadUserProps (Self.Name, mtuserprop) ;
   mtUserProp.Edit ;
@@ -279,10 +285,11 @@ begin
   mtUserProp.Post ;
   dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdCreateInvsView.Name, grdCreateInvsView) ;
 
+
   if dmInvCtrl.sp_SetMall.Active = False then
   Begin
     dmInvCtrl.cds_InvCtrlSet.Active := False ;
-    dmInvCtrl.cds_InvCtrlSet.ParamByName('SetStatus').AsInteger  := 1 ;
+    dmInvCtrl.cds_InvCtrlSet.ParamByName('IC_SETNo').AsInteger  := mtUserPropCopyPcs.AsInteger ;
     dmInvCtrl.cds_InvCtrlSet.Active := True ;
 
     dmInvCtrl.sp_SetMall.Active := False ;
@@ -293,8 +300,15 @@ end;
 procedure TfInvCreateManyCtrlList.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
- dmsSystem.StoreGridLayout(ThisUser.UserID, Self.Name + '/' + grdCreateInvsView.Name, grdCreateInvsView) ;
- dm_UserProps.SaveUserProps (Self.Name, mtUserProp) ;
+ with dmInvCtrl do
+ Begin
+   if mtUserProp.State in [dsBrowse] then
+    mtUserProp.Edit ;
+   mtUserPropCopyPcs.AsInteger  :=  cds_InvCtrlSetIC_SETNo.AsInteger ;
+   mtUserProp.Post ;
+   dmsSystem.StoreGridLayout(ThisUser.UserID, Self.Name + '/' + grdCreateInvsView.Name, grdCreateInvsView) ;
+   dm_UserProps.SaveUserProps (Self.Name, mtUserProp) ;
+ End;
 end;
 
 procedure TfInvCreateManyCtrlList.acCloseExecute(Sender: TObject);
@@ -856,6 +870,28 @@ begin
   grdCreateInvsView.EndUpdate ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  End ;
+end;
+
+procedure TfInvCreateManyCtrlList.acSelectInventorySETExecute(Sender: TObject);
+var fSelectInventorySET: TfSelectInventorySET;
+begin
+ with dmInvCtrl do
+ Begin
+  cds_InvCtrlSetList.Active := True ;
+  fSelectInventorySET := TfSelectInventorySET.Create(nil);
+  Try
+   if fSelectInventorySET.ShowModal = mrOK then
+   Begin
+    cds_InvCtrlSet.Active := False ;
+    cds_InvCtrlSet.ParamByName('IC_SETNo').AsInteger  := cds_InvCtrlSetListIC_SETNo.AsInteger ;
+    cds_InvCtrlSet.Active := True ;
+    acRefreshExecute(Sender) ;
+   End;
+  Finally
+    cds_InvCtrlSetList.Active := False ;
+    FreeAndNil(fSelectInventorySET) ;
+  End;
+ End;
 end;
 
 procedure TfInvCreateManyCtrlList.acSetAllToBeInventeraExecute(

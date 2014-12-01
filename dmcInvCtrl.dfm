@@ -3,7 +3,7 @@
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 928
-  Width = 1456
+  Width = 1470
   object ds_InvCtrlGrp: TDataSource
     DataSet = cds_InvCtrlGrp
     OnDataChange = ds_InvCtrlGrpDataChange
@@ -48,7 +48,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -75,7 +75,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -197,7 +197,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -286,7 +286,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -495,7 +495,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -1567,96 +1567,32 @@
       'icm.TotalNM3 AS NM3,'
       'icm.AvgPricePerNM3 AS Medelpris'
       ''
-      'FROM dbo.LogicalInventoryPoint LIP'
+      'FROM dbo.Inven_Al_VW isl'
+      
+        'Inner Join dbo.InvControlGrp icg on icg.IC_GRPNo = isl.IC_GroupN' +
+        'o'
+      'Inner Join dbo.InvCtrlMetod icm on icm.IC_grpNo = icg.IC_grpno'
+      
+        'Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventory' +
+        'PointNo = icm.LogicalInventoryPointNo'
       
         'Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInvento' +
         'ryPointNo = LIP.PhysicalInventoryPointNo'
       'Inner Join dbo.Client C on C.ClientNo = PIP.OwnerNo'
       'Inner Join dbo.City Cy on Cy.CityNo = PIP.PhyInvPointNameNo'
-      
-        'Inner Join dbo.InvCtrlMetod icm on icm.LogicalInventoryPointNo =' +
-        ' LIP.LogicalInventoryPointNo'
-      'Inner Join dbo.InvControlGrp icg on icg.IC_GRPNo = icm.IC_GRPNo'
+      ''
+      ''
       
         'Left Outer Join dbo.Users person on person.UserID = icg.CreatedU' +
         'ser'
       ''
-      'WHERE Icg.MaxDatum >= :StartDate'
-      'AND Icg.MaxDatum <= :EndDate'
-      'AND ((PIP.OwnerNo = :OwnerNo) or (0 = :OwnerNo))'
-      'AND ((icg.Status = :Status) or (5 = :Status))'
-      ''
-      ''
-      'UNION'
-      ''
-      
-        'Select 0 AS Inventera, 0 AS InvNr, C.ClientName AS '#196'gare, Cy.Cit' +
-        'yName AS LS, LIP.LogicalInventoryName AS LG,'
-      ''
-      '(Select Count(pn.PackageNo) FROM dbo.PackageNumber pn'
-      'WHERE pn.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo'
-      'AND pn.Status = 1) AS KontrollistaPkt,'
-      ''
-      '(Select SUM(pt.Totalm3Nominal) FROM dbo.PackageNumber pn'
-      
-        'Inner Join dbo.PackageType pt on pt.PackageTypeNo = pn.PackageTy' +
-        'peNo'
-      'WHERE pn.LogicalInventoryPointNo = LIP.LogicalInventoryPointNo'
-      'AND pn.Status = 1) AS KontrollistaNM3,'
-      ''
-      '0 AS ResultalistaPkt,'
-      ''
-      '0 AS ResultatlistaNM3,'
-      ''
-      'LIP.LogicalInventoryPointNo AS LIPNo,'
-      'C.IntVerk,'
-      'PIP.OwnerNo,'
-      'LIP.PhysicalInventoryPointNo AS PIPNo,'
-      #39#39' AS Inventeringsdatum,'
-      #39#39' AS maxdatum,'
-      '-1 AS Status,'
-      #39'N/A'#39' AS SkapadAv,'
-      '0.0 AS V'#228'rde,'
-      '0.0 AS NM3,'
-      '0.0 AS Medelpris'
-      ''
-      'FROM dbo.LogicalInventoryPoint LIP'
-      
-        'Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInvento' +
-        'ryPointNo = LIP.PhysicalInventoryPointNo'
-      'Inner Join dbo.Client C on C.ClientNo = PIP.OwnerNo'
-      'Inner Join dbo.City Cy on Cy.CityNo = PIP.PhyInvPointNameNo'
-      ''
-      'WHERE'
-      '((PIP.OwnerNo = :OwnerNo) or (0 = :OwnerNo))'
-      
-        'AND LIP.LogicalInventoryPointNo not in (Select icm.LogicalInvent' +
-        'oryPointNo'
-      'FROM dbo.InvCtrlMetod icm'
-      'Inner Join dbo.InvControlGrp icg on icg.IC_GRPNo = icm.IC_GRPNo'
-      'WHERE Icg.MaxDatum >= :StartDate'
-      'AND Icg.MaxDatum <= :EndDate'
-      'AND Icg.OwnerNo = PIP.OwnerNo)')
+      'WHERE isl.IC_SetNo = :IC_SetNo'
+      '')
     Left = 880
     Top = 112
     ParamData = <
       item
-        Name = 'STARTDATE'
-        DataType = ftTimeStamp
-        ParamType = ptInput
-      end
-      item
-        Name = 'ENDDATE'
-        DataType = ftTimeStamp
-        ParamType = ptInput
-      end
-      item
-        Name = 'OWNERNO'
-        DataType = ftInteger
-        ParamType = ptInput
-      end
-      item
-        Name = 'STATUS'
+        Name = 'IC_SETNO'
         DataType = ftInteger
         ParamType = ptInput
       end>
@@ -8930,12 +8866,12 @@
     SQL.Strings = (
       'Select * FROM '
       'dbo.InvCtrlSet'
-      'WHERE ((SetStatus = :SetStatus) OR (:SetStatus = 0))')
+      'WHERE IC_SETNo = :IC_SETNo')
     Left = 1304
     Top = 672
     ParamData = <
       item
-        Name = 'SETSTATUS'
+        Name = 'IC_SETNO'
         DataType = ftInteger
         ParamType = ptInput
       end>
@@ -9275,5 +9211,66 @@
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object cds_InvCtrlSetList: TFDQuery
+    Connection = dmsConnector.FDConnection1
+    SQL.Strings = (
+      'Select * FROM '
+      'dbo.InvCtrlSet')
+    Left = 824
+    Top = 824
+    object cds_InvCtrlSetListIC_SETNo: TIntegerField
+      DisplayLabel = 'Gruppnr'
+      FieldName = 'IC_SETNo'
+      Origin = 'IC_SETNo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cds_InvCtrlSetListDateCreated: TSQLTimeStampField
+      DisplayLabel = 'Skapad'
+      FieldName = 'DateCreated'
+      Origin = 'DateCreated'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_InvCtrlSetListCreatedUser: TIntegerField
+      FieldName = 'CreatedUser'
+      Origin = 'CreatedUser'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_InvCtrlSetListNote: TMemoField
+      DisplayLabel = 'Notering'
+      FieldName = 'Note'
+      Origin = 'Note'
+      ProviderFlags = [pfInUpdate]
+      BlobType = ftMemo
+    end
+    object cds_InvCtrlSetListMaxDatum: TSQLTimeStampField
+      FieldName = 'MaxDatum'
+      Origin = 'MaxDatum'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_InvCtrlSetListStartFilterOnMaxDate: TSQLTimeStampField
+      DisplayLabel = 'Startfilter maxdatum'
+      FieldName = 'StartFilterOnMaxDate'
+      Origin = 'StartFilterOnMaxDate'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_InvCtrlSetListEndFilterOnMaxDate: TSQLTimeStampField
+      DisplayLabel = 'Slutfilter maxdatum'
+      FieldName = 'EndFilterOnMaxDate'
+      Origin = 'EndFilterOnMaxDate'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_InvCtrlSetListSetStatus: TIntegerField
+      DisplayLabel = 'Status'
+      FieldName = 'SetStatus'
+      Origin = 'SetStatus'
+      ProviderFlags = [pfInUpdate]
+    end
+  end
+  object ds_InvCtrlSetList: TDataSource
+    DataSet = cds_InvCtrlSetList
+    Left = 824
+    Top = 872
   end
 end

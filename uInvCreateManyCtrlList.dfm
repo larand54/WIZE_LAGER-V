@@ -23,10 +23,12 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
     Height = 161
     Align = alTop
     TabOrder = 0
+    ExplicitLeft = 1
+    ExplicitTop = -5
     DesignSize = (
       1266
       161)
-    object cxButton1: TcxButton
+    object bRefresh: TcxButton
       Left = 14
       Top = 5
       Width = 90
@@ -35,7 +37,7 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       OptionsImage.Layout = blGlyphTop
       TabOrder = 0
     end
-    object cxButton2: TcxButton
+    object bCloseForm: TcxButton
       Left = 1168
       Top = 5
       Width = 84
@@ -43,41 +45,44 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Action = acClose
       Anchors = [akTop, akRight]
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 1
+      TabOrder = 13
     end
     object deStartPeriod: TcxDBDateEdit
       Left = 330
-      Top = 91
+      Top = 115
       DataBinding.DataField = 'StartFilterOnMaxDate'
       DataBinding.DataSource = dmInvCtrl.ds_InvCtrlSet
       Properties.Kind = ckDateTime
-      TabOrder = 4
+      TabOrder = 16
+      Visible = False
       OnExit = deStartPeriodExit
       Width = 161
     end
     object deEndPeriod: TcxDBDateEdit
       Left = 330
-      Top = 113
+      Top = 137
       DataBinding.DataField = 'EndFilterOnMaxDate'
       DataBinding.DataSource = dmInvCtrl.ds_InvCtrlSet
       Properties.Kind = ckDateTime
-      TabOrder = 5
+      TabOrder = 17
+      Visible = False
       OnExit = deEndPeriodExit
       Width = 161
     end
     object cxLabel1: TcxLabel
       Left = 330
-      Top = 72
+      Top = 96
       Caption = 'Urval p'#229' maxdatum'
+      Visible = False
     end
-    object cxButton3: TcxButton
+    object bCreateInventeringar: TcxButton
       Left = 14
       Top = 55
       Width = 90
       Height = 49
       Action = acCreateMarkeradeInventeringar
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 7
+      TabOrder = 3
     end
     object cxLabel2: TcxLabel
       Left = 793
@@ -99,11 +104,11 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Caption = 'F'#246'r VW skapas en inventering per lagergrupp.'
     end
     object cxLabel5: TcxLabel
-      Left = 329
+      Left = 330
       Top = 39
       Caption = 'Maxdatum:'
     end
-    object cxButton4: TcxButton
+    object bOpenInventoryCount: TcxButton
       Left = 992
       Top = 5
       Width = 89
@@ -165,9 +170,9 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
         0A0A0A05024F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F02040202024F4F4F4F4F
         4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F}
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 12
+      TabOrder = 11
     end
-    object cxButton5: TcxButton
+    object bPrint: TcxButton
       Left = 1083
       Top = 5
       Width = 83
@@ -175,9 +180,9 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Action = acPrint
       Anchors = [akTop, akRight]
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 13
+      TabOrder = 12
     end
-    object cxButton6: TcxButton
+    object bExportExcel: TcxButton
       Left = 776
       Top = 5
       Width = 107
@@ -185,37 +190,39 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Action = acExportToExcel
       Anchors = [akTop, akRight]
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 14
+      TabOrder = 9
     end
     object lcOWNER: TcxDBLookupComboBox
       Left = 497
-      Top = 91
+      Top = 115
       DataBinding.DataField = 'OWNER'
       DataBinding.DataSource = dsUserProp
       Properties.ClearKey = 46
       Properties.ImmediatePost = True
       Properties.ListColumns = <>
       Properties.ListOptions.ShowHeader = False
-      TabOrder = 2
+      TabOrder = 14
+      Visible = False
       Width = 201
     end
     object cxLabel6: TcxLabel
       Left = 497
-      Top = 72
+      Top = 96
       Caption = 'Urval p'#229' '#228'gare'
+      Visible = False
     end
-    object cxButton7: TcxButton
+    object bGenerateValues: TcxButton
       Left = 110
       Top = 55
       Width = 90
       Height = 49
       Action = acCollectPackageValues
-      TabOrder = 16
+      TabOrder = 4
       WordWrap = True
     end
     object icStatus: TcxDBImageComboBox
       Left = 497
-      Top = 113
+      Top = 137
       DataBinding.DataField = 'LengthFormatNo'
       DataBinding.DataSource = dsUserProp
       Properties.Items = <
@@ -244,10 +251,11 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
           Description = 'Alla'
           Value = 5
         end>
-      TabOrder = 3
+      TabOrder = 15
+      Visible = False
       Width = 201
     end
-    object cxButton8: TcxButton
+    object bExportLagerformat: TcxButton
       Left = 884
       Top = 5
       Width = 107
@@ -255,33 +263,33 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Action = acExportInventory
       Anchors = [akTop, akRight]
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 17
+      TabOrder = 10
     end
-    object cxButton9: TcxButton
+    object bNewFromMall: TcxButton
       Left = 206
       Top = 6
       Width = 107
       Height = 46
       Action = acNewInvenSET
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 18
+      TabOrder = 2
       WordWrap = True
     end
-    object cxButton10: TcxButton
+    object bInvMALL: TcxButton
       Left = 110
       Top = 5
       Width = 90
       Height = 47
       Action = acSetMall
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 19
+      TabOrder = 1
     end
     object deMaxDatum: TcxDBDateEdit
       Left = 440
       Top = 38
       DataBinding.DataField = 'MaxDatum'
       DataBinding.DataSource = dmInvCtrl.ds_InvCtrlSet
-      TabOrder = 20
+      TabOrder = 24
       OnExit = deMaxDatumExit
       Width = 184
     end
@@ -290,41 +298,63 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Top = 11
       DataBinding.DataField = 'IC_SETNo'
       DataBinding.DataSource = dmInvCtrl.ds_InvCtrlSet
-      TabOrder = 21
-      Width = 121
+      TabOrder = 25
+      Width = 65
     end
     object cxLabel8: TcxLabel
       Left = 330
-      Top = 16
+      Top = 15
       Caption = 'Inventerings gruppnr:'
     end
-    object cxButton11: TcxButton
+    object bShowPricegroups: TcxButton
       Left = 206
       Top = 55
       Width = 107
       Height = 49
       Action = acPriceGroups
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 23
+      TabOrder = 5
     end
-    object cxButton12: TcxButton
+    object bCopyKalkPriceToNM3: TcxButton
       Left = 14
       Top = 110
       Width = 90
       Height = 47
       Action = acCopyCalcPriceToNM3
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 24
+      TabOrder = 6
       WordWrap = True
     end
-    object cxButton13: TcxButton
+    object bUpdateAvgPrice: TcxButton
       Left = 110
       Top = 108
       Width = 90
       Height = 49
       Action = aUpdateAvgPrice
-      TabOrder = 25
+      TabOrder = 7
       WordWrap = True
+    end
+    object bSelectInventorySet: TcxButton
+      Left = 664
+      Top = 5
+      Width = 106
+      Height = 47
+      Action = acSelectInventorySET
+      TabOrder = 8
+      WordWrap = True
+    end
+    object cxDBTextEdit1: TcxDBTextEdit
+      Left = 440
+      Top = 65
+      DataBinding.DataField = 'Note'
+      DataBinding.DataSource = dmInvCtrl.ds_InvCtrlSet
+      TabOrder = 27
+      Width = 184
+    end
+    object cxLabel7: TcxLabel
+      Left = 330
+      Top = 66
+      Caption = 'Notering:'
     end
   end
   object Panel2: TPanel
@@ -707,6 +737,10 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       Caption = 'Kopiera kalkylpris till NM3 pris'
       OnExecute = acCopyCalcPriceToNM3Execute
     end
+    object acSelectInventorySET: TAction
+      Caption = 'V'#228'lj inventeringsgruppnr'
+      OnExecute = acSelectInventorySETExecute
+    end
   end
   object mtUserProp: TkbmMemTable
     DesignActivation = True
@@ -859,7 +893,7 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -3193,7 +3227,6 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
     Top = 273
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdCreateInvs
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 256
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -3207,7 +3240,6 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -3299,7 +3331,7 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1

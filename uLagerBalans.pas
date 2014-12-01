@@ -35,7 +35,8 @@ uses
   dxSkinscxPCPainter, cxNavigator, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
   dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client  ;
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  System.Actions  ;
 
 type
   TfLagerBalans = class(TForm)
@@ -750,29 +751,26 @@ begin
 //'6) UTLEVERANSER' AS GRUPP, '6.4) LO EXTERNA' AS ITEM,
 //'7) UTLEVERANSER' AS GRUPP, '7.1) PRELIMINÄRA LASTER' AS ITEM,
 //'7) UTLEVERANSER' AS GRUPP, '7.2) EJ FAKT' AS ITEM,
- if (cds_LagBalSortOrder.AsInteger = 21) or
+ShowProductionDetails ;
+
+{ if (cds_LagBalSortOrder.AsInteger = 21) or
     (cds_LagBalSortOrder.AsInteger = 22) or
     (cds_LagBalSortOrder.AsInteger = 23) or
     (cds_LagBalSortOrder.AsInteger = 24) or
     (cds_LagBalSortOrder.AsInteger = 25) or
     (cds_LagBalSortOrder.AsInteger = 61) or
     (cds_LagBalSortOrder.AsInteger = 62) or
-    (cds_LagBalSortOrder.AsInteger = 64) or    
+    (cds_LagBalSortOrder.AsInteger = 64) or
     (cds_LagBalSortOrder.AsInteger = 72) or
     (cds_LagBalSortOrder.AsInteger = 71) then
     ShowLastDetails
     else
-//'5) FÖRBRUKNING' AS GRUPP, PU.RegPointName AS ITEM, 31
-//'5) FÖRBRUKNING' AS GRUPP, PU.RegPointName AS ITEM, 51
      if (cds_LagBalSortOrder.AsInteger = 31) or (cds_LagBalSortOrder.AsInteger = 51) then
       ShowProductionDetails
       else
-//'4) LAGERVÅRD' AS GRUPP, '4.1) BORTTAGNA' AS ITEM,
-//'4) LAGERVÅRD' AS GRUPP, '4.2) ÅTERSTÄLLDA' AS ITEM,
-//'4) LAGERVÅRD' AS GRUPP, '4.3) ÄNDRADE PAKET' AS ITEM,
       if (cds_LagBalSortOrder.AsInteger = 41) or (cds_LagBalSortOrder.AsInteger = 42)
       or (cds_LagBalSortOrder.AsInteger = 43) then
-       ShowLagerVardDetails ;
+       ShowLagerVardDetails ;         }
 end;
 
 procedure TfLagerBalans.ShowLagerVardDetails ;
@@ -822,7 +820,7 @@ begin
   cds_LagBalORTOwnerNo.AsInteger, //mtFilterClientNo.AsInteger ; //OwnerNo,
   cds_LagBalORTPIPNo.AsInteger, //PIPNo,
   mtFilterLIPNo.AsInteger, //LIPNo : Integer;
-  dmsSystem.GetRegPointNoOfRegPointName(cds_LagBalITEM.AsString), //RegPointNo,
+  cds_LagBalSortOrder.AsInteger, //RegPointNo,
   Operation,  //Operation
   DateTimeToSQLTimeStamp(StartDate.Date), //StartDate,
   DateTimeToSQLTimeStamp(EndDate.Date) ) ; //EndDate : TSQLTimeStamp) ;

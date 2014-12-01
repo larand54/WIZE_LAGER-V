@@ -682,8 +682,6 @@
       Height = 425
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 209
       object grdLagerBalansORTDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = ds_LagBalORT
@@ -1049,7 +1047,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -2415,6 +2413,7 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2432,6 +2431,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

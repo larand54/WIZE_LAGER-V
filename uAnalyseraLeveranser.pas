@@ -40,7 +40,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, frxClass, frxDBSet,
   cxNavigator, frxExportPDF, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu ;
+  dxBarBuiltInMenu, System.Actions ;
 
 type
   TfAnalyseraLeveranser = class(TForm)
@@ -159,7 +159,6 @@ type
     pivProduction_AT: TcxDBPivotGridField;
     pivProduction_IMP: TcxDBPivotGridField;
     pivProduction_KV: TcxDBPivotGridField;
-    pivProduction_Krnr: TcxDBPivotGridField;
     pivProduction_NLMM: TcxDBPivotGridField;
     pivProduction_Paketnr: TcxDBPivotGridField;
     pivProduction_Prefix: TcxDBPivotGridField;
@@ -390,7 +389,6 @@ type
     cds_ProdDataMätpunkt: TStringField;
     cds_ProdDataAM3: TFloatField;
     cds_ProdDataNM3: TFloatField;
-    cds_ProdDataPKT: TIntegerField;
     cds_ProdDataSTYCK: TIntegerField;
     cds_ProdDataLPM: TFloatField;
     cds_ProdDataOperation: TStringField;
@@ -420,7 +418,6 @@ type
     sq_ProdDataSumIINLMM: TFloatField;
     sq_ProdDataSumIIPaketnr: TIntegerField;
     sq_ProdDataSumIIPrefix: TStringField;
-    sq_ProdDataSumIIKörnr: TIntegerField;
     sq_ProdDataSumIIAT: TFloatField;
     sq_ProdDataSumIIAB: TFloatField;
     sq_ProdDataSumIITS: TStringField;
@@ -432,7 +429,6 @@ type
     sq_ProdDataSumIIMätpunkt: TStringField;
     sq_ProdDataSumIIAM3: TFloatField;
     sq_ProdDataSumIINM3: TFloatField;
-    sq_ProdDataSumIIPKT: TIntegerField;
     sq_ProdDataSumIISTYCK: TIntegerField;
     sq_ProdDataSumIILPM: TFloatField;
     sq_ProdDataSumIISupplierNo: TIntegerField;
@@ -460,7 +456,6 @@ type
     sq_ProdDataSumMätpunkt: TStringField;
     sq_ProdDataSumAM3: TFloatField;
     sq_ProdDataSumNM3: TFloatField;
-    sq_ProdDataSumPKT: TIntegerField;
     sq_ProdDataSumSTYCK: TIntegerField;
     sq_ProdDataSumLPM: TFloatField;
     sq_ProdDataSumSupplierNo: TIntegerField;
@@ -676,6 +671,29 @@ type
     cds_TorkSatserDateOnly: TDateField;
     pivKDNoOfPkgs: TcxDBPivotGridField;
     pivKDDateOnly: TcxDBPivotGridField;
+    sq_ProdDataSumIIPKT: TFloatField;
+    sq_ProdDataSumIISortingOrderNo: TIntegerField;
+    sq_ProdDataSumIISortingOrderRowNo: TIntegerField;
+    sq_ProdDataSumIIReferens: TStringField;
+    sq_ProdDataSumIIHeadLO: TIntegerField;
+    sq_ProdDataSumIIClientName: TStringField;
+    sq_ProdDataSumPKT: TFloatField;
+    sq_ProdDataSumSortingOrderNo: TIntegerField;
+    sq_ProdDataSumSortingOrderRowNo: TIntegerField;
+    sq_ProdDataSumReferens: TStringField;
+    sq_ProdDataSumHeadLO: TIntegerField;
+    sq_ProdDataSumClientName: TStringField;
+    cds_ProdDatapkt: TFloatField;
+    cds_ProdDataKöorderID: TIntegerField;
+    cds_ProdDataKörorderRadID: TIntegerField;
+    cds_ProdDataREFERENCE: TStringField;
+    cds_ProdDataHeadLO: TIntegerField;
+    cds_ProdDataClientName: TStringField;
+    pivKoorderID: TcxDBPivotGridField;
+    pivSortingOrderRowNo: TcxDBPivotGridField;
+    pivReferens: TcxDBPivotGridField;
+    pivLO: TcxDBPivotGridField;
+    pivKund: TcxDBPivotGridField;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);

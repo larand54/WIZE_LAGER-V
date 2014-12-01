@@ -3,7 +3,7 @@
   Top = 110
   Caption = 'LagBalDtl'
   ClientHeight = 696
-  ClientWidth = 1250
+  ClientWidth = 1258
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,64 +21,77 @@
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1250
-    Height = 37
+    Width = 1258
+    Height = 74
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 915
-    object BitBtn2: TBitBtn
-      Left = 848
+    ExplicitWidth = 1250
+    DesignSize = (
+      1258
+      74)
+    object cxButton1: TcxButton
+      Left = 16
       Top = 6
-      Width = 59
-      Height = 25
-      Action = acClose
-      Caption = 'St'#228'ng'
+      Width = 97
+      Height = 62
+      Action = acExportToXLS
       TabOrder = 0
     end
-    object BitBtn5: TBitBtn
-      Left = 584
-      Top = 8
-      Width = 81
-      Height = 25
-      Action = acExportToXLS
-      Caption = 'Exporta till XLS'
+    object cxButton2: TcxButton
+      Left = 119
+      Top = 6
+      Width = 97
+      Height = 62
+      Action = acPrint
       TabOrder = 1
     end
-    object BitBtn6: TBitBtn
-      Left = 672
-      Top = 8
-      Width = 75
-      Height = 25
-      Action = acPrint
-      Caption = 'Skriv ut'
+    object cxButton3: TcxButton
+      Left = 222
+      Top = 6
+      Width = 97
+      Height = 62
+      Action = acSaveView
       TabOrder = 2
+    end
+    object cxButton4: TcxButton
+      Left = 1144
+      Top = 6
+      Width = 97
+      Height = 62
+      Action = acClose
+      Anchors = [akTop, akRight]
+      TabOrder = 3
+      ExplicitLeft = 1136
     end
   end
   object pgMain: TcxPageControl
     Left = 0
-    Top = 109
-    Width = 1250
-    Height = 587
+    Top = 146
+    Width = 1258
+    Height = 550
     Align = alClient
     TabOrder = 1
     Properties.ActivePage = tsProduction
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 915
-    ExplicitHeight = 509
-    ClientRectBottom = 586
+    Properties.HideTabs = True
+    ExplicitTop = 109
+    ExplicitWidth = 1250
+    ExplicitHeight = 587
+    ClientRectBottom = 549
     ClientRectLeft = 1
-    ClientRectRight = 1249
-    ClientRectTop = 21
+    ClientRectRight = 1257
+    ClientRectTop = 1
     object tsDeliveries: TcxTabSheet
       Caption = 'Leveranser'
       ImageIndex = 0
-      ExplicitWidth = 913
-      ExplicitHeight = 487
+      ExplicitTop = 21
+      ExplicitWidth = 1248
+      ExplicitHeight = 565
       object pivLeveranser: TcxDBPivotGrid
         Left = 0
         Top = 41
-        Width = 1248
-        Height = 524
+        Width = 1256
+        Height = 507
         Align = alClient
         DataSource = ds_Data
         Groups = <
@@ -92,8 +105,8 @@
         OptionsDataField.AreaIndex = 4
         OptionsSelection.MultiSelect = True
         TabOrder = 0
-        ExplicitWidth = 913
-        ExplicitHeight = 446
+        ExplicitWidth = 1248
+        ExplicitHeight = 524
         object fProdukt: TcxDBPivotGridField
           AreaIndex = 2
           DataBinding.FieldName = 'Produkt'
@@ -282,11 +295,11 @@
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1248
+        Width = 1256
         Height = 41
         Align = alTop
         TabOrder = 1
-        ExplicitWidth = 913
+        ExplicitWidth = 1248
         object lbSortThe: TLabel
           Left = 16
           Top = 11
@@ -341,13 +354,14 @@
     object tsProduction: TcxTabSheet
       Caption = 'Production'
       ImageIndex = 1
-      ExplicitWidth = 913
-      ExplicitHeight = 487
+      ExplicitTop = 21
+      ExplicitWidth = 1248
+      ExplicitHeight = 565
       object pivProduction: TcxDBPivotGrid
         Left = 0
         Top = 41
-        Width = 1248
-        Height = 524
+        Width = 1256
+        Height = 507
         Align = alClient
         DataSource = ds_ProdData
         Groups = <
@@ -360,11 +374,12 @@
         OptionsView.RowGrandTotalWidth = 68
         Styles.Total = cxStyle2
         TabOrder = 0
-        ExplicitLeft = 15
-        ExplicitTop = -15
+        ExplicitWidth = 1248
+        ExplicitHeight = 524
         object prod_Mtpunkt: TcxDBPivotGridField
           Area = faRow
           AreaIndex = 1
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'M'#228'tpunkt'
           Visible = True
           UniqueName = 'M'#228'tpunkt'
@@ -372,12 +387,14 @@
         object prod_Verk: TcxDBPivotGridField
           Area = faRow
           AreaIndex = 0
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Verk'
           Visible = True
           UniqueName = 'Verk'
         end
         object prod_AM3: TcxDBPivotGridField
           AreaIndex = 0
+          AllowedAreas = [faFilter, faData]
           DataBinding.FieldName = 'AM3'
           Visible = True
           Width = 53
@@ -386,72 +403,30 @@
         object prod_NM3: TcxDBPivotGridField
           Area = faData
           AreaIndex = 0
+          AllowedAreas = [faFilter, faData]
           DataBinding.FieldName = 'NM3'
           Visible = True
           Width = 48
           UniqueName = 'NM3'
         end
-        object prod_STYCK: TcxDBPivotGridField
-          Area = faData
-          AreaIndex = 1
-          DataBinding.FieldName = 'STYCK'
-          Visible = True
-          Width = 56
-          UniqueName = 'STYCK'
-        end
-        object prod_LPM: TcxDBPivotGridField
-          Area = faData
-          AreaIndex = 2
-          DataBinding.FieldName = 'LPM'
-          Visible = True
-          Width = 49
-          UniqueName = 'LPM'
-        end
-        object prod_AB: TcxDBPivotGridField
-          AreaIndex = 1
-          DataBinding.FieldName = 'AB'
-          Visible = True
-          UniqueName = 'AB'
-        end
-        object prod_AT: TcxDBPivotGridField
-          AreaIndex = 2
-          DataBinding.FieldName = 'AT'
-          Visible = True
-          UniqueName = 'AT'
-        end
         object prod_Datum: TcxDBPivotGridField
-          AreaIndex = 3
+          AreaIndex = 1
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Datum'
           Visible = True
           UniqueName = 'Datum'
         end
-        object prod_IMP: TcxDBPivotGridField
-          AreaIndex = 4
-          DataBinding.FieldName = 'IMP'
-          Visible = True
-          UniqueName = 'IMP'
-        end
-        object prod_KV: TcxDBPivotGridField
-          AreaIndex = 5
-          DataBinding.FieldName = 'KV'
-          Visible = True
-          UniqueName = 'KV'
-        end
-        object prod_Lngd: TcxDBPivotGridField
-          AreaIndex = 6
-          DataBinding.FieldName = 'L'#228'ngd'
-          Visible = True
-          UniqueName = 'L'#228'ngd'
-        end
         object prod_PktNr: TcxDBPivotGridField
-          AreaIndex = 7
+          AreaIndex = 2
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'PktNr'
           GroupIndex = 0
           Visible = True
           UniqueName = 'PktNr'
         end
         object prod_Prefix: TcxDBPivotGridField
-          AreaIndex = 8
+          AreaIndex = 3
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Prefix'
           GroupIndex = 0
           GroupExpanded = False
@@ -459,26 +434,49 @@
           UniqueName = 'Prefix'
         end
         object prod_Produkt: TcxDBPivotGridField
-          AreaIndex = 9
+          AreaIndex = 4
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Produkt'
           Visible = True
           UniqueName = 'Produkt'
         end
-        object prod_TS: TcxDBPivotGridField
-          AreaIndex = 10
-          DataBinding.FieldName = 'TS'
+        object pivProductionLoadNo: TcxDBPivotGridField
+          AreaIndex = 5
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'LoadNo'
           Visible = True
-          UniqueName = 'TS'
+          UniqueName = 'Lastnr'
+        end
+        object pivProductionGroupName: TcxDBPivotGridField
+          AreaIndex = 6
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'GroupName'
+          Visible = True
+          UniqueName = 'Kategori'
+        end
+        object pivProductionLagerort: TcxDBPivotGridField
+          AreaIndex = 7
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Lagerort'
+          Visible = True
+          UniqueName = 'Lagerort'
+        end
+        object pivProductionLagergrupp: TcxDBPivotGridField
+          AreaIndex = 8
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Lagergrupp'
+          Visible = True
+          UniqueName = 'Lagergrupp'
         end
       end
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1248
+        Width = 1256
         Height = 41
         Align = alTop
         TabOrder = 1
-        ExplicitWidth = 913
+        ExplicitWidth = 1248
       end
       object Memo1: TMemo
         Left = 448
@@ -494,14 +492,15 @@
   end
   object pnSettings: TPanel
     Left = 0
-    Top = 37
-    Width = 1250
+    Top = 74
+    Width = 1258
     Height = 72
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 915
+    ExplicitTop = 37
+    ExplicitWidth = 1250
     DesignSize = (
-      1250
+      1258
       72)
     object lbShowTop: TLabel
       Left = 16
@@ -521,7 +520,7 @@
     object bvSplitter: TBevel
       Left = 8
       Top = 35
-      Width = 1236
+      Width = 1244
       Height = 6
       Anchors = [akLeft, akTop, akRight]
       Shape = bsTopLine
@@ -543,8 +542,8 @@
       Width = 145
     end
     object BitBtn3: TBitBtn
-      Left = 816
-      Top = 8
+      Left = 911
+      Top = 9
       Width = 75
       Height = 25
       Action = acExport
@@ -1094,6 +1093,14 @@
     object acSendToAllMills: TAction
       Caption = 'acSendToAllMills'
     end
+    object acSaveView: TAction
+      Caption = 'Spara vy'
+      OnExecute = acSaveViewExecute
+    end
+    object acLoadView: TAction
+      Caption = #214'ppna vy'
+      OnExecute = acLoadViewExecute
+    end
   end
   object sq_ProdData2: TSQLQuery
     MaxBlobSize = -1
@@ -1316,8 +1323,8 @@
   end
   object ds_ProdData: TDataSource
     DataSet = cds_ProdData
-    Left = 1112
-    Top = 304
+    Left = 664
+    Top = 312
   end
   object sq_RegPoint2: TSQLQuery
     MaxBlobSize = -1
@@ -1385,7 +1392,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 41894.245438217590000000
+      ReportDocument.CreationDate = 41967.057287060180000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -1412,7 +1419,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 41894.245438229170000000
+      ReportDocument.CreationDate = 41967.057287071760000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -1731,7 +1738,6 @@
     Top = 312
   end
   object sq_CSDLev: TFDQuery
-    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
@@ -1895,98 +1901,45 @@
     Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
-      'Select distinct PU.RegPointName AS M'#228'tpunkt,'
-      'CONVERT(CHAR(10),pp.ProductionDate, 110) AS Datum,'
-      ''
+      'Select distinct'
+      ' pp.Item AS M'#228'tpunkt,'
+      'CONVERT(CHAR(10),pp.InvDate, 110) AS Datum,'
       'Verk.SearchName AS Verk,'
-      'PG.ActualThicknessMM AS AT,'
-      'PG.ActualWidthMM AS AB,'
-      'S.SpeciesName AS TS,'
-      'G.GradeName AS KV,'
-      'Su.SurfacingName AS UT,'
-      'PC.ProductCategoryName AS IMP,'
-      'PL.ActualLengthMM '#9#9'AS L'#228'ngd,'
       'P.ProductDisplayName AS Produkt,'
-      ''
-      'SUM(PTD.m3Actual) '#9#9'AS AM3,'
-      'SUM(PTD.m3Nominal) '#9#9'AS NM3,'
-      'SUM(PTD.LinealMeterActualLength) '#9#9'AS LPM,'
-      'SUM(PTD.NoOfPieces)'#9#9'AS STYCK,'
-      ''
+      'pp.AM3 '#9#9'AS AM3,'
+      'pp.NM3 '#9#9'AS NM3,'
       'PP.PackageNo AS PktNr,'
-      'PP.SupplierCode AS Prefix'
+      'PP.SupplierCode AS Prefix,'
+      'PP.LoadNo,'
+      'PP.GroupName,'
+      'cy.CityName AS Lagerort,'
+      'LIP.LogicalInventoryName AS Lagergrupp'
       ''
       ''
-      'FROM dbo.Package_Production pp'
-      
-        'Inner Join dbo.RegistrationPoint PU ON PU.RegPointNo = pp.Produc' +
-        'tionUnitNo'
+      ''
+      'FROM dbo.InvBal_PKG pp'
       ''
       
         'Inner Join dbo.LogicalInventoryPoint LIP on lip.LogicalInventory' +
-        'PointNo = pp.LogicalInventoryPointNo'
+        'PointNo = pp.LIPNo'
       
         'Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInvento' +
         'ryPointNo = LIP.PhysicalInventoryPointNo'
-      ''
-      'Inner Join dbo.Client Verk on Verk.ClientNo = pp.SupplierNo'
-      
-        'Inner Join dbo.PackageType PT on PT.PackageTypeNo = pp.PackageTy' +
-        'peNo'
-      
-        'Inner Join dbo.PackageTypeDetail PTD on PTD.PackageTypeNo = PT.P' +
-        'ackageTypeNo'
-      ''
-      
-        'Inner Join dbo.ProductLength PL on PL.ProductLengthNo = PTD.Prod' +
-        'uctLengthNo'
-      'Inner Join dbo.Product P on P.ProductNo = PT.ProductNo'
-      'Inner Join dbo.Grade G on G.GradeNo = P.GradeNo'
-      '                        AND G.LanguageCode = 1'
-      
-        'Inner Join dbo.ProductGroup PG on PG.ProductGroupNo = P.ProductG' +
-        'roupNo'
-      'Inner Join dbo.Species S on S.SpeciesNo = PG.SpeciesNo'
-      '                        AND S.LanguageCode = 1'
-      'Inner Join dbo.Surfacing SU on SU.SurfacingNo = PG.SurfacingNo'
-      '                        AND SU.LanguageCode = 1'
-      
-        'Inner Join dbo.ProductCategory PC on PC.ProductCategoryNo = PG.P' +
-        'roductCategoryNo'
-      '                        AND PC.LanguageCode = 1'
+      'Inner join dbo.City cy on cy.CityNo = PIP.PhyInvPointNameNo'
+      'Inner Join dbo.Client Verk on Verk.ClientNo = pp.VerkNo'
+      'Inner Join dbo.Product P on P.ProductNo = pp.ProductNo'
       ''
       'WHERE'
-      'pp.ProductionDate >= :StartPeriod'
-      'AND pp.ProductionDate <= :EndPeriod'
+      'pp.InvDate >= :StartPeriod'
+      'AND pp.InvDate <= :EndPeriod'
       'AND PIP.OwnerNo  = :OwnerNo'
-      'AND pp.Operation = :Operation'
-      'AND pp.ProductionUnitNo = :ProductionUnitNo'
-      '-- AND LIP.PhysicalInventoryPointNo = 10053'
-      'AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))'
-      'AND ((pp.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))'
+      'AND pp.SortOrder = :SortOrder'
+      'AND ((PP.PIPNo = :PIPNo) or (-1 = :PIPNo))'
+      'AND ((pp.LIPNo = :LIPNo) or (-1 = :LIPNo))'
       ''
-      ''
-      'Group By '
-      'Verk.SearchName, '
-      'PG.ActualThicknessMM,'
-      'PG.ActualWidthMM,'
-      'S.SpeciesName,'
-      'G.GradeName,'
-      'Su.SurfacingName,'
-      'PC.ProductCategoryName,'
-      'PL.ActualLengthMM,'
-      'P.ProductDisplayName,'
-      'PP.PackageNo,'
-      'PP.SupplierCode,'
-      'CONVERT(CHAR(10),pp.ProductionDate, 110),'
-      'PU.RegPointName'
-      ''
-      ' '
-      ' '
-      'Order By PP.PackageNo'
-      '')
-    Left = 1112
-    Top = 248
+      'Order By PP.PackageNo')
+    Left = 664
+    Top = 256
     ParamData = <
       item
         Name = 'STARTPERIOD'
@@ -2004,12 +1957,7 @@
         ParamType = ptInput
       end
       item
-        Name = 'OPERATION'
-        DataType = ftInteger
-        ParamType = ptInput
-      end
-      item
-        Name = 'PRODUCTIONUNITNO'
+        Name = 'SORTORDER'
         DataType = ftInteger
         ParamType = ptInput
       end
@@ -2044,60 +1992,12 @@
       Origin = 'NM3'
       ReadOnly = True
     end
-    object cds_ProdDataSTYCK: TIntegerField
-      FieldName = 'STYCK'
-      Origin = 'STYCK'
-      ReadOnly = True
-    end
-    object cds_ProdDataLPM: TFloatField
-      FieldName = 'LPM'
-      Origin = 'LPM'
-      ReadOnly = True
-    end
     object cds_ProdDataDatum: TStringField
       FieldName = 'Datum'
       Origin = 'Datum'
       ReadOnly = True
       FixedChar = True
       Size = 10
-    end
-    object cds_ProdDataAT: TFloatField
-      FieldName = 'AT'
-      Origin = '[AT]'
-    end
-    object cds_ProdDataAB: TFloatField
-      FieldName = 'AB'
-      Origin = 'AB'
-    end
-    object cds_ProdDataTS: TStringField
-      FieldName = 'TS'
-      Origin = 'TS'
-      Required = True
-      Size = 30
-    end
-    object cds_ProdDataKV: TStringField
-      FieldName = 'KV'
-      Origin = 'KV'
-      Required = True
-      FixedChar = True
-      Size = 30
-    end
-    object cds_ProdDataUT: TStringField
-      FieldName = 'UT'
-      Origin = 'UT'
-      Required = True
-      Size = 30
-    end
-    object cds_ProdDataIMP: TStringField
-      FieldName = 'IMP'
-      Origin = 'IMP'
-      Required = True
-      Size = 40
-    end
-    object cds_ProdDataLängd: TFloatField
-      FieldName = 'L'#228'ngd'
-      Origin = '[L'#228'ngd]'
-      Required = True
     end
     object cds_ProdDataProdukt: TStringField
       FieldName = 'Produkt'
@@ -2116,9 +2016,28 @@
       FixedChar = True
       Size = 3
     end
+    object cds_ProdDataLoadNo: TIntegerField
+      DisplayLabel = 'Lastnr'
+      FieldName = 'LoadNo'
+      Origin = 'LoadNo'
+    end
+    object cds_ProdDataGroupName: TStringField
+      DisplayLabel = 'Kategori'
+      FieldName = 'GroupName'
+      Origin = 'GroupName'
+    end
+    object cds_ProdDataLagerort: TStringField
+      FieldName = 'Lagerort'
+      Origin = 'Lagerort'
+      Size = 50
+    end
+    object cds_ProdDataLagergrupp: TStringField
+      FieldName = 'Lagergrupp'
+      Origin = 'Lagergrupp'
+      Size = 50
+    end
   end
   object cds_verk: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
@@ -2394,7 +2313,6 @@
     end
   end
   object cds_UserProps: TFDQuery
-    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.UserProps'

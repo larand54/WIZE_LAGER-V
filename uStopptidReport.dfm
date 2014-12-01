@@ -21,6 +21,8 @@ object fStopptidReport: TfStopptidReport
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -43,6 +45,8 @@ object fStopptidReport: TfStopptidReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -394,6 +398,8 @@ object fStopptidReport: TfStopptidReport
     object tsProduktionProduktSummary: TcxTabSheet
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -840,6 +846,8 @@ object fStopptidReport: TfStopptidReport
     object tsCRReports: TcxTabSheet
       Caption = 'CR Rapporter'
       ImageIndex = 2
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -916,6 +924,7 @@ object fStopptidReport: TfStopptidReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -2352,7 +2361,6 @@ object fStopptidReport: TfStopptidReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2371,12 +2379,10 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2395,7 +2401,6 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2614,7 +2619,7 @@ object fStopptidReport: TfStopptidReport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1

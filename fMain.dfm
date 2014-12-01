@@ -21,16 +21,16 @@ object frmMain: TfrmMain
   TextHeight = 13
   object Panel1: TPanel
     Left = 145
-    Top = 21
+    Top = 19
     Width = 1116
-    Height = 683
+    Height = 685
     Align = alClient
     TabOrder = 4
     object panelBase: TPanel
       Left = 1
       Top = 1
       Width = 1114
-      Height = 681
+      Height = 683
       Align = alClient
       BevelOuter = bvLowered
       DockSite = True
@@ -40,9 +40,9 @@ object frmMain: TfrmMain
   end
   object dxNavBar1: TdxNavBar
     Left = 0
-    Top = 21
+    Top = 19
     Width = 137
-    Height = 683
+    Height = 685
     Align = alLeft
     Constraints.MinWidth = 10
     ActiveGroupIndex = 2
@@ -380,9 +380,9 @@ object frmMain: TfrmMain
   end
   object cxSplitter1: TcxSplitter
     Left = 137
-    Top = 21
+    Top = 19
     Width = 8
-    Height = 683
+    Height = 685
     HotZoneClassName = 'TcxMediaPlayer8Style'
     Control = dxNavBar1
   end
@@ -519,6 +519,7 @@ object frmMain: TfrmMain
     object acARLoadsExtCustomer: TAction
       Caption = 'Ankomstregistrera'
       ImageIndex = 33
+      Visible = False
       OnExecute = acARLoadsExtCustomerExecute
     end
     object acAccInv: TAction
@@ -570,7 +571,7 @@ object frmMain: TfrmMain
     Left = 248
     Top = 256
     Bitmap = {
-      494C01012B002D00080018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01012B002D00040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000080100000100200000000000008C
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3847,8 +3848,8 @@ object frmMain: TfrmMain
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -3876,7 +3877,7 @@ object frmMain: TfrmMain
     DockControlHeights = (
       0
       0
-      21
+      19
       0)
     object dxBarManager1Bar1: TdxBar
       AllowClose = False

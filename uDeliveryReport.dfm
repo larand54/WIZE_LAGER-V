@@ -492,6 +492,8 @@ object fDeliveryReport: TfDeliveryReport
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
       TabVisible = False
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -2360,6 +2362,7 @@ object fDeliveryReport: TfDeliveryReport
     object dxComponentPrinter1Link1: TdxGridReportLink
       Active = True
       Component = grdProdPaketNr
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2379,7 +2382,8 @@ object fDeliveryReport: TfDeliveryReport
       PrinterPage.PaperSource = 257
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41904.816856284720000000
+      ReportDocument.CreationDate = 41963.565421724540000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2598,7 +2602,7 @@ object fDeliveryReport: TfDeliveryReport
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -4554,7 +4558,7 @@ object fDeliveryReport: TfDeliveryReport
     Top = 480
   end
   object frxReport2: TfrxReport
-    Version = '4.12'
+    Version = '4.15.13'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4804,7 +4808,6 @@ object fDeliveryReport: TfDeliveryReport
     end
   end
   object sq_ST_Del_Stat: TFDQuery
-    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
