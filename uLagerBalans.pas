@@ -63,38 +63,14 @@ type
     bbPreviousMonth: TBitBtn;
     BitBtn1: TBitBtn;
     dsFilter: TDataSource;
-    sq_Clients2: TSQLQuery;
-    sq_Clients2ClientNo: TIntegerField;
-    sq_Clients2ClientName: TStringField;
-    dspClients: TDataSetProvider;
-    cdsClient2: TClientDataSet;
-    cdsClient2ClientNo: TIntegerField;
-    cdsClient2ClientName: TStringField;
     dsClient: TDataSource;
     mtFilterVERK: TStringField;
-    sq_PIP2: TSQLQuery;
-    dsp_PIP: TDataSetProvider;
     ds_PIP: TDataSource;
-    sq_LIP2: TSQLQuery;
-    dsp_LIP: TDataSetProvider;
     ds_LIP: TDataSource;
-    cds_PIP2: TClientDataSet;
-    cds_PIP2PIPNo: TIntegerField;
-    cds_PIP2ORT: TStringField;
-    cds_LIP2: TClientDataSet;
-    cds_LIP2LIPNo: TIntegerField;
-    cds_LIP2LAGERGRUPP: TStringField;
-    cds_LIP2PIPNo: TIntegerField;
-    cds_PIP2ClientNo: TIntegerField;
-    sq_LagBal2: TSQLQuery;
-    dsp_LagBal: TDataSetProvider;
-    cds_LagBal2: TClientDataSet;
-    cds_LagBal2ITEM: TStringField;
     ds_LagBal: TDataSource;
     BitBtn2: TBitBtn;
     ActionList1: TActionList;
     acRefresh: TAction;
-    cds_LagBal2GRUPP: TStringField;
     cxLookAndFeelController1: TcxLookAndFeelController;
     ImageList1: TImageList;
     BitBtn3: TBitBtn;
@@ -105,32 +81,13 @@ type
     cxStyleRepository1: TcxStyleRepository;
     cxStyle1: TcxStyle;
     acDetailInformation: TAction;
-    cds_LagBal2SubTotal: TFloatField;
     BitBtn5: TBitBtn;
     acClose: TAction;
     dxComponentPrinter1: TdxComponentPrinter;
     dxComponentPrinter1Link1: TdxGridReportLink;
-    cds_LagBal2NM3: TFloatField;
-    cds_LagBal2SortOrder: TIntegerField;
     cxSplitter1: TcxSplitter;
-    sq_LagBalORT2: TSQLQuery;
-    dsp_LagBalORT: TDataSetProvider;
-    cds_LagBalORT2: TClientDataSet;
     ds_LagBalORT: TDataSource;
-    cds_LagBalORT2PIPNo: TIntegerField;
-    cds_LagBalORT2NM3_DIFF: TFloatField;
-    sq_LagGrupp2: TSQLQuery;
-    dsp_LagGrupp: TDataSetProvider;
-    cds_LagGrupp2: TClientDataSet;
     ds_LagGrupp: TDataSource;
-    cds_LagGrupp2GRPNAMN: TStringField;
-    cds_LagGrupp2PIPNo: TIntegerField;
-    cds_LagGrupp2LIPNo: TIntegerField;
-    cds_LagBalORT2ORT: TStringField;
-    cds_LagBalORT2NM3_INGENDE: TFloatField;
-    cds_LagBalORT2NM3_RRELSE_IN: TFloatField;
-    cds_LagBalORT2NM3_RRELSE_UT: TFloatField;
-    cds_LagBalORT2NM3_UTGAENDE: TFloatField;
     Panel1: TPanel;
     PanelLagerNamn: TPanel;
     grdLagerBalans: TcxGrid;
@@ -140,20 +97,12 @@ type
     grdLagerBalansDBTableView1NM3: TcxGridDBColumn;
     grdLagerBalansDBTableView1SubTotal: TcxGridDBColumn;
     grdLagerBalansLevel1: TcxGridLevel;
-    sq_SalesRegion2: TSQLQuery;
-    dsp_SalesRegion: TDataSetProvider;
-    cds_SalesRegion2: TClientDataSet;
     ds_SalesRegion: TDataSource;
     mtFilterSalesRegionNo: TIntegerField;
-    cds_SalesRegion2ClientNo: TIntegerField;
-    cds_SalesRegion2ClientName: TStringField;
     mtFilterSalesRegion: TStringField;
     mtFilterLIPNo: TIntegerField;
     BitBtn6: TBitBtn;
     acInventoryMissing: TAction;
-    sq_LBSR2: TSQLQuery;
-    dsp_LBSR: TDataSetProvider;
-    cds_LBSR2: TClientDataSet;
     ds_LBSR: TDataSource;
     Panel2: TPanel;
     grdLagerBalansORT: TcxGrid;
@@ -176,12 +125,6 @@ type
     cxSplitter2: TcxSplitter;
     grdSalesRegionLevel1: TcxGridLevel;
     grdSalesRegion: TcxGrid;
-    cds_LBSR2REGION: TStringField;
-    cds_LBSR2NM3_INGENDE: TFloatField;
-    cds_LBSR2IN_NM3: TFloatField;
-    cds_LBSR2UT_NM3: TFloatField;
-    cds_LBSR2ClientNo: TIntegerField;
-    cds_LBSR2NM3_UTGAENDE: TFloatField;
     grdSalesRegionDBBandedTableView1: TcxGridDBBandedTableView;
     grdSalesRegionDBBandedTableView1REGION: TcxGridDBBandedColumn;
     grdSalesRegionDBBandedTableView1NM3_INGENDE: TcxGridDBBandedColumn;
@@ -189,12 +132,8 @@ type
     grdSalesRegionDBBandedTableView1UT_NM3: TcxGridDBBandedColumn;
     grdSalesRegionDBBandedTableView1NM3_DIFF: TcxGridDBBandedColumn;
     grdSalesRegionDBBandedTableView1NM3_UTGAENDE: TcxGridDBBandedColumn;
-    cds_LagBalORT2OwnerNo: TIntegerField;
-    cds_LagBalORT2GARE: TStringField;
     grdLagerBalansORTDBBandedTableView1GARE: TcxGridDBBandedColumn;
-    cds_LagBal2VRDE: TFloatField;
     grdLagerBalansDBTableView1VRDE: TcxGridDBColumn;
-    cds_LBSR2NM3_DIFF: TFloatField;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
@@ -245,6 +184,8 @@ type
     cds_LBSRUT_NM3: TFloatField;
     cds_LBSRNM3_UTGAENDE: TFloatField;
     cds_LBSRNM3_DIFF: TFloatField;
+    cds_LagBalPkt: TIntegerField;
+    grdLagerBalansDBTableView1Pkt: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure acRefreshExecute(Sender: TObject);
     procedure acPrintExecute(Sender: TObject);
@@ -751,7 +692,10 @@ begin
 //'6) UTLEVERANSER' AS GRUPP, '6.4) LO EXTERNA' AS ITEM,
 //'7) UTLEVERANSER' AS GRUPP, '7.1) PRELIMINÄRA LASTER' AS ITEM,
 //'7) UTLEVERANSER' AS GRUPP, '7.2) EJ FAKT' AS ITEM,
-ShowProductionDetails ;
+ // if cds_LagBalSortOrder.AsInteger <> 1 then
+   ShowProductionDetails  ;
+   // else
+     //ShowIB
 
 { if (cds_LagBalSortOrder.AsInteger = 21) or
     (cds_LagBalSortOrder.AsInteger = 22) or
@@ -801,15 +745,27 @@ end;
 
 procedure TfLagerBalans.ShowProductionDetails ;
 Var   fLagBalDtl  : TfLagBalDtl;
-      Operation   : Integer ;
+      Operation, SortOrder   : Integer ;
 begin
  fLagBalDtl:= TfLagBalDtl.Create(nil) ;
  try
   if (cds_LagBalSortOrder.AsInteger = 31)  then
-   Operation:= 0
+  Begin
+   Operation:= 0 ;
+   SortOrder  := cds_LagBalSortOrder.AsInteger ;
+  End
     else
      if (cds_LagBalSortOrder.AsInteger = 51) then
+     Begin
       Operation:= 3 ;  //3 = avregistrera
+      SortOrder  := cds_LagBalSortOrder.AsInteger ;
+     End
+        else
+          if (cds_LagBalSortOrder.AsInteger = 1) then
+           Begin
+            Operation:= 3 ;  //3 = avregistrera
+            SortOrder  := cds_LagBalSortOrder.AsInteger ;
+           End ;
 
   fLagBalDtl.pgMain.ActivePageIndex := 1 ;
   fLagBalDtl.Caption  := cds_LagBalGRUPP.AsString + '/' + cds_LagBalItem.AsString

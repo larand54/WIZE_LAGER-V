@@ -1898,7 +1898,6 @@
     end
   end
   object cds_ProdData: TFDQuery
-    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select distinct'
@@ -2540,5 +2539,89 @@
       Size = 50
       Lookup = True
     end
+  end
+  object cds_IB: TFDQuery
+    Connection = dmsConnector.FDConnection1
+    SQL.Strings = (
+      '/****** Script for SelectTopNRows command from SSMS  ******/'
+      'SELECT DISTINCT'
+      ' '#39'Ing.Balans'#39' AS M'#228'tpunkt,'
+      'CONVERT(CHAR(10),ic.MaxDatum, 110) AS Datum,'
+      'Verk.SearchName AS Verk,'
+      'P.ProductDisplayName AS Produkt,'
+      'pt.Totalm3Actual AS AM3,'
+      'pt.Totalm3Nominal AS NM3,'
+      'iro.PackageNo AS Pktnr,'
+      'iro.Suppliercode AS Prefix,'
+      '0 AS LoadNo,'
+      #39'ING'#197'ENDE BALANS'#39' AS GroupName,'
+      'cy.CityName AS Lagerort,'
+      'LIP.LogicalInventoryName AS Lagergrupp'
+      ''
+      '  FROM [dbo].[IC_grpAct] icg'
+      
+        '  inner join dbo.LogicalInventoryPoint lip on lip.LogicalInvento' +
+        'ryPointNo = icg.LIPNo'
+      
+        '  inner join dbo.PhysicalInventoryPoint pip on pip.PhysicalInven' +
+        'toryPointNo = lip.PhysicalInventoryPointNo'
+      '  Inner join dbo.City cy on cy.CityNo = pip.PhyInvPointNameNo'
+      
+        '  inner join dbo.InvenRow iro on iro.LogicalInventoryPointNo = i' +
+        'cg.LIPNo'
+      '  and iro.IC_GrpNo = icg.IC_grpNo'
+      '  inner join dbo.InvControlGrp ic on ic.IC_grpno = iro.IC_GrpNo'
+      '  inner join dbo.Client verk on verk.ClientNo = ic.VerkNo'
+      
+        '  Inner Join dbo.PackageType PT on PT.PackageTypeNo = iro.Packag' +
+        'eTypeNo'
+      
+        '  Inner Join dbo.PackageTypeDetail PTD on PTD.PackageTypeNo = PT' +
+        '.PackageTypeNo'
+      ''
+      
+        '  Inner Join dbo.ProductLength PL on PL.ProductLengthNo = PTD.Pr' +
+        'oductLengthNo'
+      '  Inner Join dbo.Product P on P.ProductNo = PT.ProductNo'
+      #9'WHERE'
+      #9'icg.MaxDatum >= :StartPeriod'
+      #9'AND icg.MaxDatum <= :EndPeriod'
+      #9'AND PIP.OwnerNo  = :OwnerNo'
+      #9'AND 1 = :SortOrder'
+      #9'AND ((lip.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))'
+      #9'AND ((lip.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))  ')
+    Left = 585
+    Top = 499
+    ParamData = <
+      item
+        Name = 'STARTPERIOD'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+      end
+      item
+        Name = 'ENDPERIOD'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+      end
+      item
+        Name = 'OWNERNO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'SORTORDER'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'PIPNO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'LIPNO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
   end
 end

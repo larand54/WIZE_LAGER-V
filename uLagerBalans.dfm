@@ -592,6 +592,11 @@
             Kind = skSum
             FieldName = 'V'#196'RDE'
             Column = grdLagerBalansDBTableView1VRDE
+          end
+          item
+            Kind = skSum
+            FieldName = 'Pkt'
+            Column = grdLagerBalansDBTableView1Pkt
           end>
         DataController.Summary.SummaryGroups = <
           item
@@ -660,6 +665,9 @@
         object grdLagerBalansDBTableView1VRDE: TcxGridDBColumn
           DataBinding.FieldName = 'V'#196'RDE'
           Width = 91
+        end
+        object grdLagerBalansDBTableView1Pkt: TcxGridDBColumn
+          DataBinding.FieldName = 'Pkt'
         end
       end
       object grdLagerBalansLevel1: TcxGridLevel
@@ -1096,344 +1104,19 @@
     Left = 352
     Top = 184
   end
-  object sq_Clients2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'SalesRegionNo'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      'Select Distinct C.ClientNo, C.ClientName FROM dbo.Client C'
-      'Inner Join dbo.ClientRole rt on rt.ClientNo = C.ClientNo'
-      'WHERE C.SalesRegionNo = :SalesRegionNo'
-      'AND (rt.RoleType = 9 or rt.RoleType = 7)'
-      'Order by C.ClientName')
-    Left = 1024
-    Top = 160
-    object sq_Clients2ClientNo: TIntegerField
-      FieldName = 'ClientNo'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object sq_Clients2ClientName: TStringField
-      FieldName = 'ClientName'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-  end
-  object dspClients: TDataSetProvider
-    DataSet = sq_Clients2
-    Left = 1024
-    Top = 200
-  end
-  object cdsClient2: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspClients'
-    Left = 1024
-    Top = 240
-    object cdsClient2ClientNo: TIntegerField
-      FieldName = 'ClientNo'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object cdsClient2ClientName: TStringField
-      DisplayLabel = 'NAMN'
-      FieldName = 'ClientName'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-  end
   object dsClient: TDataSource
     DataSet = cdsClient
     Left = 816
     Top = 248
   end
-  object sq_PIP2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'ClientNo'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      
-        'SELECT PIP.PhysicalInventoryPointNo AS PIPNo, CY.CITYNAME AS ORT' +
-        ', PIP.OwnerNo AS ClientNo'
-      'FROM'
-      'dbo.PhysicalInventoryPoint AS PIP'
-      'Inner Join dbo.CITY CY ON CY.CITYNO = PIP.PhyInvPointNameNo'
-      'WHERE PIP.OwnerNo = :ClientNo'
-      '-- AND PIP.SequenceNo = 1'
-      'Order By CY.CITYNAME')
-    Left = 1088
-    Top = 160
-  end
-  object dsp_PIP: TDataSetProvider
-    DataSet = sq_PIP2
-    UpdateMode = upWhereKeyOnly
-    Left = 1088
-    Top = 208
-  end
   object ds_PIP: TDataSource
-    DataSet = cds_PIP2
     Left = 680
     Top = 256
-  end
-  object sq_LIP2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-        Size = 4
-      end>
-    SQL.Strings = (
-      
-        'SELECT LIP.LogicalInventoryPointNo AS LIPNo, LIP.LogicalInventor' +
-        'yName AS LAGERGRUPP,'
-      'LIP.PhysicalInventoryPointNo AS PIPNo'
-      'FROM'
-      'dbo.LogicalInventoryPoint AS LIP'
-      'WHERE LIP.PhysicalInventoryPointNo = :PIPNo'
-      '-- AND LIP.SequenceNo = 1'
-      'Order By LIP.LogicalInventoryName')
-    Left = 1168
-    Top = 160
-  end
-  object dsp_LIP: TDataSetProvider
-    DataSet = sq_LIP2
-    UpdateMode = upWhereKeyOnly
-    Left = 1168
-    Top = 216
   end
   object ds_LIP: TDataSource
     DataSet = cds_Lip
     Left = 752
     Top = 256
-  end
-  object cds_PIP2: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dsp_PIP'
-    Left = 1088
-    Top = 248
-    object cds_PIP2PIPNo: TIntegerField
-      FieldName = 'PIPNo'
-    end
-    object cds_PIP2ORT: TStringField
-      FieldName = 'ORT'
-      Size = 50
-    end
-    object cds_PIP2ClientNo: TIntegerField
-      FieldName = 'ClientNo'
-    end
-  end
-  object cds_LIP2: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dsp_LIP'
-    Left = 1168
-    Top = 264
-    object cds_LIP2LIPNo: TIntegerField
-      FieldName = 'LIPNo'
-    end
-    object cds_LIP2LAGERGRUPP: TStringField
-      FieldName = 'LAGERGRUPP'
-      Size = 50
-    end
-    object cds_LIP2PIPNo: TIntegerField
-      FieldName = 'PIPNo'
-    end
-  end
-  object sq_LagBal2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftTimeStamp
-        Name = 'StartInBalDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndInBalDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'ClientNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'LIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'LIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'StartDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'ClientNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'LIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'LIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      'Select '#39'1) ING'#197'ENDE BALANS'#39' AS GRUPP,'
-      #39'1.1) Ing'#229'ende lager'#39' AS ITEM,'
-      'SUM(ins.AM3) AS AM3,'
-      'SUM(ins.NM3) AS NM3,'
-      '0.0 AS SubTotal, 1 AS SortOrder,'
-      '0.0 AS V'#196'RDE'
-      'FROM dbo.InvenStatusII ins'
-      
-        'Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInvent' +
-        'oryPointNo = ins.LogicalInventoryPointNo'
-      'WHERE ins.InvDate >= :StartInBalDate'
-      'AND ins.InvDate <= :EndInBalDate'
-      'AND ins.OwnerNo = :ClientNo'
-      'AND ((ins.LogicalInventoryPointNo = :LIPNo) or (-1 = :LIPNo))'
-      'AND ((LIP.PhysicalInventoryPointNo = :PIPNo) or (-1 = :PIPNo))'
-      '-- AND LIP.SequenceNo = 1'
-      '-- Group By ins.RowNo'
-      ''
-      'UNION'
-      ''
-      
-        'Select inv.GroupName, inv.Item, SUM(inv.AM3) AS AM3, SUM(inv.NM3' +
-        ') AS NM3, 0.0 AS SubTotal, inv.SortOrder,'
-      '0.0 AS V'#196'RDE'
-      'FROM dbo.InvBalII inv'
-      
-        'Left Outer Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalI' +
-        'nventoryPointNo = inv.LIPNo'
-      
-        'WHERE ( (inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDa' +
-        'te)'
-      ' OR ((SortOrder = 71) OR (SortOrder = 72)) )'
-      'AND inv.VerkNo  = :ClientNo'
-      'AND ((inv.LIPNo = :LIPNo) or (-1 = :LIPNo))'
-      'AND ((inv.PIPNo = :PIPNo) or (-1 = :PIPNo))'
-      '-- AND ((LIP.SequenceNo = 1) or (LIP.SequenceNo is null))'
-      'Group By inv.GroupName, inv.Item, inv.SortOrder'
-      '')
-    Left = 1168
-    Top = 336
-  end
-  object dsp_LagBal: TDataSetProvider
-    DataSet = sq_LagBal2
-    Left = 1168
-    Top = 384
-  end
-  object cds_LagBal2: TClientDataSet
-    Aggregates = <>
-    FieldDefs = <
-      item
-        Name = 'GRUPP'
-        DataType = ftString
-        Size = 20
-      end
-      item
-        Name = 'ITEM'
-        DataType = ftString
-        Size = 30
-      end
-      item
-        Name = 'AM3'
-        DataType = ftFloat
-      end
-      item
-        Name = 'NM3'
-        DataType = ftFloat
-      end
-      item
-        Name = 'SubTotal'
-        DataType = ftFloat
-      end
-      item
-        Name = 'SortOrder'
-        DataType = ftInteger
-      end
-      item
-        Name = 'V'#196'RDE'
-        DataType = ftFloat
-      end>
-    IndexDefs = <
-      item
-        Name = 'cds_LagBalIndex1'
-        Fields = 'Grupp;Item'
-      end>
-    IndexName = 'cds_LagBalIndex1'
-    Params = <>
-    ProviderName = 'dsp_LagBal'
-    StoreDefs = True
-    Left = 1168
-    Top = 432
-    object cds_LagBal2GRUPP: TStringField
-      FieldName = 'GRUPP'
-      Size = 17
-    end
-    object cds_LagBal2ITEM: TStringField
-      FieldName = 'ITEM'
-      Size = 15
-    end
-    object cds_LagBal2SubTotal: TFloatField
-      FieldName = 'SubTotal'
-    end
-    object cds_LagBal2NM3: TFloatField
-      FieldName = 'NM3'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LagBal2SortOrder: TIntegerField
-      FieldName = 'SortOrder'
-    end
-    object cds_LagBal2VRDE: TFloatField
-      FieldName = 'V'#196'RDE'
-      DisplayFormat = '#,###,###,###.0'
-    end
   end
   object ds_LagBal: TDataSource
     DataSet = cds_LagBal
@@ -2413,7 +2096,6 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2431,155 +2113,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
-    end
-  end
-  object sq_LagBalORT2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftTimeStamp
-        Name = 'StartDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'StartDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'StartInBalDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndInBalDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'ClientNo'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      
-        'Select ins.OwnerNo, SR.SearchName AS '#196'GARE, LP.ORT, LIP.Physical' +
-        'InventoryPointNo AS PIPNo,'
-      'SUM(ins.NM3) AS NM3_ING'#197'ENDE,'
-      ''
-      '(Select SUM(inv.NM3)'
-      'FROM dbo.InvBalII inv'
-      'Left Outer Join dbo.LagerPlatser LP2 on LP2.LIPNo = inv.LIPNo'
-      'WHERE inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDate'
-      ''
-      'AND inv.VerkNo  = ins.OwnerNo'
-      'AND (inv.PIPNo = LIP.PhysicalInventoryPointNo)'
-      'AND inv.Typ = 1'
-      '-- AND ((LP2.SequenceNo = 1) or (LP2.SequenceNo is null))'
-      'Group By Typ)AS NM3_R'#214'RELSE_IN,'
-      ''
-      '(Select SUM(inv.NM3)'
-      'FROM dbo.InvBalII inv'
-      'Left Outer Join dbo.LagerPlatser LP2 on LP2.LIPNo = inv.LIPNo'
-      
-        'WHERE ((inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDat' +
-        'e)'
-      ' OR (SortOrder = 71) OR (SortOrder = 72))'
-      'AND inv.VerkNo  = ins.OwnerNo'
-      'AND (inv.PIPNo = LIP.PhysicalInventoryPointNo)'
-      'AND inv.Typ = -1'
-      '-- AND ((LP2.SequenceNo = 1) or (LP2.SequenceNo is null))'
-      'Group By Typ)AS NM3_R'#214'RELSE_UT'
-      ''
-      'FROM dbo.InvenStatusII ins'
-      'Inner Join dbo.Client SR on SR.ClientNo = ins.OwnerNo'
-      
-        '-- Left Outer Join dbo.PackageType pt on pt.PackageTypeNo = ins.' +
-        'PackageTypeNo'
-      
-        'Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInvent' +
-        'oryPointNo = ins.LogicalInventoryPointNo'
-      
-        'Left Outer Join dbo.LagerPlatser LP on LP.LIPNo = LIP.LogicalInv' +
-        'entoryPointNo'
-      ''
-      'WHERE ins.InvDate >= :StartInBalDate'
-      'AND ins.InvDate <= :EndInBalDate'
-      'AND SR.SalesRegionNo = :ClientNo'
-      '-- AND ((LP.SequenceNo = 1) or (LP.SequenceNo is null))'
-      
-        'Group By SR.SearchName, LP.ORT,  LIP.PhysicalInventoryPointNo, i' +
-        'ns.OwnerNo'
-      'Order By SR.SearchName, LP.ORT'
-      '')
-    Left = 1016
-    Top = 336
-  end
-  object dsp_LagBalORT: TDataSetProvider
-    DataSet = sq_LagBalORT2
-    Left = 1016
-    Top = 376
-  end
-  object cds_LagBalORT2: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dsp_LagBalORT'
-    Left = 1016
-    Top = 416
-    object cds_LagBalORT2PIPNo: TIntegerField
-      FieldName = 'PIPNo'
-    end
-    object cds_LagBalORT2NM3_INGENDE: TFloatField
-      DisplayLabel = 'ING'#197'ENDE'
-      FieldName = 'NM3_ING'#197'ENDE'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LagBalORT2NM3_DIFF: TFloatField
-      DisplayLabel = 'NM3'
-      FieldKind = fkCalculated
-      FieldName = 'NM3_DIFF'
-      DisplayFormat = '#,###,###,###.0'
-      Calculated = True
-    end
-    object cds_LagBalORT2ORT: TStringField
-      FieldName = 'ORT'
-      Size = 50
-    end
-    object cds_LagBalORT2NM3_RRELSE_IN: TFloatField
-      DisplayLabel = 'IN'
-      FieldName = 'NM3_R'#214'RELSE_IN'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LagBalORT2NM3_RRELSE_UT: TFloatField
-      DisplayLabel = 'UT'
-      FieldName = 'NM3_R'#214'RELSE_UT'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LagBalORT2NM3_UTGAENDE: TFloatField
-      DisplayLabel = 'UTG'#197'ENDE'
-      FieldKind = fkCalculated
-      FieldName = 'NM3_UTGAENDE'
-      DisplayFormat = '#,###,###,###.0'
-      Calculated = True
-    end
-    object cds_LagBalORT2OwnerNo: TIntegerField
-      FieldName = 'OwnerNo'
-    end
-    object cds_LagBalORT2GARE: TStringField
-      FieldName = #196'GARE'
-      Size = 80
     end
   end
   object ds_LagBalORT: TDataSource
@@ -2587,249 +2121,15 @@
     Left = 736
     Top = 368
   end
-  object sq_LagGrupp2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      'Select LP.GRPNAMN, LIP.PhysicalInventoryPointNo AS PIPNo,'
-      'LIP.LogicalInventoryPointNo AS LIPNo'
-      ''
-      'FROM dbo.LagerPlatser LP'
-      
-        'Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInvent' +
-        'oryPointNo = LP.LIPNo'
-      ''
-      ''
-      'WHERE'
-      'LIP.PhysicalInventoryPointNo = :PIPNo'
-      '-- AND LIP.SequenceNo = 1'
-      
-        'Group By LP.GRPNAMN,  LIP.PhysicalInventoryPointNo, LIP.LogicalI' +
-        'nventoryPointNo'
-      'Order By LP.GRPNAMN'
-      '')
-    Left = 1096
-    Top = 336
-  end
-  object dsp_LagGrupp: TDataSetProvider
-    DataSet = sq_LagGrupp2
-    Left = 1096
-    Top = 376
-  end
-  object cds_LagGrupp2: TClientDataSet
-    Aggregates = <>
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PIPNo'
-        ParamType = ptInput
-      end>
-    ProviderName = 'dsp_LagGrupp'
-    Left = 1096
-    Top = 416
-    object cds_LagGrupp2GRPNAMN: TStringField
-      FieldName = 'GRPNAMN'
-      Size = 50
-    end
-    object cds_LagGrupp2PIPNo: TIntegerField
-      FieldName = 'PIPNo'
-    end
-    object cds_LagGrupp2LIPNo: TIntegerField
-      FieldName = 'LIPNo'
-    end
-  end
   object ds_LagGrupp: TDataSource
     DataSet = cds_LagGrupp
     Left = 816
     Top = 360
   end
-  object sq_SalesRegion2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <>
-    SQL.Strings = (
-      'select C.ClientNo, C.ClientName from dbo.Client C'
-      'Inner Join dbo.ClientRole rt on rt.ClientNo = C.ClientNo'
-      'WHERE rt.RoleType = 7'
-      'Order by C.ClientName')
-    Left = 952
-    Top = 160
-  end
-  object dsp_SalesRegion: TDataSetProvider
-    DataSet = sq_SalesRegion2
-    Left = 952
-    Top = 200
-  end
-  object cds_SalesRegion2: TClientDataSet
-    Aggregates = <>
-    FieldDefs = <
-      item
-        Name = 'ClientNo'
-        DataType = ftInteger
-      end
-      item
-        Name = 'ClientName'
-        DataType = ftString
-        Size = 80
-      end>
-    IndexDefs = <
-      item
-        Name = 'cdsClientIndex1'
-        Fields = 'ClientNo'
-      end>
-    IndexFieldNames = 'ClientNo'
-    Params = <>
-    ProviderName = 'dsp_SalesRegion'
-    StoreDefs = True
-    Left = 952
-    Top = 240
-    object cds_SalesRegion2ClientNo: TIntegerField
-      FieldName = 'ClientNo'
-    end
-    object cds_SalesRegion2ClientName: TStringField
-      FieldName = 'ClientName'
-      Size = 80
-    end
-  end
   object ds_SalesRegion: TDataSource
     DataSet = cds_SalesRegion
     Left = 536
     Top = 256
-  end
-  object sq_LBSR2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftTimeStamp
-        Name = 'StartDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'StartDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'StartInBalDate'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftTimeStamp
-        Name = 'EndInBalDate'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      
-        'Select SR.ClientNo, SR.ClientName AS REGION, SUM(ins.NM3) AS NM3' +
-        '_ING'#197'ENDE,'
-      ''
-      '(Select SUM(inv.NM3)'
-      'FROM dbo.InvBalII inv'
-      'Left Outer Join dbo.LagerPlatser LP2 on LP2.LIPNo = inv.LIPNo'
-      'Inner Join dbo.Client C2 on C2.ClientNo = inv.VerkNo'
-      'WHERE inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDate'
-      'and c2.SalesRegionNo = C.SalesRegionNo'
-      'AND inv.Typ = 1'
-      '-- AND ((LP2.SequenceNo = 1) or (LP2.SequenceNo is null))'
-      'Group By Typ)AS IN_NM3,'
-      ''
-      '(Select SUM(inv.NM3)'
-      'FROM dbo.InvBalII inv'
-      'Left Outer Join dbo.LagerPlatser LP2 on LP2.LIPNo = inv.LIPNo'
-      'Inner Join dbo.Client C2 on C2.ClientNo = inv.VerkNo'
-      
-        'WHERE ((inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDat' +
-        'e)'
-      ' OR (SortOrder = 71) OR (SortOrder = 72))'
-      'and c2.SalesRegionNo = C.SalesRegionNo'
-      'AND inv.Typ = -1'
-      '-- AND ((LP2.SequenceNo = 1) or (LP2.SequenceNo is null))'
-      'Group By Typ)AS UT_NM3'
-      ''
-      'FROM dbo.InvenStatusII ins'
-      'Inner Join dbo.Client C on C.ClientNo = ins.OwnerNo'
-      'Inner Join dbo.Client SR on SR.ClientNo = C.SalesRegionNo'
-      
-        '-- Left Outer Join dbo.PackageType pt on pt.PackageTypeNo = ins.' +
-        'PackageTypeNo'
-      
-        'Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInvent' +
-        'oryPointNo = ins.LogicalInventoryPointNo'
-      
-        'Left Outer Join dbo.LagerPlatser LP on LP.LIPNo = LIP.LogicalInv' +
-        'entoryPointNo'
-      ''
-      'WHERE ins.InvDate >= :StartInBalDate'
-      'AND ins.InvDate <= :EndInBalDate'
-      '-- AND ((LP.SequenceNo = 1) or (LP.SequenceNo is null))'
-      'Group By SR.ClientName, C.SalesRegionNo, SR.ClientNo'
-      'Order By SR.ClientName')
-    Left = 928
-    Top = 336
-  end
-  object dsp_LBSR: TDataSetProvider
-    DataSet = sq_LBSR2
-    Left = 928
-    Top = 376
-  end
-  object cds_LBSR2: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dsp_LBSR'
-    OnCalcFields = cds_LBSR2CalcFields
-    Left = 928
-    Top = 432
-    object cds_LBSR2REGION: TStringField
-      FieldName = 'REGION'
-      Size = 80
-    end
-    object cds_LBSR2NM3_INGENDE: TFloatField
-      DisplayLabel = 'ING'#197'ENDE'
-      FieldName = 'NM3_ING'#197'ENDE'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LBSR2IN_NM3: TFloatField
-      DisplayLabel = 'IN'
-      FieldName = 'IN_NM3'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LBSR2UT_NM3: TFloatField
-      DisplayLabel = 'UT'
-      FieldName = 'UT_NM3'
-      DisplayFormat = '#,###,###,###.0'
-    end
-    object cds_LBSR2ClientNo: TIntegerField
-      FieldName = 'ClientNo'
-    end
-    object cds_LBSR2NM3_UTGAENDE: TFloatField
-      DisplayLabel = 'UTGAENDE'
-      FieldKind = fkCalculated
-      FieldName = 'NM3_UTGAENDE'
-      DisplayFormat = '#,###,###,###.0'
-      Calculated = True
-    end
-    object cds_LBSR2NM3_DIFF: TFloatField
-      DisplayLabel = 'NM3'
-      FieldKind = fkCalculated
-      FieldName = 'NM3_DIFF'
-      DisplayFormat = '#,###,###,###.0'
-      Calculated = True
-    end
   end
   object ds_LBSR: TDataSource
     DataSet = cds_LBSR
@@ -2914,6 +2214,7 @@
     end
   end
   object cds_LagBal: TFDQuery
+    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select '#39'1) ING'#197'ENDE BALANS'#39' AS GRUPP,'
@@ -2921,7 +2222,8 @@
       'SUM(ins.AM3) AS AM3,'
       'SUM(ins.NM3) AS NM3,'
       '0.0 AS SubTotal, 1 AS SortOrder,'
-      '0.0 AS V'#196'RDE'
+      '0.0 AS V'#196'RDE,'
+      'sum(ins.NoOfPkgs) AS Pkt'
       'FROM dbo.InvenStatusII ins'
       
         'Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInvent' +
@@ -2939,7 +2241,7 @@
       
         'Select inv.GroupName, inv.Item, SUM(inv.AM3) AS AM3, SUM(inv.NM3' +
         ') AS NM3, 0.0 AS SubTotal, inv.SortOrder,'
-      '0.0 AS V'#196'RDE'
+      '0.0 AS V'#196'RDE, sum(inv.NoOfPkgs) AS Pkt'
       'FROM dbo.InvBalII inv'
       
         'Left Outer Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalI' +
@@ -3038,6 +2340,11 @@
       Origin = 'AM3'
       ReadOnly = True
       DisplayFormat = '#,###,###,###.0'
+    end
+    object cds_LagBalPkt: TIntegerField
+      FieldName = 'Pkt'
+      Origin = 'Pkt'
+      ReadOnly = True
     end
   end
   object cdsClient: TFDQuery

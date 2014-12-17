@@ -337,6 +337,7 @@ type
     cxButton2: TcxButton;
     cxButton3: TcxButton;
     cxButton4: TcxButton;
+    cds_IB: TFDQuery;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acCloseExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -460,19 +461,29 @@ end;
 
 procedure TfLagBalDtl.RefreshProduction(const OwnerNo, PIPNo, LIPNo, SortOrder, Operation : Integer;const StartPeriod, EndPeriod : TSQLTimeStamp) ;
 var
-  Save_Cursor:TCursor;
+  Save_Cursor : TCursor;
+  pStartPeriod, pEndPeriod : TSQLTimeStamp ;
 begin
  Save_Cursor    := Screen.Cursor;
  Screen.Cursor  := crHourGlass;    { Show hourglass cursor }
  Try
+  pStartPeriod  := StartPeriod ;
+  pEndPeriod    := EndPeriod ;
+  if sortorder = 1 then
+   cds_ProdData.SQL.Text  := cds_IB.SQL.Text ;
   cds_ProdData.Active:= False ;
   cds_ProdData.ParamByName('OwnerNo').AsInteger            := OwnerNo ;
   cds_ProdData.ParamByName('PIPNo').AsInteger              := PIPNo ;
   cds_ProdData.ParamByName('LIPNo').AsInteger              := LIPNo ;
   cds_ProdData.ParamByName('Sortorder').AsInteger          := Sortorder ;
 //  cds_ProdData.ParamByName('Operation').AsInteger          := Operation ;
-  cds_ProdData.ParamByName('StartPeriod').AsSQLTimeStamp   := StartPeriod ;
-  cds_ProdData.ParamByName('EndPeriod').AsSQLTimeStamp     := EndPeriod ;
+  if sortorder = 1 then
+   cds_ProdData.ParamByName('StartPeriod').AsSQLTimeStamp   := pStartPeriod  ;
+  cds_ProdData.ParamByName('StartPeriod').AsSQLTimeStamp   := pStartPeriod ;
+
+  if sortorder = 1 then
+   cds_ProdData.ParamByName('EndPeriod').AsSQLTimeStamp     := pEndPeriod  ;
+  cds_ProdData.ParamByName('EndPeriod').AsSQLTimeStamp     := pEndPeriod ;
 
 
   cds_ProdData.Active:= True ;
@@ -480,6 +491,8 @@ begin
   Screen.Cursor := Save_Cursor ;
  End ;
 end;
+
+
 
 procedure TfLagBalDtl.acCloseExecute(Sender: TObject);
 begin
