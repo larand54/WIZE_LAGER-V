@@ -21,8 +21,6 @@ object fkilnHandling: TfkilnHandling
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -45,8 +43,6 @@ object fkilnHandling: TfkilnHandling
     object tsTABELL: TcxTabSheet
       Caption = 'PAKETTABELLER'
       ImageIndex = 2
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Memo1: TMemo
         Left = 64
         Top = 112
@@ -65,9 +61,10 @@ object fkilnHandling: TfkilnHandling
         Align = alBottom
         TabOrder = 1
         Properties.CustomButtons.Buttons = <>
-        ClientRectBottom = 50
-        ClientRectRight = 1252
-        ClientRectTop = 0
+        ClientRectBottom = 49
+        ClientRectLeft = 1
+        ClientRectRight = 1251
+        ClientRectTop = 1
       end
       object cxSplitter1: TcxSplitter
         Left = 0
@@ -79,7 +76,6 @@ object fkilnHandling: TfkilnHandling
         Control = pcPktNrAndTorkSats
         Color = clGreen
         ParentColor = False
-        ExplicitWidth = 8
       end
       object cxGrid1: TcxGrid
         Left = 0
@@ -579,29 +575,24 @@ object fkilnHandling: TfkilnHandling
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 68
-    ClientRectRight = 1252
-    ClientRectTop = 0
+    ClientRectBottom = 67
+    ClientRectLeft = 1
+    ClientRectRight = 1251
+    ClientRectTop = 1
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 1250
-      ExplicitHeight = 66
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1252
-        Height = 68
+        Width = 1250
+        Height = 66
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1250
-        ExplicitHeight = 66
         DesignSize = (
-          1252
-          68)
+          1250
+          66)
         object cxLabel2: TcxLabel
           Left = 4
           Top = 13
@@ -740,7 +731,7 @@ object fkilnHandling: TfkilnHandling
           Width = 85
         end
         object cxButton9: TcxButton
-          Left = 1151
+          Left = 1149
           Top = 12
           Width = 89
           Height = 50
@@ -748,7 +739,6 @@ object fkilnHandling: TfkilnHandling
           Caption = 'St'#228'ng'
           TabOrder = 3
           OnClick = cxButton9Click
-          ExplicitLeft = 1149
         end
         object seColWidth: TcxDBSpinEdit
           Left = 345
@@ -1479,6 +1469,7 @@ object fkilnHandling: TfkilnHandling
     Top = 457
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1494,11 +1485,13 @@ object fkilnHandling: TfkilnHandling
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39085.979061331020000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1513,9 +1506,11 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1530,9 +1525,11 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1547,11 +1544,13 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1566,6 +1565,7 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -4360,6 +4360,7 @@ object fkilnHandling: TfkilnHandling
     Top = 349
   end
   object sq_OnePkg: TFDQuery
+    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'

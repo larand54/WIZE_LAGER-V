@@ -1,9 +1,9 @@
 object fKilnWizard: TfKilnWizard
   Left = 229
   Top = 107
-  Width = 364
-  Height = 206
   Caption = 'Ny Torksats'
+  ClientHeight = 178
+  ClientWidth = 356
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -109,7 +109,7 @@ object fKilnWizard: TfKilnWizard
   end
   object Panel1: TPanel
     Left = 0
-    Top = 138
+    Top = 137
     Width = 356
     Height = 41
     Align = alBottom
@@ -119,18 +119,20 @@ object fKilnWizard: TfKilnWizard
       Top = 8
       Width = 75
       Height = 25
+      Kind = bkOK
+      NumGlyphs = 2
       TabOrder = 0
       OnClick = BitBtn1Click
-      Kind = bkOK
     end
     object BitBtn2: TBitBtn
       Left = 176
       Top = 8
       Width = 75
       Height = 25
+      Kind = bkCancel
+      NumGlyphs = 2
       TabOrder = 1
       OnClick = BitBtn2Click
-      Kind = bkCancel
     end
   end
 end

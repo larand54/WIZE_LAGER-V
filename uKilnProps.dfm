@@ -92,7 +92,6 @@ object fKilnProps: TfKilnProps
           Height = 46
           Align = alTop
           TabOrder = 0
-          ExplicitWidth = 431
           object dxBarDockControl1: TdxBarDockControl
             Left = 1
             Top = 1
@@ -100,7 +99,6 @@ object fKilnProps: TfKilnProps
             Height = 48
             Align = dalTop
             BarManager = dxBarManager1
-            ExplicitWidth = 429
           end
         end
         object grdKilns: TcxGrid
@@ -110,7 +108,6 @@ object fKilnProps: TfKilnProps
           Height = 205
           Align = alTop
           TabOrder = 1
-          ExplicitWidth = 431
           object grdKilnsDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dm_DryKiln.ds_Kilns
@@ -167,7 +164,6 @@ object fKilnProps: TfKilnProps
           Height = 337
           Align = alClient
           TabOrder = 2
-          ExplicitWidth = 431
           object Panel11: TPanel
             Left = 1
             Top = 1
@@ -175,7 +171,6 @@ object fKilnProps: TfKilnProps
             Height = 57
             Align = alTop
             TabOrder = 0
-            ExplicitWidth = 429
             object cxButton1: TcxButton
               Left = 8
               Top = 5
@@ -200,7 +195,6 @@ object fKilnProps: TfKilnProps
             Height = 278
             Align = alClient
             TabOrder = 1
-            ExplicitWidth = 429
             object grdChannelsDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True

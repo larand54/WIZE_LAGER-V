@@ -559,8 +559,8 @@ begin
  Save_Cursor := Screen.Cursor;
  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
  Result:= False ;
-Try
-  dmsConnector.StartTransaction;
+//Try
+ // dmsConnector.StartTransaction;
   try
    mtLoadPackages.First ;
    While not mtLoadPackages.Eof do
@@ -579,6 +579,7 @@ Try
         else
          ShowMessage('Kan ej ta bort paketnr ' + mtLoadPackagesPACKAGENO.AsString + ', det är upptaget i en leverans.') ;
      mtLoadPackages.Next ;
+     Result:= True ;
     except
      On E: Exception do
      Begin
@@ -588,12 +589,14 @@ Try
     end;
     end; //While...
 
-    dmsConnector.Commit ;
-    Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      dmsConnector.Commit ;
+      Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
  Finally
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  End ;
@@ -610,7 +613,7 @@ begin
  Try
  mtLoadPackages.DisableControls ;
 
- Try
+ //Try
 //  if dmsConnector.FDConnection1.InTransaction then
 //   dmsConnector.FDConnection1.Rollback ;
 
@@ -640,10 +643,12 @@ begin
        sp_RemovePackageFromInventory.ParamByName('@LogicalInventoryPointNo').AsInteger  := mtLoadPackagesLOG_INVENTORY_NO.AsInteger ;
        sp_RemovePackageFromInventory.ParamByName('@SkiftLagNo').AsInteger               := mtUserProp.FieldByName('GroupByBox').AsInteger ;
        sp_RemovePackageFromInventory.ExecProc ;
+       Result:= True ;
       except
        On E: Exception do
        Begin
         dmsSystem.FDoLog(E.Message+' :sp_RemovePackageFromInventory.ExecProc') ;
+        Result:= False ;
         Raise ;
        End ;
       end;
@@ -654,11 +659,13 @@ begin
     end; //While...
 
 //    dmsConnector.Commit ;
-    Result:= True ;
-  except
-//    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      Result:= True ;
+    except
+  //    dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
 
 
 
@@ -679,8 +686,8 @@ begin
  Save_Cursor    := Screen.Cursor;
  Screen.Cursor  := crSQLWait;    { Show hourglass cursor }
  Result         := False ;
- Try
-  dmsConnector.StartTransaction;
+ //Try
+ // dmsConnector.StartTransaction;
   try
    mtLoadPackages.First ;
    While not mtLoadPackages.Eof do
@@ -703,10 +710,12 @@ begin
 //       sp_PaRegPaket_II.ParamByName('RunNo').AsInteger                    := mtUserProp.FieldByName('RunNo').AsInteger ;
 
        sp_PaRegPaket_II.ExecProc ;
+       Result:= True ;
       except
        On E: Exception do
        Begin
         dmsSystem.FDoLog(E.Message+' :sp_PaRegPaket_II.ExecProc') ;
+        Result:= False ;
         Raise ;
        End ;
       end;
@@ -730,10 +739,12 @@ begin
 //       sp_PaRegPaket.ParamByName('RunNo').AsInteger                    := mtUserProp.FieldByName('RunNo').AsInteger ;
 
        sp_PaRegPaket.ExecProc ;
+       Result:= True ;
       except
        On E: Exception do
        Begin
         dmsSystem.FDoLog(E.Message+' :sp_PaRegPaket.ExecProc') ;
+        Result:= False ;
         Raise ;
        End ;
       end;
@@ -742,12 +753,14 @@ begin
      mtLoadPackages.Next ;
     end; //While...
 
-    dmsConnector.Commit ;
-    Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      dmsConnector.Commit ;
+      Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
  Finally
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  End ;
@@ -762,8 +775,10 @@ begin
  Screen.Cursor  := crSQLWait;    { Show hourglass cursor }
  Result         := False ;
  mtLoadPackages.DisableControls ;
- Try
-  dmsConnector.StartTransaction;
+  {
+   Try
+     dmsConnector.StartTransaction;
+ }
   try
    mtLoadPackages.First ;
    While not mtLoadPackages.Eof do
@@ -782,22 +797,26 @@ begin
 //       sp_VardaBortPaket.ParamByName('RunNo').AsInteger                    := mtUserProp.FieldByName('RunNo').AsInteger ;
 
        sp_VardaBortPaket.ExecProc ;
+       Result:= True ;
     except
      On E: Exception do
      Begin
       dmsSystem.FDoLog(E.Message+' :sp_VardaBortPaket.ExecProc') ;
+       Result:= False ;
       Raise ;
      End ;
     end;
      mtLoadPackages.Next ;
     end; //While...
 
-    dmsConnector.Commit ;
-    Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      dmsConnector.Commit ;
+      Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
  Finally
   mtLoadPackages.EnableControls ;
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -997,25 +1016,30 @@ Try
    mtLoadPackages.First ;
    While not mtLoadPackages.Eof do
     Begin
-     dmsConnector.StartTransaction;
-     try
+{
+       dmsConnector.StartTransaction;
+       try
+}
       mtPcsPerLength.Active:= False ;
       mtPcsPerLength.Active:= True ;
       SavePkgType ;
       Try
       AndraPaket ;
+      Result:= True ;
       except
        ShowMessage ('Could not save Package no '+Pkg_Info(mtLoadPackagesPACKAGENO.AsInteger, mtLoadPackagesSUPP_CODE.AsString));
        Result:= False ;
        Raise ;
       End ;
 
-    dmsConnector.Commit ;
-    Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      dmsConnector.Commit ;
+      Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
    mtLoadPackages.Next ;
    PackageTypeNo:= -1 ;
  end;
@@ -1289,8 +1313,10 @@ Try
    mtLoadPackages.First ;
    While not mtLoadPackages.Eof do
     Begin
-     dmsConnector.StartTransaction;
-     try
+{
+       dmsConnector.StartTransaction;
+       try
+}
       mtPcsPerLength.Active:= False ;
       mtPcsPerLength.Active:= True ;
       SavePkgType ;
@@ -1302,18 +1328,21 @@ Try
       or (mtUserProp.FieldByName('LengthFormatNo').AsInteger = 1) then }
       if (mtUserProp.FieldByName('GroupSummary').AsInteger = 1) then
       UpdateProdStat ;
+      Result:= True ;
       except
        ShowMessage ('Could not save Package no '+Pkg_Info(mtLoadPackagesPACKAGENO.AsInteger, mtLoadPackagesSUPP_CODE.AsString));
        Result:= False ;
        Raise ;
       End ;
 
-    dmsConnector.Commit ;
-    Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      dmsConnector.Commit ;
+      Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
    mtLoadPackages.Next ;
    PackageTypeNo:= -1 ;
  end;
@@ -1360,22 +1389,27 @@ begin
  mtLoadPackages.First ;
  While not mtLoadPackages.Eof do
  Begin
-   dmsConnector.StartTransaction;
-  try
+{
+     dmsConnector.StartTransaction;
+    try
+}
     Try
      MovePackage ;
+     Result:= True ;
     except
      ShowMessage ('Kan inte flytta paketnr ' + Pkg_Info(mtLoadPackagesPACKAGENO.AsInteger, mtLoadPackagesSUPP_CODE.AsString));
      Result:= False ;
      Raise ;
     End ;
 
-   dmsConnector.Commit ;
-   Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+     dmsConnector.Commit ;
+     Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
 
   mtLoadPackages.Next ;
  end;
@@ -1707,22 +1741,27 @@ begin
  mtLoadPackages.First ;
  While not mtLoadPackages.Eof do
  Begin
-   dmsConnector.StartTransaction;
-  try
+{
+     dmsConnector.StartTransaction;
+    try
+}
     Try
      MovePackage ;
+     Result:= True ;
     except
      ShowMessage ('Could not save Package no '+Pkg_Info(mtLoadPackagesPACKAGENO.AsInteger, mtLoadPackagesSUPP_CODE.AsString));
      Result:= False ;
      Raise ;
     End ;
 
-   dmsConnector.Commit ;
-   Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+     dmsConnector.Commit ;
+     Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
 
   mtLoadPackages.Next ;
  end;
@@ -1899,8 +1938,10 @@ begin
  Save_Cursor    := Screen.Cursor;
  Screen.Cursor  := crSQLWait;    { Show hourglass cursor }
  Result         := False ;
- Try
-  dmsConnector.StartTransaction;
+{
+   Try
+    dmsConnector.StartTransaction;
+}
   try
    mtLoadPackages.First ;
    While not mtLoadPackages.Eof do
@@ -1920,22 +1961,26 @@ begin
 //       sp_AktiveraPktExt.ParamByName('RunNo').AsInteger                    := mtUserProp.FieldByName('RunNo').AsInteger ;
 
        sp_AktiveraPktExt.ExecProc ;
+       Result:= True ;
     except
      On E: Exception do
      Begin
       dmsSystem.FDoLog(E.Message+' :sp_AktiveraPktExt.ExecProc') ;
+      Result:= False ;
       Raise ;
      End ;
     end;
      mtLoadPackages.Next ;
     end; //While...
 
-    dmsConnector.Commit ;
-    Result:= True ;
-  except
-    dmsConnector.Rollback ;
-    Result:= False ;
-  end;
+{
+      dmsConnector.Commit ;
+      Result:= True ;
+    except
+      dmsConnector.Rollback ;
+      Result:= False ;
+    end;
+}
  Finally
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  End ;

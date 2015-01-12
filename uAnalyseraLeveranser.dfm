@@ -165,7 +165,7 @@
     Height = 786
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsProduction
+    Properties.ActivePage = tsDeliveries
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
@@ -702,7 +702,6 @@
         OptionsView.TotalsForSingleValues = True
         Styles.Total = cxStyle2
         TabOrder = 0
-        ExplicitTop = 87
         object fMtpunkt: TcxDBPivotGridField
           Area = faRow
           AreaIndex = 1
@@ -2501,7 +2500,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 41963.548368356480000000
+      ReportDocument.CreationDate = 42011.622070312500000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2529,7 +2528,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 41963.548368356480000000
+      ReportDocument.CreationDate = 42011.622070324080000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2555,7 +2554,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 41963.548368368060000000
+      ReportDocument.CreationDate = 42011.622070335640000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2576,10 +2575,11 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41963.548368379630000000
+      ReportDocument.CreationDate = 42011.622070335640000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2593,6 +2593,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 40918.446931423610000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxCompositionReportLink
@@ -2638,7 +2639,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41963.548368634260000000
+      ReportDocument.CreationDate = 42011.622070648150000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -2705,13 +2706,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41963.548368645830000000
+      ReportDocument.CreationDate = 42011.622070648150000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdStoppTid
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -2724,8 +2724,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41963.548368657410000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 42011.622070671300000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink

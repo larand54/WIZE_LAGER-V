@@ -89,8 +89,8 @@ object frmPkgEntry: TfrmPkgEntry
         Caption = 'L'#228'ngdgrupp:'
       end
       object lcLengthGroup: TcxDBLookupComboBox
-        Left = 520
-        Top = 3
+        Left = 521
+        Top = 2
         DataBinding.DataField = 'LengthGroup'
         DataBinding.DataSource = dsUserProp
         Properties.ImmediatePost = True
@@ -1738,8 +1738,8 @@ object frmPkgEntry: TfrmPkgEntry
         Index = 0
         PopupMenu = pmPackages
       end>
-    Left = 344
-    Top = 329
+    Left = 288
+    Top = 305
   end
   object PopupMenu1: TPopupMenu
     AutoPopup = False

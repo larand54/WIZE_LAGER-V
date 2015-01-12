@@ -589,50 +589,65 @@ begin
    mtPackages.First ;
    While not mtPackages.Eof do
     Begin
-    mtPcsPerLength.Active  := False ;
-    mtPcsPerLength.Active  := True ;
-    dmsConnector.StartTransaction;
-    try
-    SavePkgType ;
+      mtPcsPerLength.Active  := False ;
+      mtPcsPerLength.Active  := True ;
 
-    if PackageTypeNo > 0 then
-    Begin
-     if not PackageExist( mtPackages.Fields[cPACKAGENO].AsInteger,  Trim(mtPackages.Fields[cSUPPLIERCODE].AsString)) then
-     Begin
-      SavePackage ;
-      mtPackages.Edit ;
-      mtPackages.Fields[cPACKAGETYPENO].AsInteger:= PackageTypeNo ;
-      mtPackages.Post ;
-     End
-     else
-     Begin
-      mtPackages.Edit ;
-      mtPackages.Fields[cPACKAGETYPENO].AsInteger:= -2 ;
-      mtPackages.Post ;
+//      dmsConnector.StartTransaction;
+      try
+      SavePkgType ;
+
+      if PackageTypeNo > 0 then
+      Begin
+       if not PackageExist( mtPackages.Fields[cPACKAGENO].AsInteger,  Trim(mtPackages.Fields[cSUPPLIERCODE].AsString)) then
+       Begin
+        SavePackage ;
+        mtPackages.Edit ;
+        mtPackages.Fields[cPACKAGETYPENO].AsInteger:= PackageTypeNo ;
+        mtPackages.Post ;
+       End
+       else
+       Begin
+        mtPackages.Edit ;
+        mtPackages.Fields[cPACKAGETYPENO].AsInteger:= -2 ;
+        mtPackages.Post ;
+       End ;
+
+
+        mtPackages.Next ;
+
+
+
+       PackageTypeNo:= -1 ;
+  //     dmsConnector.Commit ;
+       Result:= True ;
      End ;
+{
+        else
+          Begin
+           dmsConnector.Rollback ;
+           Result:= False ;
+          End ;
+}
 
+{
+      except
+       dmsConnector.Rollback ;
+       Result:= False ;
+       dmsSystem.FDoLog('dmsConnector.Rollback') ;
+       Raise ;
+      end;
+}
 
-      mtPackages.Next ;
+      except
+       on E: eDatabaseError do
+       Begin
+        Raise ;
+        dmsSystem.FDoLog(E.Message+' :Save package') ;
+        Result:= False ;
+       End ;
 
-
-
-     PackageTypeNo:= -1 ;
-     dmsConnector.Commit ;
-     Result:= True ;
-    End
-    else
-    Begin
-     dmsConnector.Rollback ;
-     Result:= False ;
-    End ;
-
-    except
-     dmsConnector.Rollback ;
-     Result:= False ;
-     dmsSystem.FDoLog('dmsConnector.Rollback') ;
-     Raise ;
-    end;
- end;
+      end;
+ end;  //While
 
  Finally
   mtPcsPerLength.Active := False ;

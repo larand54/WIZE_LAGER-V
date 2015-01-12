@@ -25,7 +25,9 @@ uses
   dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxBarPainter, cxNavigator;
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinsdxBarPainter, cxNavigator,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, System.Actions;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -1651,6 +1653,9 @@ begin
  With dmsPkg do
  Begin
 
+  lcLengthGroup.Properties.OnChange := nil ;
+  Try
+
   if mtUserPropRegDate.AsDateTime > Now then
   Begin
    ShowMessage('Registreringsdatum får inte vara större än aktuellt datum');
@@ -1748,33 +1753,35 @@ begin
   if OKToSave = False then
    Exit ;
 
-     if SavePackages2 then
-     Begin
-      if UnSavedPackages then
-      Begin
-       ShowMessage('Gröna rader är paketnr/preix som redan finns i databasen, röda rader är paket som inte kunde sparas (kontakta support)') ;
-       RemoveSavedPkgsFromMemTable(Sender) ;
-      End
-      else
-      Begin
-       if MessageDlg('Paket sparade OK, vill du stänga?',
-       mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-       Begin
-        SavePkgs:= True ;
-        Close ;
-       End
-       else
-       Begin
-        RemoveSavedPkgsFromMemTable(Sender) ;
-       End ;
-      End ;//else on if UnSavedPackages then
-     End //if SavePackages2 then
-     else
-     Begin
-      RemoveSavedPkgsFromMemTable(Sender) ;
-      ShowMessage('De paket som finns kvar i listan kunde inte registreras.');
-      OKToSave:= False ;
-     End ;
+
+       if SavePackages2 then
+        Begin
+         if UnSavedPackages then
+         Begin
+          ShowMessage('Gröna rader är paketnr/preix som redan finns i databasen, röda rader är paket som inte kunde sparas (kontakta support)') ;
+          RemoveSavedPkgsFromMemTable(Sender) ;
+         End
+         else
+         Begin
+          if MessageDlg('Paket sparade OK, vill du stänga?',
+          mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+          Begin
+           SavePkgs:= True ;
+           Close ;
+          End
+          else
+          Begin
+           RemoveSavedPkgsFromMemTable(Sender) ;
+          End ;
+         End ;//else on if UnSavedPackages then
+        End //if SavePackages2 then
+        else
+        Begin
+         RemoveSavedPkgsFromMemTable(Sender) ;
+         ShowMessage('De paket som finns kvar i listan kunde inte registreras.');
+         OKToSave:= False ;
+        End ;
+
 
   End
   else
@@ -1788,8 +1795,13 @@ begin
  End //if
   else
    ShowMessage('Ingen mätpunkt vald') ;
+ End;
+
+ Finally
+  lcLengthGroup.Properties.OnChange := lcLengthGroupPropertiesChange ;
+ End ;
  End ; //with
- End ;//if...
+ //End ;//if...
 end;
 
 procedure TfrmPkgEntry.acSavePkgsUpdate(Sender: TObject);
