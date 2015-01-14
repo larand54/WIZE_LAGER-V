@@ -38,7 +38,7 @@ uses
   dxSkinsdxRibbonPainter, dxPScxPivotGridLnk, dxPScxSSLnk, cxButtons,
   cxGroupBox, cxRadioGroup, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu ;
+  dxBarBuiltInMenu, System.Actions ;
 
 type
   TfInvCtrl = class(TForm)
@@ -1592,7 +1592,7 @@ begin
  }
 
   Memo2.Lines.Add('Kör DelCreditedPkgs') ;
-  DelCreditedPkgs(cds_InvCtrlGrpIC_grpno.AsInteger) ;
+  //DelCreditedPkgs(cds_InvCtrlGrpIC_grpno.AsInteger) ;
 
   Screen.Cursor := crSQLWait;
 
