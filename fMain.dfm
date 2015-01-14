@@ -371,7 +371,7 @@ object frmMain: TfrmMain
       Left = 0
       Top = 0
       Width = 137
-      Height = 685
+      Height = 683
       Caption = 'nvgUtlastningControl'
       TabOrder = 0
       GroupIndex = 5
@@ -563,6 +563,10 @@ object frmMain: TfrmMain
       Caption = 'Torkhantering'
       ImageIndex = 36
       OnExecute = acProgressKilnExecute
+    end
+    object acChangeLanguage: TAction
+      Caption = 'Change &Language'
+      OnExecute = acChangeLanguageExecute
     end
   end
   object imglOutbar_large: TImageList
@@ -3963,6 +3967,10 @@ object frmMain: TfrmMain
         end
         item
           Visible = True
+          ItemName = 'dxBarButton11'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton9'
         end>
     end
@@ -3981,6 +3989,22 @@ object frmMain: TfrmMain
     end
     object dxBarButton8: TdxBarButton
       Action = acUserProfile
+      Category = 0
+    end
+    object dxBarSubItem5: TdxBarSubItem
+      Caption = 'New SubItem'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarButton10: TdxBarButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+    end
+    object dxBarButton11: TdxBarButton
+      Action = acChangeLanguage
       Category = 0
     end
     object dxBarButton1: TdxBarButton
