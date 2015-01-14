@@ -128,6 +128,7 @@ begin
   Application.Initialize;
   Application.Title := 'VISLAGER';
   Application.HelpFile := 'D:\Project\VIS\Help manual\VIS.hlp';
+  Application.CreateForm(TdmLanguage, dmLanguage);
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TdmsConnector, dmsConnector);
   Application.CreateForm(TdmsSystem, dmsSystem);
@@ -136,7 +137,6 @@ begin
   Application.CreateForm(TdmcOrder, dmcOrder);
   Application.CreateForm(TdmsContact, dmsContact);
   Application.CreateForm(TdmInventory, dmInventory);
-  Application.CreateForm(TdmLanguage, dmLanguage);
   Application.CreateForm(TfrmChangeLanguage, frmChangeLanguage);
   Application.Run
 end.

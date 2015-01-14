@@ -161,6 +161,10 @@ type
     acProgressKiln: TAction;
     nviProgressKiln: TdxNavBarItem;
     siLangLinked_frmMain: TsiLangLinked;
+    acChangeLanguage: TAction;
+    dxBarSubItem5: TdxBarSubItem;
+    dxBarButton10: TdxBarButton;
+    dxBarButton11: TdxBarButton;
     procedure FormCreate(Sender: TObject);
     procedure atExitExecute(Sender: TObject);
     procedure atAboutExecute(Sender: TObject);
@@ -201,6 +205,7 @@ type
     procedure acStopptimereportExecute(Sender: TObject);
     procedure panelBaseClick(Sender: TObject);
     procedure acProgressKilnExecute(Sender: TObject);
+    procedure acChangeLanguageExecute(Sender: TObject);
   private
     a : String ;
     procedure AppException(Sender: TObject; E: Exception);
@@ -239,7 +244,8 @@ uses
   uInvCare, uVardaBortPkt, uchgPkgVard, UnitLoadArrivals,
   uAccInv, uExtAterstall, //uLastListaII,
   uChangeLogins, UProductionReport, uDeliveryReport, uUserProfiles,
-  uStopptidReport, fLoadPlan, uKilnHandling, uLagerBalans;
+  uStopptidReport, fLoadPlan, uKilnHandling, uLagerBalans, udmLanguage,
+  ufrmChangeLanguage;
 
 
 
@@ -938,6 +944,22 @@ begin
  End
   else
    ShowMessage('No access');
+end;
+
+procedure TfrmMain.acChangeLanguageExecute(Sender: TObject);
+var
+  frm: TfrmChangeLanguage;
+begin
+  try
+    frm := TfrmChangeLanguage.Create(nil);
+    if (frm <> nil) then
+    begin
+      if (frm.ShowModal = mrOk) then
+        dmLanguage.siLangDispatcher1.LoadAllFromFile(dmLanguage.siLangDispatcher1.FileName);
+    end;
+  finally
+    FreeAndNil(frm);
+  end;
 end;
 
 procedure TfrmMain.acDeliveryStatisticsExecute(Sender: TObject);

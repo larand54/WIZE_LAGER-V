@@ -371,7 +371,7 @@ object frmMain: TfrmMain
       Left = 0
       Top = 0
       Width = 137
-      Height = 685
+      Height = 683
       Caption = 'nvgUtlastningControl'
       TabOrder = 0
       GroupIndex = 5
@@ -563,6 +563,10 @@ object frmMain: TfrmMain
       ImageIndex = 36
       OnExecute = acProgressKilnExecute
     end
+    object acChangeLanguage: TAction
+      Caption = 'Change &Language'
+      OnExecute = acChangeLanguageExecute
+    end
   end
   object imglOutbar_large: TImageList
     Height = 24
@@ -570,7 +574,7 @@ object frmMain: TfrmMain
     Left = 248
     Top = 256
     Bitmap = {
-      494C01012B002D00100018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01012B002D00040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000080100000100200000000000008C
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3962,6 +3966,10 @@ object frmMain: TfrmMain
         end
         item
           Visible = True
+          ItemName = 'dxBarButton11'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton9'
         end>
     end
@@ -3980,6 +3988,22 @@ object frmMain: TfrmMain
     end
     object dxBarButton8: TdxBarButton
       Action = acUserProfile
+      Category = 0
+    end
+    object dxBarSubItem5: TdxBarSubItem
+      Caption = 'New SubItem'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarButton10: TdxBarButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+    end
+    object dxBarButton11: TdxBarButton
+      Action = acChangeLanguage
       Category = 0
     end
     object dxBarButton1: TdxBarButton
