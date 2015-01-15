@@ -77,13 +77,14 @@
     ExplicitTop = 109
     ExplicitWidth = 1250
     ExplicitHeight = 587
-    ClientRectBottom = 549
-    ClientRectLeft = 1
-    ClientRectRight = 1257
-    ClientRectTop = 1
+    ClientRectBottom = 546
+    ClientRectLeft = 4
+    ClientRectRight = 1254
+    ClientRectTop = 4
     object tsDeliveries: TcxTabSheet
       Caption = 'Leveranser'
       ImageIndex = 0
+      ExplicitLeft = 0
       ExplicitTop = 21
       ExplicitWidth = 1248
       ExplicitHeight = 565
@@ -354,14 +355,15 @@
     object tsProduction: TcxTabSheet
       Caption = 'Production'
       ImageIndex = 1
+      ExplicitLeft = 0
       ExplicitTop = 21
       ExplicitWidth = 1248
       ExplicitHeight = 565
       object pivProduction: TcxDBPivotGrid
         Left = 0
         Top = 41
-        Width = 1256
-        Height = 507
+        Width = 1250
+        Height = 501
         Align = alClient
         DataSource = ds_ProdData
         Groups = <
@@ -472,7 +474,7 @@
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1256
+        Width = 1250
         Height = 41
         Align = alTop
         TabOrder = 1
@@ -1378,6 +1380,7 @@
       Component = pivLeveranser
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -1392,7 +1395,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 41967.057287060180000000
+      ReportDocument.CreationDate = 42018.982020231480000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -1405,6 +1408,7 @@
       Component = pivProduction
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -1419,7 +1423,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 41967.057287071760000000
+      ReportDocument.CreationDate = 42018.982020231480000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -1428,6 +1432,7 @@
     object dxComponentPrinter1Link3: TcxPivotGridReportLink
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2623,5 +2628,65 @@
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object siLangLinked_fLagBalDtl: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 624
+    Top = 352
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

@@ -26,7 +26,9 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  dxSkinsdxBarPainter ;
+  dxSkinsdxBarPainter, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  cxNavigator, siComp, siLngLnk, System.Actions ;
 
 type
   TfrmLoadArrivals = class(TForm)
@@ -200,6 +202,7 @@ type
     deStartPeriod: TcxDBDateEdit;
     deEndPeriod: TcxDBDateEdit;
     grdLoadsDBTableView1AR_LoadNo: TcxGridDBColumn;
+    siLangLinked_frmLoadArrivals: TsiLangLinked;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);

@@ -36,13 +36,11 @@ object fSinglePkgEntry: TfSinglePkgEntry
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 958
-    ExplicitHeight = 407
     object Panel8: TPanel
       Left = 225
       Top = 0
-      Width = 733
-      Height = 407
+      Width = 725
+      Height = 396
       Align = alClient
       BevelOuter = bvNone
       Caption = 'PanelAntalPerLangd'
@@ -50,7 +48,7 @@ object fSinglePkgEntry: TfSinglePkgEntry
       object Panel9: TPanel
         Left = 0
         Top = 0
-        Width = 733
+        Width = 725
         Height = 37
         Align = alTop
         BevelOuter = bvLowered
@@ -86,7 +84,6 @@ object fSinglePkgEntry: TfSinglePkgEntry
           Height = 30
           Action = acClearPcs
           Caption = 'Nollst'#228'll styck'
-          DoubleBuffered = True
           Glyph.Data = {
             36090000424D3609000000000000360000002800000018000000180000000100
             2000000000000009000000000000000000000000000000000000FF00FF00FF00
@@ -162,15 +159,14 @@ object fSinglePkgEntry: TfSinglePkgEntry
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-          ParentDoubleBuffered = False
           TabOrder = 1
         end
       end
       object grdPcsPerLength: TcxGrid
         Left = 0
         Top = 37
-        Width = 733
-        Height = 370
+        Width = 725
+        Height = 359
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -181,7 +177,7 @@ object fSinglePkgEntry: TfSinglePkgEntry
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
         object cxGridDBTableView1: TcxGridDBTableView
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dm_SinglePkg.dsProdLength
           DataController.KeyFieldNames = 'GroupNo;productLengthno'
           DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
@@ -284,7 +280,7 @@ object fSinglePkgEntry: TfSinglePkgEntry
       Left = 0
       Top = 0
       Width = 225
-      Height = 407
+      Height = 396
       Align = alLeft
       Caption = 'PanelL'#228'ngdgrupp'
       TabOrder = 1
@@ -302,7 +298,7 @@ object fSinglePkgEntry: TfSinglePkgEntry
         Left = 1
         Top = 38
         Width = 223
-        Height = 368
+        Height = 357
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -313,7 +309,7 @@ object fSinglePkgEntry: TfSinglePkgEntry
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
         object grdLengthGroupDBTableView1: TcxGridDBTableView
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dm_SinglePkg.dsLengthGroup
           DataController.KeyFieldNames = 'GroupNo'
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -350,7 +346,6 @@ object fSinglePkgEntry: TfSinglePkgEntry
     Height = 162
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 958
     object Label1: TLabel
       Left = 73
       Top = 96
@@ -636,8 +631,6 @@ object fSinglePkgEntry: TfSinglePkgEntry
     Height = 41
     Align = alBottom
     TabOrder = 6
-    ExplicitTop = 572
-    ExplicitWidth = 958
     object bbOK: TBitBtn
       Left = 384
       Top = 8
@@ -646,7 +639,6 @@ object fSinglePkgEntry: TfSinglePkgEntry
       Action = acSave
       Caption = 'Spara'
       Default = True
-      DoubleBuffered = True
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -665,7 +657,6 @@ object fSinglePkgEntry: TfSinglePkgEntry
         333A333333333333333338330000333333333333333333333333333333333333
         0000}
       NumGlyphs = 2
-      ParentDoubleBuffered = False
       TabOrder = 0
     end
     object BitBtn3: TBitBtn
@@ -673,10 +664,8 @@ object fSinglePkgEntry: TfSinglePkgEntry
       Top = 8
       Width = 75
       Height = 25
-      DoubleBuffered = True
       Kind = bkCancel
       NumGlyphs = 2
-      ParentDoubleBuffered = False
       TabOrder = 1
     end
   end
@@ -714,7 +703,7 @@ object fSinglePkgEntry: TfSinglePkgEntry
     Left = 400
     Top = 264
     Bitmap = {
-      494C0101070009000C0018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107000900040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1346,5 +1335,65 @@ object fSinglePkgEntry: TfSinglePkgEntry
       ImageIndex = 6
       OnExecute = acClearPcsExecute
     end
+  end
+  object siLangLinked_fSinglePkgEntry: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 472
+    Top = 304
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

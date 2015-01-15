@@ -40,7 +40,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, frxClass, frxDBSet,
   cxNavigator, frxExportPDF, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions ;
+  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk ;
 
 type
   TfAnalyseraLeveranser = class(TForm)
@@ -694,6 +694,7 @@ type
     pivReferens: TcxDBPivotGridField;
     pivLO: TcxDBPivotGridField;
     pivKund: TcxDBPivotGridField;
+    siLangLinked_fAnalyseraLeveranser: TsiLangLinked;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);

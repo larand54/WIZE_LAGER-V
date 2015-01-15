@@ -22,7 +22,7 @@ uses
   cxGrid, Vcl.ExtCtrls, cxContainer, Vcl.Menus, Vcl.StdCtrls, cxButtons,
   cxLabel, cxTextEdit, VidaType, Vcl.ActnList, cxDBLabel, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White ;
+  dxSkinOffice2013White, siComp, siLngLnk, System.Actions ;
 
 type
   TfEnterKilnVagn = class(TForm)
@@ -67,6 +67,7 @@ type
     acRemovePackage: TAction;
     cxButton2: TcxButton;
     acPickPackages: TAction;
+    siLangLinked_fEnterKilnVagn: TsiLangLinked;
     procedure mePackageNoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Timer1Timer(Sender: TObject);

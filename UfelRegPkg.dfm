@@ -22,17 +22,18 @@ object ffelRegPkg: TffelRegPkg
     Left = 0
     Top = 0
     Width = 1115
-    Height = 44
+    Height = 46
     Align = dalTop
     BarManager = dxBarManager1
   end
   object pLoadHead: TPanel
     Left = 0
-    Top = 44
+    Top = 46
     Width = 1115
     Height = 298
     Align = alTop
     TabOrder = 1
+    ExplicitTop = 44
     object Label1: TLabel
       Left = 358
       Top = 59
@@ -592,11 +593,13 @@ object ffelRegPkg: TffelRegPkg
   end
   object Panel6: TPanel
     Left = 0
-    Top = 342
+    Top = 344
     Width = 1115
-    Height = 315
+    Height = 313
     Align = alClient
     TabOrder = 6
+    ExplicitTop = 342
+    ExplicitHeight = 315
     object grdPaket: TcxGrid
       Left = 1
       Top = 31
@@ -1101,8 +1104,8 @@ object ffelRegPkg: TffelRegPkg
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -2249,7 +2252,7 @@ object ffelRegPkg: TffelRegPkg
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -2512,5 +2515,65 @@ object ffelRegPkg: TffelRegPkg
       Color = clRed
       TextColor = clWhite
     end
+  end
+  object siLangLinked_ffelRegPkg: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 552
+    Top = 344
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

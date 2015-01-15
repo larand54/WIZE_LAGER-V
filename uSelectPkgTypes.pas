@@ -26,7 +26,9 @@ uses
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, dxSkinsdxBarPainter,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  siComp, siLngLnk, System.Actions;
 
 type
   TfSelectPkgTypes = class(TForm)
@@ -81,6 +83,7 @@ type
     cds_Surfacing_SVSöknamn: TStringField;
     cds_Surfacing_SVLANGD: TStringField;
     cds_Surfacing_SVPPP: TIntegerField;
+    siLangLinked_fSelectPkgTypes: TsiLangLinked;
     procedure acToGroupExecute(Sender: TObject);
     procedure acFromGroupExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

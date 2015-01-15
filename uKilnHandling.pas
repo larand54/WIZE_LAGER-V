@@ -12,7 +12,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, dxBar, dxBarExtItems, StdCtrls, ImgList, OleServer, OleCtrls,
   Menus, DB, ActnList,
-  CrystalActiveXReportViewerLib11_TLB, cxStyles, cxCustomData, cxGraphics,
+  CrystalActiveXReportViewerLib11_5_TLB, cxStyles, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxLabel, cxCheckBox,
   cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   cxContainer, cxMaskEdit, cxDropDownEdit, cxGridBandedTableView,
@@ -49,7 +49,7 @@ uses
   cxNavigator, cxDateUtils, cxSpinEdit, cxButtonEdit, SqlTimSt,
   cxShellBrowserDialog, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions ;
+  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk ;
 
 
 type
@@ -378,6 +378,7 @@ type
     cxGrid1DBBandedTableView1L45: TcxGridDBBandedColumn;
     cxButton8: TcxButton;
     acSaveProps: TAction;
+    siLangLinked_fkilnHandling: TsiLangLinked;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

@@ -1,9 +1,9 @@
 object fPigNames: TfPigNames
   Left = 229
   Top = 107
-  Width = 428
-  Height = 601
   Caption = 'Lagerplatsnamn'
+  ClientHeight = 563
+  ClientWidth = 412
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object fPigNames: TfPigNames
   object Panel6: TPanel
     Left = 0
     Top = 0
-    Width = 420
+    Width = 412
     Height = 47
     Align = alTop
     BevelOuter = bvNone
@@ -34,7 +34,7 @@ object fPigNames: TfPigNames
         Left = 0
         Top = 0
         Width = 256
-        Height = 44
+        Height = 46
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -42,7 +42,7 @@ object fPigNames: TfPigNames
       end
     end
     object Panel3: TPanel
-      Left = 359
+      Left = 351
       Top = 0
       Width = 61
       Height = 47
@@ -53,7 +53,7 @@ object fPigNames: TfPigNames
         Left = 0
         Top = 0
         Width = 61
-        Height = 44
+        Height = 46
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -63,7 +63,7 @@ object fPigNames: TfPigNames
     object Panel4: TPanel
       Left = 256
       Top = 0
-      Width = 103
+      Width = 95
       Height = 47
       Align = alClient
       BevelOuter = bvNone
@@ -73,12 +73,12 @@ object fPigNames: TfPigNames
   object grdPigNames: TcxGrid
     Left = 0
     Top = 47
-    Width = 420
-    Height = 527
+    Width = 412
+    Height = 516
     Align = alClient
     TabOrder = 5
     object grdPigNamesDBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmLoadPlan.ds_PigNames
       DataController.KeyFieldNames = 'PigNo'
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -120,81 +120,16 @@ object fPigNames: TfPigNames
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
-    Bars = <
-      item
-        AllowClose = False
-        AllowCustomizing = False
-        AllowQuickCustomizing = False
-        AllowReset = False
-        BorderStyle = bbsNone
-        Caption = 'Custom 1'
-        DockControl = dxBarDockControl1
-        DockedDockControl = dxBarDockControl1
-        DockedLeft = 0
-        DockedTop = 0
-        FloatLeft = 404
-        FloatTop = 232
-        FloatClientWidth = 23
-        FloatClientHeight = 22
-        ItemLinks = <
-          item
-            Item = dxBarLargeButton2
-            Visible = True
-          end
-          item
-            Item = dxBarLargeButton3
-            Visible = True
-          end
-          item
-            Item = dxBarLargeButton4
-            Visible = True
-          end>
-        Name = 'Custom 1'
-        OneOnRow = True
-        Row = 0
-        UseOwnFont = False
-        UseRestSpace = True
-        Visible = True
-        WholeRow = False
-      end
-      item
-        AllowClose = False
-        AllowCustomizing = False
-        AllowQuickCustomizing = False
-        AllowReset = False
-        BorderStyle = bbsNone
-        Caption = 'Custom 2'
-        DockControl = dxBarDockControl2
-        DockedDockControl = dxBarDockControl2
-        DockedLeft = 0
-        DockedTop = 0
-        FloatLeft = 404
-        FloatTop = 232
-        FloatClientWidth = 23
-        FloatClientHeight = 22
-        ItemLinks = <
-          item
-            Item = dxBarLargeButton1
-            Visible = True
-          end>
-        Name = 'Custom 2'
-        OneOnRow = True
-        Row = 0
-        UseOwnFont = False
-        UseRestSpace = True
-        Visible = True
-        WholeRow = False
-      end>
     Categories.Strings = (
       'Default')
     Categories.ItemsVisibles = (
       2)
     Categories.Visibles = (
       True)
-    LargeImages = imglistActions
+    ImageOptions.LargeImages = imglistActions
     PopupMenuLinks = <>
     UseSystemFont = True
     Left = 200
@@ -204,6 +139,72 @@ object fPigNames: TfPigNames
       0
       0
       0)
+    object dxBarManager1Bar1: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
+      BorderStyle = bbsNone
+      Caption = 'Custom 1'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 404
+      FloatTop = 232
+      FloatClientWidth = 23
+      FloatClientHeight = 22
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton2'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton3'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton4'
+        end>
+      OldName = 'Custom 1'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar2: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
+      BorderStyle = bbsNone
+      Caption = 'Custom 2'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl2
+      DockedDockControl = dxBarDockControl2
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 404
+      FloatTop = 232
+      FloatClientWidth = 23
+      FloatClientHeight = 22
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton1'
+        end>
+      OldName = 'Custom 2'
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = acClose
       Category = 0
@@ -254,7 +255,7 @@ object fPigNames: TfPigNames
     Left = 368
     Top = 256
     Bitmap = {
-      494C010120002200040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010120002500040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000D800000001002000000000000044
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2933,5 +2934,65 @@ object fPigNames: TfPigNames
       FE1FFFE0000FE07E0FE00007FFFFFFE0001FFFE01FFFFFFFFFFFFFE0003FFFF0
       7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object siLangLinked_fPigNames: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 200
+    Top = 288
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

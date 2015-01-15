@@ -1,10 +1,10 @@
 object fAddSpecialLengths: TfAddSpecialLengths
   Left = 224
   Top = 107
-  Width = 314
-  Height = 242
   ActiveControl = eLength
   Caption = 'Speciall'#228'ngder'
+  ClientHeight = 204
+  ClientWidth = 298
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -46,19 +46,19 @@ object fAddSpecialLengths: TfAddSpecialLengths
   end
   object Panel1: TPanel
     Left = 0
-    Top = 174
-    Width = 306
+    Top = 163
+    Width = 298
     Height = 41
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 174
+    ExplicitWidth = 306
     object BitBtn3: TBitBtn
       Left = 64
       Top = 8
       Width = 75
       Height = 25
       Caption = 'OK'
-      ModalResult = 1
-      TabOrder = 0
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -76,15 +76,18 @@ object fAddSpecialLengths: TfAddSpecialLengths
         3338F38F000033333333333333A223333333333333338F830000333333333333
         333A333333333333333338330000333333333333333333333333333333333333
         0000}
+      ModalResult = 1
       NumGlyphs = 2
+      TabOrder = 0
     end
     object BitBtn4: TBitBtn
       Left = 152
       Top = 8
       Width = 75
       Height = 25
-      TabOrder = 1
       Kind = bkCancel
+      NumGlyphs = 2
+      TabOrder = 1
     end
   end
   object eLength: TcxMaskEdit
@@ -111,5 +114,65 @@ object fAddSpecialLengths: TfAddSpecialLengths
       Caption = 'Ta bort l'#228'ngd'
       OnExecute = acRemoveLengthExecute
     end
+  end
+  object siLangLinked_fAddSpecialLengths: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 144
+    Top = 104
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

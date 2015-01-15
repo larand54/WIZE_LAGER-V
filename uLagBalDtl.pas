@@ -36,7 +36,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr, System.Actions, Vcl.Menus,
-  cxButtons ;
+  cxButtons, dxPScxSSLnk, siComp, siLngLnk ;
 
 type
   TfLagBalDtl = class(TForm)
@@ -338,6 +338,7 @@ type
     cxButton3: TcxButton;
     cxButton4: TcxButton;
     cds_IB: TFDQuery;
+    siLangLinked_fLagBalDtl: TsiLangLinked;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acCloseExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);

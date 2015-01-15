@@ -22,26 +22,24 @@ object frmRemovePkg: TfrmRemovePkg
     Left = 0
     Top = 0
     Width = 1118
-    Height = 63
+    Height = 67
     Align = dalTop
     BarManager = dxBarManager1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 174
+    Top = 178
     Width = 1118
-    Height = 461
+    Height = 457
     Align = alClient
     TabOrder = 1
     object grdPkgs: TcxGrid
       Left = 1
       Top = 72
       Width = 1116
-      Height = 388
+      Height = 384
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 1044
-      ExplicitHeight = 331
       object grdPkgsDBBandedTableView1: TcxGridDBBandedTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = dmPkgs.ds_LoadPackages
@@ -478,7 +476,7 @@ object frmRemovePkg: TfrmRemovePkg
   end
   object Panel3: TPanel
     Left = 0
-    Top = 63
+    Top = 67
     Width = 1118
     Height = 111
     Align = alTop
@@ -700,8 +698,8 @@ object frmRemovePkg: TfrmRemovePkg
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -743,7 +741,7 @@ object frmRemovePkg: TfrmRemovePkg
       DockControl = dxBarDockControl1
       DockedDockControl = dxBarDockControl1
       DockedLeft = 0
-      DockedTop = 19
+      DockedTop = 21
       FloatLeft = 276
       FloatTop = 213
       FloatClientWidth = 23
@@ -1894,7 +1892,7 @@ object frmRemovePkg: TfrmRemovePkg
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -2191,5 +2189,65 @@ object frmRemovePkg: TfrmRemovePkg
     OnTimer = TAvRegPkgNoTimer
     Left = 401
     Top = 447
+  end
+  object siLangLinked_frmRemovePkg: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 552
+    Top = 320
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

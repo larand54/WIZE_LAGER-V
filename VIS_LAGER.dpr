@@ -120,22 +120,23 @@ uses
   uLagBalDtl in 'uLagBalDtl.pas' {fLagBalDtl},
   VidaUser in '..\CommonUnits\VidaUser.pas',
   UnitAboutBox in '..\CommonUnits\UnitAboutBox.pas' {AboutBox},
-  uSelectInventorySET in 'uSelectInventorySET.pas' {fSelectInventorySET};
+  uSelectInventorySET in 'uSelectInventorySET.pas' {fSelectInventorySET},
+  udmLanguage in 'udmLanguage.pas' {dmLanguage: TDataModule},
+  ufrmChangeLanguage in 'ufrmChangeLanguage.pas' {frmChangeLanguage};
 
 {$R *.res}
 begin
   Application.Initialize;
   Application.Title := 'VISLAGER';
   Application.HelpFile := 'D:\Project\VIS\Help manual\VIS.hlp';
-  Application.CreateForm(TdmLanguage, dmLanguage);
-  Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TdmsConnector, dmsConnector);
   Application.CreateForm(TdmsSystem, dmsSystem);
+  Application.CreateForm(TdmLanguage, dmLanguage);
+  Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TdmcSystem, dmcSystem);
   Application.CreateForm(TdmLoadPlan, dmLoadPlan);
   Application.CreateForm(TdmcOrder, dmcOrder);
   Application.CreateForm(TdmsContact, dmsContact);
   Application.CreateForm(TdmInventory, dmInventory);
-  Application.CreateForm(TfrmChangeLanguage, frmChangeLanguage);
   Application.Run
 end.

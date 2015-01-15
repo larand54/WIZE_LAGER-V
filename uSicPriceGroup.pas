@@ -9,7 +9,20 @@ uses
   cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, ActnList, Menus, cxLookAndFeelPainters,
   StdCtrls, cxButtons, Buttons, cxLabel, cxTextEdit, cxCalc, cxCalendar,
-  cxLookAndFeels;
+  cxLookAndFeels, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue,
+  dxSkinscxPCPainter, cxNavigator, siComp, siLngLnk, System.Actions;
 
 type
   TfSicPriceGroup = class(TForm)
@@ -47,6 +60,7 @@ type
     grdGroupPriceDBTableView1IC_GrpNo: TcxGridDBColumn;
     grdGroupPriceDBTableView1PricePerNM3: TcxGridDBColumn;
     grdGroupPriceDBTableView1MaxDatum: TcxGridDBColumn;
+    siLangLinked_fSicPriceGroup: TsiLangLinked;
     procedure acAddPriceGroupExecute(Sender: TObject);
     procedure acRemovePriceGroupExecute(Sender: TObject);
     procedure acSaveExecute(Sender: TObject);

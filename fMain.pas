@@ -35,7 +35,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxButtons,
   cxGridLevel, cxGridCustomView, cxGrid, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  System.Actions  ;
+  System.Actions, siComp, siLngLnk  ;
 
 
 
@@ -160,11 +160,11 @@ type
     nviStoppTid: TdxNavBarItem;
     acProgressKiln: TAction;
     nviProgressKiln: TdxNavBarItem;
-    siLangLinked_frmMain: TsiLangLinked;
     acChangeLanguage: TAction;
     dxBarSubItem5: TdxBarSubItem;
     dxBarButton10: TdxBarButton;
     dxBarButton11: TdxBarButton;
+    siLangLinked1: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure atExitExecute(Sender: TObject);
     procedure atAboutExecute(Sender: TObject);
@@ -330,10 +330,10 @@ begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
  showmessage('Ändra till H:\');
- //  ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
+// ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
- ThisUser.Database:= 'vis.vida.se:vis_vida' ;
-// ThisUser.Database:= 'alvesql03:vis_vida' ;
+ //ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+ ThisUser.Database:= 'alvesql03:vis_vida' ;
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then
     Close

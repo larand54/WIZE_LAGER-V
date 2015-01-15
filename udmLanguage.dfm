@@ -89,7 +89,6 @@ object dmLanguage: TdmLanguage
       'English')
     Language = 'Swedish'
     FileName = 'VIS_LAGER-V.sib'
-    OnLanguageChanged = siLangDispatcher1LanguageChanged
     Left = 80
     Top = 16
   end

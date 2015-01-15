@@ -170,17 +170,21 @@
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
     OnPageChanging = pgMainPageChanging
-    ClientRectBottom = 786
-    ClientRectRight = 1246
+    ClientRectBottom = 782
+    ClientRectLeft = 4
+    ClientRectRight = 1242
     ClientRectTop = 33
     object tsDeliveries: TcxTabSheet
       Caption = 'LEVERANSSTAT'
       ImageIndex = 18
+      ExplicitLeft = 0
+      ExplicitWidth = 1246
+      ExplicitHeight = 753
       object pivLeveranser: TcxDBPivotGrid
         Left = 0
         Top = 98
-        Width = 1246
-        Height = 655
+        Width = 1238
+        Height = 651
         Align = alClient
         DataSource = ds_Data
         Groups = <
@@ -200,6 +204,8 @@
         OptionsView.RowTotals = False
         TabOrder = 0
         OnClick = pivLeveranserClick
+        ExplicitWidth = 1246
+        ExplicitHeight = 655
         object fProdukt: TcxDBPivotGridField
           AreaIndex = 15
           AllowedAreas = [faColumn, faRow, faFilter]
@@ -506,10 +512,11 @@
       object pnSettings: TPanel
         Left = 0
         Top = 0
-        Width = 1246
+        Width = 1238
         Height = 49
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 1246
         object lbSortBy: TLabel
           Left = 14
           Top = 21
@@ -605,21 +612,23 @@
       object cxSplitter2: TcxSplitter
         Left = 0
         Top = 90
-        Width = 1246
+        Width = 1238
         Height = 8
         HotZoneClassName = 'TcxMediaPlayer8Style'
         AlignSplitter = salTop
         Control = pivLeveranser
         Color = clMaroon
         ParentColor = False
+        ExplicitWidth = 1246
       end
       object Panel6: TPanel
         Left = 0
         Top = 49
-        Width = 1246
+        Width = 1238
         Height = 41
         Align = alTop
         TabOrder = 3
+        ExplicitWidth = 1246
         object cxButton6: TcxButton
           Left = 16
           Top = 8
@@ -682,11 +691,15 @@
     object tsProduction: TcxTabSheet
       Caption = 'PRODUKTIONSTAT'
       ImageIndex = 20
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pivProduction: TcxDBPivotGrid
         Left = 0
         Top = 89
-        Width = 1246
-        Height = 664
+        Width = 1238
+        Height = 660
         Align = alClient
         DataSource = ds_ProdData
         Groups = <
@@ -702,6 +715,8 @@
         OptionsView.TotalsForSingleValues = True
         Styles.Total = cxStyle2
         TabOrder = 0
+        ExplicitWidth = 1246
+        ExplicitHeight = 664
         object fMtpunkt: TcxDBPivotGridField
           Area = faRow
           AreaIndex = 1
@@ -977,10 +992,11 @@
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1246
+        Width = 1238
         Height = 41
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 1246
         object BitBtn4: TBitBtn
           Left = 440
           Top = 9
@@ -1039,21 +1055,23 @@
       object cxSplitter1: TcxSplitter
         Left = 0
         Top = 81
-        Width = 1246
+        Width = 1238
         Height = 8
         HotZoneClassName = 'TcxMediaPlayer8Style'
         AlignSplitter = salTop
         Control = pivProduction
         Color = clMaroon
         ParentColor = False
+        ExplicitWidth = 8
       end
       object Panel5: TPanel
         Left = 0
         Top = 41
-        Width = 1246
+        Width = 1238
         Height = 40
         Align = alTop
         TabOrder = 4
+        ExplicitWidth = 1246
         object cxButton1: TcxButton
           Left = 16
           Top = 8
@@ -1139,13 +1157,17 @@
     object tsTorksatser: TcxTabSheet
       Caption = 'TORKSTAT'
       ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitWidth = 1246
+      ExplicitHeight = 753
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1246
+        Width = 1238
         Height = 41
         Align = alTop
         TabOrder = 0
+        ExplicitWidth = 1246
         object cxLabel6: TcxLabel
           Left = 3
           Top = 0
@@ -1243,8 +1265,8 @@
       object pivKD: TcxDBPivotGrid
         Left = 0
         Top = 41
-        Width = 1246
-        Height = 712
+        Width = 1238
+        Height = 708
         Align = alClient
         DataSource = ds_TorkSatser
         Groups = <
@@ -1256,6 +1278,8 @@
         OptionsView.ColumnTotalsLocation = ctlNear
         OptionsView.RowTotalsLocation = rtlNear
         TabOrder = 1
+        ExplicitWidth = 1246
+        ExplicitHeight = 712
         object pivKDAM3: TcxDBPivotGridField
           Area = faData
           AreaIndex = 0
@@ -1419,6 +1443,10 @@
     object tsOverview: TcxTabSheet
       Caption = #214'VERSIKT VERK'
       ImageIndex = 9
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel4: TPanel
         Left = 0
         Top = 0
@@ -1431,6 +1459,10 @@
     object tsKapStat: TcxTabSheet
       Caption = 'KAPSTAT'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -1844,13 +1876,17 @@
       Margins.Bottom = 2
       Caption = 'STOPPTIDSTAT'
       ImageIndex = 28
+      ExplicitLeft = 0
+      ExplicitWidth = 1246
+      ExplicitHeight = 753
       object Panel7: TPanel
         Left = 0
         Top = 0
-        Width = 1246
+        Width = 1238
         Height = 65
         Align = alTop
         TabOrder = 0
+        ExplicitWidth = 1246
         object Label3: TLabel
           Left = 72
           Top = 47
@@ -1989,7 +2025,7 @@
       object pvStoppTid: TcxDBPivotGrid
         Left = 0
         Top = 65
-        Width = 1246
+        Width = 1238
         Height = 438
         Margins.Left = 2
         Margins.Top = 2
@@ -2006,6 +2042,7 @@
             UniqueName = ''
           end>
         TabOrder = 1
+        ExplicitWidth = 1246
         object pvStoppTidRegPointName: TcxDBPivotGridField
           AreaIndex = 0
           AllowedAreas = [faColumn, faRow, faFilter]
@@ -2180,14 +2217,16 @@
       object grdStoppTid: TcxGrid
         Left = 0
         Top = 511
-        Width = 1246
-        Height = 242
+        Width = 1238
+        Height = 238
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
         Margins.Bottom = 2
         Align = alClient
         TabOrder = 2
+        ExplicitWidth = 1246
+        ExplicitHeight = 242
         object grdStoppTidDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -2204,7 +2243,7 @@
       object cxSplitter3: TcxSplitter
         Left = 0
         Top = 503
-        Width = 1246
+        Width = 1238
         Height = 8
         Margins.Left = 2
         Margins.Top = 2
@@ -2215,6 +2254,7 @@
         Control = pvStoppTid
         Color = clMaroon
         ParentColor = False
+        ExplicitWidth = 8
       end
     end
   end
@@ -2485,6 +2525,7 @@
       Component = pivLeveranser
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2500,7 +2541,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42011.622070312500000000
+      ReportDocument.CreationDate = 42018.982797314810000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2513,6 +2554,7 @@
       Component = pivProduction
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2528,7 +2570,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42011.622070324080000000
+      ReportDocument.CreationDate = 42018.982797337970000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2539,6 +2581,7 @@
       Component = pivKD
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2554,7 +2597,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42011.622070335640000000
+      ReportDocument.CreationDate = 42018.982797372690000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2565,6 +2608,7 @@
       Component = pivProduction
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2575,13 +2619,13 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42011.622070335640000000
+      ReportDocument.CreationDate = 42018.982797395830000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2593,7 +2637,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 40918.446931423610000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxCompositionReportLink
@@ -2639,7 +2682,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42011.622070648150000000
+      ReportDocument.CreationDate = 42018.982798148150000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -2651,6 +2694,7 @@
       Component = pvKapStat
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2674,6 +2718,7 @@
       Component = pvStoppTid
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2696,6 +2741,7 @@
       Component = pvStoppTid
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2706,14 +2752,16 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42011.622070648150000000
+      ReportDocument.CreationDate = 42018.982798159720000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdStoppTid
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2724,13 +2772,15 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42011.622070671300000000
+      ReportDocument.CreationDate = 42018.982798182870000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
       Component = Owner
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2749,6 +2799,7 @@
     object dxComponentPrinter1Link13: TdxCompositionReportLink
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9370,5 +9421,65 @@
     CheckboxAsShape = False
     Left = 1112
     Top = 528
+  end
+  object siLangLinked_fAnalyseraLeveranser: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 608
+    Top = 408
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

@@ -42,6 +42,8 @@ object fDeliveryReport: TfDeliveryReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Leveranser'
       ImageIndex = 4
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -895,6 +897,7 @@ object fDeliveryReport: TfDeliveryReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -906,20 +909,27 @@ object fDeliveryReport: TfDeliveryReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 106
-    ClientRectRight = 1259
-    ClientRectTop = 0
+    ClientRectBottom = 102
+    ClientRectLeft = 4
+    ClientRectRight = 1255
+    ClientRectTop = 4
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 1259
+      ExplicitHeight = 106
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1259
-        Height = 106
+        Width = 1251
+        Height = 98
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1259
+        ExplicitHeight = 106
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -1474,8 +1484,8 @@ object fDeliveryReport: TfDeliveryReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -2362,9 +2372,9 @@ object fDeliveryReport: TfDeliveryReport
     object dxComponentPrinter1Link1: TdxGridReportLink
       Active = True
       Component = grdProdPaketNr
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -2382,8 +2392,7 @@ object fDeliveryReport: TfDeliveryReport
       PrinterPage.PaperSource = 257
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 41963.565421724540000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 42018.982657719910000000
       BuiltInReportLink = True
     end
   end
@@ -4831,5 +4840,65 @@ object fDeliveryReport: TfDeliveryReport
   object frxCrossObject1: TfrxCrossObject
     Left = 928
     Top = 608
+  end
+  object siLangLinked_fDeliveryReport: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 616
+    Top = 400
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

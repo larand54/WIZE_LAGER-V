@@ -814,7 +814,7 @@ object frmInventoryReport: TfrmInventoryReport
             Left = 0
             Top = 0
             Width = 85
-            Height = 19
+            Height = 21
             Align = dalTop
             BarManager = dxBarManager1
           end
@@ -1025,17 +1025,18 @@ object frmInventoryReport: TfrmInventoryReport
         TabOrder = 2
         Properties.ActivePage = tsPaketnr
         Properties.CustomButtons.Buttons = <>
-        ClientRectBottom = 198
-        ClientRectRight = 1267
+        ClientRectBottom = 194
+        ClientRectLeft = 4
+        ClientRectRight = 1263
         ClientRectTop = 24
         object tsPaketnr: TcxTabSheet
           Caption = 'Paketnr'
           ImageIndex = 0
           object grdPkgNoTbl: TcxGrid
             Left = 0
-            Top = 22
-            Width = 1267
-            Height = 152
+            Top = 24
+            Width = 1259
+            Height = 146
             Align = alClient
             BevelEdges = []
             BevelInner = bvNone
@@ -2492,8 +2493,8 @@ object frmInventoryReport: TfrmInventoryReport
           object dxBarDockControl2: TdxBarDockControl
             Left = 0
             Top = 0
-            Width = 1267
-            Height = 22
+            Width = 1259
+            Height = 24
             Align = dalTop
             BarManager = dxBarManager1
           end
@@ -2504,7 +2505,7 @@ object frmInventoryReport: TfrmInventoryReport
           object Panel9: TPanel
             Left = 0
             Top = 0
-            Width = 1267
+            Width = 1259
             Height = 52
             Align = alTop
             BevelOuter = bvNone
@@ -2521,15 +2522,15 @@ object frmInventoryReport: TfrmInventoryReport
                 Left = 0
                 Top = 0
                 Width = 326
-                Height = 22
+                Height = 24
                 Align = dalTop
                 BarManager = dxBarManager1
               end
               object dxBarDockControl4: TdxBarDockControl
                 Left = 0
-                Top = 22
+                Top = 24
                 Width = 326
-                Height = 22
+                Height = 24
                 Align = dalTop
                 BarManager = dxBarManager1
               end
@@ -2537,7 +2538,7 @@ object frmInventoryReport: TfrmInventoryReport
             object Panel12: TPanel
               Left = 326
               Top = 0
-              Width = 941
+              Width = 933
               Height = 52
               Align = alClient
               BevelOuter = bvNone
@@ -2688,11 +2689,13 @@ object frmInventoryReport: TfrmInventoryReport
           object grdKilnPkgs: TcxGrid
             Left = 0
             Top = 52
-            Width = 1267
-            Height = 122
+            Width = 1259
+            Height = 118
             Align = alClient
             PopupMenu = pmKilnPkgs
             TabOrder = 1
+            ExplicitWidth = 1267
+            ExplicitHeight = 122
             object grdKilnPkgsDBTableView1: TcxGridDBTableView
               PopupMenu = pmKilnPkgs
               Navigator.Buttons.CustomButtons = <>
@@ -2750,6 +2753,7 @@ object frmInventoryReport: TfrmInventoryReport
         object tsPaketKostnader: TcxTabSheet
           Caption = 'Paketkostnader'
           ImageIndex = 2
+          ExplicitLeft = 0
           ExplicitTop = 0
           ExplicitWidth = 0
           ExplicitHeight = 0
@@ -4204,8 +4208,9 @@ object frmInventoryReport: TfrmInventoryReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = pgInventoryPageChanging
-    ClientRectBottom = 155
-    ClientRectRight = 1267
+    ClientRectBottom = 151
+    ClientRectLeft = 4
+    ClientRectRight = 1263
     ClientRectTop = 24
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
@@ -4213,8 +4218,8 @@ object frmInventoryReport: TfrmInventoryReport
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1267
-        Height = 131
+        Width = 1259
+        Height = 127
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
@@ -5158,8 +5163,8 @@ object frmInventoryReport: TfrmInventoryReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -6179,6 +6184,7 @@ object frmInventoryReport: TfrmInventoryReport
       Component = cxGrid1
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -6200,6 +6206,7 @@ object frmInventoryReport: TfrmInventoryReport
       Component = grdPcsPerLength
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -6218,6 +6225,7 @@ object frmInventoryReport: TfrmInventoryReport
       Component = grdInvSum
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -6236,6 +6244,7 @@ object frmInventoryReport: TfrmInventoryReport
       Component = grdPkgNoTbl
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -6256,6 +6265,7 @@ object frmInventoryReport: TfrmInventoryReport
       Component = grdKilnPkgs
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9060,5 +9070,65 @@ object frmInventoryReport: TfrmInventoryReport
     OnDataChange = DataSource1DataChange
     Left = 904
     Top = 512
+  end
+  object siLangLinked_frmInventoryReport: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 616
+    Top = 400
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

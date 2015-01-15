@@ -27,7 +27,7 @@ uses
   dxSkinWhiteprint, dxSkinVS2010, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   dxSkinsdxBarPainter, cxCheckBox, dxCore, cxNavigator, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White ;
+  dxSkinOffice2013White, siComp, siLngLnk, System.Actions ;
 
 type
   TfrmRemovePkg = class(TForm)
@@ -174,6 +174,7 @@ type
     cxDBCheckBox1: TcxDBCheckBox;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
+    siLangLinked_frmRemovePkg: TsiLangLinked;
     procedure lbCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

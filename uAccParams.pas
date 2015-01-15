@@ -23,7 +23,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxBarBuiltInMenu, cxNavigator,
-  System.Actions;
+  System.Actions, siComp, siLngLnk;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -72,6 +72,7 @@ type
     acAddBorgstena: TAction;
     acRemoveBorgstena: TAction;
     cxButton4: TcxButton;
+    siLangLinked_fAccParams: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acSaveExecute(Sender: TObject);

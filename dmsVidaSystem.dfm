@@ -1115,7 +1115,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -1480,6 +1480,16 @@
     end
     object sq_dbPropsCRPath: TStringField
       FieldName = 'CRPath'
+      Size = 255
+    end
+    object sq_dbPropsLangPath: TStringField
+      FieldName = 'LangPath'
+      Origin = 'LangPath'
+      Size = 255
+    end
+    object sq_dbPropsFastPath: TStringField
+      FieldName = 'FastPath'
+      Origin = 'FastPath'
       Size = 255
     end
   end
@@ -1997,7 +2007,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1

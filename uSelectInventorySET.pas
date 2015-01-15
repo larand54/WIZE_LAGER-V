@@ -21,7 +21,7 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, Data.DB, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons;
+  Vcl.StdCtrls, cxButtons, siComp, siLngLnk;
 
 type
   TfSelectInventorySET = class(TForm)
@@ -40,6 +40,7 @@ type
     grInventorySetDBTableView1EndFilterOnMaxDate: TcxGridDBColumn;
     grInventorySetDBTableView1SetStatus: TcxGridDBColumn;
     cxButton1: TcxButton;
+    siLangLinked_fSelectInventorySET: TsiLangLinked;
   private
     { Private declarations }
   public

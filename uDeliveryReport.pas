@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, dxBar, dxBarExtItems, StdCtrls, ImgList, OleServer, OleCtrls,
   Menus, DB, ActnList,
-  CrystalActiveXReportViewerLib11_TLB, cxStyles, cxCustomData, cxGraphics,
+  CrystalActiveXReportViewerLib11_5_TLB, cxStyles, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxLabel, cxCheckBox,
   cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   cxContainer, cxMaskEdit, cxDropDownEdit, cxGridBandedTableView,
@@ -50,7 +50,7 @@ uses
   dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxRibbonPainter, DateUtils, SqlTimSt,
   frxClass, frxDBSet, frxCross, cxNavigator, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxBarBuiltInMenu, System.Actions ;
+  dxSkinOffice2013White, dxBarBuiltInMenu, System.Actions, siComp, siLngLnk ;
 
 
 type
@@ -365,6 +365,7 @@ type
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
     grdProdPaketNrDBBandedTableView1Lngd: TcxGridDBBandedColumn;
+    siLangLinked_fDeliveryReport: TsiLangLinked;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

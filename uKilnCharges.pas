@@ -23,7 +23,8 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator, dxSkinsdxBarPainter,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, System.Actions ;
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, System.Actions, siComp,
+  siLngLnk ;
 
 type
   TfKilnCharges = class(TForm)
@@ -80,6 +81,7 @@ type
     rgStatus: TcxRadioGroup;
     acRefresh: TAction;
     dxBarLargeButton8: TdxBarLargeButton;
+    siLangLinked_fKilnCharges: TsiLangLinked;
     procedure acCloseExecute(Sender: TObject);
     procedure acSaveExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

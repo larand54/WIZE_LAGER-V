@@ -35,7 +35,9 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu, dxPScxGridLnk,
   dxPScxGridLayoutViewLnk, dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxBarPainter,
-  dxSkinsdxRibbonPainter, cxNavigator ;
+  dxSkinsdxRibbonPainter, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxBarBuiltInMenu, siComp, siLngLnk, System.Actions ;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -174,6 +176,7 @@ type
     cds_InvenRowAM3: TFloatField;
     cds_InvenRowNM3: TFloatField;
     cds_InvenRowKälla: TStringField;
+    siLangLinked_fSIC: TsiLangLinked;
     procedure acCloseExecute(Sender: TObject);
     procedure acSaveExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

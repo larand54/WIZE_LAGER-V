@@ -2,12 +2,12 @@ object fSimulateHandHeld: TfSimulateHandHeld
   Left = 0
   Top = 0
   Caption = 'Handdator buffert'
-  ClientHeight = 527
-  ClientWidth = 1135
+  ClientHeight = 395
+  ClientWidth = 851
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -13
+  Font.Height = -10
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
@@ -15,32 +15,44 @@ object fSimulateHandHeld: TfSimulateHandHeld
   OnCloseQuery = FormCloseQuery
   OnDestroy = FormDestroy
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 96
+  TextHeight = 12
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1135
-    Height = 73
+    Width = 851
+    Height = 55
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     Align = alTop
     TabOrder = 0
     DesignSize = (
-      1135
-      73)
+      851
+      55)
     object cxButton1: TcxButton
-      Left = 1006
-      Top = 13
-      Width = 114
-      Height = 49
+      Left = 755
+      Top = 10
+      Width = 85
+      Height = 37
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Action = acClose
       Anchors = [akRight]
       TabOrder = 0
     end
     object cxButton2: TcxButton
-      Left = 14
-      Top = 13
-      Width = 114
-      Height = 49
+      Left = 11
+      Top = 10
+      Width = 85
+      Height = 37
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Action = acDeleteRow
       Anchors = [akRight]
       TabOrder = 1
@@ -48,20 +60,29 @@ object fSimulateHandHeld: TfSimulateHandHeld
   end
   object Panel2: TPanel
     Left = 0
-    Top = 486
-    Width = 1135
-    Height = 41
+    Top = 365
+    Width = 851
+    Height = 30
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     Align = alBottom
     TabOrder = 1
   end
   object grdSimulateHandHeld: TcxGrid
     Left = 0
-    Top = 73
-    Width = 1135
-    Height = 413
+    Top = 55
+    Width = 851
+    Height = 310
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     Align = alClient
     TabOrder = 2
     object grdSimulateHandHeldDBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmInvCtrl.ds_SimulateHandHeld
       DataController.KeyFieldNames = 'Id'
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -155,5 +176,65 @@ object fSimulateHandHeld: TfSimulateHandHeld
       OnExecute = acDeleteRowExecute
       OnUpdate = acDeleteRowUpdate
     end
+  end
+  object siLangLinked_fSimulateHandHeld: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 416
+    Top = 200
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

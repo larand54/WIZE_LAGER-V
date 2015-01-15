@@ -42,6 +42,9 @@ object fInvCtrl: TfInvCtrl
     object tsSkapaKontrollistor: TcxTabSheet
       Caption = 'Kontrollista'
       ImageIndex = 15
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel16: TPanel
         Left = 0
         Top = 0
@@ -2372,6 +2375,9 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Flyttade'
       ImageIndex = 11
       TabVisible = False
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel21: TPanel
         Left = 0
         Top = 0
@@ -2384,6 +2390,9 @@ object fInvCtrl: TfInvCtrl
     object tsUnRegInProduction: TcxTabSheet
       Caption = 'Avreg. i prod'#39'n'
       ImageIndex = 20
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -2698,6 +2707,9 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Avreg f'#246're inv.dat'
       ImageIndex = 20
       TabVisible = False
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -3557,6 +3569,9 @@ object fInvCtrl: TfInvCtrl
     object tsInleveranser: TcxTabSheet
       Caption = 'Inlev.'
       ImageIndex = 18
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel12: TPanel
         Left = 0
         Top = 0
@@ -3876,6 +3891,9 @@ object fInvCtrl: TfInvCtrl
     object cxTabSheet1: TcxTabSheet
       Caption = 'Kredit.lev.'
       ImageIndex = 23
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel22: TPanel
         Left = 0
         Top = 0
@@ -4216,6 +4234,9 @@ object fInvCtrl: TfInvCtrl
     object tsProduced: TcxTabSheet
       Caption = 'Produktion'
       ImageIndex = 21
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -4534,6 +4555,9 @@ object fInvCtrl: TfInvCtrl
     object tsProductionBeforeInvDate: TcxTabSheet
       Caption = 'Prod'#39'n f'#246're inv.datum'
       ImageIndex = 21
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel15: TPanel
         Left = 0
         Top = 0
@@ -4822,6 +4846,9 @@ object fInvCtrl: TfInvCtrl
     object tsSkapaLagerListor: TcxTabSheet
       Caption = 'Resultatlista'
       ImageIndex = 22
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel9: TPanel
         Left = 0
         Top = 0
@@ -5655,6 +5682,9 @@ object fInvCtrl: TfInvCtrl
     object tsSummaryReport: TcxTabSheet
       Caption = 'Summering'
       ImageIndex = 24
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel14: TPanel
         Left = 0
         Top = 0
@@ -6533,20 +6563,26 @@ object fInvCtrl: TfInvCtrl
     TabOrder = 2
     Properties.ActivePage = tsInvHdr
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 81
-    ClientRectLeft = 1
-    ClientRectRight = 1159
-    ClientRectTop = 21
+    ClientRectBottom = 78
+    ClientRectLeft = 4
+    ClientRectRight = 1156
+    ClientRectTop = 24
     object tsInvHdr: TcxTabSheet
       Caption = 'Inventering'
       ImageIndex = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object TopPanel: TPanel
         Left = 0
         Top = 0
-        Width = 1158
-        Height = 60
+        Width = 1152
+        Height = 54
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 1158
+        ExplicitHeight = 60
         object Label1: TLabel
           Left = 14
           Top = 15
@@ -6713,6 +6749,10 @@ object fInvCtrl: TfInvCtrl
     object tsNote: TcxTabSheet
       Caption = 'Notering'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mNote: TcxDBMemo
         Left = 0
         Top = 0
@@ -6720,8 +6760,10 @@ object fInvCtrl: TfInvCtrl
         DataBinding.DataField = 'Note'
         DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
         TabOrder = 0
-        Height = 60
-        Width = 1158
+        ExplicitWidth = 1158
+        ExplicitHeight = 60
+        Height = 54
+        Width = 1152
       end
     end
   end
@@ -6744,7 +6786,7 @@ object fInvCtrl: TfInvCtrl
         Left = 1
         Top = 1
         Width = 815
-        Height = 44
+        Height = 46
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -6760,7 +6802,7 @@ object fInvCtrl: TfInvCtrl
         Left = 1
         Top = 1
         Width = 47
-        Height = 44
+        Height = 46
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -6810,8 +6852,8 @@ object fInvCtrl: TfInvCtrl
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -9789,8 +9831,10 @@ object fInvCtrl: TfInvCtrl
     Top = 577
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdAvreg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9801,12 +9845,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPaRegPkg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9817,12 +9864,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInLev
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9833,12 +9883,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdLevPkt
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9849,12 +9902,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdPrd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9865,12 +9921,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link6: TdxGridReportLink
       Component = grdChanged
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9881,12 +9940,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxGridReportLink
       Component = grdAvRegProd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9897,12 +9959,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link8: TdxGridReportLink
       Component = grdAvregBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9913,12 +9978,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link9: TdxGridReportLink
       Component = grdProductionBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9929,12 +9997,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link10: TdxGridReportLink
       Component = grdCtrlList
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9945,13 +10016,16 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdResultat
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9962,7 +10036,8 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42017.595611134260000000
+      ReportDocument.CreationDate = 42018.982428391200000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
@@ -9972,8 +10047,10 @@ object fInvCtrl: TfInvCtrl
     end
     object dxComponentPrinter1Link12: TdxGridReportLink
       Component = grdInLevOfCreditInvoices
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -9984,12 +10061,15 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link13: TdxGridReportLink
       Component = grdDelAfterMaxDatum
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
       PrinterPage.Header = 6350
       PrinterPage.Margins.Bottom = 12700
       PrinterPage.Margins.Left = 12700
@@ -10006,6 +10086,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -10578,5 +10659,65 @@ object fInvCtrl: TfInvCtrl
     object Skrivutpersortimentexklpertrslag1: TMenuItem
       Action = acPrintKontrollista_NoSpecies
     end
+  end
+  object siLangLinked_fInvCtrl: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 568
+    Top = 400
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

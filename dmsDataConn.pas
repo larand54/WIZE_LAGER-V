@@ -45,7 +45,6 @@ type
     FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
-    siLang_dmsConnector: TsiLang;
     procedure DataModuleDestroy          (Sender: TObject);
   private
     { Private declarations }

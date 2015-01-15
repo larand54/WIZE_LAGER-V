@@ -1,9 +1,9 @@
 object fSelectLoadPlan: TfSelectLoadPlan
   Left = 241
   Top = 105
-  Width = 988
-  Height = 500
   Caption = 'V'#228'lj Lastplan'
+  ClientHeight = 462
+  ClientWidth = 972
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,12 +17,12 @@ object fSelectLoadPlan: TfSelectLoadPlan
   object grdLoadHdr: TcxGrid
     Left = 0
     Top = 0
-    Width = 980
-    Height = 431
+    Width = 972
+    Height = 420
     Align = alClient
     TabOrder = 0
     object grdLoadHdrDBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmLoadPlan.ds_LoadPlanHdrList
       DataController.KeyFieldNames = 'LoadingNo'
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -90,8 +90,8 @@ object fSelectLoadPlan: TfSelectLoadPlan
   end
   object Panel1: TPanel
     Left = 0
-    Top = 431
-    Width = 980
+    Top = 420
+    Width = 972
     Height = 42
     Align = alBottom
     TabOrder = 1
@@ -100,23 +100,25 @@ object fSelectLoadPlan: TfSelectLoadPlan
       Top = 8
       Width = 75
       Height = 25
-      TabOrder = 0
       Kind = bkOK
+      NumGlyphs = 2
+      TabOrder = 0
     end
     object bbCancel: TBitBtn
       Left = 440
       Top = 8
       Width = 75
       Height = 25
-      TabOrder = 1
       Kind = bkCancel
+      NumGlyphs = 2
+      TabOrder = 1
     end
   end
   object images1616: TImageList
     Left = 392
     Top = 176
     Bitmap = {
-      494C010103000400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -254,5 +256,65 @@ object fSelectLoadPlan: TfSelectLoadPlan
       C001C001F1C700000001C001F00700000001C001F80F00000003C000FC1F0000
       C007C000FFFF0000C00FC009FFFF000000000000000000000000000000000000
       000000000000}
+  end
+  object siLangLinked_fSelectLoadPlan: TsiLangLinked
+    Version = '7.2'
+    StringsTypes.Strings = (
+      'TIB_STRINGLIST'
+      'TSTRINGLIST')
+    NumOfLanguages = 2
+    LangDispatcher = dmLanguage.siLangDispatcher1
+    LangDelim = 1
+    LangNames.Strings = (
+      'Swedish'
+      'English')
+    Language = 'Swedish'
+    CommonContainer = dmLanguage.siLang1
+    ExcludedProperties.Strings = (
+      'Category'
+      'SecondaryShortCuts'
+      'HelpKeyword'
+      'InitialDir'
+      'HelpKeyword'
+      'ActivePage'
+      'ImeName'
+      'DefaultExt'
+      'FileName'
+      'FieldName'
+      'PickList'
+      'DisplayFormat'
+      'EditMask'
+      'KeyList'
+      'LookupDisplayFields'
+      'DropDownSpecRow'
+      'TableName'
+      'DatabaseName'
+      'IndexName'
+      'MasterFields'
+      'SQL'
+      'DeleteSQL'
+      'UpdateSQL'
+      'ModifySQL'
+      'KeyFields'
+      'LookupKeyFields'
+      'LookupResultField'
+      'DataField'
+      'KeyField'
+      'ListField')
+    Left = 480
+    Top = 240
+    TranslationData = {
+      73007400430061007000740069006F006E0073005F0055006E00690063006F00
+      640065000D000A0073007400480069006E00740073005F0055006E0069006300
+      6F00640065000D000A007300740044006900730070006C00610079004C006100
+      620065006C0073005F0055006E00690063006F00640065000D000A0073007400
+      46006F006E00740073005F0055006E00690063006F00640065000D000A007300
+      74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
+      6F00640065000D000A007300740053007400720069006E00670073005F005500
+      6E00690063006F00640065000D000A00730074004F0074006800650072005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
+      690063006F00640065000D000A00730074004300680061007200530065007400
+      73005F0055006E00690063006F00640065000D000A00}
   end
 end

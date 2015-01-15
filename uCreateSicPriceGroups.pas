@@ -29,7 +29,9 @@ uses
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxPScxGridLnk,
   dxPScxGridLayoutViewLnk, dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxBarPainter,
   dxSkinsdxRibbonPainter,
-  cxNavigator, cxTimeEdit ;
+  cxNavigator, cxTimeEdit, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  siComp, siLngLnk, System.Actions ;
 
 type
   TfCreateSicPriceGroups = class(TForm)
@@ -71,6 +73,7 @@ type
     cxButton6: TcxButton;
     acShowPackageCost: TAction;
     acCopyKalkylPris: TAction;
+    siLangLinked_fCreateSicPriceGroups: TsiLangLinked;
     procedure acPriceGroupsExecute(Sender: TObject);
     procedure acAddSelectedProductsToPriceGroupExecute(Sender: TObject);
     procedure acRefreshExecute(Sender: TObject);

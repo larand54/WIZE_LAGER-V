@@ -38,7 +38,7 @@ uses
   dxSkinsdxRibbonPainter, dxPScxPivotGridLnk, dxPScxSSLnk, cxButtons,
   cxGroupBox, cxRadioGroup, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions ;
+  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk ;
 
 type
   TfInvCtrl = class(TForm)
@@ -657,6 +657,7 @@ type
     grdCtrlListDBTableView1HANDELSE: TcxGridDBColumn;
     dxBarLargeButton5: TdxBarLargeButton;
     acRensaGammalTorkdata: TAction;
+    siLangLinked_fInvCtrl: TsiLangLinked;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);

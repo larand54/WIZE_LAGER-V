@@ -36,7 +36,7 @@ uses
   dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  System.Actions  ;
+  System.Actions, dxPScxSSLnk, siComp, siLngLnk  ;
 
 type
   TfLagerBalans = class(TForm)
@@ -186,6 +186,7 @@ type
     cds_LBSRNM3_DIFF: TFloatField;
     cds_LagBalPkt: TIntegerField;
     grdLagerBalansDBTableView1Pkt: TcxGridDBColumn;
+    siLangLinked_fLagerBalans: TsiLangLinked;
     procedure FormCreate(Sender: TObject);
     procedure acRefreshExecute(Sender: TObject);
     procedure acPrintExecute(Sender: TObject);
