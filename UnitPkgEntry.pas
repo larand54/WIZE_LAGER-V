@@ -305,18 +305,18 @@ Begin
    mtPackages.FieldDefs.Add('TotalActM3',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALACTM3].CreateField(nil);
    mtPackages.FieldByName('TotalActM3').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_25' (* 'AM3' *) ) ;
-   TFloatField(mtPackages.Fields[cTOTALACTM3]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) ) + ;
+   TFloatField(mtPackages.Fields[cTOTALACTM3]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) );
 //8
    mtPackages.FieldDefs.Add('TotalNOMM3',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALNOMM3].CreateField(nil);
-   TFloatField(mtPackages.Fields[cTOTALNOMM3]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) ) + ;
+   TFloatField(mtPackages.Fields[cTOTALNOMM3]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) );
    mtPackages.FieldByName('TotalNOMM3').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_30' (* 'NM3' *) ) ;
    mtPackages.FieldByName('TotalNOMM3').Visible:= False ;
 //9
    mtPackages.FieldDefs.Add('TotalLpm',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALLPM].CreateField(nil);
    mtPackages.FieldByName('TotalLpm').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_34' (* 'AM1' *) ) ;
-   TFloatField(mtPackages.Fields[cTOTALLPM]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) ) + ;
+   TFloatField(mtPackages.Fields[cTOTALLPM]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) );
 
 //10
 {   mtPackages.FieldDefs.Add('Totalm2',ftFloat,0,False) ;
@@ -329,12 +329,12 @@ Begin
    mtPackages.FieldDefs.Add('Totalm2',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALM2].CreateField(nil);
    mtPackages.FieldByName('Totalm2').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_38' (* 'Pris/NM3' *) ) ;
-   TFloatField(mtPackages.Fields[cTOTALM2]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_39' (* '#######.00' *) ) + ;
+   TFloatField(mtPackages.Fields[cTOTALM2]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_39' (* '#######.00' *) );
 
 //11
    mtPackages.FieldDefs.Add('TotalMFBM',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALMFBM].CreateField(nil);
-   TFloatField(mtPackages.Fields[cTOTALMFBM]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) ) + ;
+   TFloatField(mtPackages.Fields[cTOTALMFBM]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) );
    mtPackages.FieldByName('TotalMFBM').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_43' (* 'MFBM' *) ) ;
    mtPackages.FieldByName('TotalMFBM').Visible:= False ;
 
@@ -470,7 +470,7 @@ Begin
    mtPackages.FieldDefs[x].CreateField(nil);
 
    mtPackages.FieldByName('1').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_69' (* 'Medellängd(Meter)' *) ) ;
-   TFloatField(mtPackages.Fields[x]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) ) + ;
+   TFloatField(mtPackages.Fields[x]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) );
   End
   else
   if dmsPkg.mtUserPropInputOption.AsInteger = INPUT_AM3_LENGTH then
@@ -480,7 +480,7 @@ Begin
    mtPackages.FieldDefs[x].CreateField(nil);
 
    mtPackages.FieldByName('1').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_69' (* 'Medellängd(Meter)' *) ) ;
-   TFloatField(mtPackages.Fields[x]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) ) + ;
+   TFloatField(mtPackages.Fields[x]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) );
 
   End
   else
