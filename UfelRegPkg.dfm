@@ -33,7 +33,6 @@ object ffelRegPkg: TffelRegPkg
     Height = 298
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 44
     object Label1: TLabel
       Left = 358
       Top = 59
@@ -598,13 +597,11 @@ object ffelRegPkg: TffelRegPkg
     Height = 313
     Align = alClient
     TabOrder = 6
-    ExplicitTop = 342
-    ExplicitHeight = 315
     object grdPaket: TcxGrid
       Left = 1
       Top = 31
       Width = 1113
-      Height = 283
+      Height = 281
       Align = alClient
       TabOrder = 0
       object grdPaketDBTableView1: TcxGridDBTableView

@@ -1014,7 +1014,7 @@
     object cxSplitter2: TcxSplitter
       Left = 1
       Top = 203
-      Width = 8
+      Width = 511
       Height = 8
       HotZoneClassName = 'TcxMediaPlayer8Style'
       AlignSplitter = salTop
@@ -2096,7 +2096,6 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2115,7 +2114,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

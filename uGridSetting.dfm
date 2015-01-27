@@ -20,8 +20,6 @@ object fGridSetting: TfGridSetting
     Height = 44
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 429
-    ExplicitWidth = 862
     object BitBtn1: TBitBtn
       Left = 336
       Top = 8
@@ -48,8 +46,6 @@ object fGridSetting: TfGridSetting
     Height = 418
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 862
-    ExplicitHeight = 429
     object teSokVagPkgTableMallar: TcxTextEdit
       Left = 152
       Top = 216

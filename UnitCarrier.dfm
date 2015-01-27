@@ -22,8 +22,6 @@ object FormCarrier: TFormCarrier
     Height = 55
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 458
-    ExplicitWidth = 349
   end
   object dxBarDockControl1: TdxBarDockControl
     Left = 0
@@ -40,9 +38,6 @@ object FormCarrier: TFormCarrier
     Height = 401
     Align = alClient
     TabOrder = 6
-    ExplicitTop = 44
-    ExplicitWidth = 349
-    ExplicitHeight = 414
     object grdCarrierDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dm_Booking.dsCarrier

@@ -21,7 +21,6 @@ object fInvLogs: TfInvLogs
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 862
   end
   object Memo1: TMemo
     Left = 0

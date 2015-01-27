@@ -51,8 +51,6 @@ object fAddSpecialLengths: TfAddSpecialLengths
     Height = 41
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 174
-    ExplicitWidth = 306
     object BitBtn3: TBitBtn
       Left = 64
       Top = 8

@@ -231,10 +231,6 @@ object fModifySIC: TfModifySIC
     object tsSICLIP: TcxTabSheet
       Caption = 'tsSICLIP'
       ImageIndex = 3
-      ExplicitLeft = 1
-      ExplicitTop = 21
-      ExplicitWidth = 1006
-      ExplicitHeight = 514
       object Panel4: TPanel
         Left = 0
         Top = 0
@@ -242,8 +238,6 @@ object fModifySIC: TfModifySIC
         Height = 508
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 1006
-        ExplicitHeight = 514
         object Panel6: TPanel
           Left = 1
           Top = 1
@@ -257,7 +251,6 @@ object fModifySIC: TfModifySIC
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 1004
           object cxLabel1: TcxLabel
             Left = 56
             Top = 8
@@ -295,8 +288,6 @@ object fModifySIC: TfModifySIC
           Height = 403
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 1004
-          ExplicitHeight = 429
           object grdSICLIPDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dmInvCtrl.ds_Sic_LIP
@@ -356,7 +347,6 @@ object fModifySIC: TfModifySIC
           Height = 47
           Align = alTop
           TabOrder = 2
-          ExplicitWidth = 1004
           object BitBtn3: TBitBtn
             Left = 24
             Top = 8

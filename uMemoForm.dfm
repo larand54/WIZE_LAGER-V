@@ -20,8 +20,6 @@ object fMemoForm: TfMemoForm
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 432
-    ExplicitWidth = 862
   end
   object Memo1: TMemo
     Left = 0

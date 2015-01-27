@@ -25,7 +25,6 @@
     Height = 74
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1250
     DesignSize = (
       1258
       74)
@@ -61,7 +60,6 @@
       Action = acClose
       Anchors = [akTop, akRight]
       TabOrder = 3
-      ExplicitLeft = 1136
     end
   end
   object pgMain: TcxPageControl
@@ -74,9 +72,6 @@
     Properties.ActivePage = tsProduction
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ExplicitTop = 109
-    ExplicitWidth = 1250
-    ExplicitHeight = 587
     ClientRectBottom = 546
     ClientRectLeft = 4
     ClientRectRight = 1254
@@ -355,10 +350,6 @@
     object tsProduction: TcxTabSheet
       Caption = 'Production'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 21
-      ExplicitWidth = 1248
-      ExplicitHeight = 565
       object pivProduction: TcxDBPivotGrid
         Left = 0
         Top = 41
@@ -376,8 +367,6 @@
         OptionsView.RowGrandTotalWidth = 68
         Styles.Total = cxStyle2
         TabOrder = 0
-        ExplicitWidth = 1248
-        ExplicitHeight = 524
         object prod_Mtpunkt: TcxDBPivotGridField
           Area = faRow
           AreaIndex = 1
@@ -478,7 +467,6 @@
         Height = 41
         Align = alTop
         TabOrder = 1
-        ExplicitWidth = 1248
       end
       object Memo1: TMemo
         Left = 448
@@ -499,8 +487,6 @@
     Height = 72
     Align = alTop
     TabOrder = 2
-    ExplicitTop = 37
-    ExplicitWidth = 1250
     DesignSize = (
       1258
       72)
@@ -1395,7 +1381,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42018.982020231480000000
+      ReportDocument.CreationDate = 42026.644933564810000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -1423,7 +1409,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42018.982020231480000000
+      ReportDocument.CreationDate = 42026.644933576390000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False

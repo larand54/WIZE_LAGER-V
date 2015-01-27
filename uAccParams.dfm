@@ -55,9 +55,6 @@ object fAccParams: TfAccParams
     object tsAccParams: TcxTabSheet
       Caption = 'Ing'#229'ende lager'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitWidth = 951
-      ExplicitHeight = 452
       object Panel3: TPanel
         Left = 0
         Top = 0
@@ -65,7 +62,6 @@ object fAccParams: TfAccParams
         Height = 41
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 951
         object seYearNo: TcxDBSpinEdit
           Left = 144
           Top = 12
@@ -139,14 +135,10 @@ object fAccParams: TfAccParams
     object tsAccInv: TcxTabSheet
       Caption = 'Borgstena'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 951
+        Width = 943
         Height = 41
         Align = alTop
         TabOrder = 0
@@ -172,8 +164,8 @@ object fAccParams: TfAccParams
       object grdAccInv: TcxGrid
         Left = 0
         Top = 41
-        Width = 951
-        Height = 411
+        Width = 943
+        Height = 407
         Align = alClient
         TabOrder = 1
         object grdAccInvDBTableView1: TcxGridDBTableView

@@ -21,8 +21,6 @@ object fKilnChargeNote: TfKilnChargeNote
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 315
-    ExplicitWidth = 506
     object BitBtn1: TBitBtn
       Left = 160
       Top = 8
@@ -49,8 +47,6 @@ object fKilnChargeNote: TfKilnChargeNote
     DataBinding.DataField = 'Note'
     DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
     TabOrder = 1
-    ExplicitWidth = 506
-    ExplicitHeight = 315
     Height = 304
     Width = 498
   end

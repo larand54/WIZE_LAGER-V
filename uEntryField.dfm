@@ -81,7 +81,6 @@ object fEntryField: TfEntryField
       Height = 152
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 163
       object grdOtherLengthsDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = dmInventory.ds_OtherLengths

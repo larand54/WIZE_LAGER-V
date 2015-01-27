@@ -21,8 +21,6 @@ object fLipForSic: TfLipForSic
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 243
-    ExplicitWidth = 418
     object BitBtn1: TBitBtn
       Left = 120
       Top = 8
@@ -49,7 +47,6 @@ object fLipForSic: TfLipForSic
     Height = 41
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 418
   end
   object grdLipForSic: TcxGrid
     Left = 0
@@ -58,8 +55,6 @@ object fLipForSic: TfLipForSic
     Height = 191
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 418
-    ExplicitHeight = 202
     object grdLipForSicDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmInvCtrl.ds_LIP

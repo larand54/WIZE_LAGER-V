@@ -21,12 +21,10 @@ object fAOUser: TfAOUser
     Height = 381
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 625
-    ExplicitHeight = 392
     object Panel5: TPanel
       Left = 1
       Top = 1
-      Width = 623
+      Width = 615
       Height = 27
       Align = alTop
       Caption = 'Mina produktionsenheter'
@@ -41,8 +39,8 @@ object fAOUser: TfAOUser
     object grdAOUserRP: TcxGrid
       Left = 1
       Top = 60
-      Width = 623
-      Height = 331
+      Width = 615
+      Height = 320
       Align = alClient
       TabOrder = 1
       object grdAOUserRPDBTableView1: TcxGridDBTableView
@@ -130,7 +128,7 @@ object fAOUser: TfAOUser
     object Panel6: TPanel
       Left = 1
       Top = 28
-      Width = 623
+      Width = 615
       Height = 32
       Align = alTop
       TabOrder = 2
@@ -161,8 +159,6 @@ object fAOUser: TfAOUser
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 392
-    ExplicitWidth = 625
     object BitBtn1: TBitBtn
       Left = 272
       Top = 8

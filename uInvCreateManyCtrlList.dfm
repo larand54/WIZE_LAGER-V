@@ -3225,7 +3225,6 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
     Top = 273
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdCreateInvs
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 256
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -3240,7 +3239,6 @@ object fInvCreateManyCtrlList: TfInvCreateManyCtrlList
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

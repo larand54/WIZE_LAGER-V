@@ -42,8 +42,6 @@ object fDeliveryReport: TfDeliveryReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Leveranser'
       ImageIndex = 4
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -897,7 +895,6 @@ object fDeliveryReport: TfDeliveryReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
-    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -916,10 +913,6 @@ object fDeliveryReport: TfDeliveryReport
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 1259
-      ExplicitHeight = 106
       object Panel3: TPanel
         Left = 0
         Top = 0
@@ -928,8 +921,6 @@ object fDeliveryReport: TfDeliveryReport
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1259
-        ExplicitHeight = 106
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -2372,6 +2363,7 @@ object fDeliveryReport: TfDeliveryReport
     object dxComponentPrinter1Link1: TdxGridReportLink
       Active = True
       Component = grdProdPaketNr
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2392,7 +2384,8 @@ object fDeliveryReport: TfDeliveryReport
       PrinterPage.PaperSource = 257
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42018.982657719910000000
+      ReportDocument.CreationDate = 42026.644419328700000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

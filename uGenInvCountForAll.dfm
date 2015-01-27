@@ -21,7 +21,6 @@ object fGenInvCountForAll: TfGenInvCountForAll
     Align = alTop
     Caption = 'Panel1'
     TabOrder = 0
-    ExplicitWidth = 896
   end
   object siLangLinked_fGenInvCountForAll: TsiLangLinked
     Version = '7.2'

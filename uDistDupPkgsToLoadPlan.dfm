@@ -44,8 +44,6 @@ object fDistDupPkgsToLoadPlan: TfDistDupPkgsToLoadPlan
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 513
-    ExplicitWidth = 1005
     object BitBtn1: TBitBtn
       Left = 472
       Top = 8
@@ -63,7 +61,6 @@ object fDistDupPkgsToLoadPlan: TfDistDupPkgsToLoadPlan
     Height = 0
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 1005
     object grdLoadPlanDBBandedTableView1: TcxGridDBBandedTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmLoadPlan.ds_LoadPlanRow
@@ -373,8 +370,6 @@ object fDistDupPkgsToLoadPlan: TfDistDupPkgsToLoadPlan
     Height = 433
     Align = alClient
     TabOrder = 3
-    ExplicitWidth = 1005
-    ExplicitHeight = 444
     object cxGridDBBandedTableView1: TcxGridDBBandedTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmLoadPlan.ds_LoadPlanRow
