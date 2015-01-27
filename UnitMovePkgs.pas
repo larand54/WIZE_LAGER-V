@@ -335,13 +335,13 @@ Begin
       End  //if..
       else
       Begin
-       ShowMessage('Paketnr '+sq_OnePkgDetailDataPACKAGENO.AsString+'/'+sq_OnePkgDetailDataSUPP_CODE.AsString+' är reserverat av användare '+Res_UserName) ;
+       ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+sq_OnePkgDetailDataPACKAGENO.AsString+'/'+sq_OnePkgDetailDataSUPP_CODE.AsString+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_4' (* ' är reserverat av användare ' *) )+Res_UserName) ;
       End ;
      End  //if not...
      else
       Begin
        mtLoadPackages.Cancel ;
-       ShowMessage('Paketnr '+IntToStr(PkgNo)+'/'+PkgSupplierCode+' finns inte') ;
+       ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_6' (* ' finns inte' *) )) ;
       End ;
 
      sq_OneUniquePkg.Close ;
@@ -396,7 +396,7 @@ Var dResult: Integer ;
 begin
   if FIsModified = True then
    Begin
-   dResult:= MessageDlg('Valda paket är inte avregistrerade, vill du avsluta?',
+   dResult:= MessageDlg(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_7' (* 'Valda paket är inte avregistrerade, vill du avsluta?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) ;
    End
     else
@@ -443,7 +443,7 @@ begin
     StrToInt(Trim(frmPkgNoSeries.eFromPkgNo.Text)) ;
 
     if NoOfPkgsInSerie > 100 then
-    ResultButton:= MessageDlg('Upp till '+IntToStr(NoOfPkgsInSerie)+' paket kanske hämtas, är det korrekt?',
+    ResultButton:= MessageDlg(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_8' (* 'Upp till ' *) )+IntToStr(NoOfPkgsInSerie)+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_9' (* ' paket kanske hämtas, är det korrekt?' *) ),
     mtConfirmation, [mbYes, mbNo, mbCancel], 0) ;
 
     if ResultButton = mrYes then
@@ -484,7 +484,7 @@ begin
       End  //if..
       else
       Begin
-       ShowMessage('Paketnr '+sq_OnePkgDetailDataPACKAGENO.AsString+'/'+sq_OnePkgDetailDataSUPP_CODE.AsString+' är reserverat av användare '+Res_UserName) ;
+       ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+sq_OnePkgDetailDataPACKAGENO.AsString+'/'+sq_OnePkgDetailDataSUPP_CODE.AsString+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_4' (* ' är reserverat av användare ' *) )+Res_UserName) ;
       End ;
       sq_OnePkgDetailData.Next ;
      End ;
@@ -513,7 +513,7 @@ begin
  Begin
   if (mtLoadPackages.Active) AND (mtLoadPackages.RecordCount > 0) then
   Begin
-   mtLoadPackages.Filter:= 'Status = 0' ;
+   mtLoadPackages.Filter:= siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_16' (* 'Status = 0' *) ) ;
    mtLoadPackages.Filtered:= True ;
    Try
     mtLoadPackages.First ;
@@ -583,7 +583,7 @@ begin
    NewPkgNo:= StrToIntDef(PkgNo,0) ;
    if NewPkgNo = 0 then
    Begin
-    ShowMessage('Streckkoden kunde inte översättas till ett Paketnr') ;
+    ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_18' (* 'Streckkoden kunde inte översättas till ett Paketnr' *) )) ;
     Exit ;
    End ;
 
@@ -594,7 +594,7 @@ begin
       Res_UserName );
    if Length(Trim(PkgSupplierCode)) = 0 then
    Begin
-    ShowMessage('Inget paket kunde identifieras') ;
+    ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_19' (* 'Inget paket kunde identifieras' *) )) ;
     Exit ;
    End ;
 
@@ -604,7 +604,11 @@ begin
 
   //Ett paket kan inte avregistreras flera ggr mot en produktionsmätpunkt
   RegPointName:= dmPkgs.IsPkgAvregistrerat (NewPkgNo, mtUserPropOwnerNo.AsInteger, PkgSupplierCode) ;
-  if RegPointName <> 'NO' then
+  if RegPointName <>
+{TSI:IGNORE ON}
+	'NO'
+{TSI:IGNORE OFF}
+ then
   Begin
    Action:= eaAlreadyAvReg ;
   End
@@ -645,17 +649,17 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ShowMessage('Paketnr '+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+' finns inte') ;
+     ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_6' (* ' finns inte' *) )) ;
     End
     else
      if Action = eaReserved then
       Begin
-       ShowMessage('Paketnr '+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+' är reserverat av användare '+Res_UserName) ;
+       ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_4' (* ' är reserverat av användare ' *) )+Res_UserName) ;
       End
       else
        if Action = eaAlreadyAvReg then
        Begin
-        ShowMessage('Paketnr '+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+' är redan avregistrerat mot mätpunkt '+RegPointName) ;
+        ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_27' (* ' är redan avregistrerat mot mätpunkt ' *) )+RegPointName) ;
        End ;
 
 {    else
@@ -752,7 +756,7 @@ begin
    PkgSupplierCode:= EgenPkgSupplierCode ;
    if NewPkgNo = 0 then
    Begin
-    ShowMessage('Koden kunde inte översättas till ett Paketnr') ;
+    ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_29' (* 'Koden kunde inte översättas till ett Paketnr' *) )) ;
     Exit ;
    End ;
   End ;
@@ -760,7 +764,11 @@ begin
 
   //Ett paket kan inte avregistreras flera ggr mot en produktionsmätpunkt
   RegPointName:= dmPkgs.IsPkgAvregistrerat (NewPkgNo, mtUserPropOwnerNo.AsInteger, PkgSupplierCode) ;
-  if RegPointName <> 'NO' then
+  if RegPointName <>
+{TSI:IGNORE ON}
+	'NO'
+{TSI:IGNORE OFF}
+ then
   Begin
    Action:= eaAlreadyAvReg ;
   End
@@ -801,17 +809,17 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ShowMessage('Paketnr '+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+' finns inte') ;
+     ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_6' (* ' finns inte' *) )) ;
     End
     else
      if Action = eaReserved then
      Begin
-      ShowMessage('Paketnr '+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+' är reserverat av användare '+Res_UserName) ;
+      ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_4' (* ' är reserverat av användare ' *) )+Res_UserName) ;
      End
       else
        if Action = eaAlreadyAvReg then
        Begin
-        ShowMessage('Paketnr '+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+' är redan avregistrerat mot mätpunkt '+RegPointName) ;
+        ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+IntToStr(NewPkgNo)+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_27' (* ' är redan avregistrerat mot mätpunkt ' *) )+RegPointName) ;
        End ;
 
 {    else
@@ -886,7 +894,7 @@ begin
  mtUserPropRegDate.AsDateTime           := Now ;
  mtUserPropProductGroupNo.AsInteger     := -1 ;
  mtUserPropProductNo.AsInteger          := -1 ;
- mtUserPropProductDescription.AsString  := 'Ingen ändring' ;
+ mtUserPropProductDescription.AsString  := siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_45' (* 'Ingen ändring' *) ) ;
 end;
 
 procedure TfrmMovePkgs.grdPkgsDBBandedTableView1PACKAGENOPropertiesValidate(
@@ -917,7 +925,11 @@ begin
   if Action = eaACCEPT then
   Begin
    RegPointName:= dmPkgs.IsPkgAvregistrerat (StrToInt(NewValue), mtUserPropOwnerNo.AsInteger, PkgSupplierCode) ;
-   if RegPointName <> 'NO' then
+   if RegPointName <>
+{TSI:IGNORE ON}
+	'NO'
+{TSI:IGNORE OFF}
+ then
    Begin
     Action:= eaAlreadyAvReg ;
    End
@@ -933,19 +945,19 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ErrorText:= 'Paketnr '+NewValue+' finns inte' ;
+     ErrorText:= siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+NewValue+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_6' (* ' finns inte' *) ) ;
      Error:= True ;
     End
     else
      if Action = eaReserved then
      Begin
-      ErrorText:= 'Paketnr '+NewValue+' är reserverat av användare '+Res_UserName ;
+      ErrorText:= siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+NewValue+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_4' (* ' är reserverat av användare ' *) )+Res_UserName ;
       Error:= True ;
      End
       else
        if Action = eaAlreadyAvReg then
        Begin
-        ShowMessage('Paketnr '+NewValue+'/'+PkgSupplierCode+' är redan avregistrerat mot mätpunkt '+RegPointName) ;
+        ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+NewValue+'/'+PkgSupplierCode+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_27' (* ' är redan avregistrerat mot mätpunkt ' *) )+RegPointName) ;
        End ;
   finally
     Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -958,7 +970,7 @@ const
 Begin
  if mtUserPropRegDate.AsDateTime > Now then
  Begin
-  ShowMessage('Registreringsdatum får inte vara större än aktuellt datum');
+  ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_53' (* 'Registreringsdatum får inte vara större än aktuellt datum' *) ));
   Exit ;
  End ;
 
@@ -974,9 +986,9 @@ Begin
  Begin
   if mtUserProp.State in [dsEdit, dsInsert] then
    mtUserProp.Post ;
-  if MessageDlg('Vill du flytta paket till lagergrupp: '
+  if MessageDlg(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_54' (* 'Vill du flytta paket till lagergrupp: ' *) )
   +Trim(lcLIPName.Text)
-  +LF+'Datum: '+deRegDate.Text
+  +LF+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_55' (* 'Datum: ' *) )+deRegDate.Text
   ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   Begin
    if FExternMove then
@@ -992,10 +1004,10 @@ Begin
   End ; //if
  End //if ControlInvDateMotDetLagerDetFlyttasTill(Sender) then
   else
-   ShowMessage('Paket, markerade med röd färg, kan inte flyttas pga att registreringsdatum är före inventerings eller maxdatum i en inventering där lagergruppen ingår.') ;
+   ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_56' (* 'Paket, markerade med röd färg, kan inte flyttas pga att registreringsdatum är före inventerings eller maxdatum i en inventering där lagergruppen ingår.' *) )) ;
  End //if ControlInvDate(Sender) then
   else
-   ShowMessage('Paket, markerade med röd färg, kan inte flyttas pga att registreringsdatum är före inventerings eller maxdatum i en inventering där lagergruppen ingår.') ;
+   ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_56' (* 'Paket, markerade med röd färg, kan inte flyttas pga att registreringsdatum är före inventerings eller maxdatum i en inventering där lagergruppen ingår.' *) )) ;
 end;
 
 procedure TfrmMovePkgs.acPkgNoSerieExecute(Sender: TObject);
@@ -1022,7 +1034,7 @@ begin
  EgenPkgSupplierCode            := dmsSystem.GetPkgPos (ThisUser.CompanyNo) ;
  fScanPkgNo                     := TfScanPkgNo.Create(Self);
  Try
-  fScanPkgNo.cbEgenLevKod.Caption:= 'Scanna endast in paket med leverantörskod '+EgenPkgSupplierCode ;
+  fScanPkgNo.cbEgenLevKod.Caption:= siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_58' (* 'Scanna endast in paket med leverantörskod ' *) )+EgenPkgSupplierCode ;
   fScanPkgNo.ShowModal ;
  Finally
   fScanPkgNo.Free ;
@@ -1133,7 +1145,7 @@ begin
     End  //if dmsSystem.Pkg_Reserved(
      else
      Begin
-      ShowMessage('Paketnr '+PkgNos.FieldByName('PACKAGENO').AsString+'/'+PkgNos.FieldByName('SUPP_CODE').AsString+' är reserverad av '+Res_UserName) ;
+      ShowMessage(siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) )+PkgNos.FieldByName('PACKAGENO').AsString+'/'+PkgNos.FieldByName('SUPP_CODE').AsString+siLangLinked_frmMovePkgs.GetTextOrDefault('IDS_71' (* ' är reserverad av ' *) )+Res_UserName) ;
      End ;
 
     PkgNos.Next ; 
