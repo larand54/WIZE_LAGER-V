@@ -32,7 +32,7 @@ var
 begin
   path := ExtractFilePath(ParamStr(0));
   path := dmsSystem.GetLangPath();
-  assert(path <> '','Path to languagefiles not defined in database');
+  assert(path <> '',siLang1.GetTextOrDefault('IDS_0' (* 'Path to languagefiles not defined in database' *) ));
   if path[path.Length] <> '\' then
     siLangDispatcher1.FileName := Path + '\' + siLangDispatcher1.FileName
   else

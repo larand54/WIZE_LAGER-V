@@ -39,6 +39,7 @@ object frmMovePkgs: TfrmMovePkgs
       Height = 367
       Align = alClient
       TabOrder = 0
+      ExplicitTop = 36
       object grdPkgsDBBandedTableView1: TcxGridDBBandedTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = dmPkgs.ds_LoadPackages
