@@ -260,23 +260,35 @@ Begin
 
    mtPackages.FieldDefs.Add('RecId',ftInteger,0,False) ;
    mtPackages.FieldDefs[cRECID].CreateField(nil);
-   mtPackages.FieldByName('RecId').DisplayLabel:= 'Radnr' ;
+   mtPackages.FieldByName('RecId').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_4' (* 'Radnr' *) ) ;
    mtPackages.FieldByName('RecId').Visible:= True ;
 
 //1
-   mtPackages.FieldDefs.Add('Description',ftString,100,False) ;
+   mtPackages.FieldDefs.Add(
+{TSI:IGNORE ON}
+	'Description'
+{TSI:IGNORE OFF}
+,ftString,100,False) ;
    mtPackages.FieldDefs[CDESCRIPTION].CreateField(nil);
-   mtPackages.FieldByName('Description').DisplayLabel:= 'Beskrivning' ;
-   mtPackages.FieldByName('Description').Visible:= False ;
+   mtPackages.FieldByName(
+{TSI:IGNORE ON}
+	'Description'
+{TSI:IGNORE OFF}
+).DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_8' (* 'Beskrivning' *) ) ;
+   mtPackages.FieldByName(
+{TSI:IGNORE ON}
+	'Description'
+{TSI:IGNORE OFF}
+).Visible:= False ;
 //2
    mtPackages.FieldDefs.Add('PackageNo',ftLargeInt,0,False) ;
    mtPackages.FieldDefs[cPACKAGENO].CreateField(nil);
-   mtPackages.FieldByName('PackageNo').DisplayLabel:= 'Pktnr' ;
+   mtPackages.FieldByName('PackageNo').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_12' (* 'Pktnr' *) ) ;
 
 //3
    mtPackages.FieldDefs.Add('SupplierCode',ftString,3,False) ;
    mtPackages.FieldDefs[cSUPPLIERCODE].CreateField(nil);
-   mtPackages.FieldByName('SupplierCode').DisplayLabel:= 'Prefix' ;
+   mtPackages.FieldByName('SupplierCode').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_15' (* 'Prefix' *) ) ;
 //4
    mtPackages.FieldDefs.Add('ProductNo',ftInteger,0,False) ;
    mtPackages.FieldDefs[cPRODUCTNO].CreateField(nil);
@@ -288,23 +300,23 @@ Begin
 //6
    mtPackages.FieldDefs.Add('TotalPcs',ftInteger,0,False) ;
    mtPackages.FieldDefs[cTOTALPCS].CreateField(nil);
-   mtPackages.FieldByName('TotalPcs').DisplayLabel:= 'Styck' ;
+   mtPackages.FieldByName('TotalPcs').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_22' (* 'Styck' *) ) ;
 //7
    mtPackages.FieldDefs.Add('TotalActM3',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALACTM3].CreateField(nil);
-   mtPackages.FieldByName('TotalActM3').DisplayLabel:= 'AM3' ;
-   TFloatField(mtPackages.Fields[cTOTALACTM3]).DisplayFormat := '#######.000';
+   mtPackages.FieldByName('TotalActM3').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_25' (* 'AM3' *) ) ;
+   TFloatField(mtPackages.Fields[cTOTALACTM3]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) ) + ;
 //8
    mtPackages.FieldDefs.Add('TotalNOMM3',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALNOMM3].CreateField(nil);
-   TFloatField(mtPackages.Fields[cTOTALNOMM3]).DisplayFormat := '#######.000';
-   mtPackages.FieldByName('TotalNOMM3').DisplayLabel:= 'NM3' ;
+   TFloatField(mtPackages.Fields[cTOTALNOMM3]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) ) + ;
+   mtPackages.FieldByName('TotalNOMM3').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_30' (* 'NM3' *) ) ;
    mtPackages.FieldByName('TotalNOMM3').Visible:= False ;
 //9
    mtPackages.FieldDefs.Add('TotalLpm',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALLPM].CreateField(nil);
-   mtPackages.FieldByName('TotalLpm').DisplayLabel:= 'AM1' ;
-   TFloatField(mtPackages.Fields[cTOTALLPM]).DisplayFormat := '#######.0000';
+   mtPackages.FieldByName('TotalLpm').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_34' (* 'AM1' *) ) ;
+   TFloatField(mtPackages.Fields[cTOTALLPM]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) ) + ;
 
 //10
 {   mtPackages.FieldDefs.Add('Totalm2',ftFloat,0,False) ;
@@ -316,14 +328,14 @@ Begin
 //Använder AM2 till pris ett tag
    mtPackages.FieldDefs.Add('Totalm2',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALM2].CreateField(nil);
-   mtPackages.FieldByName('Totalm2').DisplayLabel:= 'Pris/NM3' ;
-   TFloatField(mtPackages.Fields[cTOTALM2]).DisplayFormat := '#######.00';
+   mtPackages.FieldByName('Totalm2').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_38' (* 'Pris/NM3' *) ) ;
+   TFloatField(mtPackages.Fields[cTOTALM2]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_39' (* '#######.00' *) ) + ;
 
 //11
    mtPackages.FieldDefs.Add('TotalMFBM',ftFloat,0,False) ;
    mtPackages.FieldDefs[cTOTALMFBM].CreateField(nil);
-   TFloatField(mtPackages.Fields[cTOTALMFBM]).DisplayFormat := '#######.000';
-   mtPackages.FieldByName('TotalMFBM').DisplayLabel:= 'MFBM' ;
+   TFloatField(mtPackages.Fields[cTOTALMFBM]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_26' (* '#######.000' *) ) + ;
+   mtPackages.FieldByName('TotalMFBM').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_43' (* 'MFBM' *) ) ;
    mtPackages.FieldByName('TotalMFBM').Visible:= False ;
 
 //12
@@ -377,7 +389,7 @@ Begin
 //25
    mtPackages.FieldDefs.Add('PackageTypeNo',ftLargeInt,0,False) ;
    mtPackages.FieldDefs[cPACKAGETYPENO].CreateField(nil);
-   mtPackages.FieldByName('PackageTypeNo').DisplayLabel:= 'PKGTYPE NO' ;
+   mtPackages.FieldByName('PackageTypeNo').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_61' (* 'PKGTYPE NO' *) ) ;
    mtPackages.FieldByName('PackageTypeNo').Visible:= False ;
 //26
    mtPackages.FieldDefs.Add('INCH_THICK',ftFloat,0,False) ;
@@ -457,8 +469,8 @@ Begin
    mtPackages.FieldDefs.Add('1',ftFloat,0,False) ;
    mtPackages.FieldDefs[x].CreateField(nil);
 
-   mtPackages.FieldByName('1').DisplayLabel:= 'Medellängd(Meter)' ;
-   TFloatField(mtPackages.Fields[x]).DisplayFormat := '#######.0000';
+   mtPackages.FieldByName('1').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_69' (* 'Medellängd(Meter)' *) ) ;
+   TFloatField(mtPackages.Fields[x]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) ) + ;
   End
   else
   if dmsPkg.mtUserPropInputOption.AsInteger = INPUT_AM3_LENGTH then
@@ -467,8 +479,8 @@ Begin
    mtPackages.FieldDefs.Add('1',ftFloat,0,False) ;
    mtPackages.FieldDefs[x].CreateField(nil);
 
-   mtPackages.FieldByName('1').DisplayLabel:= 'Medellängd(Meter)' ;
-   TFloatField(mtPackages.Fields[x]).DisplayFormat := '#######.0000';
+   mtPackages.FieldByName('1').DisplayLabel:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_69' (* 'Medellängd(Meter)' *) ) ;
+   TFloatField(mtPackages.Fields[x]).DisplayFormat := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_35' (* '#######.0000' *) ) + ;
 
   End
   else
@@ -962,7 +974,7 @@ begin
     StrToInt(Trim(frmPkgNoSeries.eFromPkgNo.Text)) ;
 
     if NoOfPkgsInSerie > 100 then
-    ResultButton:= MessageDlg(IntToStr(NoOfPkgsInSerie)+' paket kommer att läggas till, OK?',
+    ResultButton:= MessageDlg(IntToStr(NoOfPkgsInSerie)+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_78' (* ' paket kommer att läggas till, OK?' *) ),
     mtConfirmation, [mbYes, mbNo, mbCancel], 0) ;
 
     if ResultButton = mrYes then
@@ -979,14 +991,14 @@ begin
     if mtDupPkgNo.FindKey([PkgNo,Trim(mtUserPropSupplierCode.AsString)]) then
     Begin
      MessageBeep(MB_ICONEXCLAMATION);
-     ShowMessage('Duplicate Package number entered '+IntToStr(PkgNo)) ;
+     ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_79' (* 'Duplicate Package number entered ' *) )+IntToStr(PkgNo)) ;
     End
     else
      if dmsSystem.Pkg_Reserved(
           PkgNo,
           mtUserPropSupplierCode.AsString, Self.Name, Res_UserName
           ) <> ThisUser.UserName+'/'+Self.Name { NO_USER_HAS_THIS_PACKAGE_RESERVED }then begin
-          ShowMessage('Package no is reserved by user '+ Res_UserName) ;
+          ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_80' (* 'Package no is reserved by user ' *) )+ Res_UserName) ;
          End
      else
      if PackageNumberExists(PkgNo, mtUserPropSupplierCode.AsString) = False then
@@ -1005,7 +1017,7 @@ begin
       End ;
      End //if..
       else
-       ShowMessage('Package number  '+IntToStr(PkgNo)+' already exist, please change to different number') ;
+       ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_81' (* 'Package number  ' *) )+IntToStr(PkgNo)+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_82' (* ' already exist, please change to different number' *) )) ;
     End ; //for
      Finally
       Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -1027,7 +1039,7 @@ Var ResultButton  : word ;
 begin
  if (UnsavedPkgs) and (SavePkgs = False) then
  Begin
- ResultButton:= MessageDlg('Paket inte sparade, vill du avsluta?',
+ ResultButton:= MessageDlg(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_83' (* 'Paket inte sparade, vill du avsluta?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) ;
  if ResultButton = mrYes then
   begin
@@ -1073,7 +1085,7 @@ Begin
    if dmsPkg.mtPackages.Active then
    if dmsPkg.mtPackages.RecordCount > 0 then
     Begin
-     ShowMessage('Kan inte byta när det finns paketrader.');
+     ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_84' (* 'Kan inte byta när det finns paketrader.' *) ));
 //     bcInputOption.ItemIndex:= dmsPkg.mtPropsInputOption.AsInteger  ;
      Exit ;
     End ;
@@ -1170,14 +1182,14 @@ begin
 
    if mtpackages.RecordCount = 0 then
    Begin
-    ShowMessage('To use this function you must insert one package first') ;
+    ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_85' (* 'To use this function you must insert one package first' *) )) ;
     Exit ;
    End
     else
      InsertPkgSerie(Sender) ;
   End  //if
    else
-    ShowMessage('To use this function you must insert one package first') ;
+    ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_85' (* 'To use this function you must insert one package first' *) )) ;
   Finally
    mtpackages.EnableControls ;
   End ;
@@ -1227,7 +1239,7 @@ begin
   TestPkgNo := StrToInt64(NewValue) ;
   if TestPkgNo > Const_MAX_PKG_NO then
   Begin
-   ErrorText:= 'Max packageNo allowed is '+IntToStr(Const_MAX_PKG_NO) ;
+   ErrorText:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_87' (* 'Max packageNo allowed is ' *) )+IntToStr(Const_MAX_PKG_NO) ;
    Error:= True ;
   End ;
 
@@ -1236,14 +1248,14 @@ begin
   if mtDupPkgNo.FindKey([PkgNo, Trim(mtUserPropSupplierCode.AsString)]) then
   Begin
    MessageBeep(MB_ICONEXCLAMATION);
-   ErrorText:= 'Paketnr finns i listan redan.' ;
+   ErrorText:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_88' (* 'Paketnr finns i listan redan.' *) ) ;
    MessageBeep(MB_ICONINFORMATION);
    Error:= True ;
   End
   else
   if PackageNumberExists(PkgNo, mtUserPropSupplierCode.AsString) then
   Begin
-   ErrorText:= 'Paketnr finns redan. '+ Pkg_Info(PkgNo, Trim(mtUserPropSupplierCode.AsString)) ;
+   ErrorText:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_89' (* 'Paketnr finns redan. ' *) )+ Pkg_Info(PkgNo, Trim(mtUserPropSupplierCode.AsString)) ;
    Error:= True ;
   End
   else
@@ -1251,7 +1263,7 @@ begin
           PkgNo,
           mtUserPropSupplierCode.AsString, Self.Name, Res_UserName
           ) <> ThisUser.UserName+'/'+Self.Name { NO_USER_HAS_THIS_PACKAGE_RESERVED }then begin
-          ErrorText:= 'Paketnr '+DisplayValue+' är reserverat av användare '+ Res_UserName ;
+          ErrorText:= siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_90' (* 'Paketnr ' *) )+DisplayValue+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_91' (* ' är reserverat av användare ' *) )+ Res_UserName ;
           Error:= True ;
          End ;
  End ; //with
@@ -1369,7 +1381,7 @@ begin
 //      ManuellLengthColumn           := Succ(x) ;
      End
       else
-       ShowMessage('Längd '+fAddSpecialLengths.lbSpecialLengths.Items[x]+' finns redan i tabellen.') ;
+       ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_92' (* 'Längd ' *) )+fAddSpecialLengths.lbSpecialLengths.Items[x]+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_93' (* ' finns redan i tabellen.' *) )) ;
     End ;//x
    End //if fAddSpecialLengths.ShowModal = mrOK then
    else
@@ -1388,7 +1400,7 @@ begin
       AColumn.Position.BandIndex    := 2 ;
      End
       else
-       ShowMessage('Längd '+CurrentLengths.Strings[x]+' finns redan i tabellen.') ;
+       ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_92' (* 'Längd ' *) )+CurrentLengths.Strings[x]+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_93' (* ' finns redan i tabellen.' *) )) ;
     End ;//x
    End ;//else
 
@@ -1632,7 +1644,7 @@ begin
  With dmsPkg do
  Begin
   mtUserProp.Edit ;
-  mtUserPropProductDescription.AsString := 'Välj produkt' ;
+  mtUserPropProductDescription.AsString := siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_96' (* 'Välj produkt' *) ) ;
   mtUserPropProductNo.AsInteger         := -1 ;
   mtUserPropProductGroupNo.AsInteger    := -1 ;
   mtUserPropACT_THICK.AsFloat           := 0 ;
@@ -1660,7 +1672,7 @@ begin
 
   if mtUserPropRegDate.AsDateTime > Now then
   Begin
-   ShowMessage('Registreringsdatum får inte vara större än aktuellt datum');
+   ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_97' (* 'Registreringsdatum får inte vara större än aktuellt datum' *) ));
    Exit ;
   End ;
 
@@ -1678,30 +1690,30 @@ begin
    mtPackages.Post ;
 
   if mtUserPropAgentNo.AsInteger = 0 then
-  if MessageDlg('Du har valt att INTE spara till produktionsloggen, vill du gå vidare? (om du tex skapar paket som skall synas i en inventering skall du kryssa i "Spara till produktionslogg") '
+  if MessageDlg(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_98' (* 'Du har valt att INTE spara till produktionsloggen, vill du gå vidare? (om du tex skapar paket som skall synas i en inventering skall du kryssa i "Spara till produktionslogg") ' *) )
   ,  mtConfirmation, [mbYes, mbNo], 0) = mrNo then Exit ;
 
 
 
   if mtUserPropAgentNo.AsInteger = 1 then
   Begin
-   if MessageDlg('Spara paket mot mätpunkt: '+
+   if MessageDlg(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_99' (* 'Spara paket mot mätpunkt: ' *) )+
    mtUserPropPRODUCER.AsString
    +'/'+mtUserPropREGPOINT.AsString
-   +LF+'Ägare:'+mtUserPropOWNER.AsString
-   +LF+'Lagerplats: '+mtUserPropPIPNAME.AsString+'/'+mtUserPropLIPNAME.AsString
-   +LF+'Datum: '+DateToStr(mtUserPropRegDate.AsDateTime)
+   +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_100' (* 'Ägare:' *) )+mtUserPropOWNER.AsString
+   +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_101' (* 'Lagerplats: ' *) )+mtUserPropPIPNAME.AsString+'/'+mtUserPropLIPNAME.AsString
+   +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_102' (* 'Datum: ' *) )+DateToStr(mtUserPropRegDate.AsDateTime)
    ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    GoAndSave:= True
   End
   else
-  if MessageDlg('Spara paket mot mätpunkt: '+
+  if MessageDlg(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_99' (* 'Spara paket mot mätpunkt: ' *) )+
   mtUserPropPRODUCER.AsString
   +'/'+mtUserPropREGPOINT.AsString
-  +LF+'Ägare:'+mtUserPropOWNER.AsString
-  +LF+'Lagerplats: '+mtUserPropPIPNAME.AsString+'/'+mtUserPropLIPNAME.AsString
-  +LF+'Datum: '+DateToStr(mtUserPropRegDate.AsDateTime)
-  +LF+'OBS! SPARAR INTE TILL PRODUKTIONSLOGGEN'
+  +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_100' (* 'Ägare:' *) )+mtUserPropOWNER.AsString
+  +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_101' (* 'Lagerplats: ' *) )+mtUserPropPIPNAME.AsString+'/'+mtUserPropLIPNAME.AsString
+  +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_102' (* 'Datum: ' *) )+DateToStr(mtUserPropRegDate.AsDateTime)
+  +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_107' (* 'OBS! SPARAR INTE TILL PRODUKTIONSLOGGEN' *) )
   ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   GoAndSave:= True ;
 
@@ -1736,17 +1748,17 @@ begin
   Begin
    if mtpackages.Fields[cTOTALPCS].AsInteger < 1 then //PCS
     Begin
-     ShowMessage('Paketnr '+mtpackages.Fields[cPACKAGENO].AsString+' saknar stycketal') ;
+     ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_90' (* 'Paketnr ' *) )+mtpackages.Fields[cPACKAGENO].AsString+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_109' (* ' saknar stycketal' *) )) ;
      OKToSave := False ;
     End ;
    if Length(Trim(mtpackages.Fields[cPACKAGENO].AsString)) = 0 then //PCS
     Begin
-     ShowMessage('Radnr '+mtpackages.Fields[cRECID].AsString+' saknar paketnr') ;
+     ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_110' (* 'Radnr ' *) )+mtpackages.Fields[cRECID].AsString+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_111' (* ' saknar paketnr' *) )) ;
      OKToSave := False ;
     End ;
    if mtpackages.Fields[cTOTALLPM].AsInteger < 1 then //PCS
     Begin
-     ShowMessage('Paketnr '+mtpackages.Fields[cPACKAGENO].AsString+' saknar löpmeter') ;
+     ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_90' (* 'Paketnr ' *) )+mtpackages.Fields[cPACKAGENO].AsString+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_113' (* ' saknar löpmeter' *) )) ;
      OKToSave := False ;
     End ;
 
@@ -1760,12 +1772,12 @@ begin
         Begin
          if UnSavedPackages then
          Begin
-          ShowMessage('Gröna rader är paketnr/preix som redan finns i databasen, röda rader är paket som inte kunde sparas (kontakta support)') ;
+          ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_114' (* 'Gröna rader är paketnr/preix som redan finns i databasen, röda rader är paket som inte kunde sparas (kontakta support)' *) )) ;
           RemoveSavedPkgsFromMemTable(Sender) ;
          End
          else
          Begin
-          if MessageDlg('Paket sparade OK, vill du stänga?',
+          if MessageDlg(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_115' (* 'Paket sparade OK, vill du stänga?' *) ),
           mtConfirmation, [mbYes, mbNo], 0) = mrYes then
           Begin
            SavePkgs:= True ;
@@ -1780,14 +1792,14 @@ begin
         else
         Begin
          RemoveSavedPkgsFromMemTable(Sender) ;
-         ShowMessage('De paket som finns kvar i listan kunde inte registreras.');
+         ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_116' (* 'De paket som finns kvar i listan kunde inte registreras.' *) ));
          OKToSave:= False ;
         End ;
 
 
   End
   else
-   ShowMessage('Välj ett lager.') ;
+   ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_117' (* 'Välj ett lager.' *) )) ;
  End ;
 
  Finally
@@ -1796,7 +1808,7 @@ begin
 
  End //if
   else
-   ShowMessage('Ingen mätpunkt vald') ;
+   ShowMessage(siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_118' (* 'Ingen mätpunkt vald' *) )) ;
  End;
 
  Finally
