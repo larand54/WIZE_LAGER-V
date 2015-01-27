@@ -2524,7 +2524,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42026.644340717590000000
+      ReportDocument.CreationDate = 42031.807117256950000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2553,7 +2553,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42026.644340729170000000
+      ReportDocument.CreationDate = 42031.807117291670000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2580,7 +2580,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42026.644340740740000000
+      ReportDocument.CreationDate = 42031.807117326390000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2602,11 +2602,10 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42026.644340752320000000
+      ReportDocument.CreationDate = 42031.807117361110000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2621,7 +2620,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 40918.446931423610000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxCompositionReportLink
@@ -2667,7 +2665,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42026.644341527780000000
+      ReportDocument.CreationDate = 42031.807119386580000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -2737,12 +2735,13 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42026.644341539350000000
+      ReportDocument.CreationDate = 42031.807119421300000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdStoppTid
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2756,7 +2755,8 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42026.644341574070000000
+      ReportDocument.CreationDate = 42031.807119479170000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
@@ -9459,10 +9459,26 @@
       46006F006E00740073005F0055006E00690063006F00640065000D000A007300
       74004D0075006C00740069004C0069006E00650073005F0055006E0069006300
       6F00640065000D000A007300740053007400720069006E00670073005F005500
-      6E00690063006F00640065000D000A00730074004F0074006800650072005300
-      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
-      7300740043006F006C006C0065006300740069006F006E0073005F0055006E00
-      690063006F00640065000D000A00730074004300680061007200530065007400
-      73005F0055006E00690063006F00640065000D000A00}
+      6E00690063006F00640065000D000A004900440053005F003100330035000100
+      49006E0066006F003A00200041006E0067006900760065006C00730065002000
+      6600F6007200200068007500720020006C00E5006E0067002000740069006400
+      20006B006F007200740061002000730074006F00700070002000E40072002000
+      730061006B006E00610073002E00010001000D000A004900440053005F003100
+      34003000010041007200620065007400730073006300680065006D0061002000
+      730061006B006E00610073002E00010001000D000A004900440053005F003100
+      34003400010041006E006700650020006D0061006C006C006E0061006D006E00
+      010001000D000A004900440053005F003100340036000100560069006C006C00
+      200064007500200074006100200062006F007200740020006D0061006C006C00
+      65006E003F002000010001000D000A004900440053005F003400390001004100
+      720062006500740073007400690064002C0020006D0069006E00750074006500
+      72003A0020002300010001000D000A004900440053005F003500300001004100
+      7200620065007400730073006300680065006D006100200069006E0074006500
+      20007500700070006C0061006700740020006600F60072002000760061006C00
+      640020006D00E4007400700075006E006B0074002E00010001000D000A007300
+      74004F00740068006500720053007400720069006E00670073005F0055006E00
+      690063006F00640065000D000A007300740043006F006C006C00650063007400
+      69006F006E0073005F0055006E00690063006F00640065000D000A0073007400
+      430068006100720053006500740073005F0055006E00690063006F0064006500
+      0D000A00}
   end
 end

@@ -57,7 +57,7 @@ uses
   dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxSkinsdxRibbonPainter,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, siComp, siLngLnk,
-  System.Actions ;
+  System.Actions, dxPScxSSLnk, dxPScxPivotGridLnk ;
 
 Const
     CM_MOVEIT = WM_USER + 1;
@@ -388,7 +388,7 @@ begin
   CanClose:= False ;
   if DataSaved = False then
   Begin
-   if MessageDlg('Data är inte sparat i lastplan, vill du spara ändringar?',
+   if MessageDlg(siLangLinked_frmLoadPlan.GetTextOrDefault('IDS_0' (* 'Data är inte sparat i lastplan, vill du spara ändringar?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    Begin
     acSaveChangesExecute(Sender) ;
@@ -598,7 +598,7 @@ end;
 
 procedure TfrmLoadPlan.acPrintLOWYSWYGExecute(Sender: TObject);
 begin
- dxComponentPrinter1Link2.ReportTitleText:= 'Lastplannr '+dmLoadPlan.cds_LoadPlanHdrLoadingNo.AsString ;
+ dxComponentPrinter1Link2.ReportTitleText:= siLangLinked_frmLoadPlan.GetTextOrDefault('IDS_1' (* 'Lastplannr ' *) )+dmLoadPlan.cds_LoadPlanHdrLoadingNo.AsString ;
  dxComponentPrinter1Link2.PrinterPage.Orientation:= poPortrait ;
 // dxComponentPrinter1Link2.PreviewWindow.ZoomFactor:= 200 ;
  dxComponentPrinter1Link2.ShrinkToPageWidth:= True ;
@@ -632,7 +632,7 @@ begin
 
   Try
   ExportGridToExcel(FileName, grdLoadPlan, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till Excel fil '+FileName);
+  ShowMessage(siLangLinked_frmLoadPlan.GetTextOrDefault('IDS_3' (* 'Tabell exporterad till Excel fil ' *) )+FileName);
   Except
   End ;
  End ;
@@ -987,7 +987,7 @@ end;
 
 procedure TfrmLoadPlan.acDeleteLastPlanExecute(Sender: TObject);
 begin
- if MessageDlg('Är du säker?',
+ if MessageDlg(siLangLinked_frmLoadPlan.GetTextOrDefault('IDS_14' (* 'Är du säker?' *) ),
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmLoadPlan do
  Begin
@@ -1002,7 +1002,7 @@ end;
 
 procedure TfrmLoadPlan.acDeleteRowExecute(Sender: TObject);
 begin
- if MessageDlg('Är du säker?',
+ if MessageDlg(siLangLinked_frmLoadPlan.GetTextOrDefault('IDS_14' (* 'Är du säker?' *) ),
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmLoadPlan do
  Begin
@@ -1117,7 +1117,7 @@ procedure TfrmLoadPlan.grdDestinationerDBBandedTableView1FrsljningsregionGetDisp
   Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
   var AText: String);
 begin
- if ARecord.Values[6]= -1 then AText:= 'TOTALT' ;
+ if ARecord.Values[6]= -1 then AText:= siLangLinked_frmLoadPlan.GetTextOrDefault('IDS_16' (* 'TOTALT' *) ) ;
 end;
 
 end.

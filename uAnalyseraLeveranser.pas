@@ -1235,11 +1235,11 @@ begin
     SQLTimeStampToDateTime(cds_UserPropsStartPeriod.AsSQLTimeStamp),
 
     SQLTimeStampToDateTime(cds_UserPropsEndPeriod.AsSQLTimeStamp) );
-    ShowMessage(FormatFloat('Arbetstid, minuter: #',  fMs ) );
+    ShowMessage(FormatFloat(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_49' (* 'Arbetstid, minuter: #' *) ),  fMs ) );
   End
   else
   Begin
-    ShowMessage(FormatFloat('Arbetsschema inte upplagt för vald mätpunkt.',  fMs ) );
+    ShowMessage(FormatFloat(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_50' (* 'Arbetsschema inte upplagt för vald mätpunkt.' *) ),  fMs ) );
   End;
 end;
 
@@ -1987,7 +1987,7 @@ begin
 
  if (cds_StoppSetup.FieldByName('LargeStop').IsNull)
  or (cds_StoppSetup.FieldByName('LargeStop').AsInteger < 1) then
- ShowMessage('Info: Angivelse för hur lång tid korta stopp är saknas.') ;
+ ShowMessage(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_135' (* 'Info: Angivelse för hur lång tid korta stopp är saknas.' *) )) ;
 
 
  workMinutes  := GetWorkingTimeMinutes ;
@@ -2005,7 +2005,7 @@ begin
    frxReport1.ShowReport(true) ;
  End
  else
- showmessage('Arbetsschema saknas.');
+ showmessage(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_140' (* 'Arbetsschema saknas.' *) ));
 
  Finally
   sp_StoppTid01.Active  := False ;
@@ -2123,7 +2123,7 @@ var frmConfirmCodeDialog: TfrmConfirmCodeDialog ;
 begin
  frmConfirmCodeDialog:= TfrmConfirmCodeDialog.Create(Self) ;
  Try
-  frmConfirmCodeDialog.LabelField.Caption := 'Ange mallnamn' ;
+  frmConfirmCodeDialog.LabelField.Caption := siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_144' (* 'Ange mallnamn' *) ) ;
   if frmConfirmCodeDialog.Showmodal = mrOK then
   Begin
    if Length(frmConfirmCodeDialog.eConfirmationCode.Text) > 0 then
@@ -2238,7 +2238,7 @@ procedure TfAnalyseraLeveranser.acRemoveLayoutExecute(Sender: TObject);
 begin
   if cbLevLayouter.Properties.Items.Count > 0 then
   Begin
-   if MessageDlg('Vill du ta bort mallen? ' + '[' + cbLevLayouter.Properties.Items.Strings[cbLevLayouter.ItemIndex] + ']'
+   if MessageDlg(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_146' (* 'Vill du ta bort mallen? ' *) ) + '[' + cbLevLayouter.Properties.Items.Strings[cbLevLayouter.ItemIndex] + ']'
   ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
    With dmsSystem do
@@ -2276,7 +2276,7 @@ var frmConfirmCodeDialog: TfrmConfirmCodeDialog ;
 begin
  frmConfirmCodeDialog:= TfrmConfirmCodeDialog.Create(Self) ;
  Try
-  frmConfirmCodeDialog.LabelField.Caption := 'Ange mallnamn' ;
+  frmConfirmCodeDialog.LabelField.Caption := siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_144' (* 'Ange mallnamn' *) ) ;
   if frmConfirmCodeDialog.Showmodal = mrOK then
   Begin
    if Length(frmConfirmCodeDialog.eConfirmationCode.Text) > 0 then
@@ -2295,7 +2295,7 @@ var frmConfirmCodeDialog: TfrmConfirmCodeDialog ;
 begin
  frmConfirmCodeDialog:= TfrmConfirmCodeDialog.Create(Self) ;
  Try
-  frmConfirmCodeDialog.LabelField.Caption := 'Ange mallnamn' ;
+  frmConfirmCodeDialog.LabelField.Caption := siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_144' (* 'Ange mallnamn' *) ) ;
   if frmConfirmCodeDialog.Showmodal = mrOK then
   Begin
    if Length(frmConfirmCodeDialog.eConfirmationCode.Text) > 0 then
@@ -2327,7 +2327,7 @@ procedure TfAnalyseraLeveranser.acRemoveProdMallExecute(Sender: TObject);
 begin
   if cbProdMallar.Properties.Items.Count > 0 then
   Begin
-   if MessageDlg('Vill du ta bort mallen? ' + '[' + cbProdMallar.Properties.Items.Strings[cbProdMallar.ItemIndex] + ']'
+   if MessageDlg(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_146' (* 'Vill du ta bort mallen? ' *) ) + '[' + cbProdMallar.Properties.Items.Strings[cbProdMallar.ItemIndex] + ']'
   ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
    With dmsSystem do
@@ -2364,7 +2364,7 @@ procedure TfAnalyseraLeveranser.acRemoveStoppTidMallExecute(Sender: TObject);
 begin
   if cbStoppTidMallar.Properties.Items.Count > 0 then
   Begin
-   if MessageDlg('Vill du ta bort mallen? ' + '[' + cbStoppTidMallar.Properties.Items.Strings[cbStoppTidMallar.ItemIndex] + ']'
+   if MessageDlg(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_146' (* 'Vill du ta bort mallen? ' *) ) + '[' + cbStoppTidMallar.Properties.Items.Strings[cbStoppTidMallar.ItemIndex] + ']'
   ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
    With dmsSystem do
@@ -2626,7 +2626,7 @@ var frmConfirmCodeDialog: TfrmConfirmCodeDialog ;
 begin
  frmConfirmCodeDialog:= TfrmConfirmCodeDialog.Create(Self) ;
  Try
-  frmConfirmCodeDialog.LabelField.Caption := 'Ange mallnamn' ;
+  frmConfirmCodeDialog.LabelField.Caption := siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_144' (* 'Ange mallnamn' *) ) ;
   if frmConfirmCodeDialog.Showmodal = mrOK then
   Begin
    if Length(frmConfirmCodeDialog.eConfirmationCode.Text) > 0 then
@@ -2645,7 +2645,7 @@ var frmConfirmCodeDialog: TfrmConfirmCodeDialog ;
 begin
  frmConfirmCodeDialog:= TfrmConfirmCodeDialog.Create(Self) ;
  Try
-  frmConfirmCodeDialog.LabelField.Caption := 'Ange mallnamn' ;
+  frmConfirmCodeDialog.LabelField.Caption := siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_144' (* 'Ange mallnamn' *) ) ;
   if frmConfirmCodeDialog.Showmodal = mrOK then
   Begin
    if Length(frmConfirmCodeDialog.eConfirmationCode.Text) > 0 then
@@ -2746,7 +2746,7 @@ procedure TfAnalyseraLeveranser.acRemoveKapStatMallExecute(
 begin
   if cbKapStatMallar.Properties.Items.Count > 0 then
   Begin
-   if MessageDlg('Vill du ta bort mallen? ' + '[' + cbKapStatMallar.Properties.Items.Strings[cbKapStatMallar.ItemIndex] + ']'
+   if MessageDlg(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_146' (* 'Vill du ta bort mallen? ' *) ) + '[' + cbKapStatMallar.Properties.Items.Strings[cbKapStatMallar.ItemIndex] + ']'
   ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
    With dmsSystem do
@@ -2783,7 +2783,7 @@ procedure TfAnalyseraLeveranser.acRemoveKilnMallExecute(Sender: TObject);
 begin
   if cbKilnMallar.Properties.Items.Count > 0 then
   Begin
-   if MessageDlg('Vill du ta bort mallen? ' + '[' + cbKilnMallar.Properties.Items.Strings[cbKilnMallar.ItemIndex] + ']'
+   if MessageDlg(siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_146' (* 'Vill du ta bort mallen? ' *) ) + '[' + cbKilnMallar.Properties.Items.Strings[cbKilnMallar.ItemIndex] + ']'
   ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
    With dmsSystem do

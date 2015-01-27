@@ -160,7 +160,7 @@ end;
 
 procedure TfAccInv.acPrintExecute(Sender: TObject);
 begin
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Lagerförändring') ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fAccInv.GetTextOrDefault('IDS_0' (* 'Lagerförändring' *) )) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(lcPIPNAME.Text+'/'+lcLIPNAME.Text) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Add(lcPIPNAME.Text+'/'+lcLIPNAME.Text) ;
@@ -224,7 +224,7 @@ Begin
    End
    else
    Begin
-    SetCellText(0,CurRow, 'Totalt Sågverken');
+    SetCellText(0,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_4' (* 'Totalt Sågverken' *) ));
 // SetCellText(2,CurRow,  '=SUM(C' + inttostr(4) +':C' + inttostr(CurRow) + ')');
 // SetCellText(3,CurRow,  '=SUM(D' + inttostr(4) +':D' + inttostr(CurRow) + ')');
 // SetCellText(4,CurRow,  '=SUM(E' + inttostr(4) +':E' + inttostr(CurRow) + ')');
@@ -380,7 +380,7 @@ Begin
   CurRow  := succ(CurRow) ;
 // End ;
 
- SetCellText(0,CurRow, 'Totalt');
+ SetCellText(0,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_38' (* 'Totalt' *) ));
  SetCellText(2,CurRow,  '=SUM(C' + inttostr(FirstSumRow) +':C' + inttostr(CurRow) + ')');
  SetCellText(3,CurRow,  '=SUM(D' + inttostr(FirstSumRow) +':D' + inttostr(CurRow) + ')');
  SetCellText(4,CurRow,  '=SUM(E' + inttostr(FirstSumRow) +':E' + inttostr(CurRow) + ')');
@@ -399,13 +399,13 @@ Begin
  CurRow  := succ(CurRow) ;
  if FirstRec = False then
  Begin
-  SetCellText(0,CurRow, 'Ackumelerad lagerminskning/ökning');
+  SetCellText(0,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_55' (* 'Ackumelerad lagerminskning/ökning' *) ));
  // =I15+I28
 //  SetCellText(8,CurRow,  '=I' + IntToStr(CurRow) + '+I' + IntToStr(CurRow-12));
   SetCellText(8,CurRow,  '=I' + IntToStr(CurRow) + '+I' + IntToStr(CurRow-13));
  End
  else
-   SetCellText(8,CurRow,  '=I15'); //Bytt till I15 från I14
+   SetCellText(8,CurRow,  siLangLinked_fAccInv.GetTextOrDefault('IDS_58' (* '=I15' *) )); //Bytt till I15 från I14
 // else
 // SetCellText(0,CurRow, '--');
 
@@ -418,23 +418,23 @@ procedure TfAccInv.SetTitles ;
 Var x, CurRow : Integer ;
 Begin
  CurRow := 1 ;
- SetCellText(2,CurRow, 'Sågprod');
- SetCellText(3,CurRow, 'Int/Inköp');
- SetCellText(4,CurRow, 'Ext/Inköp');
- SetCellText(5,CurRow, 'Total/Inköp');
- SetCellText(6,CurRow, 'Utleveranser');
- SetCellText(7,CurRow, 'Fakturerat kund');
- SetCellText(8,CurRow, 'Lagerförändring');
- SetCellText(9,CurRow, 'Tot Lager');
+ SetCellText(2,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_59' (* 'Sågprod' *) ));
+ SetCellText(3,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_60' (* 'Int/Inköp' *) ));
+ SetCellText(4,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_61' (* 'Ext/Inköp' *) ));
+ SetCellText(5,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_62' (* 'Total/Inköp' *) ));
+ SetCellText(6,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_63' (* 'Utleveranser' *) ));
+ SetCellText(7,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_64' (* 'Fakturerat kund' *) ));
+ SetCellText(8,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_0' (* 'Lagerförändring' *) ));
+ SetCellText(9,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_66' (* 'Tot Lager' *) ));
 
- SetCellText(10,CurRow, 'Lagerförändring per enhet totalt');
+ SetCellText(10,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_67' (* 'Lagerförändring per enhet totalt' *) ));
 
  CurRow := 2 ;
- SetCellText(0,CurRow, 'Verk');
- SetCellText(1,CurRow, 'Vecka');
+ SetCellText(0,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_68' (* 'Verk' *) ));
+ SetCellText(1,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_69' (* 'Vecka' *) ));
 
  For x := 2 to 10 do
- SetCellText(x,CurRow, 'NM3');
+ SetCellText(x,CurRow, siLangLinked_fAccInv.GetTextOrDefault('IDS_70' (* 'NM3' *) ));
 End ;
 
 procedure TfAccInv.acParametrarExecute(Sender: TObject);
@@ -459,7 +459,7 @@ begin
   FileName:= SaveDialog1.FileName ;
   Try
    ssAccLager.SaveToFile(FileName);
-   ShowMessage('Exporterad till excel fil ' + FileName);
+   ShowMessage(siLangLinked_fAccInv.GetTextOrDefault('IDS_71' (* 'Exporterad till excel fil ' *) ) + FileName);
   Except
   End ;
  End ;
