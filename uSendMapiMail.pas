@@ -6,12 +6,13 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, uRwMapiSession,
   uRwMapiInterfaces ,
-  fRwMapiFolderDialog, uRwMapiBase ;
+  fRwMapiFolderDialog, uRwMapiBase, siComp, uRwEasyMAPI ;
   //, uRwMapiSession;
 
 type
   Tdm_SendMapiMail = class(TDataModule)
     MapiSession: TRwMapiSession;
+    siLang_dm_SendMapiMail: TsiLang;
     procedure MapiSessionAfterLogon(Sender: TObject);
     procedure MapiSessionBeforeLogoff(Sender: TObject);
   private
@@ -45,7 +46,7 @@ uses
   , uRwClasses
   , fRwMapiFields
   , dmsDataConn
-  ;
+  , udmLanguage;
 
 
 procedure Tdm_SendMapiMail.SendMail(const Subject, MessageText, MailFromAddress,

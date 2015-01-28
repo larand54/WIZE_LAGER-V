@@ -10,7 +10,6 @@ uses
 type
   TFormCRPrintOneReport = class(TForm)
     Application1: TApplication;
-    siLang_FormCRPrintOneReport: TsiLang;
     procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
