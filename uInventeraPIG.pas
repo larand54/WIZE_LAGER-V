@@ -241,9 +241,9 @@ Begin
  With dmLoadPlan do
  Begin
   if cds_PigHdrInvTypeNo.AsInteger = 1 then
-  grdPIGDBBandedTableView1LoadedPkgs.Caption:= 'Differens'
+  grdPIGDBBandedTableView1LoadedPkgs.Caption:= siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_0' (* 'Differens' *) )
   else
-  grdPIGDBBandedTableView1LoadedPkgs.Caption:= 'Utlastade' ;
+  grdPIGDBBandedTableView1LoadedPkgs.Caption:= siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_1' (* 'Utlastade' *) ) ;
  End ;
 End ;
 
@@ -304,7 +304,7 @@ End ;
 
 procedure TfInventeraPIG.acWysiwygExecute(Sender: TObject);
 begin
- dxComponentPrinter1Link1.ReportTitleText:= 'Inventering '+DateToStr(dmLoadPlan.cds_PigHdrInvDate.AsDateTime) ;
+ dxComponentPrinter1Link1.ReportTitleText:= siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_2' (* 'Inventering ' *) )+DateToStr(dmLoadPlan.cds_PigHdrInvDate.AsDateTime) ;
  dxComponentPrinter1Link1.PrinterPage.Orientation:= poLandscape ;
 // dxComponentPrinter1Link2.PreviewWindow.ZoomFactor:= 200 ;
  dxComponentPrinter1Link1.ShrinkToPageWidth:= True ;
@@ -438,7 +438,7 @@ procedure TfInventeraPIG.FormCloseQuery(Sender: TObject;
 begin
   CanClose:= True ;
   if DataSaved = False then
-   if MessageDlg('Data är inte sparat i inventeringen, vill du spara ändringar?',
+   if MessageDlg(siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_3' (* 'Data är inte sparat i inventeringen, vill du spara ändringar?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Begin
      acSaveExecute(Sender) ;
@@ -662,7 +662,7 @@ end;
 
 procedure TfInventeraPIG.acDeletePigExecute(Sender: TObject);
 begin
- if MessageDlg('Är du säker?',
+ if MessageDlg(siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_4' (* 'Är du säker?' *) ),
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmLoadPlan do
  Begin
@@ -775,8 +775,8 @@ begin
  Begin
   fEntryField:= TfEntryField.Create(nil);
 //  fEntryField.eValue.Properties.EditMask:= '' ;
-  fEntryField.LTitle.Caption:= 'Paketkod:' ;
-  fEntryField.Caption:= 'Ange paketkod' ;
+  fEntryField.LTitle.Caption:= siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_5' (* 'Paketkod:' *) ) ;
+  fEntryField.Caption:= siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_6' (* 'Ange paketkod' *) ) ;
   fEntryField.PanelLength.Visible  := False ;
   Try
   if fEntryField.ShowModal = mrOK then
@@ -799,10 +799,10 @@ begin
      End ;
     End
      else
-      ShowMessage('Paketkoden finns redan i listan!') ;
+      ShowMessage(siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_7' (* 'Paketkoden finns redan i listan!' *) )) ;
    End
     else
-     ShowMessage(inttostr(fEntryField.seAntalPaket.Value)+' är inte en paketkod.') ;
+     ShowMessage(inttostr(fEntryField.seAntalPaket.Value)+siLangLinked_fInventeraPIG.GetTextOrDefault('IDS_8' (* ' är inte en paketkod.' *) )) ;
   End ;
   Finally
    FreeAndNil(fEntryField) ;

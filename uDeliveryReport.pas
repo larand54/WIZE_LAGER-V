@@ -990,7 +990,7 @@ end;
 
 procedure TfDeliveryReport.acDeleteProdPaketNrMallExecute(Sender: TObject);
 begin
- if MessageDlg('Vill du ta bort?',
+ if MessageDlg(siLangLinked_fDeliveryReport.GetTextOrDefault('IDS_39' (* 'Vill du ta bort?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmInventory do
  Begin
@@ -1275,7 +1275,7 @@ begin
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Clear ;
 
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Leverans') ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fDeliveryReport.GetTextOrDefault('IDS_45' (* 'Leverans' *) )) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(DateTimeToStr(deStartPeriod.Date) + ' - ' + DateTimeToStr(deEndPeriod.Date) ) ;
 
   dxComponentPrinter1Link1.PrinterPage.Orientation    := poLandscape ;
@@ -1314,7 +1314,7 @@ begin
  Begin
   if not SelectedOwnersOK then
   Begin
-   ShowMessage('Välj minst ett Verk!');
+   ShowMessage(siLangLinked_fDeliveryReport.GetTextOrDefault('IDS_46' (* 'Välj minst ett Verk!' *) ));
    Exit ;
   End;
 
@@ -1610,7 +1610,7 @@ begin
   FileName:= SaveDialog1.FileName ;
   Try
 //   ExportGridToExcel(FileName, cxGrid1, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till excel fil ' + FileName);
+  ShowMessage(siLangLinked_fDeliveryReport.GetTextOrDefault('IDS_81' (* 'Tabell exporterad till excel fil ' *) ) + FileName);
   Except
   End ;
  End ;

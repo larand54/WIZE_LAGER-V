@@ -161,7 +161,7 @@ begin
 
     cds_GP.Active := False ;
     cds_GP.Active := True ;
-    Caption  := 'Tilldela produkter prisgrupper. Lagerinventering nr ' + IntToStr(IC_grpno) ;
+    Caption  := siLangLinked_fCreateSicPriceGroups.GetTextOrDefault('IDS_1' (* 'Tilldela produkter prisgrupper. Lagerinventering nr ' *) ) + IntToStr(IC_grpno) ;
    Finally
     sp_SicPG.EnableControls ;
    End ;
@@ -384,11 +384,11 @@ begin
  Begin
   dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Clear ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsvärde') ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fCreateSicPriceGroups.GetTextOrDefault('IDS_4' (* 'Inventeringsvärde' *) )) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(Namn) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('.') ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add('Löpnr: ' + inttostr(IC_grpno)) ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add('Inventeringsdatum: ' + SQLTimeStampToStr('yyyy-mm-dd',Inventeringsdatum)) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add(siLangLinked_fCreateSicPriceGroups.GetTextOrDefault('IDS_5' (* 'Löpnr: ' *) ) + inttostr(IC_grpno)) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add(siLangLinked_fCreateSicPriceGroups.GetTextOrDefault('IDS_6' (* 'Inventeringsdatum: ' *) ) + SQLTimeStampToStr('yyyy-mm-dd',Inventeringsdatum)) ;
 
   dxComponentPrinter1Link1.PrinterPage.DMPaper         := DMPAPER_A4 ;
   dxComponentPrinter1Link1.PrinterPage.Orientation     := poLandscape ;
