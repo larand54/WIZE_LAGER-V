@@ -204,7 +204,7 @@ procedure TfSicPriceGroup.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
  if DataSaved = False then
- if MessageDlg('Vill du spara innan du stänger? '
+ if MessageDlg(siLangLinked_fSicPriceGroup.GetTextOrDefault('IDS_0' (* 'Vill du spara innan du stänger? ' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   Application.ProcessMessages ;
@@ -216,7 +216,7 @@ procedure TfSicPriceGroup.FormShow(Sender: TObject);
 begin
  With dmInvCtrl do
  Begin
-  Caption  := 'Prisgrupper. Lagerinventering nr ' + IntToStr(cds_InvCtrlGrpIC_grpno.AsInteger) ;
+  Caption  := siLangLinked_fSicPriceGroup.GetTextOrDefault('IDS_1' (* 'Prisgrupper. Lagerinventering nr ' *) ) + IntToStr(cds_InvCtrlGrpIC_grpno.AsInteger) ;
  End ;
 end;
 

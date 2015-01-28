@@ -758,7 +758,11 @@ begin
   LoadCheckBoxWithVerk ;
 
   SetCheckComboBoxes ;
-  SetCheckComboBoxes_Where_PktNrLevKod_Required('15') ;
+  SetCheckComboBoxes_Where_PktNrLevKod_Required(
+{TSI:IGNORE ON}
+	'15'
+{TSI:IGNORE OFF}
+) ;
 //  dmInventory.cds_PkgList.Active:= True ;
   dm_UserProps.LoadUserProps (Self.Name, mtuserprop) ;
 
@@ -1311,7 +1315,7 @@ begin
  mtUserPropRegDate.AsDateTime           := Now ;
 // mtUserPropProductGroupNo.AsInteger     := -1 ;
  mtUserPropProductNo.AsInteger          := -1 ;
- mtUserPropProductDescription.AsString  := 'Ingen ändring' ;
+ mtUserPropProductDescription.AsString  := siLangLinked_fStopptidReport.GetTextOrDefault('IDS_1' (* 'Ingen ändring' *) ) ;
  mtUserPropLIPChange.AsInteger          := 0 ;
  mtUserPropVerkNo.AsInteger             := 0 ;
 end;
@@ -1465,7 +1469,7 @@ begin
  Begin
   if not SelectedOwnersOK then
   Begin
-   ShowMessage('Välj minst ett Verk!');
+   ShowMessage(siLangLinked_fStopptidReport.GetTextOrDefault('IDS_2' (* 'Välj minst ett Verk!' *) ));
    Exit ;
   End;
 
@@ -1483,7 +1487,7 @@ begin
  Begin
   if not SelectedOwnersOK then
   Begin
-   ShowMessage('Välj minst ett Verk!');
+   ShowMessage(siLangLinked_fStopptidReport.GetTextOrDefault('IDS_2' (* 'Välj minst ett Verk!' *) ));
    Exit ;
   End;
 
@@ -1830,7 +1834,7 @@ begin
   FileName:= SaveDialog1.FileName ;
   Try
 //   ExportGridToExcel(FileName, cxGrid1, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till excel fil ' + FileName);
+  ShowMessage(siLangLinked_fStopptidReport.GetTextOrDefault('IDS_6' (* 'Tabell exporterad till excel fil ' *) ) + FileName);
   Except
   End ;
  End ;
@@ -1857,7 +1861,11 @@ procedure TfStopptidReport.cbOwnerPropertiesCloseUp(Sender: TObject);
 Var x           : Integer ;
     PktNrLevKod : String ;
 begin
- PktNrLevKod  := '15' ;
+ PktNrLevKod  :=
+{TSI:IGNORE ON}
+	'15'
+{TSI:IGNORE OFF}
+ ;
  For x := 0 to cbOwner.Properties.Items.Count - 1 do
  Begin
 //  if (cbOwner.Properties.Items.Items[x].ShortDescription = '10') and (cbOwner.States[x] = cbsChecked) then
@@ -2237,7 +2245,7 @@ begin
  Result:= True ;
  if not(FileExists(sPath+ReportName)) then
  Begin
-  ShowMessage('Saknar crystal reports fil.  Sökväg och filnamn : '+sPath+ReportName) ;
+  ShowMessage(siLangLinked_fStopptidReport.GetTextOrDefault('IDS_10' (* 'Saknar crystal reports fil.  Sökväg och filnamn : ' *) )+sPath+ReportName) ;
   Result:= False ;
   Exit ;
  End ;
@@ -2831,7 +2839,11 @@ procedure TfStopptidReport.RefreshMatPunkterOnUppStart ;
 Var x           : Integer ;
     PktNrLevKod : String ;
 begin
- PktNrLevKod  := '15' ;
+ PktNrLevKod  :=
+{TSI:IGNORE ON}
+	'15'
+{TSI:IGNORE OFF}
+ ;
  For x := 0 to cbOwner.Properties.Items.Count - 1 do
  Begin
 //  if (cbOwner.Properties.Items.Items[x].ShortDescription = '10') and (cbOwner.States[x] = cbsChecked) then

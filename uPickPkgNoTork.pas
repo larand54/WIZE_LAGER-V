@@ -621,7 +621,7 @@ begin
        NewPkgNo:= StrToIntDef(PackageNo,0) ;
        if NewPkgNo = 0 then
        Begin
-        ShowMessage('Koden kunde inte översättas till ett Paketnr') ;
+        ShowMessage(siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_0' (* 'Koden kunde inte översättas till ett Paketnr' *) )) ;
         Exit ;
        End ;
 
@@ -649,25 +649,25 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ShowMessage('Paketnr ' + IntToStr(NewPkgNo) + ' finns inte i lager ' ) ;
+     ShowMessage(siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_1' (* 'Paketnr ' *) ) + IntToStr(NewPkgNo) + siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_2' (* ' finns inte i lager ' *) ) ) ;
      Error      := True ;
     End
     else
      if Action = eaReserved then
       Begin
-       ShowMessage('Paketnr ' + IntToStr(NewPkgNo) + ' är reserverat av ' + Res_UserName) ;
+       ShowMessage(siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_1' (* 'Paketnr ' *) ) + IntToStr(NewPkgNo) + siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_4' (* ' är reserverat av ' *) ) + Res_UserName) ;
        Error      := True ;
       End
       else
        if Action = eaDuplicate then
         Begin
-         ShowMessage('Paketnr ' + IntToStr(NewPkgNo) +' är redan inmatat') ;
+         ShowMessage(siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_1' (* 'Paketnr ' *) ) + IntToStr(NewPkgNo) +siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_6' (* ' är redan inmatat' *) )) ;
          Error      := True ;
         End ;
     End
      else
       Begin
-       ShowMessage('Paketnr saknas.') ;
+       ShowMessage(siLangLinked_fPickPkgNoTork.GetTextOrDefault('IDS_7' (* 'Paketnr saknas.' *) )) ;
        Error      := True ;
       End ;
   finally

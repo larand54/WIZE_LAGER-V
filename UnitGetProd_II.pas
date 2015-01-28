@@ -538,37 +538,37 @@ begin
   Begin
   if cds_ProdListProductAct.AsInteger <> 1 then
   Begin
-   ShowMessage('Produkten är avaktiverad');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_0' (* 'Produkten är avaktiverad' *) ));
    Exit ;
   End ;
 
   if cds_ProdListProductGroupAct.AsInteger <> 1 then
   Begin
-   ShowMessage('Produktgruppen är avaktiverad');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_1' (* 'Produktgruppen är avaktiverad' *) ));
    Exit ;
   End ;
 
   if cds_ProdListSpeciesAct.AsInteger <> 1 then
   Begin
-   ShowMessage('Träslaget är avaktiverad');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_2' (* 'Träslaget är avaktiverad' *) ));
    Exit ;
   End ;
 
   if cds_ProdListSurfacingAct.AsInteger <> 1 then
   Begin
-   ShowMessage('Utförandet är avaktiverad');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_3' (* 'Utförandet är avaktiverad' *) ));
    Exit ;
   End ;
 
   if cds_ProdListImpAct.AsInteger <> 1 then
   Begin
-   ShowMessage('Impregneringstypen är avaktiverad');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_4' (* 'Impregneringstypen är avaktiverad' *) ));
    Exit ;
   End ;
 
   if cds_ProdListGradeAct.AsInteger <> 1 then
   Begin
-   ShowMessage('Kvaliteten är avaktiverad');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_5' (* 'Kvaliteten är avaktiverad' *) ));
    Exit ;
   End ;
   End ;//CheckAktiv
@@ -614,7 +614,7 @@ begin
 
   if mtProductVaruSlag.IsNull then
   Begin
-   ShowMessage('Välj ett varuslag!');
+   ShowMessage(siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_6' (* 'Välj ett varuslag!' *) ));
    Exit ;
   End ;
 
@@ -863,8 +863,8 @@ begin
        grdProdListDBTableView1ActualWidthMM.Visible         := True ;
       End ;
   1 : Begin
-       grdProdListDBTableView1ActualThicknessMM.Caption     := 'Diameter(cm)' ;
-       grdProdListDBTableView1ActualWidthMM.Caption         := 'Längd(cm)' ;
+       grdProdListDBTableView1ActualThicknessMM.Caption     := siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_7' (* 'Diameter(cm)' *) ) ;
+       grdProdListDBTableView1ActualWidthMM.Caption         := siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_8' (* 'Längd(cm)' *) ) ;
        grdProdListDBTableView1NominalThicknessMM.Visible    := False ;
        grdProdListDBTableView1NominalWidthMM.Visible        := False ;
        grdProdListDBTableView1NominalThicknessINCH.Visible  := False ;
@@ -873,8 +873,8 @@ begin
        grdProdListDBTableView1ActualWidthMM.Visible         := True ;
       End ;
   2 : Begin
-       grdProdListDBTableView1ActualThicknessMM.Caption     := 'Bredd(cm)' ;
-       grdProdListDBTableView1ActualWidthMM.Caption         := 'Längd(cm)' ;
+       grdProdListDBTableView1ActualThicknessMM.Caption     := siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_9' (* 'Bredd(cm)' *) ) ;
+       grdProdListDBTableView1ActualWidthMM.Caption         := siLangLinked_frmGetProd_II.GetTextOrDefault('IDS_8' (* 'Längd(cm)' *) ) ;
        grdProdListDBTableView1ActualThicknessMM.Visible     := False ;
        grdProdListDBTableView1ActualWidthMM.Visible         := False ;
 

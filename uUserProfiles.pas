@@ -118,7 +118,7 @@ begin
  Begin
   cds_UserProfile.Insert ;
 
-  cds_UserProfileName.AsString            := 'Ange profilnamn här' ;
+  cds_UserProfileName.AsString            := siLangLinked_fUserProfiles.GetTextOrDefault('IDS_0' (* 'Ange profilnamn här' *) ) ;
   cds_UserProfileForm.AsString            := 'frmMain' ;
   cds_UserProfileUserID.AsInteger         := ThisUser.UserID ;
 
@@ -195,7 +195,7 @@ procedure TfUserProfiles.FormCloseQuery(Sender: TObject;
 begin
  if not SavedOK then
  Begin
-  if MessageDlg('Ändringar är inte sparade, vill du stänga?' ,
+  if MessageDlg(siLangLinked_fUserProfiles.GetTextOrDefault('IDS_2' (* 'Ändringar är inte sparade, vill du stänga?' *) ) ,
   mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   CanClose := True
    else

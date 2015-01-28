@@ -63,7 +63,7 @@ begin
   Begin
    if cds_KilnChargeHdrKilnNo.AsInteger < 1 then
    Begin
-    ShowMessage('Tork saknas') ;
+    ShowMessage(siLangLinked_fKilnWizard.GetTextOrDefault('IDS_0' (* 'Tork saknas' *) )) ;
     CanClose:= False ;
    End ;
   End ;//if CancelClicked = False then

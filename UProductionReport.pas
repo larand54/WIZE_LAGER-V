@@ -1344,7 +1344,7 @@ begin
  mtUserPropRegDate.AsDateTime           := Now ;
 // mtUserPropProductGroupNo.AsInteger     := -1 ;
  mtUserPropProductNo.AsInteger          := -1 ;
- mtUserPropProductDescription.AsString  := 'Ingen ändring' ;
+ mtUserPropProductDescription.AsString  := siLangLinked_fProductionReport.GetTextOrDefault('IDS_0' (* 'Ingen ändring' *) ) ;
  mtUserPropLIPChange.AsInteger          := 0 ;
  mtUserPropVerkNo.AsInteger             := 0 ;
 end;
@@ -1499,7 +1499,7 @@ begin
  Begin
   if not SelectedOwnersOK then
   Begin
-   ShowMessage('Välj minst ett Verk!');
+   ShowMessage(siLangLinked_fProductionReport.GetTextOrDefault('IDS_1' (* 'Välj minst ett Verk!' *) ));
    Exit ;
   End;
 
@@ -1517,7 +1517,7 @@ begin
  Begin
   if not SelectedOwnersOK then
   Begin
-   ShowMessage('Välj minst ett Verk!');
+   ShowMessage(siLangLinked_fProductionReport.GetTextOrDefault('IDS_1' (* 'Välj minst ett Verk!' *) ));
    Exit ;
   End;
 
@@ -1868,7 +1868,7 @@ begin
   FileName:= SaveDialog1.FileName ;
   Try
 //   ExportGridToExcel(FileName, cxGrid1, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till excel fil ' + FileName);
+  ShowMessage(siLangLinked_fProductionReport.GetTextOrDefault('IDS_5' (* 'Tabell exporterad till excel fil ' *) ) + FileName);
   Except
   End ;
  End ;
@@ -2445,7 +2445,7 @@ begin
  Result:= True ;
  if not(FileExists(sPath+ReportName)) then
  Begin
-  ShowMessage('Saknar crystal reports fil.  Sökväg och filnamn : '+sPath+ReportName) ;
+  ShowMessage(siLangLinked_fProductionReport.GetTextOrDefault('IDS_8' (* 'Saknar crystal reports fil.  Sökväg och filnamn : ' *) )+sPath+ReportName) ;
   Result:= False ;
   Exit ;
  End ;

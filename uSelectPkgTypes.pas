@@ -261,7 +261,7 @@ begin
  CanClose:= True
  else
  Begin
-  if MessageDlg('Ändringar ej sparade, vill du stänga?',
+  if MessageDlg(siLangLinked_fSelectPkgTypes.GetTextOrDefault('IDS_0' (* 'Ändringar ej sparade, vill du stänga?' *) ),
      mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    CanClose := True
     else

@@ -358,7 +358,7 @@ begin
  CanClose:= True ;
  if DataSaved = False then
  Begin
-  MessageIndex:= MessageDlg('Ändringar är inte sparade, vill du spara?',
+  MessageIndex:= MessageDlg(siLangLinked_fModifySIC.GetTextOrDefault('IDS_0' (* 'Ändringar är inte sparade, vill du spara?' *) ),
   mtConfirmation, [mbYes, mbNo, mbCancel], 0);
   Case MessageIndex of
    mrYes     : Begin
@@ -432,7 +432,7 @@ end;
 
 procedure TfModifySIC.acCancelChangesExecute(Sender: TObject);
 begin
- if MessageDlg('Vill du avbryta?',
+ if MessageDlg(siLangLinked_fModifySIC.GetTextOrDefault('IDS_1' (* 'Vill du avbryta?' *) ),
   mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmInvCtrl do
  Begin

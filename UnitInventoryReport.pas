@@ -1547,7 +1547,7 @@ begin
  Result:= True ;
  if not(FileExists(sPath+ReportName)) then
  Begin
-  ShowMessage('Saknar crystal reports fil.  Sökväg och filnamn : '+sPath+ReportName) ;
+  ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_0' (* 'Saknar crystal reports fil.  Sökväg och filnamn : ' *) )+sPath+ReportName) ;
   Result:= False ;
   Exit ;
  End ;
@@ -2416,7 +2416,11 @@ begin
   FilterString:= FilterString + GetComboFilterText(' Streckkod: ', ccbBC) ;
 
   if cbShowSingleLengthPkgs.Checked then
-   FilterString := FilterString + ' Endast LP paket ' ;
+   FilterString := FilterString +
+{TSI:IGNORE ON}
+	' Endast LP paket '
+{TSI:IGNORE OFF}
+ ;
 
 //  if ccAvgLengthRegPkt.Checked then   FilterString := FilterString + ' Endast ML-Reg.paket ' ;
 
@@ -2622,8 +2626,8 @@ begin
  if mtUserProp.State in [dsEdit, dsInsert] then
  mtUserProp.Post ;
  ClickedF10 := False ;
- acAddKilnRow.Caption:= 'Lägg paket till torksats' ;
- bbAddPkgsToKilnCharge.Caption:= 'Lägg paket till torksats' ;
+ acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
+ bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
  With dmInventory do
  Begin
   ReportInProgress    := True ;
@@ -2880,25 +2884,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'NM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -3139,25 +3143,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'NM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -3286,7 +3290,7 @@ Begin
    AItem.Format:= '########'
    else
    if mtUserPropLengthVolUnitNo.AsInteger = 1 then
-   AItem.Format:= '########.0'
+   AItem.Format:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_12' (* '########.0' *) ) +
    else
    AItem.Format:= '########' ;
   End ;
@@ -3322,13 +3326,13 @@ Begin
 
    if (pgInventory.ActivePage = tsFakturaSpec) or (pgInventory.ActivePage = tsLoadOrderSpec) then
    Begin
-    cxGrid1DBBandedTableView1Lager.Caption            := 'LONr' ;
-    cxGrid1DBBandedTableView1.Bands.Items[5].Caption  := 'LASTORDER' ;
+    cxGrid1DBBandedTableView1Lager.Caption            := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_13' (* 'LONr' *) ) ;
+    cxGrid1DBBandedTableView1.Bands.Items[5].Caption  := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_14' (* 'LASTORDER' *) ) ;
    End
    else
    Begin
-    cxGrid1DBBandedTableView1Lager.Caption            := 'Lager' ;
-    cxGrid1DBBandedTableView1.Bands.Items[5].Caption  := 'LAGER' ;
+    cxGrid1DBBandedTableView1Lager.Caption            := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_15' (* 'Lager' *) ) ;
+    cxGrid1DBBandedTableView1.Bands.Items[5].Caption  := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_16' (* 'LAGER' *) ) ;
    End ;
 
 
@@ -4005,101 +4009,177 @@ begin
    ReplaceStream(mms, '<L14>', '5.7');
    ReplaceStream(mms, '<L15>', '6.0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '1800' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'1800'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A01>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A01>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '2100' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'2100'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A02>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A02>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '2400' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'2400'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A03>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A03>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '2700' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'2700'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A04>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A04>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '3000' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'3000'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A05>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A05>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '3300' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'3300'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A06>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A06>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '3600' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'3600'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A07>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A07>', '0') ;
 
-   if Trim(sq_OnePkgoLength.AsString) = '3900' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'3900'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A08>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A08>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '4200' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'4200'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A09>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A09>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '4500' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'4500'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A10>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A10>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '4800' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'4800'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A11>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A11>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '5100' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'5100'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A12>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A12>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '5400' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'5400'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A13>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A13>', '0');
 
-   if Trim(sq_OnePkgoLength.AsString) = '5700' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'5700'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A14>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A14>', '0') ;
 
-   if Trim(sq_OnePkgoLength.AsString) = '6000' then
+   if Trim(sq_OnePkgoLength.AsString) =
+{TSI:IGNORE ON}
+	'6000'
+{TSI:IGNORE OFF}
+ then
    ReplaceStream(mms, '<A15>', sq_OnePkgTotalPCS.AsString)
    else
    ReplaceStream(mms, '<A15>', '0');
 
 
 //   Memo1.Text:= S ;
-   S1:= 'PRINT ' + bePath.Text + 'Temp_'+cds_SpecLayOutPrintFileName.AsString ;
+   S1:=
+{TSI:IGNORE ON}
+	'PRINT '
+{TSI:IGNORE OFF}
+ + bePath.Text +
+{TSI:IGNORE ON}
+	'Temp_'
+{TSI:IGNORE OFF}
++cds_SpecLayOutPrintFileName.AsString ;
 
-   mms.SaveToFile (bePath.Text + 'Temp_'+cds_SpecLayOutPrintFileName.AsString);
+   mms.SaveToFile (bePath.Text +
+{TSI:IGNORE ON}
+	'Temp_'
+{TSI:IGNORE OFF}
++cds_SpecLayOutPrintFileName.AsString);
    Sleep(400);
-   Memo1.Lines.LoadFromFile(bePath.Text + 'Temp_'+cds_SpecLayOutPrintFileName.AsString);
+   Memo1.Lines.LoadFromFile(bePath.Text +
+{TSI:IGNORE ON}
+	'Temp_'
+{TSI:IGNORE OFF}
++cds_SpecLayOutPrintFileName.AsString);
 
 
 //    S1:= 'PRINT C:\Projects\VIS\Central Paket Hamtning\VIS_PAK_C\Layouter\Temp_vidastdl.txt' ;
     WinExec(Pansichar(S1), SW_HIDE) ;
     Sleep(mtUserPropCopyPcs.AsInteger);
 //      Sleep(Sleeptime);
-    Label1.Caption := 'Skriver ut ' + S1 + '  ' + mtLayoutNoOfCopies.AsString + ' kopior.  Paketnr ' + Self.mtPkgNosPackageNo.AsString + '/' + Self.mtPkgNosSupp_Code.AsString ;
+    Label1.Caption := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_36' (* 'Skriver ut ' *) ) + S1 + '  ' + mtLayoutNoOfCopies.AsString + siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_37' (* ' kopior.  Paketnr ' *) ) + Self.mtPkgNosPackageNo.AsString + '/' + Self.mtPkgNosSupp_Code.AsString ;
     Forms.Application.ProcessMessages ;
 
 
   End //if cds_SpecLayout.FindKey([mtLayoutPackageLogLayoutNo.AsInteger]) then
    else
-    ShowMessage('paketlayout saknas') ;
+    ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_38' (* 'paketlayout saknas' *) )) ;
    mtLayOut.Next ;
   End ;
 
@@ -4108,7 +4188,7 @@ begin
   End ;
   End //if not sq_OnePkg.Eof then
    else
-    ShowMessage('Kan inte lokalisera paketnr ' + Self.mtPkgNosPackageNo.AsString) ;
+    ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_39' (* 'Kan inte lokalisera paketnr ' *) ) + Self.mtPkgNosPackageNo.AsString) ;
    Self.mtPkgNos.Next ;
   End ;//While not Self.mtPkgNos.Eof
  End ;//With
@@ -4136,12 +4216,12 @@ begin
   if mtUserPropNewItemRow.AsInteger > 0 then
   Begin
   if (cbInvLista.ItemIndex = 0) then
-   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Kontrollista inventeringnr: '+mtUserPropNewItemRow.AsString)
+   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_40' (* 'Kontrollista inventeringnr: ' *) )+mtUserPropNewItemRow.AsString)
    else
-     dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Resultatlista inventeringnr: '+mtUserPropNewItemRow.AsString) ;
+     dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_41' (* 'Resultatlista inventeringnr: ' *) )+mtUserPropNewItemRow.AsString) ;
   End
   else
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Lagerlista ' + FilterString) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_42' (* 'Lagerlista ' *) ) + FilterString) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(lcPIPNAME.Text+'/'+lcLIPNAME.Text) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Add(lcPIPNAME.Text+'/'+lcLIPNAME.Text) ;
@@ -4413,7 +4493,7 @@ begin
   acPrintSummartTable.Enabled := not ReportInProgress ;
   dxComponentPrinter1Link3.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add('Paketsummering') ;
+  dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_43' (* 'Paketsummering' *) )) ;
 
 //  dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Add(grdPkgNoTblDBBandedTableView1Lager.EditValue) ;
 
@@ -4561,8 +4641,8 @@ begin
  mtUserProp.Post ;
 
  ClickedF10 := True ;
- acAddKilnRow.Caption:= 'Lägg paket till torksats' ;
- bbAddPkgsToKilnCharge.Caption:= 'Lägg paket till torksats' ;
+ acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
+ bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
  With dmInventory do                       //magnus
  Begin
   Save_Cursor       := Screen.Cursor;
@@ -4900,7 +4980,19 @@ begin
 
   cds_PkgList.SQL.Add('SUM(pn.Original_Price * ptd.m3Nominal) / SUM(ptd.m3Nominal) AS Pris,') ;
   cds_PkgList.SQL.Add('SUM(pn.Original_Price * ptd.m3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd.LinealMeterActualLength) / SUM(ptd.NoOfPieces)) AS Float) AS AvgLength, '
-  + QuotedStr('                              ') + ' AS REFERENCE, ' + QuotedStr('                              ') + ' AS BL_NO, ' + QuotedStr('                              ') + ' AS Info2') ;
+  + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS REFERENCE, '
+{TSI:IGNORE OFF}
+ + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS BL_NO, '
+{TSI:IGNORE OFF}
+ + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS Info2'
+{TSI:IGNORE OFF}
+) ;
 
   cds_PkgList.SQL.Add('FROM  dbo.Client Verk') ;
 
@@ -4953,25 +5045,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
   End ; //Case
 
@@ -5192,8 +5284,16 @@ begin
   cds_PkgList.SQL.Add('SUM(pn.Original_Price * pt.Totalm3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd.LinealMeterActualLength) / SUM(ptd.NoOfPieces)) AS Float) AS AvgLength,') ;
 //  pn.REFERENCE, pn.BL_NO,  pn.Info2') ;
   cds_PkgList.SQL.Add(QuotedStr('                              ') + ' AS REFERENCE, '
-  + QuotedStr('                              ') + ' AS BL_NO, '
-  + QuotedStr('                              ') + ' AS Info2') ;
+  + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS BL_NO, '
+{TSI:IGNORE OFF}
+
+  + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS Info2'
+{TSI:IGNORE OFF}
+) ;
 
   cds_PkgList.SQL.Add('FROM  dbo.Client Verk') ;
   cds_PkgList.SQL.Add('Inner Join dbo.Loads L on L.SupplierNo = Verk.ClientNo') ;
@@ -5225,25 +5325,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -5497,25 +5597,25 @@ begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'NM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -5759,25 +5859,25 @@ begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'NM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -5962,7 +6062,7 @@ begin
    grdPkgNoTblDBBandedTableView1.Bands[2].Caption:= cds_PkgListPRODUKT.AsString+'  ' + SelectedLength
    else
    if SelectedLength = 'ÖVRIGA' then
-   grdPkgNoTblDBBandedTableView1.Bands[2].Caption:= cds_PkgListPRODUKT.AsString +'  TP paket + ej std längder'
+   grdPkgNoTblDBBandedTableView1.Bands[2].Caption:= cds_PkgListPRODUKT.AsString +siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_67' (* '  TP paket + ej std längder' *) )
    else
    grdPkgNoTblDBBandedTableView1.Bands[2].Caption:= cds_PkgListPRODUKT.AsString ;
 
@@ -5988,7 +6088,7 @@ begin
    AItem.Format:= '########'
    else
    if mtUserPropLengthVolUnitNo.AsInteger = 1 then
-   AItem.Format:= '########.0'
+   AItem.Format:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_12' (* '########.0' *) ) +
    else
    AItem.Format:= '########' ;
   End ;
@@ -6040,7 +6140,7 @@ begin
  mtUserPropRegDate.AsDateTime           := Now ;
 // mtUserPropProductGroupNo.AsInteger     := -1 ;
  mtUserPropProductNo.AsInteger          := -1 ;
- mtUserPropProductDescription.AsString  := 'Ingen ändring' ;
+ mtUserPropProductDescription.AsString  := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_69' (* 'Ingen ändring' *) ) ;
  mtUserPropLIPChange.AsInteger          := 0 ;
  mtUserPropVerkNo.AsInteger             := 0 ;
 end;
@@ -6311,12 +6411,12 @@ begin
   if mtUserPropNewItemRow.AsInteger > 0 then
   Begin
   if (cbInvLista.ItemIndex = 0) then
-   dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add('Kontrollista inventeringnr: ' + mtUserPropNewItemRow.AsString)
+   dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_40' (* 'Kontrollista inventeringnr: ' *) ) + mtUserPropNewItemRow.AsString)
     else
-     dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add('Resultatlista inventeringnr: ' + mtUserPropNewItemRow.AsString) ;
+     dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_41' (* 'Resultatlista inventeringnr: ' *) ) + mtUserPropNewItemRow.AsString) ;
   End
   else
-  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add('Lagerlista') ;
+  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_72' (* 'Lagerlista' *) )) ;
   dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(grdPkgNoTblDBBandedTableView1.Bands[2].Caption) ;
 //  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
   dxComponentPrinter1Link4.PrinterPage.PageHeader.LeftTitle.Add(grdPkgNoTblDBBandedTableView1Lager.EditValue) ;
@@ -6352,11 +6452,11 @@ Var
     Subject                 : String ;
     InfogadHTMLFil          : String ;
 begin
- Subject:= 'Paketspecifikation' ;
+ Subject:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_73' (* 'Paketspecifikation' *) ) ;
 
- InfogadHTMLFil:= ExportToHTML('paketspec', grdPkgNoTbl) ;
+ InfogadHTMLFil:= ExportToHTML(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_74' (* 'paketspec' *) ), grdPkgNoTbl) ;
 
- MailToAddress:= 'ange@address.se' ;
+ MailToAddress:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_75' (* 'ange@address.se' *) ) ;
 
  SetLength(Attach, 1);
  Attach[0]:= InfogadHTMLFil ;
@@ -6365,7 +6465,7 @@ begin
  Try
 
   dm_SendMapiMail.SendMail(Subject,
-  'Paketspecifikation inkluderad. '
+  siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_76' (* 'Paketspecifikation inkluderad. ' *) )
   +LF+''
   +LF+'MVH/Best Regards, '
   +LF+''
@@ -6389,11 +6489,11 @@ Var
     Subject                 : String ;
     InfogadHTMLFil          : String ;
 begin
- Subject  := 'Paketspecifikation' ;
+ Subject  := siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_73' (* 'Paketspecifikation' *) ) ;
 
- InfogadHTMLFil:= ExportToHTML('paketspec', cxGrid1) ;
+ InfogadHTMLFil:= ExportToHTML(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_74' (* 'paketspec' *) ), cxGrid1) ;
 
- MailToAddress:= 'ange@address.se';//'lars.makiaho@gmail.com' ;
+ MailToAddress:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_75' (* 'ange@address.se' *) );//'lars.makiaho@gmail.com' ;
 
  SetLength(Attach, 1);
  Attach[0]:= InfogadHTMLFil ;
@@ -6402,7 +6502,7 @@ begin
  Try
 
   dm_SendMapiMail.SendMail(Subject,
-  'Paketspecifikation inkluderad. '
+  siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_76' (* 'Paketspecifikation inkluderad. ' *) )
   +LF+''
   +LF+'MVH/Best Regards, '
   +LF+''
@@ -6597,7 +6697,7 @@ begin
  With dm_DryKiln do
  Begin
   //Kolla att alla rader är borta först
-  if MessageDlg('Är du säker',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_81' (* 'Är du säker' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   Begin
    cds_KilnChargeHdr.Delete ;
    acSaveTorkSatsExecute(Sender) ;
@@ -6630,7 +6730,7 @@ end;
 procedure TfrmInventoryReport.acCancelChangesTorkSatsExecute(
   Sender: TObject);
 begin
- if MessageDlg('Är du säker',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_81' (* 'Är du säker' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dm_DryKiln do
  Begin
   if cds_KilnChargeHdr.State in [dsEdit, dsInsert] then
@@ -6662,8 +6762,8 @@ begin
  Begin
   dxComponentPrinter1Link5.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add('Torksats: '+deStartTime.Text+' - '+deEndTime.Text) ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add('Tork: '+lcTork.Text) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_83' (* 'Torksats: ' *) )+deStartTime.Text+' - '+deEndTime.Text) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_84' (* 'Tork: ' *) )+lcTork.Text) ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(cds_KilnChargeHdrNote.AsString) ;
 
@@ -6793,7 +6893,7 @@ begin
 //  or (cds_KilnPropsBeforeKiln_LIPNo.AsInteger <> mtUserPropLIPNo.AsInteger)
   then
   Begin
-   ShowMessage('Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tork".') ;
+   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_85' (* 'Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tork".' *) )) ;
    Exit ;
   End ;
 {  if dmInventory.cds_PkgListSTD_Length.AsInteger = 0 then
@@ -6807,16 +6907,16 @@ begin
 //   Begin
    fEntryField := TfEntryField.Create(nil);
    Try
-    fEntryField.LExtraInfo.Caption:= 'Lägg paket till torksats' ;
+    fEntryField.LExtraInfo.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
     if SelectedLength = 'ÖVRIGA' then
     Begin
-     fEntryField.Caption:= 'Ange antal av ' + dmInventory.cds_PkgListPRODUKT.AsString+' och välj längd.' ;
+     fEntryField.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_87' (* 'Ange antal av ' *) ) + dmInventory.cds_PkgListPRODUKT.AsString+siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_88' (* ' och välj längd.' *) ) ;
      fEntryField.PanelLength.Visible  := True ;
      dmInventory.Open_sq_OtherLengths(dmInventory.cds_PkgListOwnerNo.AsInteger, SelectedProductNo, dmInventory.cds_PkgListLIPNo.AsInteger, mtUserPropLengthGroupNo.AsInteger) ;
     End
      else
       Begin
-       fEntryField.Caption:= 'Ange antal av ' + dmInventory.cds_PkgListPRODUKT.AsString + ' / ' + SelectedLength ;
+       fEntryField.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_87' (* 'Ange antal av ' *) ) + dmInventory.cds_PkgListPRODUKT.AsString + ' / ' + SelectedLength ;
        fEntryField.PanelLength.Visible  := False ;
       End ;
     if fEntryField.ShowModal = mrOK then
@@ -6850,10 +6950,10 @@ begin
        End ;
       End
        else
-        ShowMessage('Angivet antal paket överstiger antal paket i lager.');
+        ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_91' (* 'Angivet antal paket överstiger antal paket i lager.' *) ));
      End
       else
-       ShowMessage('Paket med flera längder registreras paketnr vis.');
+       ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_92' (* 'Paket med flera längder registreras paketnr vis.' *) ));
     End ;
 
    Finally
@@ -6887,7 +6987,7 @@ begin
 //  or (cds_KilnPropsBeforeKiln_LIPNo.AsInteger <> mtUserPropLIPNo.AsInteger)
   then
   Begin
-   ShowMessage('Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tork".') ;
+   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_85' (* 'Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tork".' *) )) ;
    Exit ;
   End ;
 
@@ -6919,8 +7019,8 @@ begin
   Self.mtPkgNos.Active:= True ;
   fEntryField := TfEntryField.Create(nil);
   Try
-   fEntryField.LExtraInfo.Caption:= 'Lägg paket tillbaka till lager före tork' ;
-   fEntryField.Caption:= 'Ange antal av ' + cds_SumKilnChargeRowsProdukt.AsString+' / ' + cds_SumKilnChargeRowsAntalperlängd.AsString ;
+   fEntryField.LExtraInfo.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_94' (* 'Lägg paket tillbaka till lager före tork' *) ) ;
+   fEntryField.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_87' (* 'Ange antal av ' *) ) + cds_SumKilnChargeRowsProdukt.AsString+' / ' + cds_SumKilnChargeRowsAntalperlängd.AsString ;
    if fEntryField.ShowModal = mrOK then
    Begin
     NoOfPkgs:= fEntryField.seAntalPaket.Value ;// strtointdef(fEntryField.eValue.Text,-1) ;
@@ -7391,8 +7491,8 @@ begin
  mtUserProp.Post ;
 
  ClickedF10 := True ;
- acAddKilnRow.Caption:= 'Lägg paket till torksats' ;
- bbAddPkgsToKilnCharge.Caption:= 'Lägg paket till torksats' ;
+ acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
+ bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
  With dmInventory do
  Begin
   Save_Cursor := Screen.Cursor;
@@ -7583,25 +7683,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -7742,7 +7842,7 @@ begin
    VardaPerSortiment(Sender) ;
  End
   else
-   ShowMessage('Paketvård är inte tillgängligt för tillfället pga att aktuelltdatum är före maxdatum i en inventering där lagergruppen ingår.') ;
+   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_102' (* 'Paketvård är inte tillgängligt för tillfället pga att aktuelltdatum är före maxdatum i en inventering där lagergruppen ingår.' *) )) ;
 // else
 // VardaPerPaketNr(Sender);
 end;
@@ -7757,7 +7857,7 @@ begin
  Begin
   if Length(SelectedLength) = 0 then
   Begin
-   ShowMessage('fick inte med längden, prova att högerklicka igen') ;
+   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_103' (* 'fick inte med längden, prova att högerklicka igen' *) )) ;
    Exit ;
   End ;
 //  acSaveTorkSatsExecute(Sender) ;
@@ -7774,16 +7874,16 @@ begin
    Try
     fEntryField.seAntalPaket.Properties.MinValue:= -100 ;
     fEntryField.seAntalPaket.Properties.MaxValue:= 100 ;
-    fEntryField.LExtraInfo.Caption:= 'Vårda lager, ange negativt antal för att minska antal paket resp. positivt antal för att öka.' ;
+    fEntryField.LExtraInfo.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_104' (* 'Vårda lager, ange negativt antal för att minska antal paket resp. positivt antal för att öka.' *) ) ;
     if SelectedLength = 'ÖVRIGA' then
     Begin
-     fEntryField.Caption:= 'Ange antal pkt av ' + dmInventory.cds_PkgListPRODUKT.AsString + ' och välj längd.' ;
+     fEntryField.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_105' (* 'Ange antal pkt av ' *) ) + dmInventory.cds_PkgListPRODUKT.AsString + siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_88' (* ' och välj längd.' *) ) ;
      fEntryField.PanelLength.Visible  := True ;
      dmInventory.Open_sq_OtherLengths(dmInventory.cds_PkgListOwnerNo.AsInteger, SelectedProductNo, dmInventory.cds_PkgListLIPNo.AsInteger, mtUserPropLengthGroupNo.AsInteger) ;
     End
       else
        Begin
-        fEntryField.Caption:= 'Ange antal av ' + dmInventory.cds_PkgListPRODUKT.AsString + ' / ' + SelectedLength ;
+        fEntryField.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_87' (* 'Ange antal av ' *) ) + dmInventory.cds_PkgListPRODUKT.AsString + ' / ' + SelectedLength ;
         fEntryField.PanelLength.Visible  := False ;
        End ;
     if fEntryField.ShowModal = mrOK then
@@ -7799,8 +7899,8 @@ begin
     //   10 >= -10
       Begin
      //Now add pkgs to torksats!
-       if MessageDlg('Vill du ändra antal paket med '+inttostr(NoOfPkgs)+' för produkt '+dmInventory.cds_PkgListPRODUKT.AsString
-       +' Längd ' + LengthChoosen
+       if MessageDlg(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_109' (* 'Vill du ändra antal paket med ' *) )+inttostr(NoOfPkgs)+siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_110' (* ' för produkt ' *) )+dmInventory.cds_PkgListPRODUKT.AsString
+       +siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_111' (* ' Längd ' *) ) + LengthChoosen
        ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
        Begin
         if dmInventory.VardaLager (dmInventory.cds_PkgListOwnerNo.AsInteger, dmInventory.cds_PkgListLIPNo.AsInteger, mtUserPropLengthGroupNo.AsInteger, SelectedProductNo, NoOfPkgs, LengthChoosen, dmInventory.cds_PkgListPRODUKT.AsString) then
@@ -7818,10 +7918,10 @@ begin
        End ;//if MessageDlg
       End
        else
-        ShowMessage('Angivet antal paket överstiger antal paket i lager.');
+        ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_91' (* 'Angivet antal paket överstiger antal paket i lager.' *) ));
      End
       else
-       ShowMessage('Paket med flera längder registreras paketnr vis.');
+       ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_92' (* 'Paket med flera längder registreras paketnr vis.' *) ));
     End ;
 
    Finally
@@ -8179,7 +8279,7 @@ begin
  Try
   dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add('Antal/längd') ;
+  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_114' (* 'Antal/längd' *) )) ;
 
 
 //  dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Add(grdPkgNoTblDBBandedTableView1Lager.EditValue) ;
@@ -8464,25 +8564,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -8675,25 +8775,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'NM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -9137,25 +9237,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'STYCK PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'PAKET PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -9320,25 +9420,25 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
    1 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'AM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
        End ;
    2 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'NM3 PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= 'ANTAL PER LÄNGD' ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
        End ;
   End ;
 
@@ -9425,7 +9525,7 @@ begin
   FileName:= SaveDialog1.FileName ;
   Try
    ExportGridToExcel(FileName, cxGrid1, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till excel fil ' + FileName);
+  ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_133' (* 'Tabell exporterad till excel fil ' *) ) + FileName);
   Except
   End ;
  End ;
@@ -9457,7 +9557,7 @@ var fEntryPriceField: TfEntryPriceField;
 begin
  if ClickedF10 then
  Begin
-  ShowMessage('Pris kan inte ändras i sortiments-vyn, visa paket i paketnr-vyn F8 för att ändra pris') ;
+  ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_134' (* 'Pris kan inte ändras i sortiments-vyn, visa paket i paketnr-vyn F8 för att ändra pris' *) )) ;
   Exit ;
  End
 // AddRowPerSortiment(Sender)

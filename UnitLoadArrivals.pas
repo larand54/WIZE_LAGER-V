@@ -467,7 +467,7 @@ begin
     if sq_Check_CDS_Link.Eof then
      Result:= True
      else
-       ShowMessage('Kan inte AR lasten. Problem med LO# '+cdsArrivingLoadsLO.AsString+' länkning till LO, kolla att LO samt Last är OK ') ;
+       ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_0' (* 'Kan inte AR lasten. Problem med LO# ' *) )+cdsArrivingLoadsLO.AsString+siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_1' (* ' länkning till LO, kolla att LO samt Last är OK ' *) )) ;
     sq_Check_CDS_Link.Close ;
    End ;
    if cdsArrivingLoadsObjectType.AsInteger = 2 then
@@ -479,7 +479,7 @@ begin
     if sq_CheckObject2Link.Eof then
      Result:= True
       else
-       ShowMessage('Kan inte AR lasten. Problem med LO# '+cdsArrivingLoadsLO.AsString+' länkning till Avrop eller LO, kolla att AVROP / LO samt LAST är OK ') ;
+       ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_0' (* 'Kan inte AR lasten. Problem med LO# ' *) )+cdsArrivingLoadsLO.AsString+siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_3' (* ' länkning till Avrop eller LO, kolla att AVROP / LO samt LAST är OK ' *) )) ;
     sq_CheckObject2Link.Close ;
    End ;
    cdsArrivingLoads.Next ;
@@ -664,7 +664,7 @@ End ;
 //make an entry for the load that is confirmed
 procedure TfrmLoadArrivals.SetConfirmed_Load_Table(Sender: TObject) ;
 Begin
- if MessageDlg('This Confirmation does only insert a record in the Confirmed_Load_EXT table, Continue?',
+ if MessageDlg(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_4' (* 'This Confirmation does only insert a record in the Confirmed_Load_EXT table, Continue?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  begin
 
@@ -689,7 +689,7 @@ Begin
   End ;
   if cdsConfirmed_Load.ChangeCount > 0 then
    if cdsConfirmed_Load.ApplyUpdates(0) > 0 then
-    ShowMessage('Inmatning av post misslyckades, kontakta support med LO och LastNr.')
+    ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_5' (* 'Inmatning av post misslyckades, kontakta support med LO och LastNr.' *) ))
      else
       Begin
        cdsArrivingLoads.Refresh ;
@@ -725,7 +725,7 @@ begin
 //   cdsArrivingLoads. .LogChanges:= False ;
    if not cdsArrivingLoads.FindKey([StrToIntDef(Trim(Edit1.Text),0)]) then
    Begin
-    ShowMessage('No luck') ;
+    ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_6' (* 'No luck' *) )) ;
     SomethingChanged := True ;
    End
    else
@@ -778,7 +778,7 @@ begin
 //   cdsArrivingLoads.LogChanges:= False ;
    if not cdsArrivingLoads.FindKey([StrToIntDef(Trim(Edit2.Text),0)]) then
    Begin
-    ShowMessage('No luck') ;
+    ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_6' (* 'No luck' *) )) ;
     SomethingChanged := True ;
    End
    else
@@ -917,7 +917,7 @@ begin
 
   if lbLO_To_Invoice.Items.Count < 1 then
    Begin
-    ShowMessage('Måste välja en last') ;
+    ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_8' (* 'Måste välja en last' *) )) ;
     Exit ;
    End ;
 
@@ -1332,7 +1332,7 @@ var
   Save_Cursor : TCursor;
   FileName    : String ;
 begin
- if MessageDlg('Vill du exportera till excel?',
+ if MessageDlg(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_9' (* 'Vill du exportera till excel?' *) ),
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
  Save_Cursor := Screen.Cursor;
@@ -1343,11 +1343,15 @@ begin
 // SaveDialog2.InitialDir:= ExcelDir ;
 // if SaveDialog2.Execute then
 // Begin
-  FileName:= 'C:\AnkomstLast.XLS' ; //SaveDialog2.FileName ;
+  FileName:=
+{TSI:IGNORE ON}
+	'C:\AnkomstLast.XLS'
+{TSI:IGNORE OFF}
+ ; //SaveDialog2.FileName ;
 
   Try
   ExportGridToExcel(FileName, grdLoads, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till Excel fil '+FileName);
+  ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_11' (* 'Tabell exporterad till Excel fil ' *) )+FileName);
   Except
   End ;
 // End ;
@@ -1369,13 +1373,13 @@ begin
   DecodeDate(mtUserPropStartPeriod.AsDateTime, Year, Month, Day);
   if IsValidDate(Year, Month, Day) = False then
   Begin
-   ShowMessage('Ange ett FOM datum') ;
+   ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_12' (* 'Ange ett FOM datum' *) )) ;
    Exit ;
   End ;
   DecodeDate(mtUserPropEndPeriod.AsDateTime, Year, Month, Day);
   if IsValidDate(Year, Month, Day) = False then
   Begin
-   ShowMessage('Ange ett TOM datum') ;
+   ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_13' (* 'Ange ett TOM datum' *) )) ;
    Exit ;
   End ;
  End ;
@@ -1406,7 +1410,7 @@ procedure TfrmLoadArrivals.acUndoARExecute(Sender: TObject);
 Var LoadNo        : Integer ;
     Save_Cursor   : TCursor;
 begin
- if MessageDlg('Vill du ångra ankomstregistreringen på markerade laster?',
+ if MessageDlg(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_14' (* 'Vill du ångra ankomstregistreringen på markerade laster?' *) ),
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  with dmArrivingLoads do
  Begin
@@ -1608,7 +1612,7 @@ Var
 //  ChangeToIMPProduct        : Boolean ;
   ObjectType                : Integer ;
 begin
- if MessageDlg('Vill du ankomstregistrera markerade laster till lager '
+ if MessageDlg(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_15' (* 'Vill du ankomstregistrera markerade laster till lager ' *) )
  + lcPIPNAME.Text + '/' + lcLIPNAME.Text
  + '?',
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
@@ -1656,7 +1660,7 @@ begin
    Begin
     if IsLoadValid(cdsArrivingLoadsLoadNo.AsInteger, cdsArrivingLoadsLO.AsInteger, cdsArrivingLoadsObjectType.AsInteger, Sender) = False then
     Begin
-     ShowMessage('Load is not valid.') ;
+     ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_16' (* 'Load is not valid.' *) )) ;
      Exit ;
     End ;
 
@@ -1709,11 +1713,11 @@ begin
       End ;
      End //if cdsArrivingLoadsLOAD_STATUS.AsInteger = 2 then
       else
-       ShowMessage('Laststatus indikerar problem med lasten, kan inte ankomstregistreras.') ;
+       ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_17' (* 'Laststatus indikerar problem med lasten, kan inte ankomstregistreras.' *) )) ;
     End //check IS load confirmed
       else
-      ShowMessage('Lasten är redan ankomstregistrerad av '+Trim(sq_IsLoadConfirmedUserName.AsString)
-       +' den '+SQLTimeStampToStr('',sq_IsLoadConfirmedDateCreated.AsSQLTimeStamp)) ;
+      ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_18' (* 'Lasten är redan ankomstregistrerad av ' *) )+Trim(sq_IsLoadConfirmedUserName.AsString)
+       +siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_19' (* ' den ' *) )+SQLTimeStampToStr('',sq_IsLoadConfirmedDateCreated.AsSQLTimeStamp)) ;
    Finally
     sq_IsLoadConfirmed.Close ;
    End ;
@@ -1734,7 +1738,7 @@ begin
   End ;
   End
   else
-  ShowMessage('Välj lagergrupp att lägga paketen till.') ;
+  ShowMessage(siLangLinked_frmLoadArrivals.GetTextOrDefault('IDS_20' (* 'Välj lagergrupp att lägga paketen till.' *) )) ;
  End ; //with
 end;
 

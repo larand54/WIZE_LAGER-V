@@ -415,13 +415,13 @@ begin
 //  dxComponentPrinter1Link1.PrinterPage.Orientation:= poLandscape ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Clear ;
 
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('LAGERBALANS ' + lcVerk.Text) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fLagerBalans.GetTextOrDefault('IDS_1' (* 'LAGERBALANS ' *) ) + lcVerk.Text) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('') ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Period '
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fLagerBalans.GetTextOrDefault('IDS_2' (* 'Period ' *) )
   +DateToStr(StartDate.Date)  + ' - ' +DateToStr(EndDate.Date)) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Ägare ' + lcVerk.Text) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Clear ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add('Lager ' + PanelLagerNamn.Caption) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add(siLangLinked_fLagerBalans.GetTextOrDefault('IDS_3' (* 'Lager ' *) ) + PanelLagerNamn.Caption) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.RightTitle.Add('Lagergrupp ' + mtFilterLIP.AsString) ;
 
   dxComponentPrinter1Link1.ShrinkToPageWidth:= True ;
@@ -875,7 +875,7 @@ begin
  EndDate.Date:= RecodeMinute(EndDate.Date, 59);
  EndDate.Date:= RecodeSecond(EndDate.Date, 59);
 
- PanelLagerNamn.Caption:= cds_LagBalORTORT.AsString+'/Ej bestämda lagergrupper' ;
+ PanelLagerNamn.Caption:= cds_LagBalORTORT.AsString+siLangLinked_fLagerBalans.GetTextOrDefault('IDS_4' (* '/Ej bestämda lagergrupper' *) ) ;
 
 
  mtFilter.Edit ;
@@ -1006,7 +1006,7 @@ begin
   Try
    fLBperDay.Get_LBPerDay(cds_LagGruppLIPNo.AsInteger, DateTimeToSQLTimeStamp(StartDate.Date - 1),
    DateTimeToSQLTimeStamp(EndDate.Date)) ;
-   fLBperDay.Caption := 'Lagerbalans logg ' + cds_LagGruppGRPNAMN.AsString
+   fLBperDay.Caption := siLangLinked_fLagerBalans.GetTextOrDefault('IDS_5' (* 'Lagerbalans logg ' *) ) + cds_LagGruppGRPNAMN.AsString
    +' / '+ DateTimeToStr(StartDate.Date)
    +' - '+ DateTimeToStr(EndDate.Date) ;
    fLBperDay.ShowModal ;
