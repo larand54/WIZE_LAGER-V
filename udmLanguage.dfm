@@ -9,11 +9,12 @@ object dmLanguage: TdmLanguage
       'TIB_STRINGLIST'
       'TSTRINGLIST')
     NumOfLanguages = 2
+    ActiveLanguage = 2
     LangDispatcher = siLangDispatcher1
     LangDelim = 1
     LangNames.Strings = (
-      'Swedish'
-      'English')
+      'Base'
+      'Swedish')
     Language = 'Swedish'
     ExcludedProperties.Strings = (
       'Category'
@@ -85,9 +86,10 @@ object dmLanguage: TdmLanguage
       73005F0055006E00690063006F00640065000D000A00}
   end
   object siLangDispatcher1: TsiLangDispatcher
-    ActiveLanguage = 1
-    NumOfLanguages = 2
+    ActiveLanguage = 2
+    NumOfLanguages = 3
     LangNames.Strings = (
+      'Base'
       'Swedish'
       'English')
     Language = 'Swedish'

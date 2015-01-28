@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, OleCtrls,  OleServer, 
-  StdCtrls, Printers, CRAXDRT_TLB;
+  StdCtrls, Printers, CRAXDRT_TLB, siComp;
 
 type
   TFormCRPrintOneReport = class(TForm)
     Application1: TApplication;
+    siLang_FormCRPrintOneReport: TsiLang;
     procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }

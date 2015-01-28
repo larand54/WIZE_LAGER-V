@@ -35,7 +35,7 @@ uses
   Classes,
   Controls,
   StdCtrls,
-  Windows;
+  Windows, siComp;
 
 
 type
@@ -55,6 +55,7 @@ type
     editUserKey: TEdit;
     btnOK: Tbutton;
     btnCancel: Tbutton;
+    siLang_dlgDBAdmin: TsiLang;
     procedure btnOKClick(Sender: TObject);
     procedure RemoveHighlight(Sender: TObject);
   private

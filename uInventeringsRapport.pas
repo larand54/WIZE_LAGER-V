@@ -2622,7 +2622,7 @@ Begin
    AItem.Format:= '########'
    else
    if mtUserPropLengthVolUnitNo.AsInteger = 1 then
-   AItem.Format:= siLangLinked_fInventeringsRapport.GetTextOrDefault('IDS_13' (* '########.0' *) ) +
+   AItem.Format:= siLangLinked_fInventeringsRapport.GetTextOrDefault('IDS_13' (* '########.0' *) )
    else
    AItem.Format:= '########' ;
   End ;
@@ -4432,7 +4432,7 @@ begin
    AItem.Format:= '########'
    else
    if mtUserPropLengthVolUnitNo.AsInteger = 1 then
-   AItem.Format:= siLangLinked_fInventeringsRapport.GetTextOrDefault('IDS_13' (* '########.0' *) ) +
+   AItem.Format:= siLangLinked_fInventeringsRapport.GetTextOrDefault('IDS_13' (* '########.0' *) )
    else
    AItem.Format:= '########' ;
   End ;
