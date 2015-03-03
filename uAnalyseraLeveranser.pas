@@ -830,7 +830,8 @@ var
 implementation
 
 Uses VidaType, VidaUser , dmsDataConn, uSendMapiMail, dmsVidaContact, dmsVidaSystem,
-  uConfirmCodeDialog, WorkMinutesU, UnitCRViewReport, uEnterFieldValue;
+  uConfirmCodeDialog, WorkMinutesU, UnitCRViewReport, uEnterFieldValue,
+  udmLanguage;
 
 {$R *.dfm}
 

@@ -54,14 +54,14 @@ object frmChangeLanguage: TfrmChangeLanguage
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    NumOfLanguages = 2
-    ActiveLanguage = 2
+    NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1
     LangNames.Strings = (
-      'Base'
-      'Swedish')
-    Language = 'Swedish'
+      'Origin'
+      'Swedish'
+      'English')
+    Language = 'Origin'
     CommonContainer = dmLanguage.siLang1
     ExcludedProperties.Strings = (
       'Category'
