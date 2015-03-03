@@ -69,12 +69,12 @@ PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName+'/'+lip.LogicalInventoryNa
 lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo
 ,1 AS Status,
 (Select ls.Avgprice from dbo.LIPSum ls
-WHERE ls.IC_SetNo = 12
+WHERE ls.IC_SetNo = 15
 and ls.PackageNo = pn.packageNo
 and ls.Suppliercode = pn.SupplierCode
 and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Pris,
 (Select ls.Avgprice * pt.Totalm3Nominal from dbo.LIPSum ls
-WHERE ls.IC_SetNo = 12
+WHERE ls.IC_SetNo = 15
 and ls.PackageNo = pn.packageNo
 and ls.Suppliercode = pn.SupplierCode
 and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Värde, va.VarugruppNamn,
@@ -105,7 +105,7 @@ Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
-AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC_GrpNo and ia.IC_SetNo = 12 )
+AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC_GrpNo and ia.IC_SetNo = 15 )
 
 
 

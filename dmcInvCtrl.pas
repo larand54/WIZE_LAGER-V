@@ -4120,7 +4120,7 @@ Begin
 //  SQL.Add('WHERE SupplierCode = LD.SupplierCode') ;
 //  SQL.Add('AND IC_GrpNo = '+cds_InvCtrlGrpIC_grpno.AsString+')') ;
 
-//  if ThisUser.UserID = 8 then SQL.SaveToFile('sq_InsUTLeveranser_Avrop.txt');
+//  if ThisUser.UserID = 8 then SQL.SaveToFile('GetInLeveranserOfCredits.txt');
   S.Text  := SQL.Text ;
   ExecSQL ;
   except

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, dxBar, dxBarExtItems, StdCtrls, ImgList, OleServer, OleCtrls,
   Menus, DB, ActnList, SqlTimSt,
-  CrystalActiveXReportViewerLib11_5_TLB, cxStyles, cxCustomData, cxGraphics,
+  cxStyles, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxLabel, cxCheckBox,
   cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   cxContainer, cxMaskEdit, cxDropDownEdit, cxGridBandedTableView,
@@ -42,7 +42,7 @@ uses
   dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxRibbonPainter, cxNavigator,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu,
-  System.Actions, siComp, siLngLnk;
+  System.Actions, siComp, siLngLnk, CrystalActiveXReportViewerLib11_TLB;
 
 
 type
