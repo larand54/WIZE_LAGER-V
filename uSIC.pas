@@ -333,7 +333,7 @@ procedure TfSIC.FormCloseQuery(Sender: TObject;
 begin
   CanClose:= True ;
   if DataSaved = False then
-   if MessageDlg('Data är inte sparat, vill du avsluta?',
+   if MessageDlg(siLangLinked_fSIC.GetTextOrDefault('IDS_0' (* 'Data är inte sparat, vill du avsluta?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     CanClose:= True
     else
@@ -438,7 +438,7 @@ begin
  With dmInvCtrl do
  Begin
   //Kolla att alla rader är borta först
-  if MessageDlg('Är du säker',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg(siLangLinked_fSIC.GetTextOrDefault('IDS_1' (* 'Är du säker' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   cds_SicHdr.Delete ;
  End ;
 end;
@@ -458,7 +458,7 @@ end;
 
 procedure TfSIC.acCancelChangesExecute(Sender: TObject);
 begin
- if MessageDlg('Är du säker',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fSIC.GetTextOrDefault('IDS_1' (* 'Är du säker' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmInvCtrl do
  Begin
   if cds_SicHdr.State in [dsEdit, dsInsert] then
@@ -610,11 +610,11 @@ var
 begin
   ASettings := TdxPSPDFReportExportOptions.Create;
   Try
-  ASettings.Title := 'Sammanställning inventering' ;
+  ASettings.Title := siLangLinked_fSIC.GetTextOrDefault('IDS_3' (* 'Sammanställning inventering' *) ) ;
 
-  dxComponentPrinter1Link1.ReportDocument.Caption  := 'Sammanställning inventering' ;
+  dxComponentPrinter1Link1.ReportDocument.Caption  := siLangLinked_fSIC.GetTextOrDefault('IDS_3' (* 'Sammanställning inventering' *) ) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Sammanställning inventering') ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fSIC.GetTextOrDefault('IDS_3' (* 'Sammanställning inventering' *) )) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(dmInvCtrl.cds_SicHdrDescription.AsString) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Lagerlista') ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
@@ -770,7 +770,7 @@ end;
 procedure TfSIC.acRefreshSic_PGExecute(Sender: TObject);
 var Save_Cursor : TCursor;
 begin
- if MessageDlg('Eventuella inmatade kostnader försvinner, vill du gå vidare?',
+ if MessageDlg(siLangLinked_fSIC.GetTextOrDefault('IDS_6' (* 'Eventuella inmatade kostnader försvinner, vill du gå vidare?' *) ),
  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
  Save_Cursor := Screen.Cursor;
@@ -834,11 +834,11 @@ var
 begin
   ASettings := TdxPSPDFReportExportOptions.Create;
   Try
-  ASettings.Title := 'Sammanställning inventering' ;
+  ASettings.Title := siLangLinked_fSIC.GetTextOrDefault('IDS_3' (* 'Sammanställning inventering' *) ) ;
 
-  dxComponentPrinter1Link2.ReportDocument.Caption  := 'Sammanställning inventering' ;
+  dxComponentPrinter1Link2.ReportDocument.Caption  := siLangLinked_fSIC.GetTextOrDefault('IDS_3' (* 'Sammanställning inventering' *) ) ;
   dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add('Sammanställning inventering') ;
+  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fSIC.GetTextOrDefault('IDS_3' (* 'Sammanställning inventering' *) )) ;
   dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(dmInvCtrl.cds_SicHdrDescription.AsString) ;
 //  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add('Lagerlista') ;
 //  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
@@ -965,11 +965,11 @@ Var
     Subject                 : String ;
     InfogadHTMLFil          : String ;
 begin
- Subject        := 'Lagersammanställning' ;
+ Subject        := siLangLinked_fSIC.GetTextOrDefault('IDS_12' (* 'Lagersammanställning' *) ) ;
 
 // InfogadHTMLFil := ExportToHTML('paketspec', cxGrid1) ;
 
- MailToAddress:= 'Jeanette.Regin@vida.se';//'lars.makiaho@gmail.com' ;
+ MailToAddress:= siLangLinked_fSIC.GetTextOrDefault('IDS_13' (* 'Jeanette.Regin@vida.se' *) );//'lars.makiaho@gmail.com' ;
 
  SetLength(Attach, 1);
  Attach[0]  := Pdf ;
@@ -977,7 +977,7 @@ begin
  Try
 
   dm_SendMapiMail.SendMail(Subject,
-  'Pdf bifogad. ',
+  siLangLinked_fSIC.GetTextOrDefault('IDS_14' (* 'Pdf bifogad. ' *) ),
   '',
 //  +LF+''
 //  +LF+'MVH/Best Regards, '

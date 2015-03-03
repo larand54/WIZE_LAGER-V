@@ -148,7 +148,7 @@ procedure TfAccParams.FormCloseQuery(Sender: TObject;
 begin
  if DataSaved = False then
  Begin
- if MessageDlg('Data är inte sparat, vill du stänga? '
+ if MessageDlg(siLangLinked_fAccParams.GetTextOrDefault('IDS_0' (* 'Data är inte sparat, vill du stänga? ' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  CanClose := True
  else

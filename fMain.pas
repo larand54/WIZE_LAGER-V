@@ -329,7 +329,7 @@ procedure TfrmMain.FormShow(Sender: TObject);
 begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
- showmessage('Ändra till H:\');
+ showmessage(siLangLinked1.GetTextOrDefault('IDS_7' (* 'Ändra till H:\' *) ));
 // ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
 // ThisUser.Database:= 'vis.vida.se:vis_vida' ;
@@ -883,7 +883,7 @@ begin
  Begin
  if FormOpen then
  Begin
-  ShowMessage('Stäng alla formulär först!');
+  ShowMessage(siLangLinked1.GetTextOrDefault('IDS_25' (* 'Stäng alla formulär först!' *) ));
   Exit ;
  End ;
  OKHelpBottomDlg:= TOKHelpBottomDlg.Create(nil);
@@ -944,7 +944,7 @@ begin
  end;
  End
   else
-   ShowMessage('No access');
+   ShowMessage(siLangLinked1.GetTextOrDefault('IDS_34' (* 'No access' *) ));
 end;
 
 procedure TfrmMain.acChangeLanguageExecute(Sender: TObject);
@@ -1093,7 +1093,7 @@ begin
   end;
  End
  else
- ShowMessage('Behörighet saknas.') ;
+ ShowMessage(siLangLinked1.GetTextOrDefault('IDS_35' (* 'Behörighet saknas.' *) )) ;
 end;
 
 procedure TfrmMain.acImportLoadsExecute(Sender: TObject);

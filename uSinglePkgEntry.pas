@@ -183,14 +183,14 @@ Begin
   if Operation = 1 then
   Begin
    CopyProductData ;
-   Caption:= 'Ändra paket' ;
+   Caption:= siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_0' (* 'Ändra paket' *) ) ;
    tePcsPerLength.Text:= GetPcsPerLength (mtSinglePkgOldPackageTypeNo.AsInteger) ;
    RefreshLengths ;//visar produktspecifikalängder inititalt
   End
    else
     Begin
      mtLengths.Active:= True ;
-     Caption:= 'Registrera paket' ;
+     Caption:= siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_1' (* 'Registrera paket' *) ) ;
      Label1StyckPerLangd.Visible  := False ;
      tePcsPerLength.Visible       := False ;
      Result := GetProduct ;
@@ -469,7 +469,7 @@ Var   ResultButton  : word ;
 Begin
  if (UnsavedPkgs) then //and (SavePkgs = False) then
  Begin
-  ResultButton:= MessageDlg('Paket är inte sparade, vill du spara?',
+  ResultButton:= MessageDlg(siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_2' (* 'Paket är inte sparade, vill du spara?' *) ),
   mtConfirmation, [mbYes, mbNo, mbCancel], 0) ;
   if ResultButton = mrYes then
   Begin
@@ -525,7 +525,11 @@ begin
   TestPkgNo := StrToInt64(NewValue) ;
   if TestPkgNo > Const_MAX_PKG_NO then
   Begin
-   ErrorText:= 'Max packageNo allowed is '+IntToStr(Const_MAX_PKG_NO) ;
+   ErrorText:=
+{TSI:IGNORE ON}
+	'Max packageNo allowed is '
+{TSI:IGNORE OFF}
++IntToStr(Const_MAX_PKG_NO) ;
    Error    := True ;
   End ;
 
@@ -533,7 +537,7 @@ begin
 
   if PackageNumberExists(PkgNo, SupplierCode) then
   Begin
-   ErrorText:= 'Paketnr finns redan. '+ Pkg_Info(PkgNo, Trim(SupplierCode)) ;
+   ErrorText:= siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_4' (* 'Paketnr finns redan. ' *) )+ Pkg_Info(PkgNo, Trim(SupplierCode)) ;
    Error    := True ;
   End
   else
@@ -541,7 +545,11 @@ begin
           PkgNo,
           SupplierCode, Self.Name, Res_UserName
           ) <> ThisUser.UserName+'/'+Self.Name { NO_USER_HAS_THIS_PACKAGE_RESERVED }then begin
-          ErrorText:= 'Package no is reserved by user '+ Res_UserName ;
+          ErrorText:=
+{TSI:IGNORE ON}
+	'Package no is reserved by user '
+{TSI:IGNORE OFF}
++ Res_UserName ;
           Error    := True ;
          End ;
 //  Accept := tAccept ;
@@ -705,13 +713,13 @@ const
   LF = #10;
 begin
  Result:= False ;
- if MessageDlg('Spara paket mot mätpunkt: '+
+ if MessageDlg(siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_6' (* 'Spara paket mot mätpunkt: ' *) )+
  Trim(lcVerk.Text)
  +'/'+Trim(lcMatPunkt.Text)
- +LF+'Ägare:'+ Trim(lcOwner.Text)
- +LF+'Lagerställe: '+Trim(lcLagerStalle.Text)
+ +LF+siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_7' (* 'Ägare:' *) )+ Trim(lcOwner.Text)
+ +LF+siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_8' (* 'Lagerställe: ' *) )+Trim(lcLagerStalle.Text)
  +'/'+ Trim(lcLagerGrupp.Text)
- +LF+'Datum: '+DateTimeToStr(dm_SinglePkg.mtSinglePkgRegDate.AsDateTime) ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ +LF+siLangLinked_fSinglePkgEntry.GetTextOrDefault('IDS_9' (* 'Datum: ' *) )+DateTimeToStr(dm_SinglePkg.mtSinglePkgRegDate.AsDateTime) ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
 
  With dm_SinglePkg do

@@ -115,7 +115,7 @@ procedure TfPigNames.FormCloseQuery(Sender: TObject;
 begin
   CanClose:= True ;
   if DataSaved = False then
-   if MessageDlg('Data är inte sparat, vill du avsluta?',
+   if MessageDlg(siLangLinked_fPigNames.GetTextOrDefault('IDS_0' (* 'Data är inte sparat, vill du avsluta?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     CanClose:= True
     else

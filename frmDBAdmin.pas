@@ -35,7 +35,7 @@ uses
   Classes,
   Controls,
   StdCtrls,
-  Windows;
+  Windows, siComp, siLngLnk;
 
 
 type
@@ -55,6 +55,7 @@ type
     editUserKey: TEdit;
     btnOK: Tbutton;
     btnCancel: Tbutton;
+    siLangLinked1: TsiLangLinked;
     procedure btnOKClick(Sender: TObject);
     procedure RemoveHighlight(Sender: TObject);
   private
@@ -81,7 +82,7 @@ implementation
 uses
   Graphics,
   VidaConst,
-  VidaUtils;
+  VidaUtils, udmLanguage;
 
 
 { TdlgDBAdmin }

@@ -100,7 +100,7 @@ begin
   End ;
  End
  else
- ShowMessage('Välj ett verk') ;
+ ShowMessage(siLangLinked_frmProductionUnit.GetTextOrDefault('IDS_0' (* 'Välj ett verk' *) )) ;
 end;
 
 procedure TfrmProductionUnit.bbRemoveClick(Sender: TObject);

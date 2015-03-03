@@ -301,7 +301,7 @@ begin
  CanClose:= True ;
  if DataSaved = False then
  Begin
-  if MessageDlg('Data är inte sparat, vill du avsluta?',
+  if MessageDlg(siLangLinked_fKilnProps.GetTextOrDefault('IDS_3' (* 'Data är inte sparat, vill du avsluta?' *) ),
   mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    CanClose := True
     else

@@ -752,7 +752,7 @@ end;
 procedure TfkilnHandling.acCancelMoveFromKilnExecute(Sender: TObject);
 Var VagnNo, MoveToLIPNo, NewVagnStatus : Integer ;
 begin
- if MessageDlg('Sista vagnen inmatad till efter tork flyttas tillbaka till i tork(om det finns plats i torken), fortsätta?',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_0' (* 'Sista vagnen inmatad till efter tork flyttas tillbaka till i tork(om det finns plats i torken), fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    With dmInventory do
    Begin
@@ -768,10 +768,18 @@ begin
        FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
       End
         else
-         ShowMessage('KilnChargeNo = ' + inttostr(KilnChargeNo) + ' VagnNo = ' + inttostr(VagnNo) + ' MoveToLIPNo = ' + inttostr(MoveToLIPNo)) ;
+         ShowMessage(
+{TSI:IGNORE ON}
+	'KilnChargeNo = '
+{TSI:IGNORE OFF}
+ + inttostr(KilnChargeNo) + siLangLinked_fkilnHandling.GetTextOrDefault('IDS_2' (* ' VagnNo = ' *) ) + inttostr(VagnNo) +
+{TSI:IGNORE ON}
+	' MoveToLIPNo = '
+{TSI:IGNORE OFF}
+ + inttostr(MoveToLIPNo)) ;
     End
      else
-      ShowMessage('Torken är full, det finns inte plats för mera vagnar.') ;
+      ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_4' (* 'Torken är full, det finns inte plats för mera vagnar.' *) )) ;
    End; //With
   acPkgTypeTableExecute(Sender) ;
  End;
@@ -780,7 +788,7 @@ end;
 procedure TfkilnHandling.acCancelMoveVagnIntoKilnExecute(Sender: TObject);
 Var VagnNo, MoveToLIPNo, NewVagnStatus : Integer ;
 begin
- if MessageDlg('Sista vagnen inmatad till tork flyttas tillbaka till "In till tork", fortsätta?',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_5' (* 'Sista vagnen inmatad till tork flyttas tillbaka till "In till tork", fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    With dmInventory do
    Begin
@@ -796,7 +804,15 @@ begin
      //Om antal vagnar i tork nu är större än vad som ryms i torken så måste en vagn flyttas ut
     End
       else
-       ShowMessage('Problem: KilnChargeNo = ' + inttostr(KilnChargeNo) + ' VagnNo = ' + inttostr(VagnNo) + ' MoveToLIPNo = ' + inttostr(MoveToLIPNo)) ;
+       ShowMessage(
+{TSI:IGNORE ON}
+	'Problem: KilnChargeNo = '
+{TSI:IGNORE OFF}
+ + inttostr(KilnChargeNo) + siLangLinked_fkilnHandling.GetTextOrDefault('IDS_2' (* ' VagnNo = ' *) ) + inttostr(VagnNo) +
+{TSI:IGNORE ON}
+	' MoveToLIPNo = '
+{TSI:IGNORE OFF}
+ + inttostr(MoveToLIPNo)) ;
    End;
   acPkgTypeTableExecute(Sender) ;
  End;
@@ -1002,10 +1018,10 @@ begin
      End;//if..
     End //if..
      else
-      ShowMessage('Endast vagnar "In till tork" kan ändras.') ;
+      ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_10' (* 'Endast vagnar "In till tork" kan ändras.' *) )) ;
    End
     else
-     ShowMessage('Välj en vagn att ändra.') ;
+     ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_11' (* 'Välj en vagn att ändra.' *) )) ;
  End;
 end;
 
@@ -1024,7 +1040,7 @@ begin
    if ReportInProgress then  Exit ;
 
    SelectedVagnNo := -1 ;
-   cxLabelVagn.Caption      := 'Markerad vagn: ' + inttostr(SelectedVagnNo) ;
+   cxLabelVagn.Caption      := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_12' (* 'Markerad vagn: ' *) ) + inttostr(SelectedVagnNo) ;
 
 //   if mtUserProp.State in [dsEdit, dsInsert] then
 //   mtUserProp.Post ;
@@ -1140,7 +1156,7 @@ begin
 
    if AntalStatus_1_Vagnar = -1 then
    Begin
-     ShowMessage('Antal vagnar för vald tork saknas') ;
+     ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_14' (* 'Antal vagnar för vald tork saknas' *) )) ;
      Exit ;
    End;
 
@@ -1160,10 +1176,38 @@ begin
       if (MinVagnNo = 0) OR (cds_VagnarVagnNo.AsInteger < MinVagnNo) then
        MinVagnNo  := cds_VagnarVagnNo.AsInteger ;
       cds_KilnVagnar.SQL.Add(',CAST(Max(CASE WHEN kcr.VagnNo = ' + cds_VagnarVagnNo.AsString + ' THEN Cast(kcr.PackageNo AS Varchar(7))+ '
-      + QuotedStr('- ') + ' + CAST(gr.GradeName AS Varchar(5)) + '
-      + QuotedStr('- ') + ' + Cast(pg.ActualThicknessMM AS Varchar(7))+ '
-      + QuotedStr(' x') + ' + Cast(pg.ActualWidthMM AS Varchar(7))+ ' + QuotedStr(' x')
-      + ' + Cast(ML.MaxLength AS Varchar(7)) ELSE ' + QuotedStr('') + '  END) AS VARCHAR(36)) AS L' + inttostr(VagnNo))  ;
+      + QuotedStr('- ') +
+{TSI:IGNORE ON}
+	' + CAST(gr.GradeName AS Varchar(5)) + '
+{TSI:IGNORE OFF}
+
+      + QuotedStr('- ') +
+{TSI:IGNORE ON}
+	' + Cast(pg.ActualThicknessMM AS Varchar(7))+ '
+{TSI:IGNORE OFF}
+
+      + QuotedStr(
+{TSI:IGNORE ON}
+	' x'
+{TSI:IGNORE OFF}
+) +
+{TSI:IGNORE ON}
+	' + Cast(pg.ActualWidthMM AS Varchar(7))+ '
+{TSI:IGNORE OFF}
+ + QuotedStr(
+{TSI:IGNORE ON}
+	' x'
+{TSI:IGNORE OFF}
+)
+      +
+{TSI:IGNORE ON}
+	' + Cast(ML.MaxLength AS Varchar(7)) ELSE '
+{TSI:IGNORE OFF}
+ + QuotedStr('') +
+{TSI:IGNORE ON}
+	'  END) AS VARCHAR(36)) AS L'
+{TSI:IGNORE OFF}
+ + inttostr(VagnNo))  ;
       cds_Vagnar.Next ;
       VagnNo  := succ(VagnNo) ;
     End;
@@ -1219,7 +1263,11 @@ begin
     while not cds_Vagnar.Eof do
     Begin
       cds_KilnVagnar.SQL.Add(',CAST(Max(CASE WHEN kcr.VagnNo = ' + cds_VagnarVagnNo.AsString + ' THEN Cast(KV.VagnStatus AS char(1)) '
-      + '  END) AS VARCHAR(1)) AS L' + inttostr(VagnNo))  ;
+      +
+{TSI:IGNORE ON}
+	'  END) AS VARCHAR(1)) AS L'
+{TSI:IGNORE OFF}
+ + inttostr(VagnNo))  ;
       cds_Vagnar.Next ;
       VagnNo  := succ(VagnNo) ;
     End;
@@ -1267,7 +1315,11 @@ begin
     while not cds_Vagnar.Eof do
     Begin
       cds_KilnVagnar.SQL.Add(',CAST(Max(CASE WHEN kcr.VagnNo = ' + cds_VagnarVagnNo.AsString + ' THEN Cast(KV.InDate AS char(19)) '
-      + '  END) AS VARCHAR(19)) AS L' + inttostr(VagnNo))  ;
+      +
+{TSI:IGNORE ON}
+	'  END) AS VARCHAR(19)) AS L'
+{TSI:IGNORE OFF}
+ + inttostr(VagnNo))  ;
       cds_Vagnar.Next ;
       VagnNo  := succ(VagnNo) ;
     End;
@@ -1307,7 +1359,11 @@ begin
     while not cds_Vagnar.Eof do
     Begin
       cds_KilnVagnar.SQL.Add(',CAST(Max(CASE WHEN kcr.VagnNo = ' + cds_VagnarVagnNo.AsString + ' THEN Cast(KV.VagnNo AS char(6)) '
-      + '  END) AS VARCHAR(6)) AS L' + inttostr(VagnNo))  ;
+      +
+{TSI:IGNORE ON}
+	'  END) AS VARCHAR(6)) AS L'
+{TSI:IGNORE OFF}
+ + inttostr(VagnNo))  ;
       cds_Vagnar.Next ;
       VagnNo  := succ(VagnNo) ;
     End;
@@ -1359,7 +1415,7 @@ begin
  mtUserPropRegDate.AsDateTime           := Now ;
 // mtUserPropProductGroupNo.AsInteger     := -1 ;
  mtUserPropProductNo.AsInteger          := -1 ;
- mtUserPropProductDescription.AsString  := 'Ingen ändring' ;
+ mtUserPropProductDescription.AsString  := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_25' (* 'Ingen ändring' *) ) ;
  mtUserPropLIPChange.AsInteger          := 0 ;
  mtUserPropVerkNo.AsInteger             := 0 ;
 end;
@@ -1415,7 +1471,7 @@ end;
 procedure TfkilnHandling.acMoveFromKilnExecute(Sender: TObject);
 Var VagnNo, MoveToLIPNo, NewVagnStatus : Integer ;
 begin
- if MessageDlg('En vagn stegas ut ur torken till lager efter tork, fortsätta?',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_26' (* 'En vagn stegas ut ur torken till lager efter tork, fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    With dmInventory do
    Begin
@@ -1429,7 +1485,15 @@ begin
      FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
     End
       else
-       ShowMessage('KilnChargeNo = ' + inttostr(KilnChargeNo) + ' VagnNo = ' + inttostr(VagnNo) + ' MoveToLIPNo = ' + inttostr(MoveToLIPNo)) ;
+       ShowMessage(
+{TSI:IGNORE ON}
+	'KilnChargeNo = '
+{TSI:IGNORE OFF}
+ + inttostr(KilnChargeNo) + siLangLinked_fkilnHandling.GetTextOrDefault('IDS_2' (* ' VagnNo = ' *) ) + inttostr(VagnNo) +
+{TSI:IGNORE ON}
+	' MoveToLIPNo = '
+{TSI:IGNORE OFF}
+ + inttostr(MoveToLIPNo)) ;
    End;
   acPkgTypeTableExecute(Sender) ;
  End;
@@ -1468,7 +1532,7 @@ begin
    cds_KilnVagnar.Filtered  := True ;
    Try
    SelectedVagnNo           := StrToIntDef(Trim(cds_KilnVagnar.FieldByName(Trim(SelectedLength)).AsString),-1) ;
-   cxLabelVagn.Caption      := 'Markerad vagn: ' + inttostr(SelectedVagnNo) ;
+   cxLabelVagn.Caption      := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_12' (* 'Markerad vagn: ' *) ) + inttostr(SelectedVagnNo) ;
    Finally
     cds_KilnVagnar.Filter    := OldFilter ;
    // cds_KilnVagnar.Filtered  := False ;
@@ -1503,7 +1567,7 @@ begin
    cds_KilnVagnar.Filtered  := True ;
    Try
    SelectedVagnNo           := StrToIntDef(Trim(cds_KilnVagnar.FieldByName(Trim(SelectedLength)).AsString),-1) ;
-   cxLabelVagn.Caption      := 'Markerad vagn: ' + inttostr(SelectedVagnNo) ;
+   cxLabelVagn.Caption      := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_12' (* 'Markerad vagn: ' *) ) + inttostr(SelectedVagnNo) ;
    Finally
     cds_KilnVagnar.Filter   := OldFilter ;
    // cds_KilnVagnar.Filtered  := False ;
@@ -1553,7 +1617,15 @@ begin
      End;
     End
       else
-       ShowMessage('Problem: KilnChargeNo = ' + inttostr(KilnChargeNo) + ' VagnNo = ' + inttostr(VagnNo) + ' MoveToLIPNo = ' + inttostr(MoveToLIPNo)) ;
+       ShowMessage(
+{TSI:IGNORE ON}
+	'Problem: KilnChargeNo = '
+{TSI:IGNORE OFF}
+ + inttostr(KilnChargeNo) + siLangLinked_fkilnHandling.GetTextOrDefault('IDS_2' (* ' VagnNo = ' *) ) + inttostr(VagnNo) +
+{TSI:IGNORE ON}
+	' MoveToLIPNo = '
+{TSI:IGNORE OFF}
+ + inttostr(MoveToLIPNo)) ;
    End;
   acPkgTypeTableExecute(Sender) ;
 // End;
@@ -1570,13 +1642,13 @@ procedure TfkilnHandling.cxGrid1DBBandedTableView1V1GetDisplayText(
   var AText: string);
 begin
  if AText = '0' then
-  AText := 'In till Tork'
+  AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_37' (* 'In till Tork' *) )
    else
     if AText = '1' then
-     AText := 'i Tork'
+     AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_38' (* 'i Tork' *) )
       else
        if AText = '2' then
-        AText := 'Efter Tork' ;
+        AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_39' (* 'Efter Tork' *) ) ;
 end;
 
 procedure TfkilnHandling.cxGrid1DBBandedTableView1V1StylesGetContentStyle(

@@ -37,7 +37,7 @@ uses
   Forms,
   Graphics,
   StdCtrls,
-  Windows;
+  Windows, siComp;
 
 
 type
@@ -52,6 +52,7 @@ type
     btnDBSetup: Tbutton;
     btnOK: Tbutton;
     btnCancel: Tbutton;
+    siLang_dlgLogOn: TsiLang;
     procedure btnOKClick(Sender: TObject);
     procedure editUserNameChange(Sender: TObject);
     procedure btnDBSetupClick(Sender: TObject);
@@ -95,7 +96,7 @@ uses
   frmDBAdmin,
   uEncode,
   VidaConst,
-  VidaUtils;
+  VidaUtils, udmLanguage;
 
 
 { TdlgLogOn }

@@ -185,7 +185,7 @@ procedure TfEnterKilnVagn.AddSelectedPkgsToVagn(Sender: TObject) ;
 Begin
  With dmInventory do
  Begin
-  mtSelectedPkgNo.Filter    := 'Markerad = 1' ;
+  mtSelectedPkgNo.Filter    := siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_0' (* 'Markerad = 1' *) ) ;
   mtSelectedPkgNo.Filtered  := True ;
   Try
   mtSelectedPkgNo.First ;
@@ -221,7 +221,7 @@ Begin
    On E: EDatabaseError do
    Begin
     cds_KilnChargeRows.Cancel ;
-    ShowMessage(E.Message + ' :Paketnr finns upptaget i en tork redan.') ;
+    ShowMessage(E.Message + siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_1' (* ' :Paketnr finns upptaget i en tork redan.' *) )) ;
    End;
   End;
  End;
@@ -278,7 +278,7 @@ begin
        NewPkgNo:= StrToIntDef(PackageNo,0) ;
        if NewPkgNo = 0 then
        Begin
-        ShowMessage('Koden kunde inte översättas till ett Paketnr') ;
+        ShowMessage(siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_2' (* 'Koden kunde inte översättas till ett Paketnr' *) )) ;
         Exit ;
        End ;
 
@@ -305,25 +305,25 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ShowMessage('Paketnr ' + IntToStr(NewPkgNo) + ' finns inte i lager ' ) ;
+     ShowMessage(siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) ) + IntToStr(NewPkgNo) + siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_4' (* ' finns inte i lager ' *) ) ) ;
      Error      := True ;
     End
     else
      if Action = eaReserved then
       Begin
-       ShowMessage('Paketnr ' + IntToStr(NewPkgNo) + ' är reserverat av ' + Res_UserName) ;
+       ShowMessage(siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) ) + IntToStr(NewPkgNo) + siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_6' (* ' är reserverat av ' *) ) + Res_UserName) ;
        Error      := True ;
       End
       else
        if Action = eaDuplicate then
         Begin
-         ShowMessage('Paketnr ' + IntToStr(NewPkgNo) +' är redan inmatat') ;
+         ShowMessage(siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_3' (* 'Paketnr ' *) ) + IntToStr(NewPkgNo) +siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_8' (* ' är redan inmatat' *) )) ;
          Error      := True ;
         End ;
     End
      else
       Begin
-       ShowMessage('Paketnr saknas.') ;
+       ShowMessage(siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_9' (* 'Paketnr saknas.' *) )) ;
        Error      := True ;
       End ;
   finally

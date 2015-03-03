@@ -381,7 +381,7 @@ procedure TfInvCreateManyCtrlList.acCollectPackageValuesExecute(
 begin
  With dmInvCtrl do
  Begin
-  if MessageDlg('Vill du generera lagervärden för resultalistor? ' ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_2' (* 'Vill du generera lagervärden för resultalistor? ' *) ) ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    Exec_PackageCost (cds_InvCtrlSetIC_SETNo.AsInteger,cds_InvCtrlSetMaxDatum.AsSQLTimeStamp) ;
  End;
 end;
@@ -391,7 +391,7 @@ begin
    //dbo.vis_CopyToNM3Price
    with dmInvCtrl do
    Begin
-    if MessageDlg('Vill du kopiera kalkylpris till NM3 pris i alla inventeringar? ' ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    if MessageDlg(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_3' (* 'Vill du kopiera kalkylpris till NM3 pris i alla inventeringar? ' *) ) ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
      CopyToNM3Price (cds_InvCtrlSetIC_SETNo.AsInteger) ;
    End;
 end;
@@ -402,18 +402,18 @@ Var Save_Cursor : TCursor;
 begin
  if IsDate(deMaxDatum.Date) = False then
  Begin
-  ShowMessage('Fel maxdatum') ;
+  ShowMessage(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_4' (* 'Fel maxdatum' *) )) ;
   Exit ;
  End ;
 
  if deMaxDatum.Date <= Now then
  Begin
-  ShowMessage('Maxdatum måste vara större än inventeringsdatumet.') ;
+  ShowMessage(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_5' (* 'Maxdatum måste vara större än inventeringsdatumet.' *) )) ;
   Exit ;
  End ;
 
 
- if MessageDlg('Vill du skapa nya inventeringar utifrån lagergrupper i mallen? ' ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_6' (* 'Vill du skapa nya inventeringar utifrån lagergrupper i mallen? ' *) ) ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    Save_Cursor    := Screen.Cursor;
    Screen.Cursor  := crSQLWait;    { Show hourglass cursor }
@@ -518,7 +518,7 @@ Begin
   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
 
 //  if cds_CreateInvsIntVerk.AsInteger = 1 then
-  StatusBar1.SimpleText := 'Skapar inventering för ' + cds_InvenSETLipOwnerName.AsString + ' ' + cds_InvenSETLipLagerstalle.AsString + '/' + cds_InvenSETLipLagergrupp.AsString ;
+  StatusBar1.SimpleText := siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_8' (* 'Skapar inventering för ' *) ) + cds_InvenSETLipOwnerName.AsString + ' ' + cds_InvenSETLipLagerstalle.AsString + '/' + cds_InvenSETLipLagergrupp.AsString ;
   Application.ProcessMessages ;
 
   AddAllLGToInventering ;
@@ -692,7 +692,7 @@ procedure TfInvCreateManyCtrlList.acPrintExecute(Sender: TObject);
 begin
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Inventeringar/lager') ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_9' (* 'Inventeringar/lager' *) )) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(dmInvCtrl.cds_SicHdrDescription.AsString) ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Lagerlista') ;
 //  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
@@ -725,7 +725,7 @@ begin
    Begin
     RecIDx  := grdCreateInvsView.Controller.SelectedRecords[i].RecordIndex ;
     RecID   := grdCreateInvsView.DataController.GetRecordId(RecIdx) ;
-    ADataSet.Locate('InvNr;LIPNo', RecID,[]) ;
+    ADataSet.Locate(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_10' (* 'InvNr;LIPNo' *) ), RecID,[]) ;
 
     dmsSystem.mtMarkedCodes.Insert ;
     dmsSystem.mtMarkedCodesPkgCodePPNo.AsInteger  := ADataSet.FieldByName('InvNr').AsInteger ;
@@ -799,7 +799,7 @@ begin
 
   Try
   ExportGridToExcel(FileName, grdCreateInvs, False, False, True,'xls');
-  ShowMessage('Tabell exporterad till Excel fil '+FileName);
+  ShowMessage(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_16' (* 'Tabell exporterad till Excel fil ' *) )+FileName);
   Except
    On E: Exception do
    Begin
@@ -860,7 +860,7 @@ begin
    Begin
     RecIDx  := grdCreateInvsView.Controller.SelectedRecords[i].RecordIndex ;
     RecID   := grdCreateInvsView.DataController.GetRecordId(RecIdx) ;
-    ADataSet.Locate('InvNr;LIPNo', RecID,[]) ;
+    ADataSet.Locate(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_10' (* 'InvNr;LIPNo' *) ), RecID,[]) ;
 
     //Uppdatera medelpris
     dmInvCtrl.CalcInvAvgPrice(ADataSet.FieldByName('InvNr').AsInteger, ADataSet.FieldByName('LIPNo').AsInteger) ;
@@ -926,11 +926,11 @@ begin
    Begin
     RecIDx  := grdCreateInvsView.Controller.SelectedRecords[i].RecordIndex ;
     RecID   := grdCreateInvsView.DataController.GetRecordId(RecIdx) ;
-    ADataSet.Locate('InvNr;LIPNo', RecID,[]) ;
-    if ADataSet.FieldByName('Inventera').AsInteger > 1 then
+    ADataSet.Locate(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_10' (* 'InvNr;LIPNo' *) ), RecID,[]) ;
+    if ADataSet.FieldByName(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_21' (* 'Inventera' *) )).AsInteger > 1 then
     Begin
      FDm_SelectedRows.Insert ;
-     FDm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName('Inventera').AsInteger ;
+     FDm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_21' (* 'Inventera' *) )).AsInteger ;
      FDm_SelectedRowsLIPNo.AsInteger            := ADataSet.FieldByName('LIPNo').AsInteger ;
      FDm_SelectedRowsStatus.AsInteger           := ADataSet.FieldByName('Status').AsInteger ;
      FDm_SelectedRows.Post ;
@@ -963,11 +963,11 @@ begin
    Begin
     RecIDx  := grdCreateInvsView.Controller.SelectedRecords[i].RecordIndex ;
     RecID   := grdCreateInvsView.DataController.GetRecordId(RecIdx) ;
-    ADataSet.Locate('InvNr;LIPNo', RecID,[]) ;
-    if ADataSet.FieldByName('Inventera').AsInteger = 0 then
+    ADataSet.Locate(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_10' (* 'InvNr;LIPNo' *) ), RecID,[]) ;
+    if ADataSet.FieldByName(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_21' (* 'Inventera' *) )).AsInteger = 0 then
     Begin
      FDm_SelectedRows.Insert ;
-     FDm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName('Inventera').AsInteger ;
+     FDm_SelectedRowsInventeringsNr.AsInteger   := ADataSet.FieldByName(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_21' (* 'Inventera' *) )).AsInteger ;
      FDm_SelectedRowsLIPNo.AsInteger            := ADataSet.FieldByName('LIPNo').AsInteger ;
      FDm_SelectedRows.Post ;
     End ;
@@ -1052,7 +1052,7 @@ begin
  FDm_SelectedRows.First ;
  While not FDm_SelectedRows.Eof do
  Begin
-  if cds_CreateInvs.Locate('InvNr;LIPNo', VarArrayof([FDm_SelectedRowsInventeringsNr.AsInteger, FDm_SelectedRowsLIPNo.AsInteger]), []) then
+  if cds_CreateInvs.Locate(siLangLinked_fInvCreateManyCtrlList.GetTextOrDefault('IDS_10' (* 'InvNr;LIPNo' *) ), VarArrayof([FDm_SelectedRowsInventeringsNr.AsInteger, FDm_SelectedRowsLIPNo.AsInteger]), []) then
   Begin
    cds_CreateInvs.Edit ;
    cds_CreateInvsInventera.AsInteger := 1 ;

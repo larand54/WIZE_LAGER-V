@@ -980,14 +980,14 @@ procedure TfInvCtrl.acNewExecute(Sender: TObject);
 const
   LF = #10;
 begin
- if MessageDlg('Vill du skapa en ny inventering? ' ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_0' (* 'Vill du skapa en ny inventering? ' *) ) ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
  With dmInvCtrl do
  Begin
 //  if thisuser.UserID = 8 then showmessage('cds_InvCtrlGrp.Insert ;');
   cds_InvCtrlGrp.Insert ;
 
-  if MessageDlg('Är det en inventering som kommer att utföras med handdator? ' ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_1' (* 'Är det en inventering som kommer att utföras med handdator? ' *) ) ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    cds_InvCtrlGrpTypeOfInvCount.AsInteger       := 0
     else
      cds_InvCtrlGrpTypeOfInvCount.AsInteger       := 1 ;
@@ -1080,7 +1080,7 @@ begin
  Begin
    if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
@@ -1092,7 +1092,7 @@ begin
 
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
 
@@ -1131,7 +1131,7 @@ var fInvCtrlList  : TfInvCtrlList;
 begin
  if DataInteSparad = True then
  Begin
-  ShowMessage('Spara eller ångra ändringar först.') ;
+  ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_4' (* 'Spara eller ångra ändringar först.' *) )) ;
   Exit ;
  End ;
 
@@ -1309,7 +1309,7 @@ begin
      cds_GetAvrBefore.Refresh ;
      GetCurrentSortordernos ;
      SetInventeringReadOnly ;
-     Caption  := 'LAGERINVENTERING nr ' + IntToStr(InvNr) ;
+     Caption  := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_6' (* 'LAGERINVENTERING nr ' *) ) + IntToStr(InvNr) ;
     finally
      Screen.Cursor := Save_Cursor;  { Always restore to normal }
     end;
@@ -1361,20 +1361,20 @@ begin
   dmInvCtrl.cds_InvCtrlGrp.ApplyUpdates(0) ;
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
 //  if  dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   if Now > dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
 
  //Skapa kontrollistor
- if MessageDlg('Vill du skapa kontrollistor? (tidigare gjorda kontrollistor makuleras)'
- +LF+LF+' Har du valt rätt METOD.'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_9' (* 'Vill du skapa kontrollistor? (tidigare gjorda kontrollistor makuleras)' *) )
+ +LF+LF+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_10' (* ' Har du valt rätt METOD.' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   Application.ProcessMessages ;
@@ -1412,12 +1412,12 @@ procedure TfInvCtrl.acDeleteExecute(Sender: TObject);
 const
   LF = #10;
 begin
- if MessageDlg('Vill du ta bort inventeringen ? '+LF+'Alla ändringar gjorda i lagren kvarstår.'
- +LF+'Obs, du kan inte ångra denna operation!'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_11' (* 'Vill du ta bort inventeringen ? ' *) )+LF+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_12' (* 'Alla ändringar gjorda i lagren kvarstår.' *) )
+ +LF+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_13' (* 'Obs, du kan inte ångra denna operation!' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   Application.ProcessMessages ;
-  if MessageDlg('Är du säker?',    mtConfirmation, [mbYes, mbNo], 0) = mrNo then
+  if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_14' (* 'Är du säker?' *) ),    mtConfirmation, [mbYes, mbNo], 0) = mrNo then
   Exit ;
  With dmInvCtrl do
  Begin
@@ -1481,7 +1481,7 @@ begin
 // if dmInvCtrl.cds_InvCtrlGrpStatus.AsInteger < 3 then
  Begin
   if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InvListLGPktNr.RPT')
+   FormCRViewReport.CreateCo(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_15' (* 'InvListLGPktNr.RPT' *) ))
     else
       FormCRViewReport.CreateCo('InventeringPerPktTyp.RPT') ;
  End ;
@@ -1516,18 +1516,18 @@ begin
  memo3.Lines.Clear ;
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
 
  //Skapa lager listor
- if MessageDlg('Vill du generera resultatlistan?'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_19' (* 'Vill du generera resultatlistan?' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   Application.ProcessMessages ;
@@ -1597,17 +1597,17 @@ begin
   Screen.Cursor := crSQLWait;
  }
 
-  Memo2.Lines.Add('Kör DelCreditedPkgs') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_27' (* 'Kör DelCreditedPkgs' *) )) ;
   //DelCreditedPkgs(cds_InvCtrlGrpIC_grpno.AsInteger) ;
 
   Screen.Cursor := crSQLWait;
 
-  Memo2.Lines.Add('Generera inventeringslistor') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_28' (* 'Generera inventeringslistor' *) )) ;
   GenerateInventeringsListan ;
 //   SparaLagerListor_Local ;
   Memo2.Lines.Add(DateTimeToStr(now)) ;
 
-  Memo2.Lines.Add('Klart') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_29' (* 'Klart' *) )) ;
   acRefreshResultListExecute(Sender) ;
   End ;//if...
   Except
@@ -1692,10 +1692,10 @@ begin
    End ;
   End
   else
-   ShowMessage('Ange antal paket') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_30' (* 'Ange antal paket' *) )) ;
   End
   else
-   ShowMessage('Ange en pakettypid') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_31' (* 'Ange en pakettypid' *) )) ;
  End ;
 end;
 
@@ -1706,10 +1706,10 @@ Var Save_Cursor : TCursor;
     PKT_DESC    : AnsiString ;
 begin
  if dmsSystem.Get_PkgTypeInfo (StrToInt(Trim(ePkgNo.Text)), PKT_DESC) then
- if MessageDlg('Vill du påregistrera '+eNoOfPkgs.Text+' paket?'+LF
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_32' (* 'Vill du påregistrera ' *) )+eNoOfPkgs.Text+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_33' (* ' paket?' *) )+LF
  +PKT_DESC+LF
- +' till lagergrupp: '+Trim(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString)+LF
- +' Datum: '+DatetimeToStr(SqLTimeStampToDateTime(dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp))
+ +siLangLinked_fInvCtrl.GetTextOrDefault('IDS_34' (* ' till lagergrupp: ' *) )+Trim(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString)+LF
+ +siLangLinked_fInvCtrl.GetTextOrDefault('IDS_35' (* ' Datum: ' *) )+DatetimeToStr(SqLTimeStampToDateTime(dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp))
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
  Begin
@@ -1744,11 +1744,11 @@ begin
 
   except
    dmsConnector.Rollback ;
-   ShowMessage('Påregistrering misslyckades') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_36' (* 'Påregistrering misslyckades' *) )) ;
   end;
  End  //if
   else
-   ShowMessage('Påregistrering misslyckades, kolla att valt VERK har en paketnr serie.') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_37' (* 'Påregistrering misslyckades, kolla att valt VERK har en paketnr serie.' *) )) ;
  End ; //with
  Finally
   FreeAndNil(dmPkgs) ;
@@ -1764,10 +1764,10 @@ Var  PKT_DESC : AnsiString ;
 begin                                                     
 //Avregistrera ett antal paketnr (äldsta) från valt lager.
  if dmsSystem.Get_PkgTypeInfo (StrToInt(Trim(ePkgNo.Text)), PKT_DESC) then
- if MessageDlg('Vill du avregistrera '+eNoOfPkgs.Text+' paket?'+LF
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_38' (* 'Vill du avregistrera ' *) )+eNoOfPkgs.Text+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_33' (* ' paket?' *) )+LF
  +PKT_DESC+LF
- +' från lagergrupp: '+Trim(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString)+LF
- +' Datum: '+DatetimeToStr(SqLTimeStampToDateTime(dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp))
+ +siLangLinked_fInvCtrl.GetTextOrDefault('IDS_40' (* ' från lagergrupp: ' *) )+Trim(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString)+LF
+ +siLangLinked_fInvCtrl.GetTextOrDefault('IDS_35' (* ' Datum: ' *) )+DatetimeToStr(SqLTimeStampToDateTime(dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp))
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
 
 
@@ -1789,7 +1789,7 @@ begin
     if dmPkgs.RemovePkgsFromInventering (dmInvCtrl.cds_InvCtrlMetodOwnerNo.AsInteger,
     5, //InvDiff code
     SqLTimeStampToDateTime(dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) = False then
-    ShowMessage('Misslyckades med att avregistrera paket')
+    ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_42' (* 'Misslyckades med att avregistrera paket' *) ))
      else
       dmInvCtrl.SetNoOfPkgs_PKTTYP (
       dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString,
@@ -1801,7 +1801,7 @@ begin
     dmsConnector.Commit ;
    except
     dmsConnector.Rollback ;
-    ShowMessage('Avregistreringen misslyckades') ;
+    ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_43' (* 'Avregistreringen misslyckades' *) )) ;
    end;
  End ;
   dmPkgs.mtLoadPackages.Active:= False ;
@@ -1864,7 +1864,7 @@ procedure TfInvCtrl.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
 
  if DataInteSparad = True then
- if MessageDlg('Vill du spara inventeringen innan du stänger? '
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_44' (* 'Vill du spara inventeringen innan du stänger? ' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   Application.ProcessMessages ;
@@ -1973,7 +1973,7 @@ begin
         -1 : Begin
 //              ErrorText:= 'Paketnr '+NewValue+' finns inte' ;
 //              Error:= True ;
-              ErrorText:='Paketnr ' + inttostr(PkgNo)+'/'+PkgSupplierCode+' finns ej i kontrollistan.' ;
+              ErrorText:=siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ) + inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_46' (* ' finns ej i kontrollistan.' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
              End ;
@@ -2034,13 +2034,13 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ErrorText:= 'Finns inga paket med paketnr ' + NewValue + ' inom inventeringen som är aktiva, det kanske är redan är avregistrerat, eller avregistrerat i produktionen eller utlastat efter att inventeringen skapades.' ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_47' (* 'Finns inga paket med paketnr ' *) ) + NewValue + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_48' (* ' inom inventeringen som är aktiva, det kanske är redan är avregistrerat, eller avregistrerat i produktionen eller utlastat efter att inventeringen skapades.' *) ) ;
      Error:= True ;
     End
     else
    if Action = eaReserved then
     Begin
-     ErrorText:= 'Paketnr '+NewValue+' är reserverat av användare '+Res_UserName ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+NewValue+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) )+Res_UserName ;
      Error:= True ;
     End ;
   finally
@@ -2627,18 +2627,18 @@ begin
  memo3.Lines.Clear ;
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
 
  //Skapa lager listor
- if MessageDlg('Vill du generera en lista av ej aktiverade paket plus händelser under inventeringstiden?'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_63' (* 'Vill du generera en lista av ej aktiverade paket plus händelser under inventeringstiden?' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   Application.ProcessMessages ;
@@ -2721,17 +2721,17 @@ begin
   Screen.Cursor := crSQLWait;
  }
 
-  Memo2.Lines.Add('Kör DelCreditedPkgs') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_27' (* 'Kör DelCreditedPkgs' *) )) ;
   DelCreditedPkgs(cds_InvCtrlGrpIC_grpno.AsInteger) ;
 
   Screen.Cursor := crSQLWait;
 
-  Memo2.Lines.Add('Generera inventeringslistor') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_28' (* 'Generera inventeringslistor' *) )) ;
   Generate_List_from_CtrlList_pkgs_that_are_not_active ;
 //   SparaLagerListor_Local ;
   Memo2.Lines.Add(DateTimeToStr(now)) ;
 
-  Memo2.Lines.Add('Klart') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_29' (* 'Klart' *) )) ;
   acRefreshResultListExecute(Sender) ;
   End ;//if...
   Except
@@ -2938,7 +2938,7 @@ begin
   Begin
    cds_UtLevAfterMaxDatum.Active:= False ;
    cds_UtLevAfterMaxdatum.ParamByName('IC_GrpNo').AsInteger       := cds_InvCtrlGrpIC_grpno.AsInteger ;
-   cds_UtLevAfterMaxdatum.ParamByName('SUPPLIERNO').AsInteger     := cds_InvCtrlGrpOwnerNo.AsInteger ;
+   cds_UtLevAfterMaxdatum.ParamByName(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_75' (* 'SUPPLIERNO' *) )).AsInteger     := cds_InvCtrlGrpOwnerNo.AsInteger ;
    cds_UtLevAfterMaxdatum.ParamByName('MAXDATUM').AsSQLTimeStamp  := cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp ;
    cds_UtLevAfterMaxDatum.Active:= True ;
   End ;
@@ -3000,7 +3000,7 @@ begin
  Begin
   if cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange maxdatum') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_77' (* 'Ange maxdatum' *) )) ;
    Exit ;
   End ;
   fSinglePkgEntry   := TfSinglePkgEntry.Create(nil);
@@ -3046,10 +3046,10 @@ begin
  Begin
   dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Avregistrerade paket') ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_78' (* 'Avregistrerade paket' *) )) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link1.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link1.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link1.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link1.OptionsOnEveryPage.Footers   := False ;
@@ -3065,10 +3065,10 @@ begin
  Begin
   dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add('Påregistrerade paket') ;
-  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_82' (* 'Påregistrerade paket' *) )) ;
+  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link2.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link2.OptionsOnEveryPage.Footers   := False ;
@@ -3084,19 +3084,19 @@ Var FormCRViewReport: TFormCRViewReport ;
 begin
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
 
  if dmInvCtrl.cds_InvCtrlGrpPriceListNo.IsNull then
  Begin
-  ShowMessage('Välj en prislista!') ;
+  ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_88' (* 'Välj en prislista!' *) )) ;
   Exit ;
  End ;
  acSaveExecute(Sender) ; 
@@ -3187,10 +3187,10 @@ begin
  Begin
   dxComponentPrinter1Link3.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add('Inlevererade paket') ;
-  dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_90' (* 'Inlevererade paket' *) )) ;
+  dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link3.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link3.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link3.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link3.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link3.OptionsOnEveryPage.Footers   := False ;
@@ -3206,10 +3206,10 @@ Begin
  Begin
   dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Clear ;
   dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add('Utlevererade paket efter maxdatum') ;
-  dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_94' (* 'Utlevererade paket efter maxdatum' *) )) ;
+  dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link13.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link13.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link13.OptionsOnEveryPage.Footers   := False ;
@@ -3225,10 +3225,10 @@ begin
  Begin
   dxComponentPrinter1Link4.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add('Utlevererade paket') ;
-  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_98' (* 'Utlevererade paket' *) )) ;
+  dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link4.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link4.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link4.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link4.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link4.OptionsOnEveryPage.Footers   := False ;
@@ -3244,10 +3244,10 @@ begin
  Begin
   dxComponentPrinter1Link5.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add('Producerade paket') ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_102' (* 'Producerade paket' *) )) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link5.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link5.OptionsOnEveryPage.Footers   := False ;
@@ -3325,13 +3325,13 @@ begin
        AskingStatus := CheckIfPkgExistInKontrollistAndInInventory(cds_InvCtrlGrpIC_grpno.AsInteger, PkgNo, PkgSupplierCode) ;
        Case AskingStatus of
         -1 : Begin
-              ErrorText:= 'Paketnr '+inttostr(PkgNo)+'/'+PkgSupplierCode+' finns ej i kontrollistan.' ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_46' (* ' finns ej i kontrollistan.' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
               Error:= True ;
              End ;
         0 : Begin
-              ErrorText:= 'Paketnr '+inttostr(PkgNo)+'/'+PkgSupplierCode+' är Ej aktivt.' ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_109' (* ' är Ej aktivt.' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
               Error:= True ;
@@ -3390,7 +3390,7 @@ begin
     else
    if Action = eaReserved then
     Begin
-     ErrorText:= 'Paketnr '+NewValue+' är reserverat av användare '+Res_UserName ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+NewValue+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) )+Res_UserName ;
      Error:= True ;
     End ;
   finally
@@ -3407,7 +3407,7 @@ begin
  Begin
   if cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange maxdatum') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_77' (* 'Ange maxdatum' *) )) ;
    Exit ;
   End ;
 //  dm_SinglePkg  := Tdm_SinglePkg.Create(Nil) ;
@@ -3468,10 +3468,10 @@ begin
  Begin
   dxComponentPrinter1Link6.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link6.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link6.PrinterPage.PageHeader.CenterTitle.Add('Ändrade paket') ;
-  dxComponentPrinter1Link6.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link6.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_113' (* 'Ändrade paket' *) )) ;
+  dxComponentPrinter1Link6.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link6.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link6.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link6.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link6.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link6.OptionsOnEveryPage.Footers   := False ;
@@ -3487,10 +3487,10 @@ begin
  Begin
   dxComponentPrinter1Link7.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link7.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link7.PrinterPage.PageHeader.CenterTitle.Add('Avregistrerade i produktion') ;
-  dxComponentPrinter1Link7.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link7.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_117' (* 'Avregistrerade i produktion' *) )) ;
+  dxComponentPrinter1Link7.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link7.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link7.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link7.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link7.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link7.OptionsOnEveryPage.Footers   := False ;
@@ -3527,7 +3527,7 @@ end;
 procedure TfInvCtrl.acClearInvCountFromExtDataExecute(Sender: TObject);
 var Save_Cursor : TCursor;
 begin
- if MessageDlg('Vill du rensa inventeringen från data som är inläst från Handdator buffert?'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_121' (* 'Vill du rensa inventeringen från data som är inläst från Handdator buffert?' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  //Läs in extern data från handdator
  With dmInvCtrl do
@@ -3612,7 +3612,7 @@ var LIPs, STATUSs     : String ;
 begin
  LIPs     := GetMarkedLIPs ;
  STATUSs  := '1' ;
- PrintInvCtrlReportNotActiveWithEvents(Sender, LIPs, STATUSs, 'InventeringPerPktNr_NoSpecies_NotActive.rpt') ;
+ PrintInvCtrlReportNotActiveWithEvents(Sender, LIPs, STATUSs, siLangLinked_fInvCtrl.GetTextOrDefault('IDS_124' (* 'InventeringPerPktNr_NoSpecies_NotActive.rpt' *) )) ;
 end;
 
 procedure TfInvCtrl.acPrintKontrollistaNOTACTIVE_InklPerTSExecute(Sender: TObject);
@@ -3807,18 +3807,18 @@ var
 begin
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
   
  //Skapa lager listor
- if MessageDlg('Vill du skapa inventeringslistan utan händelser som avreg i production, utleveranser, inleveranser och producerat?'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_134' (* 'Vill du skapa inventeringslistan utan händelser som avreg i production, utleveranser, inleveranser och producerat?' *) )
  ,mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
  Application.ProcessMessages ;
@@ -3865,12 +3865,12 @@ begin
   Memo2.Lines.Add(DateTimeToStr(now)) ; *)
 
 
-  Memo2.Lines.Add('Generera inventeringslistor utan händelser') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_136' (* 'Generera inventeringslistor utan händelser' *) )) ;
   GenerateInventeringsListan_II ;
 //   SparaLagerListor_Local ;
 
   Memo2.Lines.Add(DateTimeToStr(now)) ;
-  Memo2.Lines.Add('Klart') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_29' (* 'Klart' *) )) ;
 
   End ;//if...
   Except
@@ -3906,7 +3906,7 @@ end;
 
 procedure TfInvCtrl.acConfirmInventeringExecute(Sender: TObject);
 begin
- if MessageDlg('Vill du godkänna inventeringen? '
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_138' (* 'Vill du godkänna inventeringen? ' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmInvCtrl do
  Begin
@@ -4032,25 +4032,25 @@ Var Save_Cursor : TCursor;
 begin
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage('Ange Maxdatum!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
    Exit ;
   End ;
 
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   Begin
-   ShowMessage('Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
    Exit ;
   End ;
 
  if dmInvCtrl.cds_InvCtrlGrpPriceListNo.IsNull then
  Begin
-  ShowMessage('Välj en prislista!') ;
+  ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_88' (* 'Välj en prislista!' *) )) ;
   Exit ;
  End ;
 
  acSaveExecute(Sender) ;
  
- if MessageDlg('Vill du skapa sammanställningen?'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_142' (* 'Vill du skapa sammanställningen?' *) )
  ,mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
  Application.ProcessMessages ;
@@ -4092,10 +4092,10 @@ begin
 //    PaRegistreraPaketMetod_PktTYP(Sender) ;
   End
   else
-   ShowMessage('Ange antal paket') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_30' (* 'Ange antal paket' *) )) ;
   End
   else
-   ShowMessage('Ange en pakettypid') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_31' (* 'Ange en pakettypid' *) )) ;
  End ;
 end;
 
@@ -4269,7 +4269,7 @@ begin
   cds_InvCtrl_Pkgs.DisableControls ;
   fPickPkgNo:= TfPickPkgNo.Create(nil);
   try
-   fPickPkgNo.Caption               := 'Ange paket att avregistrera' ;
+   fPickPkgNo.Caption               := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_146' (* 'Ange paket att avregistrera' *) ) ;
    dmInvCtrl.InventoryPkgs          := True ;
    fPickPkgNo.LIPNo                 := cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger ;
    fPickPkgNo.PIPNo                 := cds_InvCtrlMetodPIPNo.AsInteger ;
@@ -4308,16 +4308,16 @@ begin
        AskingStatus := CheckIfPkgExist(cds_InvCtrlGrpIC_grpno.AsInteger, mtSelectedPkgNoPAKETNR.AsInteger, mtSelectedPkgNoLEVKOD.AsString) ;
        Case AskingStatus of
         -1 : Begin
-              ShowMessage('Paketet finns i kontrollistan') ;
+              ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_148' (* 'Paketet finns i kontrollistan' *) )) ;
               Action := eaREJECT ;
              End ;
         -2 : Begin
-              ShowMessage('Paketet är aktivt '+ dmsSystem.Pkg_Info(mtSelectedPkgNoPAKETNR.AsInteger, Trim(mtSelectedPkgNoLEVKOD.AsString))) ;
+              ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_149' (* 'Paketet är aktivt ' *) )+ dmsSystem.Pkg_Info(mtSelectedPkgNoPAKETNR.AsInteger, Trim(mtSelectedPkgNoLEVKOD.AsString))) ;
               Action := eaREJECT ;
              End ;
 
         -3 : Begin
-              ShowMessage('Paketnr '+inttostr(mtSelectedPkgNoPAKETNR.AsInteger)+'/'+mtSelectedPkgNoLEVKOD.AsString+' finns ej') ;
+              ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(mtSelectedPkgNoPAKETNR.AsInteger)+'/'+mtSelectedPkgNoLEVKOD.AsString+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_151' (* ' finns ej' *) )) ;
               Action := eaREJECT ;
              End ;
 
@@ -4368,16 +4368,16 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ShowMessage('Paketnr '+mtSelectedPkgNoPAKETNR.AsString+' finns inte längre') ;
+     ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+mtSelectedPkgNoPAKETNR.AsString+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_153' (* ' finns inte längre' *) )) ;
     End
     else
      if Action = eaReserved then
       Begin
-       ShowMessage('Paketnr '+mtSelectedPkgNoPAKETNR.AsString+' är reserverat av användare '+Res_UserName) ;
+       ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+mtSelectedPkgNoPAKETNR.AsString+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) )+Res_UserName) ;
       End
         else
          if Action = eaABANDON then
-          ShowMessage('Paketet finns inte i avregistreringsloggen och kan därför inte påregistreras.');
+          ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_156' (* 'Paketet finns inte i avregistreringsloggen och kan därför inte påregistreras.' *) ));
 
    mtSelectedPkgNo.Prior ;
   End ;//While not mtSelectedPkgNo.Bof do
@@ -4438,12 +4438,12 @@ begin
      else
      if Action = eaREJECT then
       Begin
-       ShowMessage('Paketnr '+mtSelectedPkgNoPAKETNR.AsString+' finns inte längre') ;
+       ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+mtSelectedPkgNoPAKETNR.AsString+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_153' (* ' finns inte längre' *) )) ;
       End
        else
         if Action = eaReserved then
         Begin
-         ShowMessage('Paketnr '+mtSelectedPkgNoPAKETNR.AsString+' är reserverat av användare '+Res_UserName) ;
+         ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+mtSelectedPkgNoPAKETNR.AsString+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) )+Res_UserName) ;
         End ;
    mtSelectedPkgNo.Prior ;
   End ;//While
@@ -4509,10 +4509,10 @@ Begin
  Begin
   dxComponentPrinter1Link8.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link8.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link8.PrinterPage.PageHeader.CenterTitle.Add('Avregistrerade före inventeringsdatum (och med på kontrollistan)') ;
-  dxComponentPrinter1Link8.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link8.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_163' (* 'Avregistrerade före inventeringsdatum (och med på kontrollistan)' *) )) ;
+  dxComponentPrinter1Link8.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link8.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link8.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link8.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link8.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link8.OptionsOnEveryPage.Footers   := False ;
@@ -4595,10 +4595,10 @@ begin
  Begin
   dxComponentPrinter1Link9.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link9.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link9.PrinterPage.PageHeader.CenterTitle.Add('Paket producerade före inventeringsdatum (ej med på kontrollistan)') ;
-  dxComponentPrinter1Link9.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link9.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_168' (* 'Paket producerade före inventeringsdatum (ej med på kontrollistan)' *) )) ;
+  dxComponentPrinter1Link9.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link9.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link9.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link9.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link9.PrinterPage.Orientation      := poLandscape ;
   dxComponentPrinter1Link9.OptionsOnEveryPage.Footers   := False ;
@@ -4735,7 +4735,7 @@ begin
   cds_InvCtrl_Pkgs.DisableControls ;
   fPickPkgNo:= TfPickPkgNo.Create(nil);
   try
-   fPickPkgNo.Caption               := 'Plocka paket att påregistrera' ;
+   fPickPkgNo.Caption               := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_173' (* 'Plocka paket att påregistrera' *) ) ;
    dmInvCtrl.InventoryPkgs          := False ;
    fPickPkgNo.LIPNo                 := 0 ;//cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger ;
    fPickPkgNo.PIPNo                 := cds_InvCtrlMetodPIPNo.AsInteger ;
@@ -4883,7 +4883,7 @@ end;
 procedure TfInvCtrl.acReadResultFromMobileDevicesExecute(Sender: TObject);
 var Save_Cursor : TCursor;
 begin
- if MessageDlg('Vill du hämta inventeringsdata registrerat med handdator enheten?'
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_189' (* 'Vill du hämta inventeringsdata registrerat med handdator enheten?' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  //Läs in extern data från handdator
  With dmInvCtrl do
@@ -4984,10 +4984,10 @@ begin
  Begin
   dxComponentPrinter1Link10.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link10.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link10.PrinterPage.PageHeader.CenterTitle.Add('Kontrollista') ;
-  dxComponentPrinter1Link10.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link10.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_192' (* 'Kontrollista' *) )) ;
+  dxComponentPrinter1Link10.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link10.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link10.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link10.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link10.PrinterPage.DMPaper         := DMPAPER_A4 ;
   dxComponentPrinter1Link10.PrinterPage.Orientation     := poLandscape ;
@@ -5012,7 +5012,7 @@ var
 
 begin
 
- aColumn :=(Sender as TcxGridDBTableView).GetColumnByFieldName('AntalPaketILager');
+ aColumn :=(Sender as TcxGridDBTableView).GetColumnByFieldName(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_196' (* 'AntalPaketILager' *) ));
  if (ARecord.Values[aColumn.Index] <> null) and (AItem <> nil) then
  Begin
   aValue := ARecord.Values[aColumn.Index];
@@ -5106,11 +5106,11 @@ begin
    if Length(S) > 0 then
     ShowMessage(S)
     else
-    ShowMessage('Finns ej i inventeringen.') ;
+    ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_197' (* 'Finns ej i inventeringen.' *) )) ;
   End ;
  End
   else
-   ShowMessage('Paketnr ' + teSearchPackageNo.text + ' innehåller otillåtna tecken') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ) + teSearchPackageNo.text + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_199' (* ' innehåller otillåtna tecken' *) )) ;
  End ;
 end;
 
@@ -5131,11 +5131,11 @@ begin
    if Length(S) > 0 then
     ShowMessage(S)
     else
-    ShowMessage('Finns ej i inventeringen.') ;
+    ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_197' (* 'Finns ej i inventeringen.' *) )) ;
   End ;
  End
   else
-   ShowMessage('Paketnr ' + teSearchPackageNo.text + ' innehåller otillåtna tecken') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ) + teSearchPackageNo.text + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_199' (* ' innehåller otillåtna tecken' *) )) ;
  End ;
 end;
 
@@ -5183,10 +5183,10 @@ begin
  Begin
   dxComponentPrinter1Link11.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link11.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link11.PrinterPage.PageHeader.CenterTitle.Add('Resultatlista') ;
-  dxComponentPrinter1Link11.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link11.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_204' (* 'Resultatlista' *) )) ;
+  dxComponentPrinter1Link11.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link11.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link11.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link11.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link11.PrinterPage.DMPaper         := DMPAPER_A4 ;
   dxComponentPrinter1Link11.PrinterPage.Orientation     := poLandscape ;
@@ -5255,14 +5255,14 @@ begin
        AskingStatus := CheckIfPkgExistInKontrollistAndInInventory(cds_InvCtrlGrpIC_grpno.AsInteger, PkgNo, PkgSupplierCode) ;
        Case AskingStatus of
         -1 : Begin
-              ErrorText:= 'Paketet finns i kontrollistan' ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_148' (* 'Paketet finns i kontrollistan' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
               Error:= True ;
              End ;
 
         -2 : Begin
-              ErrorText:= 'Paketet är aktivt '+ dmsSystem.Pkg_Info(PkgNo, Trim(PkgSupplierCode)) ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_149' (* 'Paketet är aktivt ' *) )+ dmsSystem.Pkg_Info(PkgNo, Trim(PkgSupplierCode)) ;
 //              ErrorText:= 'Paketnr '+inttostr(PkgNo)+'/'+PkgSupplierCode+' är redan aktivt.' ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
@@ -5270,9 +5270,9 @@ begin
              End ;
 
         -3 : Begin
-              ErrorText:= 'Paketnr '+inttostr(PkgNo)+'/'+PkgSupplierCode+' finns ej' ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_151' (* ' finns ej' *) ) ;
                  //(Length(PkgSupplierCode) > 0) and
-              if (MessageDlg('Det finns inga paket tilgängliga med paketnr ' + inttostr(PkgNo) + ' vill du skapa ett nytt paket? ', mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
+              if (MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_212' (* 'Det finns inga paket tilgängliga med paketnr ' *) ) + inttostr(PkgNo) + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_213' (* ' vill du skapa ett nytt paket? ' *) ), mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
               Begin
                PkgSupplierCode:= CreateNewPkg(PkgNo);
                AskingStatus2 :=  CheckIfPkgExist(cds_InvCtrlGrpIC_grpno.AsInteger, PkgNo, PkgSupplierCode) ;
@@ -5298,7 +5298,7 @@ begin
              End ;
 
         1  : Begin
-              ShowMessage('Paketnr ');
+              ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ));
               HelpStringText:= CheckIfPkgExistInHLP(cds_InvCtrlGrpIC_grpno.AsInteger, PkgNo, PkgSupplierCode) ;
               if Length(HelpStringText) > 0 then
               Begin
@@ -5371,13 +5371,13 @@ begin
     else
    if Action = eaReserved then
     Begin
-     ErrorText:= 'Paketnr '+NewValue+' är reserverat av användare '+Res_UserName ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+NewValue+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) )+Res_UserName ;
      Error:= True ;
     End
      else
       if Action = eaABANDON then
        Begin
-        ErrorText:= 'Paketet finns inte i avregistreringsloggen och kan därför inte påregistreras.' ;
+        ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_156' (* 'Paketet finns inte i avregistreringsloggen och kan därför inte påregistreras.' *) ) ;
         Error:= True ;
        End;
 
@@ -5389,7 +5389,7 @@ begin
   end;
  end
   else
-   ShowMessage('Inventeringen är avslutad') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_218' (* 'Inventeringen är avslutad' *) )) ;
  End ;//With
  Finally
   TPaRegPkgNo.Enabled  := True ;
@@ -5429,7 +5429,7 @@ begin
     PkgSupplierCode := dmsSystem.PkgNoToSuppCode_Inv(PkgNo, cds_InvCtrlGrpIC_grpno.AsInteger, PkgSupplierNo, ProductNo) ;
     if Length(PkgSupplierCode) = 0 then
     Begin
-     ShowMessage('Inga paket med det numret finns tillgängliga.');
+     ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_219' (* 'Inga paket med det numret finns tillgängliga.' *) ));
      Exit ;
     End ;
    End
@@ -5446,7 +5446,7 @@ begin
         -1 : Begin
 //              ErrorText:= 'Paketnr '+NewValue+' finns inte' ;
 //              Error:= True ;
-              ErrorText:='Paketnr ' + inttostr(PkgNo)+'/'+PkgSupplierCode+' finns ej i kontrollistan.' ;
+              ErrorText:=siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ) + inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_46' (* ' finns ej i kontrollistan.' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
              End ;
@@ -5513,13 +5513,13 @@ begin
    else
    if Action = eaREJECT then
     Begin
-     ErrorText:= 'Finns inga paket med paketnr ' + teAvRegPkgNo.Text + ' inom inventeringen som är aktiva, det kanske är redan är avregistrerat, eller avregistrerat i produktionen eller utlastat efter att inventeringen skapades.' ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_47' (* 'Finns inga paket med paketnr ' *) ) + teAvRegPkgNo.Text + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_48' (* ' inom inventeringen som är aktiva, det kanske är redan är avregistrerat, eller avregistrerat i produktionen eller utlastat efter att inventeringen skapades.' *) ) ;
      Error:= True ;
     End
     else
    if Action = eaReserved then
     Begin
-     ErrorText:= 'Paketnr ' + teAvRegPkgNo.Text + ' är reserverat av användare '+Res_UserName ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ) + teAvRegPkgNo.Text + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) )+Res_UserName ;
      Error:= True ;
     End
 
@@ -5528,7 +5528,7 @@ begin
   end;
  end
   else
-   ShowMessage('Inventeringen är avslutad') ;
+   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_218' (* 'Inventeringen är avslutad' *) )) ;
  End ;//With
  if Error then
   ShowMessage(ErrorText) ;
@@ -5539,7 +5539,7 @@ end;
 
 procedure TfInvCtrl.acAvRegMarkedPkgsExecute(Sender: TObject);
 begin
- if MessageDlg('Är du säker på att du vill ändra status på markerade paketet? '
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_227' (* 'Är du säker på att du vill ändra status på markerade paketet? ' *) )
  , mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmInvCtrl do
  Begin
@@ -5610,7 +5610,7 @@ begin
    Begin
     RecIDx:= grdCtrlListDBTableView1.Controller.SelectedRecords[i].RecordIndex ;
     RecID:= grdCtrlListDBTableView1.DataController.GetRecordId(RecIdx) ;
-    if ADataSet.Locate('IC_GrpNo;PackageNo;SupplierCode', RecID,[]) then
+    if ADataSet.Locate(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_228' (* 'IC_GrpNo;PackageNo;SupplierCode' *) ), RecID,[]) then
     Begin
      mtSelectedPkgNo.Insert ;
      mtSelectedPkgNoPaketnr.AsInteger := ADataSet.FieldByName('PackageNo').AsInteger ;
@@ -5665,7 +5665,7 @@ begin
     PkgSupplierCode := dmsSystem.GetListOfPrefixOfPkgsInControlListAndNotAvregAndNotChangedList(PkgNo, cds_InvCtrlGrpIC_grpno.AsInteger, PkgSupplierNo, ProductNo) ;
     if Length(PkgSupplierCode) = 0 then
     Begin
-     ShowMessage('Inga paket med det numret finns tillgängliga.');
+     ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_219' (* 'Inga paket med det numret finns tillgängliga.' *) ));
      Exit ;
     End ;
    End 
@@ -5675,13 +5675,13 @@ begin
        AskingStatus := CheckIfPkgExistInKontrollistAndInInventory(cds_InvCtrlGrpIC_grpno.AsInteger, PkgNo, PkgSupplierCode) ;
        Case AskingStatus of
         -1 : Begin
-              ErrorText:= 'Paketnr '+inttostr(PkgNo)+'/'+PkgSupplierCode+' finns ej i kontrollistan.' ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_46' (* ' finns ej i kontrollistan.' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
               Error:= True ;
              End ;
         0 : Begin
-              ErrorText:= 'Paketnr '+inttostr(PkgNo)+'/'+PkgSupplierCode+' är Ej aktivt.' ;
+              ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(PkgNo)+'/'+PkgSupplierCode+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_109' (* ' är Ej aktivt.' *) ) ;
               Action := eaREJECT ;
               PkgSupplierCode := '' ;
               Error:= True ;
@@ -5740,7 +5740,7 @@ begin
     else
    if Action = eaReserved then
     Begin
-     ErrorText:= 'Paketnr ' + teChangePkg.Text + ' är reserverat av användare ' + Res_UserName ;
+     ErrorText:= siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) ) + teChangePkg.Text + siLangLinked_fInvCtrl.GetTextOrDefault('IDS_50' (* ' är reserverat av användare ' *) ) + Res_UserName ;
      Error:= True ;
     End ;
   finally
@@ -5769,7 +5769,7 @@ var
   aColumn: TcxCustomGridTableItem;
   aValue: Variant;
 begin
- aColumn :=(Sender as TcxGridDBTableView).GetColumnByFieldName('InCtrlList');
+ aColumn :=(Sender as TcxGridDBTableView).GetColumnByFieldName(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_236' (* 'InCtrlList' *) ));
  if (ARecord.Values[aColumn.Index] <> null) and (AItem <> nil) then
  Begin
   aValue := ARecord.Values[aColumn.Index];
@@ -5834,7 +5834,7 @@ procedure TfInvCtrl.acFlyttaFalseToAvRegExecute(Sender: TObject);
 begin
  With dmInvCtrl do
  Begin
-   if MessageDlg('Vill du att alla false paket i kontrollistan avregistreras?',    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+   if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_238' (* 'Vill du att alla false paket i kontrollistan avregistreras?' *) ),    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    Begin
     MoveFalseToAvreg (cds_InvCtrlGrpIC_grpno.AsInteger) ;
     cds_InvCtrl_Pkgs.Active := False ;
@@ -5856,7 +5856,7 @@ begin
   Save_Cursor := Screen.Cursor;
   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
 
-  Memo2.Lines.Add('Generera inventeringslistor_alla') ;
+  Memo2.Lines.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_239' (* 'Generera inventeringslistor_alla' *) )) ;
   GenerateInventeringsListan_alla_Paket ;
   Memo2.Lines.Add(DateTimeToStr(now)) ;  
 
@@ -5922,7 +5922,7 @@ begin
 // if dmInvCtrl.cds_InvCtrlGrpStatus.AsInteger < 3 then
  Begin
   if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InventeringPerPktNr_NoSpecies.rpt')
+   FormCRViewReport.CreateCo(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_241' (* 'InventeringPerPktNr_NoSpecies.rpt' *) ))
     else
       FormCRViewReport.CreateCo('InventeringPerPktTyp.RPT') ;
 
@@ -6095,7 +6095,7 @@ end;
 
 procedure TfInvCtrl.acGodkannOchPrissattExecute(Sender: TObject);
 begin
- if MessageDlg('Är inventeringen prissatt? '
+ if MessageDlg(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_243' (* 'Är inventeringen prissatt? ' *) )
  ,    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dmInvCtrl do
  Begin
@@ -6164,10 +6164,10 @@ begin
  Begin
   dxComponentPrinter1Link12.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link12.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link12.PrinterPage.PageHeader.CenterTitle.Add('Krediterade leveranser') ;
-  dxComponentPrinter1Link12.PrinterPage.PageHeader.CenterTitle.Add('Inventeringsdatum: '+SQLTimeStampToStr('yyyy-mm-dd',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link12.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_245' (* 'Krediterade leveranser' *) )) ;
+  dxComponentPrinter1Link12.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
   dxComponentPrinter1Link12.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
-  dxComponentPrinter1Link12.PrinterPage.PageHeader.LeftTitle.Add('Löpnr: '+cds_InvCtrlGrpIC_grpno.AsString) ;
+  dxComponentPrinter1Link12.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
 
   dxComponentPrinter1Link12.PrinterPage.DMPaper         := DMPAPER_A4 ;
   dxComponentPrinter1Link12.PrinterPage.Orientation     := poLandscape ;
@@ -6232,8 +6232,8 @@ var fEntryPriceField: TfEntryPriceField;
 begin
   fEntryPriceField  := TfEntryPriceField.Create(nil) ;
   Try
-  fEntryPriceField.LabelForField.Caption  := 'Antal pkt:' ;
-  fEntryPriceField.Caption                := 'Ange antal paket' ;
+  fEntryPriceField.LabelForField.Caption  := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_251' (* 'Antal pkt:' *) ) ;
+  fEntryPriceField.Caption                := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_30' (* 'Ange antal paket' *) ) ;
    if fEntryPriceField.ShowModal = mrOK then
    Begin
     Result  := StrToIntDef(fEntryPriceField.mePriceField.Text,0) ;

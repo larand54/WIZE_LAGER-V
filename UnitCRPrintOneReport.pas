@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, OleCtrls,  OleServer, 
-  StdCtrls, Printers, CRAXDRT_TLB;
+  StdCtrls, Printers, CRAXDRT_TLB, siComp;
 
 type
   TFormCRPrintOneReport = class(TForm)

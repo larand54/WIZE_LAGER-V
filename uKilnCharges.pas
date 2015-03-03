@@ -166,7 +166,7 @@ procedure TfKilnCharges.FormCloseQuery(Sender: TObject;
 begin
   CanClose:= True ;
   if DataSaved = False then
-   if MessageDlg('Data är inte sparat, vill du avsluta?',
+   if MessageDlg(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_0' (* 'Data är inte sparat, vill du avsluta?' *) ),
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     CanClose:= True
     else
@@ -237,10 +237,10 @@ procedure TfKilnCharges.acMovePkgsToAfterKilnExecute(Sender: TObject);
 begin
  if dm_DryKiln.cds_KilnChargeHdrEndTime.IsNull then
  Begin
-  ShowMessage('Sluttid saknas') ;
+  ShowMessage(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_1' (* 'Sluttid saknas' *) )) ;
   Exit ;
  End ;
- if MessageDlg('Vill du flytta paket till efter tork och avsluta torksats?',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_2' (* 'Vill du flytta paket till efter tork och avsluta torksats?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   dm_DryKiln.MoveToAfterKilnAndSetKilnToComplete(dm_DryKiln.cds_KilnChargeHdrKilnChargeNo.AsInteger,
   DateTimeToSqlTimeStamp(dm_DryKiln.cds_KilnChargeHdrEndTime.AsDateTime)) ;
@@ -265,7 +265,7 @@ begin
  With dm_DryKiln do
  Begin
   //Kolla att alla rader är borta först
-  if MessageDlg('Är du säker',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_3' (* 'Är du säker' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   cds_KilnChargeHdr.Delete ;
  End ;
 end;
@@ -285,7 +285,7 @@ end;
 
 procedure TfKilnCharges.acCancelChangesExecute(Sender: TObject);
 begin
- if MessageDlg('Är du säker',  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_3' (* 'Är du säker' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  With dm_DryKiln do
  Begin
   if cds_KilnChargeHdr.State in [dsEdit, dsInsert] then
