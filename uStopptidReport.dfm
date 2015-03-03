@@ -931,21 +931,26 @@ object fStopptidReport: TfStopptidReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 101
-    ClientRectLeft = 4
-    ClientRectRight = 1255
-    ClientRectTop = 4
+    ClientRectBottom = 105
+    ClientRectRight = 1259
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 4
+      ExplicitTop = 4
+      ExplicitWidth = 1251
+      ExplicitHeight = 97
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1251
-        Height = 97
+        Width = 1259
+        Height = 105
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1251
+        ExplicitHeight = 97
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -1451,8 +1456,8 @@ object fStopptidReport: TfStopptidReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'

@@ -20,6 +20,8 @@ object fDeliveryReport: TfDeliveryReport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -906,21 +908,22 @@ object fDeliveryReport: TfDeliveryReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 102
-    ClientRectLeft = 4
-    ClientRectRight = 1255
-    ClientRectTop = 4
+    ClientRectBottom = 106
+    ClientRectRight = 1259
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1251
-        Height = 98
+        Width = 1259
+        Height = 106
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1251
+        ExplicitHeight = 98
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -1475,8 +1478,8 @@ object fDeliveryReport: TfDeliveryReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -2384,7 +2387,7 @@ object fDeliveryReport: TfDeliveryReport
       PrinterPage.PaperSource = 257
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42026.644419328700000000
+      ReportDocument.CreationDate = 42020.243551516210000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end

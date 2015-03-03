@@ -658,6 +658,8 @@ type
     dxBarLargeButton5: TdxBarLargeButton;
     acRensaGammalTorkdata: TAction;
     siLangLinked_fInvCtrl: TsiLangLinked;
+    teSearchInvNo: TcxTextEdit;
+    cxLabel8: TcxLabel;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -902,11 +904,14 @@ type
     procedure acGetPkgsDeliveredAfterMaxDatumUpdate(Sender: TObject);
     procedure acFlyttaFalseToAvRegExecute(Sender: TObject);
     procedure acRensaGammalTorkdataExecute(Sender: TObject);
+    procedure teSearchInvNoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
 
   private
     { Private declarations }
     IsHighLighted: Boolean;
     EgenLevKod : String3 ;
+
     procedure PrintInvCtrlReportNotActiveWithEvents(Sender: TObject;const LIPs, STATUSs  : String;const ReportName : String) ;
     Function  EntryField : Integer ;
     Procedure SetPriceOnEachPkg(const NewPrice : Double) ;
@@ -5061,6 +5066,26 @@ begin
   End ;
  End ; }
 end;
+
+procedure TfInvCtrl.teSearchInvNoKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+Var PkgSupplierCode, S : String ;
+    InvNo, PkgSupplierNo, ProductNo : Integer ;
+begin
+ if Key <> VK_RETURN then
+  Exit;
+ InvNo  := StrToIntDef(teSearchInvNo.Text,0) ;
+ if InvNo > 0 then
+ Begin
+   if DataInteSparad = True then
+   Begin
+    ShowMessage('Spara eller ångra ändringar först.') ;
+    Exit ;
+   End ;
+   OpenInventering(Sender, InvNo);
+ End ;
+end;
+
 
 procedure TfInvCtrl.teSearchPackageNoKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);

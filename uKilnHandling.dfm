@@ -21,6 +21,8 @@ object fkilnHandling: TfkilnHandling
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -61,10 +63,9 @@ object fkilnHandling: TfkilnHandling
         Align = alBottom
         TabOrder = 1
         Properties.CustomButtons.Buttons = <>
-        ClientRectBottom = 46
-        ClientRectLeft = 4
-        ClientRectRight = 1248
-        ClientRectTop = 4
+        ClientRectBottom = 50
+        ClientRectRight = 1252
+        ClientRectTop = 0
       end
       object cxSplitter1: TcxSplitter
         Left = 0
@@ -575,24 +576,23 @@ object fkilnHandling: TfkilnHandling
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 64
-    ClientRectLeft = 4
-    ClientRectRight = 1248
-    ClientRectTop = 4
+    ClientRectBottom = 68
+    ClientRectRight = 1252
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1244
-        Height = 60
+        Width = 1252
+        Height = 68
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
         DesignSize = (
-          1244
-          60)
+          1252
+          68)
         object cxLabel2: TcxLabel
           Left = 4
           Top = 13
@@ -731,7 +731,7 @@ object fkilnHandling: TfkilnHandling
           Width = 85
         end
         object cxButton9: TcxButton
-          Left = 1143
+          Left = 1151
           Top = 12
           Width = 89
           Height = 50
@@ -768,8 +768,8 @@ object fkilnHandling: TfkilnHandling
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'

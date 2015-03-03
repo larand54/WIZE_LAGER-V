@@ -4920,8 +4920,7 @@ object dmsConnector: TdmsConnector
       'MetaDefSchema=dbo'
       'User_Name=Lars'
       'Password=woods2011'
-      'DriverID=MSSQL'
-      '')
+      'DriverID=MSSQL')
     LoginPrompt = False
     AfterCommit = DataModuleDestroy
     Left = 56

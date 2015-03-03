@@ -20,6 +20,8 @@ object fProductionReport: TfProductionReport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -41,6 +43,9 @@ object fProductionReport: TfProductionReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -1066,6 +1071,7 @@ object fProductionReport: TfProductionReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -1077,31 +1083,35 @@ object fProductionReport: TfProductionReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 101
-    ClientRectLeft = 4
-    ClientRectRight = 1245
-    ClientRectTop = 4
+    ClientRectBottom = 105
+    ClientRectRight = 1249
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 4
+      ExplicitTop = 4
+      ExplicitWidth = 1241
+      ExplicitHeight = 97
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1241
-        Height = 97
+        Width = 1249
+        Height = 105
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1241
+        ExplicitHeight = 97
         DesignSize = (
-          1241
-          97)
+          1249
+          105)
         object Bevel1: TBevel
-          Left = -5
+          Left = 3
           Top = 27
           Width = 1240
           Height = 4
           Anchors = [akTop, akRight]
-          ExplicitLeft = 3
         end
         object lcPIPNAME: TcxDBLookupComboBox
           Left = 1286
@@ -1585,8 +1595,8 @@ object fProductionReport: TfProductionReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'

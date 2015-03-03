@@ -30,7 +30,7 @@ object fInvCtrl: TfInvCtrl
     Height = 507
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsSkapaLagerListor
+    Properties.ActivePage = tsPkgsShippedBeforeMaxDate
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
@@ -42,9 +42,6 @@ object fInvCtrl: TfInvCtrl
     object tsSkapaKontrollistor: TcxTabSheet
       Caption = 'Kontrollista'
       ImageIndex = 15
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel16: TPanel
         Left = 0
         Top = 0
@@ -2375,9 +2372,6 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Flyttade'
       ImageIndex = 11
       TabVisible = False
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel21: TPanel
         Left = 0
         Top = 0
@@ -2390,9 +2384,6 @@ object fInvCtrl: TfInvCtrl
     object tsUnRegInProduction: TcxTabSheet
       Caption = 'Avreg. i prod'#39'n'
       ImageIndex = 20
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -2707,9 +2698,6 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Avreg f'#246're inv.dat'
       ImageIndex = 20
       TabVisible = False
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -3569,9 +3557,6 @@ object fInvCtrl: TfInvCtrl
     object tsInleveranser: TcxTabSheet
       Caption = 'Inlev.'
       ImageIndex = 18
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel12: TPanel
         Left = 0
         Top = 0
@@ -3891,9 +3876,6 @@ object fInvCtrl: TfInvCtrl
     object cxTabSheet1: TcxTabSheet
       Caption = 'Kredit.lev.'
       ImageIndex = 23
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel22: TPanel
         Left = 0
         Top = 0
@@ -4234,9 +4216,6 @@ object fInvCtrl: TfInvCtrl
     object tsProduced: TcxTabSheet
       Caption = 'Produktion'
       ImageIndex = 21
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -4555,9 +4534,6 @@ object fInvCtrl: TfInvCtrl
     object tsProductionBeforeInvDate: TcxTabSheet
       Caption = 'Prod'#39'n f'#246're inv.datum'
       ImageIndex = 21
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel15: TPanel
         Left = 0
         Top = 0
@@ -5679,9 +5655,6 @@ object fInvCtrl: TfInvCtrl
     object tsSummaryReport: TcxTabSheet
       Caption = 'Summering'
       ImageIndex = 24
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel14: TPanel
         Left = 0
         Top = 0
@@ -6560,18 +6533,18 @@ object fInvCtrl: TfInvCtrl
     TabOrder = 2
     Properties.ActivePage = tsInvHdr
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 78
-    ClientRectLeft = 4
-    ClientRectRight = 1156
-    ClientRectTop = 24
+    ClientRectBottom = 81
+    ClientRectLeft = 1
+    ClientRectRight = 1159
+    ClientRectTop = 21
     object tsInvHdr: TcxTabSheet
       Caption = 'Inventering'
       ImageIndex = 0
       object TopPanel: TPanel
         Left = 0
         Top = 0
-        Width = 1152
-        Height = 54
+        Width = 1158
+        Height = 60
         Align = alClient
         TabOrder = 0
         object Label1: TLabel
@@ -6740,10 +6713,6 @@ object fInvCtrl: TfInvCtrl
     object tsNote: TcxTabSheet
       Caption = 'Notering'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object mNote: TcxDBMemo
         Left = 0
         Top = 0
@@ -6751,8 +6720,8 @@ object fInvCtrl: TfInvCtrl
         DataBinding.DataField = 'Note'
         DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
         TabOrder = 0
-        Height = 54
-        Width = 1152
+        Height = 60
+        Width = 1158
       end
     end
   end
@@ -6775,7 +6744,7 @@ object fInvCtrl: TfInvCtrl
         Left = 1
         Top = 1
         Width = 815
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -6791,7 +6760,7 @@ object fInvCtrl: TfInvCtrl
         Left = 1
         Top = 1
         Width = 47
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -6808,7 +6777,7 @@ object fInvCtrl: TfInvCtrl
         Top = 22
         TabOrder = 0
         OnKeyDown = teSearchPackageNoKeyDown
-        Width = 89
+        Width = 70
       end
       object cxLabel1: TcxLabel
         Left = 5
@@ -6829,20 +6798,32 @@ object fInvCtrl: TfInvCtrl
         Properties.ListOptions.ShowHeader = False
         Properties.MaxLength = 0
         TabOrder = 2
-        Width = 172
+        Width = 189
       end
       object cxLabel6: TcxLabel
         Left = 5
         Top = 5
         Caption = 'Arbeta med verk'
       end
+      object teSearchInvNo: TcxTextEdit
+        Left = 232
+        Top = 22
+        TabOrder = 4
+        OnKeyDown = teSearchInvNoKeyDown
+        Width = 56
+      end
+      object cxLabel8: TcxLabel
+        Left = 176
+        Top = 24
+        Caption = 'S'#246'k inven.'
+      end
     end
   end
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -10004,7 +9985,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42026.644664803240000000
+      ReportDocument.CreationDate = 42021.493549560180000000
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
