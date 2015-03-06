@@ -105,7 +105,7 @@
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <DCC_Define>_VER7;_VER7;$(DCC_Define)</DCC_Define>
+        <DCC_Define>_VER7;_VER7;madExcept;$(DCC_Define)</DCC_Define>
         <VerInfo_Build>97</VerInfo_Build>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=2.3.1.97;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
