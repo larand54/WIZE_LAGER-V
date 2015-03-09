@@ -4913,7 +4913,7 @@ object dmsConnector: TdmsConnector
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Server=alvesql03'
+      'Server=alvesql01'
       'Database=vis_vida'
       'OSAuthent=No'
       'MetaDefCatalog=vis_vida'
