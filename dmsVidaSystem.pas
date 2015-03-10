@@ -403,6 +403,7 @@ type
     ds_GetAnyPkg: TDataSource;
     sq_dbPropsLangPath: TStringField;
     sq_dbPropsFastPath: TStringField;
+    sp_Lang: TFDStoredProc;
     procedure DataModuleCreate(Sender: TObject);
 
     procedure mtMarkedCodesAfterInsert(DataSet: TDataSet);
@@ -437,6 +438,8 @@ type
     LevKodPos,
     AntPosLevKod          : Cardinal ;
 
+    function  GetLanguageNo : Integer ;
+    procedure SaveLanguage(const LanguageNo : Integer) ;
     procedure getGetAnyPkg(const PkgNo, LIPNo : Integer);
 
     function  PkgNoToSuppCode_GetAnyPkg(
@@ -1896,6 +1899,42 @@ Begin
  Finally
    sp_PkgsExistInAvregLogg.Active := False ;
  End;
+End;
+
+procedure TdmsSystem.SaveLanguage(const LanguageNo : Integer) ;
+Begin
+  Try
+  sp_Lang.Active  := False ;
+  sp_Lang.ParamByName('@UseriD').AsInteger      :=  ThisUser.UserID ;
+  sp_Lang.ParamByName('@LanguageNo').AsInteger  :=  LanguageNo ;
+  sp_Lang.ExecProc ;
+  Except
+   On E: Exception do
+   Begin
+    ShowMessage('sp_Lang: ' + E.Message) ;
+    Raise ;
+   End
+  End ;
+End;
+
+function TdmsSystem.GetLanguageNo : Integer ;
+Begin
+  Try
+  sp_Lang.Active  := False ;
+  sp_Lang.ParamByName('@UseriD').AsInteger      :=  ThisUser.UserID ;
+  sp_Lang.ParamByName('@LanguageNo').AsInteger  :=  -1 ;//LanguageNo ;
+  sp_Lang.Active  := True ;
+  if sp_Lang.RecordCount > 0 then
+   Result := sp_Lang.FieldByName('LanguageNo').AsInteger
+    else
+     Result := -1 ;
+  Except
+     On E: Exception do
+     Begin
+      ShowMessage('sp_Lang: ' + E.Message) ;
+      Raise ;
+     End
+  End ;
 End;
 
 

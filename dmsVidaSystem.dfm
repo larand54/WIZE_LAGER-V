@@ -2768,4 +2768,29 @@
     Left = 584
     Top = 640
   end
+  object sp_Lang: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_Lang'
+    Left = 1048
+    Top = 608
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@UseriD'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@LanguageNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
 end
