@@ -326,14 +326,15 @@ end;
 
 //-------------------------------------------------------------
 procedure TfrmMain.FormShow(Sender: TObject);
+Var LanguageNo  : Integer ;
 begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
  showmessage(siLangLinked1.GetTextOrDefault('IDS_7' (* 'Ändra till H:\' *) ));
 // ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
- ThisUser.Database:= 'vis.vida.se:vis_vida' ;
- //ThisUser.Database:= 'alvesql03:vis_vida' ;
+// ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+ ThisUser.Database:= 'alvesql03:vis_vida' ;
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then
     Close
@@ -364,6 +365,14 @@ begin
    nvgLager.Expanded      := False ;
    nvgInventering.Expanded:= True ;
   End ;
+
+  LanguageNo  :=  dmsSystem.GetLanguageNo ;
+  if LanguageNo > -1 then
+  Begin
+   dmLanguage.siLangDispatcher1.ActiveLanguage := LanguageNo ;
+   dmLanguage.siLangDispatcher1.LoadAllFromFile(dmLanguage.siLangDispatcher1.FileName);
+  End;
+
 end;
 
 
@@ -956,7 +965,10 @@ begin
     if (frm <> nil) then
     begin
       if (frm.ShowModal = mrOk) then
+      Begin
         dmLanguage.siLangDispatcher1.LoadAllFromFile(dmLanguage.siLangDispatcher1.FileName);
+        dmsSystem.SaveLanguage(dmLanguage.siLangDispatcher1.ActiveLanguage) ;
+      End;
     end;
   finally
     FreeAndNil(frm);

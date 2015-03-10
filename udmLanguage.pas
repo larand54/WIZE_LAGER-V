@@ -14,6 +14,9 @@ type
     { Private declarations }
   public
     { Public declarations }
+    function getProgramName(ExeFileWithPath: string): string;
+    function getFileWithPath(ExeFileWithPath, ext, path: string): string;
+    function includePrefixToExtension(ext: string): string;
   end;
 
 var
@@ -30,13 +33,63 @@ procedure TdmLanguage.DataModuleCreate(Sender: TObject);
 var
   Path : String;
 begin
+{
+      path := ExtractFilePath(ParamStr(0));
+      path := dmsSystem.GetLangPath();
+      assert(path <> '',siLang1.GetTextOrDefault('IDS_0' (* 'Path to languagefiles not defined in database' *) ));
+      if path[path.Length] <> '\' then
+        siLangDispatcher1.FileName := Path + '\' + siLangDispatcher1.FileName
+      else
+        siLangDispatcher1.FileName := Path + siLangDispatcher1.FileName;
+
+}
+
+
+{$IFDEF DEBUG}
   path := ExtractFilePath(ParamStr(0));
+{$ELSE}
   path := dmsSystem.GetLangPath();
-  assert(path <> '',siLang1.GetTextOrDefault('IDS_0' (* 'Path to languagefiles not defined in database' *) ));
-  if path[path.Length] <> '\' then
-    siLangDispatcher1.FileName := Path + '\' + siLangDispatcher1.FileName
-  else
-    siLangDispatcher1.FileName := Path + siLangDispatcher1.FileName;
+{$ENDIF}
+  path := getFileWithPath(ParamStr(0),'sib', path);
+  assert(path <> '','Path to languagefiles not defined in database');
+  siLangDispatcher1.FileName := Path;
 end;
+
+
+function TdmLanguage.getFileWithPath(ExeFileWithPath, ext, path: string): string;
+begin
+  result := IncludeTrailingPathDelimiter(path) + 'VIS_LAGER.sib' ;// siLangDispatcher1.FileName ;// getProgramName(ExeFileWithPath) + includePrefixToExtension(ext);
+
+end;
+
+function TdmLanguage.getProgramName(ExeFileWithPath: string): string;
+var
+  h,i: integer;
+  s: string;
+begin
+  result := '';
+   h := pos('.',ExeFileWithPath);
+   if h = 0 then
+    exit;
+
+   i := h-1;
+   s := '';
+   while ExeFileWithPath[i] <> '\' do begin
+     s := ExeFileWithPath[i] + s;
+     dec(i);
+     if i <= 0 then
+       exit;
+   end;
+   result := s;
+end;
+
+function TdmLanguage.includePrefixToExtension(ext: string): string;
+begin
+  if ext[1] <> '.' then
+    result := '.' + ext
+  else
+    result := ext;
+end;
+
 
 end.

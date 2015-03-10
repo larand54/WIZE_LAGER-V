@@ -95,9 +95,9 @@ object dmLanguage: TdmLanguage
       'Swedish'
       'English')
     Language = 'Origin'
-    FileName = 'VIS_LAGER-V.sib'
+    FileName = 'VIS_LAGER.sib'
     DefaultLanguage = 2
-    Left = 80
-    Top = 16
+    Left = 96
+    Top = 56
   end
 end
