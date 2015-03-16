@@ -8,6 +8,7 @@ object dmLanguage: TdmLanguage
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
+    UseDefaultLanguage = True
     DefaultLanguage = 2
     NumOfLanguages = 3
     LangDispatcher = siLangDispatcher1
@@ -96,6 +97,7 @@ object dmLanguage: TdmLanguage
       'English')
     Language = 'Origin'
     FileName = 'VIS_LAGER.sib'
+    UseDefaultLanguage = True
     DefaultLanguage = 2
     Left = 96
     Top = 56

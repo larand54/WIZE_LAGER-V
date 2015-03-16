@@ -585,3 +585,1122 @@ disassembling:
 013c9aad       mov     fs:[eax], esp
 [...]
 
+date/time          : 2015-03-11, 05:35:33, 179ms
+computer name      : CARMAK-SPEED
+user name          : Lars <admin>
+registered owner   : Lars
+operating system   : Windows 7 x64 Service Pack 1 build 7601
+system language    : Swedish
+system up time     : 14 hours 9 minutes
+program up time    : 2 minutes 32 seconds
+processors         : 8x Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+physical memory    : 1403/8098 MB (free/total)
+free disk space    : (C:) 96,03 GB
+display mode       : 1920x1080, 32 bit
+process id         : $2424
+allocated memory   : 80,84 MB
+largest free block : 639,80 MB
+executable         : VIS_LAGER.exe
+exec. date/time    : 2015-03-11 05:32
+version            : 2.3.1.97
+compiled with      : Delphi XE6
+madExcept version  : 4.0.11
+callstack crc      : $02c15a20, $8d9deb95, $8d9deb95
+exception number   : 1
+exception class    : EMSSQLNativeException
+exception message  : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Formulär'.
+
+main thread ($121c):
+00a40795 +119 VIS_LAGER.exe FireDAC.Stan.Error                FDException
+00d611f6 +27a VIS_LAGER.exe FireDAC.Phys.ODBCWrapper          TODBCHandle.ProcessError
+00d61273 +00b VIS_LAGER.exe FireDAC.Phys.ODBCWrapper          TODBCHandle.Check
+00d6a37f +19f VIS_LAGER.exe FireDAC.Phys.ODBCWrapper          TODBCCommandStatement.Execute
+00d71568 +0fc VIS_LAGER.exe FireDAC.Phys.ODBCBase             TFDPhysODBCCommand.InternalExecute
+00d507ac +068 VIS_LAGER.exe FireDAC.Phys                      Process_HandleSystemFailure
+00d508de +042 VIS_LAGER.exe FireDAC.Phys                      Process_SingleRow
+00d517f8 +1f0 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.ExecuteBase
+00d503a5 +009 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommandAsyncExecute.Execute
+00a9c057 +04b VIS_LAGER.exe FireDAC.Stan.Async                TFDStanAsyncExecutor.ExecuteOperation
+00a9c386 +06e VIS_LAGER.exe FireDAC.Stan.Async                TFDStanAsyncExecutor.Run
+00d4b59a +086 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.ExecuteTask
+00d4b5eb +0d7 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.ExecuteTask
+00d51a07 +05b VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.Execute
+00aa0bd1 +339 VIS_LAGER.exe FireDAC.DApt                      TFDDAptTableAdapter.ProcessRequest
+00aa1d7a +6ee VIS_LAGER.exe FireDAC.DApt                      TFDDAptTableAdapter.ProcessUpdate
+00aa239a +04a VIS_LAGER.exe FireDAC.DApt                      TFDDAptTableAdapter.Update
+00ae2859 +069 VIS_LAGER.exe FireDAC.Comp.Client               TFDCustomTableAdapter.Update
+00ae5c63 +107 VIS_LAGER.exe FireDAC.Comp.Client               TFDAdaptedDataSet.DoProcessUpdateRequest
+00ab14f3 +0e3 VIS_LAGER.exe FireDAC.Comp.DataSet              TFDDataSet.InternalPost
+00a317fd +029 VIS_LAGER.exe Data.DB                           TDataSet.CheckOperation
+00a31300 +048 VIS_LAGER.exe Data.DB                           TDataSet.Post
+00ab15bd +029 VIS_LAGER.exe FireDAC.Comp.DataSet              TFDDataSet.Post
+0178f05d +071 VIS_LAGER.exe uAnalyseraLeveranser      915  +6 TfAnalyseraLeveranser.FormCloseQuery
+006e1b19 +055 VIS_LAGER.exe Vcl.Forms                         TCustomForm.CloseQuery
+006e1a41 +021 VIS_LAGER.exe Vcl.Forms                         TCustomForm.Close
+01790af7 +00f VIS_LAGER.exe uAnalyseraLeveranser     1277  +1 TfAnalyseraLeveranser.acCloseExecute
+0054ad6b +00f VIS_LAGER.exe System.Classes                    TBasicAction.Execute
+005afe0e +086 VIS_LAGER.exe Vcl.ActnList                      TCustomAction.Execute
+0054abef +013 VIS_LAGER.exe System.Classes                    TBasicActionLink.Execute
+005d0398 +058 VIS_LAGER.exe Vcl.Controls                      TControl.Click
+005f2ed6 +01e VIS_LAGER.exe Vcl.StdCtrls                      TCustomButton.Click
+00963cf1 +06d VIS_LAGER.exe cxButtons                         TcxCustomButton.Click
+005f39dc +010 VIS_LAGER.exe Vcl.StdCtrls                      TCustomButton.CNCommand
+009643d5 +02d VIS_LAGER.exe cxButtons                         TcxCustomButton.CNCommand
+005cfe59 +2bd VIS_LAGER.exe Vcl.Controls                      TControl.WndProc
+005d4971 +5c9 VIS_LAGER.exe Vcl.Controls                      TWinControl.WndProc
+005f2b80 +06c VIS_LAGER.exe Vcl.StdCtrls                      TButtonControl.WndProc
+0096434c +078 VIS_LAGER.exe cxButtons                         TcxCustomButton.WndProc
+005cfa94 +024 VIS_LAGER.exe Vcl.Controls                      TControl.Perform
+005d4ad7 +023 VIS_LAGER.exe Vcl.Controls                      DoControlMsg
+005d555f +00b VIS_LAGER.exe Vcl.Controls                      TWinControl.WMCommand
+005cfe59 +2bd VIS_LAGER.exe Vcl.Controls                      TControl.WndProc
+77c30107 +02b ntdll.dll                                       KiUserCallbackDispatcher
+005cfe59 +2bd VIS_LAGER.exe Vcl.Controls                      TControl.WndProc
+005d4971 +5c9 VIS_LAGER.exe Vcl.Controls                      TWinControl.WndProc
+005d3fb8 +02c VIS_LAGER.exe Vcl.Controls                      TWinControl.MainWndProc
+0054ba60 +014 VIS_LAGER.exe System.Classes                    StdWndProc
+77c30107 +02b ntdll.dll                                       KiUserCallbackDispatcher
+758f96c0 +047 USER32.dll                                      SendMessageW
+75900d48 +016 USER32.dll                                      CallWindowProcW
+005d4a82 +0e6 VIS_LAGER.exe Vcl.Controls                      TWinControl.DefaultHandler
+005d0804 +010 VIS_LAGER.exe Vcl.Controls                      TControl.WMLButtonUp
+005cfe59 +2bd VIS_LAGER.exe Vcl.Controls                      TControl.WndProc
+005d4971 +5c9 VIS_LAGER.exe Vcl.Controls                      TWinControl.WndProc
+005f2b80 +06c VIS_LAGER.exe Vcl.StdCtrls                      TButtonControl.WndProc
+0096434c +078 VIS_LAGER.exe cxButtons                         TcxCustomButton.WndProc
+005d3fb8 +02c VIS_LAGER.exe Vcl.Controls                      TWinControl.MainWndProc
+0054ba60 +014 VIS_LAGER.exe System.Classes                    StdWndProc
+758f7885 +00a USER32.dll                                      DispatchMessageW
+006e6ce3 +0f3 VIS_LAGER.exe Vcl.Forms                         TApplication.ProcessMessage
+006e6d26 +00a VIS_LAGER.exe Vcl.Forms                         TApplication.HandleMessage
+006e7059 +0c9 VIS_LAGER.exe Vcl.Forms                         TApplication.Run
+018d1124 +120 VIS_LAGER.exe VIS_LAGER                 146 +13 initialization
+769c3388 +010 kernel32.dll                                    BaseThreadInitThunk
+
+thread $18a8:
+77c40156 +0e ntdll.dll     NtWaitForMultipleObjects
+769c3388 +10 kernel32.dll  BaseThreadInitThunk
+
+thread $fcc:
+77c41f3f +0b ntdll.dll     NtWaitForWorkViaWorkerFactory
+769c3388 +10 kernel32.dll  BaseThreadInitThunk
+
+thread $29b8: <priority:2>
+758f7c18 +45 USER32.dll              GetMessageA
+004b04b5 +0d VIS_LAGER.exe madExcept CallThreadProcSafe
+004b051a +32 VIS_LAGER.exe madExcept ThreadExceptFrame
+769c3388 +10 kernel32.dll            BaseThreadInitThunk
+>> created by main thread ($121c) at:
+725f6c8b +00 winmm.dll
+
+thread $2b78 (TFDMoniRemoteSender): <suspended> <priority:2>
+00d88050 +18 VIS_LAGER.exe FireDAC.Moni.RemoteBase TFDMoniRemoteQueueWorker.Create
+
+thread $2b1c (TFDTracer): <suspended>
+00a45e3d +25 VIS_LAGER.exe FireDAC.Stan.Util TFDThread.Create
+
+thread $5f8:
+77c3f952 +0e ntdll.dll                NtRemoveIoCompletion
+77317707 +23 KERNELBASE.dll           GetQueuedCompletionStatus
+004b04b5 +0d VIS_LAGER.exe  madExcept CallThreadProcSafe
+004b051a +32 VIS_LAGER.exe  madExcept ThreadExceptFrame
+769c3388 +10 kernel32.dll             BaseThreadInitThunk
+>> created by main thread ($121c) at:
+3817ccc9 +00 sqlncli11.dll
+
+thread $2bcc:
+77c3f8ca +0e ntdll.dll                NtWaitForSingleObject
+773214a5 +92 KERNELBASE.dll           WaitForSingleObjectEx
+769c118f +3e kernel32.dll             WaitForSingleObjectEx
+769c1143 +0d kernel32.dll             WaitForSingleObject
+004b04b5 +0d VIS_LAGER.exe  madExcept CallThreadProcSafe
+004b051a +32 VIS_LAGER.exe  madExcept ThreadExceptFrame
+769c3388 +10 kernel32.dll             BaseThreadInitThunk
+>> created by main thread ($121c) at:
+6edb4c95 +00 winspool.drv
+
+modules:
+00400000 VIS_LAGER.exe          2.3.1.97           C:\Users\Lars\Documents\GitHub\VIS_LAGER-V\EXE
+07d90000 odbccp32.dll           6.1.7601.17632     C:\Windows\system32
+09220000 MSVCR100.dll           10.0.40219.325     C:\Windows\SysWOW64
+100c0000 FaultRep.dll           6.1.7601.17514     C:\Windows\system32
+380e0000 sqlncli11.dll          2011.110.3000.0    C:\Windows\SysWOW64
+407d0000 RESUTILS.DLL           6.1.7601.17514     C:\Windows\system32
+65370000 HHCtrl.OCX             6.1.7600.16385     C:\Windows\system32
+66230000 msv1_0.DLL             6.1.7601.18714     C:\Windows\SysWOW64
+66360000 GrooveIntlResource.dll 14.0.6017.1000     C:\Program Files (x86)\Microsoft Office\Office14\1053
+68fa0000 IconCodecService.dll   6.1.7600.16385     C:\Windows\system32
+69520000 gdiplus.dll            6.1.7601.18455     C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.18455_none_72d576ad8665e853
+69ed0000 office.odf             14.0.7109.5000     C:\Program Files (x86)\Common Files\microsoft shared\OFFICE14\Cultures
+6a2f0000 GROOVEEX.DLL           14.0.7113.5005     C:\Program Files (x86)\Microsoft Office\Office14
+6a750000 dwmapi.dll             6.1.7600.16385     C:\Windows\system32
+6a970000 cryptdll.dll           6.1.7600.16385     C:\Windows\system32
+6a990000 security.dll           6.1.7600.16385     C:\Windows\system32
+6b6c0000 SQLNCLIR11.RLL         2011.110.2100.60   C:\Windows\SysWOW64\1033
+6c0b0000 WindowsCodecs.dll      6.2.9200.17226     C:\Windows\system32
+6c1e0000 propsys.dll            7.0.7601.17514     C:\Windows\system32
+6ca20000 CLUSAPI.DLL            6.1.7601.17514     C:\Windows\system32
+6dd90000 oledlg.dll             6.1.7600.16385     C:\Windows\system32
+6ddf0000 MSVCP90.dll            9.0.30729.6161     C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57
+6e0f0000 EhStorShell.dll        6.1.7600.16385     C:\Windows\system32
+6e140000 ATL90.DLL              9.0.30729.6161     C:\Windows\WinSxS\x86_microsoft.vc90.atl_1fc8b3b9a1e18e3b_9.0.30729.6161_none_51cd0a7abbe4e19b
+6e170000 DropboxExt.25.dll      1.0.0.25           C:\Users\Lars\AppData\Roaming\Dropbox\bin
+6eda0000 winspool.drv           6.1.7601.17514     C:\Windows\system32
+6f2f0000 bcryptprimitives.dll   6.1.7600.16385     C:\Windows\SysWOW64
+6f330000 bcrypt.dll             6.1.7600.16385     C:\Windows\system32
+6f350000 ncrypt.dll             6.1.7601.18714     C:\Windows\system32
+6f390000 ntdsapi.dll            6.1.7600.16385     C:\Windows\system32
+6f3d0000 Kerberos.DLL           6.1.7601.18714     C:\Windows\SysWOW64
+6f460000 ntmarta.dll            6.1.7600.16385     C:\Windows\system32
+6f4c0000 LOGONCLI.DLL           6.1.7601.17514     C:\Windows\system32
+6f4f0000 comctl32.dll           6.10.7601.17514    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2
+6f690000 olepro32.dll           6.1.7601.17514     C:\Windows\system32
+6f6b0000 oleacc.dll             7.0.0.0            C:\Windows\system32
+6fa70000 Msftedit.DLL           5.41.21.2510       C:\Windows\system32
+71bd0000 credssp.dll            6.1.7601.18714     C:\Windows\system32
+71f20000 WINSTA.dll             6.1.7601.18540     C:\Windows\system32
+725f0000 winmm.dll              6.1.7601.17514     C:\Windows\system32
+72e00000 wkscli.dll             6.1.7601.17514     C:\Windows\SysWOW64
+72e10000 srvcli.dll             6.1.7601.17514     C:\Windows\SysWOW64
+72e30000 netutils.dll           6.1.7601.17514     C:\Windows\SysWOW64
+72ef0000 NETAPI32.dll           6.1.7601.17887     C:\Windows\SysWOW64
+72f90000 apphelp.dll            6.1.7601.17514     C:\Windows\system32
+732d0000 wship6.dll             6.1.7600.16385     C:\Windows\System32
+73570000 rasadhlp.dll           6.1.7600.16385     C:\Windows\system32
+73580000 fwpuclnt.dll           6.1.7601.18283     C:\Windows\System32
+735f0000 odbcint.dll            6.1.7600.16385     C:\Windows\system32
+73630000 odbc32.dll             6.1.7601.17514     C:\Windows\system32
+737e0000 wshtcpip.dll           6.1.7600.16385     C:\Windows\System32
+73890000 DNSAPI.dll             6.1.7601.17570     C:\Windows\system32
+73900000 mswsock.dll            6.1.7601.18254     C:\Windows\system32
+739e0000 WINNSI.DLL             6.1.7600.16385     C:\Windows\system32
+739f0000 IPHLPAPI.DLL           6.1.7601.17514     C:\Windows\system32
+73a10000 wsock32.dll            6.1.7600.16385     C:\Windows\system32
+73a20000 version.dll            6.1.7600.16385     C:\Windows\system32
+73a30000 wtsapi32.dll           6.1.7601.17514     C:\Windows\system32
+73a40000 secur32.dll            6.1.7601.18719     C:\Windows\system32
+73bd0000 nvinit.dll             8.17.12.8026       C:\Windows\SysWOW64
+73c10000 MSVCR90.dll            9.0.30729.6161     C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57
+73e90000 schannel.dll           6.1.7601.18714     C:\Windows\SysWOW64
+750d0000 uxtheme.dll            6.1.7600.16385     C:\Windows\system32
+75150000 msimg32.dll            6.1.7600.16385     C:\Windows\system32
+755a0000 CRYPTBASE.dll          6.1.7600.16385     C:\Windows\syswow64
+755b0000 SspiCli.dll            6.1.7601.18719     C:\Windows\syswow64
+75640000 MSCTF.dll              6.1.7600.16385     C:\Windows\syswow64
+75710000 crypt32.dll            6.1.7601.18700     C:\Windows\syswow64
+75840000 CLBCatQ.DLL            2001.12.8530.16385 C:\Windows\syswow64
+758d0000 LPK.dll                6.1.7601.18177     C:\Windows\syswow64
+758e0000 USER32.dll             6.1.7601.17514     C:\Windows\syswow64
+759f0000 CFGMGR32.dll           6.1.7601.17621     C:\Windows\syswow64
+75a20000 IMM32.DLL              6.1.7601.17514     C:\Windows\system32
+75a90000 RPCRT4.dll             6.1.7601.18532     C:\Windows\syswow64
+75b80000 msvcrt.dll             7.0.7601.17744     C:\Windows\syswow64
+75c30000 WLDAP32.dll            6.1.7601.17514     C:\Windows\syswow64
+75cb0000 NSI.dll                6.1.7600.16385     C:\Windows\syswow64
+75d60000 shell32.dll            6.1.7601.18517     C:\Windows\syswow64
+769b0000 kernel32.dll           6.1.7601.18409     C:\Windows\syswow64
+76ae0000 oleaut32.dll           6.1.7601.18679     C:\Windows\syswow64
+76b70000 GDI32.dll              6.1.7601.18577     C:\Windows\syswow64
+76c00000 SHLWAPI.dll            6.1.7601.17514     C:\Windows\syswow64
+76c60000 WS2_32.dll             6.1.7601.17514     C:\Windows\syswow64
+76d30000 sechost.dll            6.1.7600.16385     C:\Windows\SysWOW64
+76d50000 SETUPAPI.dll           6.1.7601.17514     C:\Windows\syswow64
+76ef0000 ADVAPI32.dll           6.1.7601.18247     C:\Windows\syswow64
+76f90000 DEVOBJ.dll             6.1.7601.17621     C:\Windows\syswow64
+76fc0000 MSASN1.dll             6.1.7601.17514     C:\Windows\syswow64
+77120000 profapi.dll            6.1.7600.16385     C:\Windows\syswow64
+77130000 ole32.dll              6.1.7601.17514     C:\Windows\syswow64
+77290000 comdlg32.dll           6.1.7601.17514     C:\Windows\syswow64
+77310000 KERNELBASE.dll         6.1.7601.18409     C:\Windows\syswow64
+77360000 USP10.dll              1.626.7601.18454   C:\Windows\syswow64
+77c20000 ntdll.dll              6.1.7601.18247     C:\Windows\SysWOW64
+
+processes:
+0000 Idle                           0 0    0
+0004 System                         0 0    0
+0158 smss.exe                       0 0    0    normal
+01ec csrss.exe                      0 0    0    normal
+0290 wininit.exe                    0 0    0    high
+02a0 csrss.exe                      1 174  83   normal
+02c4 services.exe                   0 0    0    normal
+02e0 lsass.exe                      0 0    0    normal
+02e8 lsm.exe                        0 0    0    normal
+0348 svchost.exe                    0 0    0    normal
+0384 nvvsvc.exe                     0 0    0    normal
+03ac svchost.exe                    0 0    0    normal
+03ec svchost.exe                    0 0    0    normal
+0084 svchost.exe                    0 0    0    normal
+0164 svchost.exe                    0 0    0    normal
+0178 svchost.exe                    0 0    0    normal
+0238 winlogon.exe                   1 6    0    high
+0490 WUDFHost.exe                   0 0    0    normal
+04e8 svchost.exe                    0 0    0    normal
+055c svchost.exe                    0 0    0    normal
+05ac wlanext.exe                    0 0    0    normal
+05b8 conhost.exe                    0 0    0    normal
+061c nvxdsync.exe                   1 8    8    normal
+062c nvvsvc.exe                     1 16   9    normal
+0698 spoolsv.exe                    0 0    0    normal
+06dc svchost.exe                    0 0    0    normal
+0718 upeksvr.exe                    1 21   44   normal
+0720 svchost.exe                    0 0    0    normal
+0798 armsvc.exe                     0 0    0    normal       C:\Program Files (x86)\Common Files\Adobe\ARM\1.0
+07cc officeclicktorun.exe           0 0    0    normal
+01e8 slimsvc.exe                    0 0    0    below normal C:\Program Files (x86)\CheckPoint\SSL Network Extender
+07a0 cvpnd.exe                      0 0    0    normal       C:\Program Files (x86)\Cisco Systems\VPN Client
+0808 Service.exe                    0 0    0    normal       C:\Program Files (x86)\Emotum\Stay Connected
+0848 ESUS_TNS.exe                   0 0    0    normal       C:\Program Files (x86)\Telenor Sweden\ESUS_TNS
+086c EvtEng.exe                     0 0    0    normal
+089c FileZilla Server.exe           0 0    0    normal       C:\Program Files (x86)\FileZilla Server
+08d4 fshoster32.exe                 0 0    0    normal       C:\Program Files (x86)\F-Secure
+097c fsorsp.exe                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\CCF_Reputation
+099c FSGK32.EXE                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Anti-Virus
+0a04 HWDeviceService64.exe          0 0    0    normal
+0a24 ibguard.exe                    0 0    0    normal
+0adc sqlservr.exe                   0 0    0    normal
+05d8 PowerBiosServer.exe            0 0    0    normal       C:\Program Files (x86)\Hotkey
+0bf0 RegSrvc.exe                    0 0    0    normal
+0900 sqlwriter.exe                  0 0    0    normal
+0c0c ss_conn_service.exe            0 0    0    normal       C:\Program Files (x86)\Samsung\USB Drivers\25_escape\conn
+0c60 ToolbarService.exe             0 0    0    normal       C:\Program Files (x86)\Tbccint\ToolbarService
+0c94 TeamViewer_Service.exe         0 0    0    normal       C:\Program Files (x86)\TeamViewer
+0cd0 TracSrvWrapper.exe             0 0    0    normal       C:\Program Files (x86)\CheckPoint\Endpoint Connect
+0e88 FSMA32.EXE                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Common
+0e9c ibserver.exe                   0 0    0    normal
+0eec FSHDLL64.EXE                   0 0    0    normal
+0fa8 unsecapp.exe                   0 0    0    normal
+0e80 WmiPrvSE.exe                   0 0    0    normal
+11cc fssm32.exe                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Anti-Virus
+1300 IAStorDataMgrSvc.exe           0 0    0    normal       C:\Program Files (x86)\Intel\Intel(R) Rapid Storage Technology
+135c LMS.exe                        0 0    0    normal       C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\LMS
+13b4 daemonu.exe                    0 0    0    normal       C:\Program Files (x86)\NVIDIA Corporation\NVIDIA Updatus
+0838 wmpnetwk.exe                   0 0    0    normal
+0140 SearchIndexer.exe              0 0    0    normal
+0740 UNS.exe                        0 0    0    normal       C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\UNS
+1178 taskhost.exe                   1 18   21   normal
+0324 taskeng.exe                    1 4    3    normal
+1520 bkmaker.exe                    1 547  273  below normal C:\Program Files (x86)\ASCOMP Software\BackUp Maker
+155c dwm.exe                        1 6    2    normal
+1574 explorer.exe                   1 527  280  normal
+15d0 igfxtray.exe                   1 7    5    normal
+15e0 hkcmd.exe                      1 4    17   normal
+1600 igfxpers.exe                   1 4    4    normal
+1640 SynTPEnh.exe                   1 71   37   above normal
+1660 RAVCpl64.exe                   1 49   19   normal
+1684 SynTPHelper.exe                1 4    3    above normal
+169c iFrmewrk.exe                   1 79   50   normal
+16f0 rundll32.exe                   1 10   8    normal
+1744 CDASrv.exe                     1 4    9    normal
+17b4 netsession_win.exe             1 4    4    normal       C:\Users\Lars\AppData\Local\Akamai
+17c8 rundll32.exe                   1 10   5    normal       C:\Windows\SysWOW64
+17f0 lync.exe                       1 167  119  normal       C:\Program Files\Microsoft Office 15\root\office15
+17f8 netsession_win.exe             1 4    4    normal       C:\Users\Lars\AppData\Local\Akamai
+146c Dropbox.exe                    1 39   31   normal       C:\Users\Lars\AppData\Roaming\Dropbox\bin
+14c4 ONENOTEM.EXE                   1 13   6    normal       C:\Program Files (x86)\Microsoft Office\Office14
+142c THXAudio.exe                   1 7    9    normal       C:\Program Files (x86)\Creative\THX TruStudio Pro\THXAudioCP
+15a8 IAStorIcon.exe                 1 28   14   normal       C:\Program Files (x86)\Intel\Intel(R) Rapid Storage Technology
+17d4 DCSHelper.exe                  1 8    14   normal       C:\ProgramData\DatacardService
+1470 FileZilla Server Interface.exe 1 78   53   normal       C:\Program Files (x86)\FileZilla Server
+1418 unsecapp.exe                   1 4    2    normal
+1484 TrGUI.exe                      1 127  115  normal       C:\Program Files (x86)\CheckPoint\Endpoint Connect
+12f0 TelenorSEMobile.exe            1 20   43   normal       C:\Program Files (x86)\Emotum\Stay Connected
+1814 BrMfcWnd.exe                   1 34   40   normal       C:\Program Files (x86)\Brother\Brmfcmon
+185c FSM32.EXE                      1 188  72   normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Common
+186c brccMCtl.exe                   1 32   46   normal       C:\Program Files (x86)\Brother\ControlCenter3
+1918 BrMfimon.exe                   1 8    9    normal       C:\Program Files (x86)\Brother\Brmfcmon
+19c4 concentr.exe                   1 36   24   normal       C:\Program Files (x86)\Citrix\ICA Client
+19f8 redirector.exe                 1 4    4    normal       C:\Program Files (x86)\Citrix\ICA Client
+1a08 fshoster32.exe                 1 80   147  normal       C:\Program Files (x86)\F-Secure
+1a94 Receiver.exe                   1 44   30   normal       C:\Program Files (x86)\Citrix\Receiver
+1b88 nvtray.exe                     1 7    5    normal
+1c10 svchost.exe                    0 0    0    normal
+1cac SelfServicePlugin.exe          1 16   17   normal       C:\Program Files (x86)\Citrix\SelfServicePlugin
+1d08 wfcrun32.exe                   1 38   42   normal       C:\Program Files (x86)\Citrix\ICA Client
+1f54 svchost.exe                    0 0    0    normal
+21b0 psqltray.exe                   1 22   41   normal
+23a8 PresentationFontCache.exe      0 0    0    normal
+2268 bds.exe                        1 1891 1616 normal       C:\Program Files (x86)\Embarcadero\Studio\14.0\bin
+157c chrome.exe                     1 135  80   normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+16b4 chrome.exe                     1 7    3    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+162c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+13ec chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+12c4 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+09d0 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2364 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+0fec chrome.exe                     1 16   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+0728 chrome.exe                     1 24   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+20ac chrome.exe                     1 229  1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+160c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+108c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+17a0 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+18bc chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+16b0 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+1e20 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2170 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2338 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2460 chrome.exe                     1 49   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2480 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+24cc chrome.exe                     1 7    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+254c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2554 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+255c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2564 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2670 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2678 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2684 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+271c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2724 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+0b78 mstsc.exe                      1 104  63   normal
+15f4 splwow64.exe                   1 4    6    normal
+199c bds.exe                        1 3883 3165 normal       C:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin
+28c8 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2960 mspaint.exe                    1 463  70   normal
+2838 TrustedInstaller.exe           0 0    0    normal
+1cc4 SearchProtocolHost.exe         0 0    0    idle
+2b58 WFICA32.EXE                    1 61   64   normal       C:\PROGRA~2\Citrix\ICACLI~1
+1768 chrome.exe                     1 14   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2424 VIS_LAGER.exe                  1 500  244  normal       C:\Users\Lars\Documents\GitHub\VIS_LAGER-V\EXE
+292c SearchFilterHost.exe           0 0    0    idle
+2248 audiodg.exe                    0 0    0
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
+  - Microsoft Composite Battery
++ Biometric Devices
+  - TouchStrip Fingerprint Sensor (WBF advanced mode) (driver 1.4.0.275)
++ Computer
+  - ACPI x64-based PC
++ Disk drives
+  - Corsair Force GS
++ Display adapters
+  - Intel(R) HD Graphics Family (driver 8.15.10.2476)
+  - NVIDIA GeForce GT 555M (driver 8.17.12.8026)
++ DVD/CD-ROM drives
+  - DTSOFT Virtual CdRom Device
+  - MATSHITA BD-CMB UJ141AF
++ Human Interface Devices
+  - USB-enhet
++ IDE ATA/ATAPI controllers
+  - Intel(R) Mobile Express Chipset SATA AHCI Controller (driver 10.5.0.1026)
++ Imaging devices
+  - Brother MFC-5890CN LAN (driver 1.0.0.0)
++ Keyboards
+  - Standardtangentbord - PS/2
++ Memory technology driver
+  - JMicron PCIe MS Host Controller (driver 1.0.62.0)
+  - JMicron PCIe SD Host Controller (driver 1.0.62.0)
+  - JMicron PCIe SD/MMC Host Controller (driver 1.0.62.0)
++ Mice and other pointing devices
+  - HID-kompatibel mus
+  - Synaptics PS/2 Port Pointing Device (driver 15.1.14.0)
++ Monitors
+  - Allmän PnP-bildskärm
++ Network adapters
+  - Check Point Virtual Network Adapter For Endpoint VPN Client (driver 1.1.0.0)
+  - Check Point Virtual Network Adapter For Endpoint VPN Client - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Check Point Virtual Network Adapter For SSL Network Extender (driver 1.1.0.0)
+  - Check Point Virtual Network Adapter For SSL Network Extender - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Cisco Systems VPN Adapter for 64-bit Windows (driver 5.0.7.1)
+  - Cisco Systems VPN Adapter for 64-bit Windows - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - HUAWEI Mobile Connect - Network Card - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Intel(R) Centrino(R) Advanced-N 6230 (driver 14.0.2.2)
+  - Intel(R) Centrino(R) Advanced-N 6230 - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - JMicron PCI Express Gigabit Ethernet Adapter (driver 6.0.26.6)
+  - JMicron PCI Express Gigabit Ethernet Adapter - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Microsoft Virtual WiFi Miniport Adapter
+  - Microsoft Virtual WiFi Miniport Adapter #2
+  - Microsoft Virtual WiFi Miniport Adapter #2 - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Microsoft Virtual WiFi Miniport Adapter - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Teredo Tunneling Pseudo-Interface
+  - WAN Miniport (IKEv2)
+  - WAN Miniport (IP)
+  - WAN Miniport (IP) - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - WAN Miniport (IPv6)
+  - WAN Miniport (L2TP)
+  - WAN Miniport (Network Monitor)
+  - WAN Miniport (Network Monitor) - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - WAN Miniport (PPPOE)
+  - WAN Miniport (PPTP)
+  - WAN Miniport (SSTP)
+  - ZTE Wireless Ethernet Adapter #2 - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - ZTE Wireless Ethernet Adapter - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
++ Processors
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
++ Sound, video and game controllers
+  - Intel(R) Bildskärmsljud (driver 6.14.0.3074)
+  - Realtek High Definition Audio (driver 6.0.1.6301)
++ Storage volume shadow copies
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
++ System devices
+  - 2nd generation Intel(R) Core(TM) processor family DRAM Controller - 0104 (driver 9.2.0.1011)
+  - 2nd generation Intel(R) Core(TM) processor family PCI Express Controller - 0101 (driver 9.2.0.1011)
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Composite Bus Enumerator
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Direct memory access controller
+  - File as Volume Driver
+  - High Definition Audio-styrenhet
+  - High precision event timer
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 1 - 1C10 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 2 - 1C12 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 3 - 1C14 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 4 - 1C16 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family SMBus Controller - 1C22 (driver 9.2.0.1011)
+  - Intel(R) 82802 Firmware Hub Device
+  - Intel(R) HM65 Express Chipset Family LPC Interface Controller - 1C49 (driver 9.2.0.1016)
+  - Intel(R) Management Engine Interface (driver 7.0.0.1144)
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft System Management BIOS Driver
+  - Microsoft Virtual Drive Enumerator Driver
+  - Microsoft Windows Management Interface for ACPI
+  - Microsoft Windows Management Interface for ACPI
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - Remote Desktop Device Redirector Bus
+  - System board
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Generic USB Hub
+  - Generic USB Hub
+  - HUAWEI Mobile Connect - Bus Enumerate Device (driver 2.6.2.3129)
+  - Intel(R) 6 Series/C200 Series Chipset Family USB Enhanced Host Controller - 1C26 (driver 9.2.0.1021)
+  - Intel(R) 6 Series/C200 Series Chipset Family USB Enhanced Host Controller - 1C2D (driver 9.2.0.1021)
+  - Texas Instruments USB Root Hub (driver 1.12.7.0)
+  - Texas Instruments XHCI Controller (driver 1.12.7.0)
+  - USB-rotnav (hub)
+  - USB-rotnav (hub)
+
+cpu registers:
+eax = 0a41d508
+ebx = 00000000
+ecx = 00000000
+edx = 03478780
+esi = 00d3dbbc
+edi = 0a41d508
+eip = 00a4079a
+esp = 0018eed8
+ebp = 0018ef30
+
+stack dump:
+0018eed8  9a 07 a4 00 de fa ed 0e - 01 00 00 00 07 00 00 00  ................
+0018eee8  ec ee 18 00 9a 07 a4 00 - 08 d5 41 0a 00 00 00 00  ..........A.....
+0018eef8  bc db d3 00 08 d5 41 0a - 30 ef 18 00 08 ef 18 00  ......A.0.......
+0018ef08  38 ef 18 00 98 9d 40 00 - 30 ef 18 00 01 00 00 00  8.....@.0.......
+0018ef18  08 d5 41 0a 20 2a ce 04 - 08 d5 41 0a 00 00 00 00  ..A. *....A.....
+0018ef28  00 00 00 00 00 00 00 00 - 68 ef 18 00 fb 11 d6 00  ........h.......
+0018ef38  44 ef 18 00 98 9d 40 00 - 68 ef 18 00 74 ef 18 00  D.....@.h...t...
+0018ef48  98 9d 40 00 68 ef 18 00 - 01 00 00 00 84 f0 18 00  ..@.h...........
+0018ef58  00 00 00 00 00 00 00 00 - 00 00 00 00 c0 54 20 0a  .............T .
+0018ef68  c0 ef 18 00 78 12 d6 00 - 84 a3 d6 00 80 ef 18 00  ....x...........
+0018ef78  77 9f 40 00 c0 ef 18 00 - 8c ef 18 00 98 9d 40 00  w.@...........@.
+0018ef88  c0 ef 18 00 d4 ef 18 00 - 98 9d 40 00 c0 ef 18 00  ..........@.....
+0018ef98  01 00 00 00 84 f0 18 00 - 00 00 00 00 00 00 00 00  ................
+0018efa8  00 00 00 00 c8 ef ff ff - 01 00 00 00 c0 54 20 0a  .............T .
+0018efb8  60 cc 3f 0a 01 00 00 00 - 0c f0 18 00 6d 15 d7 00  `.?.........m...
+0018efc8  2c 88 4a 0a 01 00 00 00 - 84 f0 18 00 e0 ef 18 00  ,.J.............
+0018efd8  77 9f 40 00 0c f0 18 00 - 18 f0 18 00 98 9d 40 00  w.@...........@.
+0018efe8  0c f0 18 00 78 54 20 0a - 00 00 00 00 30 a6 d7 00  ....xT .....0...
+0018eff8  a0 53 20 0a cc cc 4b 00 - 14 25 20 09 70 38 c9 04  .S ...K..% .p8..
+0018f008  00 00 00 00 40 f0 18 00 - af 07 d5 00 84 f0 18 00  ....@...........
+
+disassembling:
+[...]
+0178f04e       sub     al, 2
+0178f050       jnb     loc_178f063
+0178f052 915   mov     eax, [ebp-4]
+0178f055       mov     eax, [eax+$774]
+0178f05b       mov     edx, [eax]
+0178f05d     > call    dword ptr [edx+$310]
+0178f063 916   mov     eax, [ebp-4]
+0178f066       mov     eax, [eax+$774]
+0178f06c       call    -$cd8099 ($ab6fd8)     ; FireDAC.Comp.DataSet.TFDDataSet.GetChangeCount
+0178f071       test    eax, eax
+0178f073       jle     loc_178f093
+[...]
+
+date/time          : 2015-03-11, 07:16:49, 179ms
+computer name      : CARMAK-SPEED
+user name          : Lars <admin>
+registered owner   : Lars
+operating system   : Windows 7 x64 Service Pack 1 build 7601
+system language    : Swedish
+system up time     : 15 hours 50 minutes
+program up time    : 16 seconds
+processors         : 8x Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+physical memory    : 1014/8098 MB (free/total)
+free disk space    : (C:) 96,02 GB
+display mode       : 1920x1080, 32 bit
+process id         : $2904
+allocated memory   : 73,52 MB
+largest free block : 639,80 MB
+executable         : VIS_LAGER.exe
+exec. date/time    : 2015-03-11 07:16
+version            : 2.3.1.98
+compiled with      : Delphi XE6
+madExcept version  : 4.0.11
+callstack crc      : $02c15a20, $bf2eb17b, $bf2eb17b
+exception number   : 1
+exception class    : EMSSQLNativeException
+exception message  : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Could not find stored procedure 'VIS_VIDA.dbo.vis_Lang'.
+
+main thread ($7f4):
+00a40795 +119 VIS_LAGER.exe FireDAC.Stan.Error                FDException
+00d611f6 +27a VIS_LAGER.exe FireDAC.Phys.ODBCWrapper          TODBCHandle.ProcessError
+00d61273 +00b VIS_LAGER.exe FireDAC.Phys.ODBCWrapper          TODBCHandle.Check
+00d6a37f +19f VIS_LAGER.exe FireDAC.Phys.ODBCWrapper          TODBCCommandStatement.Execute
+00d71881 +0f5 VIS_LAGER.exe FireDAC.Phys.ODBCBase             TFDPhysODBCCommand.InternalOpen
+00d4d5e7 +147 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.OpenBase
+00d4d087 +003 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommandAsyncOpen.Execute
+00a9c057 +04b VIS_LAGER.exe FireDAC.Stan.Async                TFDStanAsyncExecutor.ExecuteOperation
+00a9c386 +06e VIS_LAGER.exe FireDAC.Stan.Async                TFDStanAsyncExecutor.Run
+00d4b59a +086 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.ExecuteTask
+00d4b5eb +0d7 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.ExecuteTask
+00d4d822 +052 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.Open
+00d4d7bb +013 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.OpenBlocked
+00d70bb8 +01c VIS_LAGER.exe FireDAC.Phys.ODBCBase             TFDPhysODBCCommand.InternalColInfoStart
+00d4e8f9 +385 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.DoDefineDataTable
+00d4fe97 +083 VIS_LAGER.exe FireDAC.Phys                      TFDPhysCommand.Define
+00aa24d2 +092 VIS_LAGER.exe FireDAC.DApt                      TFDDAptTableAdapter.Define
+00ae2738 +014 VIS_LAGER.exe FireDAC.Comp.Client               TFDCustomTableAdapter.Define
+00ae56e2 +022 VIS_LAGER.exe FireDAC.Comp.Client               TFDAdaptedDataSet.DoDefineDatSManager
+00aaa0eb +03f VIS_LAGER.exe FireDAC.Comp.DataSet              TFDDataSet.CheckTable
+00aad22f +1ef VIS_LAGER.exe FireDAC.Comp.DataSet              TFDDataSet.OpenCursor
+00ae732e +04a VIS_LAGER.exe FireDAC.Comp.Client               TFDRdbmsDataSet.OpenCursor
+00a2dd1d +055 VIS_LAGER.exe Data.DB                           TDataSet.SetActive
+00aaa51b +027 VIS_LAGER.exe FireDAC.Comp.DataSet              TFDDataSet.SetActive
+00f2665a +08e VIS_LAGER.exe dmsVidaSystem            1926  +5 TdmsSystem.GetLanguageNo
+01886b26 +242 VIS_LAGER.exe fMain                     371 +41 TfrmMain.FormShow
+006dcca9 +015 VIS_LAGER.exe Vcl.Forms                         TCustomForm.DoShow
+006e1365 +0a9 VIS_LAGER.exe Vcl.Forms                         TCustomForm.CMShowingChanged
+005cfe59 +2bd VIS_LAGER.exe Vcl.Controls                      TControl.WndProc
+005d4971 +5c9 VIS_LAGER.exe Vcl.Controls                      TWinControl.WndProc
+006dd744 +62c VIS_LAGER.exe Vcl.Forms                         TCustomForm.WndProc
+005cfa94 +024 VIS_LAGER.exe Vcl.Controls                      TControl.Perform
+005d3d61 +10d VIS_LAGER.exe Vcl.Controls                      TWinControl.UpdateShowing
+005d3e70 +0bc VIS_LAGER.exe Vcl.Controls                      TWinControl.UpdateControlState
+005d6a16 +026 VIS_LAGER.exe Vcl.Controls                      TWinControl.CMVisibleChanged
+005cfe59 +2bd VIS_LAGER.exe Vcl.Controls                      TControl.WndProc
+005d4971 +5c9 VIS_LAGER.exe Vcl.Controls                      TWinControl.WndProc
+006dd744 +62c VIS_LAGER.exe Vcl.Forms                         TCustomForm.WndProc
+005cfa94 +024 VIS_LAGER.exe Vcl.Controls                      TControl.Perform
+005ce44a +026 VIS_LAGER.exe Vcl.Controls                      TControl.SetVisible
+006dcf82 +03a VIS_LAGER.exe Vcl.Forms                         TCustomForm.SetVisible
+006e7043 +0b3 VIS_LAGER.exe Vcl.Forms                         TApplication.Run
+018d10a4 +120 VIS_LAGER.exe VIS_LAGER                 146 +13 initialization
+769c3388 +010 kernel32.dll                                    BaseThreadInitThunk
+
+thread $2ab4:
+77c40156 +0e ntdll.dll     NtWaitForMultipleObjects
+769c3388 +10 kernel32.dll  BaseThreadInitThunk
+
+thread $2b48:
+77c41f3f +0b ntdll.dll     NtWaitForWorkViaWorkerFactory
+769c3388 +10 kernel32.dll  BaseThreadInitThunk
+
+thread $1ac4:
+77c41f3f +0b ntdll.dll     NtWaitForWorkViaWorkerFactory
+769c3388 +10 kernel32.dll  BaseThreadInitThunk
+
+thread $1248:
+77c41f3f +0b ntdll.dll     NtWaitForWorkViaWorkerFactory
+769c3388 +10 kernel32.dll  BaseThreadInitThunk
+
+thread $2ac4: <priority:2>
+758f7c18 +45 USER32.dll              GetMessageA
+004b04b5 +0d VIS_LAGER.exe madExcept CallThreadProcSafe
+004b051a +32 VIS_LAGER.exe madExcept ThreadExceptFrame
+769c3388 +10 kernel32.dll            BaseThreadInitThunk
+>> created by main thread ($7f4) at:
+725f6c8b +00 winmm.dll
+
+thread $20c8 (TFDMoniRemoteSender): <suspended> <priority:2>
+00d88050 +18 VIS_LAGER.exe FireDAC.Moni.RemoteBase TFDMoniRemoteQueueWorker.Create
+
+thread $177c (TFDTracer): <suspended>
+00a45e3d +25 VIS_LAGER.exe FireDAC.Stan.Util TFDThread.Create
+
+thread $1ffc:
+77c3f952 +0e ntdll.dll                NtRemoveIoCompletion
+77317707 +23 KERNELBASE.dll           GetQueuedCompletionStatus
+004b04b5 +0d VIS_LAGER.exe  madExcept CallThreadProcSafe
+004b051a +32 VIS_LAGER.exe  madExcept ThreadExceptFrame
+769c3388 +10 kernel32.dll             BaseThreadInitThunk
+>> created by main thread ($7f4) at:
+3817ccc9 +00 sqlncli11.dll
+
+modules:
+00400000 VIS_LAGER.exe          2.3.1.98           C:\Users\Lars\Documents\GitHub\VIS_LAGER-V\EXE
+07ec0000 odbccp32.dll           6.1.7601.17632     C:\Windows\system32
+081b0000 MSVCR100.dll           10.0.40219.325     C:\Windows\SysWOW64
+100c0000 FaultRep.dll           6.1.7601.17514     C:\Windows\system32
+380e0000 sqlncli11.dll          2011.110.3000.0    C:\Windows\SysWOW64
+407d0000 RESUTILS.DLL           6.1.7601.17514     C:\Windows\system32
+57cf0000 DUser.dll              6.1.7600.16385     C:\Windows\system32
+64570000 tv_w32.dll             10.0.39052.0       C:\Program Files (x86)\TeamViewer
+65370000 HHCtrl.OCX             6.1.7600.16385     C:\Windows\system32
+66230000 msv1_0.DLL             6.1.7601.18714     C:\Windows\SysWOW64
+66360000 GrooveIntlResource.dll 14.0.6017.1000     C:\Program Files (x86)\Microsoft Office\Office14\1053
+68fa0000 IconCodecService.dll   6.1.7600.16385     C:\Windows\system32
+69520000 gdiplus.dll            6.1.7601.18455     C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.18455_none_72d576ad8665e853
+69ed0000 office.odf             14.0.7109.5000     C:\Program Files (x86)\Common Files\microsoft shared\OFFICE14\Cultures
+6a2f0000 GROOVEEX.DLL           14.0.7113.5005     C:\Program Files (x86)\Microsoft Office\Office14
+6a750000 dwmapi.dll             6.1.7600.16385     C:\Windows\system32
+6a970000 cryptdll.dll           6.1.7600.16385     C:\Windows\system32
+6a990000 security.dll           6.1.7600.16385     C:\Windows\system32
+6b6c0000 SQLNCLIR11.RLL         2011.110.2100.60   C:\Windows\SysWOW64\1033
+6c0b0000 WindowsCodecs.dll      6.2.9200.17226     C:\Windows\system32
+6c1e0000 propsys.dll            7.0.7601.17514     C:\Windows\system32
+6ca20000 CLUSAPI.DLL            6.1.7601.17514     C:\Windows\system32
+6dd90000 oledlg.dll             6.1.7600.16385     C:\Windows\system32
+6ddf0000 MSVCP90.dll            9.0.30729.6161     C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57
+6e0f0000 EhStorShell.dll        6.1.7600.16385     C:\Windows\system32
+6e140000 ATL90.DLL              9.0.30729.6161     C:\Windows\WinSxS\x86_microsoft.vc90.atl_1fc8b3b9a1e18e3b_9.0.30729.6161_none_51cd0a7abbe4e19b
+6e170000 DropboxExt.25.dll      1.0.0.25           C:\Users\Lars\AppData\Roaming\Dropbox\bin
+6eda0000 winspool.drv           6.1.7601.17514     C:\Windows\system32
+6f2f0000 bcryptprimitives.dll   6.1.7600.16385     C:\Windows\SysWOW64
+6f330000 bcrypt.dll             6.1.7600.16385     C:\Windows\system32
+6f350000 ncrypt.dll             6.1.7601.18714     C:\Windows\system32
+6f390000 ntdsapi.dll            6.1.7600.16385     C:\Windows\system32
+6f3d0000 Kerberos.DLL           6.1.7601.18714     C:\Windows\SysWOW64
+6f460000 ntmarta.dll            6.1.7600.16385     C:\Windows\system32
+6f4c0000 LOGONCLI.DLL           6.1.7601.17514     C:\Windows\system32
+6f4f0000 comctl32.dll           6.10.7601.17514    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2
+6f690000 olepro32.dll           6.1.7601.17514     C:\Windows\system32
+6f6b0000 oleacc.dll             7.0.0.0            C:\Windows\system32
+6fa70000 Msftedit.DLL           5.41.21.2510       C:\Windows\system32
+71bd0000 credssp.dll            6.1.7601.18714     C:\Windows\system32
+71f20000 WINSTA.dll             6.1.7601.18540     C:\Windows\system32
+725f0000 winmm.dll              6.1.7601.17514     C:\Windows\system32
+72e00000 wkscli.dll             6.1.7601.17514     C:\Windows\SysWOW64
+72e10000 srvcli.dll             6.1.7601.17514     C:\Windows\SysWOW64
+72e30000 netutils.dll           6.1.7601.17514     C:\Windows\SysWOW64
+72ef0000 NETAPI32.dll           6.1.7601.17887     C:\Windows\SysWOW64
+72f90000 apphelp.dll            6.1.7601.17514     C:\Windows\system32
+732d0000 wship6.dll             6.1.7600.16385     C:\Windows\System32
+73570000 rasadhlp.dll           6.1.7600.16385     C:\Windows\system32
+73580000 fwpuclnt.dll           6.1.7601.18283     C:\Windows\System32
+735f0000 odbcint.dll            6.1.7600.16385     C:\Windows\system32
+73630000 odbc32.dll             6.1.7601.17514     C:\Windows\system32
+737e0000 wshtcpip.dll           6.1.7600.16385     C:\Windows\System32
+73890000 DNSAPI.dll             6.1.7601.17570     C:\Windows\system32
+73900000 mswsock.dll            6.1.7601.18254     C:\Windows\system32
+739e0000 WINNSI.DLL             6.1.7600.16385     C:\Windows\system32
+739f0000 IPHLPAPI.DLL           6.1.7601.17514     C:\Windows\system32
+73a10000 wsock32.dll            6.1.7600.16385     C:\Windows\system32
+73a20000 version.dll            6.1.7600.16385     C:\Windows\system32
+73a30000 wtsapi32.dll           6.1.7601.17514     C:\Windows\system32
+73a40000 secur32.dll            6.1.7601.18719     C:\Windows\system32
+73bd0000 nvinit.dll             8.17.12.8026       C:\Windows\SysWOW64
+73c10000 MSVCR90.dll            9.0.30729.6161     C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57
+73e90000 schannel.dll           6.1.7601.18714     C:\Windows\SysWOW64
+750d0000 uxtheme.dll            6.1.7600.16385     C:\Windows\system32
+75150000 msimg32.dll            6.1.7600.16385     C:\Windows\system32
+755a0000 CRYPTBASE.dll          6.1.7600.16385     C:\Windows\syswow64
+755b0000 SspiCli.dll            6.1.7601.18719     C:\Windows\syswow64
+75640000 MSCTF.dll              6.1.7600.16385     C:\Windows\syswow64
+75710000 crypt32.dll            6.1.7601.18700     C:\Windows\syswow64
+75840000 CLBCatQ.DLL            2001.12.8530.16385 C:\Windows\syswow64
+758d0000 LPK.dll                6.1.7601.18177     C:\Windows\syswow64
+758e0000 USER32.dll             6.1.7601.17514     C:\Windows\syswow64
+759f0000 CFGMGR32.dll           6.1.7601.17621     C:\Windows\syswow64
+75a20000 IMM32.DLL              6.1.7601.17514     C:\Windows\system32
+75a90000 RPCRT4.dll             6.1.7601.18532     C:\Windows\syswow64
+75b80000 msvcrt.dll             7.0.7601.17744     C:\Windows\syswow64
+75c30000 WLDAP32.dll            6.1.7601.17514     C:\Windows\syswow64
+75cb0000 NSI.dll                6.1.7600.16385     C:\Windows\syswow64
+75d60000 shell32.dll            6.1.7601.18517     C:\Windows\syswow64
+769b0000 kernel32.dll           6.1.7601.18409     C:\Windows\syswow64
+76ae0000 oleaut32.dll           6.1.7601.18679     C:\Windows\syswow64
+76b70000 GDI32.dll              6.1.7601.18577     C:\Windows\syswow64
+76c00000 SHLWAPI.dll            6.1.7601.17514     C:\Windows\syswow64
+76c60000 WS2_32.dll             6.1.7601.17514     C:\Windows\syswow64
+76d30000 sechost.dll            6.1.7600.16385     C:\Windows\SysWOW64
+76d50000 SETUPAPI.dll           6.1.7601.17514     C:\Windows\syswow64
+76ef0000 ADVAPI32.dll           6.1.7601.18247     C:\Windows\syswow64
+76f90000 DEVOBJ.dll             6.1.7601.17621     C:\Windows\syswow64
+76fc0000 MSASN1.dll             6.1.7601.17514     C:\Windows\syswow64
+77120000 profapi.dll            6.1.7600.16385     C:\Windows\syswow64
+77130000 ole32.dll              6.1.7601.17514     C:\Windows\syswow64
+77290000 comdlg32.dll           6.1.7601.17514     C:\Windows\syswow64
+77310000 KERNELBASE.dll         6.1.7601.18409     C:\Windows\syswow64
+77360000 USP10.dll              1.626.7601.18454   C:\Windows\syswow64
+77c20000 ntdll.dll              6.1.7601.18247     C:\Windows\SysWOW64
+
+processes:
+0000 Idle                           0 0    0
+0004 System                         0 0    0
+0158 smss.exe                       0 0    0    normal
+01ec csrss.exe                      0 0    0    normal
+0290 wininit.exe                    0 0    0    high
+02a0 csrss.exe                      1 174  83   normal
+02c4 services.exe                   0 0    0    normal
+02e0 lsass.exe                      0 0    0    normal
+02e8 lsm.exe                        0 0    0    normal
+0348 svchost.exe                    0 0    0    normal
+0384 nvvsvc.exe                     0 0    0    normal
+03ac svchost.exe                    0 0    0    normal
+03ec svchost.exe                    0 0    0    normal
+0084 svchost.exe                    0 0    0    normal
+0164 svchost.exe                    0 0    0    normal
+0178 svchost.exe                    0 0    0    normal
+0238 winlogon.exe                   1 6    0    high
+0490 WUDFHost.exe                   0 0    0    normal
+04e8 svchost.exe                    0 0    0    normal
+055c svchost.exe                    0 0    0    normal
+05ac wlanext.exe                    0 0    0    normal
+05b8 conhost.exe                    0 0    0    normal
+061c nvxdsync.exe                   1 8    8    normal
+062c nvvsvc.exe                     1 16   9    normal
+0698 spoolsv.exe                    0 0    0    normal
+06dc svchost.exe                    0 0    0    normal
+0718 upeksvr.exe                    1 21   46   normal
+0720 svchost.exe                    0 0    0    normal
+0798 armsvc.exe                     0 0    0    normal       C:\Program Files (x86)\Common Files\Adobe\ARM\1.0
+07cc officeclicktorun.exe           0 0    0    normal
+01e8 slimsvc.exe                    0 0    0    below normal C:\Program Files (x86)\CheckPoint\SSL Network Extender
+07a0 cvpnd.exe                      0 0    0    normal       C:\Program Files (x86)\Cisco Systems\VPN Client
+0808 Service.exe                    0 0    0    normal       C:\Program Files (x86)\Emotum\Stay Connected
+0848 ESUS_TNS.exe                   0 0    0    normal       C:\Program Files (x86)\Telenor Sweden\ESUS_TNS
+086c EvtEng.exe                     0 0    0    normal
+089c FileZilla Server.exe           0 0    0    normal       C:\Program Files (x86)\FileZilla Server
+08d4 fshoster32.exe                 0 0    0    normal       C:\Program Files (x86)\F-Secure
+097c fsorsp.exe                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\CCF_Reputation
+099c FSGK32.EXE                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Anti-Virus
+0a04 HWDeviceService64.exe          0 0    0    normal
+0a24 ibguard.exe                    0 0    0    normal
+0adc sqlservr.exe                   0 0    0    normal
+05d8 PowerBiosServer.exe            0 0    0    normal       C:\Program Files (x86)\Hotkey
+0bf0 RegSrvc.exe                    0 0    0    normal
+0900 sqlwriter.exe                  0 0    0    normal
+0c0c ss_conn_service.exe            0 0    0    normal       C:\Program Files (x86)\Samsung\USB Drivers\25_escape\conn
+0c60 ToolbarService.exe             0 0    0    normal       C:\Program Files (x86)\Tbccint\ToolbarService
+0c94 TeamViewer_Service.exe         0 0    0    normal       C:\Program Files (x86)\TeamViewer
+0cd0 TracSrvWrapper.exe             0 0    0    normal       C:\Program Files (x86)\CheckPoint\Endpoint Connect
+0e88 FSMA32.EXE                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Common
+0e9c ibserver.exe                   0 0    0    normal
+0eec FSHDLL64.EXE                   0 0    0    normal
+0fa8 unsecapp.exe                   0 0    0    normal
+0e80 WmiPrvSE.exe                   0 0    0    normal
+11cc fssm32.exe                     0 0    0    normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Anti-Virus
+1300 IAStorDataMgrSvc.exe           0 0    0    normal       C:\Program Files (x86)\Intel\Intel(R) Rapid Storage Technology
+135c LMS.exe                        0 0    0    normal       C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\LMS
+13b4 daemonu.exe                    0 0    0    normal       C:\Program Files (x86)\NVIDIA Corporation\NVIDIA Updatus
+0838 wmpnetwk.exe                   0 0    0    normal
+0140 SearchIndexer.exe              0 0    0    normal
+0740 UNS.exe                        0 0    0    normal       C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\UNS
+1178 taskhost.exe                   1 18   21   normal
+0324 taskeng.exe                    1 4    3    normal
+1520 bkmaker.exe                    1 547  285  below normal C:\Program Files (x86)\ASCOMP Software\BackUp Maker
+155c dwm.exe                        1 6    2    normal
+1574 explorer.exe                   1 828  434  normal
+15d0 igfxtray.exe                   1 7    5    normal
+15e0 hkcmd.exe                      1 4    17   normal
+1600 igfxpers.exe                   1 4    4    normal
+1640 SynTPEnh.exe                   1 71   38   above normal
+1660 RAVCpl64.exe                   1 49   19   normal
+1684 SynTPHelper.exe                1 4    3    above normal
+169c iFrmewrk.exe                   1 79   50   normal
+16f0 rundll32.exe                   1 10   8    normal
+1744 CDASrv.exe                     1 4    9    normal
+17b4 netsession_win.exe             1 4    4    normal       C:\Users\Lars\AppData\Local\Akamai
+17c8 rundll32.exe                   1 10   5    normal       C:\Windows\SysWOW64
+17f0 lync.exe                       1 171  119  normal       C:\Program Files\Microsoft Office 15\root\office15
+17f8 netsession_win.exe             1 4    4    normal       C:\Users\Lars\AppData\Local\Akamai
+146c Dropbox.exe                    1 39   31   normal       C:\Users\Lars\AppData\Roaming\Dropbox\bin
+14c4 ONENOTEM.EXE                   1 13   6    normal       C:\Program Files (x86)\Microsoft Office\Office14
+142c THXAudio.exe                   1 7    9    normal       C:\Program Files (x86)\Creative\THX TruStudio Pro\THXAudioCP
+15a8 IAStorIcon.exe                 1 28   14   normal       C:\Program Files (x86)\Intel\Intel(R) Rapid Storage Technology
+17d4 DCSHelper.exe                  1 8    14   normal       C:\ProgramData\DatacardService
+1470 FileZilla Server Interface.exe 1 78   53   normal       C:\Program Files (x86)\FileZilla Server
+1418 unsecapp.exe                   1 4    3    normal
+1484 TrGUI.exe                      1 127  115  normal       C:\Program Files (x86)\CheckPoint\Endpoint Connect
+12f0 TelenorSEMobile.exe            1 20   43   normal       C:\Program Files (x86)\Emotum\Stay Connected
+1814 BrMfcWnd.exe                   1 34   40   normal       C:\Program Files (x86)\Brother\Brmfcmon
+185c FSM32.EXE                      1 188  72   normal       C:\Program Files (x86)\F-Secure\apps\ComputerSecurity\Common
+186c brccMCtl.exe                   1 32   46   normal       C:\Program Files (x86)\Brother\ControlCenter3
+1918 BrMfimon.exe                   1 8    9    normal       C:\Program Files (x86)\Brother\Brmfcmon
+19c4 concentr.exe                   1 36   24   normal       C:\Program Files (x86)\Citrix\ICA Client
+19f8 redirector.exe                 1 4    4    normal       C:\Program Files (x86)\Citrix\ICA Client
+1a08 fshoster32.exe                 1 80   147  normal       C:\Program Files (x86)\F-Secure
+1a94 Receiver.exe                   1 44   30   normal       C:\Program Files (x86)\Citrix\Receiver
+1b88 nvtray.exe                     1 7    5    normal
+1c10 svchost.exe                    0 0    0    normal
+1cac SelfServicePlugin.exe          1 16   17   normal       C:\Program Files (x86)\Citrix\SelfServicePlugin
+1d08 wfcrun32.exe                   1 38   42   normal       C:\Program Files (x86)\Citrix\ICA Client
+1f54 svchost.exe                    0 0    0    normal
+21b0 psqltray.exe                   1 22   41   normal
+23a8 PresentationFontCache.exe      0 0    0    normal
+2268 bds.exe                        1 1911 1630 normal       C:\Program Files (x86)\Embarcadero\Studio\14.0\bin
+157c chrome.exe                     1 168  81   normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+16b4 chrome.exe                     1 7    3    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+162c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+13ec chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+12c4 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+09d0 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2364 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+0fec chrome.exe                     1 16   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+0728 chrome.exe                     1 24   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+20ac chrome.exe                     1 224  1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+160c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+108c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+17a0 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+18bc chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+16b0 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+1e20 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2170 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2338 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2460 chrome.exe                     1 49   1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2480 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+24cc chrome.exe                     1 7    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+254c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2554 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+255c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2564 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2670 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2678 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2684 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+271c chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2724 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+15f4 splwow64.exe                   1 4    6    normal
+199c bds.exe                        1 3886 3165 normal       C:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin
+28c8 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+2960 mspaint.exe                    1 465  71   normal
+2b58 WFICA32.EXE                    1 473  66   normal       C:\PROGRA~2\Citrix\ICACLI~1
+192c bds.exe                        1 1557 548  normal       C:\Program Files (x86)\Embarcadero\Studio\14.0\bin
+2380 mstsc.exe                      1 94   74   normal
+1b74 bds.exe                        1 3805 2927 normal       C:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin
+22b0 TextPad.exe                    1 100  106  normal       C:\Program Files (x86)\TextPad 5
+2414 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+1da8 mstsc.exe                      1 75   66   normal
+1fd8 TeamViewer.exe                 1 798  225  high         C:\Program Files (x86)\TeamViewer
+1e94 tv_w32.exe                     1 4    3    normal       C:\Program Files (x86)\TeamViewer
+1854 tv_x64.exe                     1 4    3    normal
+1a10 chrome.exe                     1 4    1    normal       C:\Users\Lars\AppData\Local\Google\Chrome\Application
+1ccc mstsc.exe                      1 89   67   normal
+06c0 audiodg.exe                    0 0    0
+17ec SearchProtocolHost.exe         0 0    0    idle
+182c SearchFilterHost.exe           0 0    0    idle
+2904 VIS_LAGER.exe                  1 397  138  normal       C:\Users\Lars\Documents\GitHub\VIS_LAGER-V\EXE
+13d0 SelfService.exe                1 18   17   normal       C:\Program Files (x86)\Citrix\SelfServicePlugin
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
+  - Microsoft Composite Battery
++ Biometric Devices
+  - TouchStrip Fingerprint Sensor (WBF advanced mode) (driver 1.4.0.275)
++ Computer
+  - ACPI x64-based PC
++ Disk drives
+  - Corsair Force GS
++ Display adapters
+  - Intel(R) HD Graphics Family (driver 8.15.10.2476)
+  - NVIDIA GeForce GT 555M (driver 8.17.12.8026)
++ DVD/CD-ROM drives
+  - DTSOFT Virtual CdRom Device
+  - MATSHITA BD-CMB UJ141AF
++ Human Interface Devices
+  - USB-enhet
++ IDE ATA/ATAPI controllers
+  - Intel(R) Mobile Express Chipset SATA AHCI Controller (driver 10.5.0.1026)
++ Imaging devices
+  - Brother MFC-5890CN LAN (driver 1.0.0.0)
++ Keyboards
+  - Standardtangentbord - PS/2
++ Memory technology driver
+  - JMicron PCIe MS Host Controller (driver 1.0.62.0)
+  - JMicron PCIe SD Host Controller (driver 1.0.62.0)
+  - JMicron PCIe SD/MMC Host Controller (driver 1.0.62.0)
++ Mice and other pointing devices
+  - HID-kompatibel mus
+  - Synaptics PS/2 Port Pointing Device (driver 15.1.14.0)
++ Monitors
+  - Allmän PnP-bildskärm
++ Network adapters
+  - Check Point Virtual Network Adapter For Endpoint VPN Client (driver 1.1.0.0)
+  - Check Point Virtual Network Adapter For Endpoint VPN Client - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Check Point Virtual Network Adapter For SSL Network Extender (driver 1.1.0.0)
+  - Check Point Virtual Network Adapter For SSL Network Extender - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Cisco Systems VPN Adapter for 64-bit Windows (driver 5.0.7.1)
+  - Cisco Systems VPN Adapter for 64-bit Windows - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - HUAWEI Mobile Connect - Network Card - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Intel(R) Centrino(R) Advanced-N 6230 (driver 14.0.2.2)
+  - Intel(R) Centrino(R) Advanced-N 6230 - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - JMicron PCI Express Gigabit Ethernet Adapter (driver 6.0.26.6)
+  - JMicron PCI Express Gigabit Ethernet Adapter - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Microsoft Virtual WiFi Miniport Adapter
+  - Microsoft Virtual WiFi Miniport Adapter #2
+  - Microsoft Virtual WiFi Miniport Adapter #2 - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Microsoft Virtual WiFi Miniport Adapter - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - Teredo Tunneling Pseudo-Interface
+  - WAN Miniport (IKEv2)
+  - WAN Miniport (IP)
+  - WAN Miniport (IP) - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - WAN Miniport (IPv6)
+  - WAN Miniport (L2TP)
+  - WAN Miniport (Network Monitor)
+  - WAN Miniport (Network Monitor) - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - WAN Miniport (PPPOE)
+  - WAN Miniport (PPTP)
+  - WAN Miniport (SSTP)
+  - ZTE Wireless Ethernet Adapter #2 - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
+  - ZTE Wireless Ethernet Adapter - Deterministic Network Enhancer Miniport (driver 3.22.4.17992)
++ Processors
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
+  - Intel(R) Core(TM) i7-2860QM CPU @ 2.50GHz
++ Sound, video and game controllers
+  - Intel(R) Bildskärmsljud (driver 6.14.0.3074)
+  - Realtek High Definition Audio (driver 6.0.1.6301)
++ Storage volume shadow copies
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
+  - Skuggkopia av allmän volym
++ System devices
+  - 2nd generation Intel(R) Core(TM) processor family DRAM Controller - 0104 (driver 9.2.0.1011)
+  - 2nd generation Intel(R) Core(TM) processor family PCI Express Controller - 0101 (driver 9.2.0.1011)
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Composite Bus Enumerator
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Direct memory access controller
+  - File as Volume Driver
+  - High Definition Audio-styrenhet
+  - High precision event timer
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 1 - 1C10 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 2 - 1C12 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 3 - 1C14 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family PCI Express Root Port 4 - 1C16 (driver 9.2.0.1016)
+  - Intel(R) 6 Series/C200 Series Chipset Family SMBus Controller - 1C22 (driver 9.2.0.1011)
+  - Intel(R) 82802 Firmware Hub Device
+  - Intel(R) HM65 Express Chipset Family LPC Interface Controller - 1C49 (driver 9.2.0.1016)
+  - Intel(R) Management Engine Interface (driver 7.0.0.1144)
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft System Management BIOS Driver
+  - Microsoft Virtual Drive Enumerator Driver
+  - Microsoft Windows Management Interface for ACPI
+  - Microsoft Windows Management Interface for ACPI
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - Remote Desktop Device Redirector Bus
+  - System board
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Generic USB Hub
+  - Generic USB Hub
+  - HUAWEI Mobile Connect - Bus Enumerate Device (driver 2.6.2.3129)
+  - Intel(R) 6 Series/C200 Series Chipset Family USB Enhanced Host Controller - 1C26 (driver 9.2.0.1021)
+  - Intel(R) 6 Series/C200 Series Chipset Family USB Enhanced Host Controller - 1C2D (driver 9.2.0.1021)
+  - Texas Instruments USB Root Hub (driver 1.12.7.0)
+  - Texas Instruments XHCI Controller (driver 1.12.7.0)
+  - USB-rotnav (hub)
+  - USB-rotnav (hub)
+
+cpu registers:
+eax = 08bd4ba8
+ebx = 00000000
+ecx = 00000000
+edx = 03478780
+esi = 00d3dbbc
+edi = 08bd4ba8
+eip = 00a4079a
+esp = 0018f514
+ebp = 0018f56c
+
+stack dump:
+0018f514  9a 07 a4 00 de fa ed 0e - 01 00 00 00 07 00 00 00  ................
+0018f524  28 f5 18 00 9a 07 a4 00 - a8 4b bd 08 00 00 00 00  (........K......
+0018f534  bc db d3 00 a8 4b bd 08 - 6c f5 18 00 44 f5 18 00  .....K..l...D...
+0018f544  74 f5 18 00 98 9d 40 00 - 6c f5 18 00 40 81 f8 07  t.....@.l...@...
+0018f554  a8 4b bd 08 70 07 e5 04 - a8 4b bd 08 00 00 00 00  .K..p....K......
+0018f564  00 00 00 00 00 00 00 00 - a4 f5 18 00 fb 11 d6 00  ................
+0018f574  80 f5 18 00 98 9d 40 00 - a4 f5 18 00 b0 f5 18 00  ......@.........
+0018f584  98 9d 40 00 a4 f5 18 00 - 40 81 f8 07 00 00 00 00  ..@.....@.......
+0018f594  18 bc a9 00 00 00 00 00 - 00 00 00 00 e0 10 eb 08  ................
+0018f5a4  fc f5 18 00 78 12 d6 00 - 84 a3 d6 00 bc f5 18 00  ....x...........
+0018f5b4  77 9f 40 00 fc f5 18 00 - c8 f5 18 00 98 9d 40 00  w.@...........@.
+0018f5c4  fc f5 18 00 10 f6 18 00 - 98 9d 40 00 fc f5 18 00  ..........@.....
+0018f5d4  40 81 f8 07 00 00 00 00 - 18 bc a9 00 00 00 00 00  @...............
+0018f5e4  00 00 00 00 53 eb ff ff - 01 00 00 00 e0 10 eb 08  ....S...........
+0018f5f4  00 00 00 00 01 00 00 00 - 40 f6 18 00 86 18 d7 00  ........@.......
+0018f604  ec 6c e1 04 00 00 00 00 - 34 f6 18 00 1c f6 18 00  .l......4.......
+0018f614  77 9f 40 00 40 f6 18 00 - 48 f6 18 00 98 9d 40 00  w.@.@...H.....@.
+0018f624  40 f6 18 00 40 81 f8 07 - 00 00 00 00 18 bc a9 00  @...@...........
+0018f634  ff ff ff ff a0 26 e0 04 - 00 00 00 00 a8 f6 18 00  .....&..........
+0018f644  ea d5 d4 00 54 f6 18 00 - 77 9f 40 00 a8 f6 18 00  ....T...w.@.....
+
+disassembling:
+[...]
+00f26648        call    -$4cc021 ($a5a62c)     ; FireDAC.Stan.Param.TFDParam.SetAsInteger
+00f2664d 1926   mov     eax, [ebp-4]
+00f26650        mov     eax, [eax+$65c]
+00f26656        mov     dl, 1
+00f26658        mov     ecx, [eax]
+00f2665a      > call    dword ptr [ecx+$1c0]
+00f26660 1927   mov     eax, [ebp-4]
+00f26663        mov     eax, [eax+$65c]
+00f26669        mov     edx, [eax]
+00f2666b        call    dword ptr [edx+$18c]
+00f26671        test    eax, eax
+[...]
+
