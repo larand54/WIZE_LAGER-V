@@ -9,6 +9,7 @@ type
   TdmLanguage = class(TDataModule)
     siLang1: TsiLang;
     siLangDispatcher1: TsiLangDispatcher;
+    procedure siLangDispatcher1LanguageChanged(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -27,24 +28,12 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
-uses dmsVidaSystem;
+uses dmsVidaSystem, dialogs;
 
 procedure TdmLanguage.DataModuleCreate(Sender: TObject);
 var
   Path : String;
 begin
-{
-      path := ExtractFilePath(ParamStr(0));
-      path := dmsSystem.GetLangPath();
-      assert(path <> '',siLang1.GetTextOrDefault('IDS_0' (* 'Path to languagefiles not defined in database' *) ));
-      if path[path.Length] <> '\' then
-        siLangDispatcher1.FileName := Path + '\' + siLangDispatcher1.FileName
-      else
-        siLangDispatcher1.FileName := Path + siLangDispatcher1.FileName;
-
-}
-
-
 {$IFDEF DEBUG}
   path := ExtractFilePath(ParamStr(0));
 {$ELSE}
@@ -55,11 +44,9 @@ begin
   siLangDispatcher1.FileName := Path;
 end;
 
-
 function TdmLanguage.getFileWithPath(ExeFileWithPath, ext, path: string): string;
 begin
-  result := IncludeTrailingPathDelimiter(path) + 'VIS_LAGER.sib' ;// siLangDispatcher1.FileName ;// getProgramName(ExeFileWithPath) + includePrefixToExtension(ext);
-
+  result := IncludeTrailingPathDelimiter(path) + getProgramName(ExeFileWithPath) + includePrefixToExtension(ext);
 end;
 
 function TdmLanguage.getProgramName(ExeFileWithPath: string): string;
@@ -89,6 +76,11 @@ begin
     result := '.' + ext
   else
     result := ext;
+end;
+
+procedure TdmLanguage.siLangDispatcher1LanguageChanged(Sender: TObject);
+begin
+//  siLangDispatcher1.LoadAllFromFile(siLangDispatcher1.FileName);
 end;
 
 

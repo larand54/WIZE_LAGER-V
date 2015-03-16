@@ -43,7 +43,7 @@ uses
   Vcl.ComCtrls, dxCore, cxDateUtils, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
   dxBarBuiltInMenu, System.Actions, CRAXDRT_TLB, siComp, siLngLnk,
-  CrystalActiveXReportViewerLib11_TLB;
+  CrystalActiveXReportViewerLib11_5_TLB;
 
 
 type

@@ -422,12 +422,10 @@
         <DCCReference Include="VidaDeliveryClass.pas"/>
         <DCCReference Include="uSimulateHandHeld.pas">
             <Form>fSimulateHandHeld</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="WorkMinutesU.pas"/>
         <DCCReference Include="uEnterFieldValue.pas">
             <Form>fEnterFieldValue</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uStopptidReport.pas">
             <Form>fStopptidReport</Form>
@@ -443,18 +441,15 @@
         </DCCReference>
         <DCCReference Include="uEnterKilnVagn.pas">
             <Form>fEnterKilnVagn</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uPickPkgNoTork.pas">
             <Form>fPickPkgNoTork</Form>
         </DCCReference>
         <DCCReference Include="uPackageCostPerPkg.pas">
             <Form>fPackageCostPerPkg</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uSetMall.pas">
             <Form>fSetMall</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PrintUnit.pas"/>
         <DCCReference Include="CR_Plugin_Import.pas"/>
@@ -467,20 +462,16 @@
         <DCCReference Include="..\CommonUnits\VidaUser.pas"/>
         <DCCReference Include="..\CommonUnits\UnitAboutBox.pas">
             <Form>AboutBox</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uSelectInventorySET.pas">
             <Form>fSelectInventorySET</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="udmLanguage.pas">
             <Form>dmLanguage</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="ufrmChangeLanguage.pas">
             <Form>frmChangeLanguage</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <None Include="VIS_LAGER.todo"/>
         <None Include="ModelSupport_VIS_LAGER\default.txaPackage"/>
