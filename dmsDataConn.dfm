@@ -4913,13 +4913,11 @@ object dmsConnector: TdmsConnector
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Server=alvesqltest01'
+      'Server=vis.vida.se'
       'Database=vis_vida'
-      'OSAuthent=No'
+      'OSAuthent=Yes'
       'MetaDefCatalog=vis_vida'
       'MetaDefSchema=dbo'
-      'User_Name=Lars'
-      'Password=woods2011'
       'DriverID=MSSQL')
     LoginPrompt = False
     AfterCommit = DataModuleDestroy

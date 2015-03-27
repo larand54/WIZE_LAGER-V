@@ -21,8 +21,6 @@ object fStopptidReport: TfStopptidReport
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -45,8 +43,6 @@ object fStopptidReport: TfStopptidReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -398,8 +394,6 @@ object fStopptidReport: TfStopptidReport
     object tsProduktionProduktSummary: TcxTabSheet
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -846,8 +840,6 @@ object fStopptidReport: TfStopptidReport
     object tsCRReports: TcxTabSheet
       Caption = 'CR Rapporter'
       ImageIndex = 2
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -924,7 +916,6 @@ object fStopptidReport: TfStopptidReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
-    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -936,27 +927,20 @@ object fStopptidReport: TfStopptidReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 101
-    ClientRectLeft = 4
-    ClientRectRight = 1255
-    ClientRectTop = 4
+    ClientRectBottom = 105
+    ClientRectRight = 1259
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 1259
-      ExplicitHeight = 105
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1251
-        Height = 97
+        Width = 1259
+        Height = 105
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1259
-        ExplicitHeight = 105
         object Bevel1: TBevel
           Left = 3
           Top = 27
@@ -1462,7 +1446,7 @@ object fStopptidReport: TfStopptidReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
@@ -2368,7 +2352,6 @@ object fStopptidReport: TfStopptidReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2388,12 +2371,10 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2413,7 +2394,6 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -4609,11 +4589,24 @@ object fStopptidReport: TfStopptidReport
     Top = 304
   end
   object sq_Stopptid: TFDQuery
+    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT'#9'C.ClientName'
       '        ,rp.RegPointName'
-      #9#9',so.StoppTidsNamn '
+      ''
+      ' ,CASE WHEN (Select  so2.StoppTidsNamn  from dbo.StoppOrsak so2'
+      'WHERE so2.Driftplatsnr = so1.Driftplatsnr'
+      'and so2.GroupNo = so1.GroupNo'
+      'and so2.LevelNo = 1) = so1.StoppTidsNamn THEN'
+      ' so1.StoppTidsNamn'
+      ' ELSE'
+      '  (Select  so2.StoppTidsNamn  from dbo.StoppOrsak so2'
+      'WHERE so2.Driftplatsnr = so1.Driftplatsnr'
+      'and so2.GroupNo = so1.GroupNo'
+      'and so2.LevelNo = 1) + '#39'/'#39' + so1.StoppTidsNamn'
+      'END AS StoppTidsNamn'
+      ''
       #9#9',CAST(st.StoppStartade AS Date) AS StoppStartNoTime'#9#9
       #9#9',[StoppStartade] AS StoppStartWithTime'
       #9#9',[Kvitterat]'
@@ -4630,17 +4623,21 @@ object fStopptidReport: TfStopptidReport
       #9#9',pu.ClientNo'
       '--'#9#9',[Reserv1]'
       '  FROM [dbo].[Stopps_adj] st'
+      ''
+      ''
       
-        '  Inner Join [dbo].[StoppOrsak] so on so.Driftplatsnr = st.Drift' +
-        'Platsnr'
-      '  and so.StoppOrsakNr = st.StoppOrsakNr'
+        '   Inner Join [dbo].[StoppOrsak] so1 on so1.Driftplatsnr = st.Dr' +
+        'iftPlatsnr'
+      '  and so1.StoppOrsakNr = st.StoppOrsakNr'
+      ''
       
         '  Inner join dbo.ProductionUnit pu on pu.ProductionUnitNo = st.D' +
         'riftPlatsnr'
       
         '  Inner join dbo.RegistrationPoint rp on rp.RegPointNo = pu.Regi' +
         'strationPointNo'
-      '  Inner join dbo.Client C on C.ClientNo = pu.ClientNo')
+      '  Inner join dbo.Client C on C.ClientNo = pu.ClientNo'
+      '  WHERE st.stoppnr = 1')
     Left = 880
     Top = 320
   end

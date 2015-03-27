@@ -42,7 +42,7 @@ uses
   dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxRibbonPainter, cxNavigator,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu,
-  System.Actions, siComp, siLngLnk, CrystalActiveXReportViewerLib11_5_TLB;
+  System.Actions, siComp, siLngLnk, CrystalActiveXReportViewerLib11_TLB;
 
 
 type
@@ -2024,7 +2024,21 @@ Begin
     SQL.Clear ;
     SQL.Add('SELECT	C.ClientName') ;
     SQL.Add(',rp.RegPointName') ;
-    SQL.Add(',so.StoppTidsNamn') ;
+
+    SQL.Add(' ,CASE WHEN (Select  so2.StoppTidsNamn  from dbo.StoppOrsak so2') ;
+    SQL.Add('WHERE so2.Driftplatsnr = so1.Driftplatsnr') ;
+    SQL.Add('and so2.GroupNo = so1.GroupNo') ;
+    SQL.Add('and so2.LevelNo = 1) = so1.StoppTidsNamn THEN') ;
+    SQL.Add(' so1.StoppTidsNamn') ;
+    SQL.Add(' ELSE') ;
+    SQL.Add('  (Select  so2.StoppTidsNamn  from dbo.StoppOrsak so2') ;
+    SQL.Add('WHERE so2.Driftplatsnr = so1.Driftplatsnr') ;
+    SQL.Add('and so2.GroupNo = so1.GroupNo') ;
+    SQL.Add('and so2.LevelNo = 1) + ' + QuotedStr('/') + ' + so1.StoppTidsNamn') ;
+    SQL.Add('END AS StoppTidsNamn') ;
+
+
+ //   SQL.Add(',so.StoppTidsNamn') ;
     SQL.Add(',CAST(st.StoppStartade AS Date) AS StoppStartNoTime') ;
     SQL.Add(',[StoppStartade] AS StoppStartWithTime') ;
     SQL.Add(',[Kvitterat]') ;
@@ -2041,8 +2055,8 @@ Begin
 		SQL.Add(',pu.ClientNo') ;
 // --		,[Reserv1]
     SQL.Add('FROM [dbo].[Stopps_adj] st') ;
-    SQL.Add('Inner Join [dbo].[StoppOrsak] so on so.Driftplatsnr = st.DriftPlatsnr') ;
-    SQL.Add('and so.StoppOrsakNr = st.StoppOrsakNr') ;
+    SQL.Add('Inner Join [dbo].[StoppOrsak] so1 on so1.Driftplatsnr = st.DriftPlatsnr') ;
+    SQL.Add('and so1.StoppOrsakNr = st.StoppOrsakNr') ;
     SQL.Add('Inner join dbo.ProductionUnit pu on pu.ProductionUnitNo = st.DriftPlatsnr') ;
     SQL.Add('Inner join dbo.RegistrationPoint rp on rp.RegPointNo = pu.RegistrationPointNo') ;
     SQL.Add('Inner join dbo.Client C on C.ClientNo = pu.ClientNo') ;
