@@ -228,10 +228,6 @@ type
     mtUserPropALMM: TFloatField;
     mtUserPropNOM_WIDTH: TFloatField;
     FDQuery1: TFDQuery;
-    cds_Package_Size: TFDQuery;
-    cds_Package_SizePackageSizeNo: TIntegerField;
-    cds_Package_SizePackageSizeName: TStringField;
-    ds_Package_Size: TDataSource;
     mtUserPropPackage_Size: TStringField;
     mtUserPropFilter1: TStringField;
     mtUserPropFilter2: TStringField;
@@ -352,7 +348,7 @@ var
       if mtUserProp.FieldByName('BARCODENO').AsInteger < 1 then
       sp_PackageTypes.ParamByName('@BarCodeID').AsInteger := 0
       else
-      sp_PackageTypes.ParamByName('BarCodeID'    ).AsInteger := mtUserProp.FieldByName('BARCODENO').AsInteger ;
+      sp_PackageTypes.ParamByName('@BarCodeID'    ).AsInteger := mtUserProp.FieldByName('BARCODENO').AsInteger ;
 
       if mtUserProp.FieldByName('GRADESTAMPNO').AsInteger < 1 then
       sp_PackageTypes.ParamByName('@GradeStamp'   ).AsInteger := 0

@@ -1614,7 +1614,7 @@ object dmPkgs: TdmPkgs
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT distinct'
-      '        PR.ProductDisplayName           AS PRODUCT,'
+      '        PDE.ProductDisplayName           AS PRODUCT,'
       '        PN.PackageNo'#9#9'        AS PACKAGENO,'
       '        PN.PackageTypeNo'#9'        AS PACKAGETYPENO,'
       '        PN.SupplierCode'#9'                AS SUPP_CODE,'
@@ -1667,6 +1667,9 @@ object dmPkgs: TdmPkgs
         '        INNER JOIN dbo.Product      Pr  ON Pr.ProductNo     = Pt' +
         '.ProductNo'
       
+        '        LEFT JOIN dbo.ProductDesc      PDE  ON PDE.ProductNo    ' +
+        ' = Pt.ProductNo'
+      
         '        INNER JOIN dbo.ProductGroup PG  ON PG.ProductGroupNo    ' +
         ' = Pr.ProductGroupNo'
       
@@ -1693,10 +1696,11 @@ object dmPkgs: TdmPkgs
       'AND PN.SupplierCode = :SupplierCode'
       'AND ((PN.Status = 1) or (PN.Status = :Status))'
       'AND PIP.OwnerNo = :OwnerNo'
+      'AND PDE.LanguageID = :LanguageID'
       ''
       'AND PIP.PhyInvPointNameNo in'
       '(Select PhyInvPointNameNo from'
-      'PHYSICALINVENTORYPOINT'
+      'dbo.PHYSICALINVENTORYPOINT'
       'where OwnerNo = :UserCompanyLoggedIn)')
     Left = 48
     Top = 240
@@ -1720,6 +1724,12 @@ object dmPkgs: TdmPkgs
         Name = 'OWNERNO'
         DataType = ftInteger
         ParamType = ptInput
+      end
+      item
+        Name = 'LANGUAGEID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
       end
       item
         Name = 'USERCOMPANYLOGGEDIN'

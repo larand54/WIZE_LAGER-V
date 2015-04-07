@@ -22,22 +22,22 @@ object frmRemovePkg: TfrmRemovePkg
     Left = 0
     Top = 0
     Width = 1118
-    Height = 67
+    Height = 65
     Align = dalTop
     BarManager = dxBarManager1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 178
+    Top = 176
     Width = 1118
-    Height = 457
+    Height = 459
     Align = alClient
     TabOrder = 1
     object grdPkgs: TcxGrid
       Left = 1
       Top = 72
       Width = 1116
-      Height = 384
+      Height = 386
       Align = alClient
       TabOrder = 0
       object grdPkgsDBBandedTableView1: TcxGridDBBandedTableView
@@ -476,7 +476,7 @@ object frmRemovePkg: TfrmRemovePkg
   end
   object Panel3: TPanel
     Left = 0
-    Top = 67
+    Top = 65
     Width = 1118
     Height = 111
     Align = alTop
@@ -698,7 +698,7 @@ object frmRemovePkg: TfrmRemovePkg
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
@@ -741,7 +741,7 @@ object frmRemovePkg: TfrmRemovePkg
       DockControl = dxBarDockControl1
       DockedDockControl = dxBarDockControl1
       DockedLeft = 0
-      DockedTop = 21
+      DockedTop = 20
       FloatLeft = 276
       FloatTop = 213
       FloatClientWidth = 23
@@ -2200,7 +2200,7 @@ object frmRemovePkg: TfrmRemovePkg
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

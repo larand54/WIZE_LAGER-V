@@ -336,7 +336,7 @@ begin
  ThisUser.Database:= 'vis.vida.se:vis_vida' ;
 // ThisUser.Database:= 'alvesql03:vis_vida' ;
 
- //ThisUser.Database:= 'alvesqltest01:vis_vida' ;
+// ThisUser.Database:= 'alvesqltest01:vis_vida' ;
 
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then

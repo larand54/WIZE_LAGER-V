@@ -249,6 +249,7 @@ type
     procedure icVaruslagPropertiesChange(Sender: TObject);
   private
     { Private declarations }
+    LanguageCode  : String ;
     procedure BuildSQL(Sender: TObject);
     procedure InsertToSelectedProducts(const ProductNo, ProductGroupNo : Integer;
               const AT,AB, NT, NB : Double;
@@ -332,32 +333,34 @@ begin
   cds_ProdList.SQL.Add('SELECT pd.ProductNo, pg.ProductGroupNo, gd.GradeName,') ;
   cds_ProdList.SQL.Add('sc.SpeciesName, sf.SurfacingName, pc.ProductCategoryName,') ;
   cds_ProdList.SQL.Add('pg.ActualThicknessMM, pg.ActualWidthMM, pg.NominalThicknessMM, pg.NominalWidthMM,') ;
-  cds_ProdList.SQL.Add('pd.ProductDisplayName, pd.GradeNo, pg.SpeciesNo, pg.ProductCategoryNo,') ;
+  cds_ProdList.SQL.Add('pde.ProductDisplayName, pd.GradeNo, pg.SpeciesNo, pg.ProductCategoryNo,') ;
   cds_ProdList.SQL.Add('pg.SurfacingNo, pg.NominalThicknessINCH, pg.NominalWidthINCH, pg.SequenceNo,') ;
   cds_ProdList.SQL.Add('pd.Act AS ProductAct, pg.Act AS ProductGroupAct, sc.Act AS SpeciesAct,') ;
   cds_ProdList.SQL.Add('sf.Act AS SurfacingAct, pc.Act AS ImpAct, gd.Act AS GradeAct') ;
 
   cds_ProdList.SQL.Add('FROM dbo.ProductGroup pg') ;
   cds_ProdList.SQL.Add('Left Outer JOIN  dbo.Product pd ON pd.ProductGroupNo = pg.ProductGroupNo') ;
+  cds_ProdList.SQL.Add('Left Outer JOIN  dbo.ProductDesc pde ON pde.ProductNo = pd.ProductNo') ;
+  cds_ProdList.SQL.Add('AND pde.LanguageID = ' + LanguageCode) ;
 //  cds_ProdList.SQL.Add('Left Outer JOIN  dbo.Grade gd2 ON gd2.GradeNo = pd.GradeNo') ;
 //  cds_ProdList.SQL.Add('AND gd2.LanguageCode = 1 AND gd2.Act = 1') ;
   cds_ProdList.SQL.Add('Inner Join dbo.Grade gd ON gd.GradeNo = pd.GradeNo') ;
-  cds_ProdList.SQL.Add('AND gd.LanguageCode = 1 AND gd.Act = 1 ') ;
+  cds_ProdList.SQL.Add('AND gd.LanguageCode = ' + LanguageCode) ;// AND gd.Act = 1 ') ;
   if mtProductGradeNo.AsInteger > 0 then
    cds_ProdList.SQL.Add('AND gd.GradeNo = ' + mtProductGradeNo.AsString) ;
 
   cds_ProdList.SQL.Add('INNER JOIN      dbo.ProductCategory pc ON       pg.ProductCategoryNo = pc.ProductCategoryNo') ;
-  cds_ProdList.SQL.Add('AND pc.LanguageCode = 1') ;
+  cds_ProdList.SQL.Add('AND pc.LanguageCode = ' + LanguageCode) ;
   cds_ProdList.SQL.Add('INNER JOIN      dbo.Species sc ON pg.SpeciesNo = sc.SpeciesNo') ;
-  cds_ProdList.SQL.Add('AND sc.LanguageCode = 1') ;
+  cds_ProdList.SQL.Add('AND sc.LanguageCode = ' + LanguageCode) ;
 
   cds_ProdList.SQL.Add('INNER JOIN      dbo.Surfacing sf ON pg.SurfacingNo = sf.SurfacingNo') ;
-  cds_ProdList.SQL.Add('AND sf.LanguageCode = 1') ;
+  cds_ProdList.SQL.Add('AND sf.LanguageCode = ' + LanguageCode) ;
 
 
   cds_ProdList.SQL.Add('WHERE ') ;
   cds_ProdList.SQL.Add('pg.SequenceNo = ' + mtProductVaruSlag.AsString) ;
-  cds_ProdList.SQL.Add('AND pd.Act = 1 AND pg.Act = 1 AND sc.Act = 1 AND sf.Act = 1 AND pc.Act = 1') ;
+  cds_ProdList.SQL.Add('AND pd.Act = 1 AND pg.Act = 1 AND sc.Act = 1 AND sf.Act = 1 AND pc.Act = 1 AND gd.Act = 1') ;
 //  cds_ProdList.SQL.Add('AND ((pd.ProductNo=:ProductNo) OR (0 =:ProductNo))') ;
 //  cds_ProdList.SQL.Add('AND sf.LanguageCode=:LanguageCode') ;
 
@@ -392,8 +395,10 @@ end;
 procedure TfrmGetProd_II.FormCreate(Sender: TObject);
 begin
 {$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1832 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
+
+ LanguageCode := inttostr(ThisUser.LanguageID) ;
  EnableProductRegisterButton  := True ;
- Try                                                          
+ Try
   dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdProdListDBTableView1.Name, grdProdListDBTableView1) ;
   dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdCustDimProdDBTableView1.Name, grdCustDimProdDBTableView1) ;
  Except
@@ -412,15 +417,19 @@ begin
 // With dmProduct do
 // Begin
   cds_grade.Active      := False ;
+  cds_grade.ParamByName('LanguageCode').AsInteger  :=  ThisUser.LanguageID ;
   cds_grade.Active      := True ;
 
   cds_Species.Active      := False ;
+  cds_Species.ParamByName('LanguageCode').AsInteger  :=  ThisUser.LanguageID ;
   cds_Species.Active      := True ;
 
   cds_Surfacing.Active      := False ;
+  cds_Surfacing.ParamByName('LanguageCode').AsInteger  :=  ThisUser.LanguageID ;
   cds_Surfacing.Active      := True ;
 
   cds_ProdCatg.Active      := False ;
+  cds_ProdCatg.ParamByName('LanguageCode').AsInteger  :=  ThisUser.LanguageID ;
   cds_ProdCatg.Active      := True ;
 
   dmsSystem.mtMarkedProd.Active   := False ;

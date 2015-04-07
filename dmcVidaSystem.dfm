@@ -1,7 +1,7 @@
 object dmcSystem: TdmcSystem
   OldCreateOrder = False
-  Height = 591
-  Width = 917
+  Height = 829
+  Width = 1079
   object dsrcBarCodes: TDataSource
     DataSet = cdsBarCodes
     Left = 56

@@ -4929,7 +4929,8 @@ begin
   cds_CtrlList.DisableControls ;
   try
    cds_CtrlList.Active := False ;
-   cds_CtrlList.ParamByName('IC_grpno').AsInteger:= cds_InvCtrlGrpIC_grpno.AsInteger ;
+   cds_CtrlList.ParamByName('IC_grpno').AsInteger   := cds_InvCtrlGrpIC_grpno.AsInteger ;
+   cds_CtrlList.ParamByName('LanguageID').AsInteger := ThisUser.LanguageID ;
    cds_CtrlList.Active := True ;
   finally
    cds_CtrlList.EnableControls ;

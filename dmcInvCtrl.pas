@@ -3648,6 +3648,7 @@ begin
 
      cds_CtrlList.Active := False ;
      cds_CtrlList.ParamByName('IC_grpno').AsInteger:= -1 ;
+     cds_CtrlList.ParamByName('LanguageID').AsInteger:= ThisUser.LanguageID ;
      cds_CtrlList.Active := True ;
 
      cds_InvenRow.Active := False ;

@@ -715,7 +715,7 @@ object dmsPkg: TdmsPkg
     object mtUserPropPackage_Size: TStringField
       FieldKind = fkLookup
       FieldName = 'Package_Size'
-      LookupDataSet = cds_Package_Size
+      LookupDataSet = dmsSystem.cds_Package_Size
       LookupKeyFields = 'PackageSizeNo'
       LookupResultField = 'PackageSizeName'
       KeyFields = 'LengthFormatNo'
@@ -1854,30 +1854,5 @@ object dmsPkg: TdmsPkg
     Connection = dmsConnector.FDConnection1
     Left = 616
     Top = 360
-  end
-  object cds_Package_Size: TFDQuery
-    Connection = dmsConnector.FDConnection1
-    SQL.Strings = (
-      'Select * from dbo.PackageSize'
-      'WHERE LanguageCode = 1'
-      'AND Act = 1')
-    Left = 664
-    Top = 512
-    object cds_Package_SizePackageSizeNo: TIntegerField
-      FieldName = 'PackageSizeNo'
-      Origin = 'PackageSizeNo'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object cds_Package_SizePackageSizeName: TStringField
-      FieldName = 'PackageSizeName'
-      Origin = 'PackageSizeName'
-      Size = 50
-    end
-  end
-  object ds_Package_Size: TDataSource
-    DataSet = cds_Package_Size
-    Left = 664
-    Top = 568
   end
 end

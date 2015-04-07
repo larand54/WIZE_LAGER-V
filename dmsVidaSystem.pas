@@ -756,19 +756,15 @@ Begin
     Raise ;
    End ;
   end;
-
-
 End ;
 
 function TdmsSystem.AccessRights(
   const UserName : String;
   const UserPswd : String ) : TUserSpec;
 begin
-
   spAccessRights.ParamByName('@UserName').AsString := UserName;
   spAccessRights.ParamByName('@UserPswd').AsString := UserPswd;
   Try
-
   spAccessRights.ExecProc;
   except
    On E: Exception do
@@ -778,8 +774,9 @@ begin
    End ;
   end;
 
-  Result.UserID    := spAccessRights.ParamByName('@UserID').AsInteger;
-  Result.CompanyNo := spAccessRights.ParamByName('@Company').AsInteger;
+  Result.UserID     := spAccessRights.ParamByName('@UserID').AsInteger;
+  Result.CompanyNo  := spAccessRights.ParamByName('@Company').AsInteger;
+  Result.LanguageID := spAccessRights.ParamByName('@LanguageID').AsInteger;
 
   Result.AccessRights[dcProductSection]       := TAccessLevel(spAccessRights.ParamByName ('@ProdSec'  ).AsInteger);
   Result.AccessRights[dcClientSection]        := TAccessLevel(spAccessRights.ParamByName ('@CliSec'   ).AsInteger);
@@ -800,7 +797,7 @@ begin
   Result.AccessRights[dcAdd_packagesSec]      := TAccessLevel(spAccessRights.ParamByName ('@fAdd_packagesSec').AsInteger);
   Result.AccessRights[dcAsk_packagesSec]      := TAccessLevel(spAccessRights.ParamByName ('@fAsk_packagesSec').AsInteger);
   Result.AccessRights[dcReport_AvropSec]      := TAccessLevel(spAccessRights.ParamByName ('@fReport_AvropSec').AsInteger);
-  Result.AccessRights[dcEditLoadOrder]      := TAccessLevel(spAccessRights.ParamByName ('@EditLoadOrder').AsInteger);
+  Result.AccessRights[dcEditLoadOrder]        := TAccessLevel(spAccessRights.ParamByName ('@EditLoadOrder').AsInteger);
   Result.AccessRights[dcShowPrice]            := TAccessLevel(spAccessRights.ParamByName ('@ShowPrice').AsInteger);
 end;
 

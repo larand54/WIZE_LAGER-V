@@ -883,6 +883,7 @@ type
     { Private declarations }
 //    AT                    : String ;
 //    PktNrLevKod           : String ;
+    LanguageID            : String ;
     ReportInProgress      : Boolean ;
     report                : IReport ;
     FilterString          : Widestring ;
@@ -1173,6 +1174,7 @@ Begin
  With dmInventory do
  Begin
   ccbTS2.Properties.Items.Clear ;
+  sq_Specie.ParamByName('LanguageCode').AsInteger    := ThisUser.LanguageID ;
   sq_Specie.Active:= True ;
   While not sq_Specie.Eof do
   Begin
@@ -1245,6 +1247,7 @@ Begin
   sq_AL.Close ;
 
   ccVarugrupp.Properties.Items.Clear ;
+  sq_Varugrupp.ParamByName('LanguageCode').AsInteger  := ThisUser.LanguageID ;
   sq_Varugrupp.Open ;
   While not sq_Varugrupp.Eof do
   Begin
@@ -1290,7 +1293,8 @@ Begin
  Begin
   PktNrLevKod := getPktNrLevKod ;
   ccbKV2.Properties.Items.Clear ;
-  sq_Grade.ParamByName('PktNrLevKod').AsString  := PktNrLevKod ;
+  sq_Grade.ParamByName('PktNrLevKod').AsString      := PktNrLevKod ;
+  sq_Grade.ParamByName('LanguageCode').AsInteger    := ThisUser.LanguageID ;
   sq_Grade.Active:= True ;
   While not sq_Grade.Eof do
   Begin
@@ -1300,7 +1304,8 @@ Begin
   sq_Grade.Active:= False ;
 
   ccbSU2.Properties.Items.Clear ;
-  sq_Surfacing.ParamByName('PktNrLevKod').AsString  := PktNrLevKod ;
+  sq_Surfacing.ParamByName('PktNrLevKod').AsString      := PktNrLevKod ;
+  sq_Surfacing.ParamByName('LanguageCode').AsInteger    := ThisUser.LanguageID ;
   sq_Surfacing.Open ;
   While not sq_Surfacing.Eof do
   Begin
@@ -1313,7 +1318,7 @@ Begin
   ccbIMP.Properties.BeginUpdate ;
   Try
   sq_PC2.Active := False ;
-//  sq_PC2.ParamByName('PktNrLevKod').AsString  := PktNrLevKod ;
+  sq_PC2.ParamByName('LanguageCode').AsInteger    := ThisUser.LanguageID ;
   sq_PC2.Active := True ;
   sq_PC2.First ;
   While not sq_PC2.Eof do
@@ -1634,7 +1639,7 @@ begin
   sq_Temp_Inventory.SQL.Add('pip.OwnerNo,') ;
   sq_Temp_Inventory.SQL.Add('Verk.ClientCode,') ;
   sq_Temp_Inventory.SQL.Add('pd.ProductNo,') ;
-  sq_Temp_Inventory.SQL.Add('pd.ProductDisplayName,') ;
+  sq_Temp_Inventory.SQL.Add('pde.ProductDisplayName,') ;
   sq_Temp_Inventory.SQL.Add('pt.PackageTypeNo,') ;
   sq_Temp_Inventory.SQL.Add('pn.PackageNo,') ;
   sq_Temp_Inventory.SQL.Add('pn.SupplierCode,') ;
@@ -1679,18 +1684,21 @@ begin
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.packageTypeLengths PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  sq_Temp_Inventory.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  sq_Temp_Inventory.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = 1') ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
 
 
 
@@ -1839,18 +1847,22 @@ begin
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
-  sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;  
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  sq_Temp_Inventory.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
+  sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  sq_Temp_Inventory.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
@@ -1923,6 +1935,7 @@ end;
 
 procedure TfrmInventoryReport.FormCreate(Sender: TObject);
 begin
+ LanguageID := inttostr(ThisUser.LanguageID) ;
 // if not Assigned(dmInventory) then
 //  dmInventory:= TdmInventory.Create(Nil);
  if not Assigned(dm_DryKiln) then
@@ -2022,7 +2035,7 @@ begin
 //  sq_Temp_Inventory.SQL.Add('(Select TOP 1 PC.PackageCodeNo FROM dbo.PkgVarCode PC WHERE PC.PackageTypeNo = pt.PackageTypeNo) AS PackageCodeNo,') ;
   sq_Temp_Inventory.SQL.Add('PC.PackageMainCode,') ;//Externcode
 //  sq_Temp_Inventory.SQL.Add('(Select TOP 1 PC.PackageMainCode FROM dbo.PkgVarCode PC WHERE PC.PackageTypeNo = pt.PackageTypeNo) AS PackageMainCode,') ;
-  sq_Temp_Inventory.SQL.Add('pd.ProductDisplayName,') ;
+  sq_Temp_Inventory.SQL.Add('pde.ProductDisplayName,') ;
 
 
   //sq_Temp_Inventory.SQL.Add('(Select count(*) from dbo.PackageNumber pn2 WHERE pn2.PackageTypeNo = pt.PackageTypeNo AND pn2.SupplierCode ') ;
@@ -2097,18 +2110,22 @@ begin
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
-  sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;  
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  sq_Temp_Inventory.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
+  sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  sq_Temp_Inventory.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = 1') ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
@@ -2160,7 +2177,7 @@ begin
 
 
   sq_Temp_Inventory.SQL.Add('GROUP BY PTL.STD_Length, PTL.PcsPerLength,  ') ;
-  sq_Temp_Inventory.SQL.Add('PDL.ProductLengthNo, pd.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM, ') ;
+  sq_Temp_Inventory.SQL.Add('PDL.ProductLengthNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM, ') ;
   sq_Temp_Inventory.SQL.Add('pdl.ActualLengthMM, pdl.NominalLengthMM, pdl.NominalLengthFEET, pdl.ActualLengthINCH,  ') ;
   sq_Temp_Inventory.SQL.Add('lip.LogicalInventoryPointNo, pt.TotalNoOfPieces, pn.SupplierCode, ') ;
   sq_Temp_Inventory.SQL.Add('gs.GradeStamp, bc.BarCode, SPE.SpeciesName, SUR.SurfacingName, Gr.GradeName, ') ;
@@ -2253,7 +2270,7 @@ begin
   sq_Temp_Inventory.SQL.Add('pip.OwnerNo,') ;
   sq_Temp_Inventory.SQL.Add('Verk.ClientCode,') ;
   sq_Temp_Inventory.SQL.Add('pd.ProductNo,') ;
-  sq_Temp_Inventory.SQL.Add('pd.ProductDisplayName,') ;
+  sq_Temp_Inventory.SQL.Add('pde.ProductDisplayName,') ;
   sq_Temp_Inventory.SQL.Add('pt.PackageTypeNo,') ;
   sq_Temp_Inventory.SQL.Add('pn.PackageNo,') ;
   sq_Temp_Inventory.SQL.Add('pn.SupplierCode,') ;
@@ -2301,17 +2318,21 @@ begin
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.packageTypeLengths PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
-  sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;  
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  sq_Temp_Inventory.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
+  sq_Temp_Inventory.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  sq_Temp_Inventory.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = 1') ;
-  sq_Temp_Inventory.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = 1') ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+  sq_Temp_Inventory.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  sq_Temp_Inventory.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
 
   sq_Temp_Inventory.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
@@ -2730,7 +2751,7 @@ begin
   cds_PkgList.SQL.Add('Select distinct 1 AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('pt.PackageTypeNo,') ;
   cds_PkgList.SQL.Add('pn.PackageNo,') ;
   cds_PkgList.SQL.Add('RTRIM(pn.SupplierCode) AS SupplierCode,') ;
@@ -2912,18 +2933,22 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
@@ -3014,7 +3039,7 @@ begin
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalThicknessMM', ccbNT)) ;
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalWidthMM', ccbNB)) ;
 
-  cds_PkgList.SQL.Add('Group by pd.ProductNo, pd.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
+  cds_PkgList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
   cds_PkgList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
   cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, va.VarugruppNamn, pn.REFERENCE, pn.BL_NO,  pn.Info2,') ;
@@ -3058,7 +3083,7 @@ begin
   cds_PkgList.SQL.Add('Select distinct 1 AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('pt.PackageTypeNo,') ;
   cds_PkgList.SQL.Add('pn.PackageNo,') ;
   cds_PkgList.SQL.Add('pn.SupplierCode,') ;
@@ -3170,18 +3195,22 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
@@ -3256,7 +3285,7 @@ begin
   cds_PkgList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
   cds_PkgList.SQL.Add('WHERE inl2.LoadNo = L.LoadNo)') ;   }
 
-  cds_PkgList.SQL.Add('Group by pd.ProductNo, pd.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
+  cds_PkgList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
   cds_PkgList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
 
@@ -3399,18 +3428,22 @@ begin
 //  cds_InvSum.SQL.Add('Inner Join dbo.ProductLength pl ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
   cds_InvSum.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_InvSum.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_InvSum.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
 
   cds_InvSum.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_InvSum.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_InvSum.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  cds_InvSum.SQL.Add('Inner Join dbo.ProductCategory	IMP	ON IMP.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_InvSum.SQL.Add('				AND IMP.LanguageCode = 1') ;
-  cds_InvSum.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_InvSum.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_InvSum.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_InvSum.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_InvSum.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_InvSum.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_InvSum.SQL.Add('Left Join dbo.ProductCategory	IMP	ON IMP.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_InvSum.SQL.Add('				AND IMP.LanguageCode = ' + LanguageID) ;
+  cds_InvSum.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_InvSum.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_InvSum.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_InvSum.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_InvSum.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_InvSum.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
@@ -4291,11 +4324,15 @@ begin
 
   cds_PcsPerLen.SQL.Add('Inner Join dbo.Product pd2 ON pd2.ProductNo = pt2.ProductNo ') ;
 
+  cds_PcsPerLen.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt2.ProductNo') ;
+  cds_PcsPerLen.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PcsPerLen.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD2.VarugruppNo') ;
+  cds_PcsPerLen.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PcsPerLen.SQL.Add('Inner Join dbo.ProductGroup pg2 ON pg2.ProductGroupNo = pd2.ProductGroupNo ') ;
   cds_PcsPerLen.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg2.ProductCategoryNo') ;
-  cds_PcsPerLen.SQL.Add('				AND imp.LanguageCode = 1') ;
+  cds_PcsPerLen.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
   cds_PcsPerLen.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
@@ -4338,11 +4375,15 @@ begin
 
   cds_PcsPerLen.SQL.Add('Inner Join dbo.Product pd2 ON pd2.ProductNo = pt2.ProductNo ') ;
 
+  cds_PcsPerLen.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt2.ProductNo') ;
+  cds_PcsPerLen.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PcsPerLen.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD2.VarugruppNo') ;
+  cds_PcsPerLen.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PcsPerLen.SQL.Add('Inner Join dbo.ProductGroup pg2 ON pg2.ProductGroupNo = pd2.ProductGroupNo ') ;
-  cds_PcsPerLen.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg2.ProductCategoryNo') ;
-  cds_PcsPerLen.SQL.Add('				AND imp.LanguageCode = 1') ;
+  cds_PcsPerLen.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg2.ProductCategoryNo') ;
+  cds_PcsPerLen.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
   cds_PcsPerLen.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
@@ -4379,18 +4420,22 @@ begin
   cds_PcsPerLen.SQL.Add('Inner Join dbo.productLength PDL ON PDL.ProductLengthNo = ptd.ProductLengthNo ') ;
   cds_PcsPerLen.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo ') ;
 
+  cds_PcsPerLen.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PcsPerLen.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PcsPerLen.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PcsPerLen.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PcsPerLen.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo ') ;
-  cds_PcsPerLen.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PcsPerLen.SQL.Add('				AND imp.LanguageCode = 1') ;
+  cds_PcsPerLen.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PcsPerLen.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
 
-  cds_PcsPerLen.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PcsPerLen.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PcsPerLen.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PcsPerLen.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PcsPerLen.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PcsPerLen.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PcsPerLen.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PcsPerLen.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PcsPerLen.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PcsPerLen.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PcsPerLen.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PcsPerLen.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
   cds_PcsPerLen.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
@@ -4894,7 +4939,7 @@ begin
   cds_PkgList.SQL.Add('Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
   cds_PkgList.SQL.Add('0 AS PackageNo,') ;
   cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
@@ -5071,13 +5116,26 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Inner Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
 
@@ -5087,12 +5145,7 @@ begin
   cds_PkgList.SQL.Add('Inner JOIN dbo.BarCode bc ON bc.BarCodeNo = pt.BarCodeID') ;
 
 
-  cds_PkgList.SQL.Add('WHERE LIP.SequenceNo = 1 ') ;//AND PTL.STD_Length = 1
-
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('WHERE LIP.SequenceNo = 1 ') ;
 
   if mtUserPropNewItemRow.AsInteger > 0 then
   Begin
@@ -5157,7 +5210,7 @@ begin
     cds_PkgList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
 
 
-  cds_PkgList.SQL.Add('Group By pd.ProductNo, pd.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
+  cds_PkgList.SQL.Add('Group By pd.ProductNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
   cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName, Verk.ClientNo, ') ;
   cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn') ;
   if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
@@ -5170,7 +5223,7 @@ begin
    GenNotInvoicedTable_SQL(Sender) ;
   End ;
 
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
+//  if thisuser.UserID = 8 thencds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
  End ; //with
 
  finally
@@ -5194,7 +5247,7 @@ begin
   cds_PkgList.SQL.Add('Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
   cds_PkgList.SQL.Add('0 AS PackageNo,') ;
   cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
@@ -5351,13 +5404,21 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
   cds_PkgList.SQL.Add('Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
 
@@ -5382,11 +5443,6 @@ begin
   Begin
    cds_PkgList.SQL.Add('AND pn.REFERENCE LIKE ' + QuotedStr(TRIM(teREF.Text))) ;
   End ;
-
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
 
   cds_PkgList.SQL.Add('AND pn.Status = 0') ;
 
@@ -5430,7 +5486,7 @@ begin
 
   //pt.PackageTypeNo, pn.PackageNo, pn.Suppliercode,
 
-  cds_PkgList.SQL.Add('Group By pd.ProductNo, pd.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
+  cds_PkgList.SQL.Add('Group By pd.ProductNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
   cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName, Verk.ClientNo, ') ;
   cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn') ;
    if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
@@ -5481,7 +5537,7 @@ begin
 
   cds_PkgNoList.SQL.Add('Select distinct 1 AS PKT,') ;
   cds_PkgNoList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgNoList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgNoList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgNoList.SQL.Add('pt.PackageTypeNo,') ;
   cds_PkgNoList.SQL.Add('pn.PackageNo,') ;
   cds_PkgNoList.SQL.Add('pn.SupplierCode,') ;
@@ -5623,19 +5679,23 @@ begin
 
   cds_PkgNoList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgNoList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgNoList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgNoList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgNoList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgNoList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  cds_PkgNoList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgNoList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgNoList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgNoList.SQL.Add('				AND SUR.LanguageCode = 1') ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgNoList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgNoList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgNoList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
 
-  cds_PkgNoList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgNoList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgNoList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   cds_PkgNoList.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
@@ -5722,7 +5782,7 @@ begin
   if cbShowSingleLengthPkgs.Checked then
     cds_PkgNoList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
 
-  cds_PkgNoList.SQL.Add('Group by pd.ProductNo, pd.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
+  cds_PkgNoList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
   cds_PkgNoList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
   cds_PkgNoList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName,imp.ProductCategoryName,') ;
   cds_PkgNoList.SQL.Add('Gr.GradeName, SUR.SurfacingName, Verk.ClientNo, Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2') ;
@@ -5759,7 +5819,7 @@ begin
 
   cds_PkgNoList.SQL.Add('Select distinct 1 AS PKT,') ;
   cds_PkgNoList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgNoList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgNoList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgNoList.SQL.Add('pt.PackageTypeNo,') ;
   cds_PkgNoList.SQL.Add('pn.PackageNo,') ;
   cds_PkgNoList.SQL.Add('pn.SupplierCode,') ;
@@ -5885,19 +5945,23 @@ begin
 
   cds_PkgNoList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgNoList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgNoList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgNoList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgNoList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgNoList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  cds_PkgNoList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgNoList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgNoList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgNoList.SQL.Add('				AND SUR.LanguageCode = 1') ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgNoList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgNoList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgNoList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
 
-  cds_PkgNoList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgNoList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgNoList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   cds_PkgNoList.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
@@ -5992,7 +6056,7 @@ begin
  }
 
 
-  cds_PkgNoList.SQL.Add('Group by pd.ProductNo, pd.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
+  cds_PkgNoList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
   cds_PkgNoList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
   cds_PkgNoList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName,imp.ProductCategoryName,') ;
   cds_PkgNoList.SQL.Add('Gr.GradeName, SUR.SurfacingName, Verk.ClientNo, Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2') ;
@@ -7540,7 +7604,7 @@ begin
   cds_PkgList.SQL.Add('Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
-  cds_PkgList.SQL.Add('pd.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
   cds_PkgList.SQL.Add('0 AS PackageNo,') ;
   cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
@@ -7709,7 +7773,11 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
 { if mtUserPropLengthVolUnitNo.AsInteger = 3 then
   Begin
@@ -7737,10 +7805,14 @@ begin
   }
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
   cds_PkgList.SQL.Add('Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
 
 
@@ -7752,10 +7824,7 @@ begin
 
   cds_PkgList.SQL.Add('WHERE LIP.SequenceNo = 1 ') ;//AND PTL.STD_Length = 1
 
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+
 
    cds_PkgList.SQL.Add('AND pn.PackageNo not in (Select pp.PackageNo From dbo.Package_Production pp') ;
    cds_PkgList.SQL.Add('Inner Join dbo.RegistrationPoint rp on rp.RegPointNo = pp.ProductionUnitNo') ;
@@ -7809,7 +7878,7 @@ begin
     cds_PkgList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
 
 
-  cds_PkgList.SQL.Add('Group By pd.ProductNo, pd.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
+  cds_PkgList.SQL.Add('Group By pd.ProductNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
   cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName, Verk.ClientNo, ') ;
   cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2') ;
 //  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
@@ -8280,7 +8349,7 @@ begin
  Try
   dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_114' (* 'Antal/längd' *) )) ;
+  dxComponentPrinter1Link2.PrinterPage.PageHeader.CenterTitle.Add('Antal/längd') ;
 
 
 //  dxComponentPrinter1Link2.PrinterPage.PageHeader.LeftTitle.Add(grdPkgNoTblDBBandedTableView1Lager.EditValue) ;
@@ -8590,17 +8659,21 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
   cds_PkgList.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
@@ -8802,18 +8875,22 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
-  
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
   cds_PkgList.SQL.Add('WHERE ') ; //SequenceNo = Active "property"
 
   For x := 0 to mInvNos.Lines.Count - 1 do
@@ -9263,17 +9340,21 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
 
   if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
   cds_PkgList.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
@@ -9447,18 +9528,22 @@ begin
 
   cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
 
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
   cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
 
-  cds_PkgList.SQL.Add('Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
-  cds_PkgList.SQL.Add('				AND imp.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
-  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
-  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = 1') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
-  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = 1') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
   cds_PkgList.SQL.Add('WHERE ') ; //SequenceNo = Active "property"
 
   For x := 0 to mLONos.Lines.Count - 1 do

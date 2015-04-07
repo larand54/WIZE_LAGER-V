@@ -399,9 +399,10 @@ begin
   End ; //with
 
   dmsSystem.cds_Package_Size.Active := False ;
+  dmsSystem.cds_Package_Size.ParamByName('LANGUAGECODE').AsInteger  :=  ThisUser.LanguageID ;
   dmsSystem.cds_Package_Size.Active := True ;
   dmsSystem.cds_Package_Size.Insert ;
-  dmsSystem.cds_Package_SizePackageSizeName.AsString  := siLangLinked_fchgPkgVard.GetTextOrDefault('IDS_0' (* 'Ingen ändring' *) ) ;
+  dmsSystem.cds_Package_SizePackageSizeName.AsString  := 'No change' ;
   dmsSystem.cds_Package_SizePackageSizeNo.AsInteger   := -1 ;
   dmsSystem.cds_Package_Size.Post ;
 

@@ -1814,7 +1814,7 @@
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select ICR.*, ptl.PcsPerLength AS ANTPERL'#196'NGD,'
-      'PLM.ProductDisplayName AS PRODUKT,'
+      'PDE.ProductDisplayName AS PRODUKT,'
       'PT.TotalNoOfPieces AS STYCK,'
       'PT.Totalm3Actual AS AM3,'
       'PT.Totalm3Nominal AS NM3,'
@@ -1889,6 +1889,8 @@
       
         'Inner Join dbo.PackageType pt on pt.PackageTypeNo = Icr.PackageT' +
         'ypeNo'
+      'Left Join dbo.ProductDesc PDE on PDE.ProductNo = pt.ProductNo'
+      'AND PDE.LanguageID = :LanguageID'
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
@@ -1900,6 +1902,11 @@
     Left = 272
     Top = 256
     ParamData = <
+      item
+        Name = 'LANGUAGEID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
       item
         Name = 'IC_GRPNO'
         DataType = ftInteger

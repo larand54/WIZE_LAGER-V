@@ -3,7 +3,7 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
   Top = 193
   ActiveControl = EFD_Name
   Caption = 'Byt anv'#228'ndare'
-  ClientHeight = 184
+  ClientHeight = 208
   ClientWidth = 429
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -28,9 +28,57 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
     Height = 13
     Caption = 'Databas:'
   end
-  object EFD_Name: TEdit
+  object Label3: TLabel
+    Left = 24
+    Top = 8
+    Width = 46
+    Height = 13
+    Caption = 'vida\krinil'
+    OnDblClick = Label3DblClick
+  end
+  object Label4: TLabel
+    Left = 153
+    Top = 8
+    Width = 50
+    Height = 13
+    Caption = 'vida\ulrlun'
+    OnDblClick = Label4DblClick
+  end
+  object Label5: TLabel
+    Left = 209
+    Top = 8
+    Width = 58
+    Height = 13
+    Caption = 'vida\ronand'
+    OnDblClick = Label5DblClick
+  end
+  object Label6: TLabel
     Left = 88
-    Top = 32
+    Top = 8
+    Width = 59
+    Height = 13
+    Caption = 'vida\manras'
+    OnDblClick = Label6DblClick
+  end
+  object Label7: TLabel
+    Left = 281
+    Top = 8
+    Width = 53
+    Height = 13
+    Caption = 'vida\shathi'
+    OnDblClick = Label7DblClick
+  end
+  object Label8: TLabel
+    Left = 340
+    Top = 8
+    Width = 47
+    Height = 13
+    Caption = 'vida\uklift'
+    OnDblClick = Label8DblClick
+  end
+  object EFD_Name: TEdit
+    Left = 89
+    Top = 27
     Width = 121
     Height = 21
     TabOrder = 0
@@ -62,7 +110,7 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
   end
   object BitBtn1: TBitBtn
     Left = 88
-    Top = 136
+    Top = 144
     Width = 115
     Height = 41
     Kind = bkOK
@@ -70,8 +118,8 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
     TabOrder = 4
   end
   object BitBtn2: TBitBtn
-    Left = 216
-    Top = 136
+    Left = 209
+    Top = 144
     Width = 113
     Height = 41
     Kind = bkCancel
@@ -83,7 +131,7 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1
@@ -124,8 +172,8 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
       'DataField'
       'KeyField'
       'ListField')
-    Left = 208
-    Top = 96
+    Left = 288
+    Top = 104
     TranslationData = {
       73007400430061007000740069006F006E0073005F0055006E00690063006F00
       640065000D000A0054004F004B00480065006C00700042006F00740074006F00

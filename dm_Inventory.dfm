@@ -1973,10 +1973,18 @@
       'Select  s.VarugruppNamn, S.VarugruppNo,'
       'S.VarugruppNo AS VarugruppID'
       'From dbo.Varugrupp S'
+      'WHERE LanguageCode = :LanguageCode'
       'Order by S.Varugruppnamn'
       '')
     Left = 464
     Top = 256
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object sq_VarugruppVarugruppNamn: TStringField
       FieldName = 'VarugruppNamn'
       Origin = 'VarugruppNamn'
@@ -3201,12 +3209,19 @@
       'S.speciescode+'#39' - '#39'+S.speciesName'
       'END AS speciesName'
       'From dbo.Species S'
-      'where S.LanguageCode = 1'
+      'where S.LanguageCode = :LanguageCode'
       'AND S.SpeciesNo > 0'
       'Order by S.speciescode'
       '')
     Left = 560
     Top = 256
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object sq_Speciespeciescode: TStringField
       FieldName = 'speciescode'
       Origin = 'speciescode'
@@ -3299,7 +3314,7 @@
       'Inner join dbo.Grade G on G.Gradeno = pd.GradeNo'
       ''
       'where pn.Status = 1'
-      'AND g.LanguageCode = 1'
+      'AND g.LanguageCode = :LanguageCode'
       'AND G.GradeNo > 0'
       'and Verk.PktNrLevKod IN (:PktNrLevKod)'
       'Order by g.gradecode , G.GradeName'
@@ -3307,6 +3322,12 @@
     Left = 560
     Top = 32
     ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
       item
         Name = 'PKTNRLEVKOD'
         DataType = ftString
@@ -3365,7 +3386,7 @@
         'GroupNo'
       'Inner join dbo.Surfacing S on S.SurfacingNo = pg.SurfacingNo'
       'where pn.Status = 1'
-      'AND S.LanguageCode = 1'
+      'AND S.LanguageCode = :LanguageCode'
       'AND S.SurfacingNo > 0'
       'and Verk.PktNrLevKod = :PktNrLevKod'
       'Order by S.Surfacingcode, S.SurfacingName'
@@ -3373,6 +3394,12 @@
     Left = 560
     Top = 88
     ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
       item
         Name = 'PKTNRLEVKOD'
         DataType = ftString
@@ -3412,12 +3439,19 @@
       'END AS ProductCategoryName, S.ProductCategoryName'
       'From dbo.ProductCategory S'
       'where'
-      'S.LanguageCode = 1'
+      'S.LanguageCode = :LanguageCode'
       'AND S.ProductCategoryNo > 0'
       'Order by S.ImpCode'
       '')
     Left = 560
     Top = 200
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object sq_PC2ImpCode: TStringField
       FieldName = 'ImpCode'
       Origin = 'ImpCode'

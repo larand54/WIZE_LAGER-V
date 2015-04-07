@@ -4,7 +4,7 @@ object frmGetProd_II: TfrmGetProd_II
   ActiveControl = meAT
   Caption = 'PRODUKTLISTA'
   ClientHeight = 635
-  ClientWidth = 1051
+  ClientWidth = 1219
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,10 +24,11 @@ object frmGetProd_II: TfrmGetProd_II
   object Panel2: TPanel
     Left = 0
     Top = 591
-    Width = 1051
+    Width = 1219
     Height = 44
     Align = alBottom
     TabOrder = 0
+    ExplicitWidth = 1051
     object bbOK: TBitBtn
       Left = 384
       Top = 5
@@ -53,10 +54,11 @@ object frmGetProd_II: TfrmGetProd_II
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1051
+    Width = 1219
     Height = 89
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1051
     object Label1: TLabel
       Left = 24
       Top = 44
@@ -65,22 +67,22 @@ object frmGetProd_II: TfrmGetProd_II
       Caption = 'AT:'
     end
     object Label2: TLabel
-      Left = 142
+      Left = 158
       Top = 44
       Width = 17
       Height = 13
       Caption = 'AB:'
     end
     object Label3: TLabel
-      Left = 229
-      Top = 44
+      Left = 293
+      Top = 40
       Width = 17
       Height = 13
       Caption = 'KV:'
     end
     object Label4: TLabel
-      Left = 400
-      Top = 44
+      Left = 528
+      Top = 43
       Width = 18
       Height = 13
       Caption = 'UT:'
@@ -93,8 +95,8 @@ object frmGetProd_II: TfrmGetProd_II
       Caption = 'TS:'
     end
     object Label6: TLabel
-      Left = 228
-      Top = 74
+      Left = 292
+      Top = 70
       Width = 22
       Height = 13
       Caption = 'IMP.'
@@ -107,7 +109,7 @@ object frmGetProd_II: TfrmGetProd_II
       Caption = 'Varuslag:'
     end
     object bbSok: TBitBtn
-      Left = 648
+      Left = 856
       Top = 8
       Width = 121
       Height = 33
@@ -169,7 +171,7 @@ object frmGetProd_II: TfrmGetProd_II
       TabOrder = 7
     end
     object meAT: TcxTextEdit
-      Left = 74
+      Left = 90
       Top = 40
       Style.LookAndFeel.Kind = lfFlat
       StyleDisabled.LookAndFeel.Kind = lfFlat
@@ -179,7 +181,7 @@ object frmGetProd_II: TfrmGetProd_II
       Width = 49
     end
     object meAB: TcxTextEdit
-      Left = 165
+      Left = 181
       Top = 40
       Style.LookAndFeel.Kind = lfFlat
       StyleDisabled.LookAndFeel.Kind = lfFlat
@@ -189,7 +191,7 @@ object frmGetProd_II: TfrmGetProd_II
       Width = 49
     end
     object bbProdReg: TBitBtn
-      Left = 648
+      Left = 856
       Top = 43
       Width = 121
       Height = 33
@@ -252,8 +254,8 @@ object frmGetProd_II: TfrmGetProd_II
       Visible = False
     end
     object lcGrade: TcxDBLookupComboBox
-      Left = 252
-      Top = 39
+      Left = 356
+      Top = 37
       DataBinding.DataField = 'GradeNo'
       DataBinding.DataSource = dsProduct
       Properties.ClearKey = 46
@@ -275,7 +277,7 @@ object frmGetProd_II: TfrmGetProd_II
       Width = 141
     end
     object lcSpecies: TcxDBLookupComboBox
-      Left = 74
+      Left = 90
       Top = 64
       DataBinding.DataField = 'SpeciesNo'
       DataBinding.DataSource = dsProduct
@@ -297,8 +299,8 @@ object frmGetProd_II: TfrmGetProd_II
       Width = 138
     end
     object lcSurfacing: TcxDBLookupComboBox
-      Left = 424
-      Top = 40
+      Left = 576
+      Top = 39
       DataBinding.DataField = 'SurfacingNo'
       DataBinding.DataSource = dsProduct
       Properties.DropDownListStyle = lsFixedList
@@ -319,8 +321,8 @@ object frmGetProd_II: TfrmGetProd_II
       Width = 206
     end
     object lcImpreg: TcxDBLookupComboBox
-      Left = 252
-      Top = 66
+      Left = 356
+      Top = 64
       DataBinding.DataField = 'ProductCategoryNo'
       DataBinding.DataSource = dsProduct
       Properties.DropDownListStyle = lsFixedList
@@ -341,7 +343,7 @@ object frmGetProd_II: TfrmGetProd_II
       Width = 141
     end
     object bbClearFilter: TBitBtn
-      Left = 776
+      Left = 984
       Top = 8
       Width = 121
       Height = 33
@@ -350,7 +352,7 @@ object frmGetProd_II: TfrmGetProd_II
       TabOrder = 8
     end
     object bbSkapaProdukt: TBitBtn
-      Left = 776
+      Left = 984
       Top = 43
       Width = 121
       Height = 33
@@ -379,7 +381,7 @@ object frmGetProd_II: TfrmGetProd_II
       Visible = False
     end
     object icVaruslag: TcxDBImageComboBox
-      Left = 74
+      Left = 90
       Top = 13
       DataBinding.DataField = 'VaruSlag'
       DataBinding.DataSource = dsProduct
@@ -422,28 +424,31 @@ object frmGetProd_II: TfrmGetProd_II
   object PageControl: TcxPageControl
     Left = 0
     Top = 89
-    Width = 1051
+    Width = 1219
     Height = 343
     Align = alClient
     TabOrder = 2
     Properties.ActivePage = tsProduktLista
     Properties.CustomButtons.Buttons = <>
     LookAndFeel.Kind = lfFlat
-    ClientRectBottom = 339
-    ClientRectLeft = 4
-    ClientRectRight = 1047
-    ClientRectTop = 24
+    ExplicitWidth = 1051
+    ClientRectBottom = 342
+    ClientRectLeft = 1
+    ClientRectRight = 1218
+    ClientRectTop = 21
     object tsProduktLista: TcxTabSheet
       Caption = 'Produkter'
       ImageIndex = 0
+      ExplicitWidth = 1049
       object grdProdList: TcxGrid
         Left = 0
         Top = 0
-        Width = 1043
-        Height = 315
+        Width = 1217
+        Height = 321
         Align = alClient
         TabOrder = 0
         LookAndFeel.Kind = lfFlat
+        ExplicitWidth = 1049
         object grdProdListDBTableView1: TcxGridDBTableView
           PopupMenu = pmProduktList
           OnDblClick = grdProdListDBTableView1DblClick
@@ -543,22 +548,20 @@ object frmGetProd_II: TfrmGetProd_II
       Caption = 'Kundspecifika produkter'
       ImageIndex = 2
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 1049
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1043
-        Height = 315
+        Width = 1217
+        Height = 321
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1049
         object Panel4: TPanel
           Left = 0
           Top = 0
-          Width = 1043
+          Width = 1217
           Height = 18
           Align = alTop
           BevelOuter = bvNone
@@ -571,15 +574,17 @@ object frmGetProd_II: TfrmGetProd_II
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 0
+          ExplicitWidth = 1049
         end
         object grdClientProd: TcxGrid
           Left = 0
           Top = 18
-          Width = 1043
-          Height = 297
+          Width = 1217
+          Height = 303
           Align = alClient
           TabOrder = 1
           LookAndFeel.Kind = lfFlat
+          ExplicitWidth = 1049
           object grdClientProdDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dmProduct.ds_CliProdList
@@ -665,17 +670,15 @@ object frmGetProd_II: TfrmGetProd_II
       Caption = 'Anpassade produkter'
       ImageIndex = 1
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 1049
       object grdCustDimProd: TcxGrid
         Left = 0
         Top = 0
-        Width = 1043
-        Height = 315
+        Width = 1217
+        Height = 321
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 1049
         object grdCustDimProdDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dmProduct.ds_ProdListCust
@@ -776,20 +779,22 @@ object frmGetProd_II: TfrmGetProd_II
   object PanelSelectedProducts: TPanel
     Left = 0
     Top = 440
-    Width = 1051
+    Width = 1219
     Height = 151
     Align = alBottom
     TabOrder = 3
     Visible = False
+    ExplicitWidth = 1051
     object Panel6: TPanel
       Left = 1
       Top = 1
-      Width = 1049
+      Width = 1217
       Height = 28
       Align = alTop
       BevelOuter = bvNone
       Caption = 'Valda produkter'
       TabOrder = 0
+      ExplicitWidth = 1049
       object cxButton1: TcxButton
         Left = 8
         Top = 2
@@ -845,10 +850,11 @@ object frmGetProd_II: TfrmGetProd_II
     object grdSelectedProducts: TcxGrid
       Left = 1
       Top = 29
-      Width = 1049
+      Width = 1217
       Height = 121
       Align = alClient
       TabOrder = 1
+      ExplicitWidth = 1049
       object grdSelectedProductsDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = dsMarkedProd
@@ -917,7 +923,7 @@ object frmGetProd_II: TfrmGetProd_II
   object cxSplitter1: TcxSplitter
     Left = 0
     Top = 432
-    Width = 1051
+    Width = 1219
     Height = 8
     HotZoneClassName = 'TcxMediaPlayer8Style'
     AlignSplitter = salBottom
@@ -925,6 +931,7 @@ object frmGetProd_II: TfrmGetProd_II
     Control = PageControl
     Color = clMaroon
     ParentColor = False
+    ExplicitWidth = 1051
   end
   object cxLookAndFeelController1: TcxLookAndFeelController
     Kind = lfFlat
@@ -1036,6 +1043,11 @@ object frmGetProd_II: TfrmGetProd_II
       item
         Name = 'TagNo'
         DataType = ftInteger
+      end
+      item
+        Name = 'MarknadsRegion'
+        DataType = ftString
+        Size = 10
       end
       item
         Name = 'Active'
@@ -1152,7 +1164,7 @@ object frmGetProd_II: TfrmGetProd_II
   object dsProduct: TDataSource
     DataSet = mtProduct
     Left = 136
-    Top = 340
+    Top = 348
   end
   object PopupMenu1: TPopupMenu
     AutoPopup = False
@@ -1184,7 +1196,7 @@ object frmGetProd_II: TfrmGetProd_II
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
@@ -1425,12 +1437,19 @@ object frmGetProd_II: TfrmGetProd_II
         'peciesCodeName'
       ''
       'FROM dbo.Species S'
-      'WHERE S.LanguageCode = 1'
+      'WHERE S.LanguageCode = :LanguageCode'
       'AND S.Act = 1'
       'Order By S.speciescode, S.speciesName'
       '')
     Left = 496
     Top = 176
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object cds_SpeciesSpeciesNo: TIntegerField
       FieldName = 'SpeciesNo'
       Origin = 'SpeciesNo'
@@ -1460,12 +1479,19 @@ object frmGetProd_II: TfrmGetProd_II
         'eCodeName'
       ''
       'FROM dbo.Grade G'
-      'WHERE G.LanguageCode = 1'
+      'WHERE G.LanguageCode = :LanguageCode'
       'AND G.Act = 1'
       'Order By g.gradecode, G.GradeName'
       '')
     Left = 560
     Top = 176
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object cds_GradeGradeNo: TIntegerField
       FieldName = 'GradeNo'
       Origin = 'GradeNo'
@@ -1501,12 +1527,19 @@ object frmGetProd_II: TfrmGetProd_II
         'AS SurfacingCodeName'
       ''
       'FROM dbo.Surfacing S'
-      'WHERE S.LanguageCode = 1'
+      'WHERE S.LanguageCode = :LanguageCode'
       'and S.Act = 1'
       'Order By S.Surfacingcode, S.SurfacingName'
       '')
     Left = 624
     Top = 176
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object cds_SurfacingSurfacingNo: TIntegerField
       FieldName = 'SurfacingNo'
       Origin = 'SurfacingNo'
@@ -1537,13 +1570,20 @@ object frmGetProd_II: TfrmGetProd_II
         ') AS ImpCodeName'
       ''
       'FROM dbo.ProductCategory pc'
-      'WHERE pc.LanguageCode = 1'
+      'WHERE pc.LanguageCode = :LanguageCode'
       'and pc.Act = 1'
       'Order By pc.ImpCode, pc.ProductCategoryName'
       ' '
       '')
     Left = 704
     Top = 176
+    ParamData = <
+      item
+        Name = 'LANGUAGECODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
     object cds_ProdCatgProductCategoryNo: TIntegerField
       FieldName = 'ProductCategoryNo'
       Origin = 'ProductCategoryNo'
@@ -1568,7 +1608,7 @@ object frmGetProd_II: TfrmGetProd_II
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1
