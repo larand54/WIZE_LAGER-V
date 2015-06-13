@@ -304,6 +304,8 @@ Begin
      sq_OneUniquePkgExt.Close ;
      sq_OneUniquePkgExt.ParamByName('PackageNo').AsInteger           := PkgNo ;
      sq_OneUniquePkgExt.ParamByName('SupplierCode').AsString         := PkgSupplierCode ;
+
+
 //     sq_OneUniquePkgExt.ParamByName('OwnerNo').AsInteger             := mtUserPropOwnerNo.AsInteger ;
 //     sq_OneUniquePkgExt.ParamByName('UserCompanyLoggedIn').AsInteger := ThisUser.CompanyNo ;
      sq_OneUniquePkgExt.ParamByName('Status').AsInteger              := 0 ;

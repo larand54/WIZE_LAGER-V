@@ -3,8 +3,8 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
   Top = 193
   ActiveControl = EFD_Name
   Caption = 'Byt anv'#228'ndare'
-  ClientHeight = 208
-  ClientWidth = 429
+  ClientHeight = 249
+  ClientWidth = 436
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,11 +15,11 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 32
-    Top = 40
-    Width = 48
+    Left = 34
+    Top = 30
+    Width = 49
     Height = 13
-    Caption = 'FD Namn:'
+    Caption = 'AD Namn:'
   end
   object Label2: TLabel
     Left = 32
@@ -88,16 +88,17 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
     Top = 29
     Width = 153
     Height = 34
-    Caption = 'H'#228'mta standard FD namn'
+    Caption = 'H'#228'mta standard AD namn'
     TabOrder = 2
     OnClick = Button1Click
   end
   object eDatabas: TEdit
-    Left = 88
-    Top = 72
+    Left = 82
+    Top = 191
     Width = 121
     Height = 21
     TabOrder = 1
+    Visible = False
   end
   object Button2: TButton
     Left = 216
@@ -125,6 +126,17 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 5
+  end
+  object cbDatabas: TComboBox
+    Left = 88
+    Top = 76
+    Width = 122
+    Height = 21
+    TabOrder = 6
+    Items.Strings = (
+      'vis.vida.se:vis_vida'
+      'ALVESQLTEST01:vis_vida'
+      'ALVESQL03:vis_vida')
   end
   object siLangLinked_OKHelpBottomDlg: TsiLangLinked
     Version = '7.2'
@@ -172,8 +184,8 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
       'DataField'
       'KeyField'
       'ListField')
-    Left = 288
-    Top = 104
+    Left = 280
+    Top = 208
     TranslationData = {
       73007400430061007000740069006F006E0073005F0055006E00690063006F00
       640065000D000A0054004F004B00480065006C00700042006F00740074006F00

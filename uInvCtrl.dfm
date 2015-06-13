@@ -9985,7 +9985,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42094.505331296300000000
+      ReportDocument.CreationDate = 42118.628458356480000000
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1

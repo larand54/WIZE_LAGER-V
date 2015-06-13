@@ -21,17 +21,19 @@ object frmMovePkgs: TfrmMovePkgs
     Left = 0
     Top = 0
     Width = 1046
-    Height = 46
+    Height = 45
     Align = dalTop
     BarManager = dxBarManager1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 177
+    Top = 176
     Width = 1046
-    Height = 401
+    Height = 402
     Align = alClient
     TabOrder = 1
+    ExplicitTop = 177
+    ExplicitHeight = 401
     object grdPkgs: TcxGrid
       Left = 1
       Top = 33
@@ -433,11 +435,12 @@ object frmMovePkgs: TfrmMovePkgs
   end
   object Panel3: TPanel
     Left = 0
-    Top = 46
+    Top = 45
     Width = 1046
     Height = 131
     Align = alTop
     TabOrder = 6
+    ExplicitTop = 46
     object Label11: TLabel
       Left = 24
       Top = 36
@@ -740,7 +743,7 @@ object frmMovePkgs: TfrmMovePkgs
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
@@ -2245,7 +2248,7 @@ object frmMovePkgs: TfrmMovePkgs
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

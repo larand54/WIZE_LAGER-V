@@ -27,8 +27,8 @@
     Align = alTop
     TabOrder = 0
     object Label9: TLabel
-      Left = 697
-      Top = 31
+      Left = 865
+      Top = 30
       Width = 87
       Height = 13
       Caption = 'F'#246'rs'#228'ljningsregion:'
@@ -49,8 +49,8 @@
       Caption = 'TOM'
     end
     object Label2: TLabel
-      Left = 745
-      Top = 55
+      Left = 913
+      Top = 54
       Width = 31
       Height = 13
       Caption = #196'gare:'
@@ -98,8 +98,8 @@
       Width = 121
     end
     object lcSalesRegion: TcxDBLookupComboBox
-      Left = 792
-      Top = 25
+      Left = 960
+      Top = 24
       DataBinding.DataField = 'SalesRegion'
       DataBinding.DataSource = dsFilter
       Properties.DropDownListStyle = lsFixedList
@@ -115,8 +115,8 @@
       Width = 177
     end
     object lcVerk: TcxDBLookupComboBox
-      Left = 784
-      Top = 49
+      Left = 952
+      Top = 48
       DataBinding.DataField = 'VERK'
       DataBinding.DataSource = dsFilter
       Properties.DropDownListStyle = lsFixedList
@@ -534,9 +534,30 @@
       Visible = False
       OnClick = Button3Click
     end
+    object teInventeringsSet: TcxTextEdit
+      Left = 800
+      Top = 27
+      TabOrder = 18
+      Text = '21'
+      Width = 73
+    end
+    object cxLabel1: TcxLabel
+      Left = 720
+      Top = 32
+      Caption = 'Inventeringsset:'
+    end
+    object cbFilterZeros: TcxCheckBox
+      Left = 721
+      Top = 48
+      Caption = 'Filtrera bort 0:or'
+      Properties.OnChange = cbFilterZerosPropertiesChange
+      State = cbsChecked
+      TabOrder = 20
+      Width = 121
+    end
   end
   object cxSplitter1: TcxSplitter
-    Left = 513
+    Left = 617
     Top = 74
     Width = 8
     Height = 637
@@ -544,18 +565,21 @@
     Control = Panel2
     Color = clMaroon
     ParentColor = False
+    ExplicitLeft = 513
   end
   object Panel1: TPanel
-    Left = 521
+    Left = 625
     Top = 74
-    Width = 717
+    Width = 613
     Height = 637
     Align = alClient
     TabOrder = 2
+    ExplicitLeft = 568
+    ExplicitWidth = 670
     object PanelLagerNamn: TPanel
       Left = 1
       Top = 1
-      Width = 715
+      Width = 611
       Height = 18
       Align = alTop
       BevelOuter = bvNone
@@ -566,14 +590,16 @@
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 715
     end
     object grdLagerBalans: TcxGrid
       Left = 1
       Top = 19
-      Width = 715
+      Width = 611
       Height = 617
       Align = alClient
       TabOrder = 1
+      ExplicitWidth = 715
       object grdLagerBalansDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = grdLagerBalansDBTableView1CellDblClick
@@ -678,7 +704,7 @@
   object Panel2: TPanel
     Left = 0
     Top = 74
-    Width = 513
+    Width = 617
     Height = 637
     Align = alLeft
     Caption = 'Panel2'
@@ -686,10 +712,11 @@
     object grdLagerBalansORT: TcxGrid
       Left = 1
       Top = 211
-      Width = 511
+      Width = 615
       Height = 425
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 511
       object grdLagerBalansORTDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = ds_LagBalORT
@@ -797,6 +824,18 @@
             Kind = skSum
             FieldName = 'NM3_UTGAENDE'
             Column = grdLagerBalansORTDBBandedTableView1NM3_UTGAENDE
+          end
+          item
+            Format = '#,###,###,###.0'
+            Kind = skSum
+            FieldName = 'NM3_INVENTERAT'
+            Column = grdLagerBalansORTDBBandedTableView1NM3_INVENTERAT
+          end
+          item
+            Format = '#,###,###,###.0'
+            Kind = skSum
+            FieldName = 'NM3_DIFF_INVENT'
+            Column = grdLagerBalansORTDBBandedTableView1NM3_DIFF_INVENT
           end>
         DataController.Summary.SummaryGroups = <>
         OptionsBehavior.ExpandMasterRowOnDblClick = False
@@ -809,19 +848,19 @@
         Bands = <
           item
             Caption = #196'GARE/ORT'
-            Width = 111
+            Width = 153
           end
           item
-            Caption = 'LAGERBALANS'
-            Width = 145
+            Caption = 'LAGERBALANS NM3'
+            Width = 135
           end
           item
-            Caption = 'R'#214'RELSER'
-            Width = 114
+            Caption = 'R'#214'RELSER NM3'
+            Width = 95
           end
           item
-            Caption = 'F'#214'R'#196'NDRING'
-            Width = 75
+            Caption = 'F'#214'R'#196'NDRING NM3'
+            Width = 230
           end>
         object grdLagerBalansORTDBBandedTableView1PIPNo: TcxGridDBBandedColumn
           DataBinding.FieldName = 'PIPNo'
@@ -834,6 +873,7 @@
           Position.RowIndex = 0
         end
         object grdLagerBalansORTDBBandedTableView1NM3_INGENDE: TcxGridDBBandedColumn
+          Caption = 'ING'#197'ENDE'
           DataBinding.FieldName = 'NM3_ING'#197'ENDE'
           PropertiesClassName = 'TcxLabelProperties'
           Width = 39
@@ -842,6 +882,7 @@
           Position.RowIndex = 0
         end
         object grdLagerBalansORTDBBandedTableView1NM3_UTGAENDE: TcxGridDBBandedColumn
+          Caption = 'UTGAENDE'
           DataBinding.FieldName = 'NM3_UTGAENDE'
           PropertiesClassName = 'TcxLabelProperties'
           Width = 39
@@ -850,6 +891,7 @@
           Position.RowIndex = 0
         end
         object grdLagerBalansORTDBBandedTableView1NM3_DIFF: TcxGridDBBandedColumn
+          Caption = 'DIFF fg LB'
           DataBinding.FieldName = 'NM3_DIFF'
           PropertiesClassName = 'TcxLabelProperties'
           Width = 68
@@ -865,6 +907,7 @@
           Position.RowIndex = 0
         end
         object grdLagerBalansORTDBBandedTableView1NM3_RRELSE_IN: TcxGridDBBandedColumn
+          Caption = 'IN'
           DataBinding.FieldName = 'NM3_R'#214'RELSE_IN'
           PropertiesClassName = 'TcxLabelProperties'
           Width = 40
@@ -873,6 +916,7 @@
           Position.RowIndex = 0
         end
         object grdLagerBalansORTDBBandedTableView1NM3_RRELSE_UT: TcxGridDBBandedColumn
+          Caption = 'UT'
           DataBinding.FieldName = 'NM3_R'#214'RELSE_UT'
           PropertiesClassName = 'TcxLabelProperties'
           Width = 38
@@ -887,6 +931,19 @@
           Position.ColIndex = 1
           Position.RowIndex = 0
         end
+        object grdLagerBalansORTDBBandedTableView1NM3_INVENTERAT: TcxGridDBBandedColumn
+          Caption = 'INVENTERAT'
+          DataBinding.FieldName = 'NM3_INVENTERAT'
+          Position.BandIndex = 3
+          Position.ColIndex = 1
+          Position.RowIndex = 0
+        end
+        object grdLagerBalansORTDBBandedTableView1NM3_DIFF_INVENT: TcxGridDBBandedColumn
+          DataBinding.FieldName = 'NM3_DIFF_INVENT'
+          Position.BandIndex = 3
+          Position.ColIndex = 2
+          Position.RowIndex = 0
+        end
       end
       object grdLagerBalansORTLevel1: TcxGridLevel
         GridView = grdLagerBalansORTDBBandedTableView1
@@ -897,18 +954,20 @@
     object Panel4: TPanel
       Left = 1
       Top = 1
-      Width = 511
+      Width = 615
       Height = 202
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 511
       object grdSalesRegion: TcxGrid
         Left = 0
         Top = 0
-        Width = 511
+        Width = 615
         Height = 202
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 511
         object grdSalesRegionDBBandedTableView1: TcxGridDBBandedTableView
           OnDblClick = grdSalesRegionDBBandedTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -1014,13 +1073,14 @@
     object cxSplitter2: TcxSplitter
       Left = 1
       Top = 203
-      Width = 511
+      Width = 615
       Height = 8
       HotZoneClassName = 'TcxMediaPlayer8Style'
       AlignSplitter = salTop
       Control = Panel4
       Color = clMaroon
       ParentColor = False
+      ExplicitWidth = 511
     end
   end
   object mtFilter: TkbmMemTable
@@ -2096,7 +2156,6 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2115,7 +2174,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2132,7 +2190,7 @@
   object ds_SalesRegion: TDataSource
     DataSet = cds_SalesRegion
     Left = 536
-    Top = 256
+    Top = 248
   end
   object ds_LBSR: TDataSource
     DataSet = cds_LBSR
@@ -2459,7 +2517,6 @@
       'AND inv.VerkNo  = ins.OwnerNo'
       'AND (inv.PIPNo = LIP.PhysicalInventoryPointNo)'
       'AND inv.Typ = 1'
-      '-- AND ((LP2.SequenceNo = 1) or (LP2.SequenceNo is null))'
       'Group By Typ)AS NM3_R'#214'RELSE_IN,'
       ''
       '(Select SUM(inv.NM3)'
@@ -2472,14 +2529,24 @@
       'AND inv.VerkNo  = ins.OwnerNo'
       'AND (inv.PIPNo = LIP.PhysicalInventoryPointNo)'
       'AND inv.Typ = -1'
-      '-- AND ((LP2.SequenceNo = 1) or (LP2.SequenceNo is null))'
-      'Group By Typ)AS NM3_R'#214'RELSE_UT'
+      'Group By Typ)AS NM3_R'#214'RELSE_UT,'
+      ''
+      '(Select SUM(pt.Totalm3Nominal)'
+      'FROM dbo.Inven_Al_VW ia'
+      'inner join dbo.InvControlGrp icg on icg.IC_grpno = ia.IC_GroupNo'
+      'inner join dbo.InvenRow inv on inv.IC_GrpNo = icg.IC_grpno'
+      
+        'Inner Join dbo.LogicalInventoryPoint AS LIP2 on lip2.LogicalInve' +
+        'ntoryPointNo = inv.LogicalInventoryPointNo'
+      
+        'inner join dbo.PackageType pt on pt.PackageTypeNo = inv.PackageT' +
+        'ypeNo'
+      
+        'WHERE ia.IC_SetNo = :SetNo and  LIP2.PhysicalInventoryPointNo = ' +
+        'LIP.PhysicalInventoryPointNo) AS NM3_INVENTERAT'
       ''
       'FROM dbo.InvenStatusII ins'
       'Inner Join dbo.Client SR on SR.ClientNo = ins.OwnerNo'
-      
-        '-- Left Outer Join dbo.PackageType pt on pt.PackageTypeNo = ins.' +
-        'PackageTypeNo'
       
         'Inner Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInvent' +
         'oryPointNo = ins.LogicalInventoryPointNo'
@@ -2490,7 +2557,6 @@
       'WHERE ins.InvDate >= :StartInBalDate'
       'AND ins.InvDate <= :EndInBalDate'
       'AND SR.SalesRegionNo = :ClientNo'
-      '-- AND ((LP.SequenceNo = 1) or (LP.SequenceNo is null))'
       
         'Group By SR.SearchName, LP.ORT,  LIP.PhysicalInventoryPointNo, i' +
         'ns.OwnerNo'
@@ -2508,6 +2574,11 @@
       item
         Name = 'ENDDATE'
         DataType = ftTimeStamp
+        ParamType = ptInput
+      end
+      item
+        Name = 'SETNO'
+        DataType = ftInteger
         ParamType = ptInput
       end
       item
@@ -2572,6 +2643,19 @@
       FieldName = #196'GARE'
       Origin = '['#196'GARE]'
       Size = 80
+    end
+    object cds_LagBalORTNM3_INVENTERAT: TFloatField
+      FieldName = 'NM3_INVENTERAT'
+      Origin = 'NM3_INVENTERAT'
+      ReadOnly = True
+      DisplayFormat = '#,###,###,###.0'
+    end
+    object cds_LagBalORTNM3_DIFF_INVENT: TFloatField
+      DisplayLabel = 'MOT INVENTERING'
+      FieldKind = fkCalculated
+      FieldName = 'NM3_DIFF_INVENT'
+      DisplayFormat = '#,###,###,###.0'
+      Calculated = True
     end
   end
   object cds_LBSR: TFDQuery
@@ -2695,7 +2779,7 @@
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

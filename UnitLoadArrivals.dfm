@@ -5,8 +5,8 @@ object frmLoadArrivals: TfrmLoadArrivals
   Align = alClient
   BorderStyle = bsNone
   Caption = 'frmLoadArrivals'
-  ClientHeight = 580
-  ClientWidth = 1031
+  ClientHeight = 713
+  ClientWidth = 1092
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,11 +23,13 @@ object frmLoadArrivals: TfrmLoadArrivals
   TextHeight = 13
   object grdPkgs: TcxGrid
     Left = 0
-    Top = 388
-    Width = 1031
+    Top = 521
+    Width = 1092
     Height = 192
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 388
+    ExplicitWidth = 1031
     object grdPkgsDBTableView1: TcxGridDBTableView
       PopupMenu = pmPkgs
       Navigator.Buttons.CustomButtons = <>
@@ -176,22 +178,26 @@ object frmLoadArrivals: TfrmLoadArrivals
   end
   object cxSplitter1: TcxSplitter
     Left = 0
-    Top = 380
-    Width = 1031
+    Top = 513
+    Width = 1092
     Height = 8
     HotZoneClassName = 'TcxMediaPlayer8Style'
     AlignSplitter = salBottom
     Control = grdPkgs
     Color = clMaroon
     ParentColor = False
+    ExplicitTop = 380
+    ExplicitWidth = 1031
   end
   object grdLoads: TcxGrid
     Left = 0
     Top = 57
-    Width = 1031
-    Height = 323
+    Width = 1092
+    Height = 456
     Align = alClient
     TabOrder = 3
+    ExplicitWidth = 1031
+    ExplicitHeight = 323
     object grdLoadsDBTableView1: TcxGridDBTableView
       PopupMenu = pmLoads
       Navigator.Buttons.CustomButtons = <>
@@ -409,39 +415,43 @@ object frmLoadArrivals: TfrmLoadArrivals
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1031
+    Width = 1092
     Height = 57
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 8
+    ExplicitWidth = 1031
     object Panel2: TPanel
       Left = 499
       Top = 0
-      Width = 469
+      Width = 530
       Height = 57
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 469
       object dxBarDockControl1: TdxBarDockControl
         Left = 1
         Top = 1
-        Width = 467
-        Height = 46
+        Width = 528
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
+        ExplicitWidth = 467
       end
     end
     object Panel3: TPanel
-      Left = 968
+      Left = 1029
       Top = 0
       Width = 63
       Height = 57
       Align = alRight
       TabOrder = 1
+      ExplicitLeft = 968
       object dxBarDockControl3: TdxBarDockControl
         Left = 1
         Top = 1
         Width = 61
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -601,7 +611,7 @@ object frmLoadArrivals: TfrmLoadArrivals
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
@@ -2546,7 +2556,7 @@ object frmLoadArrivals: TfrmLoadArrivals
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

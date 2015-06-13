@@ -36,7 +36,7 @@ uses
   dxPScxPivotGridLnk, dxSkinsdxBarPainter, dxSkinsdxRibbonPainter, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  System.Actions, dxPScxSSLnk, siComp, siLngLnk  ;
+  System.Actions, dxPScxSSLnk, siComp, siLngLnk, cxCheckBox  ;
 
 type
   TfLagerBalans = class(TForm)
@@ -187,6 +187,13 @@ type
     cds_LagBalPkt: TIntegerField;
     grdLagerBalansDBTableView1Pkt: TcxGridDBColumn;
     siLangLinked_fLagerBalans: TsiLangLinked;
+    cds_LagBalORTNM3_INVENTERAT: TFloatField;
+    grdLagerBalansORTDBBandedTableView1NM3_INVENTERAT: TcxGridDBBandedColumn;
+    cds_LagBalORTNM3_DIFF_INVENT: TFloatField;
+    grdLagerBalansORTDBBandedTableView1NM3_DIFF_INVENT: TcxGridDBBandedColumn;
+    teInventeringsSet: TcxTextEdit;
+    cxLabel1: TcxLabel;
+    cbFilterZeros: TcxCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure acRefreshExecute(Sender: TObject);
     procedure acPrintExecute(Sender: TObject);
@@ -232,6 +239,7 @@ type
       Sender: TcxDBDataModeController; ADataSet: TDataSet;
       const AMasterDetailKeyFieldNames: string;
       const AMasterDetailKeyValues: Variant; var AReopened: Boolean);
+    procedure cbFilterZerosPropertiesChange(Sender: TObject);
   private
     { Private declarations }
    Year, Month, Day: Word ;
@@ -317,14 +325,21 @@ begin
  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
  Try
 
- StartDate.Date:= RecodeHour(StartDate.Date, 0);
- StartDate.Date:= RecodeMinute(StartDate.Date, 0);
- StartDate.Date:= RecodeSecond(StartDate.Date, 0);
+ StartDate.Date := RecodeHour(StartDate.Date, 0);
+ StartDate.Date := RecodeMinute(StartDate.Date, 0);
+ StartDate.Date := RecodeSecond(StartDate.Date, 0);
 
- EndDate.Date:= RecodeHour(EndDate.Date, 23);
- EndDate.Date:= RecodeMinute(EndDate.Date, 59);
- EndDate.Date:= RecodeSecond(EndDate.Date, 59);
+ EndDate.Date   := RecodeHour(EndDate.Date, 23);
+ EndDate.Date   := RecodeMinute(EndDate.Date, 59);
+ EndDate.Date   := RecodeSecond(EndDate.Date, 59);
 
+ if cbFilterZeros.Checked then
+ Begin
+  cds_LagBalORT.Filter     := '[NM3_INGÅENDE] > 0 OR [NM3_RÖRELSE_IN] > 0 OR [NM3_INVENTERAT] > 0' ;
+  cds_LagBalORT.Filtered   := True ;
+ End
+  else
+   cds_LagBalORT.Filtered   := False ;
 
  cds_LagBalORT.Active:= False ;
  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
@@ -333,6 +348,7 @@ begin
  cds_LagBalORT.ParamByName('EndDate').AsSQLTimeStamp         := DateTimeToSQLTimeStamp(EndDate.Date) ;
  cds_LagBalORT.ParamByName('StartInBalDate').AsSQLTimeStamp  := DateTimeToSQLTimeStamp(StartDate.Date) ; //tog bort -1
  cds_LagBalORT.ParamByName('EndInBalDate').AsSQLTimeStamp    := DateTimeToSQLTimeStamp(StartDate.Date) ; //tog bort + 1 : ändrade till EndDate.Date från StartDate.Date
+ cds_LagBalORT.ParamByName('SetNo').AsInteger                := strtoint(teInventeringsSet.Text) ;
  cds_LagBalORT.Active:= True ;
 
  cds_LagBal.Active:= False ;
@@ -493,6 +509,11 @@ begin
  Year:= StrToInt(cbYearStart.Text) ;
 end;
 
+procedure TfLagerBalans.cbFilterZerosPropertiesChange(Sender: TObject);
+begin
+ RefreshClientToSR ;
+end;
+
 procedure TfLagerBalans.cbMonthEndPropertiesChange(Sender: TObject);
 begin
 // cbMonthEnd.Text:= cbMonthStart.Text ;
@@ -533,6 +554,8 @@ cds_LagBalORTNM3_UTGAENDE.AsFloat :=
  (cds_LagBalORTNM3_INGÅENDE.AsFloat + (cds_LagBalORTNM3_RÖRELSE_IN.AsFloat + cds_LagBalORTNM3_RÖRELSE_UT.AsFloat)) ;
 
  cds_LagBalORTNM3_DIFF.AsFloat := cds_LagBalORTNM3_UTGAENDE.AsFloat - cds_LagBalORTNM3_INGÅENDE.AsFloat ;
+
+ cds_LagBalORTNM3_DIFF_INVENT.AsFloat := cds_LagBalORTNM3_UTGAENDE.AsFloat - cds_LagBalORTNM3_INVENTERAT.AsFloat ;
 end;
 
 procedure TfLagerBalans.grdLagerBalansORTDBTableView2CellDblClick(

@@ -33,7 +33,6 @@ object fchgPkgVard: TfchgPkgVard
     Height = 258
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 46
     object Label1: TLabel
       Left = 358
       Top = 59
@@ -521,13 +520,11 @@ object fchgPkgVard: TfchgPkgVard
     Height = 255
     Align = alClient
     TabOrder = 6
-    ExplicitTop = 304
-    ExplicitHeight = 254
     object grdPaket: TcxGrid
       Left = 1
       Top = 31
       Width = 1009
-      Height = 222
+      Height = 223
       Align = alClient
       TabOrder = 0
       object grdPaketDBTableView1: TcxGridDBTableView

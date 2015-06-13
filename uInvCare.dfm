@@ -21,17 +21,19 @@ object fuInvCare: TfuInvCare
     Left = 0
     Top = 0
     Width = 1046
-    Height = 46
+    Height = 45
     Align = dalTop
     BarManager = dxBarManager1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 133
+    Top = 132
     Width = 1046
-    Height = 445
+    Height = 446
     Align = alClient
     TabOrder = 1
+    ExplicitTop = 133
+    ExplicitHeight = 445
     object grdPkgs: TcxGrid
       Left = 1
       Top = 31
@@ -434,11 +436,12 @@ object fuInvCare: TfuInvCare
   end
   object Panel3: TPanel
     Left = 0
-    Top = 46
+    Top = 45
     Width = 1046
     Height = 87
     Align = alTop
     TabOrder = 6
+    ExplicitTop = 46
     object Label11: TLabel
       Left = 14
       Top = 29
@@ -609,7 +612,7 @@ object fuInvCare: TfuInvCare
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
@@ -2057,7 +2060,7 @@ object fuInvCare: TfuInvCare
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

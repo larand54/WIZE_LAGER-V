@@ -330,11 +330,11 @@ Var LanguageNo  : Integer ;
 begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
- showmessage(siLangLinked1.GetTextOrDefault('IDS_7' (* 'Ändra till H:\' *) ));
+  showmessage(siLangLinked1.GetTextOrDefault('Change to H:\'));
 // ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
- ThisUser.Database:= 'vis.vida.se:vis_vida' ;
-// ThisUser.Database:= 'alvesql03:vis_vida' ;
+// ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+ ThisUser.Database:= 'alvesql03:vis_vida' ;
 
 // ThisUser.Database:= 'alvesqltest01:vis_vida' ;
 
@@ -867,7 +867,7 @@ procedure TfrmMain.acBytAnvandareExecute(Sender: TObject);
 var OKHelpBottomDlg: TOKHelpBottomDlg;
 begin
  if (Trim(dmsConnector.Get_AD_Name) = 'VIDA\larmak')
-
+ or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\annjoh')
  or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\ulalun')
  or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\ulrlun')
  or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\ronand')
@@ -902,12 +902,12 @@ begin
  try
  if OKHelpBottomDlg.ShowModal = mrOK then
  Begin
-//  dmsConnector.FDConnection1. .CloseDataSets ;
+
   dmsConnector.FDConnection1.Connected:= False ;
   if Length(OKHelpBottomDlg.EFD_Name.Text) > 0 then
   ThisUser.DBUserName:= OKHelpBottomDlg.EFD_Name.Text ;
-  if Length(OKHelpBottomDlg.eDatabas.Text) > 0 then
-  ThisUser.Database:= OKHelpBottomDlg.eDatabas.Text ;
+  if Length(OKHelpBottomDlg.cbDatabas.Text) > 0 then
+  ThisUser.Database:= OKHelpBottomDlg.cbDatabas.Text ;
 
    if not ThisUser.Logon then
     Close
@@ -915,14 +915,11 @@ begin
       if dmsConnector.FDConnection1.Connected then
       Begin
        if ((dmsConnector.Get_AD_Name <> OKHelpBottomDlg.EFD_Name.Text) and (Length(OKHelpBottomDlg.EFD_Name.Text) > 0) )
-       or ((OKHelpBottomDlg.eDatabas.Text <> dmsConnector.Org_DB_Name) and (Length(OKHelpBottomDlg.eDatabas.Text) > 0)) then
+       or ((OKHelpBottomDlg.cbDatabas.Text <> dmsConnector.Org_DB_Name) and (Length(OKHelpBottomDlg.cbDatabas.Text) > 0)) then
        Begin
         Timer1.Enabled:= True ;
         dmsConnector.LoginChanged:= True ;
         dxNavBar1.DefaultStyles.Background.BackColor:= clGreen ;
-//        dxSideBar1.Color:= clGreen ;
-//        dxSideBar1.BkGround.BeginColor:= clGreen ;
-//        dxSideBar1.BkGround.EndColor:= clGreen ;
         Forms.Application.Title:= 'VIS_LAGER' ;
         a:= Forms.Application.Title+'/'+dmsConnector.GetCompanyName (ThisUser.CompanyNo) +'/' + ThisUser.UserName +' ver '+GetVersion
         +' - '+dmsConnector.FDConnection1.Params.Values['Server']
@@ -933,10 +930,7 @@ begin
        Begin
         dmsConnector.LoginChanged:= False ;
         Timer1.Enabled:= False ;
-        dxNavBar1.DefaultStyles.Background.BackColor:= clWhite ;        
-//        dxSideBar1.Color:= clMaroon ;
-//        dxSideBar1.BkGround.BeginColor:= clMaroon ;
-//        dxSideBar1.BkGround.EndColor:= clMaroon ;
+        dxNavBar1.DefaultStyles.Background.BackColor:= clWhite ;
         Forms.Application.Title:= 'VIS_LAGER' ;
         frmMain.Caption:= Forms.Application.Title+'/'+dmsConnector.GetCompanyName (ThisUser.CompanyNo) +'/' + ThisUser.UserName +' ver '+GetVersion
         +' - '+dmsConnector.FDConnection1.Params.Values['Server']

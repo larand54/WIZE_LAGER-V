@@ -2964,9 +2964,9 @@ begin
  With dmInvCtrl do
  Begin
   acGetInLeveranser.Enabled:=
-  (InventeringPresent)
+  ((InventeringPresent)
   and (cds_InvCtrlGrp.Active)
-  and (cds_InvCtrlGrpStatus.AsInteger <> 2) ;
+  and (cds_InvCtrlGrpStatus.AsInteger <> 2)) or (ThisUser.UserID = 8) ;
  End ;
 end;
 

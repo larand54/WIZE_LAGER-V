@@ -308,6 +308,7 @@ Begin
      sq_OneUniquePkg.ParamByName('SupplierCode').AsString         := PkgSupplierCode ;
      sq_OneUniquePkg.ParamByName('OwnerNo').AsInteger             := mtUserPropOwnerNo.AsInteger ;
      sq_OneUniquePkg.ParamByName('UserCompanyLoggedIn').AsInteger := ThisUser.CompanyNo ;
+     sq_OneUniquePkg.ParamByName('LanguageID').AsInteger          := ThisUser.LanguageID ;
      sq_OneUniquePkg.ParamByName('Status').AsInteger              := 0 ;
      sq_OneUniquePkg.Open ;
      if not sq_OneUniquePkg.Eof then
@@ -1124,6 +1125,7 @@ begin
       sq_OneUniquePkg.ParamByName('SupplierCode').AsString         := PkgNos.FieldByName('SUPP_CODE').AsString ;
       sq_OneUniquePkg.ParamByName('OwnerNo').AsInteger             := PkgNos.FieldByName('OwnerNo').AsInteger ;
       sq_OneUniquePkg.ParamByName('UserCompanyLoggedIn').AsInteger := ThisUser.CompanyNo ;
+      sq_OneUniquePkg.ParamByName('LanguageID').AsInteger          := ThisUser.LanguageID ;
       sq_OneUniquePkg.ParamByName('Status').AsInteger              := 1 ;
       sq_OneUniquePkg.Open ;
       mtLoadPackages.Insert ;

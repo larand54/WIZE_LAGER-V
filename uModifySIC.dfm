@@ -26,20 +26,16 @@ object fModifySIC: TfModifySIC
     Height = 536
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = tsSICLIP
+    Properties.ActivePage = tsInventeringar
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = pgPriceListGuidePageChanging
-    ClientRectBottom = 532
-    ClientRectLeft = 4
-    ClientRectRight = 1004
-    ClientRectTop = 24
+    ClientRectBottom = 535
+    ClientRectLeft = 1
+    ClientRectRight = 1007
+    ClientRectTop = 21
     object tsInventeringar: TcxTabSheet
-      Caption = 'tsInventeringar'
+      Caption = 'Inventeringar'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 1
-      ExplicitWidth = 0
-      ExplicitHeight = 534
       object Panel19: TPanel
         Left = 0
         Top = 0
@@ -64,7 +60,6 @@ object fModifySIC: TfModifySIC
         Height = 473
         Align = alLeft
         TabOrder = 1
-        ExplicitHeight = 493
         object BitBtn1: TBitBtn
           Left = 11
           Top = 152
@@ -91,7 +86,6 @@ object fModifySIC: TfModifySIC
         Height = 473
         Align = alLeft
         TabOrder = 2
-        ExplicitHeight = 493
         object Panel7: TPanel
           Left = 1
           Top = 1
@@ -114,7 +108,6 @@ object fModifySIC: TfModifySIC
           Height = 445
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 465
           object grdInventeringarDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dmInvCtrl.ds_InvCtrlListSIC
@@ -130,11 +123,15 @@ object fModifySIC: TfModifySIC
             object grdInventeringarDBTableView1INVENTERINGSNR: TcxGridDBColumn
               Caption = 'INV.NR'
               DataBinding.FieldName = 'INVENTERINGSNR'
+              PropertiesClassName = 'TcxLabelProperties'
+              SortIndex = 0
+              SortOrder = soDescending
               Width = 60
             end
             object grdInventeringarDBTableView1INVENTERINGSDATUM: TcxGridDBColumn
               Caption = 'INV.DATUM'
               DataBinding.FieldName = 'INVENTERINGSDATUM'
+              PropertiesClassName = 'TcxLabelProperties'
               Width = 141
             end
             object grdInventeringarDBTableView1STATUS: TcxGridDBColumn
@@ -144,10 +141,12 @@ object fModifySIC: TfModifySIC
             end
             object grdInventeringarDBTableView1MAXDATUM: TcxGridDBColumn
               DataBinding.FieldName = 'MAXDATUM'
+              PropertiesClassName = 'TcxLabelProperties'
               Width = 89
             end
             object grdInventeringarDBTableView1NAMN: TcxGridDBColumn
               DataBinding.FieldName = 'NAMN'
+              PropertiesClassName = 'TcxLabelProperties'
               Width = 85
             end
           end
@@ -163,7 +162,6 @@ object fModifySIC: TfModifySIC
         Height = 473
         Align = alClient
         TabOrder = 3
-        ExplicitHeight = 493
         object Panel9: TPanel
           Left = 1
           Top = 1
@@ -186,7 +184,6 @@ object fModifySIC: TfModifySIC
           Height = 445
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 465
           object grdSelectedInvsDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dmInvCtrl.ds_Sic_IC_grp
@@ -229,19 +226,19 @@ object fModifySIC: TfModifySIC
       end
     end
     object tsSICLIP: TcxTabSheet
-      Caption = 'tsSICLIP'
+      Caption = 'Dela lager'
       ImageIndex = 3
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 1000
-        Height = 508
+        Width = 1006
+        Height = 514
         Align = alClient
         TabOrder = 0
         object Panel6: TPanel
           Left = 1
           Top = 1
-          Width = 998
+          Width = 1004
           Height = 56
           Align = alTop
           Font.Charset = DEFAULT_CHARSET
@@ -284,8 +281,8 @@ object fModifySIC: TfModifySIC
         object grdSICLIP: TcxGrid
           Left = 1
           Top = 104
-          Width = 998
-          Height = 403
+          Width = 1004
+          Height = 409
           Align = alClient
           TabOrder = 1
           object grdSICLIPDBTableView1: TcxGridDBTableView
@@ -343,7 +340,7 @@ object fModifySIC: TfModifySIC
         object Panel3: TPanel
           Left = 1
           Top = 57
-          Width = 998
+          Width = 1004
           Height = 47
           Align = alTop
           TabOrder = 2
@@ -2864,7 +2861,7 @@ object fModifySIC: TfModifySIC
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1
@@ -2905,8 +2902,8 @@ object fModifySIC: TfModifySIC
       'DataField'
       'KeyField'
       'ListField')
-    Left = 496
-    Top = 312
+    Left = 472
+    Top = 336
     TranslationData = {
       73007400430061007000740069006F006E0073005F0055006E00690063006F00
       640065000D000A00540066004D006F0064006900660079005300490043000100

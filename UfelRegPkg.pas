@@ -852,6 +852,7 @@ Begin
      sq_OneUniquePkg.ParamByName('SupplierCode').AsString         := PkgSupplierCode ;
      sq_OneUniquePkg.ParamByName('OwnerNo').AsInteger             := mtUserPropOwnerNo.AsInteger ;
      sq_OneUniquePkg.ParamByName('UserCompanyLoggedIn').AsInteger := ThisUser.CompanyNo ;
+     sq_OneUniquePkg.ParamByName('LanguageID').AsInteger          := ThisUser.LanguageID ;
      sq_OneUniquePkg.ParamByName('Status').AsInteger              := 1 ;
      sq_OneUniquePkg.Open ;
      if not sq_OneUniquePkg.Eof then
@@ -1468,10 +1469,11 @@ begin
  With dmPkgs do
  Begin
   mtUserProp.Edit ;
-  mtUserPropOwnerNo.AsInteger:= PkgNos.FieldByName('OwnerNo').AsInteger ;
-//  mtUserPropPIPNo.AsInteger:= PkgNos.FieldByName('PIPNo').AsInteger ;  
+  mtUserPropOwnerNo.AsInteger     := PkgNos.FieldByName('OwnerNo').AsInteger ;
+//  mtUserPropProducerNo.AsInteger  := PkgNos.FieldByName('OwnerNo').AsInteger ;
+//  mtUserPropPIPNo.AsInteger:= PkgNos.FieldByName('PIPNo').AsInteger ;
   mtUserProp.Post ;
-  mtLoadPackages.IndexName:= 'mtLoadPackagesIndex5' ;
+  mtLoadPackages.IndexName    := 'mtLoadPackagesIndex5' ;
   mtLoadPackages.DisableControls ;
   Try
    Save_Cursor := Screen.Cursor;
@@ -1495,6 +1497,7 @@ begin
       sq_OneUniquePkg.ParamByName('SupplierCode').AsString         := PkgNos.FieldByName('SUPP_CODE').AsString ;
       sq_OneUniquePkg.ParamByName('OwnerNo').AsInteger             := PkgNos.FieldByName('OwnerNo').AsInteger ;
       sq_OneUniquePkg.ParamByName('UserCompanyLoggedIn').AsInteger := ThisUser.CompanyNo ;
+      sq_OneUniquePkg.ParamByName('LanguageID').AsInteger          := ThisUser.LanguageID ;
       sq_OneUniquePkg.ParamByName('Status').AsInteger              := PkgNos.FieldByName('Status').AsInteger ;
       sq_OneUniquePkg.Open ;
       if not sq_OneUniquePkg.Eof then

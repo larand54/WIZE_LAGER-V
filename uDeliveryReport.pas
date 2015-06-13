@@ -533,6 +533,7 @@ Begin
  With dmInventory do
  Begin
   ccbTS2.Properties.Items.Clear ;
+  sq_Specie.ParamByName('LanguageCode').AsInteger  := ThisUser.LanguageID ;
   sq_Specie.Active:= True ;
   While not sq_Specie.Eof do
   Begin
@@ -587,6 +588,7 @@ Begin
   sq_AL.Close ;
 
   ccVarugrupp.Properties.Items.Clear ;
+  sq_Varugrupp.ParamByName('LanguageCode').AsInteger  := ThisUser.LanguageID ;
   sq_Varugrupp.Open ;
   While not sq_Varugrupp.Eof do
   Begin
@@ -626,7 +628,9 @@ Begin
 
 
   ccbKV2.Properties.Items.Clear ;
-  sq_Grade.ParamByName('PktNrLevKod').AsString  := PktNrLevKod ;
+  sq_Grade.ParamByName('PktNrLevKod').AsString    := PktNrLevKod ;
+  sq_Grade.ParamByName('LanguageCode').AsInteger  := ThisUser.LanguageID ;
+
   sq_Grade.Active:= True ;
   While not sq_Grade.Eof do
   Begin
@@ -636,7 +640,8 @@ Begin
   sq_Grade.Active:= False ;
 
   ccbSU2.Properties.Items.Clear ;
-  sq_Surfacing.ParamByName('PktNrLevKod').AsString  := PktNrLevKod ;
+  sq_Surfacing.ParamByName('PktNrLevKod').AsString    := PktNrLevKod ;
+  sq_Surfacing.ParamByName('LanguageCode').AsInteger  := ThisUser.LanguageID ;
   sq_Surfacing.Open ;
   While not sq_Surfacing.Eof do
   Begin
@@ -650,6 +655,7 @@ Begin
   Try
   sq_PC2.Active := False ;
   //sq_PC2.ParamByName('PktNrLevKod').AsString  := PktNrLevKod ;
+  sq_PC2.ParamByName('LanguageCode').AsInteger  := ThisUser.LanguageID ;
   sq_PC2.Active := True ;
   sq_PC2.First ;
   While not sq_PC2.Eof do

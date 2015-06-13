@@ -22,6 +22,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    cbDatabas: TComboBox;
     procedure HelpBtnClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -89,7 +90,8 @@ end;
 procedure TOKHelpBottomDlg.Button2Click(Sender: TObject);
 begin
   inherited;
- eDatabas.Text:= dmsConnector.Org_DB_Name ;
+// eDatabas.Text  := dmsConnector.Org_DB_Name ;
+ cbDatabas.Text := dmsConnector.Org_DB_Name ;
 end;
 
 end.

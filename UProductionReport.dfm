@@ -20,8 +20,6 @@ object fProductionReport: TfProductionReport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pcInventory: TcxPageControl
@@ -43,9 +41,6 @@ object fProductionReport: TfProductionReport
     object tsProduktionPerPaketnr: TcxTabSheet
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -1071,7 +1066,6 @@ object fProductionReport: TfProductionReport
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
-    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
@@ -1089,10 +1083,6 @@ object fProductionReport: TfProductionReport
     object tsLagret: TcxTabSheet
       Caption = 'Lager'
       ImageIndex = 2
-      ExplicitLeft = 4
-      ExplicitTop = 4
-      ExplicitWidth = 1241
-      ExplicitHeight = 97
       object Panel3: TPanel
         Left = 0
         Top = 0
@@ -1101,8 +1091,6 @@ object fProductionReport: TfProductionReport
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1241
-        ExplicitHeight = 97
         DesignSize = (
           1249
           105)
@@ -2503,7 +2491,6 @@ object fProductionReport: TfProductionReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2523,12 +2510,10 @@ object fProductionReport: TfProductionReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2548,7 +2533,6 @@ object fProductionReport: TfProductionReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

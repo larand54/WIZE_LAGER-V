@@ -3504,8 +3504,8 @@
     end
     object cds_SicRowAdmCost: TFloatField
       DisplayLabel = 'Administration'
-      FieldName = 'FDmCost'
-      Origin = 'FDmCost'
+      FieldName = 'AdmCost'
+      Origin = 'AdmCost'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,###,###.00'
     end
@@ -3750,6 +3750,7 @@
     end
   end
   object cds_SicRow_PG: TFDQuery
+    Active = True
     BeforePost = cds_SicRow_PGBeforePost
     MasterSource = ds_SicHdr
     MasterFields = 'Sic_No'
@@ -3803,8 +3804,8 @@
     end
     object cds_SicRow_PGAdmCost: TFloatField
       DisplayLabel = 'Administration'
-      FieldName = 'FDmCost'
-      Origin = 'FDmCost'
+      FieldName = 'AdmCost'
+      Origin = 'AdmCost'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,###,###.00'
     end
@@ -5237,12 +5238,12 @@
       ''
       
         'Insert into dbo.SicRow_PG(Sic_No, RowName, LIPGroupNo, NM3, Pric' +
-        'e, FDmCost, PlanerShavingsCost,'
+        'e, AdmCost, PlanerShavingsCost,'
       
         'PlaningCost, SortingCost, KilnDryingCost, CalcPrice, TotalValue,' +
         ' PriceGroupNo, PriceGroupName)'
       
-        'Select Sic_No, RowName, LIPGroupNo, NM3, Price, FDmCost, PlanerS' +
+        'Select Sic_No, RowName, LIPGroupNo, NM3, Price, AdmCost, PlanerS' +
         'havingsCost,'
       
         'PlaningCost, SortingCost, KilnDryingCost, CalcPrice, TotalValue,' +
@@ -5720,7 +5721,7 @@
       'Delete dbo.SicRow where Sic_No = :Sic_No'
       'Insert into dbo.SicRow(Sic_No, RowName, LIPGroupNo, NM3,'
       
-        'Price, FDmCost, PlanerShavingsCost, PlaningCost, SortingCost, Ki' +
+        'Price, AdmCost, PlanerShavingsCost, PlaningCost, SortingCost, Ki' +
         'lnDryingCost'
       ')'
       'Select sicl.Sic_No, Lager, sicl.LIPGroupNo, SUM(sicl.CalcNM3),'
@@ -6915,7 +6916,7 @@
       ''
       
         'Insert into dbo.SicRow_PG(Sic_No, RowName, LIPGroupNo, NM3, Pric' +
-        'e, FDmCost, PlanerShavingsCost,'
+        'e, AdmCost, PlanerShavingsCost,'
       
         'PlaningCost, SortingCost, KilnDryingCost, PriceGroupNo, PriceGro' +
         'upName)'

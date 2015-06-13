@@ -39,7 +39,7 @@
         Left = 0
         Top = 0
         Width = 692
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -58,7 +58,7 @@
         Left = 0
         Top = 0
         Width = 73
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -229,32 +229,39 @@
     Height = 346
     Align = alClient
     TabOrder = 4
-    Properties.ActivePage = tsSic
+    Properties.ActivePage = tsSicPG
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
-    ClientRectBottom = 342
-    ClientRectLeft = 4
-    ClientRectRight = 1081
-    ClientRectTop = 33
+    ClientRectBottom = 345
+    ClientRectLeft = 1
+    ClientRectRight = 1084
+    ClientRectTop = 30
     object tsSic: TcxTabSheet
       Caption = 'Sammanst'#228'llning per lager'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 33
+      ExplicitWidth = 1085
+      ExplicitHeight = 313
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1077
-        Height = 309
+        Width = 1083
+        Height = 315
         Align = alClient
         BevelOuter = bvLowered
         TabOrder = 0
+        ExplicitWidth = 1085
+        ExplicitHeight = 313
         object Panel5: TPanel
           Left = 1
           Top = 1
-          Width = 1075
+          Width = 1081
           Height = 56
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 1083
           object cxButton1: TcxButton
             Left = 16
             Top = 8
@@ -304,11 +311,13 @@
         object grdSICRow: TcxGrid
           Left = 1
           Top = 57
-          Width = 1075
-          Height = 251
+          Width = 1081
+          Height = 257
           Align = alClient
           TabOrder = 1
           OnActiveTabChanged = grdSICRowActiveTabChanged
+          ExplicitWidth = 1083
+          ExplicitHeight = 255
           object grdSICRowDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnEditKeyDown = grdSICRowDBTableView1EditKeyDown
@@ -359,7 +368,7 @@
               Width = 69
             end
             object grdSICRowDBTableView1AdmCost: TcxGridDBColumn
-              DataBinding.FieldName = 'FDmCost'
+              DataBinding.FieldName = 'AdmCost'
               PropertiesClassName = 'TcxCalcEditProperties'
               Width = 70
             end
@@ -405,25 +414,28 @@
       Caption = 'Sammanst'#228'llning per lager och prisgrupp'
       ImageIndex = 3
       ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitTop = 33
+      ExplicitWidth = 1085
+      ExplicitHeight = 313
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 1085
-        Height = 320
+        Width = 1083
+        Height = 315
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1085
+        ExplicitHeight = 313
         object Panel9: TPanel
           Left = 0
           Top = 0
-          Width = 1085
+          Width = 1083
           Height = 57
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 1085
           object cxButton6: TcxButton
             Left = 16
             Top = 8
@@ -464,10 +476,12 @@
         object grdProduct: TcxGrid
           Left = 0
           Top = 57
-          Width = 1085
-          Height = 263
+          Width = 1083
+          Height = 258
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 1085
+          ExplicitHeight = 256
           object grdProductDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnEditKeyDown = grdProductDBTableView1EditKeyDown
@@ -3383,6 +3397,7 @@
     Top = 192
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdSICRow
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -3401,10 +3416,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProduct
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -3418,6 +3435,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -3453,7 +3471,7 @@
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
@@ -3750,7 +3768,7 @@
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

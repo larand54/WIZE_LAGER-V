@@ -165,7 +165,7 @@
     Height = 786
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsStoppTid
+    Properties.ActivePage = tsProduction
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
@@ -2517,7 +2517,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42077.304161921300000000
+      ReportDocument.CreationDate = 42136.068968888890000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2546,7 +2546,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42077.304161921300000000
+      ReportDocument.CreationDate = 42136.068968900460000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2573,7 +2573,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42077.304161932870000000
+      ReportDocument.CreationDate = 42136.068968912030000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2595,10 +2595,11 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42077.304161944440000000
+      ReportDocument.CreationDate = 42136.068968912030000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2613,6 +2614,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 40918.446931423610000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxCompositionReportLink
@@ -2658,7 +2660,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42077.304162268520000000
+      ReportDocument.CreationDate = 42136.068969259260000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -2728,13 +2730,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42077.304162280100000000
+      ReportDocument.CreationDate = 42136.068969270830000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdStoppTid
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2748,8 +2749,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42077.304162291660000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 42136.068969282410000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
@@ -6633,8 +6633,8 @@
       'kv.OutDate AS EndTime,'
       'kh.PlannedDuration AS PlaneradTid,'
       'DATEDIFF ( hour , kv.InDate, kv.OutDate  ) AS KalkyleradTid,'
-      'Count(pn.PackageNo) AS NoOfPkgs,'
-      'SUM(pt.Totalm3Actual) AS AM3,'
+      'Count(Distinct pn.PackageNo) AS NoOfPkgs,'
+      'SUM(ptd.m3Actual) AS AM3,'
       ''
       'PG.ActualThicknessMM '#9'AS AT,'
       'PG.ActualWidthMM'#9'AS AB,'
@@ -6728,8 +6728,8 @@
       'IsNull(kv.OutDate, GetDate()) AS EndTime,'
       'kh.PlannedDuration AS PlaneradTid,'
       'DATEDIFF ( hour , kv.InDate, kv.OutDate  ) AS KalkyleradTid,'
-      'Count(pn.PackageNo) AS NoOfPkgs,'
-      'SUM(pt.Totalm3Actual) AS AM3,'
+      'Count(Distinct pn.PackageNo) AS NoOfPkgs,'
+      'SUM(ptd.m3Actual) AS AM3,'
       ''
       'PG.ActualThicknessMM '#9'AS AT,'
       'PG.ActualWidthMM'#9'AS AB,'
@@ -9404,7 +9404,6 @@
       'TIB_STRINGLIST'
       'TSTRINGLIST')
     UseDefaultLanguage = True
-    DefaultLanguage = 2
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1

@@ -640,7 +640,7 @@ object fExtAterstall: TfExtAterstall
         Left = 1
         Top = 1
         Width = 414
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -656,7 +656,7 @@ object fExtAterstall: TfExtAterstall
         Left = 1
         Top = 1
         Width = 78
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -673,7 +673,7 @@ object fExtAterstall: TfExtAterstall
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
@@ -2136,7 +2136,7 @@ object fExtAterstall: TfExtAterstall
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1
