@@ -2352,6 +2352,7 @@ object fStopptidReport: TfStopptidReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2371,10 +2372,12 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2394,6 +2397,7 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -4589,7 +4593,6 @@ object fStopptidReport: TfStopptidReport
     Top = 304
   end
   object sq_Stopptid: TFDQuery
-    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'SELECT'#9'C.ClientName'
@@ -4692,8 +4695,8 @@ object fStopptidReport: TfStopptidReport
       'DataField'
       'KeyField'
       'ListField')
-    Left = 616
-    Top = 400
+    Left = 608
+    Top = 264
     TranslationData = {
       73007400430061007000740069006F006E0073005F0055006E00690063006F00
       640065000D000A0054006600530074006F007000700074006900640052006500

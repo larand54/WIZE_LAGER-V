@@ -2,12 +2,12 @@ object frmMain: TfrmMain
   Left = 252
   Top = 156
   Caption = 'VIS'
-  ClientHeight = 704
-  ClientWidth = 1261
+  ClientHeight = 866
+  ClientWidth = 1552
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -17,20 +17,28 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Panel1: TPanel
-    Left = 145
-    Top = 19
-    Width = 1116
-    Height = 685
+    Left = 177
+    Top = 23
+    Width = 1375
+    Height = 843
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 4
     object panelBase: TPanel
       Left = 1
       Top = 1
-      Width = 1114
-      Height = 683
+      Width = 1373
+      Height = 841
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       BevelOuter = bvLowered
       DockSite = True
@@ -40,11 +48,15 @@ object frmMain: TfrmMain
   end
   object dxNavBar1: TdxNavBar
     Left = 0
-    Top = 19
-    Width = 137
-    Height = 685
+    Top = 23
+    Width = 169
+    Height = 843
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alLeft
-    Constraints.MinWidth = 10
+    Constraints.MinWidth = 12
     ActiveGroupIndex = 2
     TabOrder = 0
     View = 9
@@ -358,31 +370,43 @@ object frmMain: TfrmMain
       Style.AssignedValues = [savBackColor, savBackColor2]
     end
     object nvgLagerControl: TdxNavBarGroupControl
-      Left = 12
-      Top = 12
-      Width = 113
-      Height = 25
+      Left = 15
+      Top = 15
+      Width = 139
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'nvgLagerControl'
       TabOrder = 1
       GroupIndex = 0
-      OriginalHeight = 41
+      OriginalHeight = 50
     end
     object nvgUtlastningControl: TdxNavBarGroupControl
       Left = 0
       Top = 0
-      Width = 137
-      Height = 683
+      Width = 169
+      Height = 841
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'nvgUtlastningControl'
       TabOrder = 0
       GroupIndex = 5
-      OriginalHeight = 41
+      OriginalHeight = 50
     end
   end
   object cxSplitter1: TcxSplitter
-    Left = 137
-    Top = 19
+    Left = 169
+    Top = 23
     Width = 8
-    Height = 685
+    Height = 843
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     HotZoneClassName = 'TcxMediaPlayer8Style'
     Control = dxNavBar1
   end
@@ -3852,7 +3876,7 @@ object frmMain: TfrmMain
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -14
     Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
@@ -3881,7 +3905,7 @@ object frmMain: TfrmMain
     DockControlHeights = (
       0
       0
-      19
+      23
       0)
     object dxBarManager1Bar1: TdxBar
       AllowClose = False
@@ -4224,7 +4248,7 @@ object frmMain: TfrmMain
   object cxStyleRepository1: TcxStyleRepository
     Left = 392
     Top = 216
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clMaroon

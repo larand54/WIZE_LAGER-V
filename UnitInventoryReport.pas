@@ -8065,26 +8065,28 @@ begin
  else
  cds_PLIP.SQL.Add('SELECT Distinct isNull(LIP.InvCode, '  + QuotedStr('') + ')  + ' + QuotedStr('/') + '  + RTRIM(LIP.LogicalInventoryName) AS PLIP,') ;
 
- if (ThisUser.CompanyNo = cVidaPackaging) or
-    (ThisUser.CompanyNo = cOsterlovsta) then
- Begin
-  cds_PLIP.SQL.Add('LIP.InvCode, LIP.LogicalInventoryName, LIP.LogicalInventoryPointNo AS LIPNo') ;
-  cds_PLIP.SQL.Add('FROM') ;
-  cds_PLIP.SQL.Add('dbo.PHYSICALINVENTORYPOINT PH') ;
-  cds_PLIP.SQL.Add('Inner Join dbo.LOGICALINVENTORYPOINT LIP on LIP.PhysicalInventoryPointNo = PH.PhysicalInventoryPointNo') ;
-  cds_PLIP.SQL.Add('Inner Join dbo.CITY CY ON CY.CITYNO = PH.PhyInvPointNameNo') ;
-  cds_PLIP.SQL.Add('Inner Join dbo.UserArrivalPoint uap ON uap.PhyInvPointNameNo = PH.PhyInvPointNameNo') ;
-  cds_PLIP.SQL.Add('Inner Join dbo.ClientRole CR ON CR.ClientNo = PH.OwnerNo') ;
-  cds_PLIP.SQL.Add('Inner Join dbo.Client C ON C.ClientNo = PH.OwnerNo') ;
-  cds_PLIP.SQL.Add('WHERE') ;
-  cds_PLIP.SQL.Add('LIP.SequenceNo = 1') ;
-  cds_PLIP.SQL.Add('AND PH.SequenceNo = 1') ;
-  cds_PLIP.SQL.Add('AND PH.OwnerNo = ' + IntToStr(ThisUser.CompanyNo)) ;
-  cds_PLIP.SQL.Add('AND uap.UserID = ' + IntToStr(ThisUser.UserID)) ;
-// cds_PLIP.SQL.Add(GetSQLofComboFilter(1, 'C.PktNrLevKod', cbOwner)) ;
- End
- else
- Begin
+(*
+   if (ThisUser.CompanyNo = cVidaPackaging) or
+      (ThisUser.CompanyNo = cOsterlovsta) then
+   Begin
+    cds_PLIP.SQL.Add('LIP.InvCode, LIP.LogicalInventoryName, LIP.LogicalInventoryPointNo AS LIPNo') ;
+    cds_PLIP.SQL.Add('FROM') ;
+    cds_PLIP.SQL.Add('dbo.PHYSICALINVENTORYPOINT PH') ;
+    cds_PLIP.SQL.Add('Inner Join dbo.LOGICALINVENTORYPOINT LIP on LIP.PhysicalInventoryPointNo = PH.PhysicalInventoryPointNo') ;
+    cds_PLIP.SQL.Add('Inner Join dbo.CITY CY ON CY.CITYNO = PH.PhyInvPointNameNo') ;
+    cds_PLIP.SQL.Add('Inner Join dbo.UserArrivalPoint uap ON uap.PhyInvPointNameNo = PH.PhyInvPointNameNo') ;
+    cds_PLIP.SQL.Add('Inner Join dbo.ClientRole CR ON CR.ClientNo = PH.OwnerNo') ;
+    cds_PLIP.SQL.Add('Inner Join dbo.Client C ON C.ClientNo = PH.OwnerNo') ;
+    cds_PLIP.SQL.Add('WHERE') ;
+    cds_PLIP.SQL.Add('LIP.SequenceNo = 1') ;
+    cds_PLIP.SQL.Add('AND PH.SequenceNo = 1') ;
+    cds_PLIP.SQL.Add('AND PH.OwnerNo = ' + IntToStr(ThisUser.CompanyNo)) ;
+    cds_PLIP.SQL.Add('AND uap.UserID = ' + IntToStr(ThisUser.UserID)) ;
+  // cds_PLIP.SQL.Add(GetSQLofComboFilter(1, 'C.PktNrLevKod', cbOwner)) ;
+   End
+   else
+*)
+// Begin
   cds_PLIP.SQL.Add('LIP.InvCode, LIP.LogicalInventoryName, LIP.LogicalInventoryPointNo AS LIPNo') ;
   cds_PLIP.SQL.Add('FROM') ;
   cds_PLIP.SQL.Add('dbo.PHYSICALINVENTORYPOINT PH') ;
@@ -8101,7 +8103,7 @@ begin
   cds_PLIP.SQL.Add('WHERE PH2.OwnerNo = ' + inttostr(ThisUser.CompanyNo) +  ')') ;
 
   cds_PLIP.SQL.Add(GetSQLofComboFilter(1, 'C.PktNrLevKod', cbOwner)) ;
- End ;
+// End ;
 
  if VidaWood then
  cds_PLIP.SQL.Add('Order By  CY.CITYNAME, LIP.LogicalInventoryName')

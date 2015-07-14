@@ -333,8 +333,8 @@ begin
   showmessage(siLangLinked1.GetTextOrDefault('Change to H:\'));
 // ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
  //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
-// ThisUser.Database:= 'vis.vida.se:vis_vida' ;
- ThisUser.Database:= 'alvesql03:vis_vida' ;
+ ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+// ThisUser.Database:= 'alvesql03:vis_vida' ;
 
 // ThisUser.Database:= 'alvesqltest01:vis_vida' ;
 

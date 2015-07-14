@@ -4,12 +4,12 @@ object fInvCtrl: TfInvCtrl
   Align = alClient
   BorderStyle = bsNone
   Caption = 'LAGERINVENTERING'
-  ClientHeight = 820
-  ClientWidth = 1160
+  ClientHeight = 1009
+  ClientWidth = 1428
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
@@ -20,43 +20,59 @@ object fInvCtrl: TfInvCtrl
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object dxPageControl1: TcxPageControl
     Tag = 3
     Left = 0
-    Top = 313
-    Width = 1160
-    Height = 507
+    Top = 385
+    Width = 1428
+    Height = 624
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsSkapaKontrollistor
+    Properties.ActivePage = tsSkapaLagerListor
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
     Properties.Style = 6
     OnChange = dxPageControl1Change
-    ClientRectBottom = 507
-    ClientRectRight = 1160
+    ClientRectBottom = 624
+    ClientRectRight = 1428
     ClientRectTop = 33
     object tsSkapaKontrollistor: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Kontrollista'
       ImageIndex = 15
       object Panel16: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         DesignSize = (
-          1160
-          41)
+          1428
+          50)
         object bbGenInvLista: TBitBtn
-          Left = 9
+          Left = 11
           Top = 2
-          Width = 89
-          Height = 35
+          Width = 110
+          Height = 44
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGenInvLists
           Caption = 'Skapa kontrollistor'
           Glyph.Data = {
@@ -138,10 +154,14 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object BitBtn35: TBitBtn
-          Left = 453
+          Left = 558
           Top = 2
-          Width = 91
-          Height = 35
+          Width = 112
+          Height = 44
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRefreshKontrollista
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -222,20 +242,28 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 1
         end
         object BitBtn36: TBitBtn
-          Left = 551
+          Left = 678
           Top = 2
-          Width = 97
-          Height = 35
+          Width = 120
+          Height = 44
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAvRegMarkedPkgs
           Caption = #196'ndra status p'#229' markerade paket'
           TabOrder = 2
           WordWrap = True
         end
         object BitBtn37: TBitBtn
-          Left = 994
+          Left = 1223
           Top = 1
-          Width = 87
-          Height = 34
+          Width = 107
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintCtrlListWysiwyg
           Anchors = [akTop, akRight]
           Caption = 'wysiwyg'
@@ -317,40 +345,56 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 3
         end
         object BitBtn38: TBitBtn
-          Left = 1081
+          Left = 1330
           Top = 1
-          Width = 74
-          Height = 18
+          Width = 92
+          Height = 22
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandAllCtrlList
           Anchors = [akTop, akRight]
           Caption = 'Expandera alla'
           TabOrder = 4
         end
         object BitBtn41: TBitBtn
-          Left = 1081
-          Top = 18
-          Width = 74
-          Height = 17
+          Left = 1330
+          Top = 22
+          Width = 92
+          Height = 21
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseAllCtrlList
           Anchors = [akTop, akRight]
           Caption = 'Kollapsa alla'
           TabOrder = 5
         end
         object cxButton1: TcxButton
-          Left = 229
+          Left = 282
           Top = 1
-          Width = 104
-          Height = 35
+          Width = 128
+          Height = 43
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Skriv ut alla rader'
           DropDownMenu = pmPrintAllRows
           Kind = cxbkDropDown
           TabOrder = 6
         end
         object cxButton2: TcxButton
-          Left = 339
+          Left = 417
           Top = 2
-          Width = 108
-          Height = 35
+          Width = 133
+          Height = 44
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Skriv ut rader d'#228'r status '#228'r ej aktiv'
           DropDownMenu = pmPrintNotActiveRows
           Kind = cxbkDropDown
@@ -358,10 +402,10 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object cxButton3: TcxButton
-          Left = 106
+          Left = 130
           Top = 1
-          Width = 118
-          Height = 35
+          Width = 146
+          Height = 43
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -372,10 +416,10 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 8
         end
         object cxButton4: TcxButton
-          Left = 779
+          Left = 959
           Top = 2
-          Width = 112
-          Height = 35
+          Width = 138
+          Height = 44
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -384,10 +428,10 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 9
         end
         object cxButton5: TcxButton
-          Left = 654
+          Left = 805
           Top = 2
-          Width = 120
-          Height = 35
+          Width = 148
+          Height = 44
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -397,10 +441,10 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object cxButton6: TcxButton
-          Left = 895
+          Left = 1102
           Top = 2
-          Width = 81
-          Height = 35
+          Width = 99
+          Height = 44
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -412,9 +456,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdCtrlList: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmCtrlList
         TabOrder = 1
@@ -635,31 +683,47 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsUnregisteredPackages: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Avreg.'
       ImageIndex = 16
       object Panel7: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 68
+        Width = 1428
+        Height = 84
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object cbEgenSupplierCode: TCheckBox
-          Left = 798
-          Top = 8
-          Width = 195
-          Height = 17
+          Left = 982
+          Top = 10
+          Width = 240
+          Height = 21
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Registrera med egen leverant'#246'rskod'
           TabOrder = 1
           Visible = False
           OnClick = cbEgenSupplierCodeClick
         end
         object BitBtn2: TBitBtn
-          Left = 9
-          Top = 3
-          Width = 161
-          Height = 34
+          Left = 11
+          Top = 4
+          Width = 198
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAngraAvRegPkg
           Caption = #197'ngra avregistrering'
           Glyph.Data = {
@@ -740,10 +804,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn1: TBitBtn
-          Left = 1016
-          Top = 3
-          Width = 129
-          Height = 34
+          Left = 1250
+          Top = 4
+          Width = 159
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAvRegPkg
           Caption = 'Avregistrera paket'
           Glyph.Data = {
@@ -824,10 +892,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 2
         end
         object BitBtn15: TBitBtn
-          Left = 169
-          Top = 3
-          Width = 129
-          Height = 34
+          Left = 208
+          Top = 4
+          Width = 159
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintAvReg
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -908,10 +980,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 3
         end
         object BitBtn27: TBitBtn
-          Left = 298
-          Top = 3
-          Width = 129
-          Height = 34
+          Left = 367
+          Top = 4
+          Width = 159
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPickPkgNos
           Caption = 'Plocka paketnr'
           Glyph.Data = {
@@ -992,22 +1068,34 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 4
         end
         object cxLabel3: TcxLabel
-          Left = 8
-          Top = 44
+          Left = 10
+          Top = 54
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Mata in paketnr att avregistrera och tryck enter'
         end
         object teAvRegPkgNo: TcxTextEdit
-          Left = 240
-          Top = 40
+          Left = 295
+          Top = 49
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 6
           OnKeyDown = teAvRegPkgNoKeyDown
-          Width = 89
+          Width = 110
         end
         object BitBtn49: TBitBtn
-          Left = 433
-          Top = 3
-          Width = 192
-          Height = 34
+          Left = 533
+          Top = 4
+          Width = 236
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acFlyttaFalseToAvReg
           Caption = 'L'#228'gg in false paket i avreg'
           Glyph.Data = {
@@ -1090,9 +1178,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdAvreg: TcxGrid
         Left = 0
-        Top = 68
-        Width = 1160
-        Height = 406
+        Top = 84
+        Width = 1428
+        Height = 507
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmAvReg
         TabOrder = 1
@@ -1237,21 +1329,33 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsDeRegisteredPackages: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'P'#229'reg.'
       ImageIndex = 17
       object Panel6: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 68
+        Width = 1428
+        Height = 84
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object BitBtn3: TBitBtn
-          Left = 648
-          Top = 3
-          Width = 145
-          Height = 33
+          Left = 798
+          Top = 4
+          Width = 178
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPaRegPkg
           Caption = 'Registrera nytt paket'
           Glyph.Data = {
@@ -1332,20 +1436,28 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object cbEgenSupplierCode2: TCheckBox
-          Left = 824
-          Top = 32
-          Width = 217
-          Height = 17
+          Left = 1014
+          Top = 39
+          Width = 267
+          Height = 21
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Registrera med egen leverant'#246'rskod'
           TabOrder = 1
           Visible = False
           OnClick = cbEgenSupplierCode2Click
         end
         object BitBtn6: TBitBtn
-          Left = 9
-          Top = 3
-          Width = 161
-          Height = 33
+          Left = 11
+          Top = 4
+          Width = 198
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAngraPaRegPkg
           Caption = #197'ngra p'#229'registrering'
           Glyph.Data = {
@@ -1426,10 +1538,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 2
         end
         object BitBtn14: TBitBtn
-          Left = 337
-          Top = 3
-          Width = 121
-          Height = 33
+          Left = 415
+          Top = 4
+          Width = 149
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintPaReg
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -1510,10 +1626,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 3
         end
         object BitBtn17: TBitBtn
-          Left = 170
-          Top = 3
-          Width = 161
-          Height = 33
+          Left = 209
+          Top = 4
+          Width = 198
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acChangePaRegPkg
           Caption = #196'ndra paket i listan'
           Glyph.Data = {
@@ -1594,10 +1714,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 4
         end
         object BitBtn34: TBitBtn
-          Left = 474
-          Top = 3
-          Width = 161
-          Height = 33
+          Left = 583
+          Top = 4
+          Width = 199
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPickInActivePkgsNos
           Caption = 'Plocka paketnr'
           Glyph.Data = {
@@ -1678,23 +1802,35 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 5
         end
         object tePaRegPkgNo: TcxTextEdit
-          Left = 240
-          Top = 40
+          Left = 295
+          Top = 49
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 6
           OnKeyDown = tePaRegPkgNoKeyDown
-          Width = 89
+          Width = 110
         end
         object cxLabel2: TcxLabel
-          Left = 8
-          Top = 44
+          Left = 10
+          Top = 54
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Mata in paketnr att p'#229'registrera och tryck enter'
         end
       end
       object grdPaRegPkg: TcxGrid
         Left = 0
-        Top = 68
-        Width = 1160
-        Height = 406
+        Top = 84
+        Width = 1428
+        Height = 507
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmPaReg
         TabOrder = 1
@@ -1846,20 +1982,32 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsChangedPackages: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #196'ndra'
       ImageIndex = 7
       object Panel10: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 68
+        Width = 1428
+        Height = 84
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object BitBtn5: TBitBtn
-          Left = 824
-          Top = 3
-          Width = 97
-          Height = 33
+          Left = 1014
+          Top = 4
+          Width = 120
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAddChgPkg
           Caption = 'acAddChgPkg'
           Glyph.Data = {
@@ -1940,10 +2088,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn10: TBitBtn
-          Left = 8
-          Top = 3
-          Width = 161
-          Height = 33
+          Left = 10
+          Top = 4
+          Width = 198
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acUndoChangePkg
           Caption = #197'ngra '#228'ndring'
           Glyph.Data = {
@@ -2024,10 +2176,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 1
         end
         object BitBtn22: TBitBtn
-          Left = 168
-          Top = 3
-          Width = 161
-          Height = 33
+          Left = 207
+          Top = 4
+          Width = 198
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acChangePkg
           Caption = #196'ndra paket i listan'
           Glyph.Data = {
@@ -2108,10 +2264,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 2
         end
         object BitBtn12: TBitBtn
-          Left = 328
-          Top = 3
-          Width = 121
-          Height = 33
+          Left = 404
+          Top = 4
+          Width = 149
+          Height = 40
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintChangedPkgs
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -2192,33 +2352,49 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 3
         end
         object cbEgenSupplierCode3: TCheckBox
-          Left = 510
-          Top = 8
-          Width = 217
-          Height = 17
+          Left = 628
+          Top = 10
+          Width = 267
+          Height = 21
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Registrera med egen leverant'#246'rskod'
           TabOrder = 4
           Visible = False
           OnClick = cbEgenSupplierCode3Click
         end
         object cxLabel4: TcxLabel
-          Left = 8
-          Top = 44
+          Left = 10
+          Top = 54
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Mata in paketnr att '#228'ndra och tryck enter'
         end
         object teChangePkg: TcxTextEdit
-          Left = 208
-          Top = 40
+          Left = 256
+          Top = 49
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 6
           OnKeyDown = teChangePkgKeyDown
-          Width = 89
+          Width = 110
         end
       end
       object grdChanged: TcxGrid
         Left = 0
-        Top = 68
-        Width = 1160
-        Height = 406
+        Top = 84
+        Width = 1428
+        Height = 507
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmAndraPkt
         TabOrder = 1
@@ -2369,42 +2545,66 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsMovePkgs: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Flyttade'
       ImageIndex = 11
       TabVisible = False
       object Panel21: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
       end
     end
     object tsUnRegInProduction: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Avreg. i prod'#39'n'
       ImageIndex = 20
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object Label7: TLabel
-          Left = 400
-          Top = 8
-          Width = 350
-          Height = 13
+          Left = 492
+          Top = 10
+          Width = 439
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 
             'Paket avregistrerade i produktionen f'#246're maxdatum och finns i ko' +
             'ntrollistan'
         end
         object BitBtn23: TBitBtn
-          Left = 9
-          Top = 4
-          Width = 185
-          Height = 33
+          Left = 11
+          Top = 5
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetNormalAvReg
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -2485,10 +2685,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn24: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 120
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 147
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintAvRegIProduction
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -2571,9 +2775,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdAvRegProd: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmAvRegIProd
         TabOrder = 1
@@ -2695,30 +2903,46 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsAvregBeforeInvDate: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Avreg f'#246're inv.dat'
       ImageIndex = 20
       TabVisible = False
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object Label13: TLabel
-          Left = 400
-          Top = 8
-          Width = 322
-          Height = 13
+          Left = 492
+          Top = 10
+          Width = 406
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 
             'Paket avregistrerade f'#246're inventeringsdatum som finns i kontroll' +
             'istan.'
         end
         object BitBtn29: TBitBtn
-          Left = 9
-          Top = 4
-          Width = 185
-          Height = 33
+          Left = 11
+          Top = 5
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAvregBeforeInvDateAndExistInKL
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -2799,10 +3023,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn30: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 121
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 148
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintAvregBeforeInvDateAndExistInKL
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -2885,9 +3113,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdAvregBeforeInvDate: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
         object grdAvregBeforeInvDateDBTableView1: TcxGridDBTableView
@@ -2982,28 +3214,44 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsPkgsShippedBeforeMaxDate: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Utlev.'
       ImageIndex = 19
       object Panel11: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label9: TLabel
-          Left = 432
-          Top = 8
-          Width = 144
-          Height = 13
+          Left = 532
+          Top = 10
+          Width = 183
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Utlevereranser f'#246're maxdatum '
         end
         object BitBtn7: TBitBtn
           Left = 2
           Top = 2
-          Width = 185
-          Height = 33
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetPkgDelivered
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -3084,10 +3332,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn20: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 121
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 148
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintUtLev
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -3168,8 +3420,12 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 1
         end
         object cxLabel5: TcxLabel
-          Left = 432
-          Top = 20
+          Left = 532
+          Top = 25
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Gula rader = ej med i kontrollistan'
           ParentColor = False
           Style.Color = clYellow
@@ -3177,9 +3433,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdLevPkt: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmUtlev
         TabOrder = 1
@@ -3328,27 +3588,43 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsPkgsShippedAfterMaxDate: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Utlev > maxdatum'
       object Panel23: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label10: TLabel
-          Left = 432
+          Left = 532
           Top = 1
-          Width = 147
-          Height = 13
+          Width = 186
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Utlevereranser efter maxdatum '
         end
         object BitBtn33: TBitBtn
-          Left = 9
+          Left = 11
           Top = 2
-          Width = 185
-          Height = 33
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetPkgsDeliveredAfterMaxDatum
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -3429,17 +3705,25 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn48: TBitBtn
-          Left = 200
+          Left = 246
           Top = 2
-          Width = 121
-          Height = 33
+          Width = 149
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintUtlevAfterMaxDatum
           Caption = 'Skriv ut'
           TabOrder = 1
         end
         object cxLabel7: TcxLabel
-          Left = 432
-          Top = 20
+          Left = 532
+          Top = 25
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Gula rader = ej med i kontrollistan'
           ParentColor = False
           Style.Color = clYellow
@@ -3447,9 +3731,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdDelAfterMaxDatum: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
         object grdDelAfterMaxDatumDBTableView1: TcxGridDBTableView
@@ -3555,28 +3843,44 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsInleveranser: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Inlev.'
       ImageIndex = 18
       object Panel12: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label8: TLabel
-          Left = 352
-          Top = 8
-          Width = 272
-          Height = 13
+          Left = 433
+          Top = 10
+          Width = 344
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Inleveranser utlastade mellan inventerings- och maxdatum'
         end
         object BitBtn8: TBitBtn
-          Left = 9
-          Top = 4
-          Width = 185
-          Height = 33
+          Left = 11
+          Top = 5
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetInLeveranser
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -3657,10 +3961,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn19: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 121
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 148
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintInLev
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -3743,9 +4051,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdInLev: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmInLev
         TabOrder = 1
@@ -3874,28 +4186,44 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object cxTabSheet1: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Kredit.lev.'
       ImageIndex = 23
       object Panel22: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label15: TLabel
-          Left = 352
-          Top = 8
-          Width = 261
-          Height = 13
+          Left = 433
+          Top = 10
+          Width = 329
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Krediterade fakturor mellan inventerings- och maxdatum'
         end
         object BitBtn46: TBitBtn
-          Left = 9
-          Top = 4
-          Width = 185
-          Height = 33
+          Left = 11
+          Top = 5
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetCreditInvoices
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -3976,10 +4304,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn47: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 121
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 148
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintCreditInLev
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -4062,9 +4394,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdInLevOfCreditInvoices: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmgrdInLevOfCreditInvoices
         TabOrder = 1
@@ -4214,28 +4550,44 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsProduced: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Produktion'
       ImageIndex = 21
       object Panel13: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label6: TLabel
-          Left = 488
-          Top = 8
-          Width = 220
-          Height = 13
+          Left = 601
+          Top = 10
+          Width = 278
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Producerat mellan inventerings- och maxdatum'
         end
         object BitBtn9: TBitBtn
-          Left = 9
-          Top = 4
-          Width = 185
-          Height = 33
+          Left = 11
+          Top = 5
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetProduction
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -4316,10 +4668,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn21: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 121
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 148
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintProducedPkgs
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -4402,9 +4758,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdPrd: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmProducerat
         TabOrder = 1
@@ -4532,28 +4892,44 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsProductionBeforeInvDate: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Prod'#39'n f'#246're inv.datum'
       ImageIndex = 21
       object Panel15: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label14: TLabel
-          Left = 488
-          Top = 8
-          Width = 256
-          Height = 13
+          Left = 601
+          Top = 10
+          Width = 319
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Producerat f'#246're inventeringdatum och ej i kontrollistan.'
         end
         object BitBtn31: TBitBtn
-          Left = 9
-          Top = 4
-          Width = 185
-          Height = 33
+          Left = 11
+          Top = 5
+          Width = 228
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGetProductionBeforeInvDate
           Caption = 'Uppdatera'
           Glyph.Data = {
@@ -4634,10 +5010,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn32: TBitBtn
-          Left = 193
-          Top = 4
-          Width = 121
-          Height = 33
+          Left = 238
+          Top = 5
+          Width = 148
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintProductionBeforeInvDate
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -4720,9 +5100,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdProductionBeforeInvDate: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1160
-        Height = 433
+        Top = 50
+        Width = 1428
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmProductionBeforeInvDate
         TabOrder = 1
@@ -4820,24 +5204,36 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsSkapaLagerListor: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Resultatlista'
       ImageIndex = 22
       object Panel9: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 41
+        Width = 1428
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         DesignSize = (
-          1160
-          41)
+          1428
+          50)
         object bbGenFinalList: TBitBtn
-          Left = 8
-          Top = 3
-          Width = 121
-          Height = 34
+          Left = 10
+          Top = 4
+          Width = 149
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGenFinalList
           Caption = 'Skapa resultatlista'
           Glyph.Data = {
@@ -4919,10 +5315,14 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object BitBtn4: TBitBtn
-          Left = 129
-          Top = 3
-          Width = 144
-          Height = 34
+          Left = 159
+          Top = 4
+          Width = 177
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintInvListPerLG
           Caption = 'Skriv ut vald lagergrupp'
           Glyph.Data = {
@@ -5004,10 +5404,14 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object BitBtn13: TBitBtn
-          Left = 279
-          Top = 3
-          Width = 152
-          Height = 34
+          Left = 343
+          Top = 4
+          Width = 187
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintAllLG
           Caption = 'Skriv ut alla lagergrupper'
           Glyph.Data = {
@@ -5089,10 +5493,14 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object BitBtn16: TBitBtn
-          Left = 574
-          Top = 3
-          Width = 220
-          Height = 34
+          Left = 706
+          Top = 4
+          Width = 271
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCreateInventeringsLista_II
           Caption = 'Skapa inventeringslista (utan h'#228'ndelser)'
           Glyph.Data = {
@@ -5139,10 +5547,14 @@ object fInvCtrl: TfInvCtrl
           Visible = False
         end
         object BitBtn28: TBitBtn
-          Left = 434
-          Top = 3
-          Width = 134
-          Height = 34
+          Left = 534
+          Top = 4
+          Width = 165
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintInvListaII
           Caption = 'Skriv ut resultatlista'
           Glyph.Data = {
@@ -5224,10 +5636,14 @@ object fInvCtrl: TfInvCtrl
           WordWrap = True
         end
         object BitBtn39: TBitBtn
-          Left = 800
-          Top = 3
-          Width = 93
-          Height = 34
+          Left = 985
+          Top = 4
+          Width = 114
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRefreshResultList
           Anchors = [akTop, akRight]
           Caption = 'Uppdatera'
@@ -5309,10 +5725,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 5
         end
         object BitBtn40: TBitBtn
-          Left = 892
-          Top = 3
-          Width = 91
-          Height = 34
+          Left = 1098
+          Top = 4
+          Width = 112
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintResultListWysiwyg
           Anchors = [akTop, akRight]
           Caption = 'wysiwyg'
@@ -5394,30 +5814,42 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 6
         end
         object BitBtn42: TBitBtn
-          Left = 984
-          Top = 3
-          Width = 74
-          Height = 18
+          Left = 1211
+          Top = 4
+          Width = 91
+          Height = 22
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandAllResultList
           Anchors = [akTop, akRight]
           Caption = 'Expandera alla'
           TabOrder = 7
         end
         object BitBtn43: TBitBtn
-          Left = 984
-          Top = 20
-          Width = 74
-          Height = 17
+          Left = 1211
+          Top = 25
+          Width = 91
+          Height = 21
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseAllResultList
           Anchors = [akTop, akRight]
           Caption = 'Kollapsa alla'
           TabOrder = 8
         end
         object BitBtn44: TBitBtn
-          Left = 1065
-          Top = 3
-          Width = 91
-          Height = 34
+          Left = 1311
+          Top = 4
+          Width = 112
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acShowAllPaketIResultatet
           Anchors = [akTop, akRight]
           Caption = 'Visa "alla" paket'
@@ -5425,18 +5857,26 @@ object fInvCtrl: TfInvCtrl
         end
       end
       object Memo2: TMemo
-        Left = 1057
-        Top = 41
-        Width = 103
-        Height = 433
+        Left = 1301
+        Top = 50
+        Width = 127
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alRight
         TabOrder = 1
       end
       object grdResultat: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1057
-        Height = 433
+        Top = 50
+        Width = 1301
+        Height = 541
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         PopupMenu = pmResList
         TabOrder = 2
@@ -5653,21 +6093,33 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsSummaryReport: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Summering'
       ImageIndex = 24
       object Panel14: TPanel
         Left = 0
         Top = 0
-        Width = 1160
-        Height = 158
+        Width = 1428
+        Height = 194
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object BitBtn11: TBitBtn
-          Left = 16
-          Top = 99
-          Width = 329
-          Height = 34
+          Left = 20
+          Top = 122
+          Width = 405
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintSummaryReport
           Caption = 'Skriv ut sammanst'#228'llning'
           Glyph.Data = {
@@ -5748,10 +6200,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 0
         end
         object BitBtn18: TBitBtn
-          Left = 16
-          Top = 11
-          Width = 329
-          Height = 34
+          Left = 20
+          Top = 14
+          Width = 405
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintPriceListKontroll
           Caption = 'Skriv ut prislistkontroll'
           Glyph.Data = {
@@ -5832,10 +6288,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 1
         end
         object BitBtn25: TBitBtn
-          Left = 560
-          Top = 59
-          Width = 217
-          Height = 34
+          Left = 689
+          Top = 73
+          Width = 267
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acConfirmInventering
           Caption = 'Godk'#228'nn inventeringen'
           Glyph.Data = {
@@ -5881,10 +6341,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 2
         end
         object BitBtn26: TBitBtn
-          Left = 16
-          Top = 56
-          Width = 329
-          Height = 34
+          Left = 20
+          Top = 69
+          Width = 405
+          Height = 42
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGenSummary
           Caption = 'Generera sammanst'#228'llning (obs '#228'r resultlistan genererad!)'
           Glyph.Data = {
@@ -5930,10 +6394,14 @@ object fInvCtrl: TfInvCtrl
           TabOrder = 3
         end
         object BitBtn45: TBitBtn
-          Left = 560
-          Top = 115
-          Width = 217
-          Height = 34
+          Left = 689
+          Top = 142
+          Width = 267
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acGodkannOchPrissatt
           Caption = 'Godk'#228'nd och prissatt'
           Glyph.Data = {
@@ -6018,31 +6486,43 @@ object fInvCtrl: TfInvCtrl
   end
   object MiddlePanel: TPanel
     Left = 0
-    Top = 131
-    Width = 1160
-    Height = 182
+    Top = 161
+    Width = 1428
+    Height = 224
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     Caption = 'MiddlePanel'
     TabOrder = 0
     object Panel4: TPanel
       Left = 1
       Top = 1
-      Width = 234
-      Height = 180
+      Width = 288
+      Height = 222
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alLeft
       TabOrder = 0
       object Panel5: TPanel
         Left = 1
         Top = 1
-        Width = 232
-        Height = 20
+        Width = 286
+        Height = 25
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         Caption = 'LAGERST'#196'LLEN'
         Color = clMaroon
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -12
+        Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
@@ -6050,34 +6530,50 @@ object fInvCtrl: TfInvCtrl
       end
       object PanelLagerStalle: TPanel
         Left = 1
-        Top = 21
-        Width = 232
-        Height = 32
+        Top = 26
+        Width = 286
+        Height = 39
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 1
         object bbHamtaAlla: TBitBtn
-          Left = 6
-          Top = 3
-          Width = 62
-          Height = 25
+          Left = 7
+          Top = 4
+          Width = 77
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acHamtaAllaLS
           Caption = 'H'#228'mta alla'
           TabOrder = 0
         end
         object bbTaBortLagerStalle: TBitBtn
-          Left = 130
-          Top = 3
-          Width = 62
-          Height = 25
+          Left = 160
+          Top = 4
+          Width = 76
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveLagerStalle
           Caption = 'Ta bort'
           TabOrder = 2
         end
         object bbAddLagerStalle: TBitBtn
-          Left = 68
-          Top = 3
-          Width = 62
-          Height = 25
+          Left = 84
+          Top = 4
+          Width = 76
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAddLS
           Caption = 'L'#228'gg till rad'
           TabOrder = 1
@@ -6085,9 +6581,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdLS: TcxGrid
         Left = 1
-        Top = 53
-        Width = 232
-        Height = 126
+        Top = 65
+        Width = 286
+        Height = 156
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 2
         object grdLSDBTableView1: TcxGridDBTableView
@@ -6134,24 +6634,32 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object Panel2: TPanel
-      Left = 235
+      Left = 289
       Top = 1
-      Width = 473
-      Height = 180
+      Width = 582
+      Height = 222
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alLeft
       TabOrder = 1
       object Panel3: TPanel
         Left = 1
         Top = 1
-        Width = 471
-        Height = 20
+        Width = 580
+        Height = 25
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         Caption = 'LAGERGRUPPER'
         Color = clMaroon
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -12
+        Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
@@ -6159,25 +6667,37 @@ object fInvCtrl: TfInvCtrl
       end
       object PanelLagerGrupp: TPanel
         Left = 1
-        Top = 21
-        Width = 471
-        Height = 32
+        Top = 26
+        Width = 580
+        Height = 39
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 1
         object bbGetInvGroups: TBitBtn
-          Left = 8
-          Top = 3
-          Width = 73
-          Height = 25
+          Left = 10
+          Top = 4
+          Width = 90
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acHamtaAllaLG
           Caption = 'H'#228'mta alla'
           TabOrder = 0
         end
         object bbTaBortLagerGrupp: TBitBtn
-          Left = 81
-          Top = 3
-          Width = 65
-          Height = 25
+          Left = 100
+          Top = 4
+          Width = 80
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveLagerGruppRad
           Caption = 'Ta bort rad'
           TabOrder = 1
@@ -6185,9 +6705,13 @@ object fInvCtrl: TfInvCtrl
       end
       object grdLG: TcxGrid
         Left = 1
-        Top = 53
-        Width = 471
-        Height = 126
+        Top = 65
+        Width = 580
+        Height = 156
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 2
         object grdLGDBTableView1: TcxGridDBTableView
@@ -6258,44 +6782,68 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object pAndraPaket: TPanel
-      Left = 708
+      Left = 871
       Top = 1
-      Width = 451
-      Height = 180
+      Width = 556
+      Height = 222
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       TabOrder = 2
       object Label12: TLabel
-        Left = 266
-        Top = 152
-        Width = 57
-        Height = 13
+        Left = 327
+        Top = 187
+        Width = 70
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Antal paket:'
       end
       object Label11: TLabel
-        Left = 270
-        Top = 126
-        Width = 53
-        Height = 13
+        Left = 332
+        Top = 155
+        Width = 67
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Pakettypid:'
       end
       object eNoOfPkgs: TcxTextEdit
-        Left = 336
-        Top = 144
+        Left = 414
+        Top = 177
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         TabOrder = 1
         Text = '0'
-        Width = 73
+        Width = 89
       end
       object ePkgNo: TcxTextEdit
-        Left = 336
-        Top = 118
+        Left = 414
+        Top = 145
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         TabOrder = 0
-        Width = 73
+        Width = 89
       end
       object bbAvregistreraPaket: TBitBtn
-        Left = 104
-        Top = 104
-        Width = 129
-        Height = 33
+        Left = 128
+        Top = 128
+        Width = 159
+        Height = 41
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = acAvRegPkt
         Caption = 'Avregistrera paket'
         Glyph.Data = {
@@ -6376,10 +6924,14 @@ object fInvCtrl: TfInvCtrl
         TabOrder = 2
       end
       object bbPaRegistreraPaket: TBitBtn
-        Left = 104
-        Top = 144
-        Width = 129
-        Height = 33
+        Left = 128
+        Top = 177
+        Width = 159
+        Height = 41
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = acPaRegPkt
         Caption = 'P'#229'registrera paket'
         Glyph.Data = {
@@ -6462,8 +7014,12 @@ object fInvCtrl: TfInvCtrl
       object Memo1: TMemo
         Left = 1
         Top = 1
-        Width = 449
-        Height = 97
+        Width = 554
+        Height = 120
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelKind = bkSoft
         BorderStyle = bsNone
@@ -6526,96 +7082,144 @@ object fInvCtrl: TfInvCtrl
   end
   object cxPageControl1: TcxPageControl
     Left = 0
-    Top = 49
-    Width = 1160
-    Height = 82
+    Top = 60
+    Width = 1428
+    Height = 101
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 2
     Properties.ActivePage = tsInvHdr
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 81
+    ClientRectBottom = 100
     ClientRectLeft = 1
-    ClientRectRight = 1159
-    ClientRectTop = 21
+    ClientRectRight = 1427
+    ClientRectTop = 24
     object tsInvHdr: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Inventering'
       ImageIndex = 0
       object TopPanel: TPanel
         Left = 0
         Top = 0
-        Width = 1158
-        Height = 60
+        Width = 1426
+        Height = 76
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 0
         object Label1: TLabel
-          Left = 14
-          Top = 15
-          Width = 32
-          Height = 13
+          Left = 17
+          Top = 18
+          Width = 40
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'L'#246'pNr:'
         end
         object Label2: TLabel
-          Left = 13
-          Top = 39
-          Width = 31
-          Height = 13
+          Left = 16
+          Top = 48
+          Width = 39
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Namn:'
         end
         object Label3: TLabel
-          Left = 309
-          Top = 39
-          Width = 25
-          Height = 13
+          Left = 380
+          Top = 48
+          Width = 31
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Verk:'
         end
         object Label5: TLabel
-          Left = 308
-          Top = 15
-          Width = 90
-          Height = 13
+          Left = 379
+          Top = 18
+          Width = 112
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Inventeringsdatum:'
         end
         object Label4: TLabel
-          Left = 618
-          Top = 15
-          Width = 52
-          Height = 13
+          Left = 761
+          Top = 18
+          Width = 65
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Maxdatum:'
         end
         object eGrpNp: TcxDBTextEdit
-          Left = 58
-          Top = 7
+          Left = 71
+          Top = 9
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'IC_grpno'
           DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
           Enabled = False
           TabOrder = 0
-          Width = 49
+          Width = 61
         end
         object deMaxDatum: TcxDBDateEdit
-          Left = 678
-          Top = 7
+          Left = 834
+          Top = 9
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'MaxDatum'
           DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
           Properties.ImmediatePost = True
           Properties.Kind = ckDateTime
           Style.BorderStyle = ebsFlat
           TabOrder = 4
-          Width = 161
+          Width = 199
         end
         object deInventeringsDatum: TcxDBDateEdit
-          Left = 400
-          Top = 7
+          Left = 492
+          Top = 9
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'Inventeringsdatum'
           DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
           Properties.Kind = ckDateTime
           Properties.ReadOnly = True
           Style.BorderStyle = ebsFlat
           TabOrder = 2
-          Width = 209
+          Width = 258
         end
         object leVerk: TcxDBLookupComboBox
-          Left = 400
-          Top = 32
+          Left = 492
+          Top = 39
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'VerkNo'
           DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
           Enabled = False
@@ -6629,19 +7233,27 @@ object fInvCtrl: TfInvCtrl
           Properties.MaxLength = 0
           Properties.OnChange = leVerkPropertiesChange
           TabOrder = 3
-          Width = 209
+          Width = 258
         end
         object teNamn: TcxDBTextEdit
-          Left = 58
-          Top = 32
+          Left = 71
+          Top = 39
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'Namn'
           DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
           TabOrder = 1
-          Width = 241
+          Width = 297
         end
         object icStatus: TcxDBImageComboBox
-          Left = 112
-          Top = 8
+          Left = 138
+          Top = 10
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'Status'
           DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
           Enabled = False
@@ -6664,29 +7276,37 @@ object fInvCtrl: TfInvCtrl
               Value = 3
             end>
           TabOrder = 5
-          Width = 185
+          Width = 228
         end
         object bbLogs: TBitBtn
-          Left = 845
-          Top = 32
-          Width = 70
-          Height = 25
+          Left = 1040
+          Top = 39
+          Width = 86
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acLoggs
           Caption = 'Log'
           TabOrder = 6
         end
         object Memo3: TMemo
-          Left = 920
-          Top = 8
-          Width = 97
-          Height = 49
+          Left = 1132
+          Top = 10
+          Width = 120
+          Height = 60
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Lines.Strings = (
             'Memo3')
           TabOrder = 7
         end
         object cxDBRadioGroup1: TcxDBRadioGroup
-          Left = 618
-          Top = 28
+          Left = 761
+          Top = 34
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -6705,88 +7325,132 @@ object fInvCtrl: TfInvCtrl
               Value = 1
             end>
           TabOrder = 8
-          Height = 32
-          Width = 221
+          Height = 40
+          Width = 272
         end
       end
     end
     object tsNote: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Notering'
       ImageIndex = 1
       object mNote: TcxDBMemo
         Left = 0
         Top = 0
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         DataBinding.DataField = 'Note'
         DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
         TabOrder = 0
-        Height = 60
-        Width = 1158
+        Height = 76
+        Width = 1426
       end
     end
   end
   object Panel17: TPanel
     Left = 0
     Top = 0
-    Width = 1160
-    Height = 49
+    Width = 1428
+    Height = 60
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 7
     object Panel18: TPanel
       Left = 0
       Top = 0
-      Width = 817
-      Height = 49
+      Width = 1006
+      Height = 60
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alLeft
       TabOrder = 0
       object dxBarDockControl2: TdxBarDockControl
         Left = 1
         Top = 1
-        Width = 815
-        Height = 44
+        Width = 1004
+        Height = 48
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = dalTop
         BarManager = dxBarManager1
       end
     end
     object Panel19: TPanel
-      Left = 1111
+      Left = 1367
       Top = 0
-      Width = 49
-      Height = 49
+      Width = 61
+      Height = 60
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alRight
       TabOrder = 1
       object dxBarDockControl3: TdxBarDockControl
         Left = 1
         Top = 1
-        Width = 47
-        Height = 44
+        Width = 59
+        Height = 48
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = dalTop
         BarManager = dxBarManager1
       end
     end
     object Panel20: TPanel
-      Left = 817
+      Left = 1006
       Top = 0
-      Width = 294
-      Height = 49
+      Width = 361
+      Height = 60
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       TabOrder = 2
       object teSearchPackageNo: TcxTextEdit
-        Left = 99
-        Top = 22
+        Left = 122
+        Top = 27
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         TabOrder = 0
         OnKeyDown = teSearchPackageNoKeyDown
-        Width = 70
+        Width = 86
       end
       object cxLabel1: TcxLabel
-        Left = 5
-        Top = 28
+        Left = 6
+        Top = 34
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Kolla paket status'
       end
       object lcOWNER: TcxDBLookupComboBox
-        Left = 99
+        Left = 122
         Top = 1
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         DataBinding.DataField = 'OWNER'
         DataBinding.DataSource = dmInvCtrl.dsUserProp
         Properties.ImmediatePost = True
@@ -6798,23 +7462,35 @@ object fInvCtrl: TfInvCtrl
         Properties.ListOptions.ShowHeader = False
         Properties.MaxLength = 0
         TabOrder = 2
-        Width = 189
+        Width = 232
       end
       object cxLabel6: TcxLabel
-        Left = 5
-        Top = 5
+        Left = 6
+        Top = 6
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Arbeta med verk'
       end
       object teSearchInvNo: TcxTextEdit
-        Left = 232
-        Top = 22
+        Left = 286
+        Top = 27
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         TabOrder = 4
         OnKeyDown = teSearchInvNoKeyDown
-        Width = 56
+        Width = 68
       end
       object cxLabel8: TcxLabel
-        Left = 176
-        Top = 24
+        Left = 217
+        Top = 30
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'S'#246'k inven.'
       end
     end
@@ -6822,7 +7498,7 @@ object fInvCtrl: TfInvCtrl
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -14
     Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
@@ -9801,6 +10477,7 @@ object fInvCtrl: TfInvCtrl
     Top = 577
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdAvreg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9814,10 +10491,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPaRegPkg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9831,10 +10510,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInLev
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9848,10 +10529,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdLevPkt
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9865,10 +10548,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdPrd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9882,10 +10567,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link6: TdxGridReportLink
       Component = grdChanged
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9899,10 +10586,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxGridReportLink
       Component = grdAvRegProd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9916,10 +10605,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link8: TdxGridReportLink
       Component = grdAvregBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9933,10 +10624,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link9: TdxGridReportLink
       Component = grdProductionBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9950,10 +10643,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link10: TdxGridReportLink
       Component = grdCtrlList
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9967,11 +10662,13 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdResultat
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -9985,7 +10682,8 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42118.628458356480000000
+      ReportDocument.CreationDate = 42186.483513668980000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
@@ -9995,6 +10693,7 @@ object fInvCtrl: TfInvCtrl
     end
     object dxComponentPrinter1Link12: TdxGridReportLink
       Component = grdInLevOfCreditInvoices
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10008,10 +10707,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link13: TdxGridReportLink
       Component = grdDelAfterMaxDatum
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10031,6 +10732,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -10182,7 +10884,7 @@ object fInvCtrl: TfInvCtrl
   object cxStyleRepository1: TcxStyleRepository
     Left = 312
     Top = 657
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle_1_Lager: TcxStyle
       AssignedValues = [svFont]
       Font.Charset = DEFAULT_CHARSET
@@ -10321,7 +11023,7 @@ object fInvCtrl: TfInvCtrl
   object cxStyleRepository2: TcxStyleRepository
     Left = 680
     Top = 880
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clRed

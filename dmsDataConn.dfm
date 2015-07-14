@@ -1,8 +1,8 @@
 object dmsConnector: TdmsConnector
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Height = 591
-  Width = 899
+  Height = 558
+  Width = 734
   object ilStatus: TImageList
     Left = 360
     Top = 32
@@ -4425,7 +4425,7 @@ object dmsConnector: TdmsConnector
   object cxStyleRepository1: TcxStyleRepository
     Left = 296
     Top = 144
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont]
       Color = clSkyBlue
@@ -4913,11 +4913,12 @@ object dmsConnector: TdmsConnector
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Server=alvesql03'
+      'Server=vis.vida.se'
       'Database=vis_vida'
       'OSAuthent=Yes'
       'MetaDefCatalog=vis_vida'
       'MetaDefSchema=dbo'
+      'ApplicationName=Vis_Lager'
       'DriverID=MSSQL')
     LoginPrompt = False
     AfterCommit = DataModuleDestroy

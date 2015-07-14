@@ -35,7 +35,7 @@ object dm_UserProps: Tdm_UserProps
   end
   object ds_Props: TDataSource
     DataSet = cds_Props
-    Left = 112
+    Left = 144
     Top = 488
   end
   object dsrcBarCodes: TDataSource
@@ -404,7 +404,7 @@ object dm_UserProps: Tdm_UserProps
       'WHERE UserID = :UserID'
       'AND Form = :Form'
       '')
-    Left = 112
+    Left = 144
     Top = 440
     ParamData = <
       item

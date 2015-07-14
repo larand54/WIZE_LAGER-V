@@ -1168,10 +1168,9 @@ begin
  Try
 
 
-  if (TOMDateFilterIsLargerORCurrentDay (SQLTimeStampToDateTime(cds_UserPropsEndPeriod.AsSQLTimeStamp)) = false)
-  and (not cbUseProdSum.Checked) then
-//  if cbUseProdSum.Checked then
-  Begin
+ // if (TOMDateFilterIsLargerORCurrentDay (SQLTimeStampToDateTime(cds_UserPropsEndPeriod.AsSQLTimeStamp)) = false)
+//  and (not cbUseProdSum.Checked) then
+//  Begin
    if cds_UserPropsVerkNo.AsInteger = 0 then
    Begin
     ds_ProdData.DataSet := sq_ProdDataSumII ;
@@ -1181,7 +1180,6 @@ begin
     sq_ProdDataSumII.ParamByName('StartPeriod').AsSQLTimeStamp  := cds_UserPropsStartPeriod.AsSQLTimeStamp ;
     sq_ProdDataSumII.ParamByName('EndPeriod').AsSQLTimeStamp    := cds_UserPropsEndPeriod.AsSQLTimeStamp ;
     sq_ProdDataSumII.ParamByName('Operation').AsString          := icOperation.Text ;
-//   sq_ProdDataSum.ParamByName('Operation').AsInteger         := cds_UserPropsInputOption.AsInteger ;
     sq_ProdDataSumII.Active:= True ;
    End
    else
@@ -1195,18 +1193,20 @@ begin
     sq_ProdDataSum.ParamByName('Operation').AsString          := icOperation.Text ;
     sq_ProdDataSum.Active:= True ;
    End ;
-  End //if TOMDateFilterIsLargerORCurrentDay (SQLTimeStampToDateTime(cds_UserPropsEndPeriod.AsSQLTimeStamp)) = false then
-  else
-  Begin
-   ds_ProdData.DataSet := cds_ProdData ;
-   cds_ProdData.Active:= False ;
-   cds_ProdData.ParamByName('SupplierNo').AsInteger        := cds_UserPropsVerkNo.AsInteger ;
-   cds_ProdData.ParamByName('RegPointNo').AsInteger        := cds_UserPropsRegPointNo.AsInteger ;
-   cds_ProdData.ParamByName('StartPeriod').AsSQLTimeStamp  := cds_UserPropsStartPeriod.AsSQLTimeStamp ;
-   cds_ProdData.ParamByName('EndPeriod').AsSQLTimeStamp    := cds_UserPropsEndPeriod.AsSQLTimeStamp ;
-   cds_ProdData.ParamByName('Operation').AsInteger         := cds_UserPropsInputOption.AsInteger ;
-   cds_ProdData.Active:= True ;
-  End ;
+{
+    End //if TOMDateFilterIsLargerORCurrentDay (SQLTimeStampToDateTime(cds_UserPropsEndPeriod.AsSQLTimeStamp)) = false then
+    else
+    Begin
+     ds_ProdData.DataSet := cds_ProdData ;
+     cds_ProdData.Active:= False ;
+     cds_ProdData.ParamByName('SupplierNo').AsInteger        := cds_UserPropsVerkNo.AsInteger ;
+     cds_ProdData.ParamByName('RegPointNo').AsInteger        := cds_UserPropsRegPointNo.AsInteger ;
+     cds_ProdData.ParamByName('StartPeriod').AsSQLTimeStamp  := cds_UserPropsStartPeriod.AsSQLTimeStamp ;
+     cds_ProdData.ParamByName('EndPeriod').AsSQLTimeStamp    := cds_UserPropsEndPeriod.AsSQLTimeStamp ;
+     cds_ProdData.ParamByName('Operation').AsInteger         := cds_UserPropsInputOption.AsInteger ;
+     cds_ProdData.Active:= True ;
+    End ;
+}
  Finally
   pivProduction.EndUpdate ;
  End ;

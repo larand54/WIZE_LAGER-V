@@ -2094,7 +2094,7 @@ Begin
     SQL.Add(GetSQLofComboFilter(1, 'pp.ShiftNo', ccSkiftLag)) ;    }
 
 
-//  SQL.SaveToFile('c:\test\sq_Stopptid.txt') ;
+// SQL.SaveToFile('c:\test\sq_Stopptid.txt') ;
   End;
 
   End;
