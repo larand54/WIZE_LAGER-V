@@ -2,12 +2,12 @@ object frmMain: TfrmMain
   Left = 252
   Top = 156
   Caption = 'VIS'
-  ClientHeight = 866
-  ClientWidth = 1552
+  ClientHeight = 704
+  ClientWidth = 1261
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -17,28 +17,20 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 96
+  TextHeight = 13
   object Panel1: TPanel
-    Left = 177
-    Top = 23
-    Width = 1375
-    Height = 843
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 145
+    Top = 20
+    Width = 1116
+    Height = 684
     Align = alClient
     TabOrder = 4
     object panelBase: TPanel
       Left = 1
       Top = 1
-      Width = 1373
-      Height = 841
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 1114
+      Height = 682
       Align = alClient
       BevelOuter = bvLowered
       DockSite = True
@@ -48,15 +40,11 @@ object frmMain: TfrmMain
   end
   object dxNavBar1: TdxNavBar
     Left = 0
-    Top = 23
-    Width = 169
-    Height = 843
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 20
+    Width = 137
+    Height = 684
     Align = alLeft
-    Constraints.MinWidth = 12
+    Constraints.MinWidth = 10
     ActiveGroupIndex = 2
     TabOrder = 0
     View = 9
@@ -158,7 +146,6 @@ object frmMain: TfrmMain
       SelectedLinkIndex = -1
       TopVisibleLinkIndex = 0
       UseSmallImages = False
-      OptionsExpansion.Expanded = False
       Links = <
         item
           Item = nviInventering
@@ -179,7 +166,6 @@ object frmMain: TfrmMain
       SelectedLinkIndex = -1
       TopVisibleLinkIndex = 0
       UseSmallImages = False
-      OptionsExpansion.Expanded = False
       Links = <
         item
           Item = nviLoadPlan
@@ -370,43 +356,31 @@ object frmMain: TfrmMain
       Style.AssignedValues = [savBackColor, savBackColor2]
     end
     object nvgLagerControl: TdxNavBarGroupControl
-      Left = 15
-      Top = 15
-      Width = 139
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 12
+      Top = 12
+      Width = 113
+      Height = 25
       Caption = 'nvgLagerControl'
       TabOrder = 1
       GroupIndex = 0
-      OriginalHeight = 50
+      OriginalHeight = 41
     end
     object nvgUtlastningControl: TdxNavBarGroupControl
       Left = 0
       Top = 0
-      Width = 169
-      Height = 841
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 137
+      Height = 684
       Caption = 'nvgUtlastningControl'
       TabOrder = 0
       GroupIndex = 5
-      OriginalHeight = 50
+      OriginalHeight = 41
     end
   end
   object cxSplitter1: TcxSplitter
-    Left = 169
-    Top = 23
+    Left = 137
+    Top = 20
     Width = 8
-    Height = 843
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Height = 684
     HotZoneClassName = 'TcxMediaPlayer8Style'
     Control = dxNavBar1
   end
@@ -3876,7 +3850,7 @@ object frmMain: TfrmMain
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
@@ -3905,7 +3879,7 @@ object frmMain: TfrmMain
     DockControlHeights = (
       0
       0
-      23
+      20
       0)
     object dxBarManager1Bar1: TdxBar
       AllowClose = False
@@ -4248,7 +4222,7 @@ object frmMain: TfrmMain
   object cxStyleRepository1: TcxStyleRepository
     Left = 392
     Top = 216
-    PixelsPerInch = 120
+    PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clMaroon
@@ -4313,7 +4287,62 @@ object frmMain: TfrmMain
       'LookupResultField'
       'DataField'
       'KeyField'
-      'ListField')
+      'ListField'
+      'AutoIncFields'
+      'CaseInsFields'
+      'CatalogName'
+      'Categories'
+      'ClassName'
+      'CommandText'
+      'ConnectionName'
+      'ConstraintErrorMessage'
+      'CustomConstraint'
+      'DataTypeName'
+      'DefaultExpression'
+      'DescFields'
+      'DetailFields'
+      'DisplayChecked'
+      'DisplayUnchecked'
+      'EditFormat'
+      'Expression'
+      'FetchRowSQL'
+      'Fields'
+      'Filter'
+      'FmtDisplayDate'
+      'FmtDisplayDateTime'
+      'FmtDisplayNumeric'
+      'FmtDisplayTime'
+      'FmtEditNumeric'
+      'GeneratorName'
+      'GraphicClassName'
+      'HotZoneClassName'
+      'ImportedConstraint'
+      'IndexFieldNames'
+      'IniFileName'
+      'InsertSQL'
+      'KeyFieldNames'
+      'ListFieldNames'
+      'LockSQL'
+      'Origin'
+      'PackageName'
+      'Params'
+      'PersistentFileName'
+      'PictureFilter'
+      'PictureGraphicClassName'
+      'PopupMenuLinks'
+      'PropertiesClassName'
+      'RegistryPath'
+      'SchemaName'
+      'SkinName'
+      'StorageName'
+      'StoredProcName'
+      'UpdateTableName'
+      'Version'
+      'DataSetName'
+      'IniFile'
+      'ProviderName'
+      'ScriptLanguage'
+      'ScriptText')
     Left = 624
     Top = 360
     TranslationData = {
@@ -4537,24 +4566,17 @@ object frmMain: TfrmMain
       6D006100010001005400610068006F006D00610001000D000A00630078005300
       740079006C006500310001005400610068006F006D0061000100010054006100
       68006F006D00610001000D000A00730074004D0075006C00740069004C006900
-      6E00650073005F0055006E00690063006F00640065000D000A00640078004200
-      610072004D0061006E00610067006500720031002E0043006100740065006700
-      6F0072006900650073000100440065006600610075006C0074002C0046006900
-      6C0065002C0044006100740061002C00480065006C0070002C00500072006900
-      6E0074000100010001000D000A007300740053007400720069006E0067007300
-      5F0055006E00690063006F00640065000D000A004900440053005F0032003500
-      010053007400E4006E006700200061006C006C006100200066006F0072006D00
-      75006C00E400720020006600F60072007300740021000100010001000D000A00
-      4900440053005F003300340001004E006F002000610063006300650073007300
-      0100010001000D000A004900440053005F00330035000100420065006800F600
-      7200690067006800650074002000730061006B006E00610073002E0001000100
-      01000D000A004900440053005F0037000100C4006E0064007200610020007400
-      69006C006C00200048003A005C000100010001000D000A00730074004F007400
-      68006500720053007400720069006E00670073005F0055006E00690063006F00
-      640065000D000A0063007800530070006C006900740074006500720031002E00
-      48006F0074005A006F006E00650043006C006100730073004E0061006D006500
-      01005400630078004D00650064006900610050006C0061007900650072003800
-      5300740079006C0065000100010001000D000A00640078004200610072004D00
+      6E00650073005F0055006E00690063006F00640065000D000A00730074005300
+      7400720069006E00670073005F0055006E00690063006F00640065000D000A00
+      4900440053005F0032003500010053007400E4006E006700200061006C006C00
+      6100200066006F0072006D0075006C00E400720020006600F600720073007400
+      21000100010001000D000A004900440053005F003300340001004E006F002000
+      6100630063006500730073000100010001000D000A004900440053005F003300
+      35000100420065006800F6007200690067006800650074002000730061006B00
+      6E00610073002E000100010001000D000A004900440053005F0037000100C400
+      6E006400720061002000740069006C006C00200048003A005C00010001000100
+      0D000A00730074004F00740068006500720053007400720069006E0067007300
+      5F0055006E00690063006F00640065000D000A00640078004200610072004D00
       61006E006100670065007200310042006100720031002E004F006C0064004E00
       61006D00650001004D00610069006E004D0065006E0075000100010001000D00
       0A007300740043006F006C006C0065006300740069006F006E0073005F005500

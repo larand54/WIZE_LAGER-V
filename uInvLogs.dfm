@@ -39,7 +39,7 @@ object fInvLogs: TfInvLogs
     StringsTypes.Strings = (
       'TIB_STRINGLIST'
       'TSTRINGLIST')
-    DefaultLanguage = 2
+    UseDefaultLanguage = True
     NumOfLanguages = 3
     LangDispatcher = dmLanguage.siLangDispatcher1
     LangDelim = 1
@@ -79,7 +79,62 @@ object fInvLogs: TfInvLogs
       'LookupResultField'
       'DataField'
       'KeyField'
-      'ListField')
+      'ListField'
+      'AutoIncFields'
+      'CaseInsFields'
+      'CatalogName'
+      'Categories'
+      'ClassName'
+      'CommandText'
+      'ConnectionName'
+      'ConstraintErrorMessage'
+      'CustomConstraint'
+      'DataTypeName'
+      'DefaultExpression'
+      'DescFields'
+      'DetailFields'
+      'DisplayChecked'
+      'DisplayUnchecked'
+      'EditFormat'
+      'Expression'
+      'FetchRowSQL'
+      'Fields'
+      'Filter'
+      'FmtDisplayDate'
+      'FmtDisplayDateTime'
+      'FmtDisplayNumeric'
+      'FmtDisplayTime'
+      'FmtEditNumeric'
+      'GeneratorName'
+      'GraphicClassName'
+      'HotZoneClassName'
+      'ImportedConstraint'
+      'IndexFieldNames'
+      'IniFileName'
+      'InsertSQL'
+      'KeyFieldNames'
+      'ListFieldNames'
+      'LockSQL'
+      'Origin'
+      'PackageName'
+      'Params'
+      'PersistentFileName'
+      'PictureFilter'
+      'PictureGraphicClassName'
+      'PopupMenuLinks'
+      'PropertiesClassName'
+      'RegistryPath'
+      'SchemaName'
+      'SkinName'
+      'StorageName'
+      'StoredProcName'
+      'UpdateTableName'
+      'Version'
+      'DataSetName'
+      'IniFile'
+      'ProviderName'
+      'ScriptLanguage'
+      'ScriptText')
     Left = 424
     Top = 240
     TranslationData = {

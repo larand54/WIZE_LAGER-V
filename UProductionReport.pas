@@ -42,7 +42,8 @@ uses
   dxPScxPivotGridLnk, dxPScxSSLnk, dxSkinsdxRibbonPainter, cxNavigator,
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu,
-  System.Actions, siComp, siLngLnk, CrystalActiveXReportViewerLib11_TLB;
+  System.Actions, siComp, siLngLnk, {CrystalActiveXReportViewerLib11_TLB,}
+  CrystalActiveXReportViewerLib11_5_TLB;
 
 
 type
