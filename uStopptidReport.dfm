@@ -4,12 +4,12 @@ object fStopptidReport: TfStopptidReport
   Align = alClient
   BorderStyle = bsNone
   Caption = 'LAGERRAPPORT'
-  ClientHeight = 822
-  ClientWidth = 1259
+  ClientHeight = 1012
+  ClientWidth = 1550
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -23,13 +23,17 @@ object fStopptidReport: TfStopptidReport
   OnShow = FormShow
   ExplicitWidth = 320
   ExplicitHeight = 240
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object pcInventory: TcxPageControl
     Left = 0
-    Top = 113
-    Width = 1259
-    Height = 709
+    Top = 137
+    Width = 1550
+    Height = 875
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = tsProduktionPerPaketnr
@@ -39,10 +43,16 @@ object fStopptidReport: TfStopptidReport
     Properties.TabSlants.Kind = skCutCorner
     LookAndFeel.Kind = lfUltraFlat
     TabSlants.Kind = skCutCorner
-    ClientRectBottom = 709
-    ClientRectRight = 1259
+    ExplicitTop = 139
+    ExplicitHeight = 873
+    ClientRectBottom = 875
+    ClientRectRight = 1550
     ClientRectTop = 0
     object tsProduktionPerPaketnr: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
       ExplicitWidth = 0
@@ -50,87 +60,131 @@ object fStopptidReport: TfStopptidReport
       object Panel7: TPanel
         Left = 0
         Top = 0
-        Width = 1259
-        Height = 41
+        Width = 1550
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object cxButton3: TcxButton
-          Left = 15
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 18
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRefreshProdPaketNr
           TabOrder = 0
         end
         object cxButton4: TcxButton
-          Left = 110
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 135
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandAllProdPaketNr
           TabOrder = 1
         end
         object cxButton5: TcxButton
-          Left = 205
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 252
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseAllProdPaketNr
           TabOrder = 2
         end
         object cxButton6: TcxButton
-          Left = 626
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 770
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNewProdPaketNrMall
           TabOrder = 3
         end
         object cxButton7: TcxButton
-          Left = 721
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 887
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acDeleteProdPaketNrMall
           TabOrder = 4
         end
         object cxButton8: TcxButton
-          Left = 825
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 1015
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveProdPaketNrMall
           TabOrder = 5
         end
         object cbProdPaketNr: TcxComboBox
-          Left = 499
-          Top = 14
+          Left = 614
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.OnChange = cbProdPaketNrPropertiesChange
           TabOrder = 6
-          Width = 121
+          Width = 149
         end
         object cxButton15: TcxButton
-          Left = 300
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 369
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintPaketnr
           TabOrder = 7
         end
         object cbExpandedPaketnr: TcxCheckBox
-          Left = 395
-          Top = 14
+          Left = 486
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Expanderad'
           Properties.OnChange = cbExpandedPaketnrPropertiesChange
           TabOrder = 8
-          Width = 88
+          Width = 108
         end
       end
       object grdProdPaketNr: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1259
-        Height = 668
+        Top = 50
+        Width = 1550
+        Height = 823
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
         object grdProdPaketNrDBBandedTableView1: TcxGridDBBandedTableView
@@ -388,14 +442,22 @@ object fStopptidReport: TfStopptidReport
         end
       end
       object cxLookupComboBox1: TcxLookupComboBox
-        Left = 240
-        Top = -64
+        Left = 295
+        Top = -79
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Properties.ListColumns = <>
         TabOrder = 2
-        Width = 145
+        Width = 179
       end
     end
     object tsProduktionProduktSummary: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
       ExplicitWidth = 0
@@ -403,87 +465,131 @@ object fStopptidReport: TfStopptidReport
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 1259
-        Height = 41
+        Width = 1550
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object cxButton9: TcxButton
-          Left = 23
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 28
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRefreshProdSUM
           TabOrder = 0
         end
         object cxButton10: TcxButton
-          Left = 118
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 145
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandAllProdSUM
           TabOrder = 1
         end
         object cxButton11: TcxButton
-          Left = 213
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 262
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseAllProdSum
           TabOrder = 2
         end
         object cxButton12: TcxButton
-          Left = 644
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 793
+          Top = 12
+          Width = 109
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNewProdSUMMall
           TabOrder = 3
         end
         object cxButton13: TcxButton
-          Left = 739
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 910
+          Top = 12
+          Width = 109
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acDeleteProdSUMMall
           TabOrder = 4
         end
         object cxButton14: TcxButton
-          Left = 834
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 1026
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveProdSUMMall
           TabOrder = 5
         end
         object cbProdSUM: TcxComboBox
-          Left = 496
-          Top = 14
+          Left = 610
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.OnChange = cbProdSUMPropertiesChange
           TabOrder = 6
-          Width = 142
+          Width = 175
         end
         object cxButton16: TcxButton
-          Left = 308
-          Top = 10
-          Width = 89
-          Height = 25
+          Left = 379
+          Top = 12
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintProdSUM
           TabOrder = 7
         end
         object cbExpandedProdSum: TcxCheckBox
-          Left = 402
-          Top = 14
+          Left = 495
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Expanderad'
           Properties.OnChange = cbExpandedProdSumPropertiesChange
           TabOrder = 8
-          Width = 88
+          Width = 108
         end
       end
       object grdProdSUM: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1259
-        Height = 668
+        Top = 50
+        Width = 1550
+        Height = 823
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
         object grdProdSUMDBBandedTableView1: TcxGridDBBandedTableView
@@ -844,6 +950,10 @@ object fStopptidReport: TfStopptidReport
       end
     end
     object tsCRReports: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'CR Rapporter'
       ImageIndex = 2
       ExplicitWidth = 0
@@ -851,47 +961,71 @@ object fStopptidReport: TfStopptidReport
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1259
-        Height = 65
+        Width = 1550
+        Height = 80
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object cbShowSingleLengthPkgs: TCheckBox
-          Left = 556
-          Top = 9
-          Width = 98
-          Height = 14
+          Left = 684
+          Top = 11
+          Width = 121
+          Height = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa endast LP'
           TabOrder = 0
         end
         object ccAvgLengthRegPkt: TCheckBox
-          Left = 676
-          Top = 9
-          Width = 138
-          Height = 14
+          Left = 832
+          Top = 11
+          Width = 170
+          Height = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa endast ML-Reg.Pkt'
           TabOrder = 1
         end
         object cxButton17: TcxButton
-          Left = 16
-          Top = 8
-          Width = 92
-          Height = 49
+          Left = 20
+          Top = 10
+          Width = 113
+          Height = 60
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPkgNo
           TabOrder = 2
         end
         object cxButton18: TcxButton
-          Left = 114
-          Top = 8
-          Width = 92
-          Height = 49
+          Left = 140
+          Top = 10
+          Width = 114
+          Height = 60
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPcsPerLength
           TabOrder = 3
         end
         object cxButton19: TcxButton
-          Left = 308
-          Top = 10
-          Width = 92
-          Height = 49
+          Left = 379
+          Top = 12
+          Width = 113
+          Height = 61
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acUtfallKorning
           TabOrder = 4
           Visible = False
@@ -899,13 +1033,15 @@ object fStopptidReport: TfStopptidReport
       end
       object CRViewer91: TCrystalActiveXReportViewer
         Left = 0
-        Top = 65
-        Width = 1259
-        Height = 644
+        Top = 80
+        Width = 1550
+        Height = 793
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 1240
-        ExplicitHeight = 618
         ControlData = {
           100700001F8200008F4200000B00FFFF0B00FFFF0B00FFFF0B00FFFF0B00FFFF
           0B00FFFF0B00FFFF0B00FFFF0B0000000B00FFFF0B00FFFF0B00FFFF0B00FFFF
@@ -916,50 +1052,78 @@ object fStopptidReport: TfStopptidReport
   end
   object cxSplitter2: TcxSplitter
     Left = 0
-    Top = 105
-    Width = 1259
+    Top = 129
+    Width = 1550
     Height = 8
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     HotZoneClassName = 'TcxMediaPlayer8Style'
     AlignSplitter = salTop
     Control = pgInventory
     Color = clMaroon
     ParentColor = False
-    ExplicitWidth = 8
   end
   object pgInventory: TcxPageControl
     Left = 0
     Top = 0
-    Width = 1259
-    Height = 105
+    Width = 1550
+    Height = 129
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 6
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 101
-    ClientRectLeft = 4
-    ClientRectRight = 1255
-    ClientRectTop = 4
+    ClientRectBottom = 129
+    ClientRectRight = 1550
+    ClientRectTop = 0
     object tsLagret: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Lager'
       ImageIndex = 2
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitWidth = 1540
+      ExplicitHeight = 119
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1251
-        Height = 97
+        Width = 1550
+        Height = 129
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1540
+        ExplicitHeight = 119
         object Bevel1: TBevel
-          Left = 3
-          Top = 27
-          Width = 903
-          Height = 3
+          Left = 4
+          Top = 33
+          Width = 1111
+          Height = 4
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
         end
         object lcPIPNAME: TcxDBLookupComboBox
-          Left = 1286
-          Top = 74
+          Left = 1583
+          Top = 91
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'PIPNAME'
           DataBinding.DataSource = dsUserProp
           Properties.DropDownWidth = 200
@@ -974,68 +1138,100 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 21
           Visible = False
-          Width = 19
+          Width = 23
         end
         object cxLabel2: TcxLabel
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Verk:'
           Style.StyleController = cxEditStyleController1
         end
         object cxLabel1: TcxLabel
           Left = 2
-          Top = 30
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           AutoSize = False
           Caption = 'Tjocklek'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
-          Height = 16
-          Width = 61
+          Height = 20
+          Width = 76
         end
         object cxLabel6: TcxLabel
-          Left = 62
-          Top = 30
+          Left = 76
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Bredd'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel7: TcxLabel
-          Left = 261
-          Top = 30
+          Left = 321
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'L'#228'ngd'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel8: TcxLabel
-          Left = 320
-          Top = 30
+          Left = 394
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Tr'#228'slag'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel9: TcxLabel
-          Left = 405
-          Top = 30
+          Left = 498
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Kvalitet'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel10: TcxLabel
-          Left = 522
-          Top = 30
+          Left = 642
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Utf'#246'rande'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel11: TcxLabel
-          Left = 641
-          Top = 30
+          Left = 789
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Impregnering'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
@@ -1043,7 +1239,11 @@ object fStopptidReport: TfStopptidReport
         end
         object ccbAT: TcxCheckComboBox
           Left = 2
-          Top = 42
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1058,11 +1258,15 @@ object fStopptidReport: TfStopptidReport
           Style.ButtonTransparency = ebtHideUnselected
           TabOrder = 5
           Visible = False
-          Width = 57
+          Width = 71
         end
         object ccbAB: TcxCheckComboBox
-          Left = 63
-          Top = 42
+          Left = 78
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1073,11 +1277,15 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 6
           Visible = False
-          Width = 57
+          Width = 70
         end
         object ccbAL: TcxCheckComboBox
-          Left = 261
-          Top = 42
+          Left = 321
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1088,11 +1296,15 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 7
           Visible = False
-          Width = 57
+          Width = 70
         end
         object ccbTS2: TcxCheckComboBox
-          Left = 321
-          Top = 42
+          Left = 395
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1103,11 +1315,15 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 8
           Visible = False
-          Width = 85
+          Width = 105
         end
         object ccbKV2: TcxCheckComboBox
-          Left = 405
-          Top = 42
+          Left = 498
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1118,11 +1334,15 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 9
           Visible = False
-          Width = 117
+          Width = 144
         end
         object ccbSU2: TcxCheckComboBox
-          Left = 521
-          Top = 42
+          Left = 641
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1133,11 +1353,15 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 10
           Visible = False
-          Width = 121
+          Width = 149
         end
         object ccbIMP: TcxCheckComboBox
-          Left = 641
-          Top = 42
+          Left = 789
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1148,45 +1372,65 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 11
           Visible = False
-          Width = 121
+          Width = 149
         end
         object cbOwner: TcxCheckComboBox
-          Left = 48
-          Top = 3
+          Left = 59
+          Top = 4
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownRows = 15
           Properties.Items = <>
           Properties.OnCloseUp = cbOwnerPropertiesCloseUp
           Style.StyleController = cxEditStyleController3
           TabOrder = 12
-          Width = 129
+          Width = 159
         end
         object eAT: TcxTextEdit
           Left = 2
-          Top = 42
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 0
           Visible = False
           OnExit = eATExit
-          Width = 47
+          Width = 58
         end
         object eAB: TcxTextEdit
-          Left = 62
-          Top = 42
+          Left = 76
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 1
           Visible = False
           OnExit = eABExit
-          Width = 50
+          Width = 62
         end
         object eAL: TcxTextEdit
-          Left = 262
-          Top = 42
+          Left = 322
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 4
           Visible = False
           OnExit = eALExit
-          Width = 50
+          Width = 62
         end
         object ccVarugrupp: TcxCheckComboBox
           Left = 1
-          Top = 75
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1197,73 +1441,105 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 22
           Visible = False
-          Width = 103
+          Width = 127
         end
         object cxLabel29: TcxLabel
           Left = 1
-          Top = 62
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Varugrupp'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object teREF: TcxTextEdit
-          Left = 630
-          Top = 75
+          Left = 775
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 24
           Visible = False
           OnExit = eATExit
-          Width = 95
+          Width = 117
         end
         object cxLabel30: TcxLabel
-          Left = 630
-          Top = 64
+          Left = 775
+          Top = 79
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           AutoSize = False
           Caption = 'Referens'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
-          Height = 14
-          Width = 61
+          Height = 17
+          Width = 75
         end
         object cxLabel31: TcxLabel
-          Left = 314
-          Top = 62
+          Left = 386
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           AutoSize = False
           Caption = 'Prod.datum >='
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 16
-          Width = 95
+          Height = 20
+          Width = 117
         end
         object cxLabel32: TcxLabel
-          Left = 474
-          Top = 62
+          Left = 583
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           AutoSize = False
           Caption = 'Prod.datum <='
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 16
-          Width = 95
+          Height = 20
+          Width = 117
         end
         object cxLabel33: TcxLabel
-          Left = 113
-          Top = 62
+          Left = 139
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'M'#228'tpunkt'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel34: TcxLabel
-          Left = 217
-          Top = 62
+          Left = 267
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Skiftlag'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object ccMatpunkt: TcxCheckComboBox
-          Left = 113
-          Top = 75
+          Left = 139
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1273,11 +1549,15 @@ object fStopptidReport: TfStopptidReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 30
-          Width = 103
+          Width = 127
         end
         object ccbNT: TcxCheckComboBox
-          Left = 122
-          Top = 42
+          Left = 150
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1292,11 +1572,15 @@ object fStopptidReport: TfStopptidReport
           Style.ButtonTransparency = ebtHideUnselected
           TabOrder = 31
           Visible = False
-          Width = 57
+          Width = 70
         end
         object ccbNB: TcxCheckComboBox
-          Left = 198
-          Top = 42
+          Left = 244
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1311,43 +1595,63 @@ object fStopptidReport: TfStopptidReport
           Style.ButtonTransparency = ebtHideUnselected
           TabOrder = 32
           Visible = False
-          Width = 58
+          Width = 71
         end
         object cxLabel35: TcxLabel
-          Left = 118
-          Top = 30
+          Left = 145
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Tjocklek, nom'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel36: TcxLabel
-          Left = 194
-          Top = 30
+          Left = 239
+          Top = 37
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Bredd, nom'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object eNT: TcxTextEdit
-          Left = 118
-          Top = 42
+          Left = 145
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 2
           Visible = False
           OnExit = eNTExit
-          Width = 55
+          Width = 68
         end
         object eNB: TcxTextEdit
-          Left = 198
-          Top = 42
+          Left = 244
+          Top = 52
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 3
           Visible = False
           OnExit = eNBExit
-          Width = 48
+          Width = 59
         end
         object ccSkiftLag: TcxCheckComboBox
-          Left = 225
-          Top = 75
+          Left = 277
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -1358,97 +1662,137 @@ object fStopptidReport: TfStopptidReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 35
           Visible = False
-          Width = 88
+          Width = 108
         end
         object cxButton1: TcxButton
-          Left = 800
+          Left = 985
           Top = 0
-          Width = 89
-          Height = 25
+          Width = 109
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'St'#228'ng'
           TabOrder = 38
           OnClick = cxButton1Click
         end
         object cbPaReg: TcxCheckBox
-          Left = 816
-          Top = 27
+          Left = 1004
+          Top = 33
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'P'#229'registrerat'
           TabOrder = 39
           Visible = False
-          Width = 84
+          Width = 104
         end
         object cbAvreg: TcxCheckBox
-          Left = 816
-          Top = 43
+          Left = 1004
+          Top = 53
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Avregistrerat'
           TabOrder = 40
           Visible = False
-          Width = 84
+          Width = 104
         end
         object cxButton2: TcxButton
-          Left = 704
+          Left = 866
           Top = 0
-          Width = 89
-          Height = 25
+          Width = 110
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Rensa filter'
           TabOrder = 41
           OnClick = cxButton2Click
         end
         object cxTextEdit1: TcxTextEdit
-          Left = 731
-          Top = 75
+          Left = 900
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 42
           Visible = False
           OnExit = eATExit
-          Width = 79
+          Width = 97
         end
         object cxTextEdit2: TcxTextEdit
-          Left = 816
-          Top = 75
+          Left = 1004
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 43
           Visible = False
           OnExit = eATExit
-          Width = 79
+          Width = 98
         end
         object cxLabel14: TcxLabel
-          Left = 731
-          Top = 62
+          Left = 900
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           AutoSize = False
           Caption = 'Info1'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
-          Height = 16
-          Width = 61
+          Height = 20
+          Width = 75
         end
         object cxLabel15: TcxLabel
-          Left = 816
-          Top = 62
+          Left = 1004
+          Top = 76
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           AutoSize = False
           Caption = 'Info2'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
-          Height = 16
-          Width = 61
+          Height = 20
+          Width = 75
         end
         object deDBStartPeriod: TcxDBDateEdit
-          Left = 316
-          Top = 75
+          Left = 389
+          Top = 92
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'StartPeriod'
           DataBinding.DataSource = dsUserProp
           Properties.ImmediatePost = True
           TabOrder = 36
-          Width = 149
+          Width = 183
         end
         object deDBEndPeriod: TcxDBDateEdit
-          Left = 474
-          Top = 74
+          Left = 583
+          Top = 91
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'EndPeriod'
           DataBinding.DataSource = dsUserProp
           Properties.ImmediatePost = True
           TabOrder = 37
-          Width = 150
+          Width = 185
         end
       end
     end
@@ -1456,7 +1800,7 @@ object fStopptidReport: TfStopptidReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -14
     Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
@@ -2362,6 +2706,7 @@ object fStopptidReport: TfStopptidReport
     Top = 313
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdProdPaketNr
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2381,10 +2726,12 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdProdSUM
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2404,13 +2751,14 @@ object fStopptidReport: TfStopptidReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
   object cxStyleRepository1: TcxStyleRepository
     Left = 608
     Top = 553
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clMaroon
@@ -2918,12 +3266,12 @@ object fStopptidReport: TfStopptidReport
     Style.TextStyle = [fsBold]
     Left = 312
     Top = 280
-    PixelsPerInch = 96
+    PixelsPerInch = 120
   end
   object cxEditStyleController2: TcxEditStyleController
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
-    Style.Font.Height = -11
+    Style.Font.Height = -14
     Style.Font.Name = 'Verdana'
     Style.Font.Style = []
     Style.LookAndFeel.Kind = lfFlat
@@ -2937,7 +3285,7 @@ object fStopptidReport: TfStopptidReport
     StyleHot.LookAndFeel.Kind = lfFlat
     Left = 312
     Top = 328
-    PixelsPerInch = 96
+    PixelsPerInch = 120
   end
   object cxEditStyleController3: TcxEditStyleController
     Style.BorderStyle = ebsNone
@@ -2945,7 +3293,7 @@ object fStopptidReport: TfStopptidReport
     Style.ButtonTransparency = ebtHideUnselected
     Left = 312
     Top = 376
-    PixelsPerInch = 96
+    PixelsPerInch = 120
   end
   object cxImageList1: TcxImageList
     Height = 32

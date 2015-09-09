@@ -2,29 +2,31 @@ object FormCRViewReport: TFormCRViewReport
   Left = 213
   Top = 83
   Caption = 'FormCRViewReport'
-  ClientHeight = 649
-  ClientWidth = 941
+  ClientHeight = 799
+  ClientWidth = 1158
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object CRViewer91: TCrystalActiveXReportViewer
     Left = 0
     Top = 0
-    Width = 941
-    Height = 649
+    Width = 1158
+    Height = 799
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 949
-    ExplicitHeight = 660
     ControlData = {
       1007000041610000134300000B00FFFF0B00FFFF0B00FFFF0B00FFFF0B00FFFF
       0B00FFFF0B00FFFF0B00FFFF0B0000000B00FFFF0B00FFFF0B00FFFF0B00FFFF

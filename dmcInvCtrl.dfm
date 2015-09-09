@@ -2,7 +2,7 @@
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 928
+  Height = 1041
   Width = 1470
   object ds_InvCtrlGrp: TDataSource
     DataSet = cds_InvCtrlGrp
@@ -3750,7 +3750,6 @@
     end
   end
   object cds_SicRow_PG: TFDQuery
-    Active = True
     BeforePost = cds_SicRow_PGBeforePost
     MasterSource = ds_SicHdr
     MasterFields = 'Sic_No'
@@ -4085,7 +4084,7 @@
       'AND Icg.OwnerNo = PIP.OwnerNo)'
       '')
     Left = 984
-    Top = 32
+    Top = 56
     ParamData = <
       item
         Name = 'OWNERNO'
@@ -5269,8 +5268,8 @@
       'AND PackageTypeNo = :PackageTypeNo'
       'AND LogicalInventoryPointNo = :LogicalInventoryPointNo'
       '')
-    Left = 400
-    Top = 608
+    Left = 1016
+    Top = 920
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -5342,8 +5341,8 @@
       ''
       ' '
       '')
-    Left = 400
-    Top = 656
+    Left = 1016
+    Top = 968
     ParamData = <
       item
         Name = 'PACKAGENO'
@@ -5434,8 +5433,8 @@
       '0,'
       ':OwnerNo)'
       '')
-    Left = 400
-    Top = 712
+    Left = 824
+    Top = 928
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -5517,8 +5516,8 @@
       ''
       ''
       '')
-    Left = 400
-    Top = 768
+    Left = 824
+    Top = 984
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -5701,8 +5700,8 @@
       'AND ir2.SupplierCode = pn.SupplierCode)'
       ''
       '')
-    Left = 608
-    Top = 752
+    Left = 304
+    Top = 928
     ParamData = <
       item
         Name = 'SUPPLIERNO'
@@ -6232,8 +6231,8 @@
       'AND ir2.SupplierCode = pn.SupplierCode)'
       ''
       '')
-    Left = 144
-    Top = 808
+    Left = 304
+    Top = 976
     ParamData = <
       item
         Name = 'SUPPLIERNO'
@@ -6371,7 +6370,8 @@
       'icp2.IC_GrpNo = icp.IC_GrpNo AND'
       
         '((icp2.Operation = 3) or (icp2.Operation = 4) or (icp2.Operation' +
-        ' = 5) or (icp2.Operation = 10) or (icp2.Operation = 13))'
+        ' = 5) or (icp2.Operation = 10) or (icp2.Operation = 13)'
+      'or (icp2.Operation = 14))'
       'AND icp2.PackageNo = icp.PackageNo'
       'AND icp2.SupplierCode = icp.SupplierCode)'
       ''
@@ -6667,7 +6667,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_CalcInvAvgPrice_LIP'
     Left = 1392
-    Top = 672
+    Top = 640
     ParamData = <
       item
         Position = 1
@@ -7042,8 +7042,8 @@
       ''
       ''
       '')
-    Left = 1152
-    Top = 688
+    Left = 1296
+    Top = 904
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -7189,8 +7189,8 @@
       ''
       ''
       '')
-    Left = 1152
-    Top = 736
+    Left = 1296
+    Top = 952
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -7276,8 +7276,8 @@
       'AND ir2.PackageNo = pn.PackageNo'
       'AND ir2.SupplierCode = pn.SupplierCode)'
       '')
-    Left = 1152
-    Top = 792
+    Left = 304
+    Top = 864
     ParamData = <
       item
         Name = 'SUPPLIERNO'
@@ -9280,5 +9280,80 @@
     DataSet = cds_InvCtrlSetList
     Left = 824
     Top = 872
+  end
+  object sp_SaveToInvCtrlRow_PktNr2: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_SaveToInvCtrlRow_PktNr2'
+    Left = 512
+    Top = 856
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@SupplierNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_prelAvrLaster: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_sp_prelAvrLaster'
+    Left = 512
+    Top = 920
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@SupplierNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_NotInvLoads: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_sp_NotInvLoads'
+    Left = 512
+    Top = 976
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@SupplierNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
   end
 end

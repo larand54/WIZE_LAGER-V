@@ -142,7 +142,7 @@ End ;
 
 procedure TdmsConnector.Commit ;
 begin
-  FDConnection1.Commit ;
+//  FDConnection1.Commit ;
 end;
 
 constructor TdmsConnector.Create(AOwner : TComponent);
@@ -201,14 +201,14 @@ end;
 
 procedure TdmsConnector.Rollback ;
 begin
-  FDConnection1.Rollback ;
+ // FDConnection1.Rollback ;
 end;
 
 
 function TdmsConnector.StartTransaction : LongWord;
 begin
   inc(FLastTransNo);
-  FDConnection1.StartTransaction ;
+ // FDConnection1.StartTransaction ;
   Result := FLastTransNo;
 end;
 

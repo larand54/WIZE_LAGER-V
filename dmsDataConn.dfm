@@ -4920,6 +4920,9 @@ object dmsConnector: TdmsConnector
       'MetaDefSchema=dbo'
       'ApplicationName=Vis_Lager'
       'DriverID=MSSQL')
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evCursorKind]
+    FetchOptions.Mode = fmAll
+    FetchOptions.RowsetSize = 500
     LoginPrompt = False
     AfterCommit = DataModuleDestroy
     Left = 56

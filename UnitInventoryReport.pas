@@ -50,7 +50,7 @@ uses
   cxShellBrowserDialog, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
   dxBarBuiltInMenu, System.Actions, CRAXDRT_TLB, siComp, siLngLnk,
-  {CrystalActiveXReportViewerLib11_TLB,} CrystalActiveXReportViewerLib11_5_TLB;
+  {CrystalActiveXReportViewerLib11_TLB,} CrystalActiveXReportViewerLib11_TLB;
 
 
 type
@@ -883,6 +883,7 @@ type
     { Private declarations }
 //    AT                    : String ;
 //    PktNrLevKod           : String ;
+    cUserLipNoExists      : Boolean ;
     LanguageID            : String ;
     ReportInProgress      : Boolean ;
     report                : IReport ;
@@ -1730,7 +1731,9 @@ begin
 
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  sq_Temp_Inventory.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
-  sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
+
+  if not cUserLipNoExists then
+   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   if cbShowSingleLengthPkgs.Checked then
     sq_Temp_Inventory.SQL.Add('and 1= (Select Count(PackageTypeNo) From PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
@@ -1892,6 +1895,7 @@ begin
 
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  sq_Temp_Inventory.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
+  if not cUserLipNoExists then
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
 
@@ -2158,6 +2162,7 @@ begin
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  sq_Temp_Inventory.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
 
+  if not cUserLipNoExists then
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'SPE.SpeciesCode', ccbTS2)) ;
@@ -2362,6 +2367,7 @@ begin
 
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  sq_Temp_Inventory.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
+  if not cUserLipNoExists then
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   if cbShowSingleLengthPkgs.Checked then
@@ -2644,6 +2650,10 @@ begin
 
 
  eTS.PostEditValue ;}
+
+ if cUserLipNoExists then
+  CheckAllItems ;
+
 
  if mtUserProp.State in [dsEdit, dsInsert] then
  mtUserProp.Post ;
@@ -3012,6 +3022,7 @@ begin
     if mtUserPropSalesRegionNo.AsInteger > 0 then
       cds_PkgList.SQL.Add('AND Verk.SalesRegionNo = '+IntToStr(mtUserPropSalesRegionNo.AsInteger)) ;
     cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'LIP.InvCode', cbLIP)) ;
+    if not cUserLipNoExists then
     cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
   End;
 
@@ -3253,6 +3264,7 @@ begin
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'LIP.InvCode', cbLIP)) ;
 
+  if not cUserLipNoExists then
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   if cbShowSingleLengthPkgs.Checked then
@@ -3466,6 +3478,7 @@ begin
 
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  cds_InvSum.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
+  if not cUserLipNoExists then
   cds_InvSum.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
 
@@ -4456,6 +4469,7 @@ begin
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  cds_PcsPerLen.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
 
+  if not cUserLipNoExists then
   cds_PcsPerLen.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   if cbShowSingleLengthPkgs.Checked then
@@ -4681,6 +4695,9 @@ begin
  eAB.PostEditValue ;
  eAL.PostEditValue ;
  eTS.PostEditValue ; }
+
+ if cUserLipNoExists then
+  CheckAllItems ;
 
  ShowDeActivatedPkgs  := False ;
  if mtUserProp.State in [dsEdit, dsInsert] then
@@ -5187,6 +5204,7 @@ begin
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  cds_PkgList.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
 
+  if not cUserLipNoExists then
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SPE.SpeciesCode', ccbTS2)) ;
@@ -5223,7 +5241,7 @@ begin
    GenNotInvoicedTable_SQL(Sender) ;
   End ;
 
-//  if thisuser.UserID = 8 thencds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
+//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
  End ; //with
 
  finally
@@ -5451,6 +5469,7 @@ begin
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'LIP.InvCode', cbLIP)) ;
 
+  if not cUserLipNoExists then
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SPE.SpeciesCode', ccbTS2)) ;
@@ -7855,6 +7874,7 @@ begin
 //  if mtUserPropOwnerNo.AsInteger > 0 then
 //  cds_PkgList.SQL.Add('AND Verk.ClientNo  = '+IntToStr(mtUserPropOwnerNo.AsInteger)) ;
 
+  if not cUserLipNoExists then
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SPE.SpeciesCode', ccbTS2)) ;
@@ -8098,11 +8118,29 @@ begin
   cds_PLIP.SQL.Add('LIP.SequenceNo = 1') ;
   cds_PLIP.SQL.Add('AND PH.SequenceNo = 1') ;
 
-   cds_PLIP.SQL.Add('AND PH.PhyInvPointNameNo in (Select PH2.PhyInvPointNameNo') ;
-  cds_PLIP.SQL.Add('FROM dbo.PHYSICALINVENTORYPOINT PH2') ;
-  cds_PLIP.SQL.Add('WHERE PH2.OwnerNo = ' + inttostr(ThisUser.CompanyNo) +  ')') ;
+  if dmInventory.UserLipNoExists then
+  Begin
+    cUserLipNoExists  := True ;
+    cds_PLIP.SQL.Add('AND ((exists (Select * from dbo.UserLipNo ul') ;
+    cds_PLIP.SQL.Add('WHERE ul.LIPNo = LIP.LogicalInventoryPointNo') ;
+    cds_PLIP.SQL.Add('AND ul.UserID = ' + IntToStr(ThisUser.UserID) + ')))') ;
 
-  cds_PLIP.SQL.Add(GetSQLofComboFilter(1, 'C.PktNrLevKod', cbOwner)) ;
+{
+      cds_PLIP.SQL.Add('OR (exists (Select * from dbo.UserArrivalPoint ua') ;
+      cds_PLIP.SQL.Add('WHERE ua.PhyInvPointNameNo = PH.PhyInvPointNameNo') ;
+      cds_PLIP.SQL.Add('AND ua.UserID = ' + IntToStr(ThisUser.UserID) + ')))') ;
+}
+  End
+  else
+  Begin
+    cUserLipNoExists  := False ;
+    cds_PLIP.SQL.Add('AND PH.PhyInvPointNameNo in (Select PH2.PhyInvPointNameNo') ;
+    cds_PLIP.SQL.Add('FROM dbo.PHYSICALINVENTORYPOINT PH2') ;
+    cds_PLIP.SQL.Add('WHERE PH2.OwnerNo = ' + inttostr(ThisUser.CompanyNo) +  ')') ;
+
+    cds_PLIP.SQL.Add(GetSQLofComboFilter(1, 'C.PktNrLevKod', cbOwner)) ;
+
+  End;
 // End ;
 
  if VidaWood then
@@ -8111,7 +8149,7 @@ begin
  cds_PLIP.SQL.Add('Order By  LIP.InvCode, LIP.LogicalInventoryName') ;
 
 
-//cds_PLIP.SQL.SaveToFile('cds_PLIP.txt');
+// cds_PLIP.SQL.SaveToFile('cds_PLIP.txt');
  cds_PLIP.Active:= True ;
 
   cbLIP.Properties.Items.Clear ;

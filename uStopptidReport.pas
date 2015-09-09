@@ -43,7 +43,7 @@ uses
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxBarBuiltInMenu,
   System.Actions, siComp, siLngLnk, {CrystalActiveXReportViewerLib11_TLB,}
-  CrystalActiveXReportViewerLib11_5_TLB;
+  CrystalActiveXReportViewerLib11_TLB;
 
 
 type

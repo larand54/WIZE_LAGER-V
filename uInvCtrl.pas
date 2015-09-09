@@ -1361,14 +1361,14 @@ begin
   dmInvCtrl.cds_InvCtrlGrp.ApplyUpdates(0) ;
   if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
   Begin
-   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
+   ShowMessage('Enter the Max date!') ;
    Exit ;
   End ;
 
 //  if  dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
   if Now > dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime then
   Begin
-   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
+   ShowMessage('Max date must be later than the inventory create date, please adjust!') ;
    Exit ;
   End ;
 

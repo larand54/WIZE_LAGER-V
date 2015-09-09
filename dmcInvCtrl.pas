@@ -823,6 +823,9 @@ type
     cds_InvCtrlSetListEndFilterOnMaxDate: TSQLTimeStampField;
     cds_InvCtrlSetListSetStatus: TIntegerField;
     ds_InvCtrlSetList: TDataSource;
+    sp_SaveToInvCtrlRow_PktNr2: TFDStoredProc;
+    sp_prelAvrLaster: TFDStoredProc;
+    sp_NotInvLoads: TFDStoredProc;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -1215,9 +1218,9 @@ Begin
 
   //Get pkgs on loads not shipped
   Try
-  sq_SaveToInvCtrlRow_PktNr2.ParamByName('IC_grpno').AsInteger  := cds_InvCtrlGrpIC_grpno.AsInteger ;
-  sq_SaveToInvCtrlRow_PktNr2.ParamByName('SupplierNo').AsInteger:= cds_InvCtrlGrpVerkNo.AsInteger ;
-  sq_SaveToInvCtrlRow_PktNr2.ExecSQL ;
+  sp_SaveToInvCtrlRow_PktNr2.ParamByName('@IC_grpno').AsInteger  := cds_InvCtrlGrpIC_grpno.AsInteger ;
+  sp_SaveToInvCtrlRow_PktNr2.ParamByName('@SupplierNo').AsInteger:= cds_InvCtrlGrpVerkNo.AsInteger ;
+  sp_SaveToInvCtrlRow_PktNr2.ExecProc ;
   except
    On E: Exception do
    Begin
@@ -1228,9 +1231,9 @@ Begin
 
   //Get pkgs on preliminära Avrops loads
   Try
-  sq_prelAvrLaster.ParamByName('IC_grpno').AsInteger    := cds_InvCtrlGrpIC_grpno.AsInteger ;
-  sq_prelAvrLaster.ParamByName('SupplierNo').AsInteger  := cds_InvCtrlGrpVerkNo.AsInteger ;
-  sq_prelAvrLaster.ExecSQL ;
+  sp_prelAvrLaster.ParamByName('@IC_grpno').AsInteger    := cds_InvCtrlGrpIC_grpno.AsInteger ;
+  sp_prelAvrLaster.ParamByName('@SupplierNo').AsInteger  := cds_InvCtrlGrpVerkNo.AsInteger ;
+  sp_prelAvrLaster.ExecProc ;
   except
    On E: Exception do
    Begin
@@ -1241,9 +1244,9 @@ Begin
 
   //Get pkgs on Not invoiced Avrops loads
   Try
-  sq_NotInvLoads.ParamByName('IC_grpno').AsInteger    := cds_InvCtrlGrpIC_grpno.AsInteger ;
-  sq_NotInvLoads.ParamByName('SupplierNo').AsInteger  := cds_InvCtrlGrpVerkNo.AsInteger ;
-  sq_NotInvLoads.ExecSQL ;
+  sp_NotInvLoads.ParamByName('@IC_grpno').AsInteger    := cds_InvCtrlGrpIC_grpno.AsInteger ;
+  sp_NotInvLoads.ParamByName('@SupplierNo').AsInteger  := cds_InvCtrlGrpVerkNo.AsInteger ;
+  sp_NotInvLoads.ExecProc ;
   except
    On E: Exception do
    Begin
@@ -2153,7 +2156,7 @@ Begin
   SQL.Add('AND L.LoadedDate < ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp))) ;
 //Måste vara AReg senast 2 veckor efter maxdatum
 //Ändrat!! måste vara AR före verkliga MAXDatum
-  SQL.Add('AND CL.DateCreated < ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',DateTimeToSQLTimeStamp(MaxDatum)))) ;
+  SQL.Add('AND CL.DateCreated < ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp))) ;
 //och efter inventeringsdatum
   SQL.Add('AND CL.DateCreated > ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp))) ;
 
@@ -2370,14 +2373,16 @@ End ;
 //************************************************************
 
 procedure TdmInvCtrl.GetInLeveranserAVROP (S : TStrings) ;
-Var MaxDatum, MinDatum : TDateTime ;
+//Var MaxDatum, MinDatum : TDateTime ;
 Begin
  With sq_InsertToInvCtrl_Pkgs do
  Begin
-  MaxDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
-  MaxDatum:= MaxDatum + 20 ;
-  MinDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
-  MinDatum:= MinDatum - 20 ;
+{
+    MaxDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
+    MaxDatum:= MaxDatum + 20 ;
+    MinDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
+    MinDatum:= MinDatum - 20 ;
+}
 
   SQL.Clear ;
   SQL.Add('Insert into dbo.InvCtrl_Pkgs') ;
@@ -2443,16 +2448,18 @@ Begin
 End ;
 
 procedure TdmInvCtrl.GetInLeveranserAVROP_Proforma (S : TStrings) ;
-Var MaxDatum, MinDatum : TDateTime ;
+//Var MaxDatum, MinDatum : TDateTime ;
 Begin
  With sq_InsertToInvCtrl_Pkgs do
  Begin
   Try
 
-  MaxDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
-  MaxDatum:= MaxDatum + 20 ;
-  MinDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
-  MinDatum:= MinDatum - 20 ;
+{
+    MaxDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
+    MaxDatum:= MaxDatum + 20 ;
+    MinDatum:= SQLTimeStampToDateTime(cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp) ;
+    MinDatum:= MinDatum - 20 ;
+}
 
 
   if not Deleted_sq_InsertToInvCtrl_Pkgs then

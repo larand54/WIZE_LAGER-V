@@ -1,6 +1,6 @@
 Select distinct 1 AS PKT,
 pd.ProductNo,
-pd.ProductDisplayName AS PRODUKT,
+pde.ProductDisplayName AS PRODUKT,
 pt.PackageTypeNo,
 pn.PackageNo,
 RTRIM(pn.SupplierCode) AS SupplierCode,
@@ -24,7 +24,7 @@ CAST(SUM(CASE WHEN pl.ActualLengthMM = 4800 THEN ptd.NoOfPieces ELSE 0.0 END) AS
 CAST(SUM(CASE WHEN pl.ActualLengthMM = 5100 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L12, 
 CAST(SUM(CASE WHEN pl.ActualLengthMM = 5400 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L13, 
 CAST(SUM(CASE WHEN pl.ActualLengthMM = 5700 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L14, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 6000 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L15, 
+CAST(0.0 AS Float) AS L15, 
 CAST(0.0 AS Float) AS L16, 
 CAST(0.0 AS Float) AS L17, 
 CAST(0.0 AS Float) AS L18, 
@@ -69,12 +69,12 @@ PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName+'/'+lip.LogicalInventoryNa
 lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo
 ,1 AS Status,
 (Select ls.Avgprice from dbo.LIPSum ls
-WHERE ls.IC_SetNo = 15
+WHERE ls.IC_SetNo = 27
 and ls.PackageNo = pn.packageNo
 and ls.Suppliercode = pn.SupplierCode
 and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Pris,
 (Select ls.Avgprice * pt.Totalm3Nominal from dbo.LIPSum ls
-WHERE ls.IC_SetNo = 15
+WHERE ls.IC_SetNo = 27
 and ls.PackageNo = pn.packageNo
 and ls.Suppliercode = pn.SupplierCode
 and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Värde, va.VarugruppNamn,
@@ -89,23 +89,26 @@ Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = invctrlrow.PackageTypeNo
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
-AND PTL.LengthGroupNo = 28
+AND PTL.LengthGroupNo = 1
 AND PTL.VolumeType = 3
 Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
+AND pde.LanguageID = 1
 Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
+AND va.LanguageCode = 1
 Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
-Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
 				AND imp.LanguageCode = 1
-Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
 				AND SPE.LanguageCode = 1
-Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
 				AND SUR.LanguageCode = 1
-Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
-AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC_GrpNo and ia.IC_SetNo = 15 )
+AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC_GrpNo and ia.IC_SetNo = 27 )
 
 
 
@@ -118,7 +121,7 @@ AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC
 
 
 
-Group by pd.ProductNo, pd.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
+Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
 pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,
 pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,
 Gr.GradeName, SUR.SurfacingName, va.VarugruppNamn, pn.REFERENCE, pn.BL_NO,  pn.Info2,

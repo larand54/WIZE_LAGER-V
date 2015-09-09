@@ -1,5 +1,5 @@
 Insert into dbo.InvCtrl_Pkgs
-Select Distinct 10551
+Select Distinct 12643
 ,LD.PackageNo, LD.SupplierCode, 14, GetDate(), LD.LIPNo, 0 AS Sortorderno, -1,
 LD.ShippingPlanNo, IL.InternalInvoiceNo
 FROM dbo.Loads L 
@@ -13,16 +13,16 @@ Inner Join dbo.CustomerShippingPlanHeader SSP on SSP.ShippingPlanNo = CSD.Shippi
 Inner Join dbo.Orders OH on OH.OrderNo = SSP.OrderNo
 INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo 
 AND pn.SupplierCode = LD.SupplierCode
-WHERE L.SupplierNo = 1050
+WHERE L.SupplierNo = 741
 AND OH.OrderType = 0
 AND IH.Debit_Credit = 1
-AND IH.InvoiceDate <= '2015-01-01 00:00:00'
-AND IH.InvoiceDate >= '2014-12-31 00:31:38'
+AND IH.InvoiceDate <= '2015-09-01 00:00:00'
+AND IH.InvoiceDate >= '2015-08-31 22:17:07'
 AND L.SenderLoadStatus <> 0 
 AND LD.LIPNo in (Select ICM.LogicalInventoryPointNo FROM dbo.InvCtrlMetod ICM
 Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = ICM.LogicalInventoryPointNo
 Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
-WHERE ICM.IC_grpno = 10551)
+WHERE ICM.IC_grpno = 12643)
 and not exists (Select ld2.packageno from dbo.Loaddetail LD2
 inner join dbo.Invoiced_Load IL2 on IL2.LoadNo = LD2.LoadNo
 inner join dbo.InvoiceHeader ih2 on ih2.InternalInvoiceNo = IL2.InternalInvoiceNo
@@ -31,6 +31,6 @@ ih2.Debit_Credit = 0
 and ih2.InvoiceDate > ih.InvoiceDate
 and LD2.PackageNo = LD.PackageNo
 and LD2.SupplierCode = LD.SupplierCode
-AND IH2.InvoiceDate <= '2015-01-01 00:00:00'
-AND IH2.InvoiceDate >= '2014-12-31 00:31:38'
+AND IH2.InvoiceDate <= '2015-09-01 00:00:00'
+AND IH2.InvoiceDate >= '2015-08-31 22:17:07'
 )

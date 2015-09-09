@@ -5879,7 +5879,7 @@
     Indexes = <>
     SortOptions = []
     Left = 1016
-    Top = 288
+    Top = 280
     object dxMemData1L1: TIntegerField
       FieldName = 'L1'
     end
@@ -6155,6 +6155,20 @@
       item
         Position = 4
         Name = '@LIPNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sq_UserLipNoExists: TFDQuery
+    Connection = dmsConnector.FDConnection1
+    SQL.Strings = (
+      'Select * FROM dbo.UserLIPNo'
+      'WHERE UserID = :UserID')
+    Left = 1272
+    Top = 88
+    ParamData = <
+      item
+        Name = 'USERID'
         DataType = ftInteger
         ParamType = ptInput
       end>

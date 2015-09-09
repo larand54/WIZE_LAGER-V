@@ -354,6 +354,7 @@ begin
         Params.Add('User_Name=Lars');
         Params.Add('Password=woods2011');
         Params.Add('DriverID=MSSQL');
+        Params.Add('ApplicationName=VIS_LAGER');
       end;
   end
   else begin
@@ -365,6 +366,8 @@ begin
   ThisUser.Database:= 'vis.vida.se:vis_vida' ;
 {$ENDIF}
 // -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+//ThisUser.Database:= 'alvesql03:vis_vida' ;
 
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then

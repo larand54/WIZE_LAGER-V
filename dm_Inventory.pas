@@ -614,6 +614,7 @@ type
     sp_MovePackage: TFDStoredProc;
     mtSelectedPkgNoMaxlangd: TFloatField;
     sp_PkgExistInLIP: TFDStoredProc;
+    sq_UserLipNoExists: TFDQuery;
     procedure cds_PcsPerLenCalcFields(DataSet: TDataSet);
     procedure cds_PropsAfterInsert(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
@@ -640,6 +641,7 @@ type
     KeyField :  string ;
     KilnChargeNo,
     RoleType : Integer ;
+    Function  UserLipNoExists : Boolean ;
     function  PkgExistInInventoryKILN(const PackageNo, LIPNo : Integer;const Prefix : String3) : Boolean ;
     Procedure UpdateLIPSUMPrice(const LIPNo, PackageNo, SETNo : Integer;const Prefix : String;const NewPrice : Double) ;
     function  GetProductNoByPackageNoproductno(const PackageNo : Integer;const Prefix : String) : Integer ;
@@ -676,6 +678,20 @@ implementation
 uses VidaUser, dmsDataConn, dmsVidaContact, dmsVidaSystem;
 
 {$R *.dfm}
+
+Function TdmInventory.UserLipNoExists : Boolean ;
+Begin
+  sq_UserLipNoExists.ParamByName('UserID').AsInteger  := ThisUser.UserID ;
+  sq_UserLipNoExists.Active := True ;
+  Try
+  if not sq_UserLipNoExists.Eof then
+  Result  := True
+  else
+  Result  := False ;
+  Finally
+    sq_UserLipNoExists.Active := False ;
+  End;
+End;
 
 procedure TdmInventory.EditVagn(const pKilnChargeNo, VagnNo : Integer) ;
 Begin
