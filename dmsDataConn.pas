@@ -251,7 +251,7 @@ begin
   with spGetSecondNo do
   begin
     InitProcedure(spGetSecondNo);
-    ParamByName('@TableName').AsString := TableName;
+    ParamByName('@TableName').AsString        := TableName;
     ParamByName('@PrimaryKeyValue').AsInteger := PrimaryKeyValue;
 
     Result := ExecProcedure(spGetSecondNo);
