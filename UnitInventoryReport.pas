@@ -1753,7 +1753,7 @@ begin
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalWidthMM', ccbNB)) ;
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'PL.ActualLengthMM', ccbAL)) ;
 
-//  if thisuser.UserID = 8 then  sq_Temp_Inventory.SQL.SaveToFile('sq_Inv_By_PkgNo.txt');
+  if (thisuser.UserID = 258)  then  sq_Temp_Inventory.SQL.SaveToFile('sq_Inv_By_PkgNo.txt');
   sq_Temp_Inventory.ExecSQL ;
  End ; //with
 
@@ -1791,7 +1791,7 @@ begin
   sq_Temp_Inventory.SQL.Add('Insert INTO dbo.Inv_By_LengthFilter (Userid, Filter)') ;
   sq_Temp_Inventory.SQL.Add('Values ('+IntToStr(Thisuser.UserID)+',') ;
   sq_Temp_Inventory.SQL.Add(QuotedStr(FilterString)+')') ;
-//  if thisuser.UserID = 8 then    sq_Temp_Inventory.SQL.SaveToFile('Inv_By_LengthFilter.txt');
+  if thisuser.UserID = 258 then    sq_Temp_Inventory.SQL.SaveToFile('Inv_By_LengthFilter.txt');
   sq_Temp_Inventory.ExecSQL ;
 
 
@@ -1922,7 +1922,7 @@ begin
    sq_Temp_Inventory.SQL.Add('group by pdl.ActualLengthMM') ;
    sq_Temp_Inventory.SQL.Add('Order by pdl.ActualLengthMM') ;
 
-//  if ThisUser.UserID = 8 then  sq_Temp_Inventory.SQL.SaveToFile('sq_Inv_By_Length.txt');
+  if ThisUser.UserID = 258 then  sq_Temp_Inventory.SQL.SaveToFile('sq_Inv_By_Length.txt');
   sq_Temp_Inventory.ExecSQL ;
  End ; //with
 
@@ -2187,7 +2187,7 @@ begin
   sq_Temp_Inventory.SQL.Add('lip.LogicalInventoryPointNo, pt.TotalNoOfPieces, pn.SupplierCode, ') ;
   sq_Temp_Inventory.SQL.Add('gs.GradeStamp, bc.BarCode, SPE.SpeciesName, SUR.SurfacingName, Gr.GradeName, ') ;
   sq_Temp_Inventory.SQL.Add('Cy.CityName, LIP.LogicalInventoryName, ptd.NoOfPieces, PC.PackageCodeNo, PC.PackageMainCode, pps.PackageTypeNo ') ;
-//  if ThisUser.UserID = 8 then sq_Temp_Inventory.SQL.SaveToFile('sq_INV_BY_PKGTYPE.txt');
+  if ThisUser.UserID = 258 then sq_Temp_Inventory.SQL.SaveToFile('sq_INV_BY_PKGTYPE.txt');
   sq_Temp_Inventory.ExecSQL ;
  End ; //with
 
@@ -2391,7 +2391,7 @@ begin
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalWidthMM', ccbNB)) ;
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(1, 'PL.ActualLengthMM', ccbAL)) ;
 
-//  if thisuser.UserID = 8 then  sq_Temp_Inventory.SQL.SaveToFile('sq_Temp_Inventory.txt');
+  if thisuser.UserID = 258 then  sq_Temp_Inventory.SQL.SaveToFile('sq_Temp_Inventory.txt');
   sq_Temp_Inventory.ExecSQL ;
  End ; //with
 
@@ -3069,7 +3069,7 @@ begin
   End ;
 
 
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('cds_PkgList_Lagervärde.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_Lagervärde.txt');
 
  End ; //with
 
@@ -3310,7 +3310,7 @@ begin
   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
 
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('cds_PkgList.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList.txt');
 
  End ; //with
 
@@ -3504,7 +3504,7 @@ begin
 
   cds_InvSum.SQL.Add(' Group by SPE.SpeciesName, Gr.GradeName, pg.ActualThicknessMM, pg.ActualWidthMM, SUR.SurfacingName,') ;
   cds_InvSum.SQL.Add(' pt.ProductNo, lip.LogicalInventoryPointNo, Cy.CityName, lip.PhysicalInventoryPointNo, IMP.ProductCategoryName') ;
-//  if thisuser.UserID = 8 then cds_InvSum.SQL.SaveToFile('cds_InvSum.txt');
+  if thisuser.UserID = 258 then cds_InvSum.SQL.SaveToFile('cds_InvSum.txt');
  End ; //with
 
  finally
@@ -4492,7 +4492,7 @@ begin
 
 
   cds_PcsPerLen.SQL.Add(' group by pdl.ActualLengthMM Order by pdl.ActualLengthMM') ;
-//  if thisuser.UserID = 8 then cds_PcsPerLen.SQL.SaveToFile('cds_PcsPerLen.txt');
+  if thisuser.UserID = 258 then cds_PcsPerLen.SQL.SaveToFile('cds_PcsPerLen.txt');
  End ; //with
 
  finally
@@ -5241,7 +5241,7 @@ begin
    GenNotInvoicedTable_SQL(Sender) ;
   End ;
 
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
  End ; //with
 
  finally
@@ -5511,7 +5511,7 @@ begin
    if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
    cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('sq_PkgSumListNOTInvoiced.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumListNOTInvoiced.txt');
  End ; //with
 
  finally
@@ -5814,8 +5814,7 @@ begin
 
 
 
-//  if thisuser.UserID = 8 then
-//cds_PkgNoList.SQL.SaveToFile('sq_PkgNoSUBList.txt');
+  if thisuser.UserID = 258 then cds_PkgNoList.SQL.SaveToFile('sq_PkgNoSUBList.txt');
 
  End ; //with
 
@@ -6088,8 +6087,7 @@ begin
 
 
 
-//  if thisuser.UserID = 8 then
-//cds_PkgNoList.SQL.SaveToFile('sq_PkgNoEJFAKT.txt');
+  if thisuser.UserID = 258 then cds_PkgNoList.SQL.SaveToFile('sq_PkgNoEJFAKT.txt');
 
  End ; //with
 
@@ -7905,7 +7903,7 @@ begin
 //   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
 
-//  if thisuser.UserID = 8 then  cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
+  if thisuser.UserID = 258 then  cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
 //  cds_PkgList.ExecSQL(False) ;
  End ; //with
 
@@ -8756,7 +8754,7 @@ begin
 
   cds_PkgList.SQL.Add('Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
   cds_PkgList.SQL.Add('IH.InvoiceType') ;
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('cds_PkgList_FakturaSpecSUM.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_FakturaSpecSUM.txt');
  End ; //with
 
  finally
@@ -8970,7 +8968,7 @@ begin
   cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, ') ;
   cds_PkgList.SQL.Add('IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO ') ;
 
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('cds_PkgListNo_FakturaSpec.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgListNo_FakturaSpec.txt');
 
  End ; //with
 
@@ -9418,7 +9416,7 @@ begin
   cds_PkgList.SQL.Add('Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM') ;
 //  cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName ') ;
 //  cds_PkgList.SQL.Add('CSH.SHIPPINGPLANNO') ;
-//  if thisuser.UserID = 8 then cds_PkgList.SQL.SaveToFile('GenLoadOrderPkgSpec.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('GenLoadOrderPkgSpec.txt');
  End ; //with
 
  finally
@@ -9603,7 +9601,7 @@ begin
   cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, ') ;
   cds_PkgList.SQL.Add('CSH.SHIPPINGPLANNO') ;
 
-//  if thisuser.UserID = 8 then  cds_PkgList.SQL.SaveToFile('GenLoadOrderSpecPkgNoTable_SQL.txt');
+  if thisuser.UserID = 258 then  cds_PkgList.SQL.SaveToFile('GenLoadOrderSpecPkgNoTable_SQL.txt');
 
  End ; //with
 
