@@ -2831,7 +2831,7 @@ begin
     cds_PkgList.SQL.Add('and ls.Suppliercode = pn.SupplierCode') ;
     cds_PkgList.SQL.Add('and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Pris,') ;
 
-    cds_PkgList.SQL.Add('(Select ls.Avgprice * pt.Totalm3Nominal from dbo.LIPSum ls') ;
+    cds_PkgList.SQL.Add('(Select ls.Avgprice * ls.Volume from dbo.LIPSum ls') ;
     cds_PkgList.SQL.Add('WHERE ls.IC_SetNo = ' + SETNo) ;
     cds_PkgList.SQL.Add('and ls.PackageNo = pn.packageNo') ;
     cds_PkgList.SQL.Add('and ls.Suppliercode = pn.SupplierCode') ;
@@ -2846,7 +2846,7 @@ begin
     cds_PkgList.SQL.Add('and ls.Suppliercode = pn.SupplierCode') ;
     cds_PkgList.SQL.Add('and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Pris,') ;
 
-    cds_PkgList.SQL.Add('(Select ls.Avgprice * pt.Totalm3Nominal from dbo.LIPSum ls') ;
+    cds_PkgList.SQL.Add('(Select ls.Avgprice * ls.Volume from dbo.LIPSum ls') ;
     cds_PkgList.SQL.Add('WHERE ls.IC_SetNo = ' + SETNo) ;
     cds_PkgList.SQL.Add('and ls.PackageNo = pn.packageNo') ;
     cds_PkgList.SQL.Add('and ls.Suppliercode = pn.SupplierCode') ;

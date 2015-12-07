@@ -22,7 +22,7 @@ CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4800 AND PTL.STD_Length = 1 AN
 CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L12, 
 CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L13, 
 CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 6000 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L15, 
+CAST(0.0 AS Float) AS L15, 
 CAST(0.0 AS Float) AS L16, 
 CAST(0.0 AS Float) AS L17, 
 CAST(0.0 AS Float) AS L18, 
@@ -79,7 +79,7 @@ Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
-AND PTL.LengthGroupNo = 28
+AND PTL.LengthGroupNo = 1
 AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
 Inner Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
@@ -99,7 +99,137 @@ Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1 
 AND pn.Status = 1
 AND Verk.SalesRegionNo = 741
- AND ( LIP.InvCode = '31' ) 
+ AND ( LIP.InvCode = '43' OR  LIP.InvCode = '727' OR  LIP.InvCode = '132' OR  LIP.InvCode = '115' OR  LIP.InvCode = '45' OR  LIP.InvCode = '46' OR  LIP.InvCode = '738' OR  LIP.InvCode = '742' OR  LIP.InvCode = '726' OR  LIP.InvCode = '776' OR  LIP.InvCode = '725' OR  LIP.InvCode = '730' OR  LIP.InvCode = '131' OR  LIP.InvCode = '44' OR  LIP.InvCode = '777' ) 
+ AND ( Verk.PktNrLevKod = 10 ) 
+
+
+
+
+
+
+
+
+
+
+
+
+Group By pd.ProductNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,
+SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName, Verk.ClientNo, 
+Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn
+UNION
+Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,
+pd.ProductNo,
+pde.ProductDisplayName AS PRODUKT,
+0 AS PackageTypeNo,
+0 AS PackageNo,
+'xxx' AS SupplierCode,
+pg.ActualThicknessMM AS AT,
+pg.ActualWidthMM AS AB,
+SUM(ptd.NoOfPieces) AS STYCK,
+RTRIM(' ') AS STYCKPERLÄNGD,
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 1800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L1, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L2, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L3, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L4, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3000 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L5, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3300 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L6, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3600 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L7, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3900 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L8, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4200 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L9, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4500 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L10, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L11, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L12, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L13, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14, 
+CAST(0.0 AS Float) AS L15, 
+CAST(0.0 AS Float) AS L16, 
+CAST(0.0 AS Float) AS L17, 
+CAST(0.0 AS Float) AS L18, 
+CAST(0.0 AS Float) AS L19, 
+CAST(0.0 AS Float) AS L20, 
+CAST(0.0 AS Float) AS L21, 
+CAST(0.0 AS Float) AS L22, 
+CAST(0.0 AS Float) AS L23, 
+CAST(0.0 AS Float) AS L24, 
+CAST(0.0 AS Float) AS L25, 
+CAST(0.0 AS Float) AS L26, 
+CAST(0.0 AS Float) AS L27, 
+CAST(0.0 AS Float) AS L28, 
+CAST(0.0 AS Float) AS L29, 
+CAST(0.0 AS Float) AS L30, 
+CAST(0.0 AS Float) AS L31, 
+CAST(0.0 AS Float) AS L32, 
+CAST(0.0 AS Float) AS L33, 
+CAST(0.0 AS Float) AS L34, 
+CAST(0.0 AS Float) AS L35, 
+CAST(0.0 AS Float) AS L36, 
+CAST(0.0 AS Float) AS L37, 
+CAST(0.0 AS Float) AS L38, 
+CAST(0.0 AS Float) AS L39, 
+CAST(0.0 AS Float) AS L40, 
+CAST(0.0 AS Float) AS L41, 
+CAST(0.0 AS Float) AS L42, 
+CAST(0.0 AS Float) AS L43, 
+CAST(0.0 AS Float) AS L44, 
+CAST(count(Distinct CASE WHEN PTL.STD_Length = 0 OR ls.NoOfLengths > 1 THEN Str(pn.PackageNo)+pn.SupplierCode
+END)  AS Float)  AS L45,
+SUM(ptd.m3Actual) AS AM3,
+SUM(ptd.m3Nominal) AS NM3,
+SUM(ptd.LinealMeterActualLength) AS AM1,
+SUM(ptd.MFBMNominal) AS MFBM,
+SUM(ptd.SQMofActualWidth) AS AM2,
+GetDate() AS TILLVERKAD,
+SPE.SpeciesName AS TS,
+imp.ProductCategoryName AS PC,
+Gr.GradeName AS KV,
+0 AS STD_Length,
+SUR.SurfacingName AS UT,
+Verk.ClientNo AS OwnerNo, Cy.CityName+'/'+lip.LogicalInventoryName AS Lager,
+lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo
+,0 AS Status,
+SUM(pn.Original_Price * pt.Totalm3Nominal) / SUM(pt.Totalm3Nominal) AS Pris,
+SUM(pn.Original_Price * pt.Totalm3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd.LinealMeterActualLength) / SUM(ptd.NoOfPieces)) AS Float) AS AvgLength,
+'                              ' AS REFERENCE, '                              ' AS BL_NO, '                              ' AS Info2
+FROM  dbo.Client Verk
+Inner Join dbo.Loads L on L.SupplierNo = Verk.ClientNo
+LEFT join dbo.Invoiced_Load inl
+inner join dbo.InvoiceNos nos on nos.InternalInvoiceNo = inl.InternalInvoiceNo
+on inl.LoadNo = L.LoadNo
+Inner Join dbo.LoadDetail LD on LD.LoadNo = L.LoadNo
+Inner Join dbo.CustomerShippingPlanDetails csd on csd.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo
+Inner Join dbo.CustomerShippingPlanHeader csh on csh.ShippingPlanNo = csd.ShippingPlanNo
+Inner Join dbo.Orders oh on oh.OrderNo = csh.OrderNo
+Inner Join dbo.LogicalInventoryPoint lip ON lip.LogicalInventoryPointNo = LD.LIPNo
+Inner Join dbo.PhysicalInventoryPoint pip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo and pn.SupplierCode = LD.SupplierCode
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = LD.PackageTypeNo
+Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
+Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
+Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
+Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
+AND PTL.LengthGroupNo = 1
+AND PTL.VolumeType = 3
+Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
+AND pde.LanguageID = 1
+Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
+AND va.LanguageCode = 1
+Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
+Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+				AND imp.LanguageCode = 1
+Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+				AND SPE.LanguageCode = 1
+Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+				AND SUR.LanguageCode = 1
+Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+				AND Gr.LanguageCode = 1
+Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
+WHERE L.LoadedDate > '2013-12-01'
+AND oh.OrderType = 0
+AND nos.InvoiceNo is null
+AND pn.Status = 0
+AND Verk.SalesRegionNo = 741
+ AND ( LIP.InvCode = '43' OR  LIP.InvCode = '727' OR  LIP.InvCode = '132' OR  LIP.InvCode = '115' OR  LIP.InvCode = '45' OR  LIP.InvCode = '46' OR  LIP.InvCode = '738' OR  LIP.InvCode = '742' OR  LIP.InvCode = '726' OR  LIP.InvCode = '776' OR  LIP.InvCode = '725' OR  LIP.InvCode = '730' OR  LIP.InvCode = '131' OR  LIP.InvCode = '44' OR  LIP.InvCode = '777' ) 
  AND ( Verk.PktNrLevKod = 10 ) 
 
 

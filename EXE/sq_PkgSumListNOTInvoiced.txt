@@ -99,7 +99,7 @@ Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1 
 AND pn.Status = 1
 AND Verk.SalesRegionNo = 741
-
+ AND ( LIP.InvCode = '43' OR  LIP.InvCode = '727' OR  LIP.InvCode = '132' OR  LIP.InvCode = '115' OR  LIP.InvCode = '45' OR  LIP.InvCode = '46' OR  LIP.InvCode = '738' OR  LIP.InvCode = '742' OR  LIP.InvCode = '726' OR  LIP.InvCode = '776' OR  LIP.InvCode = '725' OR  LIP.InvCode = '730' OR  LIP.InvCode = '131' OR  LIP.InvCode = '44' OR  LIP.InvCode = '777' ) 
  AND ( Verk.PktNrLevKod = 10 ) 
 
 
@@ -229,7 +229,7 @@ AND oh.OrderType = 0
 AND nos.InvoiceNo is null
 AND pn.Status = 0
 AND Verk.SalesRegionNo = 741
-
+ AND ( LIP.InvCode = '43' OR  LIP.InvCode = '727' OR  LIP.InvCode = '132' OR  LIP.InvCode = '115' OR  LIP.InvCode = '45' OR  LIP.InvCode = '46' OR  LIP.InvCode = '738' OR  LIP.InvCode = '742' OR  LIP.InvCode = '726' OR  LIP.InvCode = '776' OR  LIP.InvCode = '725' OR  LIP.InvCode = '730' OR  LIP.InvCode = '131' OR  LIP.InvCode = '44' OR  LIP.InvCode = '777' ) 
  AND ( Verk.PktNrLevKod = 10 ) 
 
 
