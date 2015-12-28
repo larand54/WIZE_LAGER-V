@@ -660,6 +660,15 @@ type
     siLangLinked_fInvCtrl: TsiLangLinked;
     teSearchInvNo: TcxTextEdit;
     cxLabel8: TcxLabel;
+    tsTransitInLev: TcxTabSheet;
+    Panel24: TPanel;
+    Label16: TLabel;
+    BitBtn50: TBitBtn;
+    BitBtn51: TBitBtn;
+    grdTransitInLevDBTableView1: TcxGridDBTableView;
+    grdTransitInLevLevel1: TcxGridLevel;
+    grdTransitInLev: TcxGrid;
+    Label17: TLabel;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);

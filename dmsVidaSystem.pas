@@ -620,7 +620,7 @@ Begin
  sq_LastInvDate.Open ;
  if not sq_LastInvDate.Eof then
  Begin
-  if (SQLTimeStampToDateTime(sq_LastInvDateMaxDatum.AsSQLTimeStamp) > RegDate) then
+  if (SQLTimeStampToDateTime(sq_LastInvDateMaxDatum.AsSQLTimeStamp) > RegDate) then //>
   Begin
    Result     := sq_LastInvDateIC_grpno.AsInteger ;
    InvDate    := SQLTimeStampToDateTime(sq_LastInvDateInventeringsdatum.AsSQLTimeStamp) ;

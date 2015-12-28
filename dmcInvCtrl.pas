@@ -2156,7 +2156,8 @@ Begin
   SQL.Add('AND L.LoadedDate < ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp))) ;
 //Måste vara AReg senast 2 veckor efter maxdatum
 //Ändrat!! måste vara AR före verkliga MAXDatum
-  SQL.Add('AND CL.DateCreated < ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp))) ;
+//Ändrat tillbaka så behöver inte vara AR före maxdatum
+//  SQL.Add('AND CL.DateCreated < ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpMaxDatum.AsSQLTimeStamp))) ;
 //och efter inventeringsdatum
   SQL.Add('AND CL.DateCreated > ' + QuotedStr(SqlTimeStampToStr('yyyy-mm-dd hh:mm:ss',cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp))) ;
 
