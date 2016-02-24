@@ -67,18 +67,13 @@ Gr.GradeName AS KV,
 SUR.SurfacingName AS UT,
 PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName + '/' + lip.LogicalInventoryName AS Lager,
 lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo
-,isnull(avrPkg.Status,1) AS Status,
+,pn.Status AS Status,
 va.VarugruppNamn, CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength, pn.REFERENCE, pn.BL_NO,  pn.Info2
 FROM  dbo.Client Verk
 Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
 Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
-INNER JOIN dbo.InvControlrow invctrlrow ON invctrlrow.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
-Left Outer Join dbo.AvrPkgInInvCtrl avrPkg on avrPkg.IC_GrpNo = invctrlrow.IC_GrpNo
-AND avrPkg.PackageNo = invctrlrow.PackageNo
-AND avrPkg.SupplierCode = invctrlrow.SupplierCode
-INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = invctrlrow.PackageNo
-AND pn.SupplierCode = invctrlrow.SupplierCode
-Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = invctrlrow.PackageTypeNo
+INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
 Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
@@ -101,16 +96,15 @@ Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
-AND invctrlrow.IC_GrpNo = 13516
-AND invctrlrow.PackageNo NOT IN (Select avrPkg.PackageNo FROM dbo.AvrPkgInInvCtrl avrPkg 
-WHERE avrPkg.IC_GrpNo = invctrlrow.IC_GrpNo
-AND avrPkg.SupplierCode = invctrlrow.SupplierCode)
-AND pt.ProductNo = 12577
-AND LIP.LogicalInventoryPointNo = 10811
+AND pl.ActualLengthMM = 3000
+AND PTL.STD_Length = 1
+AND pn.Status = 1
+AND pt.ProductNo = 13549
+AND LIP.LogicalInventoryPointNo = 10782
 AND Verk.SalesRegionNo = 741
 Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
 pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,
 pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName,imp.ProductCategoryName,
 Gr.GradeName, SUR.SurfacingName, Verk.ClientNo, Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2
-,isnull(avrPkg.Status,1)
+,pn.Status
 , va.VarugruppNamn 

@@ -826,6 +826,10 @@ type
     sp_SaveToInvCtrlRow_PktNr2: TFDStoredProc;
     sp_prelAvrLaster: TFDStoredProc;
     sp_NotInvLoads: TFDStoredProc;
+    sp_InvTransit: TFDStoredProc;
+    ds_InvTransit: TDataSource;
+    cds_InvCtrlGrpLanguageID: TIntegerField;
+    sp_InsTransitToResult: TFDStoredProc;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -898,18 +902,18 @@ type
       Var LogicalInventoryPointNo : Integer     );
 
 
-procedure PkgAddInv(
-const PackageNo : Integer;
-const SupplierCode : String3;
-const RegistrationPointNo,
-UserID,
-Status,
-Operation,
-LogicalInventoryPointNo,
-InventeringsMetod,
-PackageTypeNo : Integer ;
-const LogicalInventoryName : String;
-const OwnerNo : Integer) ;
+      procedure PkgAddInv(
+      const PackageNo : Integer;
+      const SupplierCode : String3;
+      const RegistrationPointNo,
+      UserID,
+      Status,
+      Operation,
+      LogicalInventoryPointNo,
+      InventeringsMetod,
+      PackageTypeNo : Integer ;
+      const LogicalInventoryName : String;
+      const OwnerNo : Integer) ;
 
   public
     { Public declarations }
@@ -917,6 +921,7 @@ const OwnerNo : Integer) ;
     InventoryPkgs : Boolean ;
     MarkedPkgs,
     ChangedSortorderNo, AvRegSortorderNo, PaRegSortorderNo : Integer ;
+    procedure Refresh_InvTransit(const IC_GrpNo : Integer) ;
     procedure RemoveKilnPkgsFromInvCount (const IC_GrpNo : Integer) ;
     procedure Add_IC_GroupNo_To_Inven_Al_VW (const IC_SetNo, IC_GrpNo : Integer) ;
     procedure CopyToNM3Price (const IC_SetNo : Integer) ;
@@ -1139,6 +1144,7 @@ begin
  cds_InvCtrlGrpOwnerNo.AsInteger              := mtUserPropOwnerNo.AsInteger ;//ThisUser.CompanyNo ;
  cds_InvCtrlGrpVerkNo.AsInteger               := mtUserPropOwnerNo.AsInteger ;//ThisUser.CompanyNo ;
  cds_InvCtrlGrpTypeOfInvCount.AsInteger       := 1 ;
+ cds_InvCtrlGrpLanguageID.AsInteger           := ThisUser.LanguageID ;
 end;
 
 procedure TdmInvCtrl.GetLagerGrupper ;
@@ -3208,7 +3214,7 @@ Begin
   end;
 
  Try
- 
+
  sq_InsHlpRows.ParamByName('IC_GrpNo').AsInteger:= cds_InvCtrlGrpIC_grpno.AsInteger ;
  sq_InsHlpRows.ExecSQL ;
   except
@@ -3218,6 +3224,18 @@ Begin
     Raise ;
    End ;
   end;
+
+ Try
+ sp_InsTransitToResult.ParamByName('@IC_GrpNo').AsInteger:= cds_InvCtrlGrpIC_grpno.AsInteger ;
+ sp_InsTransitToResult.ExecProc ;
+  except
+   On E: Exception do
+   Begin
+    ShowMessage(E.Message) ;
+    Raise ;
+   End ;
+  end;
+
 End ;
 
 procedure TdmInvCtrl.Generate_List_from_CtrlList_pkgs_that_are_not_active ;
@@ -3656,7 +3674,7 @@ begin
 
      cds_CtrlList.Active := False ;
      cds_CtrlList.ParamByName('IC_grpno').AsInteger:= -1 ;
-     cds_CtrlList.ParamByName('LanguageID').AsInteger:= ThisUser.LanguageID ;
+  //   cds_CtrlList.ParamByName('LanguageID').AsInteger:= ThisUser.LanguageID ;
      cds_CtrlList.Active := True ;
 
      cds_InvenRow.Active := False ;
@@ -4374,6 +4392,13 @@ Begin
    // Raise ;
    End ;
   end;
+End;
+
+procedure TdmInvCtrl.Refresh_InvTransit(const IC_GrpNo : Integer) ;
+Begin
+  sp_InvTransit.Active  :=  False ;
+  sp_InvTransit.ParamByName('@IC_GrpNo').AsInteger  :=  IC_GrpNo ;
+  sp_InvTransit.Active  :=  True ;
 End;
 
 

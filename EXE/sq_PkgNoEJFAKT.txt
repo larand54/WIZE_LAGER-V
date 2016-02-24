@@ -1,6 +1,6 @@
 Select distinct 1 AS PKT,
 pd.ProductNo,
-pd.ProductDisplayName AS PRODUKT,
+pde.ProductDisplayName AS PRODUKT,
 pt.PackageTypeNo,
 pn.PackageNo,
 pn.SupplierCode,
@@ -89,23 +89,31 @@ Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
 AND PTL.LengthGroupNo = 1
 AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
+AND pde.LanguageID = 1
 Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
+AND va.LanguageCode = 1
 Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
-Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
 				AND imp.LanguageCode = 1
-Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
 				AND SPE.LanguageCode = 1
-Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
 				AND SUR.LanguageCode = 1
-Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
+AND exists (Select * FROM dbo.PackageTypeDetail ptd2
+inner join dbo.ProductLength pl2 ON pl2.ProductLengthNo = ptd2.ProductLengthNo
+WHERE ptd2.PackageTypeNo = LD.PackageTypeNo
+AND pl2.ActualLengthMM = 5400)
+and ls.NoOfLengths = 1
 AND pn.Status = 0
-AND pt.ProductNo = 12614
-AND LIP.LogicalInventoryPointNo = 10781
+AND pt.ProductNo = 13551
+AND LIP.LogicalInventoryPointNo = 10782
 AND nos.InvoiceNo is null
-Group by pd.ProductNo, pd.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
+Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
 pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,
 pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName,imp.ProductCategoryName,
 Gr.GradeName, SUR.SurfacingName, Verk.ClientNo, Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2

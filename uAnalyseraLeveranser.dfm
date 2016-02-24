@@ -4,12 +4,12 @@
   Align = alClient
   BorderStyle = bsNone
   Caption = 'fAnalyseraLeveranser'
-  ClientHeight = 843
-  ClientWidth = 1246
+  ClientHeight = 1038
+  ClientWidth = 1534
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
@@ -18,21 +18,29 @@
   OnCloseQuery = FormCloseQuery
   OnDestroy = FormDestroy
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1246
-    Height = 57
+    Width = 1534
+    Height = 70
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 0
     DesignSize = (
-      1246
-      57)
+      1534
+      70)
     object lcVerk: TcxDBLookupComboBox
-      Left = 57
-      Top = 7
+      Left = 70
+      Top = 9
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'Verk'
       DataBinding.DataSource = ds_UserProps
       Properties.DropDownRows = 12
@@ -41,95 +49,143 @@
       Properties.ListOptions.ShowHeader = False
       Properties.MaxLength = 0
       TabOrder = 0
-      Width = 121
+      Width = 149
     end
     object deStartPeriod: TcxDBDateEdit
-      Left = 224
-      Top = 6
+      Left = 276
+      Top = 7
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'StartPeriod'
       DataBinding.DataSource = ds_UserProps
       Properties.Kind = ckDateTime
       TabOrder = 2
-      Width = 137
+      Width = 168
     end
     object deEndPeriod: TcxDBDateEdit
-      Left = 224
-      Top = 30
+      Left = 276
+      Top = 37
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'EndPeriod'
       DataBinding.DataSource = ds_UserProps
       Properties.Kind = ckDateTime
       TabOrder = 3
-      Width = 137
+      Width = 168
     end
     object cxLabel1: TcxLabel
-      Left = 184
-      Top = 10
+      Left = 226
+      Top = 12
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Period:'
     end
     object cxLabel2: TcxLabel
-      Left = 197
-      Top = 34
+      Left = 242
+      Top = 42
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'tom'
     end
     object cxLabel3: TcxLabel
-      Left = 3
-      Top = 10
+      Left = 4
+      Top = 12
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Verk:'
     end
     object bToday: TcxButton
-      Left = 368
-      Top = 5
-      Width = 75
-      Height = 25
+      Left = 453
+      Top = 6
+      Width = 92
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acToday
       Caption = 'idag F2'
       TabOrder = 7
     end
     object bYesterday: TcxButton
-      Left = 368
-      Top = 30
-      Width = 75
-      Height = 25
+      Left = 453
+      Top = 37
+      Width = 92
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acYesterday
       Caption = 'ig'#229'r F3'
       TabOrder = 8
     end
     object bUppdatera: TcxButton
-      Left = 449
-      Top = 9
-      Width = 124
-      Height = 41
+      Left = 553
+      Top = 11
+      Width = 152
+      Height = 51
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acRefresh
       TabOrder = 9
     end
     object bPrint: TcxButton
-      Left = 579
-      Top = 10
-      Width = 125
-      Height = 40
+      Left = 713
+      Top = 12
+      Width = 153
+      Height = 50
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acPrint
       TabOrder = 10
     end
     object bExportToXLS: TcxButton
-      Left = 710
-      Top = 10
-      Width = 132
-      Height = 40
+      Left = 874
+      Top = 12
+      Width = 162
+      Height = 50
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acExportToXLS
       TabOrder = 11
     end
     object bClose: TcxButton
-      Left = 1155
-      Top = 10
-      Width = 84
-      Height = 40
+      Left = 1422
+      Top = 12
+      Width = 103
+      Height = 50
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acClose
       Anchors = [akTop, akRight]
       TabOrder = 12
     end
     object icOperation: TcxDBImageComboBox
-      Left = 58
-      Top = 30
+      Left = 71
+      Top = 37
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'InputOption'
       DataBinding.DataSource = ds_UserProps
       Properties.ImmediatePost = True
@@ -149,43 +205,54 @@
         end>
       TabOrder = 1
       Visible = False
-      Width = 121
+      Width = 149
     end
     object cxLabelOperation: TcxLabel
-      Left = 3
-      Top = 34
+      Left = 4
+      Top = 42
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Operation:'
       Visible = False
     end
   end
   object pgMain: TcxPageControl
     Left = 0
-    Top = 57
-    Width = 1246
-    Height = 786
+    Top = 70
+    Width = 1534
+    Height = 968
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsProduction
+    Properties.ActivePage = tsStoppTid
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
     OnPageChanging = pgMainPageChanging
-    ClientRectBottom = 782
-    ClientRectLeft = 4
-    ClientRectRight = 1242
+    ClientRectBottom = 968
+    ClientRectRight = 1534
     ClientRectTop = 33
     object tsDeliveries: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'LEVERANSSTAT'
       ImageIndex = 18
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pivLeveranser: TcxDBPivotGrid
         Left = 0
-        Top = 97
-        Width = 1246
-        Height = 663
+        Top = 119
+        Width = 1534
+        Height = 816
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         DataSource = ds_Data
         Groups = <
@@ -511,42 +578,66 @@
       object pnSettings: TPanel
         Left = 0
         Top = 0
-        Width = 1246
-        Height = 49
+        Width = 1534
+        Height = 60
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 1
         object lbSortBy: TLabel
-          Left = 14
-          Top = 21
-          Width = 52
-          Height = 13
+          Left = 17
+          Top = 26
+          Width = 67
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Sortera per'
           FocusControl = cbxSortByField
         end
         object lbShowTop: TLabel
-          Left = 224
-          Top = 21
-          Width = 44
-          Height = 13
+          Left = 276
+          Top = 26
+          Width = 57
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa topp'
           FocusControl = speTopCount
         end
         object lbValues: TLabel
-          Left = 330
-          Top = 21
-          Width = 33
-          Height = 13
+          Left = 406
+          Top = 26
+          Width = 42
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'v'#228'rden'
         end
         object Bevel1: TBevel
-          Left = 216
-          Top = 6
-          Width = 257
-          Height = 33
+          Left = 266
+          Top = 7
+          Width = 316
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
         end
         object cbxSortByField: TcxComboBox
-          Left = 73
-          Top = 13
+          Left = 90
+          Top = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.Items.Strings = (
             'Kategori'
@@ -558,36 +649,52 @@
           Properties.OnChange = cbxSortByFieldPropertiesChange
           TabOrder = 0
           Text = 'Kategori'
-          Width = 136
+          Width = 167
         end
         object speTopCount: TcxSpinEdit
-          Left = 272
-          Top = 13
+          Left = 335
+          Top = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.MaxValue = 50.000000000000000000
           Properties.OnChange = speTopCountPropertiesChange
           TabOrder = 1
-          Width = 57
+          Width = 70
         end
         object cbxTopValuesShowOthers: TcxCheckBox
-          Left = 382
-          Top = 13
+          Left = 470
+          Top = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa '#246'vriga'
           Properties.OnChange = cbxTopValuesShowOthersPropertiesChange
           TabOrder = 2
-          Width = 77
+          Width = 95
         end
         object Button6: TButton
-          Left = 848
-          Top = 19
-          Width = 131
-          Height = 25
+          Left = 1044
+          Top = 23
+          Width = 161
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSortByData
           TabOrder = 3
           Visible = False
         end
         object rgOrderType: TcxRadioGroup
-          Left = 479
-          Top = 5
+          Left = 590
+          Top = 6
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.Columns = 2
           Properties.Items = <
             item
@@ -603,97 +710,139 @@
           Style.Edges = []
           Style.Shadow = False
           TabOrder = 4
-          Height = 39
-          Width = 185
+          Height = 48
+          Width = 227
         end
       end
       object cxSplitter2: TcxSplitter
         Left = 0
-        Top = 90
-        Width = 1238
+        Top = 111
+        Width = 1534
         Height = 8
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         HotZoneClassName = 'TcxMediaPlayer8Style'
         AlignSplitter = salTop
         Control = pivLeveranser
         Color = clMaroon
         ParentColor = False
-        ExplicitWidth = 7
       end
       object Panel6: TPanel
         Left = 0
-        Top = 49
-        Width = 1238
-        Height = 41
+        Top = 60
+        Width = 1534
+        Height = 51
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 3
-        ExplicitWidth = 1246
         object cxButton6: TcxButton
-          Left = 16
-          Top = 8
-          Width = 119
-          Height = 25
+          Left = 20
+          Top = 10
+          Width = 146
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNyLeveransLayout
           TabOrder = 0
         end
         object cxButton7: TcxButton
-          Left = 143
-          Top = 8
-          Width = 111
-          Height = 25
+          Left = 176
+          Top = 10
+          Width = 137
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveLeveranserLayout
           TabOrder = 1
         end
         object cbLevLayouter: TcxComboBox
-          Left = 256
-          Top = 10
+          Left = 315
+          Top = 12
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.ImmediatePost = True
           Properties.OnChange = cbLevLayouterPropertiesChange
           TabOrder = 2
-          Width = 185
+          Width = 228
         end
         object cxButton8: TcxButton
-          Left = 456
-          Top = 8
-          Width = 121
-          Height = 25
+          Left = 561
+          Top = 10
+          Width = 149
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveLayout
           TabOrder = 3
         end
         object cxCheckBox2: TcxCheckBox
-          Left = 600
-          Top = 12
+          Left = 738
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa grandtotal'
           Properties.OnChange = cxCheckBox2PropertiesChange
           TabOrder = 4
-          Width = 97
+          Width = 120
         end
         object cxCheckBox3: TcxCheckBox
-          Left = 704
-          Top = 12
+          Left = 866
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa radtotal'
           Properties.OnChange = cxCheckBox3PropertiesChange
           TabOrder = 5
-          Width = 97
+          Width = 120
         end
         object cbExklEgnaLeveranser: TcxCheckBox
-          Left = 816
-          Top = 12
+          Left = 1004
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Exkludera egna leveranser'
           Properties.ImmediatePost = True
           TabOrder = 6
-          Width = 163
+          Width = 201
         end
       end
     end
     object tsProduction: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'PRODUKTIONSTAT'
       ImageIndex = 20
       object pivProduction: TcxDBPivotGrid
         Left = 0
-        Top = 89
-        Width = 1238
-        Height = 660
+        Top = 108
+        Width = 1534
+        Height = 827
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         DataSource = ds_ProdData
         Groups = <
@@ -980,53 +1129,87 @@
           Visible = True
           UniqueName = 'Kund'
         end
+        object pivSkiftschema: TcxDBPivotGridField
+          AreaIndex = 29
+          AllowedAreas = [faColumn, faRow, faFilter]
+          IsCaptionAssigned = True
+          Caption = 'Skiftschema'
+          DataBinding.FieldName = 'ShiftScheduleName'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Skiftschema'
+        end
       end
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1238
-        Height = 41
+        Width = 1534
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 1
         object BitBtn4: TBitBtn
-          Left = 440
-          Top = 9
-          Width = 113
-          Height = 25
+          Left = 542
+          Top = 11
+          Width = 139
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSendEmail
           Caption = 'Emaila valt verk'
           TabOrder = 0
         end
         object cxLabel5: TcxLabel
-          Left = 211
-          Top = 16
+          Left = 260
+          Top = 20
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'M'#228'tpunkt:'
         end
         object lcMtpunkt: TcxDBLookupComboBox
-          Left = 264
-          Top = 12
+          Left = 325
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'M'#228'tpunkt'
           DataBinding.DataSource = ds_UserProps
           Properties.ListColumns = <>
           Properties.ListOptions.ShowHeader = False
           Properties.MaxLength = 0
           TabOrder = 2
-          Width = 129
+          Width = 159
         end
         object BitBtn7: TBitBtn
-          Left = 560
-          Top = 9
-          Width = 113
-          Height = 25
+          Left = 689
+          Top = 11
+          Width = 139
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSendToAllMills
           Caption = 'Emaila alla verks data'
           TabOrder = 3
         end
         object Button2: TButton
-          Left = 944
-          Top = 8
-          Width = 75
-          Height = 25
+          Left = 1162
+          Top = 10
+          Width = 92
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Skriv ut test'
           TabOrder = 4
           Visible = False
@@ -1034,10 +1217,14 @@
         end
       end
       object Memo1: TMemo
-        Left = 448
-        Top = 152
-        Width = 185
-        Height = 89
+        Left = 551
+        Top = 187
+        Width = 228
+        Height = 110
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Lines.Strings = (
           'Memo1')
         TabOrder = 2
@@ -1045,9 +1232,13 @@
       end
       object cxSplitter1: TcxSplitter
         Left = 0
-        Top = 81
-        Width = 1238
+        Top = 100
+        Width = 1534
         Height = 8
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         HotZoneClassName = 'TcxMediaPlayer8Style'
         AlignSplitter = salTop
         Control = pivProduction
@@ -1056,203 +1247,299 @@
       end
       object Panel5: TPanel
         Left = 0
-        Top = 41
-        Width = 1238
-        Height = 40
+        Top = 50
+        Width = 1534
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 4
         object cxButton1: TcxButton
-          Left = 16
-          Top = 8
-          Width = 97
-          Height = 25
+          Left = 20
+          Top = 10
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNyProdMall
           TabOrder = 0
         end
         object cxButton5: TcxButton
-          Left = 120
-          Top = 8
-          Width = 97
-          Height = 25
+          Left = 148
+          Top = 10
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveProdMall
           TabOrder = 1
         end
         object cbProdMallar: TcxComboBox
-          Left = 224
-          Top = 9
+          Left = 276
+          Top = 11
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.ImmediatePost = True
           Properties.OnChange = cbProdMallarPropertiesChange
           TabOrder = 2
-          Width = 185
+          Width = 227
         end
         object cxButton9: TcxButton
-          Left = 424
-          Top = 7
-          Width = 97
-          Height = 25
+          Left = 522
+          Top = 9
+          Width = 119
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveProdMall
           TabOrder = 3
         end
         object cxButton2: TcxButton
-          Left = 536
-          Top = 7
-          Width = 97
-          Height = 25
+          Left = 660
+          Top = 9
+          Width = 119
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandAll
           TabOrder = 4
         end
         object cxButton3: TcxButton
-          Left = 633
-          Top = 7
-          Width = 97
-          Height = 25
+          Left = 779
+          Top = 9
+          Width = 119
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseAll
           TabOrder = 5
         end
         object cbUseProdSum: TcxCheckBox
-          Left = 744
-          Top = 8
+          Left = 916
+          Top = 10
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Inkludera paketnr'
           TabOrder = 6
           Visible = False
-          Width = 109
+          Width = 134
         end
         object cbTotals: TcxCheckBox
-          Left = 864
-          Top = 8
+          Left = 1063
+          Top = 10
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa grandtotal'
           Properties.OnChange = cbTotalsPropertiesChange
           TabOrder = 7
-          Width = 97
+          Width = 120
         end
         object cxCheckBox1: TcxCheckBox
-          Left = 968
-          Top = 8
+          Left = 1191
+          Top = 10
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa radtotal'
           Properties.OnChange = cxCheckBox1PropertiesChange
           TabOrder = 8
-          Width = 97
+          Width = 120
         end
         object cbNearOrFarSum: TcxCheckBox
-          Left = 1080
-          Top = 8
+          Left = 1329
+          Top = 10
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Placering summa'
           Properties.OnChange = cbNearOrFarSumPropertiesChange
           TabOrder = 9
-          Width = 109
+          Width = 134
         end
       end
     end
     object tsTorksatser: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'TORKSTAT'
       ImageIndex = 7
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1238
-        Height = 41
+        Width = 1534
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object cxLabel6: TcxLabel
-          Left = 3
+          Left = 4
           Top = 0
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Torksatser filtreras p'#229' sluttiden'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clMaroon
-          Style.Font.Height = -12
+          Style.Font.Height = -15
           Style.Font.Name = 'MS Sans Serif'
           Style.Font.Style = []
           Style.IsFontAssigned = True
         end
         object cxButton22: TcxButton
-          Left = 345
-          Top = 10
-          Width = 97
-          Height = 25
+          Left = 425
+          Top = 12
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNyTorkMall
           TabOrder = 1
         end
         object cxButton23: TcxButton
-          Left = 449
-          Top = 10
-          Width = 97
-          Height = 25
+          Left = 553
+          Top = 12
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveKilnMall
           TabOrder = 2
         end
         object cbKilnMallar: TcxComboBox
-          Left = 553
-          Top = 14
+          Left = 681
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.ImmediatePost = True
           Properties.OnChange = cbKilnMallarPropertiesChange
           TabOrder = 3
-          Width = 185
+          Width = 227
         end
         object cxButton24: TcxButton
-          Left = 753
-          Top = 9
-          Width = 97
-          Height = 25
+          Left = 927
+          Top = 11
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Ta bort mall'
           TabOrder = 4
         end
         object cxButton25: TcxButton
-          Left = 865
-          Top = 9
-          Width = 97
-          Height = 25
+          Left = 1065
+          Top = 11
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandAllKiln
           TabOrder = 5
         end
         object cxButton26: TcxButton
-          Left = 963
-          Top = 9
-          Width = 97
-          Height = 25
+          Left = 1185
+          Top = 11
+          Width = 120
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseAllKiln
           TabOrder = 6
         end
         object cxLabel7: TcxLabel
-          Left = 3
-          Top = 18
+          Left = 4
+          Top = 22
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'eller bocka i "Visa itork"'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clMaroon
-          Style.Font.Height = -12
+          Style.Font.Height = -15
           Style.Font.Name = 'MS Sans Serif'
           Style.Font.Style = []
           Style.IsFontAssigned = True
         end
         object cbVisaItork: TcxDBCheckBox
-          Left = 156
-          Top = 14
+          Left = 192
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa itork'
           DataBinding.DataField = 'SalesPersonNo'
           DataBinding.DataSource = ds_UserProps
           Properties.ValueChecked = 1
           Properties.ValueUnchecked = 0
           TabOrder = 8
-          Width = 73
+          Width = 90
         end
         object cbShowRowTotalsKiln: TcxCheckBox
-          Left = 235
-          Top = 14
+          Left = 289
+          Top = 17
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa radtotal'
           Properties.OnChange = cbShowRowTotalsKilnPropertiesChange
           State = cbsChecked
           TabOrder = 9
-          Width = 97
+          Width = 120
         end
       end
       object pivKD: TcxDBPivotGrid
         Left = 0
-        Top = 41
-        Width = 1238
-        Height = 708
+        Top = 50
+        Width = 1534
+        Height = 885
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         DataSource = ds_TorkSatser
         Groups = <
@@ -1264,8 +1551,6 @@
         OptionsView.ColumnTotalsLocation = ctlNear
         OptionsView.RowTotalsLocation = rtlNear
         TabOrder = 1
-        ExplicitWidth = 1246
-        ExplicitHeight = 719
         object pivKDAM3: TcxDBPivotGridField
           Area = faData
           AreaIndex = 0
@@ -1427,117 +1712,169 @@
       end
     end
     object tsOverview: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #214'VERSIKT VERK'
       ImageIndex = 9
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 1246
-        Height = 35
+        Width = 1534
+        Height = 43
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
       end
     end
     object tsKapStat: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'KAPSTAT'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 1246
-        Height = 73
+        Width = 1534
+        Height = 90
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label2: TLabel
-          Left = 144
-          Top = 56
-          Width = 49
-          Height = 13
+          Left = 177
+          Top = 69
+          Width = 61
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Akt.bredd:'
         end
         object Label1: TLabel
-          Left = 16
-          Top = 56
-          Width = 59
-          Height = 13
+          Left = 20
+          Top = 69
+          Width = 71
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Akt.tjocklek:'
         end
         object cxButton4: TcxButton
-          Left = 16
-          Top = 8
-          Width = 97
-          Height = 25
+          Left = 20
+          Top = 10
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNewKapMall
           TabOrder = 0
         end
         object cxButton10: TcxButton
-          Left = 120
-          Top = 8
-          Width = 97
-          Height = 25
+          Left = 148
+          Top = 10
+          Width = 119
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveKapStatMall
           TabOrder = 1
         end
         object cbKapStatMallar: TcxComboBox
-          Left = 224
-          Top = 9
+          Left = 276
+          Top = 11
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.ImmediatePost = True
           Properties.OnChange = cbKapStatMallarPropertiesChange
           TabOrder = 2
-          Width = 185
+          Width = 227
         end
         object cxButton11: TcxButton
-          Left = 424
-          Top = 7
-          Width = 97
-          Height = 25
+          Left = 522
+          Top = 9
+          Width = 119
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveKapStatMall
           TabOrder = 3
         end
         object cxButton12: TcxButton
-          Left = 536
-          Top = 7
-          Width = 97
-          Height = 25
+          Left = 660
+          Top = 9
+          Width = 119
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandKapStatAll
           TabOrder = 4
         end
         object cxButton13: TcxButton
-          Left = 632
-          Top = 7
-          Width = 97
-          Height = 25
+          Left = 778
+          Top = 9
+          Width = 119
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCollapseKapStatAll
           TabOrder = 5
         end
         object meAT: TcxMaskEdit
-          Left = 80
-          Top = 48
+          Left = 98
+          Top = 59
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 6
-          Width = 49
+          Width = 61
         end
         object meAB: TcxMaskEdit
-          Left = 200
-          Top = 48
+          Left = 246
+          Top = 59
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           TabOrder = 7
-          Width = 57
+          Width = 70
         end
       end
       object pvKapStat: TcxDBPivotGrid
         Left = 0
-        Top = 73
-        Width = 1246
-        Height = 687
+        Top = 90
+        Width = 1534
+        Height = 845
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         DataSource = ds_Kap
         Groups = <
@@ -1865,97 +2202,145 @@
       object Panel7: TPanel
         Left = 0
         Top = 0
-        Width = 1238
-        Height = 65
+        Width = 1534
+        Height = 80
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object Label3: TLabel
-          Left = 72
-          Top = 47
-          Width = 52
-          Height = 13
+          Left = 89
+          Top = 58
+          Width = 67
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Sortera per'
           FocusControl = cbSortByFieldInStoppStat
         end
         object cxButton14: TcxButton
-          Left = 10
-          Top = 10
-          Width = 56
-          Height = 25
+          Left = 12
+          Top = 12
+          Width = 69
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acNewStoppTidMall
           TabOrder = 0
         end
         object cxButton15: TcxButton
-          Left = 72
-          Top = 10
-          Width = 65
-          Height = 25
+          Left = 89
+          Top = 12
+          Width = 80
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acSaveStoppTidMall
           TabOrder = 1
         end
         object cbStoppTidMallar: TcxComboBox
-          Left = 144
-          Top = 15
+          Left = 177
+          Top = 18
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.ImmediatePost = True
           Properties.OnChange = cbStoppTidMallarPropertiesChange
           TabOrder = 2
-          Width = 184
+          Width = 227
         end
         object cxButton16: TcxButton
-          Left = 333
-          Top = 11
-          Width = 77
-          Height = 24
+          Left = 410
+          Top = 14
+          Width = 95
+          Height = 29
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveStoppTidMall
           TabOrder = 3
         end
         object cxButton17: TcxButton
-          Left = 417
-          Top = 11
-          Width = 84
-          Height = 24
+          Left = 513
+          Top = 14
+          Width = 104
+          Height = 29
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acExpandStoppTidAll
           TabOrder = 4
         end
         object cxButton18: TcxButton
-          Left = 508
-          Top = 11
-          Width = 78
-          Height = 24
+          Left = 625
+          Top = 14
+          Width = 96
+          Height = 29
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acMinimizeStoppTidAll
           TabOrder = 5
         end
         object cbStoppTidTotals: TcxCheckBox
-          Left = 1017
+          Left = 1252
           Top = 2
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa grandtotal'
           Properties.OnChange = cbStoppTidTotalsPropertiesChange
           State = cbsChecked
           TabOrder = 6
-          Width = 98
+          Width = 120
         end
         object cbStoppTidRowTotal: TcxCheckBox
-          Left = 1017
-          Top = 15
+          Left = 1252
+          Top = 18
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Visa radtotal'
           Properties.OnChange = cbStoppTidRowTotalPropertiesChange
           State = cbsChecked
           TabOrder = 7
-          Width = 98
+          Width = 120
         end
         object cxButton19: TcxButton
-          Left = 1121
-          Top = 9
-          Width = 64
-          Height = 24
+          Left = 1380
+          Top = 11
+          Width = 78
+          Height = 30
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acCalcWorkingTime
           TabOrder = 8
           Visible = False
         end
         object lcProdUnit: TcxDBLookupComboBox
-          Left = 651
-          Top = 15
+          Left = 801
+          Top = 18
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'ProdUnit'
           DataBinding.DataSource = ds_UserProps
           Properties.ImmediatePost = True
@@ -1963,32 +2348,48 @@
           Properties.ListOptions.ShowHeader = False
           Properties.MaxLength = 0
           TabOrder = 9
-          Width = 129
+          Width = 159
         end
         object cxLabel4: TcxLabel
-          Left = 598
-          Top = 20
+          Left = 736
+          Top = 25
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'M'#228'tpunkt:'
         end
         object cxButton20: TcxButton
-          Left = 787
-          Top = 7
-          Width = 85
-          Height = 28
+          Left = 969
+          Top = 9
+          Width = 104
+          Height = 34
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acPrintSawcoStyleReport
           TabOrder = 11
         end
         object cxButton21: TcxButton
-          Left = 878
-          Top = 7
-          Width = 111
-          Height = 28
+          Left = 1081
+          Top = 9
+          Width = 136
+          Height = 34
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acStoppTidParam
           TabOrder = 12
         end
         object cbSortByFieldInStoppStat: TcxComboBox
-          Left = 143
-          Top = 39
+          Left = 176
+          Top = 48
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Properties.DropDownListStyle = lsFixedList
           Properties.Items.Strings = (
             'Kategori'
@@ -2001,14 +2402,14 @@
           Properties.OnChange = cbSortByFieldInStoppStatPropertiesChange
           TabOrder = 13
           Text = 'Kategori'
-          Width = 184
+          Width = 226
         end
       end
       object pvStoppTid: TcxDBPivotGrid
         Left = 0
-        Top = 65
-        Width = 1238
-        Height = 438
+        Top = 80
+        Width = 1534
+        Height = 539
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -2024,11 +2425,11 @@
             UniqueName = ''
           end>
         TabOrder = 1
-        ExplicitWidth = 1246
         object pvStoppTidRegPointName: TcxDBPivotGridField
           AreaIndex = 0
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'RegPointName'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'M'#228'tpunkt'
         end
@@ -2036,6 +2437,7 @@
           AreaIndex = 1
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'StoppTidsNamn'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Orsak'
         end
@@ -2043,6 +2445,7 @@
           AreaIndex = 2
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'StoppStartNoTime'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Stoppstartade'
         end
@@ -2050,12 +2453,14 @@
           AreaIndex = 3
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'StoppStartWithTime'
+          PropertiesClassName = 'TcxLabelProperties'
           UniqueName = 'Stoppstartade'
         end
         object pvStoppTidKvitterat: TcxDBPivotGridField
           AreaIndex = 4
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Kvitterat'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Kvitterat'
         end
@@ -2063,12 +2468,15 @@
           AreaIndex = 5
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'StoppOrsakNr'
+          PropertiesClassName = 'TcxLabelProperties'
           UniqueName = 'StoppOrsakNr'
         end
         object pvStoppTidStoppSeconds: TcxDBPivotGridField
           AreaIndex = 10
           AllowedAreas = [faFilter, faData]
           DataBinding.FieldName = 'StoppSeconds'
+          DisplayFormat = '#######.000'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Sek'
         end
@@ -2077,6 +2485,8 @@
           AreaIndex = 0
           AllowedAreas = [faFilter, faData]
           DataBinding.FieldName = 'StoppMinutes'
+          DisplayFormat = '#######.000'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Min'
         end
@@ -2084,6 +2494,8 @@
           AreaIndex = 11
           AllowedAreas = [faFilter, faData]
           DataBinding.FieldName = 'StoppHours'
+          DisplayFormat = '#######.000'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Tim'
         end
@@ -2091,17 +2503,20 @@
           AreaIndex = 6
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'DriftPlatsnr'
+          PropertiesClassName = 'TcxLabelProperties'
           UniqueName = 'DriftPlatsnr'
         end
         object pvStoppTidVerkNo: TcxDBPivotGridField
           AreaIndex = 7
           AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'VerkNo'
+          PropertiesClassName = 'TcxLabelProperties'
           UniqueName = 'VerkNo'
         end
         object pvStoppTidNoOfStopps: TcxDBPivotGridField
           AreaIndex = 8
           DataBinding.FieldName = 'NoOfStopps'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Antal'
         end
@@ -2112,8 +2527,8 @@
           IsCaptionAssigned = True
           Caption = 'Utfall % av tid'
           DataBinding.FieldName = 'StoppMinutes'
-          PropertiesClassName = 'TcxCalcEditProperties'
-          Properties.DisplayFormat = '###.0'
+          DisplayFormat = '#######.000'
+          PropertiesClassName = 'TcxLabelProperties'
           SummaryVariation = svPercentOfColumn
           Visible = True
           UniqueName = 'Utfall % av tid'
@@ -2124,8 +2539,8 @@
           IsCaptionAssigned = True
           Caption = 'Utfall % av antal'
           DataBinding.FieldName = 'NoOfStopps'
-          PropertiesClassName = 'TcxCalcEditProperties'
-          Properties.DisplayFormat = '###.0'
+          DisplayFormat = '#######.000'
+          PropertiesClassName = 'TcxLabelProperties'
           SummaryVariation = svPercentOfColumn
           Visible = True
           UniqueName = 'Utfall % av antal'
@@ -2136,6 +2551,7 @@
           IsCaptionAssigned = True
           Caption = #197'r'
           DataBinding.FieldName = 'StoppStartNoTime'
+          PropertiesClassName = 'TcxLabelProperties'
           GroupIndex = 0
           GroupInterval = giDateYear
           Visible = True
@@ -2147,6 +2563,7 @@
           IsCaptionAssigned = True
           Caption = 'Kvartal'
           DataBinding.FieldName = 'StoppStartNoTime'
+          PropertiesClassName = 'TcxLabelProperties'
           GroupIndex = 0
           GroupInterval = giDateQuarter
           Visible = True
@@ -2158,6 +2575,7 @@
           IsCaptionAssigned = True
           Caption = 'M'#229'nad'
           DataBinding.FieldName = 'StoppStartNoTime'
+          PropertiesClassName = 'TcxLabelProperties'
           GroupIndex = 0
           GroupInterval = giDateMonth
           Visible = True
@@ -2169,6 +2587,7 @@
           IsCaptionAssigned = True
           Caption = 'Vecka'
           DataBinding.FieldName = 'StoppStartNoTime'
+          PropertiesClassName = 'TcxLabelProperties'
           GroupIndex = 0
           GroupExpanded = False
           GroupInterval = giDateWeekOfYear
@@ -2177,39 +2596,90 @@
         end
         object pvStoppTidProdukt: TcxDBPivotGridField
           AreaIndex = 16
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Produkt'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Produkt'
         end
         object pvStoppTidKoNr: TcxDBPivotGridField
           AreaIndex = 17
+          AllowedAreas = [faColumn, faRow, faFilter]
           IsCaptionAssigned = True
           Caption = 'K'#246'rNr'
           DataBinding.FieldName = 'KoNr'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'K'#246'rNr'
         end
         object pvStoppTidSkift: TcxDBPivotGridField
           AreaIndex = 18
+          AllowedAreas = [faColumn, faRow, faFilter]
           DataBinding.FieldName = 'Skift'
+          PropertiesClassName = 'TcxLabelProperties'
           Visible = True
           UniqueName = 'Skift'
+        end
+        object pvStoppTidFackNummer: TcxDBPivotGridField
+          AreaIndex = 19
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'FackNummer'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'FackNummer'
+        end
+        object pvStoppTidCentrum: TcxDBPivotGridField
+          AreaIndex = 20
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Centrum'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Centrum'
+        end
+        object pvStoppTidLangdIFack: TcxDBPivotGridField
+          AreaIndex = 21
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'LangdIFack'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'LangdIFack'
+        end
+        object pvStoppTidRunID: TcxDBPivotGridField
+          AreaIndex = 22
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'RunID'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'K'#246'rnr'
+        end
+        object pvStoppTidExternID: TcxDBPivotGridField
+          AreaIndex = 23
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'ExternID'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'ExternID'
+        end
+        object pvStoppTidNotering: TcxDBPivotGridField
+          AreaIndex = 24
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Notering'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Notering'
         end
       end
       object grdStoppTid: TcxGrid
         Left = 0
-        Top = 511
-        Width = 1238
-        Height = 238
+        Top = 627
+        Width = 1534
+        Height = 308
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
         Margins.Bottom = 2
         Align = alClient
         TabOrder = 2
-        ExplicitTop = 509
-        ExplicitWidth = 1246
-        ExplicitHeight = 251
         object grdStoppTidDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -2225,8 +2695,8 @@
       end
       object cxSplitter3: TcxSplitter
         Left = 0
-        Top = 503
-        Width = 1238
+        Top = 619
+        Width = 1534
         Height = 8
         Margins.Left = 2
         Margins.Top = 2
@@ -2237,7 +2707,6 @@
         Control = pvStoppTid
         Color = clMaroon
         ParentColor = False
-        ExplicitWidth = 1246
       end
     end
   end
@@ -2249,7 +2718,7 @@
   object cxStyleRepository1: TcxStyleRepository
     Left = 72
     Top = 520
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svFont]
       Font.Charset = DEFAULT_CHARSET
@@ -2540,7 +3009,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42207.551554062500000000
+      ReportDocument.CreationDate = 42423.487632974540000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2569,7 +3038,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42207.551554074070000000
+      ReportDocument.CreationDate = 42423.487632986110000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2596,7 +3065,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42207.551554085650000000
+      ReportDocument.CreationDate = 42423.487632997680000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -2618,7 +3087,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42207.551554097220000000
+      ReportDocument.CreationDate = 42423.487633009260000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
@@ -2681,7 +3150,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42207.551554733790000000
+      ReportDocument.CreationDate = 42423.487633229170000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -2751,7 +3220,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42207.551554745370000000
+      ReportDocument.CreationDate = 42423.487633240740000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
@@ -2771,7 +3240,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42207.551554756940000000
+      ReportDocument.CreationDate = 42423.487633263890000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
@@ -2826,7 +3295,7 @@
   object cxStyleRepository2: TcxStyleRepository
     Left = 248
     Top = 464
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle3: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clBtnFace
@@ -6646,6 +7115,12 @@
       Origin = 'ClientName'
       Size = 80
     end
+    object sq_ProdDataSumIIShiftScheduleName: TStringField
+      DisplayLabel = 'Skiftschema'
+      FieldName = 'ShiftScheduleName'
+      Origin = 'ShiftScheduleName'
+      Size = 35
+    end
   end
   object cds_TorkSatser: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -7217,9 +7692,16 @@
       Origin = 'HeadLO'
     end
     object sq_ProdDataSumClientName: TStringField
+      DisplayLabel = 'Kund'
       FieldName = 'ClientName'
       Origin = 'ClientName'
       Size = 80
+    end
+    object sq_ProdDataSumShiftScheduleName: TStringField
+      DisplayLabel = 'Skiftschema'
+      FieldName = 'ShiftScheduleName'
+      Origin = 'ShiftScheduleName'
+      Size = 35
     end
   end
   object cds_Kap: TFDQuery
@@ -7458,6 +7940,7 @@
     end
   end
   object cds_StoppTid: TFDQuery
+    Active = True
     Filtered = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
@@ -7478,13 +7961,21 @@
       'st.ID AS KoNr,'
       'st.DIM_Grade AS Produkt,'
       'st.ShiftTeamName AS Skift,'
-      ' 1 AS NoOfStopps from dbo.stoppssum st'
+      ' 1 AS NoOfStopps'
+      '           ,st.[FackNummer]'
+      '           ,st.[Centrum]'
+      '           ,st.[LangdIFack]'
+      '           ,st.[RunID]'
+      '           ,st.[ExternID]'
+      '           ,st.[Notering]'
+      ''
+      ' from dbo.stoppssum st'
       ' where verkNo = :VerkNo'
       ' AND StoppStartWithTime >= :StartPeriod'
       '  AND StoppStartWithTime <= :EndPeriod'
       '')
     Left = 920
-    Top = 448
+    Top = 440
     ParamData = <
       item
         Name = 'VERKNO'
@@ -7536,12 +8027,14 @@
       FieldName = 'StoppSeconds'
       Origin = 'StoppSeconds'
       Required = True
+      DisplayFormat = '#######.000'
     end
     object cds_StoppTidStoppMinutes: TFloatField
       DisplayLabel = 'Min'
       FieldName = 'StoppMinutes'
       Origin = 'StoppMinutes'
       Required = True
+      DisplayFormat = '#######.000'
     end
     object cds_StoppTidStoppHours: TFloatField
       DisplayLabel = 'Tim'
@@ -7554,6 +8047,7 @@
       Origin = 'DriftPlatsnr'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
+      DisplayFormat = '#######.000'
     end
     object cds_StoppTidVerkNo: TIntegerField
       FieldName = 'VerkNo'
@@ -7589,11 +8083,37 @@
       Origin = 'Skift'
       Size = 35
     end
+    object cds_StoppTidFackNummer: TIntegerField
+      FieldName = 'FackNummer'
+      Origin = 'FackNummer'
+    end
+    object cds_StoppTidCentrum: TStringField
+      FieldName = 'Centrum'
+      Origin = 'Centrum'
+    end
+    object cds_StoppTidLangdIFack: TStringField
+      FieldName = 'LangdIFack'
+      Origin = 'LangdIFack'
+      Size = 10
+    end
+    object cds_StoppTidRunID: TIntegerField
+      DisplayLabel = 'K'#246'rnr'
+      FieldName = 'RunID'
+      Origin = 'RunID'
+    end
+    object cds_StoppTidExternID: TStringField
+      FieldName = 'ExternID'
+      Origin = 'ExternID'
+    end
+    object cds_StoppTidNotering: TStringField
+      FieldName = 'Notering'
+      Origin = 'Notering'
+    end
   end
   object ds_StoppTid: TDataSource
     DataSet = cds_StoppTid
     Left = 920
-    Top = 504
+    Top = 496
   end
   object cxPivotGridChartConnection1: TcxPivotGridChartConnection
     GridChartView = grdStoppTidChartView1
@@ -7743,7 +8263,7 @@
     end
   end
   object frxReport1: TfrxReport
-    Version = '4.15.13'
+    Version = '5.4.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -7820,11 +8340,13 @@
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 7.559060000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 30.236240000000000000
         Top = 517.795610000000000000
         Width = 1046.929810000000000000
@@ -7833,7 +8355,6 @@
           Top = 7.559060000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7851,7 +8372,6 @@
           Top = 7.559060000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7869,7 +8389,6 @@
           Top = 7.559060000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7887,7 +8406,6 @@
           Top = 7.559060000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -7903,7 +8421,6 @@
           Top = 7.559060000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -7919,7 +8436,6 @@
           Top = 7.559060000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -7934,7 +8450,7 @@
           Left = 11.338590000000000000
           Top = 3.779530000000000000
           Width = 1012.914040000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
           Frame.Width = 3.000000000000000000
         end
@@ -7945,7 +8461,6 @@
           Height = 18.897650000000000000
           OnAfterData = 'Memo42OnAfterData'
           OnBeforePrint = 'Memo42OnBeforePrint'
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7964,7 +8479,6 @@
           Height = 18.897650000000000000
           OnAfterData = 'Memo42OnAfterData'
           OnBeforePrint = 'Memo42OnBeforePrint'
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7983,7 +8497,6 @@
           Height = 18.897650000000000000
           OnAfterData = 'Memo42OnAfterData'
           OnBeforePrint = 'Memo42OnBeforePrint'
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7997,6 +8510,7 @@
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 139.842610000000000000
         Top = 49.133890000000000000
         Width = 1046.929810000000000000
@@ -8005,7 +8519,6 @@
           Top = 3.779530000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'ClientName'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8023,7 +8536,6 @@
           Top = 45.354360000000000000
           Width = 238.110390000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'RegPointName'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8041,7 +8553,6 @@
           Top = 3.779530000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -8056,7 +8567,6 @@
           Top = 68.031540000000000000
           Width = 192.756030000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
@@ -8067,7 +8577,6 @@
           Top = 68.031540000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8082,7 +8591,6 @@
           Top = 90.708720000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8097,7 +8605,6 @@
           Top = 90.708720000000000000
           Width = 192.756030000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
@@ -8108,7 +8615,6 @@
           Top = 68.031540000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8123,7 +8629,6 @@
           Top = 90.708720000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8138,7 +8643,6 @@
           Top = 90.708720000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'Kalendertid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8156,7 +8660,6 @@
           Top = 68.031540000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'Arbetstid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8173,7 +8676,7 @@
           Left = 11.338590000000000000
           Top = 120.944960000000000000
           Width = 1012.914040000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
           Frame.Width = 3.000000000000000000
         end
@@ -8182,7 +8685,6 @@
           Top = 49.133890000000000000
           Width = 196.535560000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8197,7 +8699,6 @@
           Top = 49.133890000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'PercentKortaStoppAvArbetstid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8215,7 +8716,6 @@
           Top = 71.811070000000000000
           Width = 196.535560000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8230,7 +8730,6 @@
           Top = 71.811070000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'PercentLangaStoppAvArbetstid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8248,7 +8747,6 @@
           Top = 94.488250000000000000
           Width = 238.110390000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8263,7 +8761,6 @@
           Top = 94.488250000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'PercentALLAStoppAvArbetstid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8281,7 +8778,6 @@
           Top = 49.133890000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TotaltKortaStoppTimmar'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8299,7 +8795,6 @@
           Top = 71.811070000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TotaltLangaStoppTimmar'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8317,7 +8812,6 @@
           Top = 94.488250000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TotaltALLAStoppAvArbetstid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8335,7 +8829,6 @@
           Top = 22.677180000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8350,7 +8843,6 @@
           Top = 22.677180000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8365,7 +8857,6 @@
           Top = 3.779530000000000000
           Width = 196.535560000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8380,7 +8871,6 @@
           Top = 3.779530000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'Verkningsgrad'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8395,6 +8885,7 @@
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 49.133890000000000000
         Top = 570.709030000000000000
         Width = 1046.929810000000000000
@@ -8402,7 +8893,6 @@
           Left = 884.410020000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8417,7 +8907,6 @@
           Left = 986.457330000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Memo.UTF8W = (
             '[TotalPages#]')
         end
@@ -8425,7 +8914,6 @@
           Left = 960.000620000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8441,7 +8929,6 @@
           Top = 22.677180000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8457,7 +8944,6 @@
           Top = 22.677180000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8471,11 +8957,12 @@
         object Line4: TfrxLineView
           Left = 789.921770000000000000
           Width = 238.110390000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 343.937230000000000000
         Width = 1046.929810000000000000
@@ -8485,7 +8972,6 @@
           Top = 3.779530000000000000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'HuvudOrsak'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8500,6 +8986,7 @@
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 434.645950000000000000
         Width = 1046.929810000000000000
@@ -8507,7 +8994,6 @@
           Left = 241.889920000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8522,7 +9008,6 @@
           Left = 457.323130000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8537,7 +9022,6 @@
           Left = 612.283860000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8552,7 +9036,6 @@
           Left = 786.142240000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8569,7 +9052,6 @@
           Left = 861.732840000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8586,7 +9068,6 @@
           Left = 941.102970000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8605,7 +9086,6 @@
           Height = 18.897650000000000000
           OnAfterData = 'Memo42OnAfterData'
           OnBeforePrint = 'Memo42OnBeforePrint'
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8621,7 +9101,6 @@
           Left = 514.016080000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8637,7 +9116,6 @@
           Left = 306.141930000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8651,6 +9129,7 @@
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 389.291590000000000000
         Width = 1046.929810000000000000
@@ -8661,7 +9140,6 @@
           Left = 41.574830000000000000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'StoppTidsNamn'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8673,7 +9151,6 @@
           Top = 3.779530000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'ProcentAvKalenderTid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8694,7 +9171,6 @@
           Top = 3.779530000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'ProcentAvArbetsTid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8715,7 +9191,6 @@
           Top = 3.779530000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'ProcentAvStoppTid'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8735,7 +9210,6 @@
           Left = 612.283860000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TotaltAntalStopp'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8753,7 +9227,6 @@
           Left = 665.197280000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TotaltTidStoppHourMin'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8770,7 +9243,6 @@
           Left = 457.323130000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'AntalLangaStopp'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8788,7 +9260,6 @@
           Left = 514.016080000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TidLangaStoppHourMin'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8805,7 +9276,6 @@
           Left = 241.889920000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'AntalKortaStopp'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8823,7 +9293,6 @@
           Left = 306.141930000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TidKortaStoppHourMin'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -8838,6 +9307,7 @@
         end
       end
       object Header1: TfrxHeader
+        FillType = ftBrush
         Height = 71.811070000000000000
         Top = 249.448980000000000000
         Width = 1046.929810000000000000
@@ -8847,7 +9317,6 @@
           Top = 45.354360000000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8862,7 +9331,6 @@
           Top = 3.779530000000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8877,7 +9345,6 @@
           Top = 3.779530000000000000
           Width = 128.504020000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8892,7 +9359,6 @@
           Top = 41.574830000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8907,7 +9373,6 @@
           Top = 45.354360000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8922,7 +9387,6 @@
           Top = 41.574830000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8937,7 +9401,6 @@
           Top = 3.779530000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8952,7 +9415,6 @@
           Top = 22.677180000000000000
           Width = 60.472480000000000000
           Height = 37.795300000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8968,7 +9430,6 @@
           Top = 22.677180000000000000
           Width = 60.472480000000000000
           Height = 37.795300000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8984,7 +9445,6 @@
           Top = 22.677180000000000000
           Width = 75.590600000000000000
           Height = 37.795300000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -8999,7 +9459,7 @@
           Left = 11.338590000000000000
           Top = 68.031540000000000000
           Width = 1012.914040000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDBDataset1LargeStop: TfrxMemoView
@@ -9007,7 +9467,6 @@
           Top = 22.677180000000000000
           Width = 30.236240000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -9024,7 +9483,6 @@
           Top = 22.677180000000000000
           Width = 22.677180000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -9039,7 +9497,6 @@
           Top = 22.677180000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -9054,7 +9511,6 @@
           Top = 22.677180000000000000
           Width = 30.236240000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -9071,7 +9527,6 @@
           Top = 22.677180000000000000
           Width = 11.338590000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -9086,7 +9541,6 @@
           Top = 22.677180000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -9408,6 +9862,7 @@
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -9417,7 +9872,7 @@
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
-    CheckboxAsShape = False
+    PdfA = False
     Left = 1112
     Top = 528
   end
@@ -10593,276 +11048,274 @@
       4100530074006F00700070004100760041007200620065007400730074006900
       6400010054006F00740061006C00740041004C004C004100530074006F007000
       700041007600410072006200650074007300740069006400010001000D000A00
-      6300640073005F005500730065007200500072006F00700073004E0061006D00
-      650001004E0061006D0065000100010001000D000A007300740046006F006E00
-      740073005F0055006E00690063006F00640065000D000A005400660041006E00
-      61006C00790073006500720061004C00650076006500720061006E0073006500
-      720001004D0053002000530061006E0073002000530065007200690066000100
-      4D0053002000530061006E007300200053006500720069006600010054006100
-      68006F006D0061000D000A00630078005300740079006C006500310001005400
-      610068006F006D006100010001005400610068006F006D0061000D000A006300
-      78005300740079006C00650063006C004D00610072006F006F006E0001005400
-      610068006F006D006100010001005400610068006F006D0061000D000A006300
-      78005300740079006C00650063006C0057006800690074006500010054006100
-      68006F006D006100010001005400610068006F006D0061000D000A0063007800
-      5300740079006C006500320001004D0053002000530061006E00730020005300
-      6500720069006600010001005400610068006F006D0061000D000A0064007800
-      43006F006D0070006F006E0065006E0074005000720069006E00740065007200
-      31004C0069006E006B0031000100540069006D006500730020004E0065007700
-      200052006F006D0061006E00010001005400610068006F006D0061000D000A00
-      6400780043006F006D0070006F006E0065006E0074005000720069006E007400
-      6500720031004C0069006E006B0032000100540069006D006500730020004E00
-      65007700200052006F006D0061006E00010001005400610068006F006D006100
-      0D000A006400780043006F006D0070006F006E0065006E007400500072006900
-      6E0074006500720031004C0069006E006B0033000100540069006D0065007300
-      20004E0065007700200052006F006D0061006E00010001005400610068006F00
-      6D0061000D000A006400780043006F006D0070006F006E0065006E0074005000
-      720069006E0074006500720031004C0069006E006B0034000100540069006D00
-      6500730020004E0065007700200052006F006D0061006E000100010054006100
-      68006F006D0061000D000A006400780043006F006D0070006F006E0065006E00
-      74005000720069006E0074006500720031004C0069006E006B00350001005400
-      69006D006500730020004E0065007700200052006F006D0061006E0001000100
-      5400610068006F006D0061000D000A006400780043006F006D0070006F006E00
-      65006E0074005000720069006E0074006500720031004C0069006E006B003600
-      0100540069006D006500730020004E0065007700200052006F006D0061006E00
-      010001005400610068006F006D0061000D000A006400780043006F006D007000
-      6F006E0065006E0074005000720069006E0074006500720031004C0069006E00
-      6B0038000100540069006D006500730020004E0065007700200052006F006D00
-      61006E00010001005400610068006F006D0061000D000A006400780043006F00
-      6D0070006F006E0065006E0074005000720069006E0074006500720031004C00
-      69006E006B0039000100540069006D006500730020004E006500770020005200
-      6F006D0061006E00010001005400610068006F006D0061000D000A0064007800
-      43006F006D0070006F006E0065006E0074005000720069006E00740065007200
-      31004C0069006E006B00310030000100540069006D006500730020004E006500
+      7300740046006F006E00740073005F0055006E00690063006F00640065000D00
+      0A005400660041006E0061006C00790073006500720061004C00650076006500
+      720061006E0073006500720001004D0053002000530061006E00730020005300
+      650072006900660001004D0053002000530061006E0073002000530065007200
+      6900660001005400610068006F006D0061000D000A0063007800530074007900
+      6C006500310001005400610068006F006D006100010001005400610068006F00
+      6D0061000D000A00630078005300740079006C00650063006C004D0061007200
+      6F006F006E0001005400610068006F006D006100010001005400610068006F00
+      6D0061000D000A00630078005300740079006C00650063006C00570068006900
+      7400650001005400610068006F006D006100010001005400610068006F006D00
+      61000D000A00630078005300740079006C006500320001004D00530020005300
+      61006E007300200053006500720069006600010001005400610068006F006D00
+      61000D000A006400780043006F006D0070006F006E0065006E00740050007200
+      69006E0074006500720031004C0069006E006B0031000100540069006D006500
+      730020004E0065007700200052006F006D0061006E0001000100540061006800
+      6F006D0061000D000A006400780043006F006D0070006F006E0065006E007400
+      5000720069006E0074006500720031004C0069006E006B003200010054006900
+      6D006500730020004E0065007700200052006F006D0061006E00010001005400
+      610068006F006D0061000D000A006400780043006F006D0070006F006E006500
+      6E0074005000720069006E0074006500720031004C0069006E006B0033000100
+      540069006D006500730020004E0065007700200052006F006D0061006E000100
+      01005400610068006F006D0061000D000A006400780043006F006D0070006F00
+      6E0065006E0074005000720069006E0074006500720031004C0069006E006B00
+      34000100540069006D006500730020004E0065007700200052006F006D006100
+      6E00010001005400610068006F006D0061000D000A006400780043006F006D00
+      70006F006E0065006E0074005000720069006E0074006500720031004C006900
+      6E006B0035000100540069006D006500730020004E0065007700200052006F00
+      6D0061006E00010001005400610068006F006D0061000D000A00640078004300
+      6F006D0070006F006E0065006E0074005000720069006E007400650072003100
+      4C0069006E006B0036000100540069006D006500730020004E00650077002000
+      52006F006D0061006E00010001005400610068006F006D0061000D000A006400
+      780043006F006D0070006F006E0065006E0074005000720069006E0074006500
+      720031004C0069006E006B0038000100540069006D006500730020004E006500
       7700200052006F006D0061006E00010001005400610068006F006D0061000D00
       0A006400780043006F006D0070006F006E0065006E0074005000720069006E00
-      74006500720031004C0069006E006B00310031000100540069006D0065007300
-      20004E0065007700200052006F006D0061006E00010001005400610068006F00
-      6D0061000D000A006400780043006F006D0070006F006E0065006E0074005000
-      720069006E0074006500720031004C0069006E006B0031003200010054006900
-      6D006500730020004E0065007700200052006F006D0061006E00010001005400
-      610068006F006D0061000D000A00630078005300740079006C00650033000100
+      74006500720031004C0069006E006B0039000100540069006D00650073002000
+      4E0065007700200052006F006D0061006E00010001005400610068006F006D00
+      61000D000A006400780043006F006D0070006F006E0065006E00740050007200
+      69006E0074006500720031004C0069006E006B00310030000100540069006D00
+      6500730020004E0065007700200052006F006D0061006E000100010054006100
+      68006F006D0061000D000A006400780043006F006D0070006F006E0065006E00
+      74005000720069006E0074006500720031004C0069006E006B00310031000100
       540069006D006500730020004E0065007700200052006F006D0061006E000100
-      01005400610068006F006D0061000D000A00630078005300740079006C006500
-      34000100540069006D006500730020004E0065007700200052006F006D006100
-      6E00010001005400610068006F006D0061000D000A0063007800530074007900
-      6C00650035000100540069006D006500730020004E0065007700200052006F00
-      6D0061006E00010001005400610068006F006D0061000D000A00630078005300
-      740079006C00650036000100540069006D006500730020004E00650077002000
-      52006F006D0061006E00010001005400610068006F006D0061000D000A006300
-      78005300740079006C00650037000100540069006D006500730020004E006500
-      7700200052006F006D0061006E00010001005400610068006F006D0061000D00
-      0A00730074004D0075006C00740069004C0069006E00650073005F0055006E00
-      690063006F00640065000D000A004D0065006D006F0031002E004C0069006E00
-      6500730001004D0065006D006F003100010001000D000A006300620078005300
-      6F0072007400420079004600690065006C0064002E00500072006F0070006500
+      01005400610068006F006D0061000D000A006400780043006F006D0070006F00
+      6E0065006E0074005000720069006E0074006500720031004C0069006E006B00
+      310032000100540069006D006500730020004E0065007700200052006F006D00
+      61006E00010001005400610068006F006D0061000D000A006300780053007400
+      79006C00650033000100540069006D006500730020004E006500770020005200
+      6F006D0061006E00010001005400610068006F006D0061000D000A0063007800
+      5300740079006C00650034000100540069006D006500730020004E0065007700
+      200052006F006D0061006E00010001005400610068006F006D0061000D000A00
+      630078005300740079006C00650035000100540069006D006500730020004E00
+      65007700200052006F006D0061006E00010001005400610068006F006D006100
+      0D000A00630078005300740079006C00650036000100540069006D0065007300
+      20004E0065007700200052006F006D0061006E00010001005400610068006F00
+      6D0061000D000A00630078005300740079006C00650037000100540069006D00
+      6500730020004E0065007700200052006F006D0061006E000100010054006100
+      68006F006D0061000D000A00730074004D0075006C00740069004C0069006E00
+      650073005F0055006E00690063006F00640065000D000A004D0065006D006F00
+      31002E004C0069006E006500730001004D0065006D006F003100010001000D00
+      0A0063006200780053006F0072007400420079004600690065006C0064002E00
+      500072006F0070006500720074006900650073002E004900740065006D007300
+      01004B0061007400650067006F00720069002C0041004D0033002C004E004D00
+      33002C005600E4007200640065002C004D002D00500072006900730001000100
+      0D000A006300620053006F0072007400420079004600690065006C0064004900
+      6E00530074006F007000700053007400610074002E00500072006F0070006500
       720074006900650073002E004900740065006D00730001004B00610074006500
-      67006F00720069002C0041004D0033002C004E004D0033002C005600E4007200
-      640065002C004D002D005000720069007300010001000D000A00630062005300
-      6F0072007400420079004600690065006C00640049006E00530074006F007000
-      700053007400610074002E00500072006F007000650072007400690065007300
-      2E004900740065006D00730001004B0061007400650067006F00720069002C00
-      4D0069006E0075007400650072002C00540069006D006D00610072002C004100
-      6E00740061006C002C00220055007400660061006C006C002000740069006400
-      22002C00220055007400660061006C006C00200061006E00740061006C002200
-      010001000D000A007300740053007400720069006E00670073005F0055006E00
-      690063006F00640065000D000A004900440053005F0031003300350001004900
-      6E0066006F003A00200041006E0067006900760065006C007300650020006600
-      F6007200200068007500720020006C00E5006E00670020007400690064002000
-      6B006F007200740061002000730074006F00700070002000E400720020007300
-      61006B006E00610073002E000100010001000D000A004900440053005F003100
-      34003000010041007200620065007400730073006300680065006D0061002000
-      730061006B006E00610073002E000100010001000D000A004900440053005F00
-      310034003400010041006E006700650020006D0061006C006C006E0061006D00
-      6E000100010001000D000A004900440053005F00310034003600010056006900
-      6C006C00200064007500200074006100200062006F007200740020006D006100
-      6C006C0065006E003F0020000100010001000D000A004900440053005F003400
-      390001004100720062006500740073007400690064002C0020006D0069006E00
-      75007400650072003A00200023000100010001000D000A004900440053005F00
-      35003000010041007200620065007400730073006300680065006D0061002000
-      69006E007400650020007500700070006C0061006700740020006600F6007200
-      2000760061006C00640020006D00E4007400700075006E006B0074002E000100
-      010001000D000A00730074004F00740068006500720053007400720069006E00
-      670073005F0055006E00690063006F00640065000D000A006300620078005300
-      6F0072007400420079004600690065006C0064002E0054006500780074000100
-      4B0061007400650067006F0072006900010001000D000A006300620053006F00
-      72007400420079004600690065006C00640049006E00530074006F0070007000
-      53007400610074002E00540065007800740001004B0061007400650067006F00
-      72006900010001000D000A006400780043006F006D0070006F006E0065006E00
-      74005000720069006E0074006500720031004C0069006E006B0031002E004400
-      65007300690067006E0065007200430061007000740069006F006E0001004600
-      6F0072006D006100740020005200650070006F0072007400010001000D000A00
-      6400780043006F006D0070006F006E0065006E0074005000720069006E007400
-      6500720031004C0069006E006B0032002E00440065007300690067006E006500
-      7200430061007000740069006F006E00010046006F0072006D00610074002000
-      5200650070006F0072007400010001000D000A006400780043006F006D007000
-      6F006E0065006E0074005000720069006E0074006500720031004C0069006E00
-      6B0033002E00440065007300690067006E006500720043006100700074006900
-      6F006E00010046006F0072006D006100740020005200650070006F0072007400
-      010001000D000A006400780043006F006D0070006F006E0065006E0074005000
-      720069006E0074006500720031004C0069006E006B0034002E00440065007300
-      690067006E0065007200430061007000740069006F006E00010046006F007200
-      6D006100740020005200650070006F0072007400010001000D000A0064007800
-      43006F006D0070006F006E0065006E0074005000720069006E00740065007200
-      31004C0069006E006B0035002E00440065007300690067006E00650072004300
-      61007000740069006F006E00010046006F0072006D0061007400200052006500
-      70006F0072007400010001000D000A006400780043006F006D0070006F006E00
-      65006E0074005000720069006E0074006500720031004C0069006E006B003700
-      2E004400650073006300720069007000740069006F006E00010043006F006D00
-      70006F0073006900740069006F006E00010001000D000A006400780043006F00
-      6D0070006F006E0065006E0074005000720069006E0074006500720031004C00
-      69006E006B0037002E00440065007300690067006E0065007200430061007000
-      740069006F006E00010043006F006D0070006F0073006900740069006F006E00
-      200045006400690074006F007200010001000D000A006400780043006F006D00
+      67006F00720069002C004D0069006E0075007400650072002C00540069006D00
+      6D00610072002C0041006E00740061006C002C00220055007400660061006C00
+      6C00200074006900640022002C00220055007400660061006C006C0020006100
+      6E00740061006C002200010001000D000A007300740053007400720069006E00
+      670073005F0055006E00690063006F00640065000D000A004900440053005F00
+      310033003500010049006E0066006F003A00200041006E006700690076006500
+      6C007300650020006600F6007200200068007500720020006C00E5006E006700
+      200074006900640020006B006F007200740061002000730074006F0070007000
+      2000E40072002000730061006B006E00610073002E000100010001000D000A00
+      4900440053005F00310034003000010041007200620065007400730073006300
+      680065006D0061002000730061006B006E00610073002E000100010001000D00
+      0A004900440053005F00310034003400010041006E006700650020006D006100
+      6C006C006E0061006D006E000100010001000D000A004900440053005F003100
+      340036000100560069006C006C00200064007500200074006100200062006F00
+      7200740020006D0061006C006C0065006E003F0020000100010001000D000A00
+      4900440053005F00340039000100410072006200650074007300740069006400
+      2C0020006D0069006E0075007400650072003A00200023000100010001000D00
+      0A004900440053005F0035003000010041007200620065007400730073006300
+      680065006D006100200069006E007400650020007500700070006C0061006700
+      740020006600F60072002000760061006C00640020006D00E400740070007500
+      6E006B0074002E000100010001000D000A00730074004F007400680065007200
+      53007400720069006E00670073005F0055006E00690063006F00640065000D00
+      0A0063006200780053006F0072007400420079004600690065006C0064002E00
+      540065007800740001004B0061007400650067006F0072006900010001000D00
+      0A006300620053006F0072007400420079004600690065006C00640049006E00
+      530074006F007000700053007400610074002E00540065007800740001004B00
+      61007400650067006F0072006900010001000D000A006400780043006F006D00
       70006F006E0065006E0074005000720069006E0074006500720031004C006900
-      6E006B0036002E00440065007300690067006E00650072004300610070007400
+      6E006B0031002E00440065007300690067006E00650072004300610070007400
       69006F006E00010046006F0072006D006100740020005200650070006F007200
       7400010001000D000A006400780043006F006D0070006F006E0065006E007400
-      5000720069006E0074006500720031004C0069006E006B0038002E0044006500
+      5000720069006E0074006500720031004C0069006E006B0032002E0044006500
       7300690067006E0065007200430061007000740069006F006E00010046006F00
       72006D006100740020005200650070006F0072007400010001000D000A006400
       780043006F006D0070006F006E0065006E0074005000720069006E0074006500
-      720031004C0069006E006B0039002E00440065007300690067006E0065007200
+      720031004C0069006E006B0033002E00440065007300690067006E0065007200
       430061007000740069006F006E00010046006F0072006D006100740020005200
       650070006F0072007400010001000D000A006400780043006F006D0070006F00
       6E0065006E0074005000720069006E0074006500720031004C0069006E006B00
-      310030002E00440065007300690067006E006500720043006100700074006900
-      6F006E00010046006F0072006D006100740020005200650070006F0072007400
-      010001000D000A006400780043006F006D0070006F006E0065006E0074005000
-      720069006E0074006500720031004C0069006E006B00310031002E0044006500
-      7300690067006E0065007200430061007000740069006F006E00010046006F00
-      72006D006100740020005200650070006F0072007400010001000D000A006400
-      780043006F006D0070006F006E0065006E0074005000720069006E0074006500
-      720031004C0069006E006B00310032002E00440065007300690067006E006500
+      34002E00440065007300690067006E0065007200430061007000740069006F00
+      6E00010046006F0072006D006100740020005200650070006F00720074000100
+      01000D000A006400780043006F006D0070006F006E0065006E00740050007200
+      69006E0074006500720031004C0069006E006B0035002E004400650073006900
+      67006E0065007200430061007000740069006F006E00010046006F0072006D00
+      6100740020005200650070006F0072007400010001000D000A00640078004300
+      6F006D0070006F006E0065006E0074005000720069006E007400650072003100
+      4C0069006E006B0037002E004400650073006300720069007000740069006F00
+      6E00010043006F006D0070006F0073006900740069006F006E00010001000D00
+      0A006400780043006F006D0070006F006E0065006E0074005000720069006E00
+      74006500720031004C0069006E006B0037002E00440065007300690067006E00
+      65007200430061007000740069006F006E00010043006F006D0070006F007300
+      6900740069006F006E00200045006400690074006F007200010001000D000A00
+      6400780043006F006D0070006F006E0065006E0074005000720069006E007400
+      6500720031004C0069006E006B0036002E00440065007300690067006E006500
       7200430061007000740069006F006E00010046006F0072006D00610074002000
       5200650070006F0072007400010001000D000A006400780043006F006D007000
       6F006E0065006E0074005000720069006E0074006500720031004C0069006E00
-      6B00310033002E004400650073006300720069007000740069006F006E000100
-      43006F006D0070006F0073006900740069006F006E00010001000D000A006400
+      6B0038002E00440065007300690067006E006500720043006100700074006900
+      6F006E00010046006F0072006D006100740020005200650070006F0072007400
+      010001000D000A006400780043006F006D0070006F006E0065006E0074005000
+      720069006E0074006500720031004C0069006E006B0039002E00440065007300
+      690067006E0065007200430061007000740069006F006E00010046006F007200
+      6D006100740020005200650070006F0072007400010001000D000A0064007800
+      43006F006D0070006F006E0065006E0074005000720069006E00740065007200
+      31004C0069006E006B00310030002E00440065007300690067006E0065007200
+      430061007000740069006F006E00010046006F0072006D006100740020005200
+      650070006F0072007400010001000D000A006400780043006F006D0070006F00
+      6E0065006E0074005000720069006E0074006500720031004C0069006E006B00
+      310031002E00440065007300690067006E006500720043006100700074006900
+      6F006E00010046006F0072006D006100740020005200650070006F0072007400
+      010001000D000A006400780043006F006D0070006F006E0065006E0074005000
+      720069006E0074006500720031004C0069006E006B00310032002E0044006500
+      7300690067006E0065007200430061007000740069006F006E00010046006F00
+      72006D006100740020005200650070006F0072007400010001000D000A006400
       780043006F006D0070006F006E0065006E0074005000720069006E0074006500
-      720031004C0069006E006B00310033002E00440065007300690067006E006500
-      7200430061007000740069006F006E00010043006F006D0070006F0073006900
-      740069006F006E00200045006400690074006F007200010001000D000A007300
-      740043006F006C006C0065006300740069006F006E0073005F0055006E006900
-      63006F00640065000D000A00690063004F007000650072006100740069006F00
-      6E002E00500072006F0070006500720074006900650073002E00490074006500
-      6D0073005B0030005D002E004400650073006300720069007000740069006F00
-      6E0001005000E500720065006700010001000D000A00690063004F0070006500
+      720031004C0069006E006B00310033002E004400650073006300720069007000
+      740069006F006E00010043006F006D0070006F0073006900740069006F006E00
+      010001000D000A006400780043006F006D0070006F006E0065006E0074005000
+      720069006E0074006500720031004C0069006E006B00310033002E0044006500
+      7300690067006E0065007200430061007000740069006F006E00010043006F00
+      6D0070006F0073006900740069006F006E00200045006400690074006F007200
+      010001000D000A007300740043006F006C006C0065006300740069006F006E00
+      73005F0055006E00690063006F00640065000D000A00690063004F0070006500
       72006100740069006F006E002E00500072006F00700065007200740069006500
-      73002E004900740065006D0073005B0031005D002E0044006500730063007200
-      69007000740069006F006E00010041007600720065006700010001000D000A00
+      73002E004900740065006D0073005B0030005D002E0044006500730063007200
+      69007000740069006F006E0001005000E500720065006700010001000D000A00
       690063004F007000650072006100740069006F006E002E00500072006F007000
-      6500720074006900650073002E004900740065006D0073005B0032005D002E00
-      4400650073006300720069007000740069006F006E00010041006C006C006100
-      010001000D000A007000690076004C00650076006500720061006E0073006500
-      72002E00470072006F007500700073005B0030005D002E004300610070007400
-      69006F006E000100550074006C0061007300740061006400010001000D000A00
-      720067004F00720064006500720054007900700065002E00500072006F007000
-      6500720074006900650073002E004900740065006D0073005B0030005D002E00
-      430061007000740069006F006E0001004600F60072007300E4006C006A006E00
-      69006E006700010001000D000A00720067004F00720064006500720054007900
-      700065002E00500072006F0070006500720074006900650073002E0049007400
-      65006D0073005B0031005D002E00430061007000740069006F006E0001004900
-      6E006B00F6007000010001000D000A00700069007600500072006F0064007500
-      6300740069006F006E002E00470072006F007500700073005B0030005D002E00
-      430061007000740069006F006E0001004B0061006C0065006E00640065007200
-      010001000D000A007000690076004B0044002E00470072006F00750070007300
-      5B0030005D002E00430061007000740069006F006E0001005000650072006900
-      6F006400010001000D000A00700076004B006100700053007400610074002E00
-      470072006F007500700073005B0030005D002E00430061007000740069006F00
-      6E00010050006500720069006F006400010001000D000A007000760053007400
-      6F00700070005400690064002E00470072006F007500700073005B0030005D00
-      2E00430061007000740069006F006E00010050006500720069006F0064000100
-      01000D000A0073007400430068006100720053006500740073005F0055006E00
-      690063006F00640065000D000A005400660041006E0061006C00790073006500
-      720061004C00650076006500720061006E007300650072000100440045004600
+      6500720074006900650073002E004900740065006D0073005B0031005D002E00
+      4400650073006300720069007000740069006F006E0001004100760072006500
+      6700010001000D000A00690063004F007000650072006100740069006F006E00
+      2E00500072006F0070006500720074006900650073002E004900740065006D00
+      73005B0032005D002E004400650073006300720069007000740069006F006E00
+      010041006C006C006100010001000D000A007000690076004C00650076006500
+      720061006E007300650072002E00470072006F007500700073005B0030005D00
+      2E00430061007000740069006F006E000100550074006C006100730074006100
+      6400010001000D000A00720067004F0072006400650072005400790070006500
+      2E00500072006F0070006500720074006900650073002E004900740065006D00
+      73005B0030005D002E00430061007000740069006F006E0001004600F6007200
+      7300E4006C006A006E0069006E006700010001000D000A00720067004F007200
+      64006500720054007900700065002E00500072006F0070006500720074006900
+      650073002E004900740065006D0073005B0031005D002E004300610070007400
+      69006F006E00010049006E006B00F6007000010001000D000A00700069007600
+      500072006F00640075006300740069006F006E002E00470072006F0075007000
+      73005B0030005D002E00430061007000740069006F006E0001004B0061006C00
+      65006E00640065007200010001000D000A007000690076004B0044002E004700
+      72006F007500700073005B0030005D002E00430061007000740069006F006E00
+      010050006500720069006F006400010001000D000A00700076004B0061007000
+      53007400610074002E00470072006F007500700073005B0030005D002E004300
+      61007000740069006F006E00010050006500720069006F006400010001000D00
+      0A0070007600530074006F00700070005400690064002E00470072006F007500
+      700073005B0030005D002E00430061007000740069006F006E00010050006500
+      720069006F006400010001000D000A0073007400430068006100720053006500
+      740073005F0055006E00690063006F00640065000D000A005400660041006E00
+      61006C00790073006500720061004C00650076006500720061006E0073006500
+      72000100440045004600410055004C0054005F00430048004100520053004500
+      54000100440045004600410055004C0054005F00430048004100520053004500
+      54000100440045004600410055004C0054005F00430048004100520053004500
+      54000D000A00630078005300740079006C006500310001004400450046004100
+      55004C0054005F00430048004100520053004500540001004400450046004100
+      55004C0054005F00430048004100520053004500540001004400450046004100
+      55004C0054005F0043004800410052005300450054000D000A00630078005300
+      740079006C00650063006C004D00610072006F006F006E000100440045004600
       410055004C0054005F0043004800410052005300450054000100440045004600
       410055004C0054005F0043004800410052005300450054000100440045004600
       410055004C0054005F0043004800410052005300450054000D000A0063007800
-      5300740079006C00650031000100440045004600410055004C0054005F004300
+      5300740079006C00650063006C00570068006900740065000100440045004600
+      410055004C0054005F0043004800410052005300450054000100440045004600
+      410055004C0054005F0043004800410052005300450054000100440045004600
+      410055004C0054005F0043004800410052005300450054000D000A0063007800
+      5300740079006C00650032000100440045004600410055004C0054005F004300
       4800410052005300450054000100440045004600410055004C0054005F004300
       4800410052005300450054000100440045004600410055004C0054005F004300
-      4800410052005300450054000D000A00630078005300740079006C0065006300
-      6C004D00610072006F006F006E000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000D000A00630078005300740079006C006500
-      63006C00570068006900740065000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000D000A00630078005300740079006C006500
-      32000100440045004600410055004C0054005F00430048004100520053004500
-      54000100440045004600410055004C0054005F00430048004100520053004500
-      54000100440045004600410055004C0054005F00430048004100520053004500
-      54000D000A006400780043006F006D0070006F006E0065006E00740050007200
-      69006E0074006500720031004C0069006E006B00310001004400450046004100
-      55004C0054005F00430048004100520053004500540001004400450046004100
-      55004C0054005F00430048004100520053004500540001004400450046004100
-      55004C0054005F0043004800410052005300450054000D000A00640078004300
-      6F006D0070006F006E0065006E0074005000720069006E007400650072003100
-      4C0069006E006B0032000100440045004600410055004C0054005F0043004800
-      410052005300450054000100440045004600410055004C0054005F0043004800
-      410052005300450054000100440045004600410055004C0054005F0043004800
-      410052005300450054000D000A006400780043006F006D0070006F006E006500
-      6E0074005000720069006E0074006500720031004C0069006E006B0033000100
-      440045004600410055004C0054005F0043004800410052005300450054000100
-      440045004600410055004C0054005F0043004800410052005300450054000100
-      440045004600410055004C0054005F0043004800410052005300450054000D00
-      0A006400780043006F006D0070006F006E0065006E0074005000720069006E00
-      74006500720031004C0069006E006B0034000100440045004600410055004C00
-      54005F0043004800410052005300450054000100440045004600410055004C00
-      54005F0043004800410052005300450054000100440045004600410055004C00
-      54005F0043004800410052005300450054000D000A006400780043006F006D00
-      70006F006E0065006E0074005000720069006E0074006500720031004C006900
-      6E006B0035000100440045004600410055004C0054005F004300480041005200
-      5300450054000100440045004600410055004C0054005F004300480041005200
-      5300450054000100440045004600410055004C0054005F004300480041005200
-      5300450054000D000A006400780043006F006D0070006F006E0065006E007400
-      5000720069006E0074006500720031004C0069006E006B003600010044004500
-      4600410055004C0054005F004300480041005200530045005400010044004500
-      4600410055004C0054005F004300480041005200530045005400010044004500
-      4600410055004C0054005F0043004800410052005300450054000D000A006400
-      780043006F006D0070006F006E0065006E0074005000720069006E0074006500
-      720031004C0069006E006B0038000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000D000A006400780043006F006D0070006F00
-      6E0065006E0074005000720069006E0074006500720031004C0069006E006B00
-      39000100440045004600410055004C0054005F00430048004100520053004500
-      54000100440045004600410055004C0054005F00430048004100520053004500
-      54000100440045004600410055004C0054005F00430048004100520053004500
-      54000D000A006400780043006F006D0070006F006E0065006E00740050007200
-      69006E0074006500720031004C0069006E006B00310030000100440045004600
+      4800410052005300450054000D000A006400780043006F006D0070006F006E00
+      65006E0074005000720069006E0074006500720031004C0069006E006B003100
+      0100440045004600410055004C0054005F004300480041005200530045005400
+      0100440045004600410055004C0054005F004300480041005200530045005400
+      0100440045004600410055004C0054005F004300480041005200530045005400
+      0D000A006400780043006F006D0070006F006E0065006E007400500072006900
+      6E0074006500720031004C0069006E006B003200010044004500460041005500
+      4C0054005F004300480041005200530045005400010044004500460041005500
+      4C0054005F004300480041005200530045005400010044004500460041005500
+      4C0054005F0043004800410052005300450054000D000A006400780043006F00
+      6D0070006F006E0065006E0074005000720069006E0074006500720031004C00
+      69006E006B0033000100440045004600410055004C0054005F00430048004100
+      52005300450054000100440045004600410055004C0054005F00430048004100
+      52005300450054000100440045004600410055004C0054005F00430048004100
+      52005300450054000D000A006400780043006F006D0070006F006E0065006E00
+      74005000720069006E0074006500720031004C0069006E006B00340001004400
+      45004600410055004C0054005F00430048004100520053004500540001004400
+      45004600410055004C0054005F00430048004100520053004500540001004400
+      45004600410055004C0054005F0043004800410052005300450054000D000A00
+      6400780043006F006D0070006F006E0065006E0074005000720069006E007400
+      6500720031004C0069006E006B0035000100440045004600410055004C005400
+      5F0043004800410052005300450054000100440045004600410055004C005400
+      5F0043004800410052005300450054000100440045004600410055004C005400
+      5F0043004800410052005300450054000D000A006400780043006F006D007000
+      6F006E0065006E0074005000720069006E0074006500720031004C0069006E00
+      6B0036000100440045004600410055004C0054005F0043004800410052005300
+      450054000100440045004600410055004C0054005F0043004800410052005300
+      450054000100440045004600410055004C0054005F0043004800410052005300
+      450054000D000A006400780043006F006D0070006F006E0065006E0074005000
+      720069006E0074006500720031004C0069006E006B0038000100440045004600
       410055004C0054005F0043004800410052005300450054000100440045004600
       410055004C0054005F0043004800410052005300450054000100440045004600
       410055004C0054005F0043004800410052005300450054000D000A0064007800
       43006F006D0070006F006E0065006E0074005000720069006E00740065007200
-      31004C0069006E006B00310031000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000100440045004600410055004C0054005F00
-      43004800410052005300450054000D000A006400780043006F006D0070006F00
-      6E0065006E0074005000720069006E0074006500720031004C0069006E006B00
-      310032000100440045004600410055004C0054005F0043004800410052005300
-      450054000100440045004600410055004C0054005F0043004800410052005300
-      450054000100440045004600410055004C0054005F0043004800410052005300
-      450054000D000A00630078005300740079006C00650033000100440045004600
-      410055004C0054005F0043004800410052005300450054000100440045004600
-      410055004C0054005F0043004800410052005300450054000100440045004600
-      410055004C0054005F0043004800410052005300450054000D000A0063007800
-      5300740079006C00650034000100440045004600410055004C0054005F004300
+      31004C0069006E006B0039000100440045004600410055004C0054005F004300
       4800410052005300450054000100440045004600410055004C0054005F004300
       4800410052005300450054000100440045004600410055004C0054005F004300
-      4800410052005300450054000D000A00630078005300740079006C0065003500
-      0100440045004600410055004C0054005F004300480041005200530045005400
-      0100440045004600410055004C0054005F004300480041005200530045005400
-      0100440045004600410055004C0054005F004300480041005200530045005400
-      0D000A00630078005300740079006C0065003600010044004500460041005500
-      4C0054005F004300480041005200530045005400010044004500460041005500
-      4C0054005F004300480041005200530045005400010044004500460041005500
-      4C0054005F0043004800410052005300450054000D000A006300780053007400
-      79006C00650037000100440045004600410055004C0054005F00430048004100
-      52005300450054000100440045004600410055004C0054005F00430048004100
-      52005300450054000100440045004600410055004C0054005F00430048004100
-      52005300450054000D000A00}
+      4800410052005300450054000D000A006400780043006F006D0070006F006E00
+      65006E0074005000720069006E0074006500720031004C0069006E006B003100
+      30000100440045004600410055004C0054005F00430048004100520053004500
+      54000100440045004600410055004C0054005F00430048004100520053004500
+      54000100440045004600410055004C0054005F00430048004100520053004500
+      54000D000A006400780043006F006D0070006F006E0065006E00740050007200
+      69006E0074006500720031004C0069006E006B00310031000100440045004600
+      410055004C0054005F0043004800410052005300450054000100440045004600
+      410055004C0054005F0043004800410052005300450054000100440045004600
+      410055004C0054005F0043004800410052005300450054000D000A0064007800
+      43006F006D0070006F006E0065006E0074005000720069006E00740065007200
+      31004C0069006E006B00310032000100440045004600410055004C0054005F00
+      43004800410052005300450054000100440045004600410055004C0054005F00
+      43004800410052005300450054000100440045004600410055004C0054005F00
+      43004800410052005300450054000D000A00630078005300740079006C006500
+      33000100440045004600410055004C0054005F00430048004100520053004500
+      54000100440045004600410055004C0054005F00430048004100520053004500
+      54000100440045004600410055004C0054005F00430048004100520053004500
+      54000D000A00630078005300740079006C006500340001004400450046004100
+      55004C0054005F00430048004100520053004500540001004400450046004100
+      55004C0054005F00430048004100520053004500540001004400450046004100
+      55004C0054005F0043004800410052005300450054000D000A00630078005300
+      740079006C00650035000100440045004600410055004C0054005F0043004800
+      410052005300450054000100440045004600410055004C0054005F0043004800
+      410052005300450054000100440045004600410055004C0054005F0043004800
+      410052005300450054000D000A00630078005300740079006C00650036000100
+      440045004600410055004C0054005F0043004800410052005300450054000100
+      440045004600410055004C0054005F0043004800410052005300450054000100
+      440045004600410055004C0054005F0043004800410052005300450054000D00
+      0A00630078005300740079006C00650037000100440045004600410055004C00
+      54005F0043004800410052005300450054000100440045004600410055004C00
+      54005F0043004800410052005300450054000100440045004600410055004C00
+      54005F0043004800410052005300450054000D000A00}
   end
 end

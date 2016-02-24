@@ -822,6 +822,10 @@
       Origin = 'TypeOfInvCount'
       ProviderFlags = [pfInUpdate]
     end
+    object cds_InvCtrlGrpLanguageID: TIntegerField
+      FieldName = 'LanguageID'
+      Origin = 'LanguageID'
+    end
   end
   object cds_InvCtrlList: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -1099,6 +1103,7 @@
       'pn.Original_Price,'
       'pn.Original_Price * pt.Totalm3Nominal AS V'#228'rde'
       'from dbo.InvenRow icr'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner join dbo.PackageNumber pn on pn.PackageNo = icr.PackageNo'
       'and pn.SupplierCode = icr.SupplierCode'
       
@@ -1107,9 +1112,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       'WHERE ICR.IC_GrpNo = :IC_GrpNo'
       '')
     Left = 424
@@ -1870,8 +1874,8 @@
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
       
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+        '-- Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.Produ' +
+        'ctNo'
       ''
       'WHERE L.SupplierNo = ig.OwnerNo'
       'AND L.LoadedDate >= ig.MaxDatum'
@@ -1890,23 +1894,16 @@
         'Inner Join dbo.PackageType pt on pt.PackageTypeNo = Icr.PackageT' +
         'ypeNo'
       'Left Join dbo.ProductDesc PDE on PDE.ProductNo = pt.ProductNo'
-      'AND PDE.LanguageID = :LanguageID'
+      'AND PDE.LanguageID = ig.LanguageID'
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      ''
       'WHERE ICR.IC_GrpNo = :IC_GrpNo'
       '')
     Left = 272
     Top = 256
     ParamData = <
-      item
-        Name = 'LANGUAGEID'
-        DataType = ftInteger
-        ParamType = ptInput
-      end
       item
         Name = 'IC_GRPNO'
         DataType = ftInteger
@@ -2122,6 +2119,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2132,9 +2130,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = ICR.LogicalInventoryPoin' +
         'tNo'
@@ -2261,6 +2258,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2271,9 +2269,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = PN.LogicalInventoryPoint' +
         'No'
@@ -2392,6 +2389,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2402,9 +2400,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = PN.LogicalInventoryPoint' +
         'No'
@@ -2413,7 +2410,7 @@
       'AND Operation = 6'
       '')
     Left = 616
-    Top = 272
+    Top = 280
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -2534,6 +2531,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2544,9 +2542,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = PN.LogicalInventoryPoint' +
         'No'
@@ -2684,6 +2681,7 @@
       'Order By LS.ShippingPlanNo Desc ) AS LO'
       ''
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2694,9 +2692,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = PN.LogicalInventoryPoint' +
         'No'
@@ -2839,6 +2836,7 @@
       'AND IC.SupplierCode = ICR.SupplierCode),0) AS InCtrlList'
       ''
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2849,9 +2847,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       'WHERE ICR.IC_GrpNo = :IC_GrpNo'
       ''
       'AND Operation = 2'
@@ -2981,6 +2978,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -2991,9 +2989,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = ICR.LogicalInventoryPoin' +
         'tNo'
@@ -3130,6 +3127,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -3140,9 +3138,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = PN.LogicalInventoryPoint' +
         'No'
@@ -3277,6 +3274,7 @@
       'AND pp.Operation = 0'
       'Order By pp.ProductionDate Desc) AS Producerad'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -3287,9 +3285,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = PN.LogicalInventoryPoint' +
         'No'
@@ -3875,6 +3872,7 @@
       'PT.Totalm3Nominal AS NM3,'
       'Lag.Lager'
       'FROM dbo.InvCtrl_Pkgs ICR'
+      'Inner Join dbo.InvControlGrp ic on ic.IC_grpno = ICR.IC_GrpNo'
       'Inner Join dbo.PackageNumber pn on pn.PackageNo = ICR.PackageNo'
       
         '                              AND pn.SupplierCode = ICR.Supplier' +
@@ -3885,9 +3883,8 @@
       
         'Inner Join dbo.PackageTypeLengths ptl on ptl.PackageTypeNo = pt.' +
         'PackageTypeNo'
-      
-        'Inner Join dbo.ProductList_LM PLM on PLM.ProductNo = pt.ProductN' +
-        'o'
+      'Inner Join dbo.ProductDesc PLM on PLM.ProductNo = pt.ProductNo'
+      'AND PLM.LanguageID = ic.LanguageID'
       
         'Inner Join dbo.Lager Lag on Lag.LIPNo = ICR.LogicalInventoryPoin' +
         'tNo'
@@ -6572,7 +6569,7 @@
       'AND icr.IC_grpno = :IC_grpno'
       '')
     Left = 912
-    Top = 640
+    Top = 624
     ParamData = <
       item
         Name = 'PACKAGENO'
@@ -9352,6 +9349,50 @@
       item
         Position = 3
         Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_InvTransit: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_InvTransit'
+    Left = 1376
+    Top = 16
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+        Value = 0
+      end
+      item
+        Position = 2
+        Name = '@IC_GrpNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object ds_InvTransit: TDataSource
+    DataSet = sp_InvTransit
+    Left = 1376
+    Top = 72
+  end
+  object sp_InsTransitToResult: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_InsTransitToResult'
+    Left = 136
+    Top = 904
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@IC_GrpNo'
         DataType = ftInteger
         ParamType = ptInput
       end>

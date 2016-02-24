@@ -3843,8 +3843,8 @@ object fInvCtrl: TfInvCtrl
       end
     end
     object tsTransitInLev: TcxTabSheet
-      Caption = 'tsTransitInLev'
-      ImageIndex = 13
+      Caption = 'Transit'
+      ImageIndex = 25
       object Panel24: TPanel
         Left = 0
         Top = 0
@@ -3857,32 +3857,31 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitTop = 8
         object Label16: TLabel
           Left = 433
           Top = 10
-          Width = 551
+          Width = 430
           Height = 16
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
           Caption = 
-            'Inleveranser utlastade mellan inventerings- och maxdatum men EJ ' +
-            'ankomstregistrerade '#228'nnu'
+            'Inleveranser utlastade f'#246're maxdatum men EJ ankomstregistrerade ' +
+            #228'nnu'
         end
         object Label17: TLabel
           Left = 433
           Top = 27
-          Width = 406
+          Width = 407
           Height = 16
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
           Caption = 
-            'Inleveranserna flyttas till "InLev" fliken n'#228'r de '#228'r ankomstregi' +
-            'strerade.'
+            'Inleveranserna flyttas till "InLev" fliken n'#228'r de har ankomstreg' +
+            'istrerats.'
         end
         object BitBtn50: TBitBtn
           Left = 10
@@ -3893,6 +3892,7 @@ object fInvCtrl: TfInvCtrl
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
+          Action = acRefreshTransit
           Caption = 'Uppdatera'
           Glyph.Data = {
             36090000424D3609000000000000360000002800000018000000180000000100
@@ -3970,7 +3970,6 @@ object fInvCtrl: TfInvCtrl
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
           TabOrder = 0
-          OnClick = acGetInLeveranserExecute
         end
         object BitBtn51: TBitBtn
           Left = 238
@@ -3981,6 +3980,7 @@ object fInvCtrl: TfInvCtrl
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
+          Action = acPrintTransit
           Caption = 'Skriv ut'
           Glyph.Data = {
             36090000424D3609000000000000360000002800000018000000180000000100
@@ -4058,7 +4058,6 @@ object fInvCtrl: TfInvCtrl
             B500E7BDB500E7B5AD00F7BDB500FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
           TabOrder = 1
-          OnClick = acPrintInLevExecute
         end
       end
       object grdTransitInLev: TcxGrid
@@ -4068,17 +4067,159 @@ object fInvCtrl: TfInvCtrl
         Height = 541
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 16
-        ExplicitTop = 88
-        ExplicitWidth = 1057
-        ExplicitHeight = 185
         object grdTransitInLevDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dmInvCtrl.ds_InvTransit
+          DataController.KeyFieldNames = 'PackageNo;SupplierCode'
           DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '#,###,###,###.000'
+              Kind = skSum
+              FieldName = 'AM3'
+              Column = grdTransitInLevDBTableView1AM3
+            end
+            item
+              Format = '#,###,###,###.000'
+              Kind = skSum
+              FieldName = 'NM3'
+              Column = grdTransitInLevDBTableView1NM3
+            end
+            item
+              Format = '#######'
+              Kind = skCount
+              FieldName = 'PackageNo'
+              Column = grdTransitInLevDBTableView1PackageNo
+            end
+            item
+              Format = '##########'
+              Kind = skSum
+              FieldName = 'Styck'
+              Column = grdTransitInLevDBTableView1Styck
+            end>
           DataController.Summary.SummaryGroups = <>
+          DataController.Summary.Options = [soMultipleSelectedRecords]
+          OptionsBehavior.PullFocusing = True
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.MultiSelect = True
           OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
           OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          object grdTransitInLevDBTableView1IC_GrpNo: TcxGridDBColumn
+            DataBinding.FieldName = 'IC_GrpNo'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1LIPNo: TcxGridDBColumn
+            DataBinding.FieldName = 'LIPNo'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1InventeringsMetod: TcxGridDBColumn
+            DataBinding.FieldName = 'InventeringsMetod'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1Verk: TcxGridDBColumn
+            DataBinding.FieldName = 'Verk'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 65
+          end
+          object grdTransitInLevDBTableView1ProductDisplayName: TcxGridDBColumn
+            Caption = 'Produkt'
+            DataBinding.FieldName = 'ProductDisplayName'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 286
+          end
+          object grdTransitInLevDBTableView1PCSPERLENGTH: TcxGridDBColumn
+            Caption = 'Styck/L'#228'ngd'
+            DataBinding.FieldName = 'PCSPERLENGTH'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 152
+          end
+          object grdTransitInLevDBTableView1PackageNo: TcxGridDBColumn
+            Caption = 'Paketnr'
+            DataBinding.FieldName = 'PackageNo'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 65
+          end
+          object grdTransitInLevDBTableView1SupplierCode: TcxGridDBColumn
+            Caption = 'Prefix'
+            DataBinding.FieldName = 'SupplierCode'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 57
+          end
+          object grdTransitInLevDBTableView1PackageTypeNo: TcxGridDBColumn
+            DataBinding.FieldName = 'PackageTypeNo'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+            Width = 67
+          end
+          object grdTransitInLevDBTableView1NoOfPkgs: TcxGridDBColumn
+            DataBinding.FieldName = 'NoOfPkgs'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+            Width = 68
+          end
+          object grdTransitInLevDBTableView1AntalPaketILager: TcxGridDBColumn
+            DataBinding.FieldName = 'AntalPaketILager'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1LogicalInventoryName: TcxGridDBColumn
+            Caption = 'Lager'
+            DataBinding.FieldName = 'LogicalInventoryName'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 98
+          end
+          object grdTransitInLevDBTableView1Status: TcxGridDBColumn
+            DataBinding.FieldName = 'Status'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1OwnerNo: TcxGridDBColumn
+            DataBinding.FieldName = 'OwnerNo'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1LO: TcxGridDBColumn
+            DataBinding.FieldName = 'LO'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 47
+          end
+          object grdTransitInLevDBTableView1Res01: TcxGridDBColumn
+            DataBinding.FieldName = 'Res01'
+            PropertiesClassName = 'TcxLabelProperties'
+            Visible = False
+          end
+          object grdTransitInLevDBTableView1AM3: TcxGridDBColumn
+            DataBinding.FieldName = 'AM3'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 160
+          end
+          object grdTransitInLevDBTableView1NM3: TcxGridDBColumn
+            DataBinding.FieldName = 'NM3'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 130
+          end
+          object grdTransitInLevDBTableView1Styck: TcxGridDBColumn
+            DataBinding.FieldName = 'Styck'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 96
+          end
+          object grdTransitInLevDBTableView1Lastnr: TcxGridDBColumn
+            DataBinding.FieldName = 'Lastnr'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 124
+          end
+          object grdTransitInLevDBTableView1Utlastad: TcxGridDBColumn
+            DataBinding.FieldName = 'Utlastad'
+            PropertiesClassName = 'TcxLabelProperties'
+            Width = 134
+          end
         end
         object grdTransitInLevLevel1: TcxGridLevel
           GridView = grdTransitInLevDBTableView1
@@ -8609,6 +8750,14 @@ object fInvCtrl: TfInvCtrl
       ImageIndex = 25
       OnExecute = acRensaGammalTorkdataExecute
     end
+    object acRefreshTransit: TAction
+      Caption = 'Uppdatera'
+      OnExecute = acRefreshTransitExecute
+    end
+    object acPrintTransit: TAction
+      Caption = 'Skriv ut'
+      OnExecute = acPrintTransitExecute
+    end
   end
   object imglistActions: TImageList
     Height = 24
@@ -10714,7 +10863,7 @@ object fInvCtrl: TfInvCtrl
     Top = 536
   end
   object dxComponentPrinter1: TdxComponentPrinter
-    CurrentLink = dxComponentPrinter1Link13
+    CurrentLink = dxComponentPrinter1Link14
     Version = 0
     Left = 689
     Top = 577
@@ -10904,7 +11053,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42360.266324907410000000
+      ReportDocument.CreationDate = 42367.071868773150000000
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
@@ -10946,6 +11095,29 @@ object fInvCtrl: TfInvCtrl
         '[Machine Name][User Name]')
       PrinterPage.PageHeader.RightTitle.Strings = (
         '[Date & Time Printed]')
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      BuiltInReportLink = True
+    end
+    object dxComponentPrinter1Link14: TdxGridReportLink
+      Component = grdTransitInLev
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.GrayShading = True
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.Orientation = poLandscape
+      PrinterPage.PageFooter.CenterTitle.Strings = (
+        '[Page # of Pages #]')
+      PrinterPage.PageHeader.LeftTitle.Strings = (
+        '[Machine Name][User Name]')
+      PrinterPage.PageHeader.RightTitle.Strings = (
+        '[Date Printed][Time Printed]')
       PrinterPage.PageSize.X = 210000
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0

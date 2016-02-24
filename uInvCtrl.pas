@@ -38,7 +38,10 @@ uses
   dxSkinsdxRibbonPainter, dxPScxPivotGridLnk, dxPScxSSLnk, cxButtons,
   cxGroupBox, cxRadioGroup, cxNavigator, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk ;
+  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client ;
 
 type
   TfInvCtrl = class(TForm)
@@ -669,6 +672,30 @@ type
     grdTransitInLevLevel1: TcxGridLevel;
     grdTransitInLev: TcxGrid;
     Label17: TLabel;
+    grdTransitInLevDBTableView1IC_GrpNo: TcxGridDBColumn;
+    grdTransitInLevDBTableView1LIPNo: TcxGridDBColumn;
+    grdTransitInLevDBTableView1InventeringsMetod: TcxGridDBColumn;
+    grdTransitInLevDBTableView1PackageNo: TcxGridDBColumn;
+    grdTransitInLevDBTableView1SupplierCode: TcxGridDBColumn;
+    grdTransitInLevDBTableView1PackageTypeNo: TcxGridDBColumn;
+    grdTransitInLevDBTableView1NoOfPkgs: TcxGridDBColumn;
+    grdTransitInLevDBTableView1AntalPaketILager: TcxGridDBColumn;
+    grdTransitInLevDBTableView1LogicalInventoryName: TcxGridDBColumn;
+    grdTransitInLevDBTableView1Status: TcxGridDBColumn;
+    grdTransitInLevDBTableView1OwnerNo: TcxGridDBColumn;
+    grdTransitInLevDBTableView1LO: TcxGridDBColumn;
+    grdTransitInLevDBTableView1Res01: TcxGridDBColumn;
+    grdTransitInLevDBTableView1AM3: TcxGridDBColumn;
+    grdTransitInLevDBTableView1NM3: TcxGridDBColumn;
+    grdTransitInLevDBTableView1Styck: TcxGridDBColumn;
+    acRefreshTransit: TAction;
+    acPrintTransit: TAction;
+    dxComponentPrinter1Link14: TdxGridReportLink;
+    grdTransitInLevDBTableView1Verk: TcxGridDBColumn;
+    grdTransitInLevDBTableView1ProductDisplayName: TcxGridDBColumn;
+    grdTransitInLevDBTableView1PCSPERLENGTH: TcxGridDBColumn;
+    grdTransitInLevDBTableView1Lastnr: TcxGridDBColumn;
+    grdTransitInLevDBTableView1Utlastad: TcxGridDBColumn;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -915,6 +942,8 @@ type
     procedure acRensaGammalTorkdataExecute(Sender: TObject);
     procedure teSearchInvNoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure acRefreshTransitExecute(Sender: TObject);
+    procedure acPrintTransitExecute(Sender: TObject);
 
   private
     { Private declarations }
@@ -2594,6 +2623,25 @@ begin
   acPrintSummaryReport.Enabled:= (InventeringPresent)
   and (cds_InvCtrlGrp.Active)  
   and (cds_InvCtrlGrpStatus.AsInteger > 0) ;
+ End ;
+end;
+
+procedure TfInvCtrl.acPrintTransitExecute(Sender: TObject);
+begin
+ With dmInvCtrl do
+ Begin
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.LeftTitle.Clear ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Clear ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_90' (* 'Transit paket' *) )) ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_79' (* 'Inventeringsdatum: ' *) )+SQLTimeStampToStr(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_80' (* 'yyyy-mm-dd' *) ),cds_InvCtrlGrpInventeringsdatum.AsSQLTimeStamp)) ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.LeftTitle.Add(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_81' (* 'Löpnr: ' *) )+cds_InvCtrlGrpIC_grpno.AsString) ;
+
+  dxComponentPrinter1Link14.PrinterPage.Orientation      := poLandscape ;
+  dxComponentPrinter1Link14.OptionsOnEveryPage.Footers   := False ;
+  dxComponentPrinter1Link14.ShrinkToPageWidth            := True ;
+  dxComponentPrinter1Link14.PrinterPage.ApplyToPrintDevice ;
+  dxComponentPrinter1.Preview(True, dxComponentPrinter1Link14) ;
  End ;
 end;
 
@@ -4939,7 +4987,7 @@ begin
   try
    cds_CtrlList.Active := False ;
    cds_CtrlList.ParamByName('IC_grpno').AsInteger   := cds_InvCtrlGrpIC_grpno.AsInteger ;
-   cds_CtrlList.ParamByName('LanguageID').AsInteger := ThisUser.LanguageID ;
+//   cds_CtrlList.ParamByName('LanguageID').AsInteger := ThisUser.LanguageID ;
    cds_CtrlList.Active := True ;
   finally
    cds_CtrlList.EnableControls ;
@@ -5185,6 +5233,14 @@ begin
   acRefreshResultList.Enabled := (cds_InvCtrlGrp.Active) and (cds_InvCtrlGrp.RecordCount > 0)
   and (cds_InvCtrlGrpIC_grpno.AsInteger > 0) ;
  End ;
+end;
+
+procedure TfInvCtrl.acRefreshTransitExecute(Sender: TObject);
+begin
+ With dmInvCtrl do
+ Begin
+   Refresh_InvTransit(cds_InvCtrlGrpIC_grpno.AsInteger) ;
+ End;
 end;
 
 procedure TfInvCtrl.acPrintResultListWysiwygExecute(Sender: TObject);
