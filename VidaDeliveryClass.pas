@@ -23,7 +23,7 @@ type
     property group : String read GroupSQL;
     property Status : Boolean read VisibleStatus;
 
-    constructor Create(const FieldIndex : String; const FieldSQLName : String; const GroupSQL : String; const VisibleStatus : Boolean);
+    constructor Create(const FieldIndex : String; const FieldSQLName : String; const GroupSQL : String; const VisibleStatus : Boolean) OverLoad;
 
     function LoadData : String;
     function GetStatus(const IndexStatus : String): Boolean;
@@ -176,6 +176,7 @@ begin
   self.FieldSQLName   := FieldSQLName;
   self.GroupSQL       := GroupSQL;
   self.VisibleStatus  := VisibleStatus;
+  gridview := nil;
 end;
 
 function Delivery_Class.GetStatus(const IndexStatus : String): Boolean;

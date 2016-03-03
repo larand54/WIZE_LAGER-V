@@ -1315,29 +1315,34 @@ procedure TfDeliveryReport.acRefreshProdPaketNrExecute(Sender: TObject);
 var
   Delivery : Delivery_Class;
 begin
- //Refresh ProdPaketNr
- With dmInventory do
- Begin
-  if not SelectedOwnersOK then
+ // Refresh ProdPaketNr
+  With dmInventory do
   Begin
-   ShowMessage(siLangLinked_fDeliveryReport.GetTextOrDefault('IDS_46' (* 'Välj minst ett Verk!' *) ));
-   Exit ;
+    if not SelectedOwnersOK then
+    Begin
+      ShowMessage(siLangLinked_fDeliveryReport.GetTextOrDefault
+        ('IDS_46' (* 'Välj minst ett Verk!' *) ));
+      exit;
+    End;
+
+    dmInventory.KeyField := '';
+    // if mtUserPropKilnNo.AsInteger = 0 then   SetDateFields ;
+
+    cds_DeliveryStat.Active := False;
+    try
+      Delivery := Delivery_Class.Create('', '', '', False);
+      Build_Delivery;
+
+      Delivery.gridview := grdProdPaketNrDBBandedTableView1;
+      Delivery.LoadData;
+
+      grdProdPaketNrDBBandedTableView1.DataController.KeyFieldNames := KeyField;
+
+      cds_DeliveryStat.Active := True;
+    finally
+      Delivery.Free;
+    end;
   End;
-
-  dmInventory.KeyField     := '' ;
-//  if mtUserPropKilnNo.AsInteger = 0 then   SetDateFields ;
-
-  cds_DeliveryStat.Active  := False ;
-
-  Build_Delivery ;
-
-  Delivery.gridview := grdProdPaketNrDBBandedTableView1;
-  Delivery.LoadData;
-
-  grdProdPaketNrDBBandedTableView1.DataController.KeyFieldNames := KeyField ;
-
-  cds_DeliveryStat.Active  := True ;
- End;
 end;
 
 procedure TfDeliveryReport.ccbATPropertiesClickCheck(Sender: TObject;
@@ -1875,5 +1880,3 @@ Begin
 End;
 
 End.
-
-

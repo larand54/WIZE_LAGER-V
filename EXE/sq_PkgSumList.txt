@@ -98,9 +98,11 @@ Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1 
 AND pn.Status = 1
+AND pn.DateCreated >= '2016-01-13'
+AND pn.DateCreated <= '2016-03-01'
 AND Verk.SalesRegionNo = 741
- AND ( LIP.InvCode = '44' ) 
- AND ( Verk.PktNrLevKod = 10 ) 
+
+ AND ( Verk.PktNrLevKod = 15 ) 
 
 
 
