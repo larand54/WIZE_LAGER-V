@@ -528,9 +528,6 @@ type
     cds_StoppTidStoppStartWithTime: TSQLTimeStampField;
     cds_StoppTidKvitterat: TIntegerField;
     cds_StoppTidStoppOrsakNr: TIntegerField;
-    cds_StoppTidStoppSeconds: TFloatField;
-    cds_StoppTidStoppMinutes: TFloatField;
-    cds_StoppTidStoppHours: TFloatField;
     cds_StoppTidDriftPlatsnr: TIntegerField;
     cds_StoppTidVerkNo: TIntegerField;
     cds_StoppTidNoOfStopps: TIntegerField;
@@ -561,7 +558,6 @@ type
     pvStoppTidQuarter: TcxDBPivotGridField;
     pvStoppTidMonth: TcxDBPivotGridField;
     pvStoppTidVecka: TcxDBPivotGridField;
-    cds_StoppTidStoppStartNoTime: TSQLTimeStampField;
     acCalcWorkingTime: TAction;
     cdsStandardHours: TFDQuery;
     cdsStandardHoursDriftPlatsNr: TIntegerField;
@@ -710,6 +706,10 @@ type
     pvStoppTidRunID: TcxDBPivotGridField;
     pvStoppTidExternID: TcxDBPivotGridField;
     pvStoppTidNotering: TcxDBPivotGridField;
+    cds_StoppTidStoppStartNoTime: TDateField;
+    cds_StoppTidStoppSeconds: TFloatField;
+    cds_StoppTidStoppMinutes: TBCDField;
+    cds_StoppTidStoppHours: TFloatField;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);

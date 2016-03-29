@@ -4,12 +4,12 @@
   Align = alClient
   BorderStyle = bsNone
   Caption = 'LagerBalans'
-  ClientHeight = 711
-  ClientWidth = 1238
+  ClientHeight = 875
+  ClientWidth = 1524
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
@@ -17,62 +17,94 @@
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 1238
-    Height = 74
+    Width = 1524
+    Height = 91
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 0
     object Label9: TLabel
-      Left = 865
-      Top = 30
-      Width = 87
-      Height = 13
+      Left = 1065
+      Top = 37
+      Width = 114
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'F'#246'rs'#228'ljningsregion:'
       Visible = False
     end
     object Label11: TLabel
-      Left = 148
-      Top = 4
-      Width = 70
-      Height = 13
+      Left = 182
+      Top = 5
+      Width = 86
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'PERIOD  FOM'
     end
     object Label4: TLabel
-      Left = 322
-      Top = 4
-      Width = 24
-      Height = 13
+      Left = 396
+      Top = 5
+      Width = 30
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'TOM'
     end
     object Label2: TLabel
-      Left = 913
-      Top = 54
-      Width = 31
-      Height = 13
+      Left = 1124
+      Top = 66
+      Width = 40
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #196'gare:'
       Visible = False
     end
     object Label3: TLabel
-      Left = 148
-      Top = 25
-      Width = 39
-      Height = 13
+      Left = 182
+      Top = 31
+      Width = 46
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'M'#229'n/'#197'r:'
     end
     object Label5: TLabel
-      Left = 148
-      Top = 46
-      Width = 34
-      Height = 13
+      Left = 182
+      Top = 57
+      Width = 42
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Datum:'
     end
     object StartDate: TcxDateEdit
-      Left = 195
-      Top = 40
+      Left = 240
+      Top = 49
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.DateButtons = [btnClear]
       Properties.ImmediatePost = True
       Properties.Kind = ckDateTime
@@ -83,11 +115,15 @@
       StyleFocused.LookAndFeel.Kind = lfFlat
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 8
-      Width = 121
+      Width = 149
     end
     object EndDate: TcxDateEdit
-      Left = 322
-      Top = 40
+      Left = 396
+      Top = 49
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.ImmediatePost = True
       Properties.Kind = ckDateTime
       Style.LookAndFeel.Kind = lfFlat
@@ -95,11 +131,15 @@
       StyleFocused.LookAndFeel.Kind = lfFlat
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 9
-      Width = 121
+      Width = 149
     end
     object lcSalesRegion: TcxDBLookupComboBox
-      Left = 960
-      Top = 24
+      Left = 1182
+      Top = 30
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'SalesRegion'
       DataBinding.DataSource = dsFilter
       Properties.DropDownListStyle = lsFixedList
@@ -112,11 +152,15 @@
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 1
       Visible = False
-      Width = 177
+      Width = 217
     end
     object lcVerk: TcxDBLookupComboBox
-      Left = 952
-      Top = 48
+      Left = 1172
+      Top = 59
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'VERK'
       DataBinding.DataSource = dsFilter
       Properties.DropDownListStyle = lsFixedList
@@ -129,11 +173,15 @@
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 0
       Visible = False
-      Width = 177
+      Width = 218
     end
     object cbMonthStart: TcxComboBox
-      Left = 195
-      Top = 19
+      Left = 240
+      Top = 23
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.Items.Strings = (
         '1'
         '2'
@@ -154,11 +202,15 @@
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 4
       Text = '10'
-      Width = 57
+      Width = 70
     end
     object cbYearStart: TcxComboBox
-      Left = 259
-      Top = 19
+      Left = 319
+      Top = 23
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.Items.Strings = (
         '2007'
         '2008'
@@ -171,11 +223,15 @@
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 5
       Text = '2007'
-      Width = 57
+      Width = 70
     end
     object cbYearEnd: TcxComboBox
-      Left = 386
-      Top = 19
+      Left = 475
+      Top = 23
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.Items.Strings = (
         '2007'
         '2008'
@@ -188,11 +244,15 @@
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 7
       Text = '2007'
-      Width = 57
+      Width = 70
     end
     object cbMonthEnd: TcxComboBox
-      Left = 322
-      Top = 19
+      Left = 396
+      Top = 23
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.Items.Strings = (
         '1'
         '2'
@@ -213,40 +273,56 @@
       StyleHot.LookAndFeel.Kind = lfFlat
       TabOrder = 6
       Text = '10'
-      Width = 57
+      Width = 70
     end
     object bbCurrentMonth: TBitBtn
-      Left = 8
-      Top = 8
-      Width = 121
-      Height = 29
+      Left = 10
+      Top = 10
+      Width = 149
+      Height = 36
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acGetCurrentMonth
       Caption = 'Aktuell m'#229'nad'
       TabOrder = 2
     end
     object bbPreviousMonth: TBitBtn
-      Left = 8
-      Top = 38
-      Width = 60
-      Height = 29
+      Left = 10
+      Top = 47
+      Width = 74
+      Height = 35
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acGetPrevMonth
       Caption = 'F'#246'reg.'
       TabOrder = 3
     end
     object BitBtn1: TBitBtn
-      Left = 69
-      Top = 38
-      Width = 60
-      Height = 29
+      Left = 85
+      Top = 47
+      Width = 74
+      Height = 35
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acGetNextMonth
       Caption = 'N'#228'sta'
       TabOrder = 10
     end
     object BitBtn2: TBitBtn
-      Left = 448
-      Top = 19
-      Width = 97
-      Height = 33
+      Left = 551
+      Top = 23
+      Width = 120
+      Height = 41
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acRefresh
       Caption = '&Uppdatera'
       Glyph.Data = {
@@ -327,10 +403,14 @@
       TabOrder = 11
     end
     object BitBtn3: TBitBtn
-      Left = 544
-      Top = 19
-      Width = 97
-      Height = 33
+      Left = 670
+      Top = 23
+      Width = 119
+      Height = 41
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acPrint
       Caption = 'Skriv ut'
       Glyph.Data = {
@@ -411,10 +491,14 @@
       TabOrder = 12
     end
     object BitBtn5: TBitBtn
-      Left = 640
-      Top = 19
-      Width = 75
-      Height = 33
+      Left = 788
+      Top = 23
+      Width = 92
+      Height = 41
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acClose
       Caption = 'St'#228'ng'
       Glyph.Data = {
@@ -495,94 +579,134 @@
       TabOrder = 13
     end
     object BitBtn6: TBitBtn
-      Left = 756
+      Left = 930
       Top = 1
-      Width = 137
-      Height = 22
+      Width = 169
+      Height = 27
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acInventoryMissing
       Caption = 'Ej best'#228'mda lagergrupper'
       TabOrder = 14
       Visible = False
     end
     object Button1: TButton
-      Left = 448
-      Top = 56
-      Width = 97
-      Height = 17
+      Left = 551
+      Top = 69
+      Width = 120
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'sq_LBSR'
       TabOrder = 15
       Visible = False
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 544
-      Top = 56
-      Width = 97
-      Height = 17
+      Left = 670
+      Top = 69
+      Width = 119
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'sq_LagBalORT'
       TabOrder = 16
       Visible = False
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 640
-      Top = 56
-      Width = 73
-      Height = 17
+      Left = 788
+      Top = 69
+      Width = 90
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'sq_LagBal'
       TabOrder = 17
       Visible = False
       OnClick = Button3Click
     end
     object teInventeringsSet: TcxTextEdit
-      Left = 800
-      Top = 27
+      Left = 985
+      Top = 33
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 18
       Text = '21'
-      Width = 73
+      Width = 89
     end
     object cxLabel1: TcxLabel
-      Left = 720
-      Top = 32
+      Left = 886
+      Top = 39
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Inventeringsset:'
     end
     object cbFilterZeros: TcxCheckBox
-      Left = 721
-      Top = 48
+      Left = 887
+      Top = 59
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Filtrera bort 0:or'
       Properties.OnChange = cbFilterZerosPropertiesChange
       State = cbsChecked
       TabOrder = 20
-      Width = 121
+      Width = 149
     end
   end
   object cxSplitter1: TcxSplitter
-    Left = 617
-    Top = 74
+    Left = 759
+    Top = 91
     Width = 8
-    Height = 637
+    Height = 784
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     HotZoneClassName = 'TcxMediaPlayer8Style'
     Control = Panel2
     Color = clMaroon
     ParentColor = False
   end
   object Panel1: TPanel
-    Left = 625
-    Top = 74
-    Width = 613
-    Height = 637
+    Left = 767
+    Top = 91
+    Width = 757
+    Height = 784
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 2
     object PanelLagerNamn: TPanel
       Left = 1
       Top = 1
-      Width = 611
-      Height = 18
+      Width = 755
+      Height = 22
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alTop
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -15
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
@@ -590,9 +714,13 @@
     end
     object grdLagerBalans: TcxGrid
       Left = 1
-      Top = 19
-      Width = 611
-      Height = 617
+      Top = 23
+      Width = 755
+      Height = 760
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       TabOrder = 1
       object grdLagerBalansDBTableView1: TcxGridDBTableView
@@ -698,17 +826,25 @@
   end
   object Panel2: TPanel
     Left = 0
-    Top = 74
-    Width = 617
-    Height = 637
+    Top = 91
+    Width = 759
+    Height = 784
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alLeft
     Caption = 'Panel2'
     TabOrder = 3
     object grdLagerBalansORT: TcxGrid
       Left = 1
-      Top = 211
-      Width = 615
-      Height = 425
+      Top = 258
+      Width = 757
+      Height = 525
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       TabOrder = 0
       object grdLagerBalansORTDBTableView1: TcxGridDBTableView
@@ -948,16 +1084,24 @@
     object Panel4: TPanel
       Left = 1
       Top = 1
-      Width = 615
-      Height = 202
+      Width = 757
+      Height = 249
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
       object grdSalesRegion: TcxGrid
         Left = 0
         Top = 0
-        Width = 615
-        Height = 202
+        Width = 757
+        Height = 249
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 0
         object grdSalesRegionDBBandedTableView1: TcxGridDBBandedTableView
@@ -1064,9 +1208,13 @@
     end
     object cxSplitter2: TcxSplitter
       Left = 1
-      Top = 203
-      Width = 615
+      Top = 250
+      Width = 757
       Height = 8
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       HotZoneClassName = 'TcxMediaPlayer8Style'
       AlignSplitter = salTop
       Control = Panel4
@@ -2130,7 +2278,7 @@
   object cxStyleRepository1: TcxStyleRepository
     Left = 136
     Top = 312
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svFont]
       Font.Charset = DEFAULT_CHARSET
@@ -2147,6 +2295,7 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2155,6 +2304,7 @@
       PrinterPage.Margins.Left = 12700
       PrinterPage.Margins.Right = 12700
       PrinterPage.Margins.Top = 12700
+      PrinterPage.Orientation = poLandscape
       PrinterPage.PageFooter.CenterTitle.Strings = (
         '[Page # of Pages #]')
       PrinterPage.PageHeader.LeftTitle.Strings = (
@@ -2165,6 +2315,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

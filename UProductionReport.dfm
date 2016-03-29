@@ -20,8 +20,6 @@ object fProductionReport: TfProductionReport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 120
   TextHeight = 16
   object pcInventory: TcxPageControl
@@ -41,8 +39,6 @@ object fProductionReport: TfProductionReport
     Properties.TabSlants.Kind = skCutCorner
     LookAndFeel.Kind = lfUltraFlat
     TabSlants.Kind = skCutCorner
-    ExplicitTop = 139
-    ExplicitHeight = 873
     ClientRectBottom = 875
     ClientRectRight = 1537
     ClientRectTop = 23
@@ -53,9 +49,6 @@ object fProductionReport: TfProductionReport
       Margins.Bottom = 4
       Caption = 'Produktion (paketnr.summering)'
       ImageIndex = 4
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -179,7 +172,7 @@ object fProductionReport: TfProductionReport
         Left = 0
         Top = 50
         Width = 1537
-        Height = 798
+        Height = 802
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -605,9 +598,6 @@ object fProductionReport: TfProductionReport
       Margins.Bottom = 4
       Caption = 'Produktion (produktsummering)'
       ImageIndex = 5
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -731,7 +721,7 @@ object fProductionReport: TfProductionReport
         Left = 0
         Top = 50
         Width = 1537
-        Height = 798
+        Height = 802
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -1102,9 +1092,6 @@ object fProductionReport: TfProductionReport
       Margins.Bottom = 4
       Caption = 'CR Rapporter'
       ImageIndex = 2
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -1182,15 +1169,17 @@ object fProductionReport: TfProductionReport
         Left = 0
         Top = 80
         Width = 1537
-        Height = 768
+        Height = 772
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
         Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
+        ExplicitWidth = 1561
+        ExplicitHeight = 780
         ControlData = {
-          10070000168100007E4000000B00FFFF0B00FFFF0B00FFFF0B00FFFF0B00FFFF
+          10070000157F0000D53F00000B00FFFF0B00FFFF0B00FFFF0B00FFFF0B00FFFF
           0B00FFFF0B00FFFF0B00FFFF0B0000000B00FFFF0B00FFFF0B00FFFF0B00FFFF
           0B0000000B00FFFF0B00FFFF0B00FFFF0B00FFFF08000200000000000B00FFFF
           0B00FFFF0B0000000B0000000B00FFFF0B00FFFF13001D040000}
@@ -1226,9 +1215,10 @@ object fProductionReport: TfProductionReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 129
-    ClientRectRight = 1537
-    ClientRectTop = 0
+    ClientRectBottom = 128
+    ClientRectLeft = 1
+    ClientRectRight = 1536
+    ClientRectTop = 1
     object tsLagret: TcxTabSheet
       Margins.Left = 4
       Margins.Top = 4
@@ -1236,15 +1226,11 @@ object fProductionReport: TfProductionReport
       Margins.Bottom = 4
       Caption = 'Lager'
       ImageIndex = 2
-      ExplicitLeft = 5
-      ExplicitTop = 5
-      ExplicitWidth = 1527
-      ExplicitHeight = 119
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1537
-        Height = 129
+        Width = 1535
+        Height = 127
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -1252,13 +1238,11 @@ object fProductionReport: TfProductionReport
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1527
-        ExplicitHeight = 119
         DesignSize = (
-          1537
-          129)
+          1535
+          127)
         object Bevel1: TBevel
-          Left = 4
+          Left = 2
           Top = 33
           Width = 1526
           Height = 5
@@ -1523,6 +1507,7 @@ object fProductionReport: TfProductionReport
           Margins.Bottom = 4
           Properties.EmptySelectionText = 'Ingen vald'
           Properties.DropDownRows = 15
+          Properties.EditValueFormat = cvfStatesString
           Properties.Items = <>
           Properties.OnCloseUp = cbOwnerPropertiesCloseUp
           Style.StyleController = cxEditStyleController3
@@ -4931,16 +4916,16 @@ object fProductionReport: TfProductionReport
       ''
       'FROM   dbo.Client        C'
       '       inner join dbo.ClientRole R on R.ClientNo = C.ClientNo'
-      ''
       'WHERE  ('
       '((R.RoleType = 9)'
       'OR (R.RoleType = 6)'
       'OR (R.RoleType = 7))'
       'and C.IntVerk = 1)'
-      ''
       'OR (R.RoleType = 6)'
-      ''
+      'AND (C.PktNrLevKod IS NOT NULL)'
       'Order by C.clientName'
+      ''
+      ''
       '')
     Left = 136
     Top = 408

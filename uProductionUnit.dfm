@@ -2,87 +2,120 @@ object frmProductionUnit: TfrmProductionUnit
   Left = 198
   Top = 106
   Caption = 'M'#228'tpunkter verk'
-  ClientHeight = 340
-  ClientWidth = 921
+  ClientHeight = 433
+  ClientWidth = 1134
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 921
-    Height = 73
+    Width = 1134
+    Height = 90
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
     object bbInsert: TBitBtn
-      Left = 24
-      Top = 40
-      Width = 75
-      Height = 25
+      Left = 30
+      Top = 49
+      Width = 92
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'L'#228'gg till rad'
       TabOrder = 0
       OnClick = bbInsertClick
     end
     object bbRemove: TBitBtn
-      Left = 112
-      Top = 40
-      Width = 75
-      Height = 25
+      Left = 138
+      Top = 49
+      Width = 92
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Ta bort rad'
       TabOrder = 1
       OnClick = bbRemoveClick
     end
     object bbCancelRow: TBitBtn
-      Left = 192
-      Top = 40
-      Width = 75
-      Height = 25
+      Left = 236
+      Top = 49
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #197'ngra rad'
       TabOrder = 2
       OnClick = bbCancelRowClick
     end
     object bbApplyChanges: TBitBtn
-      Left = 416
-      Top = 40
-      Width = 91
-      Height = 25
+      Left = 512
+      Top = 49
+      Width = 112
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Spara '#228'ndringar'
       TabOrder = 3
       OnClick = bbApplyChangesClick
     end
     object bbCancelChanges: TBitBtn
-      Left = 520
-      Top = 40
-      Width = 89
-      Height = 25
+      Left = 640
+      Top = 49
+      Width = 110
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #197'ngra '#228'ndringar'
       TabOrder = 4
       OnClick = bbCancelChangesClick
     end
     object cmbClients: TcxComboBox
-      Left = 24
-      Top = 8
+      Left = 30
+      Top = 10
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 5
       Text = 'Select client'
-      Width = 121
+      Width = 148
     end
   end
   object grdProductionUnits: TcxGrid
     Left = 0
-    Top = 73
-    Width = 921
-    Height = 267
+    Top = 90
+    Width = 1134
+    Height = 343
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 328
     object grdProductionUnitsDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dmsContact.ds_ProductionUnit
