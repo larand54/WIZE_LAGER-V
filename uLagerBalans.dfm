@@ -777,7 +777,7 @@
         OptionsView.Footer = True
         OptionsView.GridLines = glNone
         OptionsView.GroupFooters = gfAlwaysVisible
-        OptionsView.GroupRowHeight = 18
+        OptionsView.GroupRowHeight = 20
         object grdLagerBalansDBTableView1GRUPP: TcxGridDBColumn
           DataBinding.FieldName = 'GRUPP'
           PropertiesClassName = 'TcxLabelProperties'
@@ -2295,7 +2295,6 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2315,7 +2314,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

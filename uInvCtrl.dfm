@@ -34,7 +34,7 @@ object fInvCtrl: TfInvCtrl
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsTransitInLev
+    Properties.ActivePage = tsSkapaLagerListor
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
@@ -50,6 +50,9 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Kontrollista'
       ImageIndex = 15
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel16: TPanel
         Left = 0
         Top = 0
@@ -2552,6 +2555,9 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Flyttade'
       ImageIndex = 11
       TabVisible = False
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel21: TPanel
         Left = 0
         Top = 0
@@ -2572,6 +2578,9 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Avreg. i prod'#39'n'
       ImageIndex = 20
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -2910,6 +2919,9 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Avreg f'#246're inv.dat'
       ImageIndex = 20
       TabVisible = False
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -3845,6 +3857,9 @@ object fInvCtrl: TfInvCtrl
     object tsTransitInLev: TcxTabSheet
       Caption = 'Transit'
       ImageIndex = 25
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel24: TPanel
         Left = 0
         Top = 0
@@ -4233,6 +4248,9 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Inlev.'
       ImageIndex = 18
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel12: TPanel
         Left = 0
         Top = 0
@@ -4576,6 +4594,9 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Kredit.lev.'
       ImageIndex = 23
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel22: TPanel
         Left = 0
         Top = 0
@@ -4940,6 +4961,9 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Produktion'
       ImageIndex = 21
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -7721,6 +7745,10 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Notering'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mNote: TcxDBMemo
         Left = 0
         Top = 0
@@ -11053,7 +11081,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42367.071868773150000000
+      ReportDocument.CreationDate = 42467.397989629630000000
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
