@@ -915,7 +915,7 @@ begin
  cds_LagBal.ParamByName('StartInBalDate').AsSQLTimeStamp := DateTimeToSQLTimeStamp(StartDate.Date - 1) ;
  cds_LagBal.ParamByName('EndInBalDate').AsSQLTimeStamp   := DateTimeToSQLTimeStamp(StartDate.Date) ; ////tog bort  + 1
 
-// if thisuser.userid = 8 then cds_LagBal.sql.savetofile('cds_LagBal.txt') ;
+ //if thisuser.userid = 8 then cds_LagBal.sql.savetofile('cds_LagBal.txt') ;
  cds_LagBal.Active:= True ;
  grdLagerBalansDBTableView1.ViewData.Expand(False);
 

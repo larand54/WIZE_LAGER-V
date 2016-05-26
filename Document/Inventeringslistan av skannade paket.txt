@@ -1,0 +1,8 @@
+paket som finns i skannade listan
+
+OK om de finns i resultatlistan
+Skall påregistreras om de inte finns i resultatlistan
+
+
+Paket som finns i resultalistan men ej i skannade listan är paket som skall avregistreras. Det sker vid utförande av operationer.
+

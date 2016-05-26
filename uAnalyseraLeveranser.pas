@@ -710,6 +710,80 @@ type
     cds_StoppTidStoppSeconds: TFloatField;
     cds_StoppTidStoppMinutes: TBCDField;
     cds_StoppTidStoppHours: TFloatField;
+    tsLOOrderstock: TcxTabSheet;
+    Panel9: TPanel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Bevel2: TBevel;
+    cxComboBox1: TcxComboBox;
+    cxSpinEdit1: TcxSpinEdit;
+    cxCheckBox4: TcxCheckBox;
+    Button1: TButton;
+    cxRadioGroup1: TcxRadioGroup;
+    Panel10: TPanel;
+    cxButton27: TcxButton;
+    cxButton28: TcxButton;
+    cbLOOrderstocklayouter: TcxComboBox;
+    cxButton29: TcxButton;
+    cxCheckBox5: TcxCheckBox;
+    cxCheckBox6: TcxCheckBox;
+    cxCheckBox7: TcxCheckBox;
+    cds_LOOrderstock: TFDQuery;
+    ds_LOOrderstock: TDataSource;
+    cds_LOOrderstockOrderstockDate: TDateField;
+    cds_LOOrderstockVerkNo: TIntegerField;
+    cds_LOOrderstockSearchName: TStringField;
+    cds_LOOrderstockLONo: TIntegerField;
+    cds_LOOrderstockStartWeek: TIntegerField;
+    cds_LOOrderstockEndWeek: TIntegerField;
+    cds_LOOrderstockProdukt: TStringField;
+    cds_LOOrderstockAT: TFloatField;
+    cds_LOOrderstockAB: TFloatField;
+    cds_LOOrderstockTS: TStringField;
+    cds_LOOrderstockKV: TStringField;
+    cds_LOOrderstockUT: TStringField;
+    cds_LOOrderstockIMP: TStringField;
+    cds_LOOrderstockLängd: TStringField;
+    cds_LOOrderstockspid: TIntegerField;
+    cds_LOOrderstockOrderNM3: TFloatField;
+    cds_LOOrderstockOrderAM3: TFloatField;
+    cds_LOOrderstockLevNM3: TFloatField;
+    cds_LOOrderstockLevAM3: TFloatField;
+    cds_LOOrderstockPrice: TFloatField;
+    cds_LOOrderstockRestAM3: TFloatField;
+    cds_LOOrderstockRestNM3: TFloatField;
+    cds_LOOrderstockRestValue: TFloatField;
+    cds_LOOrderstockAvgPricePerNM3: TFloatField;
+    cds_LOOrderstockAvgPricePerAM3: TFloatField;
+    pgLOOrderstock: TcxDBPivotGrid;
+    pgLOOrderstockOrderstockDate: TcxDBPivotGridField;
+    pgLOOrderstockVerkNo: TcxDBPivotGridField;
+    pgLOOrderstockSearchName: TcxDBPivotGridField;
+    pgLOOrderstockLONo: TcxDBPivotGridField;
+    pgLOOrderstockStartWeek: TcxDBPivotGridField;
+    pgLOOrderstockEndWeek: TcxDBPivotGridField;
+    pgLOOrderstockProdukt: TcxDBPivotGridField;
+    pgLOOrderstockAT: TcxDBPivotGridField;
+    pgLOOrderstockAB: TcxDBPivotGridField;
+    pgLOOrderstockTS: TcxDBPivotGridField;
+    pgLOOrderstockKV: TcxDBPivotGridField;
+    pgLOOrderstockUT: TcxDBPivotGridField;
+    pgLOOrderstockIMP: TcxDBPivotGridField;
+    pgLOOrderstockLngd: TcxDBPivotGridField;
+    pgLOOrderstockspid: TcxDBPivotGridField;
+    pgLOOrderstockOrderNM3: TcxDBPivotGridField;
+    pgLOOrderstockOrderAM3: TcxDBPivotGridField;
+    pgLOOrderstockLevNM3: TcxDBPivotGridField;
+    pgLOOrderstockLevAM3: TcxDBPivotGridField;
+    pgLOOrderstockRestAM3: TcxDBPivotGridField;
+    pgLOOrderstockRestNM3: TcxDBPivotGridField;
+    pgLOOrderstockRestValue: TcxDBPivotGridField;
+    pgLOOrderstockAvgPricePerNM3: TcxDBPivotGridField;
+    pgLOOrderstockAvgPricePerAM3: TcxDBPivotGridField;
+    acNyLOOrderstockMall: TAction;
+    acSaveLOOrderstockMall: TAction;
+    dxComponentPrinter1Link14: TcxPivotGridReportLink;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);
@@ -791,9 +865,21 @@ type
     procedure acExpandAllKilnExecute(Sender: TObject);
     procedure acCollapseAllKilnExecute(Sender: TObject);
     procedure cbShowRowTotalsKilnPropertiesChange(Sender: TObject);
+    procedure pgLOOrderstockAvgPricePerNM3CalculateCustomSummary(
+      Sender: TcxPivotGridField; ASummary: TcxPivotGridCrossCellSummary);
+    procedure pgLOOrderstockAvgPricePerAM3CalculateCustomSummary(
+      Sender: TcxPivotGridField; ASummary: TcxPivotGridCrossCellSummary);
+    procedure acNyLOOrderstockMallExecute(Sender: TObject);
+    procedure acSaveLOOrderstockMallExecute(Sender: TObject);
+    procedure cbLOOrderstocklayouterPropertiesChange(Sender: TObject);
   private
     { Private declarations }
     FLocked: Boolean;
+
+    procedure PrintLOOrderstock ;
+    procedure RefreshLOOrderstock ;
+    procedure LoadOrderstockLayoutExecute(Sender: TObject);
+    procedure LoadLOOrderstockNamesToCombobox(const pMall : String) ;
 
     procedure LoadKilnLayoutExecute(Sender: TObject);
     procedure LoadKilnNamesToCombobox(const pMall : String) ;
@@ -982,9 +1068,34 @@ begin
              RefreshKapStat
               else
                 if pgMain.ActivePage = tsStoppTid then
-                  RefreshStoppTid ;
+                  RefreshStoppTid
+                   else
+                    if pgMain.ActivePage = tsLOOrderstock then
+                     RefreshLOOrderstock ;
 
 
+end;
+
+
+
+procedure TfAnalyseraLeveranser.RefreshLOOrderstock ;
+var
+  Save_Cursor : TCursor;
+  AT, AB      : Double ;
+begin
+ Save_Cursor    := Screen.Cursor;
+ Screen.Cursor  := crHourGlass;    { Show hourglass cursor }
+
+
+ Try
+   cds_LOOrderstock.Active:= False ;
+   cds_LOOrderstock.ParamByName('StartPeriod').AsSQLTimeStamp   := cds_UserPropsStartPeriod.AsSQLTimeStamp ;
+   cds_LOOrderstock.ParamByName('EndPeriod').AsSQLTimeStamp     := cds_UserPropsEndPeriod.AsSQLTimeStamp ;
+   cds_LOOrderstock.ParamByName('SupplierNo').AsInteger         := cds_UserPropsVerkNo.AsInteger ; ;
+   cds_LOOrderstock.Active:= True ;
+ Finally
+  Screen.Cursor := Save_Cursor ;
+ End ;
 end;
 
 procedure TfAnalyseraLeveranser.RefreshStoppTid ;
@@ -1326,6 +1437,10 @@ begin
  LoadKilnNamesToCombobox('') ;
  LoadKilnLayoutExecute(Sender) ;
 
+ LoadLOOrderstockNamesToCombobox('') ;
+ LoadOrderstockLayoutExecute(Sender) ;
+
+
 
  if cbProdMallar.Properties.Items.Count = 0 then
  LoadGridLayoutExecute('STD', pivProduction) ;
@@ -1636,20 +1751,23 @@ begin
   FileName:= SaveDialog1.FileName ;
   Try
   if pgMain.ActivePage = tsProduction then
-   cxExportPivotGridToExcel(FileName, pivProduction, False, {AUseNativeFormat} True, 'xls')
+   cxExportPivotGridToXLSX(FileName, pivProduction, False, {AUseNativeFormat} True, 'xlsx')
     else
      if pgMain.ActivePage = tsDeliveries then
-      cxExportPivotGridToExcel(FileName, pivLeveranser, False, {AUseNativeFormat} True, 'xls')
+      cxExportPivotGridToXLSX(FileName, pivLeveranser, False, {AUseNativeFormat} True, 'xlsx')
 //      cxExportPivotGridToExcel(FileName, pivLeveranser)
        else
         if pgMain.ActivePage = tsTorksatser then
-         cxExportPivotGridToExcel(FileName, pivKD)
+         cxExportPivotGridToXLSX(FileName, pivKD, False, {AUseNativeFormat} True, 'xlsx')
           else
            if pgMain.ActivePage = tsKapStat then
-            cxExportPivotGridToExcel(FileName, pvKapStat, False, {AUseNativeFormat} True, 'xls')
+            cxExportPivotGridToXLSX(FileName, pvKapStat, False, {AUseNativeFormat} True, 'xlsx')
             else
              if pgMain.ActivePage = tsStoppTid then
-              cxExportPivotGridToExcel(FileName, pvStoppTid, False, {AUseNativeFormat} True, 'xls') ;
+              cxExportPivotGridToXLSX(FileName, pvStoppTid, False, {AUseNativeFormat} True, 'xlsx')
+                else
+                 if pgMain.ActivePage = tsLOOrderstock then
+                   cxExportPivotGridToXLSX(FileName, pgLOOrderstock, False, {AUseNativeFormat} True, 'xlsx') ;
 
   ShowMessage('Data exporterad till fil ' + FileName);
   Except
@@ -1672,8 +1790,29 @@ begin
            PrintTSKapStat
             else
              if pgMain.ActivePage = tsStoppTid then
-              PrintStoppTidStat ;
+              PrintStoppTidStat
+                else
+                    if pgMain.ActivePage = tsLOOrderstock then
+                     PrintLOOrderstock ;
+
 end;
+
+procedure TfAnalyseraLeveranser.PrintLOOrderstock ;
+begin
+//  dxComponentPrinter1Link9.PrinterPage.PageHeader.LeftTitle.Clear ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Clear ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Add('LO orderstock') ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Add('Period: ' + deStartPeriod.Text + '-' + deEndPeriod.Text) ;
+  dxComponentPrinter1Link14.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
+//  dxComponentPrinter1Link9.PrinterPage.PageHeader.LeftTitle.Add('') ;
+
+  dxComponentPrinter1Link14.PrinterPage.Orientation:= poLandscape ;
+//  dxComponentPrinter1Link9.OptionsOnEveryPage.Footers:= False ;
+  dxComponentPrinter1Link14.PrinterPage.ApplyToPrintDevice ;
+
+  dxComponentPrinter1.Preview(True, dxComponentPrinter1Link14) ;
+end;
+
 
 procedure TfAnalyseraLeveranser.PrintStoppTidStat ;
 begin
@@ -2153,6 +2292,25 @@ begin
  End;
 end;
 
+procedure TfAnalyseraLeveranser.acNyLOOrderstockMallExecute(Sender: TObject);
+var frmConfirmCodeDialog: TfrmConfirmCodeDialog ;
+begin
+ frmConfirmCodeDialog:= TfrmConfirmCodeDialog.Create(Self) ;
+ Try
+  frmConfirmCodeDialog.LabelField.Caption := siLangLinked_fAnalyseraLeveranser.GetTextOrDefault('IDS_144' (* 'Ange mallnamn' *) ) ;
+  if frmConfirmCodeDialog.Showmodal = mrOK then
+  Begin
+   if Length(frmConfirmCodeDialog.eConfirmationCode.Text) > 0 then
+   Begin
+    SaveGridLayoutExecute(frmConfirmCodeDialog.eConfirmationCode.Text, pgLOOrderstock) ;
+    LoadLOOrderstockNamesToCombobox(frmConfirmCodeDialog.eConfirmationCode.Text) ;
+   End ;
+  End ;
+ Finally
+  FreeAndNil(frmConfirmCodeDialog) ;
+ End;
+end;
+
 procedure TfAnalyseraLeveranser.acLoadLeveransLayoutExecute(
   Sender: TObject);
 begin
@@ -2234,6 +2392,13 @@ begin
  acLoadLeveransLayoutExecute(Sender) ;
 end;
 
+procedure TfAnalyseraLeveranser.cbLOOrderstocklayouterPropertiesChange(
+  Sender: TObject);
+begin
+ LoadOrderstockLayoutExecute(Sender) ;
+
+end;
+
 procedure TfAnalyseraLeveranser.cbNearOrFarSumPropertiesChange(Sender: TObject);
 begin
  if cbNearOrFarSum.Checked then
@@ -2248,6 +2413,13 @@ begin
   if (cbLevLayouter.Properties.Items.Count > 0)
   and (Length(cbLevLayouter.Properties.Items.Strings[cbLevLayouter.ItemIndex]) > 0) then
    SaveGridLayoutExecute(cbLevLayouter.Properties.Items.Strings[cbLevLayouter.ItemIndex], pivLeveranser) ;
+end;
+
+procedure TfAnalyseraLeveranser.acSaveLOOrderstockMallExecute(Sender: TObject);
+begin
+  if (cbLOOrderstocklayouter.Properties.Items.Count > 0)
+  and (Length(cbLOOrderstocklayouter.Properties.Items.Strings[cbLOOrderstocklayouter.ItemIndex]) > 0) then
+   SaveGridLayoutExecute(cbLOOrderstocklayouter.Properties.Items.Strings[cbLOOrderstocklayouter.ItemIndex], pgLOOrderstock) ;
 end;
 
 procedure TfAnalyseraLeveranser.acRemoveLayoutExecute(Sender: TObject);
@@ -2929,6 +3101,36 @@ begin
  End ;
 end;
 
+procedure TfAnalyseraLeveranser.pgLOOrderstockAvgPricePerAM3CalculateCustomSummary(
+  Sender: TcxPivotGridField; ASummary: TcxPivotGridCrossCellSummary);
+Var SubSum, AM3 : Variant ;
+begin
+ if (ThisUser.CanModify[dcShowPrice] = True)
+ and (pgLOOrderstockRestValue.Visible) and (pgLOOrderstockRestAM3.Visible) then
+ Begin
+  SubSum :=  ASummary.Owner.GetSummaryByField(pgLOOrderstockRestValue,stSum) ;
+  AM3    :=  ASummary.Owner.GetSummaryByField(pgLOOrderstockRestAM3,stSum) ;
+ if AM3 > 0 then
+  ASummary.Custom:= SubSum / AM3 else ASummary.Custom:= 0 ;
+ End ;
+//  ASummary.Custom:= NM3 ;
+end;
+
+procedure TfAnalyseraLeveranser.pgLOOrderstockAvgPricePerNM3CalculateCustomSummary(
+  Sender: TcxPivotGridField; ASummary: TcxPivotGridCrossCellSummary);
+Var SubSum, NM3 : Variant ;
+begin
+ if (ThisUser.CanModify[dcShowPrice] = True)
+ and (pgLOOrderstockRestValue.Visible) and (pgLOOrderstockRestNM3.Visible) then
+ Begin
+  SubSum :=  ASummary.Owner.GetSummaryByField(pgLOOrderstockRestValue,stSum) ;
+  NM3    :=  ASummary.Owner.GetSummaryByField(pgLOOrderstockRestNM3,stSum) ;
+ if NM3 > 0 then
+  ASummary.Custom:= SubSum / NM3 else ASummary.Custom:= 0 ;
+ End ;
+//  ASummary.Custom:= NM3 ;
+end;
+
 procedure TfAnalyseraLeveranser.pgMainPageChanging(Sender: TObject;
   NewPage: TcxTabSheet; var AllowChange: Boolean);
 begin
@@ -3070,6 +3272,60 @@ begin
  if cbKilnMallar.ItemIndex <> -1 then
  LoadGridLayoutExecute(cbKilnMallar.Properties.Items.Strings[cbKilnMallar.ItemIndex], pivKD) ;
 end;
+
+procedure TfAnalyseraLeveranser.LoadOrderstockLayoutExecute(Sender: TObject);
+begin
+ if cbLOOrderstockLayouter.ItemIndex <> -1 then
+  LoadGridLayoutExecute(cbLOOrderstockLayouter.Properties.Items.Strings[cbLOOrderstockLayouter.ItemIndex], pgLOOrderstock) ;
+end;
+
+procedure TfAnalyseraLeveranser.LoadLOOrderstockNamesToCombobox(const pMall : String) ;
+Var Mall      : String ;
+    ItemIndex : Integer ;
+Begin
+ cbLOOrderstockLayouter.Properties.OnChange  := nil ;
+ Try
+ With dmsSystem do
+ Begin
+  if Length(pMall) = 0 then
+  Begin
+   if (cbLOOrderstockLayouter.ItemIndex <> -1)
+   and (Length(cbLOOrderstockLayouter.Properties.Items.Strings[cbLOOrderstockLayouter.ItemIndex]) > 0) then
+    Mall := cbLOOrderstockLayouter.Properties.Items.Strings[cbLOOrderstockLayouter.ItemIndex] ;
+  end
+  else
+  Mall  := pMall ;
+
+  cbLOOrderstockLayouter.Properties.Items.Clear ;
+
+  sq_LayoutNames.ParamByName('UserID').AsInteger  := ThisUser.UserID ;
+  sq_LayoutNames.ParamByName('Form').AsString     := pgLOOrderstock.Name ;
+  sq_LayoutNames.Open ;
+  Try
+  sq_LayoutNames.First ;
+  While not sq_LayoutNames.Eof do
+  Begin
+   cbLOOrderstockLayouter.Properties.Items.Add(sq_LayoutNamesName.AsString) ;
+   sq_LayoutNames.Next ;
+  End ;
+
+  if cbLOOrderstockLayouter.Properties.Items.Count > 0 then
+  Begin
+   ItemIndex  := cbLOOrderstockLayouter.Properties.Items.IndexOfName('Lars') ;
+   if ItemIndex > -1 then
+   cbLOOrderstockLayouter.ItemIndex  := ItemIndex
+   else
+   cbLOOrderstockLayouter.ItemIndex  := 0 ;
+  End ;
+
+  Finally
+   sq_LayoutNames.Close ;
+  End ;
+ End ;//With
+ Finally
+  cbLOOrderstockLayouter.Properties.OnChange  := cbKilnMallarPropertiesChange ;
+ End ;
+End ;
 
 
 End.

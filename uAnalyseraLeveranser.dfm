@@ -229,7 +229,7 @@
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsStoppTid
+    Properties.ActivePage = tsLOOrderstock
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
@@ -2709,6 +2709,472 @@
         ParentColor = False
       end
     end
+    object tsLOOrderstock: TcxTabSheet
+      Caption = 'LO orderstock'
+      object Panel9: TPanel
+        Left = 0
+        Top = 0
+        Width = 1534
+        Height = 60
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
+        Align = alTop
+        TabOrder = 0
+        Visible = False
+        ExplicitTop = 8
+        object Label4: TLabel
+          Left = 17
+          Top = 26
+          Width = 67
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'Sortera per'
+          FocusControl = cxComboBox1
+        end
+        object Label5: TLabel
+          Left = 276
+          Top = 26
+          Width = 57
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'Visa topp'
+          FocusControl = cxSpinEdit1
+        end
+        object Label6: TLabel
+          Left = 406
+          Top = 26
+          Width = 42
+          Height = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'v'#228'rden'
+        end
+        object Bevel2: TBevel
+          Left = 266
+          Top = 7
+          Width = 316
+          Height = 41
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+        end
+        object cxComboBox1: TcxComboBox
+          Left = 90
+          Top = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Properties.DropDownListStyle = lsFixedList
+          Properties.Items.Strings = (
+            'Kategori'
+            'AM3'
+            'NM3'
+            'V'#228'rde'
+            'M-Pris')
+          Properties.MaxLength = 0
+          Properties.OnChange = cbxSortByFieldPropertiesChange
+          TabOrder = 0
+          Text = 'Kategori'
+          Width = 167
+        end
+        object cxSpinEdit1: TcxSpinEdit
+          Left = 335
+          Top = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Properties.MaxValue = 50.000000000000000000
+          Properties.OnChange = speTopCountPropertiesChange
+          TabOrder = 1
+          Width = 70
+        end
+        object cxCheckBox4: TcxCheckBox
+          Left = 470
+          Top = 16
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'Visa '#246'vriga'
+          Properties.OnChange = cbxTopValuesShowOthersPropertiesChange
+          TabOrder = 2
+          Width = 95
+        end
+        object Button1: TButton
+          Left = 1044
+          Top = 23
+          Width = 161
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Action = acSortByData
+          TabOrder = 3
+        end
+        object cxRadioGroup1: TcxRadioGroup
+          Left = 590
+          Top = 6
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Properties.Columns = 2
+          Properties.Items = <
+            item
+              Caption = 'F'#246'rs'#228'ljning'
+              Value = 0
+            end
+            item
+              Caption = 'Ink'#246'p'
+              Value = 1
+            end>
+          Properties.OnChange = rgOrderTypePropertiesChange
+          ItemIndex = 0
+          Style.Edges = []
+          Style.Shadow = False
+          TabOrder = 4
+          Height = 48
+          Width = 227
+        end
+      end
+      object Panel10: TPanel
+        Left = 0
+        Top = 60
+        Width = 1534
+        Height = 51
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
+        Align = alTop
+        TabOrder = 1
+        ExplicitTop = 68
+        object cxButton27: TcxButton
+          Left = 20
+          Top = 10
+          Width = 146
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Action = acNyLOOrderstockMall
+          TabOrder = 0
+        end
+        object cxButton28: TcxButton
+          Left = 176
+          Top = 10
+          Width = 137
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Action = acSaveLOOrderstockMall
+          TabOrder = 1
+        end
+        object cbLOOrderstocklayouter: TcxComboBox
+          Left = 315
+          Top = 12
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Properties.DropDownListStyle = lsFixedList
+          Properties.ImmediatePost = True
+          Properties.OnChange = cbLOOrderstocklayouterPropertiesChange
+          TabOrder = 2
+          Width = 228
+        end
+        object cxButton29: TcxButton
+          Left = 551
+          Top = 8
+          Width = 149
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Action = acRemoveLayout
+          TabOrder = 3
+          Visible = False
+        end
+        object cxCheckBox5: TcxCheckBox
+          Left = 738
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'Visa grandtotal'
+          Properties.OnChange = cxCheckBox2PropertiesChange
+          TabOrder = 4
+          Visible = False
+          Width = 120
+        end
+        object cxCheckBox6: TcxCheckBox
+          Left = 866
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'Visa radtotal'
+          Properties.OnChange = cxCheckBox3PropertiesChange
+          TabOrder = 5
+          Visible = False
+          Width = 120
+        end
+        object cxCheckBox7: TcxCheckBox
+          Left = 1004
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
+          Caption = 'Exkludera egna leveranser'
+          Properties.ImmediatePost = True
+          TabOrder = 6
+          Visible = False
+          Width = 201
+        end
+      end
+      object pgLOOrderstock: TcxDBPivotGrid
+        Left = 0
+        Top = 111
+        Width = 1534
+        Height = 824
+        Align = alClient
+        DataSource = ds_LOOrderstock
+        Groups = <>
+        OptionsView.RowGrandTotalWidth = 192
+        TabOrder = 2
+        ExplicitLeft = 144
+        ExplicitTop = 136
+        ExplicitWidth = 300
+        ExplicitHeight = 250
+        object pgLOOrderstockOrderstockDate: TcxDBPivotGridField
+          AreaIndex = 0
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'OrderstockDate'
+          PropertiesClassName = 'TcxDateEditProperties'
+          Visible = True
+          UniqueName = 'Orderstockdatum'
+        end
+        object pgLOOrderstockVerkNo: TcxDBPivotGridField
+          AreaIndex = 1
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'VerkNo'
+          PropertiesClassName = 'TcxLabelProperties'
+          UniqueName = 'VerkNo'
+        end
+        object pgLOOrderstockSearchName: TcxDBPivotGridField
+          AreaIndex = 2
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'SearchName'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Verk'
+        end
+        object pgLOOrderstockLONo: TcxDBPivotGridField
+          AreaIndex = 3
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'LONo'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'LONo'
+        end
+        object pgLOOrderstockStartWeek: TcxDBPivotGridField
+          AreaIndex = 4
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'StartWeek'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Start vecka'
+        end
+        object pgLOOrderstockEndWeek: TcxDBPivotGridField
+          AreaIndex = 5
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'EndWeek'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Slut vecka'
+        end
+        object pgLOOrderstockProdukt: TcxDBPivotGridField
+          AreaIndex = 6
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Produkt'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'Produkt'
+        end
+        object pgLOOrderstockAT: TcxDBPivotGridField
+          AreaIndex = 7
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'AT'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'AT'
+        end
+        object pgLOOrderstockAB: TcxDBPivotGridField
+          AreaIndex = 8
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'AB'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'AB'
+        end
+        object pgLOOrderstockTS: TcxDBPivotGridField
+          AreaIndex = 9
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'TS'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'TS'
+        end
+        object pgLOOrderstockKV: TcxDBPivotGridField
+          AreaIndex = 10
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'KV'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'KV'
+        end
+        object pgLOOrderstockUT: TcxDBPivotGridField
+          AreaIndex = 11
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'UT'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'UT'
+        end
+        object pgLOOrderstockIMP: TcxDBPivotGridField
+          AreaIndex = 12
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'IMP'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'IMP'
+        end
+        object pgLOOrderstockLngd: TcxDBPivotGridField
+          AreaIndex = 13
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'L'#228'ngd'
+          PropertiesClassName = 'TcxLabelProperties'
+          Visible = True
+          UniqueName = 'L'#228'ngdbeskrivning'
+        end
+        object pgLOOrderstockspid: TcxDBPivotGridField
+          AreaIndex = 14
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'spid'
+          PropertiesClassName = 'TcxLabelProperties'
+          UniqueName = 'LOrow id'
+        end
+        object pgLOOrderstockOrderNM3: TcxDBPivotGridField
+          AreaIndex = 15
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'OrderNM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Order NM3'
+        end
+        object pgLOOrderstockOrderAM3: TcxDBPivotGridField
+          AreaIndex = 16
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'OrderAM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Order AM3'
+        end
+        object pgLOOrderstockLevNM3: TcxDBPivotGridField
+          AreaIndex = 17
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'LevNM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Lev NM3'
+        end
+        object pgLOOrderstockLevAM3: TcxDBPivotGridField
+          AreaIndex = 18
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'LevAM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Lev AM3'
+        end
+        object pgLOOrderstockRestAM3: TcxDBPivotGridField
+          AreaIndex = 19
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'RestAM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Rest AM3'
+        end
+        object pgLOOrderstockRestNM3: TcxDBPivotGridField
+          Area = faData
+          AreaIndex = 0
+          AllowedAreas = [faData]
+          DataBinding.FieldName = 'RestNM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Rest NM3'
+        end
+        object pgLOOrderstockRestValue: TcxDBPivotGridField
+          Area = faData
+          AreaIndex = 1
+          AllowedAreas = [faData]
+          DataBinding.FieldName = 'RestValue'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          Visible = True
+          UniqueName = 'Restv'#228'rde(sek)'
+        end
+        object pgLOOrderstockAvgPricePerNM3: TcxDBPivotGridField
+          Area = faData
+          AreaIndex = 2
+          AllowedAreas = [faData]
+          DataBinding.FieldName = 'AvgPricePerNM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          SummaryType = stCustom
+          Visible = True
+          OnCalculateCustomSummary = pgLOOrderstockAvgPricePerNM3CalculateCustomSummary
+          UniqueName = 'Medelpris/NM3'
+        end
+        object pgLOOrderstockAvgPricePerAM3: TcxDBPivotGridField
+          AreaIndex = 20
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'AvgPricePerAM3'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Properties.DisplayFormat = '#,###.0'
+          SummaryType = stCustom
+          Visible = True
+          OnCalculateCustomSummary = pgLOOrderstockAvgPricePerAM3CalculateCustomSummary
+          UniqueName = 'Medelpris/AM3'
+        end
+      end
+    end
   end
   object ds_Data: TDataSource
     DataSet = cds_Data
@@ -2963,6 +3429,16 @@
       Caption = 'Minimera alla'
       OnExecute = acCollapseAllKilnExecute
     end
+    object acNyLOOrderstockMall: TAction
+      Category = 'LOOrderstock'
+      Caption = 'Ny mall'
+      OnExecute = acNyLOOrderstockMallExecute
+    end
+    object acSaveLOOrderstockMall: TAction
+      Category = 'LOOrderstock'
+      Caption = 'Spara mall'
+      OnExecute = acSaveLOOrderstockMallExecute
+    end
   end
   object ds_ProdData: TDataSource
     DataSet = sq_ProdDataSumII
@@ -2984,7 +3460,7 @@
     Top = 357
   end
   object dxComponentPrinter1: TdxComponentPrinter
-    CurrentLink = dxComponentPrinter1Link9
+    CurrentLink = dxComponentPrinter1Link13
     Version = 0
     Left = 248
     Top = 629
@@ -3009,7 +3485,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42450.980853969910000000
+      ReportDocument.CreationDate = 42489.498184791660000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3038,7 +3514,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42450.980853981480000000
+      ReportDocument.CreationDate = 42489.498184803240000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3065,7 +3541,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42450.980853993050000000
+      ReportDocument.CreationDate = 42489.498184803240000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3087,7 +3563,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42450.980854004630000000
+      ReportDocument.CreationDate = 42489.498184814820000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
@@ -3152,7 +3628,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42450.980854247680000000
+      ReportDocument.CreationDate = 42489.498184895830000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -3222,7 +3698,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42450.980854247680000000
+      ReportDocument.CreationDate = 42489.498184907410000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
@@ -3241,7 +3717,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42450.980854282410000000
+      ReportDocument.CreationDate = 42489.498184930560000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
@@ -3289,6 +3765,21 @@
           ReportLink = dxComponentPrinter1Link11
           BuiltInCompositionItem = True
         end>
+      BuiltInReportLink = True
+    end
+    object dxComponentPrinter1Link14: TcxPivotGridReportLink
+      Component = pgLOOrderstock
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 6350
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
       BuiltInReportLink = True
     end
   end
@@ -7940,7 +8431,6 @@
     end
   end
   object cds_StoppTid: TFDQuery
-    Active = True
     Filtered = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
@@ -11411,5 +11901,162 @@
       4600410055004C0054005F004300480041005200530045005400010044004500
       4600410055004C0054005F004300480041005200530045005400010044004500
       4600410055004C0054005F0043004800410052005300450054000D000A00}
+  end
+  object cds_LOOrderstock: TFDQuery
+    Connection = dmsConnector.FDConnection1
+    SQL.Strings = (
+      'select * from dbo.LO_Orderstock ost'
+      'WHERE'
+      ' ost.OrderstockDate BETWEEN   :StartPeriod AND  :EndPeriod'
+      'AND ((ost.VerkNo = :SupplierNo) or (:SupplierNo = 0))')
+    Left = 928
+    Top = 567
+    ParamData = <
+      item
+        Name = 'STARTPERIOD'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+      end
+      item
+        Name = 'ENDPERIOD'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+      end
+      item
+        Name = 'SUPPLIERNO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object cds_LOOrderstockOrderstockDate: TDateField
+      DisplayLabel = 'Orderstockdatum'
+      FieldName = 'OrderstockDate'
+      Origin = 'OrderstockDate'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cds_LOOrderstockVerkNo: TIntegerField
+      FieldName = 'VerkNo'
+      Origin = 'VerkNo'
+    end
+    object cds_LOOrderstockSearchName: TStringField
+      DisplayLabel = 'Verk'
+      FieldName = 'SearchName'
+      Origin = 'SearchName'
+      Size = 80
+    end
+    object cds_LOOrderstockLONo: TIntegerField
+      FieldName = 'LONo'
+      Origin = 'LONo'
+    end
+    object cds_LOOrderstockStartWeek: TIntegerField
+      DisplayLabel = 'Start vecka'
+      FieldName = 'StartWeek'
+      Origin = 'StartWeek'
+    end
+    object cds_LOOrderstockEndWeek: TIntegerField
+      DisplayLabel = 'Slut vecka'
+      FieldName = 'EndWeek'
+      Origin = 'EndWeek'
+    end
+    object cds_LOOrderstockProdukt: TStringField
+      FieldName = 'Produkt'
+      Origin = 'Produkt'
+      Size = 255
+    end
+    object cds_LOOrderstockAT: TFloatField
+      FieldName = 'AT'
+      Origin = 'AT'
+    end
+    object cds_LOOrderstockAB: TFloatField
+      FieldName = 'AB'
+      Origin = 'AB'
+    end
+    object cds_LOOrderstockTS: TStringField
+      FieldName = 'TS'
+      Origin = 'TS'
+      Size = 30
+    end
+    object cds_LOOrderstockKV: TStringField
+      FieldName = 'KV'
+      Origin = 'KV'
+      Size = 30
+    end
+    object cds_LOOrderstockUT: TStringField
+      FieldName = 'UT'
+      Origin = 'UT'
+      Size = 30
+    end
+    object cds_LOOrderstockIMP: TStringField
+      FieldName = 'IMP'
+      Origin = 'IMP'
+      Size = 30
+    end
+    object cds_LOOrderstockLängd: TStringField
+      DisplayLabel = 'L'#228'ngdbeskrivning'
+      FieldName = 'L'#228'ngd'
+      Origin = '[L'#228'ngd]'
+      Size = 255
+    end
+    object cds_LOOrderstockspid: TIntegerField
+      DisplayLabel = 'LOrow id'
+      FieldName = 'spid'
+      Origin = 'spid'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cds_LOOrderstockOrderNM3: TFloatField
+      DisplayLabel = 'Order NM3'
+      FieldName = 'OrderNM3'
+      Origin = 'OrderNM3'
+    end
+    object cds_LOOrderstockOrderAM3: TFloatField
+      DisplayLabel = 'Order AM3'
+      FieldName = 'OrderAM3'
+      Origin = 'OrderAM3'
+    end
+    object cds_LOOrderstockLevNM3: TFloatField
+      DisplayLabel = 'Lev NM3'
+      FieldName = 'LevNM3'
+      Origin = 'LevNM3'
+    end
+    object cds_LOOrderstockLevAM3: TFloatField
+      DisplayLabel = 'Lev AM3'
+      FieldName = 'LevAM3'
+      Origin = 'LevAM3'
+    end
+    object cds_LOOrderstockPrice: TFloatField
+      FieldName = 'Price'
+      Origin = 'Price'
+    end
+    object cds_LOOrderstockRestAM3: TFloatField
+      DisplayLabel = 'Rest AM3'
+      FieldName = 'RestAM3'
+      Origin = 'RestAM3'
+    end
+    object cds_LOOrderstockRestNM3: TFloatField
+      DisplayLabel = 'Rest NM3'
+      FieldName = 'RestNM3'
+      Origin = 'RestNM3'
+    end
+    object cds_LOOrderstockRestValue: TFloatField
+      DisplayLabel = 'Restv'#228'rde(sek)'
+      FieldName = 'RestValue'
+      Origin = 'RestValue'
+    end
+    object cds_LOOrderstockAvgPricePerNM3: TFloatField
+      DisplayLabel = 'Medelpris/NM3'
+      FieldName = 'AvgPricePerNM3'
+      Origin = 'AvgPricePerNM3'
+    end
+    object cds_LOOrderstockAvgPricePerAM3: TFloatField
+      DisplayLabel = 'Medelpris/AM3'
+      FieldName = 'AvgPricePerAM3'
+      Origin = 'AvgPricePerAM3'
+    end
+  end
+  object ds_LOOrderstock: TDataSource
+    DataSet = cds_LOOrderstock
+    Left = 928
+    Top = 623
   end
 end

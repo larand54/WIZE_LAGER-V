@@ -73,8 +73,10 @@ SUM(pn.Original_Price * ptd.m3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd
 FROM  dbo.Client Verk
 Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
 Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
-INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
-Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
+INNER JOIN dbo.InvenRow invctrlrow ON invctrlrow.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = invctrlrow.PackageNo
+AND pn.SupplierCode = invctrlrow.SupplierCode
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = invctrlrow.PackageTypeNo
 Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
@@ -83,32 +85,24 @@ AND PTL.LengthGroupNo = 1
 AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
 Inner Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
-AND pde.LanguageID = 2
+AND pde.LanguageID = 1
 Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
-AND va.LanguageCode = 2
+AND va.LanguageCode = 1
 Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
 Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
-				AND imp.LanguageCode = 2
+				AND imp.LanguageCode = 1
 Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
-				AND SPE.LanguageCode = 2
+				AND SPE.LanguageCode = 1
 Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
-				AND SUR.LanguageCode = 2
+				AND SUR.LanguageCode = 1
 Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
-				AND Gr.LanguageCode = 2
+				AND Gr.LanguageCode = 1
 Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1 
-AND pn.Status = 1
-<<<<<<< HEAD
-AND Verk.SalesRegionNo = 980
- AND ( LIP.InvCode = '788' ) 
- AND ( Verk.PktNrLevKod = 80 ) 
-=======
-AND pn.DateCreated >= '2016-01-13'
-AND pn.DateCreated <= '2016-03-01'
+AND invctrlrow.IC_GrpNo = 15325
 AND Verk.SalesRegionNo = 741
-
+ AND ( LIP.InvCode = '10' OR  LIP.InvCode = '12' OR  LIP.InvCode = '13' ) 
  AND ( Verk.PktNrLevKod = 15 ) 
->>>>>>> origin/master
 
 
 

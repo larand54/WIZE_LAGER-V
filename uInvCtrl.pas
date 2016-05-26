@@ -696,6 +696,8 @@ type
     grdTransitInLevDBTableView1PCSPERLENGTH: TcxGridDBColumn;
     grdTransitInLevDBTableView1Lastnr: TcxGridDBColumn;
     grdTransitInLevDBTableView1Utlastad: TcxGridDBColumn;
+    cxTabSheet2: TcxTabSheet;
+    Panel25: TPanel;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);

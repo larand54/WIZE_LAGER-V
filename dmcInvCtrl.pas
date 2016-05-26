@@ -2139,7 +2139,8 @@ Begin
   SQL.Add('Inner Join dbo.LoadDetail LD ON LD.LoadNo = L.LoadNo ') ;
   SQL.Add('Inner Join dbo.LoadShippingPlan LSP ON LSP.LoadNo = LD.LoadNo') ;
   SQL.Add('AND LSP.ShippingPlanNo = LD.ShippingPlanNo') ;
-  SQL.Add('Inner Join dbo.SupplierShippingPlan SSP on SSP.ShippingPlanNo = LSP.ShippingPlanNo') ;
+
+  //SQL.Add('Inner Join dbo.SupplierShippingPlan SSP on SSP.ShippingPlanNo = LSP.ShippingPlanNo') ;
 
   SQL.Add('INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo ') ;
   SQL.Add('AND pn.SupplierCode = LD.SupplierCode') ;
@@ -2224,7 +2225,8 @@ Begin
 
 
 
-//  if ThisUser.UserID = 8 then SQL.SaveToFile('GetInleveranser.txt');
+//  if ThisUser.UserID = 8 then
+SQL.SaveToFile('GetInleveranser.txt');
   S.Text := SQL.Text ;
   Try
   ExecSQL ;

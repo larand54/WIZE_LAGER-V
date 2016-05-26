@@ -601,7 +601,7 @@
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
-      Caption = 'sq_LBSR'
+      Caption = 'cds_LagBal'
       TabOrder = 15
       Visible = False
       OnClick = Button1Click
@@ -615,7 +615,7 @@
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
-      Caption = 'sq_LagBalORT'
+      Caption = 'cds_LagBalORT'
       TabOrder = 16
       Visible = False
       OnClick = Button2Click
@@ -629,7 +629,7 @@
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
-      Caption = 'sq_LagBal'
+      Caption = 'cds_LagBal'
       TabOrder = 17
       Visible = False
       OnClick = Button3Click
@@ -1305,7 +1305,7 @@
   end
   object dsClient: TDataSource
     DataSet = cdsClient
-    Left = 816
+    Left = 832
     Top = 248
   end
   object ds_PIP: TDataSource
@@ -2295,6 +2295,7 @@
     Top = 368
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2314,6 +2315,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2324,12 +2326,12 @@
   end
   object ds_LagGrupp: TDataSource
     DataSet = cds_LagGrupp
-    Left = 816
-    Top = 360
+    Left = 832
+    Top = 368
   end
   object ds_SalesRegion: TDataSource
     DataSet = cds_SalesRegion
-    Left = 536
+    Left = 504
     Top = 248
   end
   object ds_LBSR: TDataSource
@@ -2555,7 +2557,7 @@
       'WHERE C.SalesRegionNo = :SalesRegionNo'
       'AND (rt.RoleType = 9 or rt.RoleType = 7)'
       'Order by C.ClientName')
-    Left = 816
+    Left = 832
     Top = 200
     ParamData = <
       item
@@ -2582,7 +2584,7 @@
       'Inner Join dbo.ClientRole rt on rt.ClientNo = C.ClientNo'
       'WHERE rt.RoleType = 7'
       'Order by C.ClientName')
-    Left = 536
+    Left = 504
     Top = 200
     object cds_SalesRegionClientNo: TIntegerField
       FieldName = 'ClientNo'
@@ -2617,7 +2619,7 @@
       'Order By LIP.PhysicalInventoryPointNo'
       ''
       '')
-    Left = 816
+    Left = 832
     Top = 312
     ParamData = <
       item
