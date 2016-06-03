@@ -2,7 +2,7 @@
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 1041
+  Height = 1197
   Width = 1470
   object ds_InvCtrlGrp: TDataSource
     DataSet = cds_InvCtrlGrp
@@ -14,7 +14,7 @@
     DataSet = cds_InvCtrlMetod
     OnDataChange = ds_InvCtrlMetodDataChange
     Left = 192
-    Top = 160
+    Top = 136
   end
   object ds_PhysInv: TDataSource
     DataSet = cds_PhysInv
@@ -324,7 +324,7 @@
   object ds_InvenRow: TDataSource
     DataSet = cds_InvenRow
     Left = 424
-    Top = 160
+    Top = 192
   end
   object ds_InvenRow_all: TDataSource
     DataSet = cds_InvenRow_all
@@ -1117,7 +1117,7 @@
       'WHERE ICR.IC_GrpNo = :IC_GrpNo'
       '')
     Left = 424
-    Top = 112
+    Top = 144
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -3147,7 +3147,7 @@
       'AND Operation = 5'
       '')
     Left = 984
-    Top = 264
+    Top = 256
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -7524,7 +7524,7 @@
         'No = LIP.LogicalInventoryPointNo'
       'WHERE ICM.IC_GrpNo = :IC_GrpNo')
     Left = 192
-    Top = 112
+    Top = 88
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -7608,8 +7608,8 @@
   object sp_vis_invUpdControlStatus: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_invUpdControlStatus'
-    Left = 104
-    Top = 24
+    Left = 88
+    Top = 16
     ParamData = <
       item
         Position = 1
@@ -7627,8 +7627,7 @@
   object sp_vis_GenInvCountByProduct: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_GenInvCountByProduct'
-    Left = 272
-    Top = 8
+    Left = 264
     ParamData = <
       item
         Position = 1
@@ -7664,8 +7663,7 @@
   object sp_vis_ActivatePkgsInvCountByProduct: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_ActivatePkgsInvCountByProduct'
-    Left = 568
-    Top = 24
+    Left = 600
     ParamData = <
       item
         Position = 1
@@ -7695,8 +7693,8 @@
   object sp_vis_InsPkgsToInvCountByProduct: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_InsPkgsToInvCountByProduct'
-    Left = 776
-    Top = 48
+    Left = 600
+    Top = 56
     ParamData = <
       item
         Position = 1
@@ -7726,8 +7724,7 @@
   object sp_vis_ClearInvCountFromExtData: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_ClearInvCountFromExtData'
-    Left = 272
-    Top = 56
+    Left = 832
     ParamData = <
       item
         Position = 1
@@ -7924,7 +7921,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.Vis_CtrlList'
     Left = 424
-    Top = 64
+    Top = 48
     ParamData = <
       item
         Position = 1
@@ -9396,5 +9393,199 @@
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object sp_visint_rowsMaster: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_visint_rowsMaster'
+    Left = 72
+    Top = 1032
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+        Value = 0
+      end
+      item
+        Position = 2
+        Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@LanguageCode'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_visintCombine: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = '[dbo].[vis_visintCombine]'
+    Left = 296
+    Top = 1056
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+        Value = 0
+      end
+      item
+        Position = 2
+        Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object ds_visint_rowsMaster: TDataSource
+    DataSet = sp_visint_rowsMaster
+    Left = 72
+    Top = 1088
+  end
+  object sp_SetStatusInCtrlList: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_SetStatusInCtrlList'
+    Left = 512
+    Top = 1040
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+        Value = 0
+      end
+      item
+        Position = 2
+        Name = '@IC_grpno'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_DelVisIntRow: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_DelVisIntRow'
+    Left = 296
+    Top = 1120
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@VISINT_LOGID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@PackageNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 4
+        Name = '@Prefix'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 3
+      end
+      item
+        Position = 5
+        Name = '@UserID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_visint_hdrs: TFDStoredProc
+    AfterInsert = sp_visint_hdrsAfterInsert
+    Indexes = <
+      item
+        Active = True
+        Selected = True
+        Name = 'visint_hdrIndex'
+        Fields = 'VISINT_LOGID'
+      end>
+    IndexName = 'visint_hdrIndex'
+    Connection = dmsConnector.FDConnection1
+    UpdateOptions.UpdateTableName = 'dbo.VISINT_Header'
+    StoredProcName = 'dbo.vis_visint_hdrs'
+    Left = 824
+    Top = 1088
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+        Value = 0
+      end
+      item
+        Position = 2
+        Name = '@ClientNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object sp_visint_hdrsVISINT_LOGID: TIntegerField
+      FieldName = 'VISINT_LOGID'
+      Origin = 'VISINT_LOGID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object sp_visint_hdrsPIPNo: TIntegerField
+      FieldName = 'PIPNo'
+      Origin = 'PIPNo'
+      ProviderFlags = [pfInUpdate]
+    end
+    object sp_visint_hdrsDateCreated: TSQLTimeStampField
+      FieldName = 'DateCreated'
+      Origin = 'DateCreated'
+      ProviderFlags = [pfInUpdate]
+    end
+    object sp_visint_hdrsCreatedUser: TIntegerField
+      FieldName = 'CreatedUser'
+      Origin = 'CreatedUser'
+      ProviderFlags = [pfInUpdate]
+    end
+    object sp_visint_hdrsNote: TStringField
+      FieldName = 'Note'
+      Origin = 'Note'
+      ProviderFlags = [pfInUpdate]
+      Size = 255
+    end
+    object sp_visint_hdrsCityName: TStringField
+      FieldName = 'CityName'
+      Origin = 'CityName'
+      ProviderFlags = []
+      Size = 50
+    end
+    object sp_visint_hdrsClientName: TStringField
+      FieldName = 'ClientName'
+      Origin = 'ClientName'
+      ProviderFlags = []
+      Size = 80
+    end
+    object sp_visint_hdrsUserName: TStringField
+      DisplayLabel = 'Anv'#228'ndare'
+      FieldName = 'UserName'
+      Origin = 'UserName'
+      ProviderFlags = []
+    end
+    object sp_visint_hdrsIC_grpno: TIntegerField
+      FieldName = 'IC_grpno'
+      Origin = 'IC_grpno'
+      ProviderFlags = [pfInUpdate]
+    end
+  end
+  object ds_visint_hdrs: TDataSource
+    DataSet = sp_visint_hdrs
+    Left = 824
+    Top = 1144
   end
 end

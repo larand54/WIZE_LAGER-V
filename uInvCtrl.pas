@@ -696,8 +696,52 @@ type
     grdTransitInLevDBTableView1PCSPERLENGTH: TcxGridDBColumn;
     grdTransitInLevDBTableView1Lastnr: TcxGridDBColumn;
     grdTransitInLevDBTableView1Utlastad: TcxGridDBColumn;
-    cxTabSheet2: TcxTabSheet;
+    tsVISINTrows: TcxTabSheet;
     Panel25: TPanel;
+    grScanPkgsDBTableView1: TcxGridDBTableView;
+    grScanPkgsLevel1: TcxGridLevel;
+    grScanPkgs: TcxGrid;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    grScanPkgsDBTableView1VISINT_Logid: TcxGridDBColumn;
+    grScanPkgsDBTableView1ScannedDateTime: TcxGridDBColumn;
+    grScanPkgsDBTableView1packageNo: TcxGridDBColumn;
+    grScanPkgsDBTableView1SifferPrefix: TcxGridDBColumn;
+    grScanPkgsDBTableView1Prefix: TcxGridDBColumn;
+    grScanPkgsDBTableView1Note: TcxGridDBColumn;
+    grScanPkgsDBTableView1Produkt: TcxGridDBColumn;
+    grScanPkgsDBTableView1Produkt_US: TcxGridDBColumn;
+    grScanPkgsDBTableView1MaxALMM: TcxGridDBColumn;
+    grScanPkgsDBTableView1Reference: TcxGridDBColumn;
+    grScanPkgsDBTableView1Info1: TcxGridDBColumn;
+    grScanPkgsDBTableView1Info2: TcxGridDBColumn;
+    grScanPkgsDBTableView1Lagergrupp: TcxGridDBColumn;
+    grScanPkgsDBTableView1Ort: TcxGridDBColumn;
+    grScanPkgsDBTableView1AreaName: TcxGridDBColumn;
+    grScanPkgsDBTableView1PositionName: TcxGridDBColumn;
+    grScanPkgsDBTableView1dim: TcxGridDBColumn;
+    grScanPkgsDBTableView1TS: TcxGridDBColumn;
+    grScanPkgsDBTableView1PC: TcxGridDBColumn;
+    grScanPkgsDBTableView1KV: TcxGridDBColumn;
+    grScanPkgsDBTableView1UT: TcxGridDBColumn;
+    grScanPkgsDBTableView1VarugruppNamn: TcxGridDBColumn;
+    grScanPkgsDBTableView1LoadNo: TcxGridDBColumn;
+    grScanPkgsDBTableView1ProformaFakturanr: TcxGridDBColumn;
+    grScanPkgsDBTableView1Styck: TcxGridDBColumn;
+    grScanPkgsDBTableView1UserName: TcxGridDBColumn;
+    grScanPkgsDBTableView1Status: TcxGridDBColumn;
+    acRefreshVisIntRows: TAction;
+    acCombineScanningLists: TAction;
+    pmVISINT: TdxBarPopupMenu;
+    acShowPackageInfoVISINT: TAction;
+    cxGridPopupVISINT: TcxGridPopupMenu;
+    cxButton9: TcxButton;
+    dxBarButton23: TdxBarButton;
+    acSetStatusInCtrlList: TAction;
+    cxButton10: TcxButton;
+    acDeleteRowInScannedPkgs: TAction;
+    cxButton11: TcxButton;
+    acAddToPaRegListan: TAction;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -946,12 +990,20 @@ type
       Shift: TShiftState);
     procedure acRefreshTransitExecute(Sender: TObject);
     procedure acPrintTransitExecute(Sender: TObject);
+    procedure acRefreshVisIntRowsExecute(Sender: TObject);
+    procedure acCombineScanningListsExecute(Sender: TObject);
+    procedure acShowPackageInfoVISINTExecute(Sender: TObject);
+    procedure cxButton9Click(Sender: TObject);
+    procedure acSetStatusInCtrlListExecute(Sender: TObject);
+    procedure acDeleteRowInScannedPkgsExecute(Sender: TObject);
+    procedure acAddToPaRegListanExecute(Sender: TObject);
 
   private
     { Private declarations }
     IsHighLighted: Boolean;
     EgenLevKod : String3 ;
 
+    procedure SelectedPkgsInScannedList ;
     procedure PrintInvCtrlReportNotActiveWithEvents(Sender: TObject;const LIPs, STATUSs  : String;const ReportName : String) ;
     Function  EntryField : Integer ;
     Procedure SetPriceOnEachPkg(const NewPrice : Double) ;
@@ -1250,6 +1302,14 @@ begin
   End ;
 end;
 
+procedure TfInvCtrl.acSetStatusInCtrlListExecute(Sender: TObject);
+begin
+  with dmInvCtrl do
+  Begin
+    SetStatusInCtrlList(cds_InvCtrlGrpIC_grpno.AsInteger) ;
+  End;
+end;
+
 Procedure TfInvCtrl.SetPriceOnEachPkg(const NewPrice : Double) ;
 Var PackageNo   : Integer ;
     Supp_Code   : String ;
@@ -1438,6 +1498,10 @@ begin
   acSaveExecute(Sender) ;
   SetInventeringReadOnly ;
 
+  if cds_InvCtrlGrpTypeOfInvCount.AsInteger = 0 then
+   CreateVISINTHeader(cds_InvCtrl_LagerStallenIC_grpno.AsInteger, cds_InvCtrl_LagerStallenPhysicalInventoryPointNo.AsInteger) ;
+
+
   Except
   End ;
  End ;
@@ -1507,6 +1571,22 @@ begin
  End ;
 
  End ;
+end;
+
+procedure TfInvCtrl.acDeleteRowInScannedPkgsExecute(Sender: TObject);
+begin
+ with dmInvCtrl do
+ Begin
+  if MessageDlg('Är du riktigt säker på att ta bort rad?',    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  Begin
+    DelVisIntRow(sp_visint_rowsMaster.FieldByName('VISINT_Logid').AsInteger,
+    sp_visint_rowsMaster.FieldByName('PackageNo').AsInteger,
+    sp_visint_rowsMaster.FieldByName('CreatedUser').AsInteger,
+    sp_visint_rowsMaster.FieldByName('Prefix').AsString) ;
+    acCombineScanningListsExecute(Sender) ;
+    acRefreshVisIntRowsExecute(Sender) ;
+  End;
+ End;
 end;
 
 procedure TfInvCtrl.acPrintInvListPerLGExecute(Sender: TObject);
@@ -1884,6 +1964,7 @@ Begin
  dmsSystem.StoreGridLayout(ThisUser.UserID, Self.Name + '/' + grdInLevDBTableView1.Name, grdInLevDBTableView1) ;
  dmsSystem.StoreGridLayout(ThisUser.UserID, Self.Name + '/' + grdPrdDBTableView1.Name, grdPrdDBTableView1) ;
  dmsSystem.StoreGridLayout(ThisUser.UserID, Self.Name + '/' + grdProductionBeforeInvDateDBTableView1.Name, grdProductionBeforeInvDateDBTableView1) ;
+ dmsSystem.StoreGridLayout(ThisUser.UserID, Self.Name + '/' + grScanPkgsDBTableView1.Name, grScanPkgsDBTableView1) ;
 End ;
 
 procedure TfInvCtrl.OpenGridSettings ;
@@ -1898,6 +1979,7 @@ Begin
  dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdInLevDBTableView1.Name, grdInLevDBTableView1) ;
  dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdPrdDBTableView1.Name, grdPrdDBTableView1) ;
  dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grdProductionBeforeInvDateDBTableView1.Name, grdProductionBeforeInvDateDBTableView1) ;
+ dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name + '/' + grScanPkgsDBTableView1.Name, grScanPkgsDBTableView1) ;
 End ;
 
 procedure TfInvCtrl.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -2933,6 +3015,61 @@ begin
  End;
 end;
 
+procedure TfInvCtrl.SelectedPkgsInScannedList ;
+ Var i, RecIDX  : Integer ;
+ RecID          : Variant ;
+ ADATASET       : TDATASET;
+ Save_Cursor    : TCursor;
+begin
+ With dmInvCtrl do
+ Begin
+ Save_Cursor  := Screen.Cursor;
+ Screen.Cursor:= crSQLWait;    { Show hourglass cursor }
+ grScanPkgsDBTableView1.BeginUpdate ;
+ grScanPkgsDBTableView1.DataController.BeginLocate ;
+ Try
+   ADataSet := grScanPkgsDBTableView1.DataController.DataSource.DataSet ;
+   For I := 0 to grScanPkgsDBTableView1.Controller.SelectedRecordCount - 1 do
+   Begin
+    RecIDx  := grScanPkgsDBTableView1.Controller.SelectedRecords[i].RecordIndex ;
+    RecID   := grScanPkgsDBTableView1.DataController.GetRecordId(RecIdx) ;
+    if ADataSet.Locate('PackageNo;Prefix', RecID,[]) then
+    Begin
+     mtSelectedPkgNo.Insert ;
+     mtSelectedPkgNoPaketnr.AsInteger   := ADataSet.FieldByName('PackageNo').AsInteger ;
+     mtSelectedPkgNoLevKod.AsString     := ADataSet.FieldByName('Prefix').AsString ;
+     mtSelectedPkgNoMarkerad.AsInteger  := 1 ;
+     mtSelectedPkgNo.Post ;
+    End ;
+   End ;
+
+ Finally
+  grScanPkgsDBTableView1.DataController.EndLocate ;
+  grScanPkgsDBTableView1.EndUpdate ;
+  Screen.Cursor := Save_Cursor;  { Always restore to normal }
+ End ;
+ End ;//With
+end;
+
+procedure TfInvCtrl.acAddToPaRegListanExecute(Sender: TObject);
+begin
+ With dmInvCtrl do
+ Begin
+  if MessageDlg('Vill du påregistrera markerade paket mot lagergrupp ' + cds_InvCtrlMetodLogicalInventoryName.AsString + '?',    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  Begin
+   if mtSelectedPkgNo.Active then
+   mtSelectedPkgNo.Active  := False ;
+   mtSelectedPkgNo.Active  := True ;
+    Try
+    SelectedPkgsInScannedList ;
+    AddMarkedPkgsTo_PaRegPkgsTable ;
+    Finally
+      mtSelectedPkgNo.Active  := False ;
+    End;
+  End;
+ End;
+end;
+
 procedure TfInvCtrl.acHamtaAllaLSExecute(Sender: TObject);
 begin
 //Hämta lagergrupper
@@ -3097,6 +3234,11 @@ begin
    FreeAndNil(fSinglePkgEntry) ;
   end;
  End ;
+end;
+
+procedure TfInvCtrl.cxButton9Click(Sender: TObject);
+begin
+ ShowMessage('TBA') ;
 end;
 
 procedure TfInvCtrl.acPrintAvRegExecute(Sender: TObject);
@@ -5245,6 +5387,21 @@ begin
  End;
 end;
 
+procedure TfInvCtrl.acRefreshVisIntRowsExecute(Sender: TObject);
+var Save_Cursor : TCursor;
+begin
+  Save_Cursor     := Screen.Cursor;
+  Screen.Cursor   := crSQLWait;    { Show hourglass cursor }
+  Try
+   with dmInvCtrl do
+   Begin
+    Refresh_VisIntRowsMaster(cds_InvCtrlGrpIC_grpno.AsInteger) ;
+   end;
+  Finally
+   Screen.Cursor := Save_Cursor;
+  End;
+end;
+
 procedure TfInvCtrl.acPrintResultListWysiwygExecute(Sender: TObject);
 begin
  With dmInvCtrl do
@@ -5916,6 +6073,21 @@ begin
  grdResultatDBTableView1.ViewData.Collapse(True) ;
 end;
 
+procedure TfInvCtrl.acCombineScanningListsExecute(Sender: TObject);
+var Save_Cursor : TCursor;
+begin
+  Save_Cursor   := Screen.Cursor;
+  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+  Try
+   With dmInvCtrl do
+   Begin
+    visintCombineScannings(cds_InvCtrlGrpIC_grpno.AsInteger) ;
+   End;
+  Finally
+   Screen.Cursor := Save_Cursor;
+  End;
+end;
+
 procedure TfInvCtrl.acShowAllPaketIResultatetExecute(Sender: TObject);
 var Save_Cursor : TCursor;
 begin
@@ -5954,6 +6126,13 @@ begin
  or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\annjon')
   or (Trim(dmsConnector.Get_AD_Name) = 'sa') ;}
  //ThisUser.CompanyNo = 741 ;
+end;
+
+procedure TfInvCtrl.acShowPackageInfoVISINTExecute(Sender: TObject);
+begin
+ PkgInfo(
+ grScanPkgsDBTableView1.DataController.DataSet.FieldByName('PackageNo').AsInteger,
+ grScanPkgsDBTableView1.DataController.DataSet.FieldByName('Prefix').AsString) ;
 end;
 
 procedure TfInvCtrl.acSimulateHandDatorExecute(Sender: TObject);

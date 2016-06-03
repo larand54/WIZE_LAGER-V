@@ -34,7 +34,7 @@ object fInvCtrl: TfInvCtrl
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsUnregisteredPackages
+    Properties.ActivePage = tsSkapaKontrollistor
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
@@ -5587,9 +5587,9 @@ object fInvCtrl: TfInvCtrl
         end
       end
     end
-    object cxTabSheet2: TcxTabSheet
-      Caption = 'cxTabSheet2'
-      ImageIndex = 14
+    object tsVISINTrows: TcxTabSheet
+      Caption = 'Skannade paket'
+      ImageIndex = 26
       object Panel25: TPanel
         Left = 0
         Top = 0
@@ -5597,6 +5597,215 @@ object fInvCtrl: TfInvCtrl
         Height = 57
         Align = alTop
         TabOrder = 0
+        ExplicitLeft = 1
+        ExplicitTop = -6
+        object cxButton7: TcxButton
+          Left = 9
+          Top = 10
+          Width = 168
+          Height = 41
+          Action = acRefreshVisIntRows
+          TabOrder = 0
+        end
+        object cxButton8: TcxButton
+          Left = 181
+          Top = 10
+          Width = 190
+          Height = 41
+          Action = acCombineScanningLists
+          TabOrder = 1
+        end
+        object cxButton9: TcxButton
+          Left = 380
+          Top = 10
+          Width = 197
+          Height = 41
+          Action = acSetStatusInCtrlList
+          TabOrder = 2
+        end
+        object cxButton10: TcxButton
+          Left = 583
+          Top = 10
+          Width = 197
+          Height = 41
+          Action = acDeleteRowInScannedPkgs
+          TabOrder = 3
+        end
+        object cxButton11: TcxButton
+          Left = 786
+          Top = 10
+          Width = 197
+          Height = 41
+          Action = acAddToPaRegListan
+          TabOrder = 4
+        end
+      end
+      object grScanPkgs: TcxGrid
+        Left = 0
+        Top = 57
+        Width = 1428
+        Height = 534
+        Align = alClient
+        PopupMenu = pmVISINT
+        TabOrder = 1
+        object grScanPkgsDBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dmInvCtrl.ds_visint_rowsMaster
+          DataController.KeyFieldNames = 'packageNo;Prefix'
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '#######'
+              Kind = skCount
+              FieldName = 'packageNo'
+              Column = grScanPkgsDBTableView1packageNo
+            end
+            item
+              Format = '############'
+              Kind = skSum
+              FieldName = 'Styck'
+              Column = grScanPkgsDBTableView1Styck
+            end>
+          DataController.Summary.SummaryGroups = <>
+          DataController.Summary.Options = [soMultipleSelectedRecords]
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.MultiSelect = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          object grScanPkgsDBTableView1VISINT_Logid: TcxGridDBColumn
+            DataBinding.FieldName = 'VISINT_Logid'
+            Visible = False
+          end
+          object grScanPkgsDBTableView1ScannedDateTime: TcxGridDBColumn
+            Caption = 'Skannad'
+            DataBinding.FieldName = 'ScannedDateTime'
+            Width = 144
+          end
+          object grScanPkgsDBTableView1packageNo: TcxGridDBColumn
+            Caption = 'Paketnr'
+            DataBinding.FieldName = 'packageNo'
+            Width = 95
+          end
+          object grScanPkgsDBTableView1SifferPrefix: TcxGridDBColumn
+            DataBinding.FieldName = 'SifferPrefix'
+            Visible = False
+            Width = 105
+          end
+          object grScanPkgsDBTableView1Prefix: TcxGridDBColumn
+            DataBinding.FieldName = 'Prefix'
+            Width = 173
+          end
+          object grScanPkgsDBTableView1Note: TcxGridDBColumn
+            DataBinding.FieldName = 'Note'
+            Visible = False
+            Width = 100
+          end
+          object grScanPkgsDBTableView1Produkt: TcxGridDBColumn
+            DataBinding.FieldName = 'Produkt'
+            Width = 200
+          end
+          object grScanPkgsDBTableView1Produkt_US: TcxGridDBColumn
+            DataBinding.FieldName = 'Produkt_US'
+            Visible = False
+            Width = 100
+          end
+          object grScanPkgsDBTableView1MaxALMM: TcxGridDBColumn
+            Caption = 'Max l'#228'ngd(mm)'
+            DataBinding.FieldName = 'MaxALMM'
+          end
+          object grScanPkgsDBTableView1Reference: TcxGridDBColumn
+            Caption = 'Referens'
+            DataBinding.FieldName = 'Reference'
+            Width = 100
+          end
+          object grScanPkgsDBTableView1Info1: TcxGridDBColumn
+            DataBinding.FieldName = 'Info1'
+            Visible = False
+            Width = 65
+          end
+          object grScanPkgsDBTableView1Info2: TcxGridDBColumn
+            DataBinding.FieldName = 'Info2'
+            Visible = False
+            Width = 75
+          end
+          object grScanPkgsDBTableView1Lagergrupp: TcxGridDBColumn
+            DataBinding.FieldName = 'Lagergrupp'
+            Width = 101
+          end
+          object grScanPkgsDBTableView1Ort: TcxGridDBColumn
+            DataBinding.FieldName = 'Ort'
+            Width = 94
+          end
+          object grScanPkgsDBTableView1AreaName: TcxGridDBColumn
+            Caption = 'Area'
+            DataBinding.FieldName = 'AreaName'
+            Visible = False
+            Width = 79
+          end
+          object grScanPkgsDBTableView1PositionName: TcxGridDBColumn
+            Caption = 'Position'
+            DataBinding.FieldName = 'PositionName'
+            Visible = False
+            Width = 97
+          end
+          object grScanPkgsDBTableView1dim: TcxGridDBColumn
+            DataBinding.FieldName = 'dim'
+            Visible = False
+          end
+          object grScanPkgsDBTableView1TS: TcxGridDBColumn
+            DataBinding.FieldName = 'TS'
+            Visible = False
+            Width = 73
+          end
+          object grScanPkgsDBTableView1PC: TcxGridDBColumn
+            DataBinding.FieldName = 'PC'
+            Visible = False
+            Width = 78
+          end
+          object grScanPkgsDBTableView1KV: TcxGridDBColumn
+            DataBinding.FieldName = 'KV'
+            Visible = False
+            Width = 65
+          end
+          object grScanPkgsDBTableView1UT: TcxGridDBColumn
+            DataBinding.FieldName = 'UT'
+            Visible = False
+            Width = 63
+          end
+          object grScanPkgsDBTableView1VarugruppNamn: TcxGridDBColumn
+            DataBinding.FieldName = 'VarugruppNamn'
+            Visible = False
+            Width = 65
+          end
+          object grScanPkgsDBTableView1LoadNo: TcxGridDBColumn
+            Caption = 'Lastnr'
+            DataBinding.FieldName = 'LoadNo'
+            Visible = False
+          end
+          object grScanPkgsDBTableView1ProformaFakturanr: TcxGridDBColumn
+            Caption = 'Proformafakturanr'
+            DataBinding.FieldName = 'ProformaFakturanr'
+            Visible = False
+            Width = 42
+          end
+          object grScanPkgsDBTableView1Styck: TcxGridDBColumn
+            DataBinding.FieldName = 'Styck'
+          end
+          object grScanPkgsDBTableView1UserName: TcxGridDBColumn
+            Caption = 'Utf'#246'rd av'
+            DataBinding.FieldName = 'UserName'
+          end
+          object grScanPkgsDBTableView1Status: TcxGridDBColumn
+            Caption = 'Status/Operation'
+            DataBinding.FieldName = 'Status'
+          end
+        end
+        object grScanPkgsLevel1: TcxGridLevel
+          GridView = grScanPkgsDBTableView1
+        end
       end
     end
     object tsSkapaLagerListor: TcxTabSheet
@@ -8156,6 +8365,10 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Paket info - krediterade leveranser'
       Category = 1
     end
+    object dxBarButton23: TdxBarButton
+      Action = acShowPackageInfoVISINT
+      Category = 1
+    end
   end
   object ActionList1: TActionList
     Images = imglistActions
@@ -8769,6 +8982,35 @@ object fInvCtrl: TfInvCtrl
     object acPrintTransit: TAction
       Caption = 'Skriv ut'
       OnExecute = acPrintTransitExecute
+    end
+    object acRefreshVisIntRows: TAction
+      Caption = 'Uppdatera'
+      ImageIndex = 1
+      OnExecute = acRefreshVisIntRowsExecute
+    end
+    object acCombineScanningLists: TAction
+      Caption = 'Kombinera skannade pkt'
+      ImageIndex = 9
+      OnExecute = acCombineScanningListsExecute
+    end
+    object acShowPackageInfoVISINT: TAction
+      Caption = 'Paket information'
+      OnExecute = acShowPackageInfoVISINTExecute
+    end
+    object acSetStatusInCtrlList: TAction
+      Caption = 'Set status i kontrollistan'
+      ImageIndex = 15
+      OnExecute = acSetStatusInCtrlListExecute
+    end
+    object acDeleteRowInScannedPkgs: TAction
+      Caption = 'Ta bort rad'
+      ImageIndex = 16
+      OnExecute = acDeleteRowInScannedPkgsExecute
+    end
+    object acAddToPaRegListan: TAction
+      Caption = 'L'#228'gg till p'#229'reg.'
+      ImageIndex = 17
+      OnExecute = acAddToPaRegListanExecute
     end
   end
   object imglistActions: TImageList
@@ -10881,6 +11123,7 @@ object fInvCtrl: TfInvCtrl
     Top = 577
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdAvreg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10894,10 +11137,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPaRegPkg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10911,10 +11156,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInLev
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10928,10 +11175,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdLevPkt
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10945,10 +11194,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdPrd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10962,10 +11213,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link6: TdxGridReportLink
       Component = grdChanged
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10979,10 +11232,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxGridReportLink
       Component = grdAvRegProd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10996,10 +11251,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link8: TdxGridReportLink
       Component = grdAvregBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11013,10 +11270,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link9: TdxGridReportLink
       Component = grdProductionBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11030,10 +11289,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link10: TdxGridReportLink
       Component = grdCtrlList
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11047,11 +11308,13 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdResultat
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11065,7 +11328,8 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42507.423081805560000000
+      ReportDocument.CreationDate = 42521.414602708330000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
@@ -11075,6 +11339,7 @@ object fInvCtrl: TfInvCtrl
     end
     object dxComponentPrinter1Link12: TdxGridReportLink
       Component = grdInLevOfCreditInvoices
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11088,10 +11353,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link13: TdxGridReportLink
       Component = grdDelAfterMaxDatum
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11111,10 +11378,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link14: TdxGridReportLink
       Component = grdTransitInLev
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11134,6 +11403,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -11829,8 +12099,8 @@ object fInvCtrl: TfInvCtrl
       'ProviderName'
       'ScriptLanguage'
       'ScriptText')
-    Left = 560
-    Top = 352
+    Left = 688
+    Top = 520
     TranslationData = {
       73007400430061007000740069006F006E0073005F0055006E00690063006F00
       640065000D000A005400660049006E0076004300740072006C0001004C004100
@@ -13577,5 +13847,22 @@ object fInvCtrl: TfInvCtrl
       450054000100440045004600410055004C0054005F0043004800410052005300
       450054000100440045004600410055004C0054005F0043004800410052005300
       450054000D000A00}
+  end
+  object pmVISINT: TdxBarPopupMenu
+    BarManager = dxBarManager1
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'dxBarButton23'
+      end>
+    UseOwnFont = False
+    Left = 936
+    Top = 770
+  end
+  object cxGridPopupVISINT: TcxGridPopupMenu
+    Grid = grScanPkgs
+    PopupMenus = <>
+    Left = 856
+    Top = 842
   end
 end

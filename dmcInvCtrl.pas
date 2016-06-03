@@ -830,6 +830,22 @@ type
     ds_InvTransit: TDataSource;
     cds_InvCtrlGrpLanguageID: TIntegerField;
     sp_InsTransitToResult: TFDStoredProc;
+    sp_visint_rowsMaster: TFDStoredProc;
+    sp_visintCombine: TFDStoredProc;
+    ds_visint_rowsMaster: TDataSource;
+    sp_SetStatusInCtrlList: TFDStoredProc;
+    sp_DelVisIntRow: TFDStoredProc;
+    sp_visint_hdrs: TFDStoredProc;
+    sp_visint_hdrsVISINT_LOGID: TIntegerField;
+    sp_visint_hdrsPIPNo: TIntegerField;
+    sp_visint_hdrsDateCreated: TSQLTimeStampField;
+    sp_visint_hdrsCreatedUser: TIntegerField;
+    sp_visint_hdrsNote: TStringField;
+    sp_visint_hdrsCityName: TStringField;
+    sp_visint_hdrsClientName: TStringField;
+    sp_visint_hdrsUserName: TStringField;
+    ds_visint_hdrs: TDataSource;
+    sp_visint_hdrsIC_grpno: TIntegerField;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -880,6 +896,7 @@ type
     procedure sp_SetMallUpdateRecord(ASender: TDataSet;
       ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
       AOptions: TFDUpdateRowOptions);
+    procedure sp_visint_hdrsAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
     FOnAmbiguousPkgNo: TAmbiguityEvent ;
@@ -921,6 +938,11 @@ type
     InventoryPkgs : Boolean ;
     MarkedPkgs,
     ChangedSortorderNo, AvRegSortorderNo, PaRegSortorderNo : Integer ;
+    procedure CreateVISINTHeader(const IC_grpNo, PIPNo  : Integer) ;
+    procedure DelVisIntRow(const VISINTID, PackageNo, UserID : Integer;const Prefix : String) ;
+    procedure SetStatusInCtrlList(const IC_grpno  : Integer) ;
+    procedure Refresh_VisIntRowsMaster(const IC_GrpNo : Integer) ;
+    procedure visintCombineScannings (const IC_GrpNo : Integer) ;
     procedure Refresh_InvTransit(const IC_GrpNo : Integer) ;
     procedure RemoveKilnPkgsFromInvCount (const IC_GrpNo : Integer) ;
     procedure Add_IC_GroupNo_To_Inven_Al_VW (const IC_SetNo, IC_GrpNo : Integer) ;
@@ -1538,6 +1560,13 @@ begin
  upd_SimulateHandHeld.Apply(ARequest, AAction, AOptions);
 
  AAction := eaApplied ;
+end;
+
+procedure TdmInvCtrl.sp_visint_hdrsAfterInsert(DataSet: TDataSet);
+begin
+ sp_visint_hdrsVISINT_LOGID.AsInteger     := dmsConnector.NextMaxNo('VISINT') ;
+ sp_visint_hdrsDateCreated.AsSQLTimeStamp := DateTimeToSQLTimeStamp(Now) ;
+ sp_visint_hdrsCreatedUser.AsInteger      := ThisUser.UserID ;
 end;
 
 (*function TdmInvCtrl.HamtaPaket(const Status, PackageNo : Integer;Var SupplierCode : String3;
@@ -2225,8 +2254,7 @@ Begin
 
 
 
-//  if ThisUser.UserID = 8 then
-SQL.SaveToFile('GetInleveranser.txt');
+//  if ThisUser.UserID = 8 then SQL.SaveToFile('GetInleveranser.txt');
   S.Text := SQL.Text ;
   Try
   ExecSQL ;
@@ -4402,6 +4430,86 @@ Begin
   sp_InvTransit.ParamByName('@IC_GrpNo').AsInteger  :=  IC_GrpNo ;
   sp_InvTransit.Active  :=  True ;
 End;
+
+procedure TdmInvCtrl.visintCombineScannings (const IC_GrpNo : Integer) ;
+Begin
+ Try
+ sp_visintCombine.ParamByName('@IC_GrpNo').AsInteger        := IC_GrpNo ;
+ sp_visintCombine.ExecProc ;
+  except
+   On E: Exception do
+   Begin
+    ShowMessage(E.Message + '  / sp_visintCombine') ;
+   // Raise ;
+   End ;
+  end;
+End;
+
+procedure TdmInvCtrl.Refresh_VisIntRowsMaster(const IC_GrpNo : Integer) ;
+Begin
+  sp_visint_rowsMaster.Active  :=  False ;
+  sp_visint_rowsMaster.ParamByName('@IC_GrpNo').AsInteger  :=  IC_GrpNo ;
+  sp_visint_rowsMaster.Active  :=  True ;
+End;
+
+procedure TdmInvCtrl.SetStatusInCtrlList(const IC_grpno  : Integer) ;
+var
+  Save_Cursor : TCursor;
+Begin
+ Save_Cursor := Screen.Cursor;
+ Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+ try
+  Try
+  sp_SetStatusInCtrlList.ParamByName('@IC_grpno').AsInteger := IC_grpno ;
+  sp_SetStatusInCtrlList.ExecProc ;
+  except
+   On E: Exception do
+   Begin
+    ShowMessage(E.Message + ' / ' + 'sp_SetStatusInCtrlList') ;
+   // Raise ;
+   End ;
+  end;
+ finally
+  Screen.Cursor := Save_Cursor;  { Always restore to normal }
+ end;
+End;
+
+procedure TdmInvCtrl.DelVisIntRow(const VISINTID, PackageNo, UserID : Integer;const Prefix : String) ;
+Begin
+  Try
+  sp_DelVisIntRow.ParamByName('@VISINT_LOGID').AsInteger  :=  VISINTID  ;
+  sp_DelVisIntRow.ParamByName('@PackageNo').AsInteger     :=  PackageNo ;
+  sp_DelVisIntRow.ParamByName('@UserID').AsInteger        :=  UserID  ;
+  sp_DelVisIntRow.ParamByName('@Prefix').AsString         :=  Prefix  ;
+  sp_DelVisIntRow.ExecProc ;
+  except
+   On E: Exception do
+   Begin
+    ShowMessage(E.Message + ' / ' + 'sp_DelVisIntRow') ;
+   // Raise ;
+   End ;
+  end;
+End;
+
+procedure TdmInvCtrl.CreateVISINTHeader(const IC_grpNo, PIPNo  : Integer) ;
+Var ID : Integer ;
+begin
+//  PIPNo := getPIPNo  ;
+  if PIPNo > 0 then
+  Begin
+   if sp_visint_hdrs.State in [dsEdit, dsInsert] then
+    sp_visint_hdrs.Post ;
+    sp_visint_hdrs.Insert ;
+    sp_visint_hdrsIC_grpno.AsInteger  := IC_GrpNo ;
+    sp_visint_hdrsPIPNo.AsInteger     := PIPNo  ;
+    sp_visint_hdrs.Post ;
+
+    ID  :=  sp_visint_hdrsVISINT_Logid.AsInteger ;
+    sp_visint_hdrs.Refresh ;
+    sp_visint_hdrs.FindKey([ID]) ;
+ End;
+end;
+
 
 
 End.
