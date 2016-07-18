@@ -6632,7 +6632,7 @@
       ''
       '')
     Left = 912
-    Top = 744
+    Top = 760
     ParamData = <
       item
         Name = 'IC_GRPNO'
@@ -9587,5 +9587,49 @@
     DataSet = sp_visint_hdrs
     Left = 824
     Top = 1144
+  end
+  object sp_MovePkgsToLIP: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_MovePkgInInv'
+    Left = 512
+    Top = 1104
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@NewLIPNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@UserID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 4
+        Name = '@PackageNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 5
+        Name = '@SupplierCode'
+        DataType = ftFixedChar
+        ParamType = ptInput
+        Size = 3
+      end
+      item
+        Position = 6
+        Name = '@IC_GrpNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
   end
 end

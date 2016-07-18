@@ -1,5 +1,5 @@
 Insert into dbo.InvCtrl_Pkgs
-Select Distinct 15633
+Select Distinct 16066
 ,LD.PackageNo, LD.SupplierCode, 3, GetDate(),
 cpl.LogicalInventoryPointNo AS LogicalInventoryPointNo, 0 AS Sortorderno, -1,
 LD.ShippingPlanNo, -1
@@ -15,10 +15,10 @@ Inner Join dbo.Confirmed_Package_Log cpl on cpl.PackageNo = pn.PackageNo
 								and cpl.Confirmed_LoadNo = L.LoadNo
 Inner Join dbo.LogicalInventoryPoint LIP on LIP.LogicalInventoryPointNo = cpl.LogicalInventoryPointNo
 Inner Join dbo.PhysicalInventoryPoint PIP on PIP.PhysicalInventoryPointNo = LIP.PhysicalInventoryPointNo
-WHERE L.customerNo = 741
-AND L.LoadedDate < '2016-05-01 00:00:00'
-AND CL.DateCreated > '2016-04-29 02:56:07'
-AND PIP.OwnerNo = 741
+WHERE L.customerNo = 7077
+AND L.LoadedDate < '2016-06-01 00:00:00'
+AND CL.DateCreated > '2016-05-31 13:35:37'
+AND PIP.OwnerNo = 7077
 AND cpl.LogicalInventoryPointNo in (Select LogicalInventoryPointNo
 FROM dbo.InvCtrlMetod ICM
-WHERE ICM.IC_grpno = 15633)
+WHERE ICM.IC_grpno = 16066)

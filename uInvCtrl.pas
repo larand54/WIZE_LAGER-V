@@ -742,6 +742,8 @@ type
     acDeleteRowInScannedPkgs: TAction;
     cxButton11: TcxButton;
     acAddToPaRegListan: TAction;
+    cxButton12: TcxButton;
+    acMoveSelectedPkgsToLIP: TAction;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -997,6 +999,8 @@ type
     procedure acSetStatusInCtrlListExecute(Sender: TObject);
     procedure acDeleteRowInScannedPkgsExecute(Sender: TObject);
     procedure acAddToPaRegListanExecute(Sender: TObject);
+    procedure acMoveSelectedPkgsToLIPExecute(Sender: TObject);
+    procedure acMoveSelectedPkgsToLIPUpdate(Sender: TObject);
 
   private
     { Private declarations }
@@ -2421,7 +2425,7 @@ begin
    memo3.Lines.Add('######## GetInLeveranser(S) ==============================') ;
 
    SRNo := dmsContact.GetSalesRegionNo(cds_InvCtrlGrpOwnerNo.AsInteger) ;
-   if (SRNo = 741) or (SRNo = 3682) or (SRNo = 5074) then
+   if (SRNo = 741) or (SRNo = 3682) or (SRNo = 5074) or (SRNo = 1879) then
    GetInLeveranser(S)
      else
       memo3.Lines.Add('!!!!!! GetInLeveranser(S) not executed') ;
@@ -5005,6 +5009,37 @@ begin
  finally
   FreeAndNil(fInvLogs) ;
  end;
+end;
+
+procedure TfInvCtrl.acMoveSelectedPkgsToLIPExecute(Sender: TObject);
+begin
+ With dmInvCtrl do
+ Begin
+  if MessageDlg('Vill du flytta markerade paket till lagergrupp ' + cds_InvCtrlMetodLogicalInventoryName.AsString + '?',    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  Begin
+   if mtSelectedPkgNo.Active then
+    mtSelectedPkgNo.Active  := False ;
+    mtSelectedPkgNo.Active  := True ;
+    Try
+    SelectedPkgsFromControlListToBeAvReg ;
+
+    MovePkgsToLIP ;
+    Finally
+      mtSelectedPkgNo.Active  := False ;
+    End;
+   acRefreshKontrollistaExecute(Sender) ;
+  End;
+ End;
+end;
+
+procedure TfInvCtrl.acMoveSelectedPkgsToLIPUpdate(Sender: TObject);
+begin
+ With dmInvCtrl do
+ Begin
+  acMoveSelectedPkgsToLIP.Enabled :=  (cds_InvCtrlGrp.Active) and (cds_InvCtrlGrp.RecordCount > 0)
+  and (cds_InvCtrlGrpStatus.AsInteger = 1)
+  and (cds_InvCtrlGrpTypeOfInvCount.AsInteger = 0) ;
+ End;
 end;
 
 procedure TfInvCtrl.FormShow(Sender: TObject);

@@ -846,6 +846,7 @@ type
     sp_visint_hdrsUserName: TStringField;
     ds_visint_hdrs: TDataSource;
     sp_visint_hdrsIC_grpno: TIntegerField;
+    sp_MovePkgsToLIP: TFDStoredProc;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -938,6 +939,7 @@ type
     InventoryPkgs : Boolean ;
     MarkedPkgs,
     ChangedSortorderNo, AvRegSortorderNo, PaRegSortorderNo : Integer ;
+    procedure MovePkgsToLIP ;
     procedure CreateVISINTHeader(const IC_grpNo, PIPNo  : Integer) ;
     procedure DelVisIntRow(const VISINTID, PackageNo, UserID : Integer;const Prefix : String) ;
     procedure SetStatusInCtrlList(const IC_grpno  : Integer) ;
@@ -4509,6 +4511,29 @@ begin
     sp_visint_hdrs.FindKey([ID]) ;
  End;
 end;
+
+procedure TdmInvCtrl.MovePkgsToLIP ;
+Begin
+  mtSelectedPkgNo.First ;
+  while not mtSelectedPkgNo.Eof do
+  Begin
+    Try
+    sp_MovePkgsToLIP.ParamByName('@NewLIPNo').AsInteger     :=  cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger ; //New LIPNo
+    sp_MovePkgsToLIP.ParamByName('@UserID').AsInteger       :=  ThisUser.UserID ;
+    sp_MovePkgsToLIP.ParamByName('@PackageNo').AsInteger    :=  mtSelectedPkgNoPAKETNR.AsInteger ;
+    sp_MovePkgsToLIP.ParamByName('@SupplierCode').AsString  :=  mtSelectedPkgNoLEVKOD.AsString ;
+    sp_MovePkgsToLIP.ParamByName('@IC_GrpNo').AsInteger     :=  cds_InvCtrlGrpIC_grpno.AsInteger ;
+    sp_MovePkgsToLIP.ExecProc ;
+    except
+     On E: Exception do
+     Begin
+      ShowMessage(E.Message) ;
+      Raise ;
+     End ;
+    end;
+    mtSelectedPkgNo.Next ;
+  End ;
+End ;
 
 
 
