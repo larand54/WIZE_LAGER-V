@@ -6,7 +6,7 @@
   object ds_ProdList: TDataSource
     DataSet = cds_ProdList
     Left = 22
-    Top = 136
+    Top = 112
   end
   object ds_PrdGrp: TDataSource
     DataSet = cds_PrdGrp
@@ -33,7 +33,7 @@
     DataSet = cds_grade
     OnDataChange = ds_gradeDataChange
     Left = 86
-    Top = 456
+    Top = 432
   end
   object ds_Surfacing: TDataSource
     DataSet = cds_Surfacing
@@ -49,7 +49,7 @@
   object ds_ProdCatg: TDataSource
     DataSet = cds_ProdCatg
     Left = 238
-    Top = 456
+    Top = 432
   end
   object ds_IntPriceGrp: TDataSource
     DataSet = cds_IntPriceGrp
@@ -64,18 +64,18 @@
   object ds_PrdGrpList: TDataSource
     DataSet = cds_PrdGrpList
     Left = 364
-    Top = 144
+    Top = 128
   end
   object ds_ProdLengthGrp: TDataSource
     DataSet = cds_ProdLengthGrp
     OnDataChange = ds_ProdLengthGrpDataChange
     Left = 822
-    Top = 144
+    Top = 128
   end
   object ds_ProdLengthRow: TDataSource
     DataSet = cds_ProdLengthRow
     Left = 534
-    Top = 128
+    Top = 112
   end
   object ds_PkgCode: TDataSource
     DataSet = cds_PkgCode
@@ -105,12 +105,12 @@
   object ds_ProdLo: TDataSource
     DataSet = cds_ProdLo
     Left = 388
-    Top = 456
+    Top = 432
   end
   object ds_intPrice: TDataSource
     DataSet = cds_intPrice
     Left = 830
-    Top = 448
+    Top = 432
   end
   object ds_CliProdList: TDataSource
     DataSet = cds_CliProdList
@@ -139,7 +139,7 @@
   object ds_CSDL: TDataSource
     DataSet = cds_CSDL
     Left = 500
-    Top = 456
+    Top = 432
   end
   object ds_CSDLRow: TDataSource
     DataSet = cds_CSDLRow
@@ -149,7 +149,7 @@
   object ds_ProdListCust: TDataSource
     DataSet = cds_ProdListCust
     Left = 988
-    Top = 448
+    Top = 432
   end
   object ds_LengthRuleGrp: TDataSource
     DataSet = cds_LengthRuleGrp
@@ -197,7 +197,7 @@
       '((pd.ProductNo = :ProductNo) OR (0 = :ProductNo))'
       '')
     Left = 24
-    Top = 88
+    Top = 64
     ParamData = <
       item
         Name = 'LANGUAGECODE'
@@ -615,7 +615,7 @@
       'AND sf.LanguageCode = 1'
       '')
     Left = 360
-    Top = 80
+    Top = 64
     object cds_PrdGrpListact: TIntegerField
       FieldName = 'act'
       Origin = 'act'
@@ -821,7 +821,7 @@
         'uctLengthNo'
       '')
     Left = 528
-    Top = 80
+    Top = 64
     object cds_ProdLengthRowGroupNo: TIntegerField
       FieldName = 'GroupNo'
       Origin = 'GroupNo'
@@ -1034,7 +1034,7 @@
       'Select * FROM dbo.ProductLengthGroupName'
       '')
     Left = 816
-    Top = 96
+    Top = 80
     object cds_ProdLengthGrpGroupNo: TIntegerField
       FieldName = 'GroupNo'
       Origin = 'GroupNo'
@@ -1326,7 +1326,7 @@
       'Order By g.gradecode, G.GradeName'
       '')
     Left = 88
-    Top = 408
+    Top = 384
     object cds_gradeGradeNo: TIntegerField
       FieldName = 'GradeNo'
       Origin = 'GradeNo'
@@ -1503,7 +1503,7 @@
       ' '
       '')
     Left = 240
-    Top = 408
+    Top = 384
     object cds_ProdCatgProductCategoryNo: TIntegerField
       FieldName = 'ProductCategoryNo'
       Origin = 'ProductCategoryNo'
@@ -1611,7 +1611,7 @@
       'WHERE ProductGroupNo = :ProductGroupNo'
       '')
     Left = 384
-    Top = 408
+    Top = 384
     ParamData = <
       item
         Name = 'PRODUCTGROUPNO'
@@ -1722,7 +1722,7 @@
       'Select * FROM dbo.CustomSalesDimListGrp'
       '')
     Left = 496
-    Top = 408
+    Top = 384
     object cds_CSDLCustomSalesDimListNo: TIntegerField
       FieldName = 'CustomSalesDimListNo'
       Origin = 'CustomSalesDimListNo'
@@ -1928,7 +1928,7 @@
       'Where InteralPriceGroupNo = :InteralPriceGroupNo'
       '')
     Left = 824
-    Top = 400
+    Top = 384
     ParamData = <
       item
         Name = 'INTERALPRICEGROUPNO'
@@ -2059,7 +2059,7 @@
       '((pd.ProductNo = :ProductNo) OR (0 = :ProductNo))'
       '')
     Left = 984
-    Top = 400
+    Top = 384
     ParamData = <
       item
         Name = 'LANGUAGECODE'
@@ -2940,7 +2940,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1

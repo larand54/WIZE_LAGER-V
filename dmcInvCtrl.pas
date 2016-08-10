@@ -1013,6 +1013,7 @@ type
 var
   dmInvCtrl: TdmInvCtrl;
 
+
 implementation
 
 uses dmsDataConn, dmsVidaContact, dlgPickPkg_III, VidaUser , dmsVidaSystem, VidaConst ,
@@ -4499,16 +4500,19 @@ begin
 //  PIPNo := getPIPNo  ;
   if PIPNo > 0 then
   Begin
+   if not sp_visint_hdrs.Active then
+    sp_visint_hdrs.Active := True ;
+
    if sp_visint_hdrs.State in [dsEdit, dsInsert] then
     sp_visint_hdrs.Post ;
-    sp_visint_hdrs.Insert ;
-    sp_visint_hdrsIC_grpno.AsInteger  := IC_GrpNo ;
-    sp_visint_hdrsPIPNo.AsInteger     := PIPNo  ;
-    sp_visint_hdrs.Post ;
+   sp_visint_hdrs.Insert ;
+   sp_visint_hdrsIC_grpno.AsInteger  := IC_GrpNo ;
+   sp_visint_hdrsPIPNo.AsInteger     := PIPNo  ;
+   sp_visint_hdrs.Post ;
 
-    ID  :=  sp_visint_hdrsVISINT_Logid.AsInteger ;
-    sp_visint_hdrs.Refresh ;
-    sp_visint_hdrs.FindKey([ID]) ;
+   ID  :=  sp_visint_hdrsVISINT_Logid.AsInteger ;
+   sp_visint_hdrs.Refresh ;
+   sp_visint_hdrs.FindKey([ID]) ;
  End;
 end;
 

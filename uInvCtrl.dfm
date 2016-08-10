@@ -34,13 +34,12 @@ object fInvCtrl: TfInvCtrl
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsInleveranser
+    Properties.ActivePage = tsUnregisteredPackages
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
     Properties.Style = 6
     OnChange = dxPageControl1Change
-    ExplicitWidth = 1428
     ClientRectBottom = 624
     ClientRectRight = 1552
     ClientRectTop = 33
@@ -51,7 +50,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Kontrollista'
       ImageIndex = 15
-      ExplicitWidth = 1428
       object Panel16: TPanel
         Left = 0
         Top = 0
@@ -63,7 +61,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1428
         DesignSize = (
           1552
           50)
@@ -346,7 +343,6 @@ object fInvCtrl: TfInvCtrl
             B500E7BDB500E7B5AD00F7BDB500FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
           TabOrder = 3
-          ExplicitLeft = 1223
         end
         object BitBtn38: TBitBtn
           Left = 1454
@@ -361,7 +357,6 @@ object fInvCtrl: TfInvCtrl
           Anchors = [akTop, akRight]
           Caption = 'Expandera alla'
           TabOrder = 4
-          ExplicitLeft = 1330
         end
         object BitBtn41: TBitBtn
           Left = 1454
@@ -376,7 +371,6 @@ object fInvCtrl: TfInvCtrl
           Anchors = [akTop, akRight]
           Caption = 'Kollapsa alla'
           TabOrder = 5
-          ExplicitLeft = 1330
         end
         object cxButton1: TcxButton
           Left = 282
@@ -481,7 +475,6 @@ object fInvCtrl: TfInvCtrl
         Align = alClient
         PopupMenu = pmCtrlList
         TabOrder = 1
-        ExplicitWidth = 1428
         object grdCtrlListDBTableView1: TcxGridDBTableView
           OnDblClick = grdCtrlListDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -705,7 +698,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Avreg.'
       ImageIndex = 16
-      ExplicitWidth = 1428
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -718,7 +710,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object cbEgenSupplierCode: TCheckBox
           Left = 982
           Top = 10
@@ -1207,7 +1198,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmAvReg
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdAvregDBTableView1: TcxGridDBTableView
           Tag = 1
           OnDblClick = grdAvregDBTableView1DblClick
@@ -1354,7 +1344,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'P'#229'reg.'
       ImageIndex = 17
-      ExplicitWidth = 1428
       object Panel6: TPanel
         Left = 0
         Top = 0
@@ -1367,7 +1356,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object BitBtn3: TBitBtn
           Left = 798
           Top = 4
@@ -1856,7 +1844,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmPaReg
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdPaRegPkgDBTableView1: TcxGridDBTableView
           Tag = 2
           OnDblClick = grdPaRegPkgDBTableView1DblClick
@@ -2010,7 +1997,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = #196'ndra'
       ImageIndex = 7
-      ExplicitWidth = 1428
       object Panel10: TPanel
         Left = 0
         Top = 0
@@ -2022,7 +2008,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1428
         object BitBtn5: TBitBtn
           Left = 1014
           Top = 4
@@ -2423,7 +2408,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmAndraPkt
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdChangedDBTableView1: TcxGridDBTableView
           OnKeyDown = grdPaRegPkgDBTableView1KeyDown
           Navigator.Buttons.CustomButtons = <>
@@ -2577,7 +2561,6 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Flyttade'
       ImageIndex = 11
       TabVisible = False
-      ExplicitWidth = 1428
       object Panel21: TPanel
         Left = 0
         Top = 0
@@ -2589,7 +2572,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1428
       end
     end
     object tsUnRegInProduction: TcxTabSheet
@@ -2599,7 +2581,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Avreg. i prod'#39'n'
       ImageIndex = 20
-      ExplicitWidth = 1428
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -2611,7 +2592,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label7: TLabel
           Left = 492
           Top = 10
@@ -2815,7 +2795,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmAvRegIProd
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdAvRegProdDBTableView1: TcxGridDBTableView
           OnDblClick = grdAvRegProdDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -2940,7 +2919,6 @@ object fInvCtrl: TfInvCtrl
       Caption = 'Avreg f'#246're inv.dat'
       ImageIndex = 20
       TabVisible = False
-      ExplicitWidth = 1428
       object Panel8: TPanel
         Left = 0
         Top = 0
@@ -2952,7 +2930,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label13: TLabel
           Left = 492
           Top = 10
@@ -3154,7 +3131,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 1428
         object grdAvregBeforeInvDateDBTableView1: TcxGridDBTableView
           PopupMenu = pmAvregBeforeInvDate
           Navigator.Buttons.CustomButtons = <>
@@ -3253,7 +3229,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Utlev.'
       ImageIndex = 19
-      ExplicitWidth = 1428
       object Panel11: TPanel
         Left = 0
         Top = 0
@@ -3266,7 +3241,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label9: TLabel
           Left = 532
           Top = 10
@@ -3479,7 +3453,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmUtlev
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdLevPktDBTableView1: TcxGridDBTableView
           OnDblClick = grdLevPktDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -3629,7 +3602,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Right = 4
       Margins.Bottom = 4
       Caption = 'Utlev > maxdatum'
-      ExplicitWidth = 1428
       object Panel23: TPanel
         Left = 0
         Top = 0
@@ -3642,7 +3614,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label10: TLabel
           Left = 532
           Top = 1
@@ -3778,7 +3749,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 1428
         object grdDelAfterMaxDatumDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -3884,7 +3854,6 @@ object fInvCtrl: TfInvCtrl
     object tsTransitInLev: TcxTabSheet
       Caption = 'Transit'
       ImageIndex = 25
-      ExplicitWidth = 1428
       object Panel24: TPanel
         Left = 0
         Top = 0
@@ -3897,7 +3866,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label16: TLabel
           Left = 433
           Top = 10
@@ -4108,7 +4076,6 @@ object fInvCtrl: TfInvCtrl
         Height = 541
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 1428
         object grdTransitInLevDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dmInvCtrl.ds_InvTransit
@@ -4275,7 +4242,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Inlev.'
       ImageIndex = 18
-      ExplicitWidth = 1428
       object Panel12: TPanel
         Left = 0
         Top = 0
@@ -4288,7 +4254,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label8: TLabel
           Left = 433
           Top = 10
@@ -4490,7 +4455,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmInLev
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdInLevDBTableView1: TcxGridDBTableView
           OnDblClick = grdInLevDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -4621,7 +4585,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Kredit.lev.'
       ImageIndex = 23
-      ExplicitWidth = 1428
       object Panel22: TPanel
         Left = 0
         Top = 0
@@ -4634,7 +4597,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label15: TLabel
           Left = 433
           Top = 10
@@ -4835,7 +4797,6 @@ object fInvCtrl: TfInvCtrl
         Align = alClient
         PopupMenu = pmgrdInLevOfCreditInvoices
         TabOrder = 1
-        ExplicitWidth = 1428
         object grdInLevOfCreditInvoicesDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -4988,7 +4949,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Produktion'
       ImageIndex = 21
-      ExplicitWidth = 1428
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -5001,7 +4961,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label6: TLabel
           Left = 601
           Top = 10
@@ -5203,7 +5162,6 @@ object fInvCtrl: TfInvCtrl
         PopupMenu = pmProducerat
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
-        ExplicitWidth = 1428
         object grdPrdDBTableView1: TcxGridDBTableView
           OnDblClick = grdPrdDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -5333,7 +5291,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Prod'#39'n f'#246're inv.datum'
       ImageIndex = 21
-      ExplicitWidth = 1428
       object Panel15: TPanel
         Left = 0
         Top = 0
@@ -5346,7 +5303,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object Label14: TLabel
           Left = 601
           Top = 10
@@ -5547,7 +5503,6 @@ object fInvCtrl: TfInvCtrl
         Align = alClient
         PopupMenu = pmProductionBeforeInvDate
         TabOrder = 1
-        ExplicitWidth = 1428
         object grdProductionBeforeInvDateDBTableView1: TcxGridDBTableView
           OnDblClick = grdProductionBeforeInvDateDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -5644,7 +5599,6 @@ object fInvCtrl: TfInvCtrl
     object tsVISINTrows: TcxTabSheet
       Caption = 'Skannade paket'
       ImageIndex = 26
-      ExplicitWidth = 1428
       object Panel25: TPanel
         Left = 0
         Top = 0
@@ -5652,7 +5606,6 @@ object fInvCtrl: TfInvCtrl
         Height = 57
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1428
         object cxButton7: TcxButton
           Left = 9
           Top = 10
@@ -5702,7 +5655,6 @@ object fInvCtrl: TfInvCtrl
         Align = alClient
         PopupMenu = pmVISINT
         TabOrder = 1
-        ExplicitWidth = 1428
         object grScanPkgsDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dmInvCtrl.ds_visint_rowsMaster
@@ -5727,12 +5679,13 @@ object fInvCtrl: TfInvCtrl
           OptionsData.Editing = False
           OptionsData.Inserting = False
           OptionsSelection.MultiSelect = True
+          OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
           OptionsView.Indicator = True
           object grScanPkgsDBTableView1VISINT_Logid: TcxGridDBColumn
+            Caption = 'ID'
             DataBinding.FieldName = 'VISINT_Logid'
-            Visible = False
           end
           object grScanPkgsDBTableView1ScannedDateTime: TcxGridDBColumn
             Caption = 'Skannad'
@@ -5870,7 +5823,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Resultatlista'
       ImageIndex = 22
-      ExplicitWidth = 1428
       object Panel9: TPanel
         Left = 0
         Top = 0
@@ -5883,7 +5835,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         DesignSize = (
           1552
           50)
@@ -6385,7 +6336,6 @@ object fInvCtrl: TfInvCtrl
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
           TabOrder = 5
-          ExplicitLeft = 985
         end
         object BitBtn40: TBitBtn
           Left = 1222
@@ -6475,7 +6425,6 @@ object fInvCtrl: TfInvCtrl
             B500E7BDB500E7B5AD00F7BDB500FF00FF00FF00FF00FF00FF00FF00FF00FF00
             FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
           TabOrder = 6
-          ExplicitLeft = 1098
         end
         object BitBtn42: TBitBtn
           Left = 1335
@@ -6490,7 +6439,6 @@ object fInvCtrl: TfInvCtrl
           Anchors = [akTop, akRight]
           Caption = 'Expandera alla'
           TabOrder = 7
-          ExplicitLeft = 1211
         end
         object BitBtn43: TBitBtn
           Left = 1335
@@ -6505,7 +6453,6 @@ object fInvCtrl: TfInvCtrl
           Anchors = [akTop, akRight]
           Caption = 'Kollapsa alla'
           TabOrder = 8
-          ExplicitLeft = 1211
         end
         object BitBtn44: TBitBtn
           Left = 1435
@@ -6520,7 +6467,6 @@ object fInvCtrl: TfInvCtrl
           Anchors = [akTop, akRight]
           Caption = 'Visa "alla" paket'
           TabOrder = 9
-          ExplicitLeft = 1311
         end
       end
       object Memo2: TMemo
@@ -6534,7 +6480,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alRight
         TabOrder = 1
-        ExplicitLeft = 1301
       end
       object grdResultat: TcxGrid
         Left = 0
@@ -6548,7 +6493,6 @@ object fInvCtrl: TfInvCtrl
         Align = alClient
         PopupMenu = pmResList
         TabOrder = 2
-        ExplicitWidth = 1301
         object grdResultatDBTableView1: TcxGridDBTableView
           OnDblClick = grdResultatDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
@@ -6768,7 +6712,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Summering'
       ImageIndex = 24
-      ExplicitWidth = 1428
       object Panel14: TPanel
         Left = 0
         Top = 0
@@ -6781,7 +6724,6 @@ object fInvCtrl: TfInvCtrl
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1428
         object BitBtn11: TBitBtn
           Left = 20
           Top = 122
@@ -7167,7 +7109,6 @@ object fInvCtrl: TfInvCtrl
     Align = alTop
     Caption = 'MiddlePanel'
     TabOrder = 0
-    ExplicitWidth = 1428
     object Panel4: TPanel
       Left = 1
       Top = 1
@@ -7464,7 +7405,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Align = alClient
       TabOrder = 2
-      ExplicitWidth = 556
       object Label12: TLabel
         Left = 327
         Top = 187
@@ -7750,7 +7690,6 @@ object fInvCtrl: TfInvCtrl
           'Klart!')
         ScrollBars = ssVertical
         TabOrder = 4
-        ExplicitWidth = 554
       end
     end
   end
@@ -7767,7 +7706,6 @@ object fInvCtrl: TfInvCtrl
     TabOrder = 2
     Properties.ActivePage = tsInvHdr
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 1428
     ClientRectBottom = 100
     ClientRectLeft = 1
     ClientRectRight = 1551
@@ -7779,7 +7717,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Inventering'
       ImageIndex = 0
-      ExplicitWidth = 1426
       object TopPanel: TPanel
         Left = 0
         Top = 0
@@ -7791,7 +7728,6 @@ object fInvCtrl: TfInvCtrl
         Margins.Bottom = 4
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 1426
         object Label1: TLabel
           Left = 17
           Top = 18
@@ -8014,7 +7950,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Caption = 'Notering'
       ImageIndex = 1
-      ExplicitWidth = 1426
       object mNote: TcxDBMemo
         Left = 0
         Top = 0
@@ -8026,7 +7961,6 @@ object fInvCtrl: TfInvCtrl
         DataBinding.DataField = 'Note'
         DataBinding.DataSource = dmInvCtrl.ds_InvCtrlGrp
         TabOrder = 0
-        ExplicitWidth = 1426
         Height = 76
         Width = 1550
       end
@@ -8044,7 +7978,6 @@ object fInvCtrl: TfInvCtrl
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 7
-    ExplicitWidth = 1428
     object Panel18: TPanel
       Left = 0
       Top = 0
@@ -8080,7 +8013,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 1367
       object dxBarDockControl3: TdxBarDockControl
         Left = 1
         Top = 1
@@ -8105,7 +8037,6 @@ object fInvCtrl: TfInvCtrl
       Margins.Bottom = 4
       Align = alClient
       TabOrder = 2
-      ExplicitWidth = 361
       object teSearchPackageNo: TcxTextEdit
         Left = 122
         Top = 27
@@ -11205,6 +11136,7 @@ object fInvCtrl: TfInvCtrl
     Top = 577
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdAvreg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11218,10 +11150,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPaRegPkg
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11235,10 +11169,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInLev
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11252,10 +11188,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdLevPkt
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11269,10 +11207,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdPrd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11286,10 +11226,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link6: TdxGridReportLink
       Component = grdChanged
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11303,10 +11245,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxGridReportLink
       Component = grdAvRegProd
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11320,10 +11264,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link8: TdxGridReportLink
       Component = grdAvregBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11337,10 +11283,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link9: TdxGridReportLink
       Component = grdProductionBeforeInvDate
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11354,10 +11302,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link10: TdxGridReportLink
       Component = grdCtrlList
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11371,11 +11321,13 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdResultat
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11389,7 +11341,8 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42528.668147222220000000
+      ReportDocument.CreationDate = 42569.703603981480000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
@@ -11399,6 +11352,7 @@ object fInvCtrl: TfInvCtrl
     end
     object dxComponentPrinter1Link12: TdxGridReportLink
       Component = grdInLevOfCreditInvoices
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11412,10 +11366,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link13: TdxGridReportLink
       Component = grdDelAfterMaxDatum
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11435,10 +11391,12 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link14: TdxGridReportLink
       Component = grdTransitInLev
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -11458,6 +11416,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

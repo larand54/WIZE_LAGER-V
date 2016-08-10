@@ -4,7 +4,7 @@ object dmsConnector: TdmsConnector
   Height = 558
   Width = 734
   object ilStatus: TImageList
-    Left = 360
+    Left = 376
     Top = 32
     Bitmap = {
       494C010108000D00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
@@ -493,7 +493,7 @@ object dmsConnector: TdmsConnector
   object imgSTD: TImageList
     Height = 24
     Width = 24
-    Left = 416
+    Left = 432
     Top = 32
     Bitmap = {
       494C010109000D00040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
@@ -4469,7 +4469,7 @@ object dmsConnector: TdmsConnector
     end
   end
   object LOStatus1616: TImageList
-    Left = 416
+    Left = 432
     Top = 88
     Bitmap = {
       494C010108000D00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
@@ -4915,12 +4915,10 @@ object dmsConnector: TdmsConnector
     Params.Strings = (
       'Server=visprodsql.vida.se'
       'Database=vis_vida'
-      'OSAuthent=No'
+      'OSAuthent=Yes'
       'MetaDefCatalog=vis_vida'
       'MetaDefSchema=dbo'
       'ApplicationName=Vis_Lager'
-      'User_Name=Lars'
-      'Password=woods2011'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRowsetSize, evCursorKind]
     FetchOptions.Mode = fmAll
