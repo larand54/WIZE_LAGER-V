@@ -2,104 +2,145 @@ object fAccParams: TfAccParams
   Left = 229
   Top = 107
   Caption = 'Parametrar'
-  ClientHeight = 517
-  ClientWidth = 951
+  ClientHeight = 636
+  ClientWidth = 1170
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 951
-    Height = 41
+    Width = 1170
+    Height = 50
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 0
     object cxButton1: TcxButton
-      Left = 8
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 10
+      Top = 10
+      Width = 92
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acSave
       TabOrder = 0
     end
     object cxButton2: TcxButton
-      Left = 88
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 108
+      Top = 10
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acCancelChanges
       TabOrder = 1
     end
   end
   object cxPageControl1: TcxPageControl
     Left = 0
-    Top = 41
-    Width = 951
-    Height = 476
+    Top = 50
+    Width = 1170
+    Height = 586
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsAccInv
+    Properties.ActivePage = tsAccParams
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 472
-    ClientRectLeft = 4
-    ClientRectRight = 947
-    ClientRectTop = 24
+    ClientRectBottom = 586
+    ClientRectRight = 1170
+    ClientRectTop = 27
     object tsAccParams: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Ing'#229'ende lager'
       ImageIndex = 0
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 943
-        Height = 41
+        Width = 1170
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object seYearNo: TcxDBSpinEdit
-          Left = 144
-          Top = 12
+          Left = 177
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'YearNo'
           DataBinding.DataSource = dmsSystem.ds_AccStart
           Properties.ImmediatePost = True
           TabOrder = 0
-          Width = 121
+          Width = 149
         end
         object seWeekNo: TcxDBSpinEdit
-          Left = 352
-          Top = 12
+          Left = 433
+          Top = 15
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           DataBinding.DataField = 'WeekNo'
           DataBinding.DataSource = dmsSystem.ds_AccStart
           Properties.ImmediatePost = True
           TabOrder = 1
-          Width = 121
+          Width = 149
         end
         object cxLabel1: TcxLabel
-          Left = 288
-          Top = 16
+          Left = 354
+          Top = 20
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Start vecka:'
         end
         object cxLabel2: TcxLabel
-          Left = 88
-          Top = 16
+          Left = 108
+          Top = 20
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Caption = 'Start '#197'r:'
         end
       end
       object grdAccParams: TcxGrid
         Left = 0
-        Top = 41
-        Width = 943
-        Height = 407
+        Top = 50
+        Width = 1170
+        Height = 509
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 951
-        ExplicitHeight = 411
         object grdAccParamsDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dmsSystem.ds_AccInvParam
@@ -134,29 +175,45 @@ object fAccParams: TfAccParams
       end
     end
     object tsAccInv: TcxTabSheet
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Borgstena'
       ImageIndex = 1
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 943
-        Height = 41
+        Width = 1170
+        Height = 50
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alTop
         TabOrder = 0
         object cxButton3: TcxButton
-          Left = 8
-          Top = 8
-          Width = 75
-          Height = 25
+          Left = 10
+          Top = 10
+          Width = 92
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acAddBorgstena
           TabOrder = 0
           Visible = False
         end
         object cxButton4: TcxButton
-          Left = 88
-          Top = 8
-          Width = 75
-          Height = 25
+          Left = 108
+          Top = 10
+          Width = 93
+          Height = 31
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           Action = acRemoveBorgstena
           TabOrder = 1
           Visible = False
@@ -164,9 +221,13 @@ object fAccParams: TfAccParams
       end
       object grdAccInv: TcxGrid
         Left = 0
-        Top = 41
-        Width = 943
-        Height = 407
+        Top = 50
+        Width = 1170
+        Height = 509
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Align = alClient
         TabOrder = 1
         object grdAccInvDBTableView1: TcxGridDBTableView

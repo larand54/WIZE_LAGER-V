@@ -28,12 +28,12 @@ object dmPkgs: TdmPkgs
     LocaleID = 1024
     BeforePost = mtPackagesBeforePost
     Left = 136
-    Top = 24
+    Top = 8
   end
   object dsmtPackages: TDataSource
     DataSet = mtPackages
     Left = 136
-    Top = 72
+    Top = 64
   end
   object mtProdSpecificLengths: TkbmMemTable
     DesignActivation = True

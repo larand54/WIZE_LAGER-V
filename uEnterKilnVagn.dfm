@@ -2,12 +2,12 @@ object fEnterKilnVagn: TfEnterKilnVagn
   Left = 0
   Top = 0
   Caption = 'Vagn/Sats'
-  ClientHeight = 564
-  ClientWidth = 1256
+  ClientHeight = 738
+  ClientWidth = 1642
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
@@ -15,45 +15,61 @@ object fEnterKilnVagn: TfEnterKilnVagn
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1256
-    Height = 73
+    Width = 1642
+    Height = 137
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
     object mePackageNo: TcxTextEdit
-      Left = 199
-      Top = 27
+      Left = 265
+      Top = 13
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -22
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 0
       OnKeyDown = mePackageNoKeyDown
-      Width = 210
+      Width = 275
     end
     object cxLabel1: TcxLabel
-      Left = 88
-      Top = 32
+      Left = 115
+      Top = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Ange paketnr:'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -22
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
     end
     object cxDBLabel1: TcxDBLabel
-      Left = 923
-      Top = 11
+      Left = 1207
+      Top = 14
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'KilnChargeNo'
       DataBinding.DataSource = dmInventory.ds_KilnChargeRows
       ParentColor = False
@@ -61,28 +77,37 @@ object fEnterKilnVagn: TfEnterKilnVagn
       Style.Color = clWhite
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -22
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
-      Height = 21
-      Width = 121
+      Height = 28
+      Width = 158
+      AnchorX = 1365
     end
     object cxLabel2: TcxLabel
-      Left = 832
+      Left = 1048
       Top = 11
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Torksatsnr:'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -22
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
     end
     object cxDBLabel2: TcxDBLabel
-      Left = 1117
-      Top = 11
+      Left = 1461
+      Top = 14
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'VagnNo'
       DataBinding.DataSource = dmInventory.ds_KilnChargeRows
       ParentColor = False
@@ -90,72 +115,199 @@ object fEnterKilnVagn: TfEnterKilnVagn
       Style.Color = clWhite
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -22
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
-      Height = 21
-      Width = 121
+      Height = 28
+      Width = 158
+      AnchorX = 1619
     end
     object cxLabel3: TcxLabel
-      Left = 1050
-      Top = 11
+      Left = 1373
+      Top = 14
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Vagnnr:'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -22
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
     end
     object cxButton1: TcxButton
-      Left = 600
-      Top = 3
-      Width = 129
-      Height = 65
+      Left = 785
+      Top = 4
+      Width = 168
+      Height = 85
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acRemovePackage
       TabOrder = 6
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -22
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
     end
     object cxButton2: TcxButton
-      Left = 465
-      Top = 3
-      Width = 129
-      Height = 65
+      Left = 608
+      Top = 4
+      Width = 169
+      Height = 85
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acPickPackages
       TabOrder = 7
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -22
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
     end
+    object lcImp: TcxDBLookupComboBox
+      Left = 1208
+      Top = 52
+      Hint = 'Please select a pressure treated type!'
+      DataBinding.DataField = 'IMP'
+      DataBinding.DataSource = ds_KilnVagn
+      ParentFont = False
+      ParentShowHint = False
+      Properties.KeyFieldNames = 'ProductCategoryNo'
+      Properties.ListColumns = <
+        item
+          FieldName = 'ProductCategoryName'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      ShowHint = True
+      Style.Color = clGreen
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -22
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      Width = 411
+    end
+    object LabelIMP: TcxLabel
+      Left = 1048
+      Top = 56
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Impregnering:'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -22
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+    end
+    object cxDBTextEdit1: TcxDBTextEdit
+      Left = 265
+      Top = 55
+      Hint = 'Kopieras till info2 f'#228'ltet i paketen'
+      DataBinding.DataField = 'Notering'
+      DataBinding.DataSource = ds_KilnVagn
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -22
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 10
+      Width = 275
+    end
+    object cxLabel4: TcxLabel
+      Left = 115
+      Top = 57
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Notering:'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -22
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+    end
+    object tePlannedDuration: TcxDBTextEdit
+      Left = 265
+      Top = 96
+      DataBinding.DataField = 'PlannedDuration'
+      DataBinding.DataSource = ds_KilnVagn
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -22
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 12
+      Width = 275
+    end
+    object cxLabel5: TcxLabel
+      Left = 115
+      Top = 99
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Plan.torktid:'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -22
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+    end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 496
-    Width = 1256
-    Height = 68
+    Top = 649
+    Width = 1642
+    Height = 89
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alBottom
     TabOrder = 1
     object bOK: TcxButton
-      Left = 577
-      Top = 6
-      Width = 105
-      Height = 51
+      Left = 755
+      Top = 8
+      Width = 137
+      Height = 67
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'St'#228'ng'
       ModalResult = 1
       TabOrder = 0
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -22
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -163,9 +315,13 @@ object fEnterKilnVagn: TfEnterKilnVagn
   end
   object grdVagnPkgs: TcxGrid
     Left = 0
-    Top = 73
-    Width = 1256
-    Height = 423
+    Top = 137
+    Width = 1642
+    Height = 512
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 2
     object grdVagnPkgsDBTableView1: TcxGridDBTableView
@@ -248,6 +404,11 @@ object fEnterKilnVagn: TfEnterKilnVagn
         Visible = False
         Width = 101
       end
+      object grdVagnPkgsDBTableView1MatchingPT: TcxGridDBColumn
+        Caption = 'Matching P/T'
+        DataBinding.FieldName = 'MatchingPT'
+        PropertiesClassName = 'TcxLabelProperties'
+      end
     end
     object grdVagnPkgsLevel1: TcxGridLevel
       GridView = grdVagnPkgsDBTableView1
@@ -261,7 +422,7 @@ object fEnterKilnVagn: TfEnterKilnVagn
   object cxStyleRepository1: TcxStyleRepository
     Left = 352
     Top = 192
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite
@@ -394,6 +555,7 @@ object fEnterKilnVagn: TfEnterKilnVagn
     object acRemovePackage: TAction
       Caption = 'Ta bort paket'
       OnExecute = acRemovePackageExecute
+      OnUpdate = acRemovePackageUpdate
     end
     object acPickPackages: TAction
       Caption = 'Plocka paket'
@@ -664,5 +826,10 @@ object fEnterKilnVagn: TfEnterKilnVagn
       0100440045004600410055004C0054005F004300480041005200530045005400
       0100440045004600410055004C0054005F004300480041005200530045005400
       0D000A00}
+  end
+  object ds_KilnVagn: TDataSource
+    DataSet = dmInventory.cds_KilnVagn
+    Left = 368
+    Top = 328
   end
 end

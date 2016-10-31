@@ -3,137 +3,6 @@ pd.ProductNo,
 pde.ProductDisplayName AS PRODUKT,
 pt.PackageTypeNo,
 pn.PackageNo,
-RTRIM(pn.SupplierCode) AS SupplierCode,
-pg.ActualThicknessMM AS AT,
-pg.ActualWidthMM AS AB,
-pt.TotalNoOfPieces AS STYCK,
-CASE WHEN PTL.STD_Length = 0 THEN PTL.PcsPerLength
-ELSE ''
-END AS STYCKPERLÄNGD,
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 1800 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L1, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 2100 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L2, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 2400 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L3, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 2700 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L4, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3000 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L5, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3300 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L6, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3600 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L7, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3900 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L8, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 4200 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L9, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 4500 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L10, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 4800 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L11, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 5100 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L12, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 5400 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L13, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 5700 THEN ptd.NoOfPieces ELSE 0.0 END) AS Float) AS L14, 
-CAST(0.0 AS Float) AS L15, 
-CAST(0.0 AS Float) AS L16, 
-CAST(0.0 AS Float) AS L17, 
-CAST(0.0 AS Float) AS L18, 
-CAST(0.0 AS Float) AS L19, 
-CAST(0.0 AS Float) AS L20, 
-CAST(0.0 AS Float) AS L21, 
-CAST(0.0 AS Float) AS L22, 
-CAST(0.0 AS Float) AS L23, 
-CAST(0.0 AS Float) AS L24, 
-CAST(0.0 AS Float) AS L25, 
-CAST(0.0 AS Float) AS L26, 
-CAST(0.0 AS Float) AS L27, 
-CAST(0.0 AS Float) AS L28, 
-CAST(0.0 AS Float) AS L29, 
-CAST(0.0 AS Float) AS L30, 
-CAST(0.0 AS Float) AS L31, 
-CAST(0.0 AS Float) AS L32, 
-CAST(0.0 AS Float) AS L33, 
-CAST(0.0 AS Float) AS L34, 
-CAST(0.0 AS Float) AS L35, 
-CAST(0.0 AS Float) AS L36, 
-CAST(0.0 AS Float) AS L37, 
-CAST(0.0 AS Float) AS L38, 
-CAST(0.0 AS Float) AS L39, 
-CAST(0.0 AS Float) AS L40, 
-CAST(0.0 AS Float) AS L41, 
-CAST(0.0 AS Float) AS L42, 
-CAST(0.0 AS Float) AS L43, 
-CAST(0.0 AS Float) AS L44, 
-CAST(0.0 AS Float) AS L45, 
-pt.Totalm3Actual AS AM3,
-pt.Totalm3Nominal AS NM3,
-pt.TotalLinealMeterActualLength AS AM1,
-pt.TotalMFBMNominal AS MFBM,
-pt.TotalSQMofActualWidth AS AM2,
-pn.DateCreated AS TILLVERKAD,
-SPE.SpeciesName AS TS,
-imp.ProductCategoryName AS PC,
-Gr.GradeName AS KV,
-SUR.SurfacingName AS UT,
-PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName+'/'+lip.LogicalInventoryName AS Lager,
-lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo
-,1 AS Status,
-(Select ls.Avgprice from dbo.LIPSum ls
-WHERE ls.IC_SetNo = 28
-and ls.PackageNo = pn.packageNo
-and ls.Suppliercode = pn.SupplierCode
-and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Pris,
-(Select ls.Avgprice * pt.Totalm3Nominal from dbo.LIPSum ls
-WHERE ls.IC_SetNo = 28
-and ls.PackageNo = pn.packageNo
-and ls.Suppliercode = pn.SupplierCode
-and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Värde, va.VarugruppNamn,
-CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength, pn.REFERENCE, pn.BL_NO,  pn.Info2
-FROM  dbo.Client Verk
-Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
-Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
-INNER JOIN dbo.InvenRow invctrlrow ON invctrlrow.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
-INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = invctrlrow.PackageNo
-AND pn.SupplierCode = invctrlrow.SupplierCode
-Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = invctrlrow.PackageTypeNo
-Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
-Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
-Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
-AND PTL.LengthGroupNo = 1
-AND PTL.VolumeType = 3
-Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
-Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
-Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
-AND pde.LanguageID = 1
-Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
-AND va.LanguageCode = 1
-Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
-Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
-				AND imp.LanguageCode = 1
-Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
-				AND SPE.LanguageCode = 1
-Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
-				AND SUR.LanguageCode = 1
-Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
-				AND Gr.LanguageCode = 1
-Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
-WHERE LIP.SequenceNo = 1
-AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC_GrpNo and ia.IC_SetNo = 28 )
-
-
-
-
-
-
-
-
-
-
-
-
-Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
-pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,
-pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,
-Gr.GradeName, SUR.SurfacingName, va.VarugruppNamn, pn.REFERENCE, pn.BL_NO,  pn.Info2,
-pn.Original_Price,
-Verk.ClientNo , Cy.CityName, lip.LogicalInventoryName,
-lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo
-UNION
-Select distinct 1 AS PKT,
-pd.ProductNo,
-pde.ProductDisplayName AS PRODUKT,
-pt.PackageTypeNo,
-pn.PackageNo,
 pn.SupplierCode,
 pg.ActualThicknessMM AS AT,
 pg.ActualWidthMM AS AB,
@@ -240,7 +109,7 @@ AND pn.Status = 0
 AND L.LoadedDate > '2013-12-01'
 AND nos.InvoiceNo is null
 AND Verk.SalesRegionNo = 741
- AND ( LIP.InvCode = '776' ) 
+ AND ( LIP.InvCode = '43' ) 
  AND ( Verk.PktNrLevKod = 10 ) 
 
 

@@ -168,7 +168,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_PhysInventory'
     Left = 48
-    Top = 80
+    Top = 64
     ParamData = <
       item
         Position = 1
@@ -228,7 +228,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_Del_Pkg_ResModul'
     Left = 48
-    Top = 152
+    Top = 136
     ParamData = <
       item
         Position = 1
@@ -254,7 +254,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_Pkg_ResModul'
     Left = 48
-    Top = 200
+    Top = 184
     ParamData = <
       item
         Position = 1
@@ -734,7 +734,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_Del_UserResPkgs'
     Left = 48
-    Top = 256
+    Top = 240
     ParamData = <
       item
         Position = 1
@@ -793,7 +793,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_PkgsByInventering'
     Left = 656
-    Top = 176
+    Top = 168
     ParamData = <
       item
         Position = 1
@@ -817,7 +817,7 @@
   object ds_PkgsByInventering: TDataSource
     DataSet = sp_PkgsByInventering
     Left = 656
-    Top = 232
+    Top = 224
   end
   object sp_lencolpcspkgtypeno: TFDStoredProc
     Connection = dmsConnector.FDConnection1
@@ -966,7 +966,7 @@
   end
   object qryExec: TFDQuery
     Connection = dmsConnector.FDConnection1
-    Left = 848
+    Left = 864
     Top = 128
   end
   object sqBarCode: TFDQuery
@@ -1185,7 +1185,7 @@
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.PktTypeByPP')
-    Left = 560
+    Left = 536
     Top = 176
   end
   object sq_GetPkgTypeByCode: TFDQuery
@@ -1323,7 +1323,7 @@
       'Select * FROM dbo.GridSettings'
       'WHERE ViewName = :ViewName'
       'AND UserID = :UserID')
-    Left = 848
+    Left = 864
     Top = 176
     ParamData = <
       item
@@ -1683,7 +1683,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_GetPrefixToChangeInInventering'
     Left = 376
-    Top = 320
+    Top = 304
     ParamData = <
       item
         Position = 1
@@ -1707,7 +1707,7 @@
   object ds_prefixForChanged: TDataSource
     DataSet = sp_prefixForChanged
     Left = 376
-    Top = 376
+    Top = 360
   end
   object cds_AccInvParam: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -1850,7 +1850,7 @@
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.AccStart')
-    Left = 936
+    Left = 952
     Top = 168
     object sq_AccStartYearNo: TIntegerField
       FieldName = 'YearNo'
@@ -2164,6 +2164,7 @@
     end
   end
   object sp_PkgInfoII: TFDStoredProc
+    Active = True
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.Vis_PkgInfo'
     Left = 944
@@ -2321,12 +2322,59 @@
       FieldName = 'KORTAKODEN'
       Origin = 'KORTAKODEN'
       FixedChar = True
-      Size = 40
     end
     object sp_PkgInfoIILANGAKODEN: TStringField
       FieldName = 'LANGAKODEN'
       Origin = 'LANGAKODEN'
       Size = 50
+    end
+    object sp_PkgInfoIIREFERENCE: TStringField
+      FieldName = 'REFERENCE'
+      Origin = 'REFERENCE'
+      Size = 30
+    end
+    object sp_PkgInfoIIInfo2: TStringField
+      FieldName = 'Info2'
+      Origin = 'Info2'
+      Size = 30
+    end
+    object sp_PkgInfoIIInfo1: TStringField
+      FieldName = 'Info1'
+      Origin = 'Info1'
+      Size = 30
+    end
+    object sp_PkgInfoIIStoredDate: TSQLTimeStampField
+      FieldName = 'StoredDate'
+      Origin = 'StoredDate'
+    end
+    object sp_PkgInfoIIPosition: TStringField
+      FieldName = 'Position'
+      Origin = 'Position'
+      Size = 50
+    end
+    object sp_PkgInfoIIPackageNo: TIntegerField
+      FieldName = 'PackageNo'
+      Origin = 'PackageNo'
+    end
+    object sp_PkgInfoIISupplierCode: TStringField
+      FieldName = 'SupplierCode'
+      Origin = 'SupplierCode'
+      FixedChar = True
+      Size = 3
+    end
+    object sp_PkgInfoIISortingOrderNo: TIntegerField
+      FieldName = 'SortingOrderNo'
+      Origin = 'SortingOrderNo'
+    end
+    object sp_PkgInfoIIDateCreated: TSQLTimeStampField
+      FieldName = 'DateCreated'
+      Origin = 'DateCreated'
+    end
+    object sp_PkgInfoIIIMP: TStringField
+      FieldName = 'IMP'
+      Origin = 'IMP'
+      Required = True
+      Size = 40
     end
   end
   object ds_PkgInfoII: TDataSource
@@ -2806,5 +2854,38 @@
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object cds_imp: TFDQuery
+    Connection = dmsConnector.FDConnection1
+    SQL.Strings = (
+      'SELECT [ProductCategoryNo]'
+      '      ,[ProductCategoryName]'
+      '      ,[ProductCategoryExternalCode]'
+      '      ,[SequenceNo]'
+      '      ,[CreatedUser]'
+      '      ,[ModifiedUser]'
+      '      ,[DateCreated]'
+      '      ,[Act]'
+      '      ,[ImpCode]'
+      '      ,[ImpregInProdName]'
+      '      ,[LanguageCode]'
+      '      ,[DKCode]'
+      '  FROM [dbo].[ProductCategory]'
+      '  WHERE [LanguageCode] = 1'
+      '  and Act = 1')
+    Left = 40
+    Top = 544
+    object cds_impProductCategoryNo: TIntegerField
+      FieldName = 'ProductCategoryNo'
+      Origin = 'ProductCategoryNo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cds_impProductCategoryName: TStringField
+      FieldName = 'ProductCategoryName'
+      Origin = 'ProductCategoryName'
+      Required = True
+      Size = 40
+    end
   end
 end

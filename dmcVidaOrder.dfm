@@ -976,7 +976,7 @@
       'Order By rp.RegPointName'
       '')
     Left = 248
-    Top = 320
+    Top = 304
     ParamData = <
       item
         Name = 'CLIENTNO'

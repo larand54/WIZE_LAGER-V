@@ -1405,7 +1405,7 @@ begin
    lcSR.Enabled     := False ;
 //   lcOWNER.Enabled  := False ;
 //   lcPIPNAME.Enabled:= False ;
-  End ;  
+  End ;
 
   if mtUserPropShipperNo.AsInteger = 1 then
   Begin
@@ -1483,37 +1483,39 @@ begin
  else
  bbVisaAvAktiverade.Visible:= ivNever ;
 
- With dm_DryKiln do
- Begin
-  cds_Kilns.Active          := False ;
-  cds_Kilns.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
-  cds_Kilns.Active          := True ;
+{
+   With dm_DryKiln do
+   Begin
+    cds_Kilns.Active          := False ;
+    cds_Kilns.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
+    cds_Kilns.Active          := True ;
 
-  cds_KilnChargeHdr.Active  := False ;
-  cds_KilnChargeHdr.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
-  cds_KilnChargeHdr.Active  := True ;
+    cds_KilnChargeHdr.Active  := False ;
+    cds_KilnChargeHdr.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
+    cds_KilnChargeHdr.Active  := True ;
 
-  cds_KilnChargeHdr.Locate('KilnChargeNo', mtUserPropAgentNo.AsInteger, []) ;
+    cds_KilnChargeHdr.Locate('KilnChargeNo', mtUserPropAgentNo.AsInteger, []) ;
 
 
-  //  Get_LastKilnChNo ;
+    //  Get_LastKilnChNo ;
 
-//  cds_KilnChargeRow.Active  := False ;
-//  sq_KilnChargeRows.ParamByName('KilnChargeNo').AsInteger:= cds_KilnChargeHdrKilnChargeNo.AsInteger ;
-  cds_KilnChargeRow.Active  := False ;
-  cds_KilnChargeRow.Active  := True ;
+  //  cds_KilnChargeRow.Active  := False ;
+  //  sq_KilnChargeRows.ParamByName('KilnChargeNo').AsInteger:= cds_KilnChargeHdrKilnChargeNo.AsInteger ;
+    cds_KilnChargeRow.Active  := False ;
+    cds_KilnChargeRow.Active  := True ;
 
-  cds_SumKilnChargeRows.Active  := False ;
-  cds_SumKilnChargeRows.Active  := True ;
+    cds_SumKilnChargeRows.Active  := False ;
+    cds_SumKilnChargeRows.Active  := True ;
 
-  cds_KilnProps.Active:= False ;
-  cds_KilnProps.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
-  cds_KilnProps.Active:= True ;
+    cds_KilnProps.Active:= False ;
+    cds_KilnProps.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
+    cds_KilnProps.Active:= True ;
 
-  cds_KilnChargeHdr.Filter   := 'Status = 0' ;
-  cds_KilnChargeHdr.Filtered:= True ;
+    cds_KilnChargeHdr.Filter   := 'Status = 0' ;
+    cds_KilnChargeHdr.Filtered:= True ;
 
- End ;
+   End ;
+}
 
   mtSpecData.Active := True ;
   mtSpecData.Insert ;
@@ -1538,7 +1540,7 @@ begin
 
 
 
- PopulateCheckBoxMallar ;
+  PopulateCheckBoxMallar ;
 // OpenStandardMall(Sender) ;
 //  HtmlExportPath := GetUserExportDir(0, ThisUser.UserID, Self.Name) ;
 
@@ -5241,7 +5243,7 @@ begin
    GenNotInvoicedTable_SQL(Sender) ;
   End ;
 
-  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
+  if thisuser.UserID = 258 then  cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
  End ; //with
 
  finally
@@ -5778,7 +5780,9 @@ begin
   End
   else
   Begin
-   cds_PkgNoList.SQL.Add('AND pn.Status = ' + dmInventory.cds_PkgListStatus.AsString) ;
+ //  if cbInklEjFakt.ItemIndex = then
+   cds_PkgNoList.SQL.Add('AND pn.Status = 1') ;
+//   cds_PkgNoList.SQL.Add('AND pn.Status = ' + dmInventory.cds_PkgListStatus.AsString) ;
    if dmInventory.cds_PkgListStatus.AsInteger = 0 then
    Begin
     cds_PkgNoList.SQL.Add('AND pn.PackageNo not in (Select pp.PackageNo From dbo.Package_Production pp') ;
@@ -8123,6 +8127,8 @@ begin
     cds_PLIP.SQL.Add('WHERE ul.LIPNo = LIP.LogicalInventoryPointNo') ;
     cds_PLIP.SQL.Add('AND ul.UserID = ' + IntToStr(ThisUser.UserID) + ')))') ;
 
+    cds_PLIP.SQL.Add(GetSQLofComboFilter(1, 'C.PktNrLevKod', cbOwner)) ;
+
 {
       cds_PLIP.SQL.Add('OR (exists (Select * from dbo.UserArrivalPoint ua') ;
       cds_PLIP.SQL.Add('WHERE ua.PhyInvPointNameNo = PH.PhyInvPointNameNo') ;
@@ -8147,7 +8153,7 @@ begin
  cds_PLIP.SQL.Add('Order By  LIP.InvCode, LIP.LogicalInventoryName') ;
 
 
-// cds_PLIP.SQL.SaveToFile('cds_PLIP.txt');
+ if ThisUser.UserID = 258 then cds_PLIP.SQL.SaveToFile('cds_PLIP.txt');
  cds_PLIP.Active:= True ;
 
   cbLIP.Properties.Items.Clear ;

@@ -615,11 +615,43 @@ type
     mtSelectedPkgNoMaxlangd: TFloatField;
     sp_PkgExistInLIP: TFDStoredProc;
     sq_UserLipNoExists: TFDQuery;
+    cds_KilnVagnIMPNo: TIntegerField;
+    cds_KilnVagnIMP: TStringField;
+    cds_GetTypeOfLine: TFDQuery;
+    cds_GetTypeOfLineTypeOfLine: TIntegerField;
+    cds_Kiln: TFDQuery;
+    cds_KilnClientNo: TIntegerField;
+    cds_KilnKilnNo: TIntegerField;
+    cds_KilnKilnName: TStringField;
+    cds_KilnNoOfVagnar: TIntegerField;
+    cds_KilnTypeOfKiln: TIntegerField;
+    cds_KilnNoOfVagnarBefore: TIntegerField;
+    cds_KilnTypeOfLine: TIntegerField;
+    cds_KilnIMPNo: TIntegerField;
+    cds_imp: TFDQuery;
+    cds_impProductCategoryNo: TIntegerField;
+    cds_impProductCategoryName: TStringField;
+    cds_KilnVagnNotering: TStringField;
+    cds_KilnVagnPlannedDuration: TFloatField;
+    cds_KilnKilnPropsID: TIntegerField;
+    cds_KilnDefaultDuration: TFloatField;
+    cds_KilnChargeRowsMatchingPT: TStringField;
+    cds_KilnChargeRowsCheckIMP: TFDQuery;
+    cds_KilnChargeRowsCheckIMPKilnChargeNo: TIntegerField;
+    cds_KilnChargeRowsCheckIMPPackageNo: TIntegerField;
+    cds_KilnChargeRowsCheckIMPSupplierCode: TStringField;
+    cds_KilnChargeRowsCheckIMPNoOfPkgs: TIntegerField;
+    cds_KilnChargeRowsCheckIMPDateCreated: TSQLTimeStampField;
+    cds_KilnChargeRowsCheckIMPCreatedUser: TIntegerField;
+    cds_KilnChargeRowsCheckIMPVagnNo: TIntegerField;
+    cds_KilnChargeRowsCheckIMPRowNo: TIntegerField;
+    cds_KilnChargeRowsCheckIMPProductDisplayName: TStringField;
+    cds_KilnChargeRowsCheckIMPPcsPerLength: TStringField;
+    cds_KilnChargeRowsCheckIMPMatchingPT: TStringField;
     procedure cds_PcsPerLenCalcFields(DataSet: TDataSet);
     procedure cds_PropsAfterInsert(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure cds_KilnVagnAfterInsert(DataSet: TDataSet);
-    procedure cds_KilnVagnBeforePost(DataSet: TDataSet);
     procedure cds_KilnChargeRowsAfterInsert(DataSet: TDataSet);
     procedure cds_KilnChargeRowsBeforeDelete(DataSet: TDataSet);
     procedure cds_KilnChargeRowsAfterPost(DataSet: TDataSet);
@@ -641,6 +673,11 @@ type
     KeyField :  string ;
     KilnChargeNo,
     RoleType : Integer ;
+    function  GetDefaultDurationByKiln(const KilnChargeNo : Integer) :  Double ; //Get default kiln duration
+    function  GetKilnNo(const KilnChargeNo : Integer) :  Integer ; //Get KilnNo
+    function  GetIMPNoByKiln(const KilnChargeNo : Integer) :  Integer ; //Get IMPNo
+    procedure SaveIMPNoWithKiln(const KilnChargeNo, IMPNo : Integer) ;
+    function  GetTypeOfLine(const KilnChargeNo  : Integer) : Integer ;
     Function  UserLipNoExists : Boolean ;
     function  PkgExistInInventoryKILN(const PackageNo, LIPNo : Integer;const Prefix : String3) : Boolean ;
     Procedure UpdateLIPSUMPrice(const LIPNo, PackageNo, SETNo : Integer;const Prefix : String;const NewPrice : Double) ;
@@ -652,7 +689,7 @@ type
     function  IsNoOfVagnarInKilnBiggerThenMaxVagnar(const pKilnChargeNo  : Integer) : Boolean ;
     procedure Open_cds_KilnChargeHdr ;
     function  GetLastVagnNoPerVagnStatus(const KilnChargeNo, VagnStatus  : Integer) : Integer ;
-    procedure FlyttaVagn(const KilnChargeNo, VagnNo, MoveToLIPNo, NewVagnStatus : Integer) ;
+    procedure FlyttaVagn(const KilnChargeNo, VagnNo, MoveToLIPNo, NewVagnStatus, UserAction : Integer) ;
     procedure ControlVagn(const VagnNo : Integer) ;
     procedure EditVagn(const pKilnChargeNo, VagnNo : Integer) ;
     procedure AddVagn(const pKilnChargeNo : Integer) ;
@@ -672,6 +709,7 @@ type
 
 var
   dmInventory: TdmInventory;
+
 
 implementation
 
@@ -753,6 +791,7 @@ begin
  sp_MovePackage.ParamByName('@NewLocation').AsInteger   :=  cds_KilnChargeHdrKiln_LIPNo.AsInteger ;
  sp_MovePackage.ParamByName('@UserID').AsInteger        :=  ThisUser.UserID ;
  sp_MovePackage.ParamByName('@KilnChargeNo').AsInteger  :=  cds_KilnChargeRowsKilnChargeNo.AsInteger ;
+ sp_MovePackage.ParamByName('@Operation').AsInteger     :=  29 ; //Unit started
  sp_MovePackage.ExecProc ;
  except
   On E: Exception do
@@ -774,6 +813,7 @@ begin
  sp_MovePackage.ParamByName('@NewLocation').AsInteger   :=  cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
  sp_MovePackage.ParamByName('@UserID').AsInteger        :=  ThisUser.UserID ;
  sp_MovePackage.ParamByName('@KilnChargeNo').AsInteger  :=  cds_KilnChargeRowsKilnChargeNo.AsInteger ;
+ sp_MovePackage.ParamByName('@Operation').AsInteger     :=  35 ; //Removed package
  sp_MovePackage.ExecProc ;
  except
   On E: Exception do
@@ -786,15 +826,13 @@ end;
 
 procedure TdmInventory.cds_KilnVagnAfterInsert(DataSet: TDataSet);
 begin
+ cds_KilnVagnVagnNo.AsInteger             :=  dmsConnector.NextSecondMaxNo('VagnNo', KilnChargeNo) ;
  cds_KilnVagnVagnStatus.AsInteger         := 0 ;
  cds_KilnVagnDateCreated.AsSQLTimeStamp   := DateTimeToSqlTimeStamp(Now) ;
  cds_KilnVagnCreatedUser.AsInteger        := ThisUser.UserID ;
  cds_KilnVagnKilnChargeNo.AsInteger       := KilnChargeNo ;
-end;
-
-procedure TdmInventory.cds_KilnVagnBeforePost(DataSet: TDataSet);
-begin
- cds_KilnVagnVagnNo.AsInteger :=  dmsConnector.NextSecondMaxNo('VagnNo', cds_KilnVagnKilnChargeNo.AsInteger) ;
+ cds_KilnVagnIMPNo.AsInteger              := GetIMPNoByKiln(KilnChargeNo)  ;
+ cds_KilnVagnPlannedDuration.AsFloat      := GetDefaultDurationByKiln(KilnChargeNo) ;
 end;
 
 procedure TdmInventory.cds_PcsPerLenCalcFields(DataSet: TDataSet);
@@ -1345,6 +1383,9 @@ End ;
 procedure TdmInventory.ControlVagn(const VagnNo : Integer) ;
 Var x : Integer ;
 Begin
+ if cds_KilnVagn.State in [dsEdit, dsInsert] then
+  cds_KilnVagn.Post ;
+
  x := 0 ;
  cds_KilnChargeRows.First ;
  while not cds_KilnChargeRows.Eof do
@@ -1361,10 +1402,9 @@ Begin
 
  if x = 0 then
   cds_KilnVagn.Delete ;
-
 End;
 
-procedure TdmInventory.FlyttaVagn(const KilnChargeNo, VagnNo, MoveToLIPNo, NewVagnStatus : Integer) ;
+procedure TdmInventory.FlyttaVagn(const KilnChargeNo, VagnNo, MoveToLIPNo, NewVagnStatus, UserAction : Integer) ;
 Var
   Save_Cursor   : TCursor;
   LIPNo         : Integer ;
@@ -1378,6 +1418,8 @@ Begin
      sp_MoveVagn.ParamByName('@VagnNo').AsInteger        := VagnNo ;
      sp_MoveVagn.ParamByName('@MoveToLIPNo').AsInteger   := MoveToLIPNo ;
      sp_MoveVagn.ParamByName('@NewVagnStatus').AsInteger := NewVagnStatus ;
+     sp_MoveVagn.ParamByName('@UserID').AsInteger        := ThisUser.UserID ;
+     sp_MoveVagn.ParamByName('@UserAction').AsInteger    := UserAction ;
      sp_MoveVagn.ExecProc ;
     dmsConnector.Commit ;
   except
@@ -1522,5 +1564,83 @@ Begin
   sp_PkgExistInLIP.Active  := False ;
  End ;
 End ;
+
+function TdmInventory.GetTypeOfLine(const KilnChargeNo  : Integer) : Integer ;
+Begin
+  cds_GetTypeOfLine.ParamByName('KilnChargeNo').AsInteger := KilnChargeNo ;
+  cds_GetTypeOfLine.Active  := True ;
+  Try
+  if not cds_GetTypeOfLine.Eof then
+   Result := cds_GetTypeOfLineTypeOfLine.AsInteger
+    else
+     Result := 1 ;
+  Finally
+    cds_GetTypeOfLine.Active  := False ;
+  End;
+End;
+
+procedure TdmInventory.SaveIMPNoWithKiln(const KilnChargeNo, IMPNo : Integer) ;
+Var KilnNo  : Integer ;
+Begin
+  KilnNo  := GetKilnNo(KilnChargeNo) ;
+
+  cds_Kiln.Active := False ;
+  cds_Kiln.ParamByName('KilnNo').AsInteger  := KilnNo ;
+  cds_Kiln.Active := True ;
+  Try
+  if not cds_Kiln.Eof then
+  Begin
+    cds_Kiln.Edit ;
+    cds_KilnIMPNo.AsInteger :=  IMPNo ;
+    cds_Kiln.Post ;
+  End;
+  Finally
+    cds_Kiln.Active := False ;
+  End;
+End;
+
+function TdmInventory.GetDefaultDurationByKiln(const KilnChargeNo : Integer) :  Double ; //Get default kiln duration
+Var KilnNo  : Integer ;
+Begin
+  KilnNo  := GetKilnNo(KilnChargeNo) ;
+
+  cds_Kiln.Active := False ;
+  cds_Kiln.ParamByName('KilnNo').AsInteger  := KilnNo ;
+  cds_Kiln.Active := True ;
+  Try
+  if not cds_Kiln.Eof then
+    Result  :=  cds_KilnDefaultDuration.AsInteger
+     else
+      Result  := 0 ;
+  Finally
+    cds_Kiln.Active := False ;
+  End;
+End;
+
+function TdmInventory.GetIMPNoByKiln(const KilnChargeNo : Integer) :  Integer ; //Get IMPNo
+Var KilnNo  : Integer ;
+Begin
+  KilnNo  := GetKilnNo(KilnChargeNo) ;
+
+  cds_Kiln.Active := False ;
+  cds_Kiln.ParamByName('KilnNo').AsInteger  := KilnNo ;
+  cds_Kiln.Active := True ;
+  Try
+  if not cds_Kiln.Eof then
+    Result  :=  cds_KilnIMPNo.AsInteger
+     else
+      Result  := -1 ;
+  Finally
+    cds_Kiln.Active := False ;
+  End;
+End;
+
+function TdmInventory.GetKilnNo(const KilnChargeNo : Integer) :  Integer ; //Get KilnNo
+Begin
+  if cds_SelectProgressKiln.Locate('KilnChargeNo', KilnChargeNo, []) then
+   Result :=  cds_SelectProgressKilnKilnNo.AsInteger
+    else
+     Result := -1 ;
+End;
 
 end.

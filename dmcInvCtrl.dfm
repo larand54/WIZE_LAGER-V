@@ -8990,11 +8990,16 @@
       DisplayLabel = 'Anv'#228'nd som mall'
       FieldName = 'SetMall'
       Origin = 'SetMall'
+      OnChange = sp_SetMallsp_SetMallSetMallChange
     end
     object sp_SetMallLogicalInventoryPointNo: TIntegerField
       FieldName = 'LogicalInventoryPointNo'
       Origin = 'LogicalInventoryPointNo'
       Required = True
+    end
+    object sp_SetMallSetMallbu: TIntegerField
+      FieldName = 'SetMallbu'
+      Origin = 'SetMallbu'
     end
   end
   object ds_SetMall: TDataSource
@@ -9004,7 +9009,6 @@
   end
   object upd_SetMall: TFDUpdateSQL
     Connection = dmsConnector.FDConnection1
-    ConnectionName = 'Vida'
     InsertSQL.Strings = (
       'INSERT INTO dbo.LogicalInventoryPoint'
       '(LogicalInventoryPointNo, PhysicalInventoryPointNo, '
@@ -9517,7 +9521,7 @@
     UpdateOptions.UpdateTableName = 'dbo.VISINT_Header'
     StoredProcName = 'dbo.vis_visint_hdrs'
     Left = 824
-    Top = 1088
+    Top = 1040
     ParamData = <
       item
         Position = 1
@@ -9586,7 +9590,7 @@
   object ds_visint_hdrs: TDataSource
     DataSet = sp_visint_hdrs
     Left = 824
-    Top = 1144
+    Top = 1096
   end
   object sp_MovePkgsToLIP: TFDStoredProc
     Connection = dmsConnector.FDConnection1
@@ -9630,6 +9634,64 @@
         Name = '@IC_GrpNo'
         DataType = ftInteger
         ParamType = ptInput
+      end>
+  end
+  object sp_AdjResultList: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_AdjResultList'
+    Left = 1016
+    Top = 1048
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@IC_GrpNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sp_SetOnlyVerkMall: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_SetOnlyVerkMall'
+    Left = 1296
+    Top = 1024
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end>
+  end
+  object sp_SetAllExceptVerkMall: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_SetAllExceptVerkMall'
+    Left = 1296
+    Top = 1080
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end>
+  end
+  object sp_SetAllActiveMall: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_SetAllActiveMall'
+    Left = 1296
+    Top = 1136
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
       end>
   end
 end

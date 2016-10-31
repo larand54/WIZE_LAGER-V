@@ -3,12 +3,12 @@ object fPickPkgNoTork: TfPickPkgNoTork
   Top = 123
   ActiveControl = lcProduct
   Caption = 'Plocka paketnr'
-  ClientHeight = 697
-  ClientWidth = 1135
+  ClientHeight = 858
+  ClientWidth = 1397
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -18,13 +18,17 @@ object fPickPkgNoTork: TfPickPkgNoTork
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 121
-    Width = 1135
-    Height = 495
+    Top = 149
+    Width = 1397
+    Height = 609
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
     TabStop = False
@@ -143,45 +147,61 @@ object fPickPkgNoTork: TfPickPkgNoTork
   end
   object Panel1: TPanel
     Left = 0
-    Top = 616
-    Width = 1135
-    Height = 81
+    Top = 758
+    Width = 1397
+    Height = 100
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alBottom
     TabOrder = 1
     object Label1: TLabel
-      Left = 18
-      Top = 16
-      Width = 142
-      Height = 20
+      Left = 22
+      Top = 20
+      Width = 163
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Paket markerade:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object LabelNoOfPkgsMarked: TLabel
-      Left = 183
-      Top = 16
-      Width = 11
-      Height = 20
+      Left = 225
+      Top = 20
+      Width = 12
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object BitBtn1: TBitBtn
-      Left = 416
-      Top = 6
-      Width = 169
-      Height = 75
+      Left = 512
+      Top = 7
+      Width = 208
+      Height = 93
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -27
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       Kind = bkOK
@@ -191,13 +211,17 @@ object fPickPkgNoTork: TfPickPkgNoTork
       TabStop = False
     end
     object BitBtn2: TBitBtn
-      Left = 615
-      Top = 6
-      Width = 170
-      Height = 75
+      Left = 757
+      Top = 7
+      Width = 209
+      Height = 93
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -27
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       Kind = bkCancel
@@ -210,74 +234,98 @@ object fPickPkgNoTork: TfPickPkgNoTork
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 1135
-    Height = 121
+    Width = 1397
+    Height = 149
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 2
     object LabelPIPName: TLabel
-      Left = 76
-      Top = 14
-      Width = 205
-      Height = 28
+      Left = 94
+      Top = 17
+      Width = 252
+      Height = 35
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       AutoSize = False
       Caption = 'LabelPIPName'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
       Visible = False
     end
     object Label4: TLabel
-      Left = 18
-      Top = 14
-      Width = 52
-      Height = 20
+      Left = 22
+      Top = 17
+      Width = 60
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Lager:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
       Visible = False
     end
     object Label5: TLabel
-      Left = 479
-      Top = 14
-      Width = 59
-      Height = 20
+      Left = 590
+      Top = 17
+      Width = 69
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Produkt:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 479
-      Top = 41
-      Width = 50
-      Height = 20
+      Left = 590
+      Top = 50
+      Width = 60
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'ALMM:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object bbMarkAll: TBitBtn
-      Left = 18
-      Top = 48
-      Width = 103
-      Height = 50
+      Left = 22
+      Top = 59
+      Width = 127
+      Height = 62
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Markera alla'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
@@ -286,14 +334,18 @@ object fPickPkgNoTork: TfPickPkgNoTork
       OnClick = bbMarkAllClick
     end
     object bbUnMarkAll: TBitBtn
-      Left = 127
-      Top = 48
-      Width = 114
-      Height = 50
+      Left = 156
+      Top = 59
+      Width = 141
+      Height = 62
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Avmarkera alla'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
@@ -302,8 +354,12 @@ object fPickPkgNoTork: TfPickPkgNoTork
       OnClick = bbUnMarkAllClick
     end
     object lcProduct: TcxDBLookupComboBox
-      Left = 544
-      Top = 12
+      Left = 670
+      Top = 15
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'Product'
       DataBinding.DataSource = dsFilter
       ParentFont = False
@@ -312,17 +368,21 @@ object fPickPkgNoTork: TfPickPkgNoTork
       Properties.ListOptions.ShowHeader = False
       Style.StyleController = cxEditStyleController1
       TabOrder = 2
-      Width = 425
+      Width = 523
     end
     object BitBtn3: TBitBtn
-      Left = 544
-      Top = 69
-      Width = 121
-      Height = 46
+      Left = 670
+      Top = 85
+      Width = 148
+      Height = 57
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Uppdatera'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
@@ -332,33 +392,45 @@ object fPickPkgNoTork: TfPickPkgNoTork
       OnClick = BitBtn3Click
     end
     object deProductNo: TcxDBTextEdit
-      Left = 312
-      Top = 71
+      Left = 384
+      Top = 87
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'ProductNo'
       DataBinding.DataSource = dsFilter
       ParentFont = False
       Style.StyleController = cxEditStyleController1
       TabOrder = 4
       Visible = False
-      Width = 161
+      Width = 198
     end
     object tePackageNo: TcxTextEdit
-      Left = 312
-      Top = 44
+      Left = 384
+      Top = 54
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Enabled = False
       TabOrder = 5
-      Width = 161
+      Width = 198
     end
     object teALMM: TcxDBTextEdit
-      Left = 544
-      Top = 39
+      Left = 670
+      Top = 48
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'ALMM'
       DataBinding.DataSource = dsFilter
       ParentFont = False
       Style.StyleController = cxEditStyleController1
       TabOrder = 6
       OnExit = teALMMExit
-      Width = 121
+      Width = 148
     end
   end
   object ds_SelectedPkgNo: TDataSource
@@ -407,7 +479,7 @@ object fPickPkgNoTork: TfPickPkgNoTork
   object cxStyleRepository1: TcxStyleRepository
     Left = 72
     Top = 168
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyleMarkedRow: TcxStyle
       AssignedValues = [svColor, svFont]
       Color = clGreen
@@ -456,7 +528,8 @@ object fPickPkgNoTork: TfPickPkgNoTork
       ''
       'AND NOT EXISTS (Select * FROM dbo.KilnChargeRows kcr'
       'WHERE kcr.PackageNo = pn.PackageNo'
-      'and kcr.SupplierCode = pn.SupplierCode)'
+      'and kcr.SupplierCode = pn.SupplierCode'
+      'and kcr.DateCreated > '#39'2016-01-01'#39')'
       ''
       '')
     Left = 72
@@ -703,7 +776,7 @@ object fPickPkgNoTork: TfPickPkgNoTork
         'ypeNo'
       'Inner Join dbo.ProductList_LM pd on pd.ProductNo = pt.ProductNo'
       'WHERE ((icr.LogicalInventoryPointNo = :LIPNo) OR (0 = :LIPNo))'
-      'AND LIP.PhysicalInventoryPointNo = :PIPNo'
+      ''
       'AND icr.Status = 1'
       'AND not Exists (Select * FROM dbo.KilnChargeRows kcr'
       'WHERE kcr.PackageNo = icr.PackageNo'
@@ -716,11 +789,6 @@ object fPickPkgNoTork: TfPickPkgNoTork
     ParamData = <
       item
         Name = 'LIPNO'
-        DataType = ftInteger
-        ParamType = ptInput
-      end
-      item
-        Name = 'PIPNO'
         DataType = ftInteger
         ParamType = ptInput
       end>
@@ -765,18 +833,18 @@ object fPickPkgNoTork: TfPickPkgNoTork
   object cxEditStyleController1: TcxEditStyleController
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
-    Style.Font.Height = -16
+    Style.Font.Height = -20
     Style.Font.Name = 'Tahoma'
     Style.Font.Style = []
     Style.IsFontAssigned = True
-    Left = 520
-    Top = 368
-    PixelsPerInch = 96
+    Left = 560
+    Top = 424
+    PixelsPerInch = 120
   end
   object cxStyleRepository2: TcxStyleRepository
     Left = 600
     Top = 296
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite

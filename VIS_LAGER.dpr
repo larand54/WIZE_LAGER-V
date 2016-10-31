@@ -7,11 +7,6 @@ uses
   madListHardware,
   madListProcesses,
   madListModules,
- { madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules, }
   Forms,
   fMain in 'fMain.pas' {frmMain},
   VidaConst in 'VidaConst.pas',
@@ -132,7 +127,8 @@ uses
   UnitAboutBox in '..\CommonUnits\UnitAboutBox.pas' {AboutBox},
   uSelectInventorySET in 'uSelectInventorySET.pas' {fSelectInventorySET},
   udmLanguage in 'udmLanguage.pas' {dmLanguage: TDataModule},
-  ufrmChangeLanguage in 'ufrmChangeLanguage.pas' {frmChangeLanguage};
+  ufrmChangeLanguage in 'ufrmChangeLanguage.pas' {frmChangeLanguage},
+  uSelectIMP in 'uSelectIMP.pas' {fSelectImp};
 
 {$R *.res}
 begin

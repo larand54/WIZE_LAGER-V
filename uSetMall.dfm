@@ -2,36 +2,44 @@ object fSetMall: TfSetMall
   Left = 137
   Top = 0
   Caption = 'Inventeringsmall'
-  ClientHeight = 664
-  ClientWidth = 1188
+  ClientHeight = 868
+  ClientWidth = 1554
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object Panel1: TPanel
     Left = 0
-    Top = 599
-    Width = 1188
-    Height = 65
+    Top = 783
+    Width = 1554
+    Height = 85
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alBottom
     TabOrder = 0
     object cxButton1: TcxButton
-      Left = 552
-      Top = 6
-      Width = 137
-      Height = 51
+      Left = 722
+      Top = 8
+      Width = 179
+      Height = 67
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'OK'
       ModalResult = 1
       TabOrder = 0
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -22
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -39,12 +47,18 @@ object fSetMall: TfSetMall
   end
   object grdSetMall: TcxGrid
     Left = 0
-    Top = 0
-    Width = 1188
-    Height = 599
+    Top = 81
+    Width = 1554
+    Height = 702
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
     LookAndFeel.SkinName = 'Black'
+    ExplicitTop = 128
+    ExplicitHeight = 655
     object grdSetMallDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -106,15 +120,56 @@ object fSetMall: TfSetMall
       object grdSetMallDBTableView1LogicalInventoryPointNo: TcxGridDBColumn
         DataBinding.FieldName = 'LogicalInventoryPointNo'
       end
+      object grdSetMallDBTableView1SetMallbu: TcxGridDBColumn
+        DataBinding.FieldName = 'SetMallbu'
+      end
     end
     object grdSetMallLevel1: TcxGridLevel
       GridView = grdSetMallDBTableView1
     end
   end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 1554
+    Height = 81
+    Align = alTop
+    TabOrder = 2
+    ExplicitLeft = 504
+    ExplicitTop = 16
+    ExplicitWidth = 865
+    object cxButton2: TcxButton
+      Left = 8
+      Top = 8
+      Width = 129
+      Height = 65
+      Action = acSetOnlyVerkActive
+      TabOrder = 0
+      WordWrap = True
+    end
+    object cxButton3: TcxButton
+      Left = 143
+      Top = 9
+      Width = 129
+      Height = 65
+      Action = acSetAllExceptVerkActive
+      TabOrder = 1
+      WordWrap = True
+    end
+    object cxButton4: TcxButton
+      Left = 278
+      Top = 9
+      Width = 129
+      Height = 65
+      Action = acSetAllActive
+      TabOrder = 2
+      WordWrap = True
+    end
+  end
   object cxStyleRepository1: TcxStyleRepository
     Left = 336
     Top = 168
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite
@@ -463,5 +518,21 @@ object fSetMall: TfSetMall
       45004600410055004C0054005F00430048004100520053004500540001004400
       45004600410055004C0054005F00430048004100520053004500540001004400
       45004600410055004C0054005F0043004800410052005300450054000D000A00}
+  end
+  object ActionList1: TActionList
+    Left = 600
+    Top = 224
+    object acSetOnlyVerkActive: TAction
+      Caption = 'S'#228'tt bara verk aktiva'
+      OnExecute = acSetOnlyVerkActiveExecute
+    end
+    object acSetAllExceptVerkActive: TAction
+      Caption = 'S'#228'tt alla f'#246'rutom verk aktiva'
+      OnExecute = acSetAllExceptVerkActiveExecute
+    end
+    object acSetAllActive: TAction
+      Caption = 'S'#228'tt alla aktiva'
+      OnExecute = acSetAllActiveExecute
+    end
   end
 end

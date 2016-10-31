@@ -125,6 +125,17 @@ type
     cds_KilnChargeHeaderInfo: TStringField;
     ds_KilnChargeHeader: TDataSource;
     cds_KilnsNoOfVagnarBefore: TIntegerField;
+    cds_KilnsTypeOfLine: TIntegerField;
+    cds_KilnsIMPNo: TIntegerField;
+    cds_KilnsKilnPropsID: TIntegerField;
+    cds_KilnPropsKilnPropsID: TIntegerField;
+    cds_KilnPropsGroupName: TStringField;
+    cds_KilnPropsBeforeKiln_PIPNo: TIntegerField;
+    cds_KilnPropsAfterKiln_PIPNo: TIntegerField;
+    cds_KilnPropsLagerställeBeforeKiln: TStringField;
+    cds_KilnPropsLagerställeAfterKiln: TStringField;
+    cds_KilnChargeHeaderKilnPropsID: TIntegerField;
+    cds_KilnsDefaultDuration: TFloatField;
     procedure cds_KilnPropsOLDClientNoChange(Sender: TField);
     procedure cds_KilnPropsOLDKiln_PIPNoChange(Sender: TField);
     procedure ds_KilnChargeHdrDataChange(Sender: TObject; Field: TField);
@@ -132,7 +143,9 @@ type
     procedure cds_KilnChargeHdrAfterInsert(DataSet: TDataSet);
     procedure cds_KilnsAfterInsert(DataSet: TDataSet);
     procedure cds_KilnChargeHeaderAfterInsert(DataSet: TDataSet);
-    procedure cds_KilnPropsKiln_PIPNoChange(Sender: TField);
+    procedure cds_KilnChargeHdrAfterOpen(DataSet: TDataSet);
+    procedure cds_KilnPropsAfterInsert(DataSet: TDataSet);
+    procedure ds_KilnPropsDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     procedure GetPkgsNumbersFromInventoryBeforeKiln(const LengthGroupNo, ProductNo, NoOfPkgs : Integer;const AL : String) ;
@@ -186,16 +199,6 @@ Begin
   sq_SeTKilnToComplete.ParamByName('KilnChargeNo').AsInteger := KilnChargeNo ;
   sq_SeTKilnToComplete.ParamByName('EndTime').AsSQLTimeStamp := EndTime ;
   sq_SeTKilnToComplete.ExecSQL ;
-
-{  if cds_KilnChargeHdr.State in [dsBrowse] then
-  cds_KilnChargeHdr.Edit ;
-
-  cds_KilnChargeHdrStatus.AsInteger:= 1 ;
-  if cds_KilnChargeHdrEndTime.IsNull then
-   cds_KilnChargeHdrEndTime.AsSQLTimeStamp:= DateTimeToSQLTimeStamp(Now) ;
-  cds_KilnChargeHdr.Post ;
-  if cds_KilnChargeHdr.ChangeCount > 0 then
-  cds_KilnChargeHdr.ApplyUpdates(0) ; }
 
   dmsConnector.Commit ;
   except
@@ -390,8 +393,10 @@ End ;
 
 procedure Tdm_DryKiln.cds_KilnsAfterInsert(DataSet: TDataSet);
 begin
- cds_KilnsKilnNo.AsInteger    := dmsConnector.NextMaxNo('Kiln') ;
- cds_KilnsClientNo.AsInteger  := cds_KilnPropsClientNo.AsInteger ;
+ cds_KilnsKilnNo.AsInteger      := dmsConnector.NextMaxNo('Kiln') ;
+ cds_KilnsClientNo.AsInteger    := cds_KilnPropsClientNo.AsInteger ;
+ cds_KilnsTypeOfLine.AsInteger  := 1 ;
+ cds_KilnsKilnPropsID.AsInteger := cds_KilnPropsKilnPropsID.AsInteger ;
 end;
 
 procedure Tdm_DryKiln.cds_KilnChargeHdrAfterInsert(DataSet: TDataSet);
@@ -404,6 +409,11 @@ begin
  cds_KilnChargeHdrStartTime.AsSQLTimeStamp    := DateTimeToSqlTimeStamp(Now) ;
 end;
 
+procedure Tdm_DryKiln.cds_KilnChargeHdrAfterOpen(DataSet: TDataSet);
+begin
+// ShowMessage('dm_DryKiln.cds_KilnChargeHdrAfterOpen') ;
+end;
+
 procedure Tdm_DryKiln.cds_KilnChargeHeaderAfterInsert(DataSet: TDataSet);
 begin
  cds_KilnChargeHeaderKilnChargeNo.AsInteger      := dmsConnector.NextMaxNo('KilnChargeHdr') ;
@@ -414,6 +424,7 @@ begin
  cds_KilnChargeHeaderClientNo.AsInteger          := ThisUser.CompanyNo ;
  cds_KilnChargeHeaderStatus.AsInteger            := 0 ;
  cds_KilnChargeHeaderStartTime.AsSQLTimeStamp    := DateTimeToSqlTimeStamp(Now) ;
+ cds_KilnChargeHeaderKilnPropsID.AsInteger       := cds_KilnsKilnPropsID.AsInteger ;
 end;
 
 procedure Tdm_DryKiln.cds_KilnChargeRowAfterInsert(DataSet: TDataSet);
@@ -423,30 +434,14 @@ begin
  cds_KilnChargeRowCreatedUser.AsInteger       := ThisUser.UserID ;
 end;
 
-procedure Tdm_DryKiln.cds_KilnPropsKiln_PIPNoChange(Sender: TField);
+procedure Tdm_DryKiln.cds_KilnPropsAfterInsert(DataSet: TDataSet);
 begin
- if cds_KilnPropsClientNo.AsInteger > 0 then
-    Begin
-     cds_PIP.Filter   := 'OwnerNo = ' + cds_KilnPropsClientNo.AsString ;
-     cds_PIP.Filtered := True ;
-     if cds_KilnPropsKiln_PIPNo.AsInteger > 0 then
-      cds_LIP.Filter   := 'PIPNo = ' + cds_KilnPropsKiln_PIPNo.AsString
-       else
-        cds_LIP.Filter   := 'PIPNo = -1' ;
-     cds_LIP.Filtered := True ;
-    End
-    else
-    Begin
-     cds_PIP.Filter   := 'OwnerNo = -1' ;
-     cds_PIP.Filtered := True ;
-     cds_LIP.Filter   := 'PIPNo = -1' ;
-     cds_LIP.Filtered := True ;
-    End;
+  cds_KilnPropsKilnPropsID.AsInteger  :=  dmsConnector.NextMaxNo('KilnPropsID') ;
 end;
 
 procedure Tdm_DryKiln.cds_KilnPropsOLDClientNoChange(Sender: TField);
 begin
- cds_PIP.Filter   := 'OwnerNo = '+cds_KilnPropsClientNo.AsString ;
+ cds_PIP.Filter   := 'OwnerNo = ' + cds_KilnPropsClientNo.AsString ;
  cds_PIP.Filtered := True ;
 // cds_PIP.Active:= False ;
 // sq_PIP.ParamByName('OwnerNo').AsInteger:= cds_KilnPropsClientNo.AsInteger ;
@@ -481,6 +476,13 @@ begin
   cds_KilnChargeHdr.UpdateOptions.ReadOnly  := False
    else
     cds_KilnChargeHdr.UpdateOptions.ReadOnly:= True ;
+end;
+
+procedure Tdm_DryKiln.ds_KilnPropsDataChange(Sender: TObject; Field: TField);
+begin
+   cds_Kilns.Active          := False ;
+   cds_Kilns.ParamByName('KilnPropsID').AsInteger := cds_KilnPropsKilnPropsID.AsInteger ;
+   cds_Kilns.Active          := True ;
 end;
 
 procedure Tdm_DryKiln.SetPreviousKilnToComplete (const KilnNo : Integer;const EndTime : TSQLTIMESTAMP) ;

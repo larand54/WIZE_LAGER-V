@@ -5590,15 +5590,17 @@ begin
     end ;
 
 
-    if Action = eaACCEPT then
-    Begin
-      if not dmsSystem.PackagesNotInOwnAvregLogg (PkgNo,
-      cds_InvCtrlGrpOwnerNo.AsInteger, PkgSupplierCode) then
+{      Dont check this
+      if Action = eaACCEPT then
       Begin
-     //   ShowMessage('Paketet finns inte i avregistreringsloggen och kan därför inte återställas.');
-        Action := eaABANDON ;
+        if not dmsSystem.PackagesNotInOwnAvregLogg (PkgNo,
+        cds_InvCtrlGrpOwnerNo.AsInteger, PkgSupplierCode) then
+        Begin
+       //   ShowMessage('Paketet finns inte i avregistreringsloggen och kan därför inte återställas.');
+          Action := eaABANDON ;
+        End;
       End;
-    End;
+}
 
 
   if Action = eaACCEPT then

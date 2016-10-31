@@ -15,12 +15,13 @@
   end
   object ds_KilnChargeRow: TDataSource
     DataSet = cds_KilnChargeRow
-    Left = 224
+    Left = 248
     Top = 184
   end
   object ds_KilnProps: TDataSource
     DataSet = cds_KilnProps
-    Left = 320
+    OnDataChange = ds_KilnPropsDataChange
+    Left = 368
     Top = 184
   end
   object ds_PIP: TDataSource
@@ -50,7 +51,7 @@
     LoadedCompletely = False
     SavedCompletely = False
     FilterOptions = []
-    Version = '7.12.00 Standard Edition'
+    Version = '7.63.00 Standard Edition'
     LanguageID = 0
     SortID = 0
     SubLanguageID = 1
@@ -67,7 +68,7 @@
   end
   object ds_SumKilnChargeRows: TDataSource
     DataSet = cds_SumKilnChargeRows
-    Left = 328
+    Left = 352
     Top = 400
   end
   object cds_SumKilnChargeRows: TFDQuery
@@ -101,7 +102,7 @@
         'Group By prl.ProductDisplayName, ptl.PcsPerLength, kr.KilnCharge' +
         'No, pt.productno'
       '')
-    Left = 328
+    Left = 352
     Top = 352
     ParamData = <
       item
@@ -242,13 +243,14 @@
     end
   end
   object cds_KilnProps: TFDQuery
+    AfterInsert = cds_KilnPropsAfterInsert
     CachedUpdates = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.KilnProps'
       'WHERE ClientNo = :ClientNo'
       '')
-    Left = 320
+    Left = 368
     Top = 136
     ParamData = <
       item
@@ -259,13 +261,12 @@
     object cds_KilnPropsClientNo: TIntegerField
       FieldName = 'ClientNo'
       Origin = 'ClientNo'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ProviderFlags = [pfInUpdate]
       Required = True
     end
     object cds_KilnPropsKiln_PIPNo: TIntegerField
       FieldName = 'Kiln_PIPNo'
       Origin = 'Kiln_PIPNo'
-      OnChange = cds_KilnPropsKiln_PIPNoChange
     end
     object cds_KilnPropsBeforeKiln_LIPNo: TIntegerField
       FieldName = 'BeforeKiln_LIPNo'
@@ -329,6 +330,49 @@
       Size = 80
       Lookup = True
     end
+    object cds_KilnPropsKilnPropsID: TIntegerField
+      FieldName = 'KilnPropsID'
+      Origin = 'KilnPropsID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object cds_KilnPropsGroupName: TStringField
+      FieldName = 'GroupName'
+      Origin = 'GroupName'
+      ProviderFlags = [pfInUpdate]
+      Size = 50
+    end
+    object cds_KilnPropsBeforeKiln_PIPNo: TIntegerField
+      FieldName = 'BeforeKiln_PIPNo'
+      Origin = 'BeforeKiln_PIPNo'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_KilnPropsAfterKiln_PIPNo: TIntegerField
+      FieldName = 'AfterKiln_PIPNo'
+      Origin = 'AfterKiln_PIPNo'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_KilnPropsLagerställeBeforeKiln: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Lagerst'#228'lleBeforeKiln'
+      LookupDataSet = cds_PIP
+      LookupKeyFields = 'PIPNO'
+      LookupResultField = 'PIPNAME'
+      KeyFields = 'BeforeKiln_PIPNo'
+      ProviderFlags = []
+      Size = 50
+      Lookup = True
+    end
+    object cds_KilnPropsLagerställeAfterKiln: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Lagerst'#228'lleAfterKiln'
+      LookupDataSet = cds_PIP
+      LookupKeyFields = 'PIPNO'
+      LookupResultField = 'PIPNAME'
+      KeyFields = 'AfterKiln_PIPNo'
+      ProviderFlags = []
+      Size = 50
+      Lookup = True
+    end
   end
   object cds_KilnChargeRow: TFDQuery
     AfterInsert = cds_KilnChargeRowAfterInsert
@@ -348,7 +392,7 @@
       'inner join dbo.Product P on P.ProductNo = pt.ProductNo'
       'WHERE KilnChargeNo = :KilnChargeNo'
       '')
-    Left = 224
+    Left = 248
     Top = 136
     ParamData = <
       item
@@ -407,6 +451,7 @@
     end
   end
   object cds_KilnChargeHdr: TFDQuery
+    AfterOpen = cds_KilnChargeHdrAfterOpen
     AfterInsert = cds_KilnChargeHdrAfterInsert
     CachedUpdates = True
     Connection = dmsConnector.FDConnection1
@@ -417,8 +462,8 @@
       'FROM dbo.KilnChargeHdr KCH'
       'Inner Join dbo.KilnProps KP on KP.ClientNo = KCH.ClientNo'
       'WHERE KCH.ClientNo = :ClientNo')
-    Left = 120
-    Top = 136
+    Left = 128
+    Top = 128
     ParamData = <
       item
         Name = 'CLIENTNO'
@@ -506,13 +551,13 @@
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.Kilns'
-      'WHERE ClientNo = :ClientNo'
+      'WHERE KilnPropsID= :KilnPropsID'
       '')
     Left = 32
     Top = 136
     ParamData = <
       item
-        Name = 'CLIENTNO'
+        Name = 'KILNPROPSID'
         DataType = ftInteger
         ParamType = ptInput
       end>
@@ -550,6 +595,24 @@
       DisplayLabel = 'Antal vagnar f'#246're tork'
       FieldName = 'NoOfVagnarBefore'
       Origin = 'NoOfVagnarBefore'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_KilnsTypeOfLine: TIntegerField
+      FieldName = 'TypeOfLine'
+      Origin = 'TypeOfLine'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cds_KilnsIMPNo: TIntegerField
+      FieldName = 'IMPNo'
+      Origin = 'IMPNo'
+    end
+    object cds_KilnsKilnPropsID: TIntegerField
+      FieldName = 'KilnPropsID'
+      Origin = 'KilnPropsID'
+    end
+    object cds_KilnsDefaultDuration: TFloatField
+      FieldName = 'DefaultDuration'
+      Origin = 'DefaultDuration'
       ProviderFlags = [pfInUpdate]
     end
   end
@@ -838,7 +901,7 @@
       'Select  max(KilnChargeNo) AS KilnChargeNo FROM dbo.KilnChargeHdr'
       'WHERE ClientNo = :ClientNo'
       '')
-    Left = 456
+    Left = 448
     Top = 80
     ParamData = <
       item
@@ -942,6 +1005,8 @@
         Name = 'KILNNO'
         DataType = ftInteger
         ParamType = ptInput
+        Size = 4
+        Value = Null
       end>
     object cds_KilnChargeHeaderClientNo: TIntegerField
       FieldName = 'ClientNo'
@@ -990,6 +1055,11 @@
       FieldName = 'Info'
       Origin = 'Info'
       Size = 50
+    end
+    object cds_KilnChargeHeaderKilnPropsID: TIntegerField
+      FieldName = 'KilnPropsID'
+      Origin = 'KilnPropsID'
+      ProviderFlags = [pfInUpdate]
     end
   end
   object ds_KilnChargeHeader: TDataSource

@@ -3,135 +3,203 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
   Top = 193
   ActiveControl = EFD_Name
   Caption = 'Byt anv'#228'ndare'
-  ClientHeight = 249
-  ClientWidth = 436
+  ClientHeight = 306
+  ClientWidth = 537
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = True
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Label1: TLabel
-    Left = 34
-    Top = 30
-    Width = 49
-    Height = 13
+    Left = 42
+    Top = 37
+    Width = 61
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'AD Namn:'
   end
   object Label2: TLabel
-    Left = 32
-    Top = 80
-    Width = 43
-    Height = 13
+    Left = 39
+    Top = 98
+    Width = 55
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Databas:'
   end
   object Label3: TLabel
-    Left = 24
-    Top = 8
-    Width = 46
-    Height = 13
+    Left = 30
+    Top = 10
+    Width = 57
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'vida\krinil'
     OnDblClick = Label3DblClick
   end
   object Label4: TLabel
-    Left = 153
-    Top = 8
-    Width = 50
-    Height = 13
+    Left = 188
+    Top = 10
+    Width = 61
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'vida\ulrlun'
     OnDblClick = Label4DblClick
   end
   object Label5: TLabel
-    Left = 209
-    Top = 8
-    Width = 58
-    Height = 13
+    Left = 257
+    Top = 10
+    Width = 72
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'vida\ronand'
     OnDblClick = Label5DblClick
   end
   object Label6: TLabel
-    Left = 88
-    Top = 8
-    Width = 59
-    Height = 13
+    Left = 108
+    Top = 10
+    Width = 75
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'vida\manras'
     OnDblClick = Label6DblClick
   end
   object Label7: TLabel
-    Left = 281
-    Top = 8
-    Width = 53
-    Height = 13
+    Left = 346
+    Top = 10
+    Width = 65
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'vida\shathi'
     OnDblClick = Label7DblClick
   end
   object Label8: TLabel
-    Left = 340
-    Top = 8
-    Width = 47
-    Height = 13
+    Left = 418
+    Top = 10
+    Width = 56
+    Height = 16
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'vida\uklift'
     OnDblClick = Label8DblClick
   end
+  object Label9: TLabel
+    Left = 30
+    Top = 152
+    Width = 71
+    Height = 16
+    Caption = 'vida\ovesig'
+    OnDblClick = Label9DblClick
+  end
   object EFD_Name: TEdit
-    Left = 89
-    Top = 27
-    Width = 121
-    Height = 21
+    Left = 110
+    Top = 33
+    Width = 148
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabOrder = 0
   end
   object Button1: TButton
-    Left = 216
-    Top = 29
-    Width = 153
-    Height = 34
+    Left = 266
+    Top = 36
+    Width = 188
+    Height = 42
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'H'#228'mta standard AD namn'
     TabOrder = 2
     OnClick = Button1Click
   end
   object eDatabas: TEdit
-    Left = 82
-    Top = 191
-    Width = 121
-    Height = 21
+    Left = 101
+    Top = 235
+    Width = 149
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabOrder = 1
     Visible = False
   end
   object Button2: TButton
-    Left = 216
-    Top = 69
-    Width = 153
-    Height = 36
+    Left = 266
+    Top = 85
+    Width = 188
+    Height = 44
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'H'#228'mta standard databas'
     TabOrder = 3
     OnClick = Button2Click
   end
   object BitBtn1: TBitBtn
-    Left = 88
-    Top = 144
-    Width = 115
-    Height = 41
+    Left = 108
+    Top = 177
+    Width = 142
+    Height = 51
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Kind = bkOK
     NumGlyphs = 2
     TabOrder = 4
   end
   object BitBtn2: TBitBtn
-    Left = 209
-    Top = 144
-    Width = 113
-    Height = 41
+    Left = 257
+    Top = 177
+    Width = 139
+    Height = 51
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 5
   end
   object cbDatabas: TComboBox
-    Left = 88
-    Top = 76
-    Width = 122
-    Height = 21
+    Left = 108
+    Top = 94
+    Width = 150
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabOrder = 6
     Items.Strings = (
       'vis.vida.se:vis_vida'

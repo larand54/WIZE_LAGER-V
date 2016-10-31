@@ -4941,14 +4941,14 @@ object dmsConnector: TdmsConnector
   end
   object FDMoniRemoteClientLink1: TFDMoniRemoteClientLink
     Left = 584
-    Top = 288
+    Top = 304
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
     Left = 584
     Top = 360
   end
   object FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink
-    Left = 576
+    Left = 584
     Top = 424
   end
 end

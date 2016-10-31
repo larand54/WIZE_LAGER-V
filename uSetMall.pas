@@ -22,7 +22,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Menus,
   Vcl.StdCtrls, cxButtons, cxCheckBox, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  siComp, siLngLnk;
+  siComp, siLngLnk, System.Actions, Vcl.ActnList;
 
 type
   TfSetMall = class(TForm)
@@ -53,6 +53,18 @@ type
     cxStyle11: TcxStyle;
     grdSetMallDBTableView1LogicalInventoryPointNo: TcxGridDBColumn;
     siLangLinked_fSetMall: TsiLangLinked;
+    Panel2: TPanel;
+    cxButton2: TcxButton;
+    ActionList1: TActionList;
+    acSetOnlyVerkActive: TAction;
+    acSetAllExceptVerkActive: TAction;
+    acSetAllActive: TAction;
+    grdSetMallDBTableView1SetMallbu: TcxGridDBColumn;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    procedure acSetOnlyVerkActiveExecute(Sender: TObject);
+    procedure acSetAllExceptVerkActiveExecute(Sender: TObject);
+    procedure acSetAllActiveExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,5 +78,32 @@ implementation
 {$R *.dfm}
 
 uses dmcInvCtrl;
+
+procedure TfSetMall.acSetAllActiveExecute(Sender: TObject);
+begin
+ with dmInvCtrl do
+ Begin
+   SetAllActive ;
+   sp_SetMall.Refresh ;
+ End;
+end;
+
+procedure TfSetMall.acSetAllExceptVerkActiveExecute(Sender: TObject);
+begin
+ with dmInvCtrl do
+ Begin
+  SetAllExceptVerkActive ;
+  sp_SetMall.Refresh ;
+ End;
+end;
+
+procedure TfSetMall.acSetOnlyVerkActiveExecute(Sender: TObject);
+begin
+ with dmInvCtrl do
+ Begin
+  SetOnlyVerkActive ;
+  sp_SetMall.Refresh ;
+ End;
+end;
 
 end.

@@ -847,6 +847,11 @@ type
     ds_visint_hdrs: TDataSource;
     sp_visint_hdrsIC_grpno: TIntegerField;
     sp_MovePkgsToLIP: TFDStoredProc;
+    sp_AdjResultList: TFDStoredProc;
+    sp_SetOnlyVerkMall: TFDStoredProc;
+    sp_SetAllExceptVerkMall: TFDStoredProc;
+    sp_SetAllActiveMall: TFDStoredProc;
+    sp_SetMallSetMallbu: TIntegerField;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -898,6 +903,7 @@ type
       ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
       AOptions: TFDUpdateRowOptions);
     procedure sp_visint_hdrsAfterInsert(DataSet: TDataSet);
+    procedure sp_SetMallsp_SetMallSetMallChange(Sender: TField);
   private
     { Private declarations }
     FOnAmbiguousPkgNo: TAmbiguityEvent ;
@@ -939,6 +945,9 @@ type
     InventoryPkgs : Boolean ;
     MarkedPkgs,
     ChangedSortorderNo, AvRegSortorderNo, PaRegSortorderNo : Integer ;
+    procedure SetAllActive ;
+    procedure SetAllExceptVerkActive ;
+    procedure SetOnlyVerkActive ;
     procedure MovePkgsToLIP ;
     procedure CreateVISINTHeader(const IC_grpNo, PIPNo  : Integer) ;
     procedure DelVisIntRow(const VISINTID, PackageNo, UserID : Integer;const Prefix : String) ;
@@ -1514,6 +1523,11 @@ Begin
  End ;
  End ;//with
 End ;
+
+procedure TdmInvCtrl.sp_SetMallsp_SetMallSetMallChange(Sender: TField);
+begin
+ sp_SetMallSetMallbu.AsInteger  := sp_SetMallsp_SetMallSetMall.AsInteger ;
+end;
 
 procedure TdmInvCtrl.sp_SetMallUpdateRecord(ASender: TDataSet;
   ARequest: TFDUpdateRequest; var AAction: TFDErrorAction;
@@ -3269,6 +3283,19 @@ Begin
    End ;
   end;
 
+
+ Try
+ sp_AdjResultList.ParamByName('@IC_GrpNo').AsInteger:= cds_InvCtrlGrpIC_grpno.AsInteger ;
+ sp_AdjResultList.ExecProc ;
+  except
+   On E: Exception do
+   Begin
+    ShowMessage(E.Message) ;
+    Raise ;
+   End ;
+  end;
+
+
 End ;
 
 procedure TdmInvCtrl.Generate_List_from_CtrlList_pkgs_that_are_not_active ;
@@ -4538,6 +4565,46 @@ Begin
     mtSelectedPkgNo.Next ;
   End ;
 End ;
+
+procedure TdmInvCtrl.SetAllActive ;
+Begin
+  Try
+  sp_SetAllActiveMall.ExecProc ;
+    except
+     On E: Exception do
+     Begin
+      ShowMessage(E.Message) ;
+      Raise ;
+     End ;
+    end;
+end;
+
+procedure TdmInvCtrl.SetAllExceptVerkActive ;
+Begin
+  Try
+  sp_SetAllExceptVerkMall.ExecProc ;
+    except
+     On E: Exception do
+     Begin
+      ShowMessage(E.Message) ;
+      Raise ;
+     End ;
+    end;
+end;
+
+
+procedure TdmInvCtrl.SetOnlyVerkActive ;
+Begin
+  Try
+  sp_SetOnlyVerkMall.ExecProc ;
+    except
+     On E: Exception do
+     Begin
+      ShowMessage(E.Message) ;
+      Raise ;
+     End ;
+    end;
+End;
 
 
 

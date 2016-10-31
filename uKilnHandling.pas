@@ -443,6 +443,7 @@ type
     ClickedF10            : Boolean ;
     SelectedVagnNo        : Integer ;
     SelectedLength        : String ;
+    procedure SelectIMP ;
     procedure GenKilnVagnarSQL(Sender: TObject);
     procedure SelectedPkgsOfPkgTbl_V2 ;
 
@@ -469,7 +470,7 @@ uses VidaType, dmsDataConn, VidaUser, dm_Inventory, dmsVidaContact, VidaConst,
   uSendMapiMail ,
   uEntryField, //uKilnCharges, uKilnChargeNote, uKilnWizard, uVardaBortPkt,
   //uchgPkgVard, uSokAvropMall, uEntryPriceField, // uAngeNyMall ,
-  uEnterKilnVagn;
+  uEnterKilnVagn, uSelectIMP , uSelectImp2;
 
 {$R *.dfm}
 
@@ -621,71 +622,10 @@ begin
    End ;
 
 
-
-
-
-
- (*
- With dm_DryKiln do
- Begin
-  cds_Kilns.Active          := False ;
-  cds_Kilns.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
-  cds_Kilns.Active          := True ;
-
-  cds_KilnChargeHdr.Active  := False ;
-  cds_KilnChargeHdr.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
-  cds_KilnChargeHdr.Active  := True ;
-
-  cds_KilnChargeHdr.Locate('KilnChargeNo', mtUserPropAgentNo.AsInteger, []) ;
-
-
-  //  Get_LastKilnChNo ;
-
-//  cds_KilnChargeRow.Active  := False ;
-//  sq_KilnChargeRows.ParamByName('KilnChargeNo').AsInteger:= cds_KilnChargeHdrKilnChargeNo.AsInteger ;
-  cds_KilnChargeRow.Active  := False ;
-  cds_KilnChargeRow.Active  := True ;
-
-  cds_SumKilnChargeRows.Active  := False ;
-  cds_SumKilnChargeRows.Active  := True ;
-
-  cds_KilnProps.Active:= False ;
-  cds_KilnProps.ParamByName('ClientNo').AsInteger:= ThisUser.CompanyNo ;
-  cds_KilnProps.Active:= True ;
-
-  cds_KilnChargeHdr.Filter   := 'Status = 0' ;
-  cds_KilnChargeHdr.Filtered:= True ;
-
- End ;            *)
-
-
- {
-  mtSpecData.Active := True ;
-  mtSpecData.Insert ;
-  mtSpecDataSizeFormatNo.AsInteger        := 1 ;
-  mtSpecDataLengthFormatNo.AsInteger      := 1 ;
-  mtSpecDataVolumeFormatNo.AsInteger      := 1 ;
-  mtSpecDataLanguageCode.AsInteger        := 1 ;
-  mtSpecDataKundReferens.AsString         := ' ' ;
-  mtSpecData.Post ;
-
-
-  mtLayout.Active := True ;
-  mtLayout.Insert ;
-  mtLayoutPackageLogLayoutNo.AsInteger    := 19 ;
-  mtLayout.Post ;
-
-  mtLayout.Insert ;
-  mtLayoutPackageLogLayoutNo.AsInteger    := 33 ;
-  mtLayout.Post ;
-
-  }
-
  Finally
   Screen.Cursor := Save_Cursor ;
  End ;
 end;
-
 
 
 procedure TfkilnHandling.FormClose(Sender: TObject;
@@ -703,9 +643,20 @@ begin
 //LARS Kolla upp det här peLengthFormat.ItemIndex:= 0 ;
 // OLD_peLengthFormat:= peLengthFormat.ItemIndex ;
 
-
+ if cds_Verk.Active then
+  cds_Verk.Active := False ;
+ cds_Verk.ParamByName('MainClientNo').AsInteger :=  ThisUser.CompanyNo ;
+ cds_Verk.Active := True ;
 
  SelectedVagnNo := -1 ;
+
+ With dmInventory do
+ Begin
+  if cds_imp.Active then
+   cds_imp.Active  := False ;
+  cds_imp.ParamByName('ClientNo').AsInteger :=  ThisUser.CompanyNo ;
+  cds_imp.Active  := True ;
+ End;
 
 end;
 
@@ -745,6 +696,8 @@ begin
 
   dmsSystem.GetPkgPos (ThisUser.CompanyNo) ;
 
+  acPkgTypeTableExecute(Sender) ;
+
 end;
 
 
@@ -765,7 +718,7 @@ begin
       NewVagnStatus := 1 ; //1 = i Tork
       if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
       Begin
-       FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
+       FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, CancelMoveOutOfUnit) ;//Ångra flytta ut
       End
         else
          ShowMessage(
@@ -795,12 +748,12 @@ begin
     KilnChargeNo  := mtUserPropKilnChargeNo.AsInteger ;
     Open_cds_KilnChargeHdr ;
     //Flytta tillbaka paket till lager före tork
-    MoveToLIPNo   := cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
+    MoveToLIPNo   := cds_KilnChargeHdrKiln_LIPNo.AsInteger ;//cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
     VagnNo        := GetFirstVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 1) ;
     NewVagnStatus := 0 ; //0 = före Tork
     if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
     Begin
-     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
+     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, CancelMoveIntoUnit) ; //Ånga flytta in i tork
      //Om antal vagnar i tork nu är större än vad som ryms i torken så måste en vagn flyttas ut
     End
       else
@@ -997,6 +950,7 @@ end;
 procedure TfkilnHandling.acEditVagnExecute(Sender: TObject);
 var
   fEnterKilnVagn: TfEnterKilnVagn;
+  IMPNO : Integer ;
 begin
  With dmInventory do
  Begin
@@ -1009,9 +963,13 @@ begin
       fEnterKilnVagn  := TfEnterKilnVagn.Create(nil);
       Try
         dmInventory.EditVagn(mtUserPropKilnChargeNo.AsInteger, SelectedVagnNo) ;
+        fEnterKilnVagn.TypeOfLine := dmInventory.GetTypeOfLine(mtUserPropKilnChargeNo.AsInteger) ;
         fEnterKilnVagn.ShowModal ;
+        IMPNO := dmInventory.cds_KilnVagnIMPNo.AsInteger ;
         SelectedVagnNo := -1 ;
         acPkgTypeTableExecute(Sender) ;
+        if IMPNO > 0 then
+          dmInventory.SaveIMPNoWithKiln(mtUserPropKilnChargeNo.AsInteger, IMPNO) ;   //Spara senaste Impregneringskategorin
       Finally
        FreeAndNil(fEnterKilnVagn) ;
       End;
@@ -1394,7 +1352,7 @@ begin
 
 
 
-//  if thisuser.UserID = 8 then cds_KilnVagnar.SQL.SaveToFile('cds_KilnVagnar.txt');
+  //if thisuser.UserID = 8 then  cds_KilnVagnar.SQL.SaveToFile('cds_KilnVagnar.txt');
  End ; //with
 
  finally
@@ -1433,6 +1391,8 @@ begin
     cds_SelectProgressKiln.ParamByName('ClientNo').AsInteger  := mtUserPropOwnerNo.AsInteger ;
     cds_SelectProgressKiln.Active := True ;
    End;
+ mtUserPropKilnChargeNo.AsInteger := -1 ;
+ acPkgTypeTableExecute(Sender) ;
 end;
 
 procedure TfkilnHandling.grdPkgNoTblDBBandedTableView1L1GetDisplayText(
@@ -1443,19 +1403,41 @@ begin
   AText:= '' ;
 end;
 
+procedure TfkilnHandling.SelectIMP ;
+var fSelectImp: TfSelectImp;
+Begin
+  fSelectImp  := TfSelectImp.Create(nil);
+  Try
+   if fSelectImp.ShowModal = mrOK then ;
+  Finally
+    FreeAndNil(fSelectImp) ;
+  End;
+End;
+
 procedure TfkilnHandling.acAddVagnExecute(Sender: TObject);
 var
   fEnterKilnVagn: TfEnterKilnVagn;
+  IMPNO, TypeOfLine : Integer ;
 begin
  if mtUserPropKilnChargeNo.AsInteger > 0 then
  Begin
+  TypeOfLine := dmInventory.GetTypeOfLine(mtUserPropKilnChargeNo.AsInteger) ;
+
   fEnterKilnVagn  := TfEnterKilnVagn.Create(nil);
   Try
+    fEnterKilnVagn.TypeOfLine :=  TypeOfLine ;
     dmInventory.AddVagn(mtUserPropKilnChargeNo.AsInteger) ;
+
+//  if TypeOfLine = 2 then
+//  SelectIMP ;
+
     fEnterKilnVagn.ShowModal ;
+    IMPNO := dmInventory.cds_KilnVagnIMPNo.AsInteger ;
     if dmInventory.VagnarBeforeKiln_Larger_Then_MaxVagnarBefore(mtUserPropKilnChargeNo.AsInteger) then
      acMoveVagnIntoKilnExecute(Sender) ;
     acPkgTypeTableExecute(Sender) ;
+    if IMPNO > 0 then
+    dmInventory.SaveIMPNoWithKiln(mtUserPropKilnChargeNo.AsInteger, IMPNO) ;   //Spara senaste Impregneringskategorin
   Finally
    FreeAndNil(fEnterKilnVagn) ;
   End;
@@ -1482,7 +1464,8 @@ begin
     NewVagnStatus := 2 ; //2 = efter Tork
     if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
     Begin
-     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
+
+     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, MoveOutOfUnit) ;
     End
       else
        ShowMessage(
@@ -1606,14 +1589,14 @@ begin
     NewVagnStatus := 1 ; //1 = i Tork
     if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
     Begin
-     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
+     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, MoveInToUnit) ;
      //Om antal vagnar i tork nu är större än vad som ryms i torken så måste en vagn flyttas ut
      if IsNoOfVagnarInKilnBiggerThenMaxVagnar(mtUserPropKilnChargeNo.AsInteger) then //AntalVagnarITork > MaxVagnar then
      Begin
        MoveToLIPNo   := cds_KilnChargeHdrAfterKiln_LIPNo.AsInteger ;
        VagnNo        := GetLastVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 1) ;
        NewVagnStatus := 2 ; //2 = efter Tork
-       FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus) ;
+       FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, MoveOutOfUnit) ; //Move out of unit
      End;
     End
       else

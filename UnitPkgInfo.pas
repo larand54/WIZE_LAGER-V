@@ -105,30 +105,11 @@ type
     Panel4: TPanel;
     cxSplitter1: TcxSplitter;
     Panel5: TPanel;
-    grdPkgLogg: TcxGrid;
-    grdPkgLoggDBTableView1: TcxGridDBTableView;
-    grdPkgLoggDBTableView1Anvndare: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Mtpunkt: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Operation: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Lager: TcxGridDBColumn;
-    grdPkgLoggDBTableView1OperationNo: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Registrerad: TcxGridDBColumn;
-    grdPkgLoggDBTableView1gare: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Produkt: TcxGridDBColumn;
-    grdPkgLoggDBTableView1LIPNO: TcxGridDBColumn;
-    grdPkgLoggDBTableView1DB_Bokfrd: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Antalperlngd: TcxGridDBColumn;
-    grdPkgLoggDBTableView1AM3: TcxGridDBColumn;
-    grdPkgLoggDBTableView1Styck: TcxGridDBColumn;
-    grdPkgLoggDBTableView1PackageTypeNo: TcxGridDBColumn;
-    grdPkgLoggDBTableView1PktTypSkapad: TcxGridDBColumn;
-    grdPkgLoggLevel1: TcxGridLevel;
     ePcsPerNOMLength: TcxTextEdit;
     Label13: TLabel;
     tePkgNo: TcxTextEdit;
     tePrefix: TcxTextEdit;
     TtePkgNo: TTimer;
-    cxSplitter2: TcxSplitter;
     ds_PkgLoggLinkedPackage: TDataSource;
     Panel6: TPanel;
     grdLinkedPackage: TcxGrid;
@@ -162,6 +143,46 @@ type
     Bevel1: TBevel;
     Label18: TLabel;
     siLangLinked_frmPkgInfo: TsiLangLinked;
+    grdPkgLogg: TcxGrid;
+    grdPkgLoggDBTableView1: TcxGridDBTableView;
+    grdPkgLoggDBTableView1Anvndare: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Mtpunkt: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Operation: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Lager: TcxGridDBColumn;
+    grdPkgLoggDBTableView1OperationNo: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Registrerad: TcxGridDBColumn;
+    grdPkgLoggDBTableView1gare: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Produkt: TcxGridDBColumn;
+    grdPkgLoggDBTableView1LIPNO: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Antalperlngd: TcxGridDBColumn;
+    grdPkgLoggDBTableView1AM3: TcxGridDBColumn;
+    grdPkgLoggDBTableView1Styck: TcxGridDBColumn;
+    grdPkgLoggDBTableView1PackageTypeNo: TcxGridDBColumn;
+    grdPkgLoggDBTableView1PktTypSkapad: TcxGridDBColumn;
+    grdPkgLoggDBTableView1DB_Bokfrd: TcxGridDBColumn;
+    grdPkgLoggLevel1: TcxGridLevel;
+    Label29: TLabel;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxDBTextEdit6: TcxDBTextEdit;
+    Label30: TLabel;
+    cxDBTextEdit7: TcxDBTextEdit;
+    Label31: TLabel;
+    cxDBTextEdit8: TcxDBTextEdit;
+    Label32: TLabel;
+    Label33: TLabel;
+    cxDBTextEdit9: TcxDBTextEdit;
+    cxSplitter2: TcxSplitter;
+    Label34: TLabel;
+    Bevel2: TBevel;
+    cxDBTextEdit10: TcxDBTextEdit;
+    Label35: TLabel;
+    cxDBTextEdit11: TcxDBTextEdit;
+    Label36: TLabel;
+    cxDBTextEdit12: TcxDBTextEdit;
+    cxDBTextEdit13: TcxDBTextEdit;
+    Label37: TLabel;
+    Label38: TLabel;
+    teIMP: TcxDBTextEdit;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lbExitClick(Sender: TObject);
@@ -296,8 +317,12 @@ begin
     //GetPkgLog(Sender) ;
    End ;
     Self.Caption := siLangLinked_frmPkgInfo.GetTextOrDefault('IDS_0' (* 'PAKETINFORMATION ' *) ) + siLangLinked_frmPkgInfo.GetTextOrDefault('IDS_1' (* ' Paketnr: ' *) ) + siLangLinked_frmPkgInfo.GetTextOrDefault('IDS_1' (* ' Paketnr: ' *) ) + dmsSystem.sp_PkgInfoIIPKG_NO.AsString
-  + '/' +  dmsSystem.sp_PkgInfoIISUPP_CODE.AsString ;
+      + '/' +  dmsSystem.sp_PkgInfoIISUPP_CODE.AsString ;
 
+     if dmsSystem.sp_PkgInfoIIIMP.AsString = 'OIMP' then
+      teIMP.Style.Color := clWindow
+       else
+        teIMP.Style.Color := clMoneyGreen ;  
 
   End ;
 
@@ -342,6 +367,12 @@ begin
 
 
  TtePkgNo.Enabled := True ;
+
+ if dmsSystem.sp_PkgInfoIIIMP.AsString = 'OIMP' then
+  teIMP.Style.Color := clWindow
+   else
+    teIMP.Style.Color := clMoneyGreen ;   
+ 
 end;
 
 procedure TfrmPkgInfo.TtePkgNoTimer(Sender: TObject);

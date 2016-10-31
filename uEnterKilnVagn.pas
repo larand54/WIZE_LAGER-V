@@ -22,7 +22,8 @@ uses
   cxGrid, Vcl.ExtCtrls, cxContainer, Vcl.Menus, Vcl.StdCtrls, cxButtons,
   cxLabel, cxTextEdit, VidaType, Vcl.ActnList, cxDBLabel, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, siComp, siLngLnk, System.Actions ;
+  dxSkinOffice2013White, siComp, siLngLnk, System.Actions, cxMaskEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxDBEdit ;
 
 type
   TfEnterKilnVagn = class(TForm)
@@ -68,6 +69,14 @@ type
     cxButton2: TcxButton;
     acPickPackages: TAction;
     siLangLinked_fEnterKilnVagn: TsiLangLinked;
+    lcImp: TcxDBLookupComboBox;
+    LabelIMP: TcxLabel;
+    ds_KilnVagn: TDataSource;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxLabel4: TcxLabel;
+    tePlannedDuration: TcxDBTextEdit;
+    cxLabel5: TcxLabel;
+    grdVagnPkgsDBTableView1MatchingPT: TcxGridDBColumn;
     procedure mePackageNoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Timer1Timer(Sender: TObject);
@@ -76,9 +85,11 @@ type
     procedure acRemovePackageExecute(Sender: TObject);
     procedure acPickPackagesExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure acRemovePackageUpdate(Sender: TObject);
   private
     { Private declarations }
     RowNo : Integer ;
+    procedure checkIMPProducts ;
     procedure GetpackageNoEntered(Sender: TObject;const PackageNo : String) ;
     procedure AddSelectedPkgsToVagn(Sender: TObject) ;
     procedure AddPkgsToVagn(Sender: TObject; const PackageNo : Integer; const PkgSupplierCode : String;const ProductNo : Integer) ;
@@ -89,6 +100,7 @@ type
     Var Res_UserName : String) : TEditAction;
   public
     { Public declarations }
+    TypeOfLine  : Integer ;
   end;
 
 //var fEnterKilnVagn: TfEnterKilnVagn;
@@ -107,14 +119,54 @@ procedure TfEnterKilnVagn.FormCloseQuery(Sender: TObject;
 begin
  With dmInventory do
  Begin
-   ControlVagn(cds_KilnVagnVagnNo.AsInteger) ;
+   if cds_KilnVagn.RecordCount > 0 then
+   Begin
+    if (TypeOfLine = 2) and (cds_KilnVagnIMPNo.AsInteger < 1) then
+    Begin
+     ShowMessage('Please select a pressure treated type!') ;
+     CanClose := False ;
+    End;
+   End;
+
+   if CanClose then
+    ControlVagn(cds_KilnVagnVagnNo.AsInteger) ;
+
+   if TypeOfLine = 2 then
+    CheckIMPProducts ;
  End;
 end;
+
+procedure TfEnterKilnVagn.checkIMPProducts ;
+Var Match : Boolean ;
+Begin
+ With dmInventory do
+ Begin
+  Match := True ;
+  if cds_KilnChargeRowsCheckIMP.Active then
+   cds_KilnChargeRowsCheckIMP.Active  :=  False ;
+  cds_KilnChargeRowsCheckIMP.ParamByName('KilnChargeNo').AsInteger  :=  cds_KilnVagnKilnChargeNo.AsInteger ;
+  cds_KilnChargeRowsCheckIMP.ParamByName('VagnNo').AsInteger        :=  cds_KilnVagnVagnNo.AsInteger ;
+  cds_KilnChargeRowsCheckIMP.Active := True ;
+  cds_KilnChargeRowsCheckIMP.First ;
+  while not cds_KilnChargeRowsCheckIMP.Eof do
+  Begin
+    if cds_KilnChargeRowsCheckIMPMatchingPT.AsString = 'NO matching P/T' then
+      Match := False ;
+
+    cds_KilnChargeRowsCheckIMP.Next ;
+  End;
+  if Match = False then
+   ShowMessage('Matchande impregneringsprodukt saknas för en eller flera produkter för vald impregnering, se kolumnen "Matching P/T" vilka som inte matchar.' +
+   ' Lägg upp de produkterna i produktregistret så snart som möjligt.') ;
+
+ End;//With
+End;
 
 procedure TfEnterKilnVagn.FormCreate(Sender: TObject);
 begin
  RowNo  := 1 ;
 end;
+
 
 procedure TfEnterKilnVagn.FormShow(Sender: TObject);
 begin
@@ -125,6 +177,20 @@ begin
     else
      RowNo  := 1 ;
  End;
+
+ if TypeOfLine = 1 then
+ Begin
+  lcIMP.Visible     := False ;
+  LabelIMP.Visible  := False ;
+ End
+  else
+   if TypeOfLine = 3 then
+   Begin
+    lcIMP.Visible     := False ;
+    LabelIMP.Visible  := False ;
+   End
+    else
+    lcImp.SetFocus ;
 end;
 
 function TfEnterKilnVagn.IdentifyPackageSupplier(
@@ -203,6 +269,11 @@ End;
 procedure TfEnterKilnVagn.acRemovePackageExecute(Sender: TObject);
 begin
  dmInventory.cds_KilnChargeRows.Delete ;
+end;
+
+procedure TfEnterKilnVagn.acRemovePackageUpdate(Sender: TObject);
+begin
+  acRemovePackage.Enabled :=  (dmInventory.cds_KilnChargeRows.Active) and (dmInventory.cds_KilnChargeRows.RecordCount > 0) ;
 end;
 
 procedure TfEnterKilnVagn.AddPkgsToVagn(Sender: TObject; const PackageNo : Integer; const PkgSupplierCode : String;const ProductNo : Integer) ;

@@ -404,6 +404,19 @@ type
     sq_dbPropsLangPath: TStringField;
     sq_dbPropsFastPath: TStringField;
     sp_Lang: TFDStoredProc;
+    cds_imp: TFDQuery;
+    cds_impProductCategoryNo: TIntegerField;
+    cds_impProductCategoryName: TStringField;
+    sp_PkgInfoIIREFERENCE: TStringField;
+    sp_PkgInfoIIInfo2: TStringField;
+    sp_PkgInfoIIInfo1: TStringField;
+    sp_PkgInfoIIStoredDate: TSQLTimeStampField;
+    sp_PkgInfoIIPosition: TStringField;
+    sp_PkgInfoIIPackageNo: TIntegerField;
+    sp_PkgInfoIISupplierCode: TStringField;
+    sp_PkgInfoIISortingOrderNo: TIntegerField;
+    sp_PkgInfoIIDateCreated: TSQLTimeStampField;
+    sp_PkgInfoIIIMP: TStringField;
     procedure DataModuleCreate(Sender: TObject);
 
     procedure mtMarkedCodesAfterInsert(DataSet: TDataSet);

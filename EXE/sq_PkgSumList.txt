@@ -8,46 +8,46 @@ pg.ActualThicknessMM AS AT,
 pg.ActualWidthMM AS AB,
 SUM(ptd.NoOfPieces) AS STYCK,
 RTRIM(' ') AS STYCKPERLÄNGD,
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 1800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L1, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 1600 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L1, 
 CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L2, 
 CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L3, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L4, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3000 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L5, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3300 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L6, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3600 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L7, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3900 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L8, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4200 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L9, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4500 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L10, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L11, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L12, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L13, 
-CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14, 
-CAST(0.0 AS Float) AS L15, 
-CAST(0.0 AS Float) AS L16, 
-CAST(0.0 AS Float) AS L17, 
-CAST(0.0 AS Float) AS L18, 
-CAST(0.0 AS Float) AS L19, 
-CAST(0.0 AS Float) AS L20, 
-CAST(0.0 AS Float) AS L21, 
-CAST(0.0 AS Float) AS L22, 
-CAST(0.0 AS Float) AS L23, 
-CAST(0.0 AS Float) AS L24, 
-CAST(0.0 AS Float) AS L25, 
-CAST(0.0 AS Float) AS L26, 
-CAST(0.0 AS Float) AS L27, 
-CAST(0.0 AS Float) AS L28, 
-CAST(0.0 AS Float) AS L29, 
-CAST(0.0 AS Float) AS L30, 
-CAST(0.0 AS Float) AS L31, 
-CAST(0.0 AS Float) AS L32, 
-CAST(0.0 AS Float) AS L33, 
-CAST(0.0 AS Float) AS L34, 
-CAST(0.0 AS Float) AS L35, 
-CAST(0.0 AS Float) AS L36, 
-CAST(0.0 AS Float) AS L37, 
-CAST(0.0 AS Float) AS L38, 
-CAST(0.0 AS Float) AS L39, 
-CAST(0.0 AS Float) AS L40, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2410 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L4, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2439 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L5, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2440 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L6, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2500 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L7, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2540 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L8, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2550 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L9, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2667 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L10, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L11, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2750 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L12, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L13, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2810 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2850 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L15, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2900 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L16, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2985 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L17, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2987 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L18, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2990 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L19, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3000 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L20, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3005 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L21, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3010 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L22, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3020 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L23, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3025 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L24, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3040 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L25, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3049 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L26, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3050 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L27, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L28, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3149 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L29, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3210 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L30, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3300 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L31, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3600 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L32, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3620 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L33, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3900 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L34, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4200 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L35, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4270 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L36, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4500 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L37, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L38, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L39, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L40, 
 CAST(0.0 AS Float) AS L41, 
 CAST(0.0 AS Float) AS L42, 
 CAST(0.0 AS Float) AS L43, 
@@ -73,15 +73,13 @@ SUM(pn.Original_Price * ptd.m3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd
 FROM  dbo.Client Verk
 Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
 Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
-INNER JOIN dbo.InvenRow invctrlrow ON invctrlrow.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
-INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = invctrlrow.PackageNo
-AND pn.SupplierCode = invctrlrow.SupplierCode
-Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = invctrlrow.PackageTypeNo
+INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
 Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
-AND PTL.LengthGroupNo = 1
+AND PTL.LengthGroupNo = 30
 AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
 Inner Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
@@ -99,10 +97,10 @@ Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1 
-AND invctrlrow.IC_GrpNo = 15325
+AND pn.Status = 1
 AND Verk.SalesRegionNo = 741
- AND ( LIP.InvCode = '10' OR  LIP.InvCode = '12' OR  LIP.InvCode = '13' ) 
- AND ( Verk.PktNrLevKod = 15 ) 
+
+ AND ( Verk.PktNrLevKod = 18 ) 
 
 
 

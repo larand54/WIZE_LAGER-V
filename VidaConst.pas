@@ -8,6 +8,12 @@ uses
 
 const
 
+//Action på vagnar
+ CancelMoveOutOfUnit  = 1 ;  //Ångra flytta ut ur tork
+ CancelMoveIntoUnit   = 2 ;  //Ångra flytta in i tork
+ MoveInToUnit         = 3 ; //Mata in paket till tork
+ MoveOutOfUnit        = 4 ; //Stega ut ur tork
+
 //Inventerings constants
  cAvReg             = 0 ;
  cPaReg             = 5 ;

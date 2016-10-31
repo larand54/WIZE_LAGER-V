@@ -351,7 +351,7 @@ begin
   cxGrid1DBTableView1.DataController.KeyFieldNames    := 'PAKETNR;LEVKOD' ;
   cds_Products.Active                                 := False ;
   cds_Products.ParamByName('LIPNo').AsInteger         := LIPNo ;
-  cds_Products.ParamByName('PIPNo').AsInteger         := PIPNo ;
+//  cds_Products.ParamByName('PIPNo').AsInteger         := PIPNo ;
   cds_Products.Active                                 := True ;
   cxGrid1DBTableView1ColumnAngeAntalPkt.Visible       := False ;
 { end
