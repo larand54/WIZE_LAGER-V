@@ -341,7 +341,7 @@ begin
 
 // -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 {$IFDEF DEBUG}
-  if (Pos('CARMAK',GetEnvironmentVariable('COMPUTERNAME')) > 0) then begin
+  if (Pos('CAR MAK',GetEnvironmentVariable('COMPUTERNAME')) > 0) then begin
     dmsConnector.DriveLetter := 'C:\';
     ThisUser.Database:= 'alvesql03:vis_vida' ;
       with dmsConnector.FDConnection1 do begin

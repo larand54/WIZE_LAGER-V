@@ -233,7 +233,7 @@
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsTorksatser
+    Properties.ActivePage = tsDeliveries
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
@@ -732,7 +732,6 @@
         Control = pivLeveranser
         Color = clMaroon
         ParentColor = False
-        ExplicitWidth = 8
       end
       object Panel6: TPanel
         Left = 0
@@ -1253,7 +1252,6 @@
         Control = pivProduction
         Color = clMaroon
         ParentColor = False
-        ExplicitWidth = 8
       end
       object Panel5: TPanel
         Left = 0
@@ -2779,7 +2777,6 @@
         Control = pvStoppTid
         Color = clMaroon
         ParentColor = False
-        ExplicitWidth = 8
       end
     end
     object tsLOOrderstock: TcxTabSheet
@@ -3552,7 +3549,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42669.317600474540000000
+      ReportDocument.CreationDate = 42690.447592002320000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3581,7 +3578,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42669.317600486110000000
+      ReportDocument.CreationDate = 42690.447592013890000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3608,7 +3605,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42669.317600486110000000
+      ReportDocument.CreationDate = 42690.447592025460000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3630,10 +3627,11 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42669.317600497680000000
+      ReportDocument.CreationDate = 42690.447592037040000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -3648,6 +3646,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 40918.446931423610000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxCompositionReportLink
@@ -3693,7 +3692,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42669.317600706020000000
+      ReportDocument.CreationDate = 42690.447592291670000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -3763,13 +3762,12 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42669.317600717590000000
+      ReportDocument.CreationDate = 42690.447592303240000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdStoppTid
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -3783,8 +3781,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42669.317600740740000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 42690.447592349530000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink

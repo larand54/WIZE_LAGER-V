@@ -96,11 +96,11 @@ Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
-AND pl.ActualLengthMM = 4800
+AND pl.ActualLengthMM = 5400
 AND PTL.STD_Length = 1
 AND pn.Status = 1
-AND pt.ProductNo = 12612
-AND LIP.LogicalInventoryPointNo = 10781
+AND pt.ProductNo = 96919
+AND LIP.LogicalInventoryPointNo = 10718
 AND Verk.SalesRegionNo = 741
 Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
 pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,

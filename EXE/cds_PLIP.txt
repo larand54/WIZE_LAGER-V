@@ -1,4 +1,4 @@
-SELECT Distinct isNull(LIP.InvCode, '')  + '/'  + RTRIM(LIP.LogicalInventoryName) AS PLIP,
+SELECT Distinct CY.CITYNAME, CY.CITYNAME + '/'  + RTRIM(LIP.LogicalInventoryName) AS PLIP,
 LIP.InvCode, LIP.LogicalInventoryName, LIP.LogicalInventoryPointNo AS LIPNo
 FROM
 dbo.PHYSICALINVENTORYPOINT PH
@@ -11,6 +11,6 @@ LIP.SequenceNo = 1
 AND PH.SequenceNo = 1
 AND PH.PhyInvPointNameNo in (Select PH2.PhyInvPointNameNo
 FROM dbo.PHYSICALINVENTORYPOINT PH2
-WHERE PH2.OwnerNo = 76)
- AND ( C.PktNrLevKod = 18 ) 
-Order By  LIP.InvCode, LIP.LogicalInventoryName
+WHERE PH2.OwnerNo = 741)
+ AND ( C.PktNrLevKod = 10 ) 
+Order By  CY.CITYNAME, LIP.LogicalInventoryName

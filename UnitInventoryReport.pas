@@ -4687,7 +4687,7 @@ end;
 procedure TfrmInventoryReport.acPkgTypeTableExecute(Sender: TObject);
 Var Save_Cursor : TCursor;
 begin
- if ReportInProgress then  Exit ;
+ if ReportInProgress then Exit ;
  deStartPeriod.PostEditValue ;
  deEndPeriod.PostEditValue ;
  teREF.PostEditValue ;
@@ -4985,10 +4985,13 @@ begin
 //    3 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
 //        +' THEN ptd.NoOfPieces/avgp.AvgPcs ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
 
-    3 : cds_PkgList.SQL.Add('CAST(count(Distinct CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+    3 : cds_PkgList.SQL.Add('CAST(count(Distinct CASE WHEN pl.ActualLengthMM = ' + sq_GroupLengthsActualLengthMM.AsString
         +' AND PTL.STD_Length = 1'
         +' AND ls.NoOfLengths = 1'
-        +' THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L'+inttostr(x)+', ') ;
+        +' THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L' + inttostr(x)+', ') ;
+
+    4 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = ' + sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.NoOfPieces * pl.ActualLengthMM ELSE 0 END) AS Float) AS L' + inttostr(x)+', ') ;
 
 //CAST(count(Distinct CASE WHEN PTL.STD_Length = 1 AND pl.ActualLengthMM
 // = 4500 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14,
@@ -5043,7 +5046,13 @@ begin
   else
   cds_PkgList.SQL.Add(',1 AS Status,') ;
 
-  cds_PkgList.SQL.Add('SUM(pn.Original_Price * ptd.m3Nominal) / SUM(ptd.m3Nominal) AS Pris,') ;
+//  cds_PkgList.SQL.Add('SUM(pn.Original_Price * ptd.m3Nominal) / SUM(ptd.m3Nominal) AS Pris,') ;
+
+  cds_PkgList.SQL.Add('CASE WHEN SUM(ptd.m3Nominal) > 0 THEN') ;
+  cds_PkgList.SQL.Add('SUM(pn.Original_Price * ptd.m3Nominal) / SUM(ptd.m3Nominal)') ;
+  cds_PkgList.SQL.Add('END AS Pris,') ;
+
+
   cds_PkgList.SQL.Add('SUM(pn.Original_Price * ptd.m3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd.LinealMeterActualLength) / SUM(ptd.NoOfPieces)) AS Float) AS AvgLength, '
   + QuotedStr('                              ') +
 {TSI:IGNORE ON}
@@ -5122,7 +5131,7 @@ begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
         cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
-        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'NM3 PER LÄNGD' *) ) ;
        End ;
    3 : Begin
         cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
@@ -5130,6 +5139,12 @@ begin
         cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
         cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
        End ;
+   4 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = 3') ; //+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'KG PER SÄCKTYP' *) ) ;
+       End;
   End ; //Case
 
 
@@ -5243,7 +5258,8 @@ begin
    GenNotInvoicedTable_SQL(Sender) ;
   End ;
 
-  if thisuser.UserID = 258 then  cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
+  //if thisuser.UserID = 258 then
+    cds_PkgList.SQL.SaveToFile('sq_PkgSumList.txt');
  End ; //with
 
  finally

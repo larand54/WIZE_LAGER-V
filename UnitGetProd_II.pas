@@ -225,6 +225,9 @@ type
     Label7: TLabel;
     icVaruslag: TcxDBImageComboBox;
     siLangLinked_frmGetProd_II: TsiLangLinked;
+    cds_GetVaruSlagNo: TFDQuery;
+    cds_GetVaruSlagNoSalesRegionNo: TIntegerField;
+    cds_GetVaruSlagNoVaruslagNo: TIntegerField;
     procedure grdProductListDblClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
@@ -250,6 +253,7 @@ type
   private
     { Private declarations }
     LanguageCode  : String ;
+    function  GetVaruSlagNo (const SalesRegionNo : Integer) : Integer ;
     procedure BuildSQL(Sender: TObject);
     procedure InsertToSelectedProducts(const ProductNo, ProductGroupNo : Integer;
               const AT,AB, NT, NB : Double;
@@ -268,7 +272,7 @@ type
 implementation
 
 uses VidaUtils, VidaConst, VidaUser, dmsDataConn ,
-     dmsVidaSystem ;//, uProductForm;
+     dmsVidaSystem , dmsVidaContact;//, uProductForm;
 
 {$R *.dfm}
 
@@ -406,13 +410,33 @@ begin
 {$IFDEF PROFILE}finally; asm DW 310FH; mov ecx,1832; call Profint.ProfExit; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; end; {$ENDIF}
 end;
 
+function TfrmGetProd_II.GetVaruSlagNo (const SalesRegionNo : Integer) : Integer ;
+Begin
+  cds_GetVaruSlagNo.ParamByName('SalesRegionNo').AsInteger  := SalesRegionNo ;
+  cds_GetVaruSlagNo.Active  := True ;
+  Try
+  if not cds_GetVaruSlagNo.Eof then
+   Result := cds_GetVaruSlagNoVaruslagNo.AsInteger
+    else
+     Result := -1 ;
+  Finally
+    cds_GetVaruSlagNo.Active  := False ;
+  End;
+End;
+
 procedure TfrmGetProd_II.FormShow(Sender: TObject);
+Var VaruSlagNo : integer ;
 begin
 {$IFDEF PROFILE}asm DW 310FH; call Profint.ProfStop; end; Try; asm mov edx,1833 or $6ECA0000; mov eax,self; call Profint.ProfEnter; mov ecx,eax; DW 310FH; add[ecx].0,eax; FDc[ecx].4,edx; end; {$ENDIF}
 
+ VaruSlagNo := GetVaruSlagNo(dmsContact.GetSalesRegionNo(ThisUser.CompanyNo)) ;
+
  mtProduct.Active := True ;
  mtProduct.Insert ;
- mtProductVaruSlag.AsInteger  := 0 ;
+ if VaruSlagNo > -1 then
+  mtProductVaruSlag.AsInteger  := VaruSlagNo
+   else
+    mtProductVaruSlag.AsInteger  := 0 ;
  mtProduct.Post ;
 // With dmProduct do
 // Begin

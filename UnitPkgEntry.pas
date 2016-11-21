@@ -1574,7 +1574,7 @@ begin
 end;
 
 procedure TfrmPkgEntry.AddProduct(Sender: TObject) ;
-var frmGetProd_II: TfrmGetProd_II ;
+var frmGetProd_II : TfrmGetProd_II ;
 begin
  //Add product
  With dmsPkg do

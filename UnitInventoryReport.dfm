@@ -1172,9 +1172,10 @@ object frmInventoryReport: TfrmInventoryReport
         TabOrder = 2
         Properties.ActivePage = tsPaketnr
         Properties.CustomButtons.Buttons = <>
-        ClientRectBottom = 243
-        ClientRectRight = 1559
-        ClientRectTop = 27
+        ClientRectBottom = 242
+        ClientRectLeft = 1
+        ClientRectRight = 1558
+        ClientRectTop = 24
         object tsPaketnr: TcxTabSheet
           Margins.Left = 4
           Margins.Top = 4
@@ -1185,8 +1186,8 @@ object frmInventoryReport: TfrmInventoryReport
           object grdPkgNoTbl: TcxGrid
             Left = 0
             Top = 23
-            Width = 1559
-            Height = 193
+            Width = 1557
+            Height = 195
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -2647,7 +2648,7 @@ object frmInventoryReport: TfrmInventoryReport
           object dxBarDockControl2: TdxBarDockControl
             Left = 0
             Top = 0
-            Width = 1559
+            Width = 1557
             Height = 23
             Margins.Left = 4
             Margins.Top = 4
@@ -2668,7 +2669,7 @@ object frmInventoryReport: TfrmInventoryReport
           object Panel9: TPanel
             Left = 0
             Top = 0
-            Width = 1559
+            Width = 1557
             Height = 64
             Margins.Left = 4
             Margins.Top = 4
@@ -2717,7 +2718,7 @@ object frmInventoryReport: TfrmInventoryReport
             object Panel12: TPanel
               Left = 401
               Top = 0
-              Width = 1158
+              Width = 1156
               Height = 64
               Margins.Left = 4
               Margins.Top = 4
@@ -2936,8 +2937,8 @@ object frmInventoryReport: TfrmInventoryReport
           object grdKilnPkgs: TcxGrid
             Left = 0
             Top = 64
-            Width = 1559
-            Height = 152
+            Width = 1557
+            Height = 154
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -3009,7 +3010,7 @@ object frmInventoryReport: TfrmInventoryReport
           object Panel14: TPanel
             Left = 0
             Top = 0
-            Width = 1559
+            Width = 1557
             Height = 50
             Margins.Left = 4
             Margins.Top = 4
@@ -3022,8 +3023,8 @@ object frmInventoryReport: TfrmInventoryReport
           object grdPackageCostDetails: TcxGrid
             Left = 0
             Top = 50
-            Width = 1559
-            Height = 166
+            Width = 1557
+            Height = 168
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -3143,7 +3144,6 @@ object frmInventoryReport: TfrmInventoryReport
         Margins.Bottom = 4
         Align = alClient
         TabOrder = 4
-        ExplicitTop = 64
         object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
           OnDblClick = cxGrid1DBBandedTableView1DblClick
           OnMouseDown = cxGrid1DBBandedTableView1MouseDown
@@ -3468,7 +3468,7 @@ object frmInventoryReport: TfrmInventoryReport
               Caption = 'ANTAL/L'#196'NGD'
               Options.HoldOwnColumnsOnly = True
               Options.Moving = False
-              Width = 506
+              Width = 454
             end
             item
               Caption = 'KVANTITET'
@@ -4505,9 +4505,10 @@ object frmInventoryReport: TfrmInventoryReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = pgInventoryPageChanging
-    ClientRectBottom = 191
-    ClientRectRight = 1559
-    ClientRectTop = 27
+    ClientRectBottom = 190
+    ClientRectLeft = 1
+    ClientRectRight = 1558
+    ClientRectTop = 24
     object tsLagret: TcxTabSheet
       Margins.Left = 4
       Margins.Top = 4
@@ -4518,8 +4519,8 @@ object frmInventoryReport: TfrmInventoryReport
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1559
-        Height = 164
+        Width = 1557
+        Height = 166
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -6874,6 +6875,7 @@ object frmInventoryReport: TfrmInventoryReport
     Top = 457
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6890,12 +6892,14 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39085.979061331020000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPcsPerLength
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6911,10 +6915,12 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInvSum
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6930,10 +6936,12 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdPkgNoTbl
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6949,12 +6957,14 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdKilnPkgs
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6970,6 +6980,7 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -7592,8 +7603,8 @@ object frmInventoryReport: TfrmInventoryReport
     SortID = 0
     SubLanguageID = 1
     LocaleID = 1024
-    Left = 256
-    Top = 241
+    Left = 120
+    Top = 377
     object mtPkgNosPackageNo: TIntegerField
       FieldName = 'PackageNo'
     end
@@ -7667,8 +7678,8 @@ object frmInventoryReport: TfrmInventoryReport
   object cxEditStyleController1: TcxEditStyleController
     Style.TextColor = clMaroon
     Style.TextStyle = [fsBold]
-    Left = 312
-    Top = 264
+    Left = 320
+    Top = 592
     PixelsPerInch = 120
   end
   object cxEditStyleController2: TcxEditStyleController
@@ -8005,8 +8016,8 @@ object frmInventoryReport: TfrmInventoryReport
   object ImageList1: TImageList
     Height = 24
     Width = 24
-    Left = 352
-    Top = 233
+    Left = 320
+    Top = 649
     Bitmap = {
       494C01010D001100040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090

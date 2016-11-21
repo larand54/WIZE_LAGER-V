@@ -394,6 +394,7 @@ begin
  mtLengthVolUnit.InsertRecord([1, 'AM3']) ;
  mtLengthVolUnit.InsertRecord([2, 'NM3']) ;
  mtLengthVolUnit.InsertRecord([3, 'PAKET']) ;
+ mtLengthVolUnit.InsertRecord([4, 'kg']) ;
 // cds_Verk.Post ;
 end;
 
