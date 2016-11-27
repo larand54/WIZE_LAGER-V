@@ -627,6 +627,8 @@ begin
 
    mtMarkedProdSequenceNo.AsInteger       := SequenceNo ;
 
+   mtMarkedProdVaruSlagNo.AsInteger       := mtProductVaruSlag.AsInteger ;
+
 //   if SequenceNo = 0 then
 //   mtMarkedProdLengthDesc.AsString        := LengthDesc ;
 //   mtMarkedProdNL.AsFloat                 := NL ;

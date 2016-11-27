@@ -417,6 +417,7 @@ type
     sp_PkgInfoIISortingOrderNo: TIntegerField;
     sp_PkgInfoIIDateCreated: TSQLTimeStampField;
     sp_PkgInfoIIIMP: TStringField;
+    mtMarkedProdVaruSlagNo: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
 
     procedure mtMarkedCodesAfterInsert(DataSet: TDataSet);

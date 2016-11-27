@@ -2021,7 +2021,7 @@
     SubLanguageID = 1
     LocaleID = 1024
     Left = 680
-    Top = 552
+    Top = 536
     object mtMarkedProdProductNo: TIntegerField
       FieldName = 'ProductNo'
     end
@@ -2076,6 +2076,9 @@
     end
     object mtMarkedProdALMM: TFloatField
       FieldName = 'ALMM'
+    end
+    object mtMarkedProdVaruSlagNo: TIntegerField
+      FieldName = 'VaruSlagNo'
     end
   end
   object sp_NonActivePkgEXT: TFDStoredProc
@@ -2164,7 +2167,6 @@
     end
   end
   object sp_PkgInfoII: TFDStoredProc
-    Active = True
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.Vis_PkgInfo'
     Left = 944

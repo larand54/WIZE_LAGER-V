@@ -177,7 +177,7 @@ type
 
   private
     { Private declarations }
-    ManuellLengthColumn : Integer ;
+    VaruSlagNo, ManuellLengthColumn : Integer ;
     OKToSave : Boolean ;
     function  UnSavedPackages : Boolean ;
     Function  UnsavedPkgs : Boolean ;
@@ -409,6 +409,7 @@ Begin
    if dmsPkg.mtUserPropInputOption.AsInteger = INPUT_PIECES then
    Begin
     grdPackagesDBBandedTableView1.Bands[2].Visible:= True ;
+
 //    if (bcLengthOption.ItemIndex = 0) then
 //    MakeLengthQuery_II
 //     else
@@ -1595,6 +1596,8 @@ begin
 
     mtUserPropSurfacingNo.AsInteger       := dmsSystem.mtMarkedProdSurfacingNo.AsInteger ;
 
+    VaruSlagNo                            := dmsSystem.mtMarkedProdVaruSlagNo.AsInteger ;
+
 
 
     if dmsSystem.mtMarkedProdSequenceNo.AsInteger = 3 {Ramar} then
@@ -1711,6 +1714,7 @@ begin
    +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_100' (* 'Ägare:' *) )+mtUserPropOWNER.AsString
    +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_101' (* 'Lagerplats: ' *) )+mtUserPropPIPNAME.AsString+'/'+mtUserPropLIPNAME.AsString
    +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_102' (* 'Datum: ' *) )+DateToStr(mtUserPropRegDate.AsDateTime)
+   +LF+' OBSERVERA ATT PAKETEN SPARAS MED PAKETSTORLEKSETIKETT ' + lcPackage_Size.Text
    ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
    GoAndSave:= True
   End
@@ -1722,6 +1726,7 @@ begin
   +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_101' (* 'Lagerplats: ' *) )+mtUserPropPIPNAME.AsString+'/'+mtUserPropLIPNAME.AsString
   +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_102' (* 'Datum: ' *) )+DateToStr(mtUserPropRegDate.AsDateTime)
   +LF+siLangLinked_frmPkgEntry.GetTextOrDefault('IDS_107' (* 'OBS! SPARAR INTE TILL PRODUKTIONSLOGGEN' *) )
+  +LF+' OBSERVERA ATT PAKETEN SPARAS MED PAKETSTORLEKSETIKETT ' + lcPackage_Size.Text
   ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   GoAndSave:= True ;
 
