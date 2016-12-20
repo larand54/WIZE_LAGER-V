@@ -418,6 +418,7 @@ type
     sp_PkgInfoIIDateCreated: TSQLTimeStampField;
     sp_PkgInfoIIIMP: TStringField;
     mtMarkedProdVaruSlagNo: TIntegerField;
+    sp_UserPerm: TFDStoredProc;
     procedure DataModuleCreate(Sender: TObject);
 
     procedure mtMarkedCodesAfterInsert(DataSet: TDataSet);
@@ -451,6 +452,8 @@ type
     AntPosPktNr,
     LevKodPos,
     AntPosLevKod          : Cardinal ;
+
+    function  UserIsAllowedToMovePkgs(const UserID : Integer) : Integer ;
 
     function  GetLanguageNo : Integer ;
     procedure SaveLanguage(const LanguageNo : Integer) ;
@@ -1946,6 +1949,22 @@ Begin
       Raise ;
      End
   End ;
+End;
+
+function TdmsSystem.UserIsAllowedToMovePkgs(const UserID : Integer) : Integer ;
+Begin
+  sp_UserPerm.ParamByName('@UserID').AsInteger :=  UserID  ;
+  sp_UserPerm.Active := True ;
+  Try
+  if not sp_UserPerm.Eof then
+  Begin
+   Result := sp_UserPerm.FieldByName('PermitLevelMovePkgs').AsInteger ;
+  End
+    else
+     Result := 0 ;
+  Finally
+    sp_UserPerm.Active := False ;
+  End;
 End;
 
 

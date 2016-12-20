@@ -578,6 +578,16 @@
           Visible = True
           UniqueName = 'Styck'
         end
+        object pivLeveranserKG: TcxDBPivotGridField
+          Area = faData
+          AreaIndex = 4
+          AllowedAreas = [faFilter, faData]
+          DataBinding.FieldName = 'kg'
+          DisplayFormat = '#,###,###.0'
+          PropertiesClassName = 'TcxCalcEditProperties'
+          Visible = True
+          UniqueName = 'kg'
+        end
       end
       object pnSettings: TPanel
         Left = 0
@@ -3506,8 +3516,8 @@
   end
   object ds_ProdData: TDataSource
     DataSet = sq_ProdDataSumII
-    Left = 400
-    Top = 456
+    Left = 392
+    Top = 448
   end
   object ds_RegPoint: TDataSource
     DataSet = cds_RegPoint
@@ -3549,7 +3559,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42690.447592002320000000
+      ReportDocument.CreationDate = 42723.038337650460000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3578,7 +3588,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42690.447592013890000000
+      ReportDocument.CreationDate = 42723.038337662040000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3605,7 +3615,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42690.447592025460000000
+      ReportDocument.CreationDate = 42723.038337662040000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3627,7 +3637,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42690.447592037040000000
+      ReportDocument.CreationDate = 42723.038337673610000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
@@ -3692,7 +3702,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42690.447592291670000000
+      ReportDocument.CreationDate = 42723.038337997680000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -3762,7 +3772,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42690.447592303240000000
+      ReportDocument.CreationDate = 42723.038338009260000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
@@ -3781,7 +3791,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42690.447592349530000000
+      ReportDocument.CreationDate = 42723.038338032410000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
@@ -6985,6 +6995,10 @@
       FieldName = 'Pieces'
       Origin = 'Pieces'
     end
+    object cds_Datakg: TFloatField
+      FieldName = 'kg'
+      Origin = 'kg'
+    end
   end
   object cds_ProdData: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -7278,8 +7292,8 @@
       'Cu.ClientName'
       ''
       '')
-    Left = 400
-    Top = 408
+    Left = 384
+    Top = 512
     ParamData = <
       item
         Name = 'STARTPERIOD'
@@ -7502,8 +7516,8 @@
       'or (SupplierNo = 578)'
       'or (SupplierNo = 830)'
       'or (SupplierNo = 2878)))')
-    Left = 400
-    Top = 304
+    Left = 392
+    Top = 400
     ParamData = <
       item
         Name = 'STARTPERIOD'
@@ -7755,8 +7769,8 @@
       'AND ((Operation = :Operation) or (:Operation = '#39'Alla'#39'))'
       'AND ((RegPointNo = :RegPointNo) or (:RegPointNo = 0))'
       '')
-    Left = 400
-    Top = 352
+    Left = 384
+    Top = 568
     ParamData = <
       item
         Name = 'STARTPERIOD'

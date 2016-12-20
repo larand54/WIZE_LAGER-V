@@ -199,6 +199,7 @@ type
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
   private
     { Private declarations }
+     pUserIsAllowedToMovePkgs  : Integer ;
      FExternMove : Boolean ;
      EgenPkgSupplierCode :  String ;
      Unique_No : Integer ;
@@ -239,7 +240,8 @@ uses dmLM1, VidaConst,
 
 procedure TfrmMovePkgs.CreateCo (const ExternMove : Boolean) ;
 var
-  Save_Cursor:TCursor;
+  Save_Cursor               : TCursor;
+
 begin
  FExternMove    := ExternMove ;
  Save_Cursor    := Screen.Cursor;
@@ -248,35 +250,80 @@ begin
   dmsSystem.LoadGridLayout(ThisUser.UserID, Self.Name+'/'+grdPkgs.Name, grdPkgsDBBandedTableView1) ;
   grdPkgsDBBandedTableView1ROWNO.SortOrder:= soAscending ;
 
-  if FExternMove = False then
+  pUserIsAllowedToMovePkgs  := dmsSystem.UserIsAllowedToMovePkgs(ThisUser.UserID) ;
+
+  if pUserIsAllowedToMovePkgs = cCanNOTMovePkgs then
   Begin
    mtUserProp.Edit ;
-   mtUserPropVerkNo.AsInteger:= mtUserPropOwnerNo.AsInteger ;
-   mtUserPropRegPointNo.AsInteger:= 7 ;//7 = Lager   
+   mtUserPropVerkNo.AsInteger     := mtUserPropOwnerNo.AsInteger ;
+   mtUserPropRegPointNo.AsInteger := 7 ;//7 = Lager
    mtUserProp.Post ;
-   lcVERK.Enabled:= False ;
-   lcTO_PIPNAME.Enabled:= False ;
+
+   lcVERK.Enabled         := False ;
+   lcTO_PIPNAME.Enabled   := False ;
+   lcLIPName.Enabled      := False ;
+   acFlyttaPaket.Enabled  := False ;
   End
   else
+  if pUserIsAllowedToMovePkgs = cCanMovePkgsINT then
   Begin
    mtUserProp.Edit ;
    mtUserPropRegPointNo.AsInteger:= 7 ;//7 = Lager
    mtUserProp.Post ;
-  End ;
-
-  if mtUserPropRoleType.AsInteger = cLego then
+   lcVERK.Enabled         := False ;
+   lcTO_PIPNAME.Enabled   := False ;
+   lcLIPName.Enabled      := True ;
+  End
+  else
+  if pUserIsAllowedToMovePkgs = cCanMovePkgsEXT then
   Begin
-   lcOWNER.Enabled    := False ;
-   lcPIPNAME.Enabled  := False ;
-  End ;
+   mtUserProp.Edit ;
+   mtUserPropRegPointNo.AsInteger:= 7 ;//7 = Lager
+   mtUserProp.Post ;
+   lcVERK.Enabled         := False ;
+   lcTO_PIPNAME.Enabled   := True ;
+   lcLIPName.Enabled      := True ;
+  End;
 
-  if mtUserPropRoleType.AsInteger = cInternal_Mill then
-  Begin
-   lcOWNER.Enabled    := False ;
-//   lcPIPNAME.Enabled  := False ;
-   lcVERK.Enabled:= False ;
-   lcTO_PIPNAME.Enabled:= False ;
-  End ;
+
+
+
+{
+    if FExternMove = False then
+    Begin
+     mtUserProp.Edit ;
+     mtUserPropVerkNo.AsInteger:= mtUserPropOwnerNo.AsInteger ;
+     mtUserPropRegPointNo.AsInteger:= 7 ;//7 = Lager
+     mtUserProp.Post ;
+
+     lcVERK.Enabled       := False ;
+     lcTO_PIPNAME.Enabled := False ;
+    End
+    else
+    Begin
+     mtUserProp.Edit ;
+     mtUserPropRegPointNo.AsInteger:= 7 ;//7 = Lager
+     mtUserProp.Post ;
+     lcVERK.Enabled       := True ;
+     lcTO_PIPNAME.Enabled := True ;
+    End ;
+}
+
+{
+    if mtUserPropRoleType.AsInteger = cLego then
+    Begin
+     lcOWNER.Enabled    := False ;
+     lcPIPNAME.Enabled  := False ;
+    End ;
+
+    if mtUserPropRoleType.AsInteger = cInternal_Mill then
+    Begin
+     lcOWNER.Enabled    := False ;
+  //   lcPIPNAME.Enabled  := False ;
+     lcVERK.Enabled:= False ;
+     lcTO_PIPNAME.Enabled:= False ;
+    End ;
+}
   grdPkgsDBBandedTableView1.Bands[2].Visible:= False ;
  Finally
   Screen.Cursor := Save_Cursor ;
@@ -837,6 +884,8 @@ procedure TfrmMovePkgs.mtUserPropOwnerNoChange(Sender: TField);
 begin
  With dm_UserProps do
  Begin
+  mtUserPropVerkNo.AsInteger  :=  mtUserPropOwnerNo.AsInteger ;
+
   cds_PIP.Active:= False ;
   cds_PIP.ParamByName('OwnerNo').AsInteger:= mtUserPropOwnerNo.AsInteger ;
   if mtUserPropRoleType.AsInteger = cLego then
@@ -863,9 +912,11 @@ end;
 
 procedure TfrmMovePkgs.mtUserPropPIPNoChange(Sender: TField);
 begin
- if FExternMove = False then
+// if FExternMove = False then
  With dm_UserProps do
  Begin
+  mtUserPropSalesRegionNo.AsInteger := mtUserPropPIPNo.AsInteger ;
+
   cds_LIP.Active:= False ;
   cds_LIP.ParamByName('PIPNo').AsInteger:= mtUserPropPIPNo.AsInteger ;
   cds_LIP.Active:= True ;
@@ -1082,7 +1133,7 @@ procedure TfrmMovePkgs.acFlyttaPaketUpdate(Sender: TObject);
 begin
  With dmPkgs do
  Begin
-  acFlyttaPaket.Enabled:= (mtLoadPackages.Active) and ((mtLoadPackages.RecordCount > 0)
+  acFlyttaPaket.Enabled:= (pUserIsAllowedToMovePkgs <> cCanNOTMovePkgs) and (mtLoadPackages.Active) and ((mtLoadPackages.RecordCount > 0)
   or (mtLoadPackages.State in [dsEdit, dsInsert])) ;
  End ;
 end;
@@ -1206,31 +1257,31 @@ end;
 
 procedure TfrmMovePkgs.mtUserPropVerkNoChange(Sender: TField);
 begin
-{ With dm_UserProps do
+ With dm_UserProps do
  Begin
   cds_PIP2.Active:= False ;
-  sq_PIP2.ParamByName('OwnerNo').AsInteger:= mtUserPropVerkNo.AsInteger ;
+  cds_PIP2.ParamByName('OwnerNo').AsInteger:= mtUserPropVerkNo.AsInteger ;
   if mtUserPropRoleType.AsInteger = cLego then
-  sq_PIP2.ParamByName('LegoOwnerNo').AsInteger:= mtUserPropVerkNo.AsInteger
+  cds_PIP2.ParamByName('LegoOwnerNo').AsInteger:= mtUserPropVerkNo.AsInteger
   else
-  sq_PIP2.ParamByName('LegoOwnerNo').AsInteger:= mtUserPropVerkNo.AsInteger ;
+  cds_PIP2.ParamByName('LegoOwnerNo').AsInteger:= mtUserPropVerkNo.AsInteger ;
 
   cds_PIP2.Active:= True ;
   cds_PIP2.First ;
   mtUserPropSalesRegionNo.AsInteger:= cds_PIP2PIPNO.AsInteger ;
- End ; }
+ End ;
 end;
 
 procedure TfrmMovePkgs.mtUserPropSalesRegionNoChange(Sender: TField);
 begin
-{ With dm_UserProps do
+ With dm_UserProps do
  Begin
   cds_LIP.Active:= False ;
-  sq_LIP.ParamByName('PIPNo').AsInteger:= mtUserPropSalesRegionNo.AsInteger ;
+  cds_LIP.ParamByName('PIPNo').AsInteger:= mtUserPropSalesRegionNo.AsInteger ;
   cds_LIP.Active:= True ;
   cds_LIP.First ;
-  mtUserPropProducerNo.AsInteger:= cds_LIPLIPNo.AsInteger ;
- End ; }
+ // mtUserPropProducerNo.AsInteger:= cds_LIPLIPNo.AsInteger ;
+ End ;
 end;
 
 function TfrmMovePkgs.ControlInvDate(Sender: TObject) : Boolean ;

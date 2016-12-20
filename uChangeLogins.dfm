@@ -116,6 +116,14 @@ object OKHelpBottomDlg: TOKHelpBottomDlg
     Caption = 'vida\ovesig'
     OnDblClick = Label9DblClick
   end
+  object Label10: TLabel
+    Left = 8
+    Top = 272
+    Width = 61
+    Height = 16
+    Caption = 'vida\thelin'
+    OnDblClick = Label10DblClick
+  end
   object EFD_Name: TEdit
     Left = 110
     Top = 33

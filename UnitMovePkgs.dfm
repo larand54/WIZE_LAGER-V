@@ -2,12 +2,12 @@ object frmMovePkgs: TfrmMovePkgs
   Left = 205
   Top = 121
   Caption = 'Flytta paket'
-  ClientHeight = 578
-  ClientWidth = 1046
+  ClientHeight = 711
+  ClientWidth = 1287
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
@@ -15,28 +15,40 @@ object frmMovePkgs: TfrmMovePkgs
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object dxBarDockControl1: TdxBarDockControl
     Left = 0
     Top = 0
-    Width = 1046
-    Height = 46
+    Width = 1287
+    Height = 47
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = dalTop
     BarManager = dxBarManager1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 177
-    Width = 1046
-    Height = 401
+    Top = 208
+    Width = 1287
+    Height = 503
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
     object grdPkgs: TcxGrid
       Left = 1
-      Top = 33
-      Width = 1044
-      Height = 367
+      Top = 41
+      Width = 1285
+      Height = 461
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       TabOrder = 0
       object grdPkgsDBBandedTableView1: TcxGridDBBandedTableView
@@ -371,59 +383,75 @@ object frmMovePkgs: TfrmMovePkgs
     object Panel2: TPanel
       Left = 1
       Top = 1
-      Width = 1044
-      Height = 32
+      Width = 1285
+      Height = 40
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alTop
       BevelOuter = bvNone
       Caption = 'PAKET'
       Color = clMaroon
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = -11
+      Font.Height = -15
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
       TabOrder = 1
       object bbClearPkgGrid: TBitBtn
-        Left = 127
-        Top = 4
-        Width = 75
-        Height = 25
+        Left = 156
+        Top = 5
+        Width = 93
+        Height = 31
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = acRemoveRow
         Caption = 'Ta bort rad'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -11
+        Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
         TabOrder = 0
       end
       object BitBtn2: TBitBtn
-        Left = 46
-        Top = 4
-        Width = 75
-        Height = 25
+        Left = 57
+        Top = 5
+        Width = 92
+        Height = 31
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = acAddRow
         Caption = 'L'#228'gg till rad'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -11
+        Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
         TabOrder = 1
       end
       object BitBtn1: TBitBtn
-        Left = 207
-        Top = 4
-        Width = 90
-        Height = 25
+        Left = 255
+        Top = 5
+        Width = 111
+        Height = 31
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = acRemoveAllRows
         Caption = 'Ta bort alla rader'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -11
+        Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
@@ -433,78 +461,122 @@ object frmMovePkgs: TfrmMovePkgs
   end
   object Panel3: TPanel
     Left = 0
-    Top = 46
-    Width = 1046
-    Height = 131
+    Top = 47
+    Width = 1287
+    Height = 161
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 6
     object Label11: TLabel
-      Left = 24
-      Top = 36
-      Width = 31
-      Height = 13
+      Left = 30
+      Top = 44
+      Width = 40
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #196'gare:'
     end
     object Label5: TLabel
-      Left = 798
-      Top = 38
-      Width = 48
-      Height = 13
+      Left = 982
+      Top = 47
+      Width = 57
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'M'#228'tpunkt:'
       Visible = False
     end
     object Label14: TLabel
-      Left = 24
-      Top = 86
-      Width = 63
-      Height = 13
+      Left = 30
+      Top = 106
+      Width = 82
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Registrerade:'
     end
     object Label2: TLabel
-      Left = 24
-      Top = 61
-      Width = 54
-      Height = 13
+      Left = 30
+      Top = 75
+      Width = 70
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Lagerst'#228'lle:'
     end
     object Label1: TLabel
-      Left = 430
-      Top = 85
-      Width = 57
-      Height = 13
+      Left = 529
+      Top = 105
+      Width = 73
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Lagergrupp:'
     end
     object Bevel1: TBevel
-      Left = 16
-      Top = 8
-      Width = 257
-      Height = 117
+      Left = 20
+      Top = 10
+      Width = 316
+      Height = 144
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
     end
     object Label3: TLabel
-      Left = 430
-      Top = 36
-      Width = 31
-      Height = 13
+      Left = 529
+      Top = 44
+      Width = 40
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = #196'gare:'
       Visible = False
     end
     object Label4: TLabel
-      Left = 430
-      Top = 61
-      Width = 54
-      Height = 13
+      Left = 529
+      Top = 75
+      Width = 70
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Lagerst'#228'lle:'
       Visible = False
     end
     object Bevel2: TBevel
-      Left = 416
-      Top = 8
-      Width = 257
-      Height = 118
+      Left = 512
+      Top = 10
+      Width = 316
+      Height = 145
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
     end
     object lcOWNER: TcxDBLookupComboBox
-      Left = 96
-      Top = 28
+      Left = 118
+      Top = 34
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'OWNER'
       DataBinding.DataSource = dsUserProp
       Properties.DropDownListStyle = lsFixedList
@@ -515,11 +587,15 @@ object frmMovePkgs: TfrmMovePkgs
         end>
       Properties.ListOptions.ShowHeader = False
       TabOrder = 0
-      Width = 153
+      Width = 188
     end
     object lcREGPOINT: TcxDBLookupComboBox
-      Left = 856
-      Top = 30
+      Left = 1054
+      Top = 37
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'REGPOINT'
       DataBinding.DataSource = dsUserProp
       Properties.DropDownListStyle = lsFixedList
@@ -531,29 +607,41 @@ object frmMovePkgs: TfrmMovePkgs
       Properties.ListOptions.ShowHeader = False
       TabOrder = 1
       Visible = False
-      Width = 145
+      Width = 178
     end
     object deRegDate: TcxDBDateEdit
-      Left = 96
-      Top = 78
+      Left = 118
+      Top = 96
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'RegDate'
       DataBinding.DataSource = dsUserProp
       Properties.ImmediatePost = True
       TabOrder = 3
-      Width = 153
+      Width = 188
     end
     object ePktNr: TEdit
-      Left = 848
-      Top = 5
-      Width = 193
-      Height = 21
+      Left = 1044
+      Top = 6
+      Width = 237
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 4
       Visible = False
       OnKeyPress = ePktNrKeyPress
     end
     object lcPIPNAME: TcxDBLookupComboBox
-      Left = 96
-      Top = 53
+      Left = 118
+      Top = 65
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'PIPNAME'
       DataBinding.DataSource = dsUserProp
       Properties.DropDownListStyle = lsFixedList
@@ -565,11 +653,15 @@ object frmMovePkgs: TfrmMovePkgs
         end>
       Properties.ListOptions.ShowHeader = False
       TabOrder = 2
-      Width = 153
+      Width = 188
     end
     object cxLabel3: TcxLabel
-      Left = 463
-      Top = 8
+      Left = 570
+      Top = 10
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       AutoSize = False
       Caption = 'Flytta valda paket till lagergrupp'
       ParentColor = False
@@ -577,17 +669,21 @@ object frmMovePkgs: TfrmMovePkgs
       Style.Color = clBtnFace
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clBlue
-      Style.Font.Height = -11
+      Style.Font.Height = -15
       Style.Font.Name = 'MS Sans Serif'
       Style.Font.Style = []
       Style.Shadow = True
       Style.IsFontAssigned = True
-      Height = 20
-      Width = 172
+      Height = 24
+      Width = 212
     end
     object lcLIPName: TcxDBLookupComboBox
-      Left = 496
-      Top = 77
+      Left = 610
+      Top = 95
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'LIPName'
       DataBinding.DataSource = dsUserProp
       Properties.DropDownListStyle = lsFixedList
@@ -599,13 +695,17 @@ object frmMovePkgs: TfrmMovePkgs
         end>
       Properties.ListOptions.ShowHeader = False
       TabOrder = 6
-      Width = 145
+      Width = 179
     end
     object cxButton1: TcxButton
-      Left = 288
-      Top = 40
-      Width = 105
-      Height = 41
+      Left = 354
+      Top = 49
+      Width = 130
+      Height = 51
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Action = acFlyttaPaket
       OptionsImage.Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
@@ -685,8 +785,12 @@ object frmMovePkgs: TfrmMovePkgs
       TabOrder = 7
     end
     object cxLabel1: TcxLabel
-      Left = 23
-      Top = 8
+      Left = 28
+      Top = 10
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       AutoSize = False
       Caption = 'Flytta paket fr'#229'n...'
       ParentColor = False
@@ -694,17 +798,21 @@ object frmMovePkgs: TfrmMovePkgs
       Style.Color = clBtnFace
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clBlue
-      Style.Font.Height = -11
+      Style.Font.Height = -15
       Style.Font.Name = 'MS Sans Serif'
       Style.Font.Style = []
       Style.Shadow = True
       Style.IsFontAssigned = True
-      Height = 20
-      Width = 242
+      Height = 24
+      Width = 298
     end
     object lcVERK: TcxDBLookupComboBox
-      Left = 496
-      Top = 28
+      Left = 610
+      Top = 34
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'VERK'
       DataBinding.DataSource = dsUserProp
       Properties.DropDownListStyle = lsFixedList
@@ -716,12 +824,15 @@ object frmMovePkgs: TfrmMovePkgs
         end>
       Properties.ListOptions.ShowHeader = False
       TabOrder = 9
-      Visible = False
-      Width = 145
+      Width = 179
     end
     object lcTO_PIPNAME: TcxDBLookupComboBox
-      Left = 496
-      Top = 53
+      Left = 610
+      Top = 65
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       DataBinding.DataField = 'TO_PIPNAME'
       DataBinding.DataSource = dsUserProp
       Properties.DropDownListStyle = lsFixedList
@@ -733,14 +844,13 @@ object frmMovePkgs: TfrmMovePkgs
         end>
       Properties.ListOptions.ShowHeader = False
       TabOrder = 10
-      Visible = False
-      Width = 145
+      Width = 179
     end
   end
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -14
     Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
@@ -766,8 +876,8 @@ object frmMovePkgs: TfrmMovePkgs
       item
       end>
     UseSystemFont = False
-    Left = 312
-    Top = 184
+    Left = 520
+    Top = 416
     DockControlHeights = (
       0
       0
@@ -874,14 +984,14 @@ object frmMovePkgs: TfrmMovePkgs
         ItemName = 'bbCustomPkgGrid'
       end>
     UseOwnFont = False
-    Left = 336
-    Top = 296
+    Left = 312
+    Top = 440
   end
   object ImageList1: TImageList
     Height = 24
     Width = 24
-    Left = 272
-    Top = 184
+    Left = 520
+    Top = 472
     Bitmap = {
       494C010108000D00040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000480000000100200000000000006C
@@ -1856,8 +1966,53 @@ object frmMovePkgs: TfrmMovePkgs
         DataType = ftInteger
       end
       item
+        Name = 'LengthGroup'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'LIPName'
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'PIPNAME'
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'REGPOINT'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'PRODUCER'
+        DataType = ftString
+        Size = 80
+      end
+      item
+        Name = 'OWNER'
+        DataType = ftString
+        Size = 80
+      end
+      item
+        Name = 'VERK'
+        DataType = ftString
+        Size = 80
+      end
+      item
         Name = 'RoleType'
         DataType = ftInteger
+      end
+      item
+        Name = 'Gradestamp'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'Barcode'
+        DataType = ftString
+        Size = 20
       end
       item
         Name = 'ProductDescription'
@@ -1906,7 +2061,21 @@ object frmMovePkgs: TfrmMovePkgs
         DataType = ftInteger
       end
       item
+        Name = 'TO_PIPNAME'
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'TO_LIPNAME'
+        DataType = ftString
+        Size = 50
+      end
+      item
         Name = 'AgentNo'
+        DataType = ftInteger
+      end
+      item
+        Name = 'ShipperNo'
         DataType = ftInteger
       end
       item
@@ -1916,6 +2085,16 @@ object frmMovePkgs: TfrmMovePkgs
       item
         Name = 'EndPeriod'
         DataType = ftDateTime
+      end
+      item
+        Name = 'Filter1'
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'Filter2'
+        DataType = ftString
+        Size = 255
       end>
     IndexDefs = <>
     SortOptions = []
@@ -2164,8 +2343,8 @@ object frmMovePkgs: TfrmMovePkgs
   end
   object ActionList1: TActionList
     Images = ImageList1
-    Left = 480
-    Top = 328
+    Left = 520
+    Top = 360
     object acFlyttaPaket: TAction
       Caption = 'Flytta'
       ImageIndex = 1
@@ -2222,13 +2401,13 @@ object frmMovePkgs: TfrmMovePkgs
         Index = 0
         PopupMenu = pmPkgs
       end>
-    Left = 288
-    Top = 261
+    Left = 312
+    Top = 509
   end
   object cxStyleRepository1: TcxStyleRepository
     Left = 312
     Top = 374
-    PixelsPerInch = 96
+    PixelsPerInch = 120
     object cxStyleRedBg: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clRed

@@ -1510,8 +1510,8 @@ object fkilnHandling: TfkilnHandling
   end
   object pmFormShortcuts: TPopupMenu
     AutoPopup = False
-    Left = 120
-    Top = 312
+    Left = 312
+    Top = 216
     object F1PktNrrapport1: TMenuItem
       Caption = 'Paketnr F2'
       ImageIndex = 2
@@ -1579,6 +1579,7 @@ object fkilnHandling: TfkilnHandling
     Top = 457
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1595,11 +1596,13 @@ object fkilnHandling: TfkilnHandling
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39085.979061331020000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1615,9 +1618,11 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1633,9 +1638,11 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1651,11 +1658,13 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1671,6 +1680,7 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2207,8 +2217,8 @@ object fkilnHandling: TfkilnHandling
     SubLanguageID = 1
     LocaleID = 1024
     AfterInsert = mtUserPropAfterInsert
-    Left = 200
-    Top = 337
+    Left = 192
+    Top = 329
     object mtUserPropVerkNo: TIntegerField
       FieldName = 'VerkNo'
     end
@@ -2516,8 +2526,8 @@ object fkilnHandling: TfkilnHandling
   end
   object dsUserProp: TDataSource
     DataSet = mtUserProp
-    Left = 200
-    Top = 392
+    Left = 192
+    Top = 384
   end
   object ds_Verk: TDataSource
     DataSet = cds_Verk
@@ -2577,8 +2587,8 @@ object fkilnHandling: TfkilnHandling
     SortID = 0
     SubLanguageID = 1
     LocaleID = 1024
-    Left = 200
-    Top = 289
+    Left = 192
+    Top = 265
     object mtPkgNosPackageNo: TIntegerField
       FieldName = 'PackageNo'
     end

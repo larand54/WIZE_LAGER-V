@@ -648,6 +648,7 @@ type
     cds_KilnChargeRowsCheckIMPProductDisplayName: TStringField;
     cds_KilnChargeRowsCheckIMPPcsPerLength: TStringField;
     cds_KilnChargeRowsCheckIMPMatchingPT: TStringField;
+    cds_PkgListPackageSizeName: TStringField;
     procedure cds_PcsPerLenCalcFields(DataSet: TDataSet);
     procedure cds_PropsAfterInsert(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);

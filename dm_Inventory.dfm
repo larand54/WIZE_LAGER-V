@@ -526,7 +526,7 @@
         'pn.Original_Price * pt.Totalm3Nominal AS V'#228'rde, va.VarugruppNamn' +
         ','
       'CAST(LS.AvgLength AS Float) AS AvgLength,'
-      'pn.REFERENCE, pn.BL_NO,  pn.Info2'
+      'pn.REFERENCE, pn.BL_NO,  pn.Info2, ps.PackageSizeName'
       ''
       ''
       'FROM  dbo.Client Verk'
@@ -540,11 +540,13 @@
         'INNER JOIN PackageNumber pn ON pn.LogicalInventoryPointNo = lip.' +
         'LogicalInventoryPointNo'
       
+        'Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Si' +
+        'ze'
+      ''
+      
         'LEFT Outer Join dbo.CertificationWood cw on cw.CertNo = pn.certN' +
         'o'
-      
-        'LEFT Outer join dbo.PackageSize ps on ps.PackageSizeNo = pn.Pack' +
-        'age_Size'
+      ''
       
         'Inner Join dbo.PackageType pt '#9'ON pt.PackageTypeNo = pn.PackageT' +
         'ypeNo'
@@ -1061,6 +1063,12 @@
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       FixedChar = True
       Size = 3
+    end
+    object cds_PkgListPackageSizeName: TStringField
+      DisplayLabel = 'Paketstorlek'
+      FieldName = 'PackageSizeName'
+      Origin = 'PackageSizeName'
+      Size = 50
     end
   end
   object cds_PkgNoList: TFDQuery
@@ -4700,7 +4708,7 @@
       'PackageLogLayoutName,'
       'PrintFileName'
       ' FROM dbo.PackageLogLayout')
-    Left = 888
+    Left = 896
     Top = 336
     object cds_SpecLayoutPackageLogLayoutNo: TIntegerField
       FieldName = 'PackageLogLayoutNo'
@@ -4736,7 +4744,7 @@
     SortID = 0
     SubLanguageID = 1
     LocaleID = 1024
-    Left = 888
+    Left = 896
     Top = 392
     object mtSizeFormatSizeFormatNo: TSmallintField
       FieldName = 'SizeFormatNo'

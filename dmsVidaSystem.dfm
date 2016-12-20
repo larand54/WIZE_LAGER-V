@@ -792,8 +792,8 @@
   object sp_PkgsByInventering: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_PkgsByInventering'
-    Left = 656
-    Top = 168
+    Left = 632
+    Top = 152
     ParamData = <
       item
         Position = 1
@@ -816,8 +816,8 @@
   end
   object ds_PkgsByInventering: TDataSource
     DataSet = sp_PkgsByInventering
-    Left = 656
-    Top = 224
+    Left = 632
+    Top = 200
   end
   object sp_lencolpcspkgtypeno: TFDStoredProc
     Connection = dmsConnector.FDConnection1
@@ -908,7 +908,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vida_PkgsNotInInven'
     Left = 760
-    Top = 176
+    Top = 152
     ParamData = <
       item
         Position = 1
@@ -932,7 +932,7 @@
   object ds_PkgInInven: TDataSource
     DataSet = sp_PkgInInven
     Left = 760
-    Top = 240
+    Top = 200
   end
   object sq_Language: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -967,7 +967,7 @@
   object qryExec: TFDQuery
     Connection = dmsConnector.FDConnection1
     Left = 864
-    Top = 128
+    Top = 152
   end
   object sqBarCode: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -1185,8 +1185,8 @@
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select * FROM dbo.PktTypeByPP')
-    Left = 536
-    Top = 176
+    Left = 512
+    Top = 160
   end
   object sq_GetPkgTypeByCode: TFDQuery
     Connection = dmsConnector.FDConnection1
@@ -1324,7 +1324,7 @@
       'WHERE ViewName = :ViewName'
       'AND UserID = :UserID')
     Left = 864
-    Top = 176
+    Top = 200
     ParamData = <
       item
         Name = 'ViewName'
@@ -1851,7 +1851,7 @@
     SQL.Strings = (
       'Select * FROM dbo.AccStart')
     Left = 952
-    Top = 168
+    Top = 200
     object sq_AccStartYearNo: TIntegerField
       FieldName = 'YearNo'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -2889,5 +2889,24 @@
       Required = True
       Size = 40
     end
+  end
+  object sp_UserPerm: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = '[dbo].[vis_UsPerm]'
+    Left = 264
+    Top = 648
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@UserID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
   end
 end

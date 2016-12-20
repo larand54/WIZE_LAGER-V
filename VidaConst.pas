@@ -8,6 +8,10 @@ uses
 
 const
 
+ cCanNOTMovePkgs  = 0 ;
+ cCanMovePkgsINT  = 1 ;
+ cCanMovePkgsEXT  = 2 ;
+
 //Action på vagnar
  CancelMoveOutOfUnit  = 1 ;  //Ångra flytta ut ur tork
  CancelMoveIntoUnit   = 2 ;  //Ångra flytta in i tork

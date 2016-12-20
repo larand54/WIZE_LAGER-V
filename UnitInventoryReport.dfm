@@ -52,6 +52,9 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'CR RAPPORTER'
       ImageIndex = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object CRViewer91: TCrystalActiveXReportViewer
         Left = 0
         Top = 41
@@ -529,6 +532,9 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'PAKETSUMMERING TABELL'
       ImageIndex = 1
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdInvSum: TcxGrid
         Left = 0
         Top = 41
@@ -1172,10 +1178,9 @@ object frmInventoryReport: TfrmInventoryReport
         TabOrder = 2
         Properties.ActivePage = tsPaketnr
         Properties.CustomButtons.Buttons = <>
-        ClientRectBottom = 242
-        ClientRectLeft = 1
-        ClientRectRight = 1558
-        ClientRectTop = 24
+        ClientRectBottom = 243
+        ClientRectRight = 1559
+        ClientRectTop = 27
         object tsPaketnr: TcxTabSheet
           Margins.Left = 4
           Margins.Top = 4
@@ -1186,8 +1191,8 @@ object frmInventoryReport: TfrmInventoryReport
           object grdPkgNoTbl: TcxGrid
             Left = 0
             Top = 23
-            Width = 1557
-            Height = 195
+            Width = 1559
+            Height = 193
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -2648,7 +2653,7 @@ object frmInventoryReport: TfrmInventoryReport
           object dxBarDockControl2: TdxBarDockControl
             Left = 0
             Top = 0
-            Width = 1557
+            Width = 1559
             Height = 23
             Margins.Left = 4
             Margins.Top = 4
@@ -2669,7 +2674,7 @@ object frmInventoryReport: TfrmInventoryReport
           object Panel9: TPanel
             Left = 0
             Top = 0
-            Width = 1557
+            Width = 1559
             Height = 64
             Margins.Left = 4
             Margins.Top = 4
@@ -2718,7 +2723,7 @@ object frmInventoryReport: TfrmInventoryReport
             object Panel12: TPanel
               Left = 401
               Top = 0
-              Width = 1156
+              Width = 1158
               Height = 64
               Margins.Left = 4
               Margins.Top = 4
@@ -2727,6 +2732,7 @@ object frmInventoryReport: TfrmInventoryReport
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 1156
               object Bevel2: TBevel
                 Left = 508
                 Top = 2
@@ -2937,8 +2943,8 @@ object frmInventoryReport: TfrmInventoryReport
           object grdKilnPkgs: TcxGrid
             Left = 0
             Top = 64
-            Width = 1557
-            Height = 154
+            Width = 1559
+            Height = 152
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -3019,6 +3025,7 @@ object frmInventoryReport: TfrmInventoryReport
             Align = alTop
             Caption = 'Paketkostnader'
             TabOrder = 0
+            ExplicitWidth = 1559
           end
           object grdPackageCostDetails: TcxGrid
             Left = 0
@@ -3031,6 +3038,8 @@ object frmInventoryReport: TfrmInventoryReport
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 1
+            ExplicitWidth = 1559
+            ExplicitHeight = 166
             object grdPackageCostDetailsDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -3152,7 +3161,7 @@ object frmInventoryReport: TfrmInventoryReport
           OnCustomDrawCell = cxGrid1DBBandedTableView1CustomDrawCell
           OnInitEdit = cxGrid1DBBandedTableView1InitEdit
           DataController.DataSource = dmInventory.ds_PkgList
-          DataController.KeyFieldNames = 'PackageNo;SupplierCode;Status;LIPNo'
+          DataController.KeyFieldNames = 'PackageNo;SupplierCode;Status;LIPNo;PackageSizeName'
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -3484,7 +3493,7 @@ object frmInventoryReport: TfrmInventoryReport
             item
               Caption = 'LAGER'
               Options.HoldOwnColumnsOnly = True
-              Width = 111
+              Width = 165
             end>
           object cxGrid1DBBandedTableView1PRODUKT: TcxGridDBBandedColumn
             DataBinding.FieldName = 'PRODUKT'
@@ -4170,6 +4179,12 @@ object frmInventoryReport: TfrmInventoryReport
             Position.ColIndex = 13
             Position.RowIndex = 0
           end
+          object cxGrid1DBBandedTableView1PackageSizeName: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'PackageSizeName'
+            Position.BandIndex = 5
+            Position.ColIndex = 1
+            Position.RowIndex = 0
+          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBBandedTableView1
@@ -4183,6 +4198,9 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'ANTAL PER L'#196'NGD'
       ImageIndex = 3
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel5: TPanel
         Left = 0
         Top = 0
@@ -4505,10 +4523,9 @@ object frmInventoryReport: TfrmInventoryReport
     Properties.ActivePage = tsLagret
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = pgInventoryPageChanging
-    ClientRectBottom = 190
-    ClientRectLeft = 1
-    ClientRectRight = 1558
-    ClientRectTop = 24
+    ClientRectBottom = 191
+    ClientRectRight = 1559
+    ClientRectTop = 27
     object tsLagret: TcxTabSheet
       Margins.Left = 4
       Margins.Top = 4
@@ -4519,8 +4536,8 @@ object frmInventoryReport: TfrmInventoryReport
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1557
-        Height = 166
+        Width = 1559
+        Height = 164
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -5310,6 +5327,10 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'Fakturaspec'
       ImageIndex = 0
+      ExplicitLeft = 1
+      ExplicitTop = 24
+      ExplicitWidth = 1557
+      ExplicitHeight = 166
       object cxLabel26: TcxLabel
         Left = 30
         Top = 5
@@ -5368,6 +5389,10 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'Lastorderspec'
       ImageIndex = 3
+      ExplicitLeft = 1
+      ExplicitTop = 24
+      ExplicitWidth = 1557
+      ExplicitHeight = 166
       object mLONos: TcxMemo
         Left = 118
         Top = 0
@@ -5398,6 +5423,10 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'Inventering'
       ImageIndex = 1
+      ExplicitLeft = 1
+      ExplicitTop = 24
+      ExplicitWidth = 1557
+      ExplicitHeight = 166
       object cxLabel23: TcxLabel
         Left = 18
         Top = 16
@@ -5507,6 +5536,10 @@ object frmInventoryReport: TfrmInventoryReport
       Margins.Bottom = 4
       Caption = 'Skriv ut paketlappar'
       ImageIndex = 4
+      ExplicitLeft = 1
+      ExplicitTop = 24
+      ExplicitWidth = 1557
+      ExplicitHeight = 166
       object Bevel3: TBevel
         Left = 4
         Top = 4

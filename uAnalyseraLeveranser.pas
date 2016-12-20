@@ -827,6 +827,8 @@ type
     pivKDEndTime: TcxDBPivotGridField;
     pivKDREFERENCE: TcxDBPivotGridField;
     pivKDInfo2: TcxDBPivotGridField;
+    cds_Datakg: TFloatField;
+    pivLeveranserKG: TcxDBPivotGridField;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);
@@ -1540,15 +1542,19 @@ end;
 
 procedure TfAnalyseraLeveranser.fM_PrisCalculateCustomSummary(
   Sender: TcxPivotGridField; ASummary: TcxPivotGridCrossCellSummary);
-Var SubSum, NM3 : Variant ;
+Var SubSum, NM3, KG : Variant ;
 begin
  if (ThisUser.CanModify[dcShowPrice] = True)
  and (fvrde.Visible) and (fNM3.Visible) then
  Begin
-  SubSum :=  ASummary.Owner.GetSummaryByField(fvrde,stSum) ;
-  NM3    :=  ASummary.Owner.GetSummaryByField(fNM3,stSum) ;
- if NM3 > 0 then
-  ASummary.Custom:= SubSum / NM3 else ASummary.Custom:= 0 ;
+  SubSum  :=  ASummary.Owner.GetSummaryByField(fvrde,stSum) ;
+  NM3     :=  ASummary.Owner.GetSummaryByField(fNM3,stSum) ;
+  KG      :=  ASummary.Owner.GetSummaryByField(pivLeveranserKG,stSum) ;
+  if KG > 0 then
+    ASummary.Custom:= SubSum / KG
+     else
+      if NM3 > 0 then
+        ASummary.Custom:= SubSum / NM3 else ASummary.Custom:= 0 ;
  End ;
 //  ASummary.Custom:= NM3 ;
 end;

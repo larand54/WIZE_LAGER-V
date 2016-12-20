@@ -24,6 +24,7 @@ type
     Label8: TLabel;
     cbDatabas: TComboBox;
     Label9: TLabel;
+    Label10: TLabel;
     procedure HelpBtnClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -34,6 +35,7 @@ type
     procedure Label7DblClick(Sender: TObject);
     procedure Label8DblClick(Sender: TObject);
     procedure Label9DblClick(Sender: TObject);
+    procedure Label10DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +53,11 @@ uses dmsDataConn;
 procedure TOKHelpBottomDlg.HelpBtnClick(Sender: TObject);
 begin
   Application.HelpContext(HelpContext);
+end;
+
+procedure TOKHelpBottomDlg.Label10DblClick(Sender: TObject);
+begin
+  EFD_Name.Text  := Label10.Caption ;
 end;
 
 procedure TOKHelpBottomDlg.Label3DblClick(Sender: TObject);
