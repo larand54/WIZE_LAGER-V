@@ -827,12 +827,12 @@ end;
 
 procedure TdmInventory.cds_KilnVagnAfterInsert(DataSet: TDataSet);
 begin
- cds_KilnVagnVagnNo.AsInteger             :=  dmsConnector.NextSecondMaxNo('VagnNo', KilnChargeNo) ;
+ cds_KilnVagnVagnNo.AsInteger             := dmsConnector.NextSecondMaxNo('VagnNo', KilnChargeNo) ;
  cds_KilnVagnVagnStatus.AsInteger         := 0 ;
  cds_KilnVagnDateCreated.AsSQLTimeStamp   := DateTimeToSqlTimeStamp(Now) ;
  cds_KilnVagnCreatedUser.AsInteger        := ThisUser.UserID ;
  cds_KilnVagnKilnChargeNo.AsInteger       := KilnChargeNo ;
- cds_KilnVagnIMPNo.AsInteger              := GetIMPNoByKiln(KilnChargeNo)  ;
+ cds_KilnVagnIMPNo.AsInteger              := GetIMPNoByKiln(KilnChargeNo)  ; //Default IMPNo
  cds_KilnVagnPlannedDuration.AsFloat      := GetDefaultDurationByKiln(KilnChargeNo) ;
 end;
 

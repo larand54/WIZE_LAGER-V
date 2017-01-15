@@ -77,6 +77,7 @@ type
     tePlannedDuration: TcxDBTextEdit;
     cxLabel5: TcxLabel;
     grdVagnPkgsDBTableView1MatchingPT: TcxGridDBColumn;
+    cxButton3: TcxButton;
     procedure mePackageNoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Timer1Timer(Sender: TObject);
@@ -86,6 +87,7 @@ type
     procedure acPickPackagesExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure acRemovePackageUpdate(Sender: TObject);
+    procedure cxButton3Click(Sender: TObject);
   private
     { Private declarations }
     RowNo : Integer ;
@@ -162,6 +164,11 @@ Begin
  End;//With
 End;
 
+procedure TfEnterKilnVagn.cxButton3Click(Sender: TObject);
+begin
+checkIMPProducts ;
+end;
+
 procedure TfEnterKilnVagn.FormCreate(Sender: TObject);
 begin
  RowNo  := 1 ;
@@ -236,6 +243,8 @@ begin
  Begin
   fPickPkgNoTork  := TfPickPkgNoTork.Create(nil) ;
   Try
+   if dmInventory.cds_KilnVagn.State in [dsEdit, dsInsert] then
+    dmInventory.cds_KilnVagn.Post ;
    Open_cds_KilnChargeHdr ;
    fPickPkgNoTork.LIPNo := cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
    fPickPkgNoTork.PIPNo := cds_KilnChargeHdrKiln_PIPNo.AsInteger ;
@@ -419,7 +428,12 @@ var
 begin
  if Key <> VK_RETURN then Exit;
  if Length(mePackageNo.Text) > 0 then
- GetpackageNoEntered(Sender, mePackageNo.Text) ;
+ Begin
+  if dmInventory.cds_KilnVagn.State in [dsEdit, dsInsert] then
+   dmInventory.cds_KilnVagn.Post ;
+  GetpackageNoEntered(Sender, mePackageNo.Text) ;
+ End;
+
  Timer1.Enabled   := True ;
  mePackageNo.Text := '' ;
 

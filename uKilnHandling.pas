@@ -949,8 +949,8 @@ end;
 
 procedure TfkilnHandling.acEditVagnExecute(Sender: TObject);
 var
-  fEnterKilnVagn: TfEnterKilnVagn;
-  IMPNO : Integer ;
+  fEnterKilnVagn  : TfEnterKilnVagn;
+  IMPNO           : Integer ;
 begin
  With dmInventory do
  Begin
@@ -1416,21 +1416,16 @@ End;
 
 procedure TfkilnHandling.acAddVagnExecute(Sender: TObject);
 var
-  fEnterKilnVagn: TfEnterKilnVagn;
+  fEnterKilnVagn    : TfEnterKilnVagn;
   IMPNO, TypeOfLine : Integer ;
 begin
  if mtUserPropKilnChargeNo.AsInteger > 0 then
  Begin
   TypeOfLine := dmInventory.GetTypeOfLine(mtUserPropKilnChargeNo.AsInteger) ;
-
   fEnterKilnVagn  := TfEnterKilnVagn.Create(nil);
   Try
     fEnterKilnVagn.TypeOfLine :=  TypeOfLine ;
     dmInventory.AddVagn(mtUserPropKilnChargeNo.AsInteger) ;
-
-//  if TypeOfLine = 2 then
-//  SelectIMP ;
-
     fEnterKilnVagn.ShowModal ;
     IMPNO := dmInventory.cds_KilnVagnIMPNo.AsInteger ;
     if dmInventory.VagnarBeforeKiln_Larger_Then_MaxVagnarBefore(mtUserPropKilnChargeNo.AsInteger) then

@@ -83,7 +83,6 @@ object fEnterKilnVagn: TfEnterKilnVagn
       Style.IsFontAssigned = True
       Height = 28
       Width = 158
-      AnchorX = 1365
     end
     object cxLabel2: TcxLabel
       Left = 1048
@@ -121,7 +120,6 @@ object fEnterKilnVagn: TfEnterKilnVagn
       Style.IsFontAssigned = True
       Height = 28
       Width = 158
-      AnchorX = 1619
     end
     object cxLabel3: TcxLabel
       Left = 1373
@@ -280,6 +278,15 @@ object fEnterKilnVagn: TfEnterKilnVagn
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
+    end
+    object cxButton3: TcxButton
+      Left = 8
+      Top = 32
+      Width = 89
+      Height = 89
+      Caption = 'check imp'
+      TabOrder = 14
+      OnClick = cxButton3Click
     end
   end
   object Panel2: TPanel
