@@ -3,7 +3,7 @@
         <ProjectGuid>{0E5EFB7A-5A12-4202-9598-20A6C02D6D50}</ProjectGuid>
         <MainSource>VIS_LAGER.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
