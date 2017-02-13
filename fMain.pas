@@ -921,7 +921,9 @@ begin
  or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\joshel')
  or (Trim(dmsConnector.Get_AD_Name) = 'VIDA\carhol')
  or (Trim(dmsConnector.Get_AD_Name) = 'Lars')
-  or (Trim(dmsConnector.Get_AD_Name) = 'sa')
+ or (Trim(dmsConnector.Get_AD_Name) = 'sa')
+ or (Trim(dmsConnector.Get_AD_Name) = 'vida\adminlarmak')
+ or (Trim(dmsConnector.Get_AD_Name) = 'adminlarmak')
  then
  Begin
  if FormOpen then

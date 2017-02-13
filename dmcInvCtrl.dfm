@@ -7628,6 +7628,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_GenInvCountByProduct'
     Left = 264
+    Top = 8
     ParamData = <
       item
         Position = 1
@@ -7646,6 +7647,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_invByProduct'
     Left = 424
+    Top = 24
     ParamData = <
       item
         Position = 1
@@ -7664,6 +7666,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_ActivatePkgsInvCountByProduct'
     Left = 600
+    Top = 8
     ParamData = <
       item
         Position = 1
@@ -7725,6 +7728,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_ClearInvCountFromExtData'
     Left = 832
+    Top = 8
     ParamData = <
       item
         Position = 1
@@ -7921,7 +7925,7 @@
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.Vis_CtrlList'
     Left = 424
-    Top = 48
+    Top = 72
     ParamData = <
       item
         Position = 1

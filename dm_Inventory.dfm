@@ -526,7 +526,7 @@
         'pn.Original_Price * pt.Totalm3Nominal AS V'#228'rde, va.VarugruppNamn' +
         ','
       'CAST(LS.AvgLength AS Float) AS AvgLength,'
-      'pn.REFERENCE, pn.BL_NO,  pn.Info2, ps.PackageSizeName'
+      'pn.REFERENCE, pn.BL_NO,  pn.Info2'
       ''
       ''
       'FROM  dbo.Client Verk'
@@ -1063,12 +1063,6 @@
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       FixedChar = True
       Size = 3
-    end
-    object cds_PkgListPackageSizeName: TStringField
-      DisplayLabel = 'Paketstorlek'
-      FieldName = 'PackageSizeName'
-      Origin = 'PackageSizeName'
-      Size = 50
     end
   end
   object cds_PkgNoList: TFDQuery

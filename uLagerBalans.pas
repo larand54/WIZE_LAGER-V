@@ -194,6 +194,9 @@ type
     teInventeringsSet: TcxTextEdit;
     cxLabel1: TcxLabel;
     cbFilterZeros: TcxCheckBox;
+    pmLBOrt: TPopupMenu;
+    acLBctrl: TAction;
+    Lagerbalanscontroll1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure acRefreshExecute(Sender: TObject);
     procedure acPrintExecute(Sender: TObject);
@@ -240,6 +243,7 @@ type
       const AMasterDetailKeyFieldNames: string;
       const AMasterDetailKeyValues: Variant; var AReopened: Boolean);
     procedure cbFilterZerosPropertiesChange(Sender: TObject);
+    procedure acLBctrlExecute(Sender: TObject);
   private
     { Private declarations }
    Year, Month, Day: Word ;
@@ -259,7 +263,7 @@ var
 implementation
 
 uses dmsDataConn, VidaUser , dmsVidaContact, uLagBalDtl, dmsVidaSystem,
-  uMemoForm, uLBperDay;
+  uMemoForm, uLBperDay, uLBCtrl;
 
 {$R *.dfm}
 procedure TfLagerBalans.GetCurrentMonthAndYear(Sender: TObject);
@@ -956,7 +960,57 @@ begin
  cds_LagBal.SQL.Add('AND ((inv.LIPNo = :LIPNo) or (-1 = :LIPNo))') ;
  cds_LagBal.SQL.Add('AND ((inv.PIPNo = :PIPNo) or (-1 = :PIPNo))') ;
  cds_LagBal.SQL.Add('AND ((LIP.SequenceNo = 1) or (LIP.SequenceNo is null))') ;
+ cds_LagBal.SQL.Add('and SortOrder in (21, 22, 23, 24, 25, 26, 31, 27)') ;
  cds_LagBal.SQL.Add('Group By inv.GroupName, inv.Item, inv.SortOrder') ;
+
+
+{
+   Select inv.GroupName, inv.Item, SUM(inv.AM3) AS AM3, SUM(inv.NM3) AS NM3, 0.0 AS SubTotal, inv.SortOrder,
+  0.0 AS VÄRDE, sum(inv.NoOfPkgs) AS Pkt
+  FROM dbo.InvBal_PKG inv
+  Left Outer Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInventoryPointNo = inv.LIPNo
+  WHERE ( (inv.[InvDate] >= @StartDate AND inv.[InvDate] <= @EndDate)
+   OR ((SortOrder = 71) OR (SortOrder = 72)) )
+  AND inv.VerkNo  = @ClientNo
+  AND ((inv.LIPNo = @LIPNo) or (-1 = @LIPNo))
+  AND ((inv.PIPNo = @PIPNo) or (-1 = @PIPNo))
+  and SortOrder in (21, 22, 23, 24, 25, 26, 31, 27)
+  Group By inv.GroupName, inv.Item, inv.SortOrder
+
+}
+
+ cds_LagBal.SQL.Add('union') ;
+ cds_LagBal.SQL.Add('Select inv.GroupName, inv.Item, SUM(inv.AM3) AS AM3, SUM(inv.NM3) AS NM3, 0.0 AS SubTotal, inv.SortOrder,') ;
+ cds_LagBal.SQL.Add('0.0 AS VÄRDE, sum(inv.NoOfPkgs) AS Pkt') ;
+ cds_LagBal.SQL.Add('FROM dbo.InvBal_PKG inv') ;
+ cds_LagBal.SQL.Add('Left Outer Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalInventoryPointNo = inv.LIPNo') ;
+ cds_LagBal.SQL.Add('WHERE ( (inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDate)') ;
+ cds_LagBal.SQL.Add(' OR ((SortOrder = 71) OR (SortOrder = 72)) )') ;
+ cds_LagBal.SQL.Add('AND inv.VerkNo  = :ClientNo') ;
+ cds_LagBal.SQL.Add('AND ((inv.LIPNo = :LIPNo) or (-1 = :LIPNo))') ;
+ cds_LagBal.SQL.Add('AND ((inv.PIPNo = :PIPNo) or (-1 = :PIPNo))') ;
+ cds_LagBal.SQL.Add('and SortOrder in (61, 62, 64, 41, 51)') ;
+
+ cds_LagBal.SQL.Add('AND ((exists (Select * from dbo.InvBal_PKG inv2') ;
+ cds_LagBal.SQL.Add('WHERE ((inv2.[InvDate] >= :StartDate AND inv2.[InvDate] <= :EndDate)') ;
+ cds_LagBal.SQL.Add('and inv2.PackageNo = inv.PackageNo') ;
+ cds_LagBal.SQL.Add('and inv2.Suppliercode = inv.Suppliercode') ;
+ cds_LagBal.SQL.Add('AND inv2.VerkNo  = :ClientNo') ;
+ cds_LagBal.SQL.Add('AND ((inv2.LIPNo = :LIPNo) or (-1 = :LIPNo))') ;
+ cds_LagBal.SQL.Add('AND ((inv2.PIPNo = :PIPNo) or (-1 = :PIPNo))') ;
+ cds_LagBal.SQL.Add('and inv2.SortOrder in (21, 22, 23, 24, 25, 26, 31, 27))))') ;
+
+ cds_LagBal.SQL.Add('OR (exists (Select * from dbo.InvenRow ir') ;
+ cds_LagBal.SQL.Add('inner join dbo.LogicalInventoryPoint lip on lip.LogicalInventoryPointNo = ir.LogicalInventoryPointNo') ;
+ cds_LagBal.SQL.Add('inner join dbo.InvControlGrp icg on icg.IC_grpno = ir.IC_GrpNo') ;
+ cds_LagBal.SQL.Add('WHERE') ;
+ cds_LagBal.SQL.Add('icg.MaxDatum >= :StartInBalDate') ;
+ cds_LagBal.SQL.Add('and icg.MaxDatum <= :StartInBalDate') ;
+ cds_LagBal.SQL.Add('and ir.PackageNo = inv.PackageNo') ;
+ cds_LagBal.SQL.Add('and ir.Suppliercode = inv.Suppliercode') ;
+ cds_LagBal.SQL.Add('and lip.PhysicalInventoryPointNo = :PIPNo)))') ;
+
+ cds_LagBal.SQL.Add('Group By  inv.GroupName, inv.Item, inv.SortOrder') ;
 
  finally
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
@@ -1020,6 +1074,23 @@ begin
  finally
   FreeAndNil(fMemoForm) ;
  end;
+end;
+
+procedure TfLagerBalans.acLBctrlExecute(Sender: TObject);
+begin
+  if Assigned(frmLBCtrl) then
+  Begin
+    frmLBCtrl.RefreshLBCtrl(StartDate.Date , EndDate.Date, cds_LagBalORTPIPNo.AsInteger) ;
+    frmLBCtrl.Caption := 'Lagerbalans kontroll / ' +  cds_LagBalORTORT.AsString ;
+    frmLBCtrl.Show ;
+  End
+  else
+  Begin
+    frmLBCtrl := TfrmLBCtrl.Create(Nil) ;
+    frmLBCtrl.RefreshLBCtrl(StartDate.Date , EndDate.Date, cds_LagBalORTPIPNo.AsInteger) ;
+    frmLBCtrl.Caption := 'Lagerbalans kontroll / ' +  cds_LagBalORTORT.AsString ;
+    frmLBCtrl.Show ;
+  End;
 end;
 
 procedure TfLagerBalans.acLBPerDayExecute(Sender: TObject);

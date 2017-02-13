@@ -714,7 +714,6 @@ type
     cxLabel42: TcxLabel;
     teSetNo: TcxTextEdit;
     siLangLinked_frmInventoryReport: TsiLangLinked;
-    cxGrid1DBBandedTableView1PackageSizeName: TcxGridDBBandedColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -2943,8 +2942,8 @@ begin
        End ;
   End ;
 
-  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
 
   cds_PkgList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
@@ -3072,8 +3071,8 @@ begin
   if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-  if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
   if cbInklEjFakt.ItemIndex = 1 then
   Begin
@@ -3189,8 +3188,8 @@ begin
   cds_PkgList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
 
 
-  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
   Case mtUserPropLengthVolUnitNo.AsInteger of
    0 : Begin
@@ -3328,8 +3327,8 @@ begin
   if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-    if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//    if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList.txt');
@@ -4713,11 +4712,13 @@ begin
  teREF.PostEditValue ;
 
 
- if cxGrid1DBBandedTableView1PackageSizeName.Visible then
- ShowPackageSizeName  :=  True
- else
- ShowPackageSizeName  :=  False ;
+{
+   if cxGrid1DBBandedTableView1PackageSizeName.Visible then
+   ShowPackageSizeName  :=  True
+   else
+   ShowPackageSizeName  :=  False ;
 
+}
 { eKV.PostEditValue ;
  eAT.PostEditValue ;
  eAB.PostEditValue ;
@@ -4746,7 +4747,7 @@ begin
   cds_PkgList.DisableControls ;
 //  cxGrid1DBBandedTableView1.BeginUpdate ;
 
-  cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'ProductNo;Status;LIPNo;PackageSizeName' ;
+  cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'ProductNo;Status;LIPNo' ;
 //  cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'ProductNo;PackageTypeNo' ;
   cxGrid1DBBandedTableView1.Bands[0].Visible:= False ;
   cxGrid1DBBandedTableView1.Bands[1].FixedKind:= fkLeft ;
@@ -4756,7 +4757,7 @@ begin
    pcInventory.ActivePage   := tsTABELL ;
    if pgInventory.ActivePage = tsFakturaSpec then
    Begin
-    cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'PRODUKT;Status;LIPNo;PackageSizeName' ;
+    cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'PRODUKT;Status;LIPNo' ;
     cds_PkgList.Active:= False ;
     GenInvoicePkgSpec(Sender) ;
     cds_PkgList.Active:= True ;
@@ -4764,7 +4765,7 @@ begin
    else
    if pgInventory.ActivePage = tsLoadOrderSpec then
    Begin
-    cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'PRODUKT;Status;LIPNo;PackageSizeName' ;
+    cxGrid1DBBandedTableView1.DataController.KeyFieldNames:= 'PRODUKT;Status;LIPNo' ;
     cds_PkgList.Active:= False ;
     GenLoadOrderPkgSpec(Sender) ;
     cds_PkgList.Active:= True ;
@@ -5090,14 +5091,14 @@ begin
 {TSI:IGNORE OFF}
  + QuotedStr('                              ') +
 {TSI:IGNORE ON}
-	' AS Info2,'
+	' AS Info2'
 {TSI:IGNORE OFF}
 ) ;
 
-  if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(' ps.PackageSizeName')
-  else
-  cds_PkgList.SQL.Add(QuotedStr('                              ') + ' AS PackageSizeName') ;
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(' ps.PackageSizeName')
+//  else
+//  cds_PkgList.SQL.Add(QuotedStr('                              ') + ' AS PackageSizeName') ;
 
   cds_PkgList.SQL.Add('FROM  dbo.Client Verk') ;
 
@@ -5139,8 +5140,8 @@ begin
 
 //  cds_PkgList.SQL.Add('Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = pn.PackageTypeNo') ;
 
-    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
 //  if (mtActLengthMM.RecordCount > 0) or (cbShowSingleLengthPkgs.Checked) then
 //  Begin
@@ -5285,8 +5286,8 @@ begin
   if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
    cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-  if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
 
   if cbInklEjFakt.ItemIndex = 1 then
@@ -5442,8 +5443,8 @@ begin
     cds_PkgList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
 
 
-    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
 //  if (mtActLengthMM.RecordCount > 0) or (cbShowSingleLengthPkgs.Checked) then
     Begin
@@ -5570,8 +5571,8 @@ begin
    if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
    cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-     if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumListNOTInvoiced.txt');
  End ; //with
@@ -5726,8 +5727,8 @@ begin
    End ;
 
 
-    cds_PkgNoList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-    cds_PkgNoList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//    cds_PkgNoList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//    cds_PkgNoList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
 //  if (mtActLengthMM.RecordCount > 0) or (cbShowSingleLengthPkgs.Checked) then
   Begin
@@ -5813,11 +5814,11 @@ begin
    cds_PkgNoList.SQL.Add('AND (PTL.STD_Length = 0 or ls.NoOfLengths > 1)') ;
   End ;
 
-  if ShowPackageSizeName then
+{  if ShowPackageSizeName then
   Begin
     if cds_PkgListPackageSizeName.AsString > '' then
       cds_PkgNoList.SQL.Add('AND PackageSizeName = ' + QuotedStr(cds_PkgListPackageSizeName.AsString)) ;
-  End;
+  End; }
 
 
   if deStartPeriod.EditValue > 0 then
@@ -7816,8 +7817,9 @@ begin
     cds_PkgList.SQL.Add('AND pp.SupplierCode = pn.SupplierCode') ;
 
 
-    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+
 {  if mtUserPropNewItemRow.AsInteger > 0 then
   Begin
    if cbInvLista.ItemIndex = 0 then
@@ -7997,8 +7999,9 @@ begin
   cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2') ;
 //  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
 //   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
-  if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
 
 
@@ -8770,8 +8773,8 @@ begin
   cds_PkgList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
 
 
-  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
   Case mtUserPropLengthVolUnitNo.AsInteger of
    0 : Begin
@@ -8860,8 +8863,8 @@ begin
 
   cds_PkgList.SQL.Add('Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
   cds_PkgList.SQL.Add('IH.InvoiceType') ;
-  if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_FakturaSpecSUM.txt');
  End ; //with
 
@@ -8990,8 +8993,8 @@ begin
   cds_PkgList.SQL.Add('') ;
   cds_PkgList.SQL.Add('') ;
 
-  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
   Case mtUserPropLengthVolUnitNo.AsInteger of
    0 : Begin
@@ -9078,8 +9081,8 @@ begin
   cds_PkgList.SQL.Add('pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
   cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, ') ;
   cds_PkgList.SQL.Add('IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO ') ;
-    if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//    if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgListNo_FakturaSpec.txt');
 
@@ -9461,8 +9464,8 @@ begin
   cds_PkgList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
 
 
-  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
   Case mtUserPropLengthVolUnitNo.AsInteger of
    0 : Begin
@@ -9530,8 +9533,9 @@ begin
   End ;//for x..
 
   cds_PkgList.SQL.Add('Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM') ;
-    if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//    if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+
 //  cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName ') ;
 //  cds_PkgList.SQL.Add('CSH.SHIPPINGPLANNO') ;
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('GenLoadOrderPkgSpec.txt');
@@ -9642,8 +9646,8 @@ begin
   cds_PkgList.SQL.Add('AND pn.SupplierCode = LD.SupplierCode') ;
 
 
-  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
+//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
   cds_PkgList.SQL.Add('Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = LD.PackageTypeNo') ;
   cds_PkgList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
@@ -9723,8 +9727,8 @@ begin
   cds_PkgList.SQL.Add('pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
   cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, ') ;
   cds_PkgList.SQL.Add('CSH.SHIPPINGPLANNO') ;
-  if ShowPackageSizeName then
-  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+//  if ShowPackageSizeName then
+//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('GenLoadOrderSpecPkgNoTable_SQL.txt');
 

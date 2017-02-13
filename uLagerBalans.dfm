@@ -846,6 +846,7 @@
       Margins.Right = 4
       Margins.Bottom = 4
       Align = alClient
+      PopupMenu = pmLBOrt
       TabOrder = 0
       object grdLagerBalansORTDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1365,11 +1366,15 @@
       Caption = 'Lagerbalans per dag'
       OnExecute = acLBPerDayExecute
     end
+    object acLBctrl: TAction
+      Caption = 'Lagerbalans kontroll'
+      OnExecute = acLBctrlExecute
+    end
   end
   object cxLookAndFeelController1: TcxLookAndFeelController
     Kind = lfFlat
-    Left = 136
-    Top = 432
+    Left = 152
+    Top = 304
   end
   object ImageList1: TImageList
     Height = 24
@@ -2276,8 +2281,8 @@
       000000000000}
   end
   object cxStyleRepository1: TcxStyleRepository
-    Left = 136
-    Top = 312
+    Left = 152
+    Top = 192
     PixelsPerInch = 120
     object cxStyle1: TcxStyle
       AssignedValues = [svFont]
@@ -2291,11 +2296,10 @@
   object dxComponentPrinter1: TdxComponentPrinter
     CurrentLink = dxComponentPrinter1Link1
     Version = 0
-    Left = 136
-    Top = 368
+    Left = 152
+    Top = 248
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdLagerBalans
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -2315,7 +2319,6 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39265.827856053240000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -2340,8 +2343,8 @@
     Top = 560
   end
   object pmLBPerDay: TPopupMenu
-    Left = 344
-    Top = 330
+    Left = 392
+    Top = 466
     object acLBPerDay1: TMenuItem
       Action = acLBPerDay
     end
@@ -2444,7 +2447,7 @@
         'Select inv.GroupName, inv.Item, SUM(inv.AM3) AS AM3, SUM(inv.NM3' +
         ') AS NM3, 0.0 AS SubTotal, inv.SortOrder,'
       '0.0 AS V'#196'RDE, sum(inv.NoOfPkgs) AS Pkt'
-      'FROM dbo.InvBalII inv'
+      'FROM dbo.InvBal_PKG inv'
       
         'Left Outer Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalI' +
         'nventoryPointNo = inv.LIPNo'
@@ -2455,8 +2458,50 @@
       'AND inv.VerkNo  = :ClientNo'
       'AND ((inv.LIPNo = :LIPNo) or (-1 = :LIPNo))'
       'AND ((inv.PIPNo = :PIPNo) or (-1 = :PIPNo))'
-      '-- AND ((LIP.SequenceNo = 1) or (LIP.SequenceNo is null))'
+      'and SortOrder in (21, 22, 23, 24, 25, 26, 31, 27)'
       'Group By inv.GroupName, inv.Item, inv.SortOrder'
+      'union'
+      
+        'Select inv.GroupName, inv.Item, SUM(inv.AM3) AS AM3, SUM(inv.NM3' +
+        ') AS NM3, 0.0 AS SubTotal, inv.SortOrder,'
+      '0.0 AS V'#196'RDE, sum(inv.NoOfPkgs) AS Pkt'
+      'FROM dbo.InvBal_PKG inv'
+      
+        'Left Outer Join dbo.LogicalInventoryPoint AS LIP on lip.LogicalI' +
+        'nventoryPointNo = inv.LIPNo'
+      
+        'WHERE ( (inv.[InvDate] >= :StartDate AND inv.[InvDate] <= :EndDa' +
+        'te)'
+      ' OR ((SortOrder = 71) OR (SortOrder = 72)) )'
+      'AND inv.VerkNo  = :ClientNo'
+      'AND ((inv.LIPNo = :LIPNo) or (-1 = :LIPNo))'
+      'AND ((inv.PIPNo = :PIPNo) or (-1 = :PIPNo))'
+      'and SortOrder in (61, 62, 64, 41, 51)'
+      ''
+      'AND ((exists (Select * from dbo.InvBal_PKG inv2'
+      
+        'WHERE ((inv2.[InvDate] >= :StartDate AND inv2.[InvDate] <= :EndD' +
+        'ate)'
+      'and inv2.PackageNo = inv.PackageNo'
+      'and inv2.Suppliercode = inv.Suppliercode'
+      'AND inv2.VerkNo  = :ClientNo'
+      'AND ((inv2.LIPNo = :LIPNo) or (-1 = :LIPNo))'
+      'AND ((inv2.PIPNo = :PIPNo) or (-1 = :PIPNo))'
+      'and inv2.SortOrder in (21, 22, 23, 24, 25, 26, 31, 27))))'
+      ''
+      'OR (exists (Select * from dbo.InvenRow ir'
+      
+        'inner join dbo.LogicalInventoryPoint lip on lip.LogicalInventory' +
+        'PointNo = ir.LogicalInventoryPointNo'
+      'inner join dbo.InvControlGrp icg on icg.IC_grpno = ir.IC_GrpNo'
+      'WHERE'
+      'icg.MaxDatum >= :StartInBalDate'
+      'and icg.MaxDatum <= :StartInBalDate'
+      'and ir.PackageNo = inv.PackageNo'
+      'and ir.Suppliercode = inv.Suppliercode'
+      'and lip.PhysicalInventoryPointNo = :PIPNo)))'
+      ''
+      'Group By  inv.GroupName, inv.Item, inv.SortOrder'
       ''
       '')
     Left = 608
@@ -3333,5 +3378,12 @@
       45004600410055004C0054005F00430048004100520053004500540001004400
       45004600410055004C0054005F00430048004100520053004500540001004400
       45004600410055004C0054005F0043004800410052005300450054000D000A00}
+  end
+  object pmLBOrt: TPopupMenu
+    Left = 272
+    Top = 603
+    object Lagerbalanscontroll1: TMenuItem
+      Action = acLBctrl
+    end
   end
 end

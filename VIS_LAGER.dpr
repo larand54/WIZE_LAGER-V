@@ -128,7 +128,8 @@ uses
   uSelectInventorySET in 'uSelectInventorySET.pas' {fSelectInventorySET},
   udmLanguage in 'udmLanguage.pas' {dmLanguage: TDataModule},
   ufrmChangeLanguage in 'ufrmChangeLanguage.pas' {frmChangeLanguage},
-  uSelectIMP in 'uSelectIMP.pas' {fSelectImp};
+  uSelectIMP in 'uSelectIMP.pas' {fSelectImp},
+  uLBCtrl in 'uLBCtrl.pas' {frmLBCtrl};
 
 {$R *.res}
 begin

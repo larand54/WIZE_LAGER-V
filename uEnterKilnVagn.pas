@@ -135,6 +135,9 @@ begin
 
    if TypeOfLine = 2 then
     CheckIMPProducts ;
+
+  if CanClose then
+   dmsSystem.Delete_ReservedPkgs ('TfEnterKilnVagn') ;
  End;
 end;
 
@@ -260,7 +263,7 @@ procedure TfEnterKilnVagn.AddSelectedPkgsToVagn(Sender: TObject) ;
 Begin
  With dmInventory do
  Begin
-  mtSelectedPkgNo.Filter    := siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_0' (* 'Markerad = 1' *) ) ;
+  mtSelectedPkgNo.Filter    := 'Markerad = 1' ; //siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_0' (* 'Markerad = 1' *) ) ;
   mtSelectedPkgNo.Filtered  := True ;
   Try
   mtSelectedPkgNo.First ;
