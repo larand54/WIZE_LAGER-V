@@ -2183,6 +2183,7 @@ object frmMovePkgs: TfrmMovePkgs
       LookupKeyFields = 'LIPNo'
       LookupResultField = 'LIPName'
       KeyFields = 'LIPNo'
+      ProviderFlags = [pfInUpdate]
       Size = 50
       Lookup = True
     end

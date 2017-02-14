@@ -50,12 +50,12 @@ object dm_UserProps: Tdm_UserProps
   end
   object ds_SR: TDataSource
     DataSet = cds_SR
-    Left = 872
+    Left = 888
     Top = 272
   end
   object ds_VU: TDataSource
     DataSet = cds_VU
-    Left = 808
+    Left = 824
     Top = 272
   end
   object mtLengthFormat: TkbmMemTable
@@ -149,7 +149,7 @@ object dm_UserProps: Tdm_UserProps
   end
   object ds_InvClient: TDataSource
     DataSet = cds_InvClient
-    Left = 112
+    Left = 88
     Top = 272
   end
   object ds_Customer: TDataSource
@@ -657,7 +657,7 @@ object dm_UserProps: Tdm_UserProps
       ''
       'Order by C.clientName'
       '')
-    Left = 872
+    Left = 888
     Top = 224
     object cds_SRClientNo: TIntegerField
       FieldName = 'ClientNo'
@@ -681,7 +681,7 @@ object dm_UserProps: Tdm_UserProps
     SQL.Strings = (
       'Select * FROM dbo.UnitName'
       '')
-    Left = 808
+    Left = 824
     Top = 224
     object cds_VUVolumeUnit_No: TIntegerField
       FieldName = 'VolumeUnit_No'
@@ -887,14 +887,14 @@ object dm_UserProps: Tdm_UserProps
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
-        'SELECT  Distinct LogicalInventoryPointNo AS LIPNo, LogicalInvent' +
-        'oryName AS LIPName'
-      'FROM dbo.LOGICALINVENTORYPOINT'
+        'SELECT  Distinct LIP.LogicalInventoryPointNo AS LIPNo, LIP.Logic' +
+        'alInventoryName AS LIPName'
+      'FROM dbo.LOGICALINVENTORYPOINT LIP'
       'WHERE'
-      'PhysicalInventoryPointNo = :PIPNo'
-      'AND SequenceNo = 1'
-      ''
-      'Order By LogicalInventoryName '
+      'LIP.PhysicalInventoryPointNo = :PIPNo'
+      'AND LIP.SequenceNo = 1'
+      'AND'#9#9'LIP.CanAddToLoad = 1'
+      'Order By LIP.LogicalInventoryName '
       '')
     Left = 376
     Top = 224
@@ -1060,7 +1060,7 @@ object dm_UserProps: Tdm_UserProps
       ''
       'Order by C.clientName'
       '')
-    Left = 112
+    Left = 88
     Top = 224
     object cds_InvClientClientNo: TIntegerField
       FieldName = 'ClientNo'
