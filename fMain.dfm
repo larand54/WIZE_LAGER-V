@@ -385,7 +385,7 @@ object frmMain: TfrmMain
       Left = 0
       Top = 0
       Width = 169
-      Height = 842
+      Height = 843
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4

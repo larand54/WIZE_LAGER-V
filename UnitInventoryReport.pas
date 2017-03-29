@@ -551,7 +551,6 @@ type
     mtUserPropEndPeriod: TDateTimeField;
     acExportToExcel: TAction;
     dxBarButton42: TdxBarButton;
-    cbInklEjFakt: TcxComboBox;
     cxGrid1DBBandedTableView1Pris: TcxGridDBBandedColumn;
     cxGrid1DBBandedTableView1Vrde: TcxGridDBBandedColumn;
     acSetPriceOnMarkedPkgs: TAction;
@@ -714,6 +713,7 @@ type
     cxLabel42: TcxLabel;
     teSetNo: TcxTextEdit;
     siLangLinked_frmInventoryReport: TsiLangLinked;
+    cbInklEjFakt2: TcxComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -896,6 +896,9 @@ type
     CurrentNoOfPkgs,
     SelectedProductNo     : Integer ;
     SelectedLength        : String ;
+    procedure GenPkgNoPrelLoadsTable_SQL(Sender: TObject);
+    procedure GenPkgNosDetailTable_SQL_PrelLoads(Sender: TObject);
+    procedure GenPrelLoadsTable_SQL(Sender: TObject);
     Procedure SetPriceOnLIPSUM(const NewPrice : Double) ;
     procedure GenPkgNosDetailTable_SQL_EJFAKT(Sender: TObject);
     procedure SelectedPkgsOfPkgTbl_V2 ;
@@ -2699,7 +2702,6 @@ begin
    if (pgInventory.ActivePage = tsLagret) or (pgInventory.ActivePage = tsInventering) then
    Begin
       cds_PkgList.Active:= False ;
-
       GenPkgNoTable_SQL(Sender) ;
       cds_PkgList.Active:= True ;
    End ;
@@ -2749,14 +2751,23 @@ begin
  Try
  With dmInventory do
  Begin
- if cbInklEjFakt.ItemIndex = 2 then
- Begin
-  cds_PkgList.Close ;
-  cds_PkgList.SQL.Clear ;
-  GenPkgNoNotInvoicedTable_SQL(Sender) ;
-  //GenNotInvoicedTable_SQL(Sender) ;
-  Exit ;
- End ;
+
+   if cbInklEjFakt2.ItemIndex = 2 then
+   Begin
+    cds_PkgList.Close ;
+    cds_PkgList.SQL.Clear ;
+    GenPkgNoNotInvoicedTable_SQL(Sender) ;
+    Exit ;
+   End ;
+
+   if cbInklEjFakt2.ItemIndex = 4 then
+   Begin
+    cds_PkgList.Close ;
+    cds_PkgList.SQL.Clear ;
+    GenPkgNoPrelLoadsTable_SQL(Sender) ;
+    Exit ;
+   End ;
+
 
   cds_PkgList.Close ;
   cds_PkgList.SQL.Clear ;
@@ -3074,11 +3085,17 @@ begin
 //  if ShowPackageSizeName then
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
-  if cbInklEjFakt.ItemIndex = 1 then
+  if cbInklEjFakt2.ItemIndex = 1 then
   Begin
    cds_PkgList.SQL.Add('UNION') ;
    GenPkgNoNotInvoicedTable_SQL(Sender) ;
   End ;
+
+   if cbInklEjFakt2.ItemIndex = 3 then
+   Begin
+    cds_PkgList.SQL.Add('UNION') ;
+    GenPkgNoPrelLoadsTable_SQL(Sender) ;
+   End ;
 
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_Lagervärde.txt');
@@ -3100,9 +3117,6 @@ begin
  Try
  With dmInventory do
  Begin
-//  cds_PkgList.Close ;
-//  cds_PkgList.SQL.Clear ;
-
   cds_PkgList.SQL.Add('Select distinct 1 AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
@@ -3188,8 +3202,225 @@ begin
   cds_PkgList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
 
 
-//  cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-//  cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
+  Case mtUserPropLengthVolUnitNo.AsInteger of
+   0 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
+       End ;
+   1 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
+       End ;
+   2 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
+       End ;
+   3 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = LD.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
+       End ;
+  End ;
+
+
+
+  cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
+
+
+  if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
+  cds_PkgList.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
+  if ComboBoxFilterChecked('gs.BarcodeID', ccbBC) then
+  cds_PkgList.SQL.Add('Inner JOIN dbo.BarCode bc ON bc.BarCodeNo = pt.BarCodeID') ;
+
+  cds_PkgList.SQL.Add('WHERE oh.OrderType = 0') ; //SequenceNo = Active "property"
+  cds_PkgList.SQL.Add('AND pn.Status = 0') ;
+
+  cds_PkgList.SQL.Add('AND L.LoadedDate > ' + QuotedStr('2013-12-01')) ;
+
+  cds_PkgList.SQL.Add('AND nos.InvoiceNo is null') ;
+
+  if Length(TRIM(teREF.Text)) > 0 then
+  Begin
+   cds_PkgList.SQL.Add('AND pn.REFERENCE LIKE ' + QuotedStr(TRIM(teREF.Text))) ;
+  End ;
+
+  if Length(TRIM(teInfo1.Text)) > 0 then
+  cds_PkgList.SQL.Add('AND pn.BL_NO LIKE ' + QuotedStr(teInfo1.Text)) ;
+
+  if Length(TRIM(teInfo2.Text)) > 0 then
+  cds_PkgList.SQL.Add('AND pn.Info2 LIKE ' + QuotedStr(teInfo2.Text)) ;
+
+
+  if mtUserPropSalesRegionNo.AsInteger > 0 then
+  cds_PkgList.SQL.Add('AND Verk.SalesRegionNo = '+IntToStr(mtUserPropSalesRegionNo.AsInteger)) ;
+
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'LIP.InvCode', cbLIP)) ;
+
+  if not cUserLipNoExists then
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
+
+  if cbShowSingleLengthPkgs.Checked then
+    cds_PkgList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
+
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SPE.SpeciesCode', ccbTS2)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'GR.GradeCode', ccbKV2)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SUR.SurfacingCode', ccbSU2)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'va.VaruGruppNo', ccVarugrupp)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'imp.ImpCode', ccbIMP)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'gs.GradeStampID', ccbGS)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'bc.BarCodeID', ccbBC)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.ActualThicknessMM', ccbAT)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.ActualWidthMM', ccbAB)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'PL.ActualLengthMM', ccbAL)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalThicknessMM', ccbNT)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalWidthMM', ccbNB)) ;
+
+  cds_PkgList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
+  cds_PkgList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
+  cds_PkgList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
+
+  cds_PkgList.SQL.Add('pn.Original_Price, pn.REFERENCE, pn.BL_NO,  pn.Info2,') ;
+
+  cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, ') ;
+  cds_PkgList.SQL.Add('Verk.ClientNo , Cy.CityName, lip.LogicalInventoryName,') ;
+  cds_PkgList.SQL.Add('lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn ') ;
+  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
+  cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
+
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList.txt');
+
+ End ; //with
+
+ finally
+  Screen.Cursor := Save_Cursor;  { Always restore to normal }
+ end;
+end;
+
+procedure TfrmInventoryReport.GenPkgNoPrelLoadsTable_SQL(Sender: TObject);
+Var Save_Cursor : TCursor;
+    y, x        : Byte ;
+begin
+ Save_Cursor := Screen.Cursor;
+ Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+ FormatLengthColumns ;
+ Try
+ With dmInventory do
+ Begin
+  cds_PkgList.SQL.Add('Select distinct 1 AS PKT,') ;
+
+  cds_PkgList.SQL.Add('pd.ProductNo,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('pt.PackageTypeNo,') ;
+  cds_PkgList.SQL.Add('pn.PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,') ;
+
+  cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
+  cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
+  cds_PkgList.SQL.Add('pt.TotalNoOfPieces AS STYCK,') ;
+
+  cds_PkgList.SQL.Add('CASE WHEN PTL.STD_Length = 0 THEN PTL.PcsPerLength') ;
+  cds_PkgList.SQL.Add('ELSE '+QuotedStr('')) ;
+  cds_PkgList.SQL.Add('END AS STYCKPERLÄNGD,') ;
+
+  sq_GroupLengths.ParamByName('GroupNo').AsInteger:= mtUserPropLengthGroupNo.AsInteger ;
+  sq_GroupLengths.Open ;
+  sq_GroupLengths.First ;
+  x:= 1 ;
+  While not sq_GroupLengths.Eof do
+  Begin
+  Case mtUserPropLengthVolUnitNo.AsInteger of
+    0 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    1 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.m3Actual ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    2 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.m3Nominal ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    3 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+   End ;//case
+   sq_GroupLengths.Next ;
+   x:= succ(x) ;
+  End ;
+
+  For y:= x to 45 do
+  cds_PkgList.SQL.Add('CAST(0.0 AS Float) AS L' + inttostr(y) + ', ') ;
+
+  sq_GroupLengths.Close ;
+
+
+
+  cds_PkgList.SQL.Add('pt.Totalm3Actual AS AM3,') ;
+  cds_PkgList.SQL.Add('pt.Totalm3Nominal AS NM3,') ;
+  cds_PkgList.SQL.Add('pt.TotalLinealMeterActualLength AS AM1,') ;
+  cds_PkgList.SQL.Add('pt.TotalMFBMNominal AS MFBM,') ;
+  cds_PkgList.SQL.Add('pt.TotalSQMofActualWidth AS AM2,') ;
+  cds_PkgList.SQL.Add('pn.DateCreated AS TILLVERKAD,') ;
+
+
+  cds_PkgList.SQL.Add('SPE.SpeciesName AS TS,') ;
+  cds_PkgList.SQL.Add('imp.ProductCategoryName AS PC,') ;
+  cds_PkgList.SQL.Add('Gr.GradeName AS KV,') ;
+  cds_PkgList.SQL.Add('SUR.SurfacingName AS UT,') ;
+  cds_PkgList.SQL.Add('PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName+'+QuotedStr('/')+'+lip.LogicalInventoryName AS Lager,') ;
+  cds_PkgList.SQL.Add('lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo') ;
+  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
+  cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1) AS Status')
+  else
+  cds_PkgList.SQL.Add(',1 AS Status,') ;
+
+  cds_PkgList.SQL.Add('pn.Original_Price AS Pris,') ;
+  cds_PkgList.SQL.Add('pn.Original_Price * pt.Totalm3Nominal AS Värde, va.VarugruppNamn, CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength, pn.REFERENCE, pn.BL_NO, pn.Info2') ;
+
+  cds_PkgList.SQL.Add('FROM  dbo.Client Verk') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.Loads L on L.SupplierNo = Verk.ClientNo') ;
+
+//  cds_PkgList.SQL.Add('LEFT join dbo.Invoiced_Load inl') ;
+//  cds_PkgList.SQL.Add('inner join dbo.InvoiceNos nos on nos.InternalInvoiceNo = inl.InternalInvoiceNo') ;
+//  cds_PkgList.SQL.Add('on inl.LoadNo = L.LoadNo') ;
+
+  cds_PkgList.SQL.Add('Inner Join dbo.LoadDetail LD on LD.LoadNo = L.LoadNo') ;
+//  cds_PkgList.SQL.Add('Inner Join dbo.CustomerShippingPlanDetails csd on csd.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo') ;
+//  cds_PkgList.SQL.Add('Inner Join dbo.CustomerShippingPlanHeader csh on csh.ShippingPlanNo = LD.ShippingPlanNo') ;
+//  cds_PkgList.SQL.Add('Inner Join dbo.Orders oh on oh.OrderNo = csh.OrderNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.LogicalInventoryPoint lip ON lip.LogicalInventoryPointNo = LD.LIPNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.PhysicalInventoryPoint pip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo') ;
+  cds_PkgList.SQL.Add('INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo and pn.SupplierCode = LD.SupplierCode') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = LD.PackageTypeNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = LD.PackageTypeNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
+
 
   Case mtUserPropLengthVolUnitNo.AsInteger of
    0 : Begin
@@ -3247,22 +3478,13 @@ begin
   if ComboBoxFilterChecked('gs.BarcodeID', ccbBC) then
   cds_PkgList.SQL.Add('Inner JOIN dbo.BarCode bc ON bc.BarCodeNo = pt.BarCodeID') ;
 
-{  if mt_GradeStamp.RecordCount > 0 then
-  cds_PkgList.SQL.Add('Inner JOIN GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
-  if mt_BarCode.RecordCount > 0 then
-  cds_PkgList.SQL.Add('Inner JOIN BarCode bc ON bc.BarCodeNo = pt.BarCodeID') ; }
-
-
-  cds_PkgList.SQL.Add('WHERE oh.OrderType = 0') ; //SequenceNo = Active "property"
-  cds_PkgList.SQL.Add('AND pn.Status = 0') ;
-
-
-
-
+//  cds_PkgList.SQL.Add('WHERE oh.OrderType = 0') ; //SequenceNo = Active "property"
+  cds_PkgList.SQL.Add('WHERE pn.Status = 0') ;
 
   cds_PkgList.SQL.Add('AND L.LoadedDate > ' + QuotedStr('2013-12-01')) ;
 
-  cds_PkgList.SQL.Add('AND nos.InvoiceNo is null') ;
+//  cds_PkgList.SQL.Add('AND nos.InvoiceNo is null') ;
+  cds_PkgList.SQL.Add('AND L.SenderLoadStatus <> 2') ;
 
   if Length(TRIM(teREF.Text)) > 0 then
   Begin
@@ -3305,16 +3527,6 @@ begin
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalThicknessMM', ccbNT)) ;
   cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalWidthMM', ccbNB)) ;
 
- { cds_PkgList.SQL.Add('AND L.LoadNo not in (Select inl.LoadNo FROM dbo.Invoiced_Load inl') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.InvoiceNumber invno on invno.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('WHERE inl.LoadNo = L.LoadNo)') ;
-
-  cds_PkgList.SQL.Add('AND L.LoadNo not in (Select inl2.LoadNo FROM dbo.Invoiced_Load inl2') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProformaInvoiceNumber invno on invno.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('WHERE inl2.LoadNo = L.LoadNo)') ;   }
-
   cds_PkgList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
   cds_PkgList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
@@ -3327,11 +3539,7 @@ begin
   if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-//    if ShowPackageSizeName then
-//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
-
-
-  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('GenPkgNoPrelLoadsTable_SQL.txt');
 
  End ; //with
 
@@ -3339,6 +3547,8 @@ begin
   Screen.Cursor := Save_Cursor;  { Always restore to normal }
  end;
 end;
+
+
 
 procedure TfrmInventoryReport.SetKolumnNameAndHideNonUsedKolumns (Sender: TObject);
 Var x, y  : Integer ;
@@ -4971,11 +5181,19 @@ begin
  With dmInventory do
  Begin
 
- if cbInklEjFakt.ItemIndex = 2 then
+ if cbInklEjFakt2.ItemIndex = 2 then
  Begin
   cds_PkgList.Close ;
   cds_PkgList.SQL.Clear ;
   GenNotInvoicedTable_SQL(Sender) ;
+  Exit ;
+ End ;
+
+ if cbInklEjFakt2.ItemIndex = 4 then
+ Begin
+  cds_PkgList.Close ;
+  cds_PkgList.SQL.Clear ;
+  GenPrelLoadsTable_SQL(Sender) ;
   Exit ;
  End ;
 
@@ -5290,10 +5508,16 @@ begin
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
 
-  if cbInklEjFakt.ItemIndex = 1 then
+  if cbInklEjFakt2.ItemIndex = 1 then
   Begin
    cds_PkgList.SQL.Add('UNION') ;
    GenNotInvoicedTable_SQL(Sender) ;
+  End ;
+
+  if cbInklEjFakt2.ItemIndex = 4 then
+  Begin
+   cds_PkgList.SQL.Add('UNION') ;
+   GenPrelLoadsTable_SQL(Sender) ;
   End ;
 
  //if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_5262.txt');
@@ -5315,8 +5539,6 @@ begin
 
  With dmInventory do
  Begin
-//  cds_PkgList.Close ;
-//  cds_PkgList.SQL.Clear ;
   cds_PkgList.SQL.Add('Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,') ;
 
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
@@ -5324,7 +5546,6 @@ begin
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
   cds_PkgList.SQL.Add('0 AS PackageNo,') ;
   cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
-//  cds_PkgList.SQL.Add('pn.SupplierCode AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -5345,19 +5566,11 @@ begin
         +' THEN ptd.m3Actual ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
     2 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
         +' THEN ptd.m3Nominal ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
-//    3 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
-//        +' THEN ptd.NoOfPieces/avgp.AvgPcs ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
 
     3 : cds_PkgList.SQL.Add('CAST(count(Distinct CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
         +' AND PTL.STD_Length = 1'
         +' AND ls.NoOfLengths = 1'
         +' THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L'+inttostr(x)+', ') ;
-
-//CAST(count(Distinct CASE WHEN PTL.STD_Length = 1 AND pl.ActualLengthMM
-// = 4500 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14,
-
-//    3 : cds_PkgList.SQL.Add('CAST(COUNT(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
-//        +' THEN pn.PackageTypeNo ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
    End ;//case
    sq_GroupLengths.Next ;
    x:= succ(x) ;
@@ -5370,18 +5583,6 @@ begin
 //Kolumn 65 är en numera en summering av antal paket
   cds_PkgList.SQL.Add('CAST(count(Distinct CASE WHEN PTL.STD_Length = 0 OR ls.NoOfLengths > 1 THEN Str(pn.PackageNo)+pn.SupplierCode') ;
   cds_PkgList.SQL.Add('END)  AS Float)  AS L45,') ;
-
-{  cds_PkgList.SQL.Add('CASE WHEN PTL.STD_Length = 1 THEN') ;
-  cds_PkgList.SQL.Add(' CASE WHEN ls.NoOfLengths > 1 THEN Cast(Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS Decimal(12,2) )') ;
-  cds_PkgList.SQL.Add(' else  0.0 END') ;
-  cds_PkgList.SQL.Add('WHEN PTL.STD_Length = 0 THEN') ;
-  cds_PkgList.SQL.Add('Cast(Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS Decimal(12,2) )') ;
-  cds_PkgList.SQL.Add('ELSE 0.0 END AS L45,') ; }
-
-{  cds_PkgList.SQL.Add('CASE WHEN PTL.STD_Length = 0 THEN') ;
-  cds_PkgList.SQL.Add('Cast(Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS Decimal(12,2) )') ;
-  cds_PkgList.SQL.Add('ELSE') ;
-  cds_PkgList.SQL.Add('0.0 END AS L45,') ; }
 
   sq_GroupLengths.Close ;
 
@@ -5441,10 +5642,6 @@ begin
 
     cds_PkgList.SQL.Add('Inner Join dbo.PackageType pt ON pt.PackageTypeNo = LD.PackageTypeNo') ;
     cds_PkgList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
-
-
-//    cds_PkgList.SQL.Add('Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size') ;
-//    cds_PkgList.SQL.Add('AND ps.LanguageCode = ' + inttostr(ThisUser.LanguageID)) ;
 
 //  if (mtActLengthMM.RecordCount > 0) or (cbShowSingleLengthPkgs.Checked) then
     Begin
@@ -5551,19 +5748,242 @@ begin
   if cbShowSingleLengthPkgs.Checked then
     cds_PkgList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
 
- {
+  cds_PkgList.SQL.Add('Group By pd.ProductNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
+  cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName, Verk.ClientNo, ') ;
+  cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn') ;
+   if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
+   cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-  cds_PkgList.SQL.Add('AND L.LoadNo not in (Select inl.LoadNo FROM dbo.Invoiced_Load inl') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.InvoiceNumber invno on invno.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('WHERE inl.LoadNo = L.LoadNo)') ;
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumListNOTInvoiced.txt');
+ End ; //with
 
-  cds_PkgList.SQL.Add('AND L.LoadNo not in (Select inl2.LoadNo FROM dbo.Invoiced_Load inl2') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.ProformaInvoiceNumber invno on invno.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
-  cds_PkgList.SQL.Add('WHERE inl2.LoadNo = L.LoadNo)') ;   }
+ finally
+  Screen.Cursor := Save_Cursor;  { Always restore to normal }
+ end;
+end;
 
-  //pt.PackageTypeNo, pn.PackageNo, pn.Suppliercode,
+procedure TfrmInventoryReport.GenPrelLoadsTable_SQL(Sender: TObject);
+Var Save_Cursor   : TCursor;
+    x, y          : Integer ;
+begin
+ Save_Cursor := Screen.Cursor;
+ Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+ FormatLengthColumns ;
+ Try
+
+ With dmInventory do
+ Begin
+  cds_PkgList.SQL.Add('Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,') ;
+
+  cds_PkgList.SQL.Add('pd.ProductNo,') ;
+  cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
+  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+
+  cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
+  cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
+  cds_PkgList.SQL.Add('SUM(ptd.NoOfPieces) AS STYCK,') ;
+
+  cds_PkgList.SQL.Add('RTRIM('+QuotedStr(' ')+') AS STYCKPERLÄNGD,') ;
+
+  sq_GroupLengths.ParamByName('GroupNo').AsInteger:= mtUserPropLengthGroupNo.AsInteger ;
+  sq_GroupLengths.Open ;
+  sq_GroupLengths.First ;
+  x:= 1 ;
+  While not sq_GroupLengths.Eof do
+  Begin
+   Case mtUserPropLengthVolUnitNo.AsInteger of
+    0 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    1 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.m3Actual ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    2 : cds_PkgList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.m3Nominal ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+
+    3 : cds_PkgList.SQL.Add('CAST(count(Distinct CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' AND PTL.STD_Length = 1'
+        +' AND ls.NoOfLengths = 1'
+        +' THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L'+inttostr(x)+', ') ;
+   End ;//case
+   sq_GroupLengths.Next ;
+   x:= succ(x) ;
+  End ;
+
+//Lägg till resten av kolumnerna...
+  For y:= x to 44 do
+  cds_PkgList.SQL.Add('CAST(0.0 AS Float) AS L'+inttostr(y)+', ') ;
+
+//Kolumn 65 är en numera en summering av antal paket
+  cds_PkgList.SQL.Add('CAST(count(Distinct CASE WHEN PTL.STD_Length = 0 OR ls.NoOfLengths > 1 THEN Str(pn.PackageNo)+pn.SupplierCode') ;
+  cds_PkgList.SQL.Add('END)  AS Float)  AS L45,') ;
+
+  sq_GroupLengths.Close ;
+
+
+  cds_PkgList.SQL.Add('SUM(ptd.m3Actual) AS AM3,') ;
+  cds_PkgList.SQL.Add('SUM(ptd.m3Nominal) AS NM3,') ;
+  cds_PkgList.SQL.Add('SUM(ptd.LinealMeterActualLength) AS AM1,') ;
+  cds_PkgList.SQL.Add('SUM(ptd.MFBMNominal) AS MFBM,') ;
+  cds_PkgList.SQL.Add('SUM(ptd.SQMofActualWidth) AS AM2,') ;
+  cds_PkgList.SQL.Add('GetDate() AS TILLVERKAD,') ;
+
+
+  cds_PkgList.SQL.Add('SPE.SpeciesName AS TS,') ;
+  cds_PkgList.SQL.Add('imp.ProductCategoryName AS PC,') ;
+  cds_PkgList.SQL.Add('Gr.GradeName AS KV,') ;
+  cds_PkgList.SQL.Add('0 AS STD_Length,') ;
+  cds_PkgList.SQL.Add('SUR.SurfacingName AS UT,') ;
+  cds_PkgList.SQL.Add('Verk.ClientNo AS OwnerNo, Cy.CityName+'+QuotedStr('/')+'+lip.LogicalInventoryName AS Lager,') ;
+  cds_PkgList.SQL.Add('lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo') ;
+
+  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
+  cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1) AS Status,')
+  else
+  cds_PkgList.SQL.Add(',0 AS Status,') ;
+
+  cds_PkgList.SQL.Add('SUM(pn.Original_Price * pt.Totalm3Nominal) / SUM(pt.Totalm3Nominal) AS Pris,') ;
+  cds_PkgList.SQL.Add('SUM(pn.Original_Price * pt.Totalm3Nominal) AS Värde, va.VarugruppNamn, CAST((SUM(ptd.LinealMeterActualLength) / SUM(ptd.NoOfPieces)) AS Float) AS AvgLength,') ;
+//  pn.REFERENCE, pn.BL_NO,  pn.Info2') ;
+  cds_PkgList.SQL.Add(QuotedStr('                              ') + ' AS REFERENCE, '
+  + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS BL_NO, '
+{TSI:IGNORE OFF}
+
+  + QuotedStr('                              ') +
+{TSI:IGNORE ON}
+	' AS Info2'
+{TSI:IGNORE OFF}
+) ;
+
+
+
+  cds_PkgList.SQL.Add('FROM  dbo.Client Verk') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.Loads L on L.SupplierNo = Verk.ClientNo') ;
+
+{
+    cds_PkgList.SQL.Add('LEFT join dbo.Invoiced_Load inl') ;
+    cds_PkgList.SQL.Add('inner join dbo.InvoiceNos nos on nos.InternalInvoiceNo = inl.InternalInvoiceNo') ;
+    cds_PkgList.SQL.Add('on inl.LoadNo = L.LoadNo') ;
+
+}
+  cds_PkgList.SQL.Add('Inner Join dbo.LoadDetail LD on LD.LoadNo = L.LoadNo') ;
+//  cds_PkgList.SQL.Add('Inner Join dbo.CustomerShippingPlanDetails csd on csd.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo') ;
+//  cds_PkgList.SQL.Add('Inner Join dbo.CustomerShippingPlanHeader csh on csh.ShippingPlanNo = csd.ShippingPlanNo') ;
+//  cds_PkgList.SQL.Add('Inner Join dbo.Orders oh on oh.OrderNo = csh.OrderNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.LogicalInventoryPoint lip ON lip.LogicalInventoryPointNo = LD.LIPNo') ;
+  cds_PkgList.SQL.Add('Inner Join dbo.PhysicalInventoryPoint pip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo') ;
+  cds_PkgList.SQL.Add('INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo and pn.SupplierCode = LD.SupplierCode') ;
+
+    cds_PkgList.SQL.Add('Inner Join dbo.PackageType pt ON pt.PackageTypeNo = LD.PackageTypeNo') ;
+    cds_PkgList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
+
+//  if (mtActLengthMM.RecordCount > 0) or (cbShowSingleLengthPkgs.Checked) then
+    Begin
+    cds_PkgList.SQL.Add('Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo') ;
+    cds_PkgList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
+    End ;
+
+  Case mtUserPropLengthVolUnitNo.AsInteger of
+   0 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
+       End ;
+   1 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
+       End ;
+   2 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
+       End ;
+   3 : Begin
+        cds_PkgList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_51' (* 'PAKET PER LÄNGD' *) ) ;
+       End ;
+  End ;
+
+
+  cds_PkgList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
+
+  cds_PkgList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
+  cds_PkgList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+  cds_PkgList.SQL.Add('Inner Join dbo.City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
+
+
+  if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
+  cds_PkgList.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
+  if ComboBoxFilterChecked('gs.BarcodeID', ccbBC) then
+  cds_PkgList.SQL.Add('Inner JOIN dbo.BarCode bc ON bc.BarCodeNo = pt.BarCodeID') ;
+
+
+  cds_PkgList.SQL.Add('WHERE L.LoadedDate > ' + QuotedStr('2013-12-01')) ;
+  cds_PkgList.SQL.Add('AND L.SenderLoadStatus <> 2') ;
+//  cds_PkgList.SQL.Add('AND oh.OrderType = 0') ;//
+
+//  cds_PkgList.SQL.Add('AND nos.InvoiceNo is null') ;
+
+  if Length(TRIM(teInfo1.Text)) > 0 then
+  cds_PkgList.SQL.Add('AND pn.BL_NO LIKE ' + QuotedStr(teInfo1.Text)) ;
+
+  if Length(TRIM(teInfo2.Text)) > 0 then
+  cds_PkgList.SQL.Add('AND pn.Info2 LIKE ' + QuotedStr(teInfo2.Text)) ;
+
+  if Length(TRIM(teREF.Text)) > 0 then
+  Begin
+   cds_PkgList.SQL.Add('AND pn.REFERENCE LIKE ' + QuotedStr(TRIM(teREF.Text))) ;
+  End ;
+
+  cds_PkgList.SQL.Add('AND pn.Status = 0') ;
+
+  if mtUserPropSalesRegionNo.AsInteger > 0 then
+  cds_PkgList.SQL.Add('AND Verk.SalesRegionNo = '+IntToStr(mtUserPropSalesRegionNo.AsInteger)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'LIP.InvCode', cbLIP)) ;
+
+  if not cUserLipNoExists then
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'Verk.PktNrLevKod', cbOwner)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SPE.SpeciesCode', ccbTS2)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'GR.GradeCode', ccbKV2)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SUR.SurfacingCode', ccbSU2)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'va.VaruGruppNo', ccVarugrupp)) ;
+
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'imp.ImpCode', ccbIMP)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'gs.GradeStampID', ccbGS)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'bc.BarCodeID', ccbBC)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.ActualThicknessMM', ccbAT)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.ActualWidthMM', ccbAB)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalThicknessMM', ccbNT)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'pg.NominalWidthMM', ccbNB)) ;
+  cds_PkgList.SQL.Add(GetSQLofComboFilter(1, 'PL.ActualLengthMM', ccbAL)) ;
+
+
+  if cbShowSingleLengthPkgs.Checked then
+    cds_PkgList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
 
   cds_PkgList.SQL.Add('Group By pd.ProductNo, pde.ProductDisplayName, pg.ActualThicknessMM, pg.ActualWidthMM,') ;
   cds_PkgList.SQL.Add('SPE.SpeciesName, Gr.GradeName, SUR.SurfacingName, imp.ProductCategoryName, Verk.ClientNo, ') ;
@@ -5571,10 +5991,7 @@ begin
    if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
    cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
 
-//  if ShowPackageSizeName then
-//  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
-
-  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumListNOTInvoiced.txt');
+  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('GenPrelLoadsTable_SQL.txt');
  End ; //with
 
  finally
@@ -5862,7 +6279,7 @@ begin
   End
   else
   Begin
- //  if cbInklEjFakt.ItemIndex = then
+ //  if cbInklEjFakt2.ItemIndex = then
    cds_PkgNoList.SQL.Add('AND pn.Status = 1') ;
 //   cds_PkgNoList.SQL.Add('AND pn.Status = ' + dmInventory.cds_PkgListStatus.AsString) ;
    if dmInventory.cds_PkgListStatus.AsInteger = 0 then
@@ -5986,20 +6403,6 @@ begin
 
   cds_PkgNoList.SQL.Add('va.VarugruppNamn, CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength, pn.REFERENCE, pn.BL_NO,  pn.Info2') ;
 
-
-{  cds_PkgNoList.SQL.Add('FROM  dbo.Client Verk') ;
-
-  cds_PkgNoList.SQL.Add('Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo') ;
-
-    cds_PkgNoList.SQL.Add('INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo') ;
-    cds_PkgNoList.SQL.Add('Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo') ;
-    cds_PkgNoList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
-
-
-   cds_PkgNoList.SQL.Add('Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo') ;
-   cds_PkgNoList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ; }
-
   cds_PkgNoList.SQL.Add('FROM  dbo.Client Verk') ;
   cds_PkgNoList.SQL.Add('Inner Join dbo.Loads L on L.SupplierNo = Verk.ClientNo') ;
   cds_PkgNoList.SQL.Add('LEFT join dbo.Invoiced_Load inl') ;
@@ -6077,16 +6480,223 @@ begin
 
   cds_PkgNoList.SQL.Add('WHERE LIP.SequenceNo = 1') ;
 
- { if StrToFloatDef(SelectedLength,0) > 0 then
+  if StrToFloatDef(SelectedLength,0) > 0 then
   Begin
-   cds_PkgNoList.SQL.Add('AND pl.ActualLengthMM = ' + SelectedLength) ;
-   cds_PkgNoList.SQL.Add('AND PTL.STD_Length = 1') ;
+   cds_PkgNoList.SQL.Add('AND exists (Select * FROM dbo.PackageTypeDetail ptd2') ;
+   cds_PkgNoList.SQL.Add('inner join dbo.ProductLength pl2 ON pl2.ProductLengthNo = ptd2.ProductLengthNo') ;
+   cds_PkgNoList.SQL.Add('WHERE ptd2.PackageTypeNo = LD.PackageTypeNo') ;
+   cds_PkgNoList.SQL.Add('AND pl2.ActualLengthMM = ' + SelectedLength + ')' ) ;
+   cds_PkgNoList.SQL.Add('and ls.NoOfLengths = 1') ;
   End
   else
   if SelectedLength = 'ÖVRIGA' then
   Begin
    cds_PkgNoList.SQL.Add('AND (PTL.STD_Length = 0 or ls.NoOfLengths > 1)') ;
-  End ;    }
+  End ;
+
+  if deStartPeriod.EditValue > 0 then
+  cds_PkgNoList.SQL.Add('AND pn.DateCreated >= ' + QuotedStr(DateTimeToStr(deStartPeriod.Date))) ;
+
+  if deEndPeriod.EditValue > 0 then
+  cds_PkgNoList.SQL.Add('AND pn.DateCreated <= ' + QuotedStr(DateTimeToStr(deEndPeriod.Date))) ;
+
+  if Length(TRIM(teInfo1.Text)) > 0 then
+    cds_PkgNoList.SQL.Add('AND pn.BL_NO LIKE ' + QuotedStr(teInfo1.Text)) ;
+
+  if Length(TRIM(teInfo2.Text)) > 0 then
+    cds_PkgNoList.SQL.Add('AND pn.Info2 LIKE ' + QuotedStr(teInfo2.Text)) ;
+
+
+  if Length(TRIM(teREF.Text)) > 0 then
+  Begin
+   cds_PkgNoList.SQL.Add('AND pn.REFERENCE LIKE ' + QuotedStr(TRIM(teREF.Text))) ;
+  End ;
+
+  cds_PkgNoList.SQL.Add('AND pn.Status = 0') ;// + dmInventory.cds_PkgListStatus.AsString) ;
+
+  cds_PkgNoList.SQL.Add('AND pt.ProductNo = ' + cds_PkgListProductNo.AsString) ;
+  cds_PkgNoList.SQL.Add('AND LIP.LogicalInventoryPointNo = '+IntToStr(cds_PkgListLIPNo.AsInteger)) ;
+
+  cds_PkgNoList.SQL.Add('AND nos.InvoiceNo is null') ;
+
+
+  if cbShowSingleLengthPkgs.Checked then
+    cds_PkgNoList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
+
+  cds_PkgNoList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
+  cds_PkgNoList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
+  cds_PkgNoList.SQL.Add('pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName,imp.ProductCategoryName,') ;
+  cds_PkgNoList.SQL.Add('Gr.GradeName, SUR.SurfacingName, Verk.ClientNo, Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, pn.REFERENCE, pn.BL_NO, pn.Info2') ;
+  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
+  cds_PkgNoList.SQL.Add(',isnull(avrPkg.Status,1)')
+  else
+  cds_PkgNoList.SQL.Add(',pn.Status') ;
+
+  cds_PkgNoList.SQL.Add(', va.VarugruppNamn ') ;
+
+  if thisuser.UserID = 258 then cds_PkgNoList.SQL.SaveToFile('sq_PkgNoEJFAKT.txt');
+ End ; //with
+
+ finally
+  Screen.Cursor := Save_Cursor;  { Always restore to normal }
+ end;
+end;
+
+
+procedure TfrmInventoryReport.GenPkgNosDetailTable_SQL_PrelLoads(Sender: TObject);
+Var Save_Cursor : TCursor;
+    y, x        : Byte ;
+begin
+ Save_Cursor := Screen.Cursor;
+ Screen.Cursor := crSQLWait;    { Show hourglass cursor }
+ FormatLengthColumns ;
+ Try
+ With dmInventory do
+ Begin
+
+
+  cds_PkgNoList.SQL.Add('Select distinct 1 AS PKT,') ;
+  cds_PkgNoList.SQL.Add('pd.ProductNo,') ;
+  cds_PkgNoList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
+  cds_PkgNoList.SQL.Add('pt.PackageTypeNo,') ;
+  cds_PkgNoList.SQL.Add('pn.PackageNo,') ;
+  cds_PkgNoList.SQL.Add('pn.SupplierCode,') ;
+
+  cds_PkgNoList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
+  cds_PkgNoList.SQL.Add('pg.ActualWidthMM AS AB,') ;
+  cds_PkgNoList.SQL.Add('pt.TotalNoOfPieces AS STYCK,') ;
+
+  cds_PkgNoList.SQL.Add('CASE WHEN PTL.STD_Length = 0 THEN PTL.PcsPerLength') ;
+  cds_PkgNoList.SQL.Add('ELSE ' + QuotedStr('')) ;
+  cds_PkgNoList.SQL.Add('END AS STYCKPERLÄNGD,') ;
+
+  sq_GroupLengths.ParamByName('GroupNo').AsInteger:= mtUserPropLengthGroupNo.AsInteger ;
+  sq_GroupLengths.Open ;
+  sq_GroupLengths.First ;
+  x:= 1 ;
+  While not sq_GroupLengths.Eof do
+  Begin
+   Case mtUserPropLengthVolUnitNo.AsInteger of
+    0 : cds_PkgNoList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    1 : cds_PkgNoList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.m3Actual ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    2 : cds_PkgNoList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.m3Nominal ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+    3 : cds_PkgNoList.SQL.Add('CAST(SUM(CASE WHEN pl.ActualLengthMM = '+sq_GroupLengthsActualLengthMM.AsString
+        +' THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L'+inttostr(x)+', ') ;
+   End ;//case
+
+   sq_GroupLengths.Next ;
+   x:= succ(x) ;
+  End ;
+
+  For y:= x to 45 do
+  cds_PkgNoList.SQL.Add('CAST(0.0 AS Float) AS L'+inttostr(y)+', ') ;
+
+  sq_GroupLengths.Close ;
+
+
+
+  cds_PkgNoList.SQL.Add('pt.Totalm3Actual AS AM3,') ;
+  cds_PkgNoList.SQL.Add('pt.Totalm3Nominal AS NM3,') ;
+  cds_PkgNoList.SQL.Add('pt.TotalLinealMeterActualLength AS AM1,') ;
+  cds_PkgNoList.SQL.Add('pt.TotalMFBMNominal AS MFBM,') ;
+  cds_PkgNoList.SQL.Add('pt.TotalSQMofActualWidth AS AM2,') ;
+  cds_PkgNoList.SQL.Add('pn.DateCreated AS TILLVERKAD,') ;
+
+
+  cds_PkgNoList.SQL.Add('SPE.SpeciesName AS TS,') ;
+  cds_PkgNoList.SQL.Add('imp.ProductCategoryName AS PC,') ;
+  cds_PkgNoList.SQL.Add('Gr.GradeName AS KV,') ;
+  cds_PkgNoList.SQL.Add('SUR.SurfacingName AS UT,') ;
+  cds_PkgNoList.SQL.Add('PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName + ' + QuotedStr('/') + ' + lip.LogicalInventoryName AS Lager,') ;
+  cds_PkgNoList.SQL.Add('lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo') ;
+  if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
+  cds_PkgNoList.SQL.Add(',isnull(avrPkg.Status,1) AS Status,')
+  else
+  Begin
+   cds_PkgNoList.SQL.Add(',pn.Status AS Status,') ;
+  End ;
+
+  cds_PkgNoList.SQL.Add('va.VarugruppNamn, CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength, pn.REFERENCE, pn.BL_NO,  pn.Info2') ;
+
+  cds_PkgNoList.SQL.Add('FROM  dbo.Client Verk') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.Loads L on L.SupplierNo = Verk.ClientNo') ;
+//  cds_PkgNoList.SQL.Add('LEFT join dbo.Invoiced_Load inl') ;
+//  cds_PkgNoList.SQL.Add('inner join dbo.InvoiceNos nos on nos.InternalInvoiceNo = inl.InternalInvoiceNo') ;
+//  cds_PkgNoList.SQL.Add('on inl.LoadNo = L.LoadNo') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.LoadDetail LD on LD.LoadNo = L.LoadNo') ;
+//  cds_PkgNoList.SQL.Add('Inner Join dbo.CustomerShippingPlanDetails csd on csd.CustShipPlanDetailObjectNo = LD.DefaultCustShipObjectNo') ;
+//  cds_PkgNoList.SQL.Add('Inner Join dbo.CustomerShippingPlanHeader csh on csh.ShippingPlanNo = LD.ShippingPlanNo') ;
+//  cds_PkgNoList.SQL.Add('Inner Join dbo.Orders oh on oh.OrderNo = csh.OrderNo') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.LogicalInventoryPoint lip ON lip.LogicalInventoryPointNo = LD.LIPNo') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.PhysicalInventoryPoint pip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo') ;
+  cds_PkgNoList.SQL.Add('INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = LD.PackageNo and pn.SupplierCode = LD.SupplierCode') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = LD.PackageTypeNo') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = LD.PackageTypeNo') ;
+  cds_PkgNoList.SQL.Add('Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo') ;
+
+
+  Case mtUserPropLengthVolUnitNo.AsInteger of
+   0 : Begin
+        cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_49' (* 'STYCK PER LÄNGD' *) ) ;
+       End ;
+   1 : Begin
+        cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_5' (* 'AM3 PER LÄNGD' *) ) ;
+       End ;
+   2 : Begin
+        cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_6' (* 'NM3 PER LÄNGD' *) ) ;
+       End ;
+   3 : Begin
+        cds_PkgNoList.SQL.Add('Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo') ;
+        cds_PkgNoList.SQL.Add('AND PTL.LengthGroupNo = '+mtUserPropLengthGroupNo.AsString) ;
+        cds_PkgNoList.SQL.Add('AND PTL.VolumeType = '+inttostr(mtUserPropLengthVolUnitNo.AsInteger)) ;
+        cxGrid1DBBandedTableView1.Bands.Items[2].Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_4' (* 'ANTAL PER LÄNGD' *) ) ;
+       End ;
+  End ;
+
+
+  cds_PkgNoList.SQL.Add('Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo') ;
+
+  cds_PkgNoList.SQL.Add('Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo') ;
+  cds_PkgNoList.SQL.Add('AND pde.LanguageID = ' + LanguageID) ;
+
+  cds_PkgNoList.SQL.Add('Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo') ;
+  cds_PkgNoList.SQL.Add('AND va.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgNoList.SQL.Add('Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo') ;
+
+  cds_PkgNoList.SQL.Add('Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo') ;
+  cds_PkgNoList.SQL.Add('				AND imp.LanguageCode = ' + LanguageID) ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo') ;
+  cds_PkgNoList.SQL.Add('				AND SPE.LanguageCode = ' + LanguageID) ;
+  cds_PkgNoList.SQL.Add('Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo') ;
+  cds_PkgNoList.SQL.Add('				AND SUR.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgNoList.SQL.Add('Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo') ;
+  cds_PkgNoList.SQL.Add('				AND Gr.LanguageCode = ' + LanguageID) ;
+
+  cds_PkgNoList.SQL.Add('Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo') ;
+
+  if ComboBoxFilterChecked('gs.GradeStampID', ccbGS) then
+  cds_PkgNoList.SQL.Add('Inner JOIN dbo.GradeStamp gs ON gs.GradeStampNo = pt.GradeStamp') ;
+  if ComboBoxFilterChecked('gs.BarcodeID', ccbBC) then
+  cds_PkgNoList.SQL.Add('Inner JOIN dbo.BarCode bc ON bc.BarCodeNo = pt.BarCodeID') ;
+
+
+
+  cds_PkgNoList.SQL.Add('WHERE LIP.SequenceNo = 1') ;
 
   if StrToFloatDef(SelectedLength,0) > 0 then
   Begin
@@ -6120,44 +6730,17 @@ begin
    cds_PkgNoList.SQL.Add('AND pn.REFERENCE LIKE ' + QuotedStr(TRIM(teREF.Text))) ;
   End ;
 
-//  cds_PkgNoList.SQL.Add('AND pn.Status = '+IntToStr(cds_PkgListStatus.AsInteger)) ;
-
-
-
-   cds_PkgNoList.SQL.Add('AND pn.Status = 0') ;// + dmInventory.cds_PkgListStatus.AsString) ;
+  cds_PkgNoList.SQL.Add('AND pn.Status = 0') ;// + dmInventory.cds_PkgListStatus.AsString) ;
 
   cds_PkgNoList.SQL.Add('AND pt.ProductNo = ' + cds_PkgListProductNo.AsString) ;
   cds_PkgNoList.SQL.Add('AND LIP.LogicalInventoryPointNo = '+IntToStr(cds_PkgListLIPNo.AsInteger)) ;
 
-  cds_PkgNoList.SQL.Add('AND nos.InvoiceNo is null') ;
+//  cds_PkgNoList.SQL.Add('AND nos.InvoiceNo is null') ;
+  cds_PkgNoList.SQL.Add('AND L.SenderLoadStatus <> 2') ;
 
-
-
- // if mtUserPropSalesRegionNo.AsInteger > 0 then
- // cds_PkgNoList.SQL.Add('AND Verk.SalesRegionNo = ' + IntToStr(mtUserPropSalesRegionNo.AsInteger)) ;
 
   if cbShowSingleLengthPkgs.Checked then
     cds_PkgNoList.SQL.Add('and 1= (Select Count(PackageTypeNo) From dbo.PackageTypeDetail WHERE PackageTypeNo = ptd.PackageTypeNo)') ;
-
-
-{
-  cds_PkgNoList.SQL.Add('AND L.LoadNo not in (Select inl.LoadNo FROM dbo.Invoiced_Load inl') ;
-  cds_PkgNoList.SQL.Add('inner join dbo.InvoiceNos nos on nos.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgNoList.SQL.Add('WHERE inl.LoadNo = L.LoadNo)') ;
-  }
-
-{
-  cds_PkgNoList.SQL.Add('AND L.LoadNo not in (Select inl.LoadNo FROM dbo.Invoiced_Load inl') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.InvoiceNumber invno on invno.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl.InternalInvoiceNo') ;
-  cds_PkgNoList.SQL.Add('WHERE inl.LoadNo = L.LoadNo)') ;
-
-  cds_PkgNoList.SQL.Add('AND L.LoadNo not in (Select inl2.LoadNo FROM dbo.Invoiced_Load inl2') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.ProformaInvoiceNumber invno on invno.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
-  cds_PkgNoList.SQL.Add('Inner Join dbo.InvoiceHeader ih on ih.InternalInvoiceNo = inl2.InternalInvoiceNo') ;
-  cds_PkgNoList.SQL.Add('WHERE inl2.LoadNo = L.LoadNo)') ;
- }
-
 
   cds_PkgNoList.SQL.Add('Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,') ;
   cds_PkgNoList.SQL.Add('pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,') ;
@@ -6170,10 +6753,7 @@ begin
 
   cds_PkgNoList.SQL.Add(', va.VarugruppNamn ') ;
 
-
-
-  if thisuser.UserID = 258 then cds_PkgNoList.SQL.SaveToFile('sq_PkgNoEJFAKT.txt');
-
+  if thisuser.UserID = 258 then cds_PkgNoList.SQL.SaveToFile('GenPkgNosDetailTable_SQL_PrelLoads.txt');
  End ; //with
 
  finally
@@ -6205,17 +6785,20 @@ begin
 
   cds_PkgNoList.SQL.Clear ;
 
-   if cbInklEjFakt.ItemIndex = 2 then
-    GenPkgNosDetailTable_SQL_EJFAKT(Sender)
-     else
-      if cbInklEjFakt.ItemIndex = 0 then
-        GenPkgNosDetailTable_SQL(Sender)
-         else
-         Begin
-          GenPkgNosDetailTable_SQL(Sender) ;
-          cds_PkgNoList.SQL.Add(' UNION ') ;
-          GenPkgNosDetailTable_SQL_EJFAKT(Sender) ;
-         End;
+  if cbInklEjFakt2.ItemIndex = 4 then
+  GenPkgNosDetailTable_SQL_PrelLoads(Sender)
+   else
+    if cbInklEjFakt2.ItemIndex = 2 then
+     GenPkgNosDetailTable_SQL_EJFAKT(Sender)
+      else
+       if cbInklEjFakt2.ItemIndex = 0 then
+         GenPkgNosDetailTable_SQL(Sender)
+          else
+          Begin
+           GenPkgNosDetailTable_SQL(Sender) ;
+           cds_PkgNoList.SQL.Add(' UNION ') ;
+           GenPkgNosDetailTable_SQL_EJFAKT(Sender) ;
+          End;
 
    PackageNo            :=  cds_PkgNoListPackageNo.AsInteger ;
    Supp_Code            :=  cds_PkgNoListSupplierCode.AsString ;
@@ -7449,7 +8032,7 @@ end;
 procedure TfrmInventoryReport.acRegistreraPaketUpdate(Sender: TObject);
 begin
  acRegistreraPaket.Enabled  := (mtUserPropNewItemRow.AsInteger < 1)
- and (cbInklEjFakt.ItemIndex = 0) ;
+ and (cbInklEjFakt2.ItemIndex = 0) ;
 end;
 
 procedure TfrmInventoryReport.acChangePackagesUpdate(Sender: TObject);
@@ -7457,7 +8040,7 @@ begin
  acChangePackages.Enabled:= (mtUserPropNewItemRow.AsInteger < 1)
 // and  (ShowDeActivatedPkgs = False)
  and ((dmInventory.cds_PkgNoList.Active) and (dmInventory.cds_PkgNoList.RecordCount > 0))
- and (cbInklEjFakt.ItemIndex = 0) ;
+ and (cbInklEjFakt2.ItemIndex = 0) ;
 end;
 
 procedure TfrmInventoryReport.acAvRegistreraPaketUpdate(Sender: TObject);
@@ -7465,7 +8048,7 @@ begin
  acAvRegistreraPaket.Enabled:= (mtUserPropNewItemRow.AsInteger < 1)
  and  (ShowDeActivatedPkgs = False)
  and ((dmInventory.cds_PkgNoList.Active) and (dmInventory.cds_PkgNoList.RecordCount > 0))
- and (cbInklEjFakt.ItemIndex = 0) ;
+ and (cbInklEjFakt2.ItemIndex = 0) ;
 end;
 
 procedure TfrmInventoryReport.acMovePkgsInterntUpdate(Sender: TObject);
@@ -7473,7 +8056,7 @@ begin
  acMovePkgsInternt.Enabled:= (mtUserPropNewItemRow.AsInteger < 1)
  and  (ShowDeActivatedPkgs = False)
  and ((dmInventory.cds_PkgNoList.Active) and (dmInventory.cds_PkgNoList.RecordCount > 0))
- and (cbInklEjFakt.ItemIndex = 0) ;
+ and (cbInklEjFakt2.ItemIndex = 0) ;
 end;
 
 procedure TfrmInventoryReport.cxGrid1DBBandedTableView1CustomDrawCell(
@@ -8455,7 +9038,7 @@ begin
  acVardaBortPaket.Enabled:= (mtUserPropNewItemRow.AsInteger < 1)
  and  (ShowDeActivatedPkgs = False)
  and ((dmInventory.cds_PkgNoList.Active) and (dmInventory.cds_PkgNoList.RecordCount > 0))
- and (cbInklEjFakt.ItemIndex = 0) ;
+ and (cbInklEjFakt2.ItemIndex = 0) ;
 end;
 
 procedure TfrmInventoryReport.acAndraPktVardExecute(Sender: TObject);
@@ -8625,7 +9208,7 @@ begin
  acAndraPktVard.Enabled:= (mtUserPropNewItemRow.AsInteger < 1)
  and  (ShowDeActivatedPkgs = False)
  and ((dmInventory.cds_PkgNoList.Active) and (dmInventory.cds_PkgNoList.RecordCount > 0))
- and (cbInklEjFakt.ItemIndex = 0) ;
+ and (cbInklEjFakt2.ItemIndex = 0) ;
 end;
 
 procedure TfrmInventoryReport.acResetGridExecute(Sender: TObject);
@@ -9080,7 +9663,7 @@ begin
   cds_PkgList.SQL.Add('pg.ActualWidthMM, PTL.STD_Length, PTL.PcsPerLength, ') ;
   cds_PkgList.SQL.Add('pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,') ;
   cds_PkgList.SQL.Add('Gr.GradeName, SUR.SurfacingName, ') ;
-  cds_PkgList.SQL.Add('IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO ') ;
+  cds_PkgList.SQL.Add('IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO, pt.TotalLinealMeterActualLength, pt.TotalNoOfPieces ') ;
 //    if ShowPackageSizeName then
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 

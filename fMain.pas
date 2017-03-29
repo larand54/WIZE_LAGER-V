@@ -35,7 +35,8 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxButtons,
   cxGridLevel, cxGridCustomView, cxGrid, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  System.Actions, siComp, siLngLnk  ;
+  System.Actions, siComp, siLngLnk, cxContainer, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit  ;
 
 
 

@@ -10,20 +10,20 @@ pt.TotalNoOfPieces AS STYCK,
 CASE WHEN PTL.STD_Length = 0 THEN PTL.PcsPerLength
 ELSE ''
 END AS STYCKPERLÄNGD,
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 1 THEN ptd.NoOfPieces * pl.ActualLengthMM ELSE 0 END) AS Float) AS L1, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 14 THEN ptd.NoOfPieces * pl.ActualLengthMM ELSE 0 END) AS Float) AS L2, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 16 THEN ptd.NoOfPieces * pl.ActualLengthMM ELSE 0 END) AS Float) AS L3, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 25 THEN ptd.NoOfPieces * pl.ActualLengthMM ELSE 0 END) AS Float) AS L4, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 27 THEN ptd.NoOfPieces * pl.ActualLengthMM ELSE 0 END) AS Float) AS L5, 
-CAST(0.0 AS Float) AS L6, 
-CAST(0.0 AS Float) AS L7, 
-CAST(0.0 AS Float) AS L8, 
-CAST(0.0 AS Float) AS L9, 
-CAST(0.0 AS Float) AS L10, 
-CAST(0.0 AS Float) AS L11, 
-CAST(0.0 AS Float) AS L12, 
-CAST(0.0 AS Float) AS L13, 
-CAST(0.0 AS Float) AS L14, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 1800 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L1, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 2100 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L2, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 2400 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L3, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 2700 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L4, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3000 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L5, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3300 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L6, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3600 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L7, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 3900 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L8, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 4200 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L9, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 4500 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L10, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 4800 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L11, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 5100 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L12, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 5400 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L13, 
+CAST(SUM(CASE WHEN pl.ActualLengthMM = 5700 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L14, 
 CAST(0.0 AS Float) AS L15, 
 CAST(0.0 AS Float) AS L16, 
 CAST(0.0 AS Float) AS L17, 
@@ -75,11 +75,10 @@ Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.P
 INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
 Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
 Inner Join dbo.LengthSpec LS ON LS.LengthSpecNo = pt.LengthSpecNo
-Left join dbo.PackageSize ps on ps.PackageSizeNo = pn.Package_Size
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
-AND PTL.LengthGroupNo = 43
+AND PTL.LengthGroupNo = 1
 AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
 Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
@@ -97,13 +96,12 @@ Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
-AND pl.ActualLengthMM = 16
+AND pl.ActualLengthMM = 3000
 AND PTL.STD_Length = 1
-AND PackageSizeName = 'EUROPALL [52 SÄCK]'
 AND pn.Status = 1
-AND pt.ProductNo = 99840
-AND LIP.LogicalInventoryPointNo = 10918
-AND Verk.SalesRegionNo = 2846
+AND pt.ProductNo = 18426
+AND LIP.LogicalInventoryPointNo = 10435
+AND Verk.SalesRegionNo = 741
 Group by pd.ProductNo, pde.ProductDisplayName, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
 pg.ActualWidthMM, pt.TotalNoOfPieces, PTL.STD_Length, PTL.PcsPerLength, pt.Totalm3Actual, pt.Totalm3Nominal,
 pt.TotalLinealMeterActualLength, pt.TotalMFBMNominal, pt.TotalSQMofActualWidth, pn.DateCreated, SPE.SpeciesName,imp.ProductCategoryName,

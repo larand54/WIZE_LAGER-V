@@ -2,26 +2,26 @@ Select distinct Count(Distinct Str(pn.PackageNo)+pn.SupplierCode) AS PKT,
 0 AS ProductNo,
 OL.OrderLineDescription AS PRODUKT,
 0 AS PackageTypeNo,
-0 AS PKTNR,
-'xxx' AS LEVKOD,
+0 AS PackageNo,
+'xxx' AS SupplierCode,
 pg.ActualThicknessMM AS AT,
 pg.ActualWidthMM AS AB,
 SUM(ptd.NoOfPieces) AS STYCK,
 RTRIM(' ') AS STYCKPERLÄNGD,
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 1800 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L1, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 2100 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L2, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 2400 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L3, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 2700 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L4, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3000 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L5, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3300 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L6, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3600 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L7, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 3900 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L8, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 4200 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L9, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 4500 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L10, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 4800 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L11, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 5100 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L12, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 5400 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L13, 
-CAST(SUM(CASE WHEN pl.ActualLengthMM = 5700 THEN ptd.NoOfPieces ELSE 0 END) AS Float) AS L14, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 1800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L1, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L2, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L3, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 2700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L4, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3000 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L5, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3300 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L6, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3600 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L7, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 3900 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L8, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4200 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L9, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4500 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L10, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 4800 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L11, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5100 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L12, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5400 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L13, 
+CAST(count(Distinct CASE WHEN pl.ActualLengthMM = 5700 AND PTL.STD_Length = 1 AND ls.NoOfLengths = 1 THEN Str(pn.PackageNo)+pn.SupplierCode END)  AS Float) AS L14, 
 CAST(0.0 AS Float) AS L15, 
 CAST(0.0 AS Float) AS L16, 
 CAST(0.0 AS Float) AS L17, 
@@ -98,20 +98,23 @@ AND PTD.LoadDetailNo = LD.LoadDetailNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
 AND PTL.LengthGroupNo = 1
-AND PTL.VolumeType = 0
+AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
+AND pde.LanguageID = 1
 Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
+AND va.LanguageCode = 1
 Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
-Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
 				AND imp.LanguageCode = 1
-Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
 				AND SPE.LanguageCode = 1
-Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
 				AND SUR.LanguageCode = 1
-Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 WHERE 
-92951
+173514
  IN (Select INO.InvoiceNo FROM dbo.InvoiceNumber INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
 Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM,
 IH.InvoiceType

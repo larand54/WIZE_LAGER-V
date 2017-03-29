@@ -100,8 +100,8 @@ Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
 AND pn.Status = 1
 AND Verk.SalesRegionNo = 741
- AND ( LIP.InvCode = '43' ) 
- AND ( Verk.PktNrLevKod = 10 ) 
+
+ AND ( Verk.PktNrLevKod = 18 ) 
 
 
 

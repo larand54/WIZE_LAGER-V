@@ -511,7 +511,7 @@
         object pivLeveranserUtlastad: TcxDBPivotGridField
           AreaIndex = 16
           DataBinding.FieldName = 'Utlastad'
-          GroupInterval = giDate
+          PropertiesClassName = 'TcxLabelProperties'
           UniqueName = 'Utlastad'
         end
         object pivLeveranserClientName: TcxDBPivotGridField
@@ -3559,7 +3559,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42723.038337650460000000
+      ReportDocument.CreationDate = 42813.739236423610000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3588,7 +3588,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42723.038337662040000000
+      ReportDocument.CreationDate = 42813.739236435180000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3615,7 +3615,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42723.038337662040000000
+      ReportDocument.CreationDate = 42813.739236446760000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3637,7 +3637,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42723.038337673610000000
+      ReportDocument.CreationDate = 42813.739236458340000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
@@ -3702,7 +3702,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42723.038337997680000000
+      ReportDocument.CreationDate = 42813.739236724530000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -3772,7 +3772,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42723.038338009260000000
+      ReportDocument.CreationDate = 42813.739236736110000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
@@ -3791,7 +3791,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42723.038338032410000000
+      ReportDocument.CreationDate = 42813.739236759260000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link12: TdxCustomContainerReportLink
@@ -6803,6 +6803,7 @@
     end
   end
   object cds_Data: TFDQuery
+    Active = True
     ConstraintsEnabled = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (

@@ -2,8 +2,8 @@ Select distinct 1 AS PKT,
 pd.ProductNo,
 OL.OrderLineDescription AS PRODUKT,
 pt.PackageTypeNo,
-pn.PackageNo AS PKTNR,
-pn.SupplierCode AS LEVKOD,
+pn.PackageNo,
+pn.SupplierCode,
 pg.ActualThicknessMM AS AT,
 pg.ActualWidthMM AS AB,
 SUM(ptd.NoOfPieces) AS STYCK,
@@ -85,7 +85,7 @@ END AS LIPNo,
 1 AS Status,
 CAST(1.0 AS Float) AS Pris,
 CAST(1.0 AS Float) AS Värde,
-'N/A' AS VarugruppNamn, CAST(LS.AvgLength AS Float) AS AvgLength,
+'N/A' AS VarugruppNamn, CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength,
 'N/A' AS REFERENCE,
 'N/A' AS BL_NO,
 'N/A' AS Info2
@@ -113,23 +113,26 @@ Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
 AND PTL.LengthGroupNo = 1
-AND PTL.VolumeType = 0
+AND PTL.VolumeType = 3
 Inner Join dbo.Product pd ON pd.ProductNo = pt.ProductNo
+Left Join dbo.ProductDesc pde ON pde.ProductNo = pt.ProductNo
+AND pde.LanguageID = 1
 Left Outer Join dbo.Varugrupp va on va.VarugruppNo = PD.VarugruppNo
+AND va.LanguageCode = 1
 Inner Join dbo.ProductGroup pg ON pg.ProductGroupNo = pd.ProductGroupNo
-Inner Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
+Left Join dbo.ProductCategory	imp	ON imp.ProductCategoryNo = pg.ProductCategoryNo
 				AND imp.LanguageCode = 1
-Inner Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
+Left Join dbo.Species	SPE	ON SPE.SpeciesNo = pg.SpeciesNo
 				AND SPE.LanguageCode = 1
-Inner Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
+Left Join dbo.Surfacing	SUR	ON SUR.SurfacingNo = pg.SurfacingNo
 				AND SUR.LanguageCode = 1
-Inner Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
+Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 WHERE 
-92951
+173514
  IN (Select INO.InvoiceNo FROM dbo.InvoiceNumber INo WHERE INo.InternalInvoiceNo = IH.InternalInvoiceNo)
 Group by pd.ProductNo, OL.OrderLineDescription, pt.PackageTypeNo, pn.PackageNo, pn.SupplierCode, pg.ActualThicknessMM,
 pg.ActualWidthMM, PTL.STD_Length, PTL.PcsPerLength, 
 pn.DateCreated, SPE.SpeciesName, imp.ProductCategoryName,
 Gr.GradeName, SUR.SurfacingName, 
-IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO, LS.AvgLength
+IH.InvoiceType, IH.InternalInvoiceNo, IL.SHIPPINGPLANNO, pt.TotalLinealMeterActualLength, pt.TotalNoOfPieces 
