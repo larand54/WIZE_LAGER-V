@@ -68,14 +68,24 @@ SUR.SurfacingName AS UT,
 PTL.STD_Length, Verk.ClientNo AS OwnerNo, Cy.CityName+'/'+lip.LogicalInventoryName AS Lager,
 lip.LogicalInventoryPointNo AS LIPNo, pip.PhysicalInventoryPointNo AS PIPNo
 ,1 AS Status,
-pn.Original_Price AS Pris,
-pn.Original_Price * pt.Totalm3Nominal AS Värde, va.VarugruppNamn,
+(Select ls.Avgprice from dbo.LIPSum ls
+WHERE ls.IC_SetNo = 47
+and ls.PackageNo = pn.packageNo
+and ls.Suppliercode = pn.SupplierCode
+and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Pris,
+(Select ls.Avgprice * ls.Volume from dbo.LIPSum ls
+WHERE ls.IC_SetNo = 47
+and ls.PackageNo = pn.packageNo
+and ls.Suppliercode = pn.SupplierCode
+and ls.LIPNo = LIP.LogicalInventoryPointNo) AS Värde, va.VarugruppNamn,
 CAST(pt.TotalLinealMeterActualLength / pt.TotalNoOfPieces AS Float) AS AvgLength, pn.REFERENCE, pn.BL_NO,  pn.Info2
 FROM  dbo.Client Verk
 Inner Join dbo.PhysicalInventoryPoint pip ON pip.OwnerNo = Verk.ClientNo
 Inner Join dbo.LogicalInventoryPoint Lip ON pip.PhysicalInventoryPointNo = lip.PhysicalInventoryPointNo
-INNER JOIN dbo.PackageNumber pn ON pn.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
-Inner Join dbo.PackageType pt ON pt.PackageTypeNo = pn.PackageTypeNo
+INNER JOIN dbo.InvenRow invctrlrow ON invctrlrow.LogicalInventoryPointNo = lip.LogicalInventoryPointNo
+INNER JOIN dbo.PackageNumber pn ON pn.PackageNo = invctrlrow.PackageNo
+AND pn.SupplierCode = invctrlrow.SupplierCode
+Inner Join dbo.PackageType pt 	ON pt.PackageTypeNo = invctrlrow.PackageTypeNo
 Inner Join dbo.PackageTypeDetail ptd 	ON ptd.PackageTypeNo = pt.PackageTypeNo
 Inner Join dbo.ProductLength pl 	ON pl.ProductLengthNo = ptd.ProductLengthNo
 Inner Join dbo.PkgTypeLengthDtl PTL ON PTL.PackageTypeNo = pt.PackageTypeNo
@@ -98,10 +108,7 @@ Left Join dbo.Grade   	Gr	ON Gr.GradeNo = pd.GradeNo
 				AND Gr.LanguageCode = 1
 Inner Join City		Cy	ON Cy.CityNo = pip.PhyInvPointNameNo
 WHERE LIP.SequenceNo = 1
-AND pn.Status = 1
-AND Verk.SalesRegionNo = 741
-
- AND ( Verk.PktNrLevKod = 18 ) 
+AND EXISTS (Select * FROM dbo.Inven_Al_VW ia WHERE ia.IC_GroupNo = invctrlrow.IC_GrpNo and ia.IC_SetNo = 47 )
 
 
 

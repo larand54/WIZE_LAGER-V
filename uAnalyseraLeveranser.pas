@@ -829,6 +829,7 @@ type
     pivKDInfo2: TcxDBPivotGridField;
     cds_Datakg: TFloatField;
     pivLeveranserKG: TcxDBPivotGridField;
+    pivDateAndTime: TcxDBPivotGridField;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);

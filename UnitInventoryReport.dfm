@@ -4,12 +4,12 @@ object frmInventoryReport: TfrmInventoryReport
   Align = alClient
   BorderStyle = bsNone
   Caption = 'LAGERRAPPORT'
-  ClientHeight = 1012
-  ClientWidth = 1559
+  ClientHeight = 822
+  ClientWidth = 1267
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -21,17 +21,13 @@ object frmInventoryReport: TfrmInventoryReport
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 96
+  TextHeight = 13
   object pcInventory: TcxPageControl
     Left = 0
-    Top = 199
-    Width = 1559
-    Height = 813
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 163
+    Width = 1267
+    Height = 659
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = tsTABELL
@@ -42,29 +38,23 @@ object frmInventoryReport: TfrmInventoryReport
     TabSlants.Kind = skCutCorner
     OnChange = pcInventoryChange
     OnPageChanging = pcInventoryPageChanging
-    ClientRectBottom = 813
-    ClientRectRight = 1559
-    ClientRectTop = 23
+    ClientRectBottom = 659
+    ClientRectRight = 1267
+    ClientRectTop = 20
     object tsReport: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'CR RAPPORTER'
       ImageIndex = 0
       object CRViewer91: TCrystalActiveXReportViewer
         Left = 0
-        Top = 41
-        Width = 1559
-        Height = 749
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 33
+        Width = 1267
+        Height = 606
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 1247
+        ExplicitHeight = 599
         ControlData = {
-          10070000E7800000EE3D00000B00FFFF0B00FFFF0B00FFFF0B00FFFF0B00FFFF
+          10070000F3820000A23E00000B00FFFF0B00FFFF0B00FFFF0B00FFFF0B00FFFF
           0B00FFFF0B00FFFF0B00FFFF0B0000000B00FFFF0B00FFFF0B00FFFF0B00FFFF
           0B0000000B00FFFF0B00FFFF0B00FFFF0B00FFFF08000200000000000B00FFFF
           0B00FFFF0B0000000B0000000B00FFFF0B00FFFF13001D040000}
@@ -72,23 +62,15 @@ object frmInventoryReport: TfrmInventoryReport
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1559
-        Height = 41
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1267
+        Height = 33
         Align = alTop
         TabOrder = 1
         object BitBtn1: TBitBtn
-          Left = 4
+          Left = 3
           Top = 1
-          Width = 133
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 108
+          Height = 31
           Action = acCRPkgNoReport
           Caption = 'Paketnr F2'
           Glyph.Data = {
@@ -169,14 +151,10 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 0
         end
         object BitBtn2: TBitBtn
-          Left = 138
+          Left = 112
           Top = 1
-          Width = 135
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 110
+          Height = 31
           Action = acCRAntalPerLangd
           Caption = 'Ant/l'#228'ngd F3'
           Glyph.Data = {
@@ -257,14 +235,10 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 1
         end
         object BitBtn3: TBitBtn
-          Left = 273
+          Left = 222
           Top = 1
-          Width = 136
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 110
+          Height = 31
           Action = acPkgCode
           Caption = 'Paketkod F4'
           Glyph.Data = {
@@ -345,14 +319,10 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 2
         end
         object BitBtn4: TBitBtn
-          Left = 409
+          Left = 332
           Top = 1
-          Width = 135
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 110
+          Height = 31
           Action = acPkgNoList
           Caption = 'PktNr lista F5'
           Glyph.Data = {
@@ -433,14 +403,10 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 3
         end
         object BitBtn5: TBitBtn
-          Left = 545
+          Left = 443
           Top = 1
-          Width = 136
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 110
+          Height = 31
           Action = acPkgSummary
           Caption = 'Summering F6'
           Glyph.Data = {
@@ -523,21 +489,13 @@ object frmInventoryReport: TfrmInventoryReport
       end
     end
     object tsInvSum: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'PAKETSUMMERING TABELL'
       ImageIndex = 1
       object grdInvSum: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1559
-        Height = 749
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 33
+        Width = 1267
+        Height = 606
         Align = alClient
         TabOrder = 0
         LookAndFeel.Kind = lfFlat
@@ -639,23 +597,15 @@ object frmInventoryReport: TfrmInventoryReport
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 1559
-        Height = 41
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1267
+        Height = 33
         Align = alTop
         TabOrder = 1
         object BitBtn9: TBitBtn
           Left = 2
           Top = 1
-          Width = 137
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 111
+          Height = 31
           Action = acInvSummary
           Caption = 'Summering F7'
           Glyph.Data = {
@@ -736,14 +686,10 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 0
         end
         object BitBtn11: TBitBtn
-          Left = 139
+          Left = 113
           Top = 1
-          Width = 147
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 119
+          Height = 31
           Action = acPrintSummartTable
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -826,21 +772,13 @@ object frmInventoryReport: TfrmInventoryReport
       end
     end
     object tsTABELL: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'PAKETTABELLER'
       ImageIndex = 2
       object Memo1: TMemo
-        Left = 79
-        Top = 138
-        Width = 188
-        Height = 80
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 64
+        Top = 112
+        Width = 153
+        Height = 65
         Lines.Strings = (
           'Memo1')
         TabOrder = 0
@@ -849,103 +787,67 @@ object frmInventoryReport: TfrmInventoryReport
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1559
-        Height = 65
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1267
+        Height = 53
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
         object Panel10: TPanel
           Left = 0
           Top = 0
-          Width = 105
-          Height = 65
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 85
+          Height = 53
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
           object dxBarDockControl3: TdxBarDockControl
             Left = 0
             Top = 0
-            Width = 105
-            Height = 23
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 85
+            Height = 19
             Align = dalTop
             BarManager = dxBarManager1
           end
         end
         object Panel11: TPanel
-          Left = 1009
+          Left = 820
           Top = 0
-          Width = 550
-          Height = 65
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 447
+          Height = 53
           Align = alRight
           BevelOuter = bvLowered
           TabOrder = 1
           object Label7: TLabel
-            Left = 239
-            Top = 41
-            Width = 59
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 194
+            Top = 33
+            Width = 48
+            Height = 13
             Caption = 'Vol.enhet:'
           end
           object Label5: TLabel
-            Left = 124
-            Top = 9
-            Width = 73
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 101
+            Top = 7
+            Width = 57
+            Height = 13
             Caption = 'L'#228'ngdgrupp'
           end
           object Label3: TLabel
-            Left = 239
-            Top = 12
-            Width = 37
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 194
+            Top = 10
+            Width = 31
+            Height = 13
             Caption = 'Enhet:'
           end
           object Label2: TLabel
-            Left = 7
-            Top = 9
-            Width = 30
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 6
+            Top = 7
+            Width = 23
+            Height = 13
             Caption = 'K'#228'lla'
           end
           object lcLengthGroup: TcxDBLookupComboBox
-            Left = 121
-            Top = 32
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 98
+            Top = 26
             DataBinding.DataField = 'LengthGroup'
             DataBinding.DataSource = dsUserProp
             Properties.DropDownListStyle = lsFixedList
@@ -964,15 +866,11 @@ object frmInventoryReport: TfrmInventoryReport
             StyleFocused.LookAndFeel.Kind = lfFlat
             StyleHot.LookAndFeel.Kind = lfFlat
             TabOrder = 0
-            Width = 112
+            Width = 91
           end
           object lcLengthFormat: TcxDBLookupComboBox
-            Left = 298
+            Left = 242
             Top = 2
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             DataBinding.DataField = 'LengthFormat'
             DataBinding.DataSource = dsUserProp
             Properties.DropDownWidth = 300
@@ -986,15 +884,11 @@ object frmInventoryReport: TfrmInventoryReport
             Properties.MaxLength = 0
             Style.StyleController = cxEditStyleController3
             TabOrder = 1
-            Width = 127
+            Width = 103
           end
           object lcLengthVolUnit: TcxDBLookupComboBox
-            Left = 298
-            Top = 33
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 242
+            Top = 27
             DataBinding.DataField = 'LengthVolUnit'
             DataBinding.DataSource = dsUserProp
             Properties.DropDownWidth = 300
@@ -1008,15 +902,11 @@ object frmInventoryReport: TfrmInventoryReport
             Properties.MaxLength = 0
             Style.StyleController = cxEditStyleController3
             TabOrder = 2
-            Width = 129
+            Width = 105
           end
           object cbInklEjFakt2: TcxComboBox
-            Left = 8
-            Top = 33
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 7
+            Top = 27
             Properties.DropDownListStyle = lsFixedList
             Properties.Items.Strings = (
               '1:Lager'
@@ -1028,132 +918,92 @@ object frmInventoryReport: TfrmInventoryReport
             Properties.OnChange = cbInklEjFaktPropertiesChange
             TabOrder = 3
             Text = '1:Lager'
-            Width = 112
+            Width = 91
           end
         end
         object Panel7: TPanel
-          Left = 105
+          Left = 85
           Top = 0
-          Width = 904
-          Height = 65
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 735
+          Height = 53
           Align = alClient
-          Constraints.MinWidth = 758
+          Constraints.MinWidth = 616
           TabOrder = 2
           object Label4: TLabel
-            Left = 369
-            Top = 9
-            Width = 25
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 300
+            Top = 7
+            Width = 19
+            Height = 13
             Caption = 'Mall'
           end
           object cxButton1: TcxButton
-            Left = 7
+            Left = 6
             Top = 1
-            Width = 88
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 71
+            Height = 50
             Action = acPackageTable
             OptionsImage.Layout = blGlyphTop
             TabOrder = 0
           end
           object cxButton2: TcxButton
-            Left = 96
+            Left = 78
             Top = 1
-            Width = 87
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 71
+            Height = 50
             Action = acPkgTypeTable
             OptionsImage.Layout = blGlyphTop
             TabOrder = 1
           end
           object cxButton3: TcxButton
-            Left = 185
+            Left = 150
             Top = 1
-            Width = 87
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 71
+            Height = 50
             Action = acPrintPkgTable
             OptionsImage.Layout = blGlyphTop
             TabOrder = 2
           end
           object cxButton4: TcxButton
-            Left = 274
+            Left = 223
             Top = 1
-            Width = 88
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 71
+            Height = 50
             Action = acExport
             OptionsImage.Layout = blGlyphTop
             TabOrder = 3
           end
           object cbProdPaketNr: TcxComboBox
-            Left = 366
-            Top = 32
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 297
+            Top = 26
             Properties.OnChange = cbProdPaketNrPropertiesChange
             TabOrder = 4
-            Width = 144
+            Width = 117
           end
           object cxButton5: TcxButton
-            Left = 517
+            Left = 420
             Top = 1
-            Width = 80
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 65
+            Height = 50
             Action = acNewMall
             OptionsImage.Layout = blGlyphTop
             TabOrder = 5
             WordWrap = True
           end
           object cxButton6: TcxButton
-            Left = 597
+            Left = 485
             Top = 1
-            Width = 80
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 65
+            Height = 50
             Action = acDeleteMall
             OptionsImage.Layout = blGlyphTop
             TabOrder = 6
             WordWrap = True
           end
           object cxButton7: TcxButton
-            Left = 677
+            Left = 550
             Top = 1
-            Width = 77
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 63
+            Height = 50
             Action = acSaveMall
             OptionsImage.Layout = blGlyphTop
             TabOrder = 7
@@ -1163,38 +1013,26 @@ object frmInventoryReport: TfrmInventoryReport
       end
       object pcPktNrAndTorkSats: TcxPageControl
         Left = 0
-        Top = 547
-        Width = 1559
-        Height = 243
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 441
+        Width = 1267
+        Height = 198
         Align = alBottom
         TabOrder = 2
         Properties.ActivePage = tsPaketnr
         Properties.CustomButtons.Buttons = <>
         Properties.TabHeight = 22
         Properties.TabWidth = 100
-        ClientRectBottom = 243
-        ClientRectRight = 1559
-        ClientRectTop = 27
+        ClientRectBottom = 198
+        ClientRectRight = 1267
+        ClientRectTop = 24
         object tsPaketnr: TcxTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Paketnr'
           ImageIndex = 0
           object grdPkgNoTbl: TcxGrid
             Left = 0
-            Top = 23
-            Width = 1559
-            Height = 193
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 22
+            Width = 1267
+            Height = 152
             Align = alClient
             BevelEdges = []
             BevelInner = bvNone
@@ -2651,169 +2489,109 @@ object frmInventoryReport: TfrmInventoryReport
           object dxBarDockControl2: TdxBarDockControl
             Left = 0
             Top = 0
-            Width = 1559
-            Height = 23
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 1267
+            Height = 22
             Align = dalTop
             BarManager = dxBarManager1
           end
         end
         object tsTorksats: TcxTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Torksats'
           ImageIndex = 1
           object Panel9: TPanel
             Left = 0
             Top = 0
-            Width = 1559
-            Height = 64
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 1267
+            Height = 52
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             object Panel6: TPanel
               Left = 0
               Top = 0
-              Width = 401
-              Height = 64
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 326
+              Height = 52
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
               object dxBarDockControl1: TdxBarDockControl
                 Left = 0
                 Top = 0
-                Width = 401
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 326
                 Align = dalTop
                 BarManager = dxBarManager1
               end
               object dxBarDockControl4: TdxBarDockControl
                 Left = 0
                 Top = 3
-                Width = 401
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 326
                 Align = dalTop
                 BarManager = dxBarManager1
               end
             end
             object Panel12: TPanel
-              Left = 401
+              Left = 326
               Top = 0
-              Width = 1158
-              Height = 64
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 941
+              Height = 52
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
               Visible = False
               object Bevel2: TBevel
-                Left = 508
+                Left = 413
                 Top = 2
-                Width = 94
-                Height = 58
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 76
+                Height = 47
               end
               object deStartTime: TcxDBDateEdit
-                Left = 53
-                Top = 5
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 43
+                Top = 4
                 DataBinding.DataField = 'StartTime'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Properties.Kind = ckDateTime
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 0
-                Width = 149
+                Width = 121
               end
               object deEndTime: TcxDBDateEdit
-                Left = 53
-                Top = 32
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 43
+                Top = 26
                 DataBinding.DataField = 'EndTime'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Properties.Kind = ckDateTime
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 1
-                Width = 149
+                Width = 121
               end
               object cxLabel17: TcxLabel
-                Left = 4
-                Top = 10
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 3
+                Top = 8
                 Caption = 'Starttid:'
               end
               object cxLabel18: TcxLabel
-                Left = 4
-                Top = 37
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 3
+                Top = 30
                 Caption = 'Sluttid:'
               end
               object cxLabel19: TcxLabel
-                Left = 203
-                Top = 10
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 165
+                Top = 8
                 Caption = 'Plan.tid(tim):'
               end
               object mePlannedDuration: TcxDBMaskEdit
-                Left = 277
-                Top = 5
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 225
+                Top = 4
                 DataBinding.DataField = 'PlannedDuration'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Properties.MaxLength = 0
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 5
-                Width = 70
+                Width = 57
               end
               object lcTork: TcxDBLookupComboBox
-                Left = 277
-                Top = 32
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 225
+                Top = 26
                 DataBinding.DataField = 'Tork'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Properties.ListColumns = <>
@@ -2821,48 +2599,32 @@ object frmInventoryReport: TfrmInventoryReport
                 Properties.MaxLength = 0
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 6
-                Width = 69
+                Width = 56
               end
               object cxLabel20: TcxLabel
-                Left = 203
-                Top = 37
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 165
+                Top = 30
                 Caption = 'Tork:'
               end
               object cxLabel21: TcxLabel
-                Left = 345
-                Top = 10
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 280
+                Top = 8
                 Caption = 'Inlagd:'
               end
               object deCreatedDate: TcxDBDateEdit
-                Left = 394
-                Top = 5
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 320
+                Top = 4
                 DataBinding.DataField = 'CreatedDate'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Properties.Kind = ckDateTime
                 Properties.ReadOnly = True
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 9
-                Width = 109
+                Width = 89
               end
               object icStatus: TcxDBImageComboBox
-                Left = 394
-                Top = 32
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 320
+                Top = 26
                 DataBinding.DataField = 'Status'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Properties.Items = <
@@ -2877,37 +2639,25 @@ object frmInventoryReport: TfrmInventoryReport
                   end>
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 10
-                Width = 109
+                Width = 89
               end
               object cxLabel22: TcxLabel
-                Left = 345
-                Top = 37
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 280
+                Top = 30
                 Caption = 'Status:'
               end
               object cxDBLabel1: TcxDBLabel
-                Left = 604
+                Left = 491
                 Top = 0
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
                 DataBinding.DataField = 'KilnChargeNo'
                 DataBinding.DataSource = dm_DryKiln.ds_KilnChargeHdr
                 Style.TextColor = clGray
-                Height = 26
-                Width = 52
+                Height = 21
+                Width = 42
               end
               object lcFilterTork: TcxDBLookupComboBox
-                Left = 512
-                Top = 32
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 416
+                Top = 26
                 DataBinding.DataField = 'Tork'
                 DataBinding.DataSource = dsUserProp
                 Properties.DropDownWidth = 150
@@ -2922,28 +2672,20 @@ object frmInventoryReport: TfrmInventoryReport
                 Properties.OnCloseUp = lcFilterTorkPropertiesCloseUp
                 Style.StyleController = cxEditStyleController3
                 TabOrder = 13
-                Width = 80
+                Width = 65
               end
               object cxLabel25: TcxLabel
-                Left = 512
-                Top = 10
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 416
+                Top = 8
                 Caption = 'G'#229' till tork'
               end
             end
           end
           object grdKilnPkgs: TcxGrid
             Left = 0
-            Top = 64
-            Width = 1559
-            Height = 152
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 52
+            Width = 1267
+            Height = 122
             Align = alClient
             PopupMenu = pmKilnPkgs
             TabOrder = 1
@@ -3003,34 +2745,22 @@ object frmInventoryReport: TfrmInventoryReport
           end
         end
         object tsPaketKostnader: TcxTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Paketkostnader'
           ImageIndex = 2
           object Panel14: TPanel
             Left = 0
             Top = 0
-            Width = 1559
-            Height = 50
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 1267
+            Height = 41
             Align = alTop
             Caption = 'Paketkostnader'
             TabOrder = 0
           end
           object grdPackageCostDetails: TcxGrid
             Left = 0
-            Top = 50
-            Width = 1559
-            Height = 166
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 41
+            Width = 1267
+            Height = 133
             Align = alClient
             TabOrder = 1
             object grdPackageCostDetailsDBTableView1: TcxGridDBTableView
@@ -3122,13 +2852,9 @@ object frmInventoryReport: TfrmInventoryReport
       end
       object cxSplitter1: TcxSplitter
         Left = 0
-        Top = 539
-        Width = 1559
+        Top = 433
+        Width = 1267
         Height = 8
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         HotZoneClassName = 'TcxMediaPlayer8Style'
         AlignSplitter = salBottom
         Control = pcPktNrAndTorkSats
@@ -3137,13 +2863,9 @@ object frmInventoryReport: TfrmInventoryReport
       end
       object cxGrid1: TcxGrid
         Left = 0
-        Top = 65
-        Width = 1559
-        Height = 474
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 53
+        Width = 1267
+        Height = 380
         Align = alClient
         TabOrder = 4
         object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
@@ -4179,32 +3901,20 @@ object frmInventoryReport: TfrmInventoryReport
       end
     end
     object tsPcsPerLength: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'ANTAL PER L'#196'NGD'
       ImageIndex = 3
       object Panel5: TPanel
         Left = 0
         Top = 0
-        Width = 1559
-        Height = 41
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1267
+        Height = 33
         Align = alTop
         TabOrder = 0
         object BitBtn14: TBitBtn
-          Left = 4
+          Left = 3
           Top = 1
-          Width = 138
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 112
+          Height = 31
           Action = acStyckPerLangdTabell
           Caption = 'Ant/l'#228'ngd F9'
           Glyph.Data = {
@@ -4285,14 +3995,10 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 0
         end
         object BitBtn15: TBitBtn
-          Left = 149
+          Left = 121
           Top = 1
-          Width = 148
-          Height = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 120
+          Height = 31
           Action = acPrintPcsPerLength
           Caption = 'Skriv ut'
           Glyph.Data = {
@@ -4373,27 +4079,19 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 1
         end
         object Button1: TButton
-          Left = 958
-          Top = 9
-          Width = 66
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 778
+          Top = 7
+          Width = 54
+          Height = 16
           Caption = 'KolNamn'
           TabOrder = 2
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 889
-          Top = 9
-          Width = 66
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 722
+          Top = 7
+          Width = 54
+          Height = 16
           Caption = 'HideList'
           TabOrder = 3
           OnClick = Button2Click
@@ -4401,13 +4099,9 @@ object frmInventoryReport: TfrmInventoryReport
       end
       object grdPcsPerLength: TcxGrid
         Left = 0
-        Top = 41
-        Width = 1559
-        Height = 749
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 33
+        Width = 1267
+        Height = 606
         Align = alClient
         TabOrder = 1
         LookAndFeel.Kind = lfFlat
@@ -4480,13 +4174,9 @@ object frmInventoryReport: TfrmInventoryReport
   end
   object cxSplitter2: TcxSplitter
     Left = 0
-    Top = 191
-    Width = 1559
+    Top = 155
+    Width = 1267
     Height = 8
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
     HotZoneClassName = 'TcxMediaPlayer8Style'
     AlignSplitter = salTop
     Control = pgInventory
@@ -4496,56 +4186,36 @@ object frmInventoryReport: TfrmInventoryReport
   object pgInventory: TcxPageControl
     Left = 0
     Top = 0
-    Width = 1559
-    Height = 191
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 1267
+    Height = 155
     Align = alTop
     TabOrder = 6
-    Properties.ActivePage = tsLagret
+    Properties.ActivePage = tsPrintPkgTags
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = pgInventoryPageChanging
-    ClientRectBottom = 191
-    ClientRectRight = 1559
-    ClientRectTop = 27
+    ClientRectBottom = 155
+    ClientRectRight = 1267
+    ClientRectTop = 24
     object tsLagret: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Lager'
       ImageIndex = 2
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1559
-        Height = 164
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1267
+        Height = 131
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
         object Bevel1: TBevel
-          Left = 4
-          Top = 33
-          Width = 1111
-          Height = 4
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 3
+          Top = 27
+          Width = 903
+          Height = 3
         end
         object lcSR: TcxDBLookupComboBox
-          Left = 95
+          Left = 77
           Top = 2
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           DataBinding.DataField = 'SR'
           DataBinding.DataSource = dsUserProp
           Properties.DropDownWidth = 200
@@ -4559,137 +4229,89 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.MaxLength = 0
           Style.StyleController = cxEditStyleController3
           TabOrder = 20
-          Width = 152
+          Width = 124
         end
         object cxLabel2: TcxLabel
-          Left = 256
-          Top = 6
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 208
+          Top = 5
           Caption = #196'gare:'
           Style.StyleController = cxEditStyleController1
         end
         object cxLabel4: TcxLabel
-          Left = 470
-          Top = 6
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 382
+          Top = 5
           Caption = 'Lagergrupp:'
           Style.StyleController = cxEditStyleController1
         end
         object cxLabel5: TcxLabel
           Left = 2
-          Top = 6
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 5
           Caption = 'F'#246'rs.Region:'
           Style.StyleController = cxEditStyleController1
         end
         object cxLabel1: TcxLabel
           Left = 2
-          Top = 37
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 30
           AutoSize = False
           Caption = 'Tjocklek'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 20
-          Width = 76
+          Height = 16
+          Width = 61
         end
         object cxLabel6: TcxLabel
-          Left = 76
-          Top = 37
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 62
+          Top = 30
           Caption = 'Bredd'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel7: TcxLabel
-          Left = 308
-          Top = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 250
+          Top = 31
           Caption = 'L'#228'ngd'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel8: TcxLabel
-          Left = 380
-          Top = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 309
+          Top = 31
           Caption = 'Tr'#228'slag'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel9: TcxLabel
-          Left = 485
-          Top = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 394
+          Top = 31
           Caption = 'Kvalitet'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel10: TcxLabel
-          Left = 629
-          Top = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 511
+          Top = 31
           Caption = 'Utf'#246'rande'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel11: TcxLabel
-          Left = 775
-          Top = 38
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 630
+          Top = 31
           Caption = 'Impregnering'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel12: TcxLabel
-          Left = 1265
-          Top = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 1028
+          Top = 42
           Caption = 'Barcode'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
           Visible = False
         end
         object cxLabel13: TcxLabel
-          Left = 1265
+          Left = 1028
           Top = 2
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Gradestamp'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
@@ -4697,11 +4319,7 @@ object frmInventoryReport: TfrmInventoryReport
         end
         object ccbAT: TcxCheckComboBox
           Left = 2
-          Top = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 42
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4716,15 +4334,11 @@ object frmInventoryReport: TfrmInventoryReport
           Style.ButtonTransparency = ebtHideUnselected
           TabOrder = 2
           Visible = False
-          Width = 71
+          Width = 57
         end
         object ccbAB: TcxCheckComboBox
-          Left = 78
-          Top = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 63
+          Top = 42
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4735,15 +4349,11 @@ object frmInventoryReport: TfrmInventoryReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 3
           Visible = False
-          Width = 70
+          Width = 57
         end
         object ccbAL: TcxCheckComboBox
-          Left = 308
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 250
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4753,15 +4363,11 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 13
-          Width = 70
+          Width = 57
         end
         object ccbTS2: TcxCheckComboBox
-          Left = 382
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 310
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4771,15 +4377,11 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 14
-          Width = 104
+          Width = 85
         end
         object ccbKV2: TcxCheckComboBox
-          Left = 485
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 394
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4789,15 +4391,11 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 15
-          Width = 144
+          Width = 117
         end
         object ccbSU2: TcxCheckComboBox
-          Left = 628
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 510
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4807,15 +4405,11 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 16
-          Width = 149
+          Width = 121
         end
         object ccbIMP: TcxCheckComboBox
-          Left = 775
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 630
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4825,15 +4419,11 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 17
-          Width = 149
+          Width = 121
         end
         object ccbBC: TcxCheckComboBox
-          Left = 1265
-          Top = 68
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 1028
+          Top = 55
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4844,15 +4434,11 @@ object frmInventoryReport: TfrmInventoryReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 18
           Visible = False
-          Width = 127
+          Width = 103
         end
         object ccbGS: TcxCheckComboBox
-          Left = 1266
-          Top = 18
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 1029
+          Top = 15
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4863,15 +4449,11 @@ object frmInventoryReport: TfrmInventoryReport
           Style.StyleController = cxEditStyleController3
           TabOrder = 19
           Visible = False
-          Width = 121
+          Width = 98
         end
         object cbLIP: TcxCheckComboBox
-          Left = 559
+          Left = 454
           Top = 2
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4881,111 +4463,75 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 22
-          Width = 319
+          Width = 259
         end
         object cbOwner: TcxCheckComboBox
-          Left = 305
+          Left = 248
           Top = 2
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Properties.DropDownRows = 15
           Properties.Items = <>
           Properties.OnChange = cbOwnerPropertiesChange
           Properties.OnCloseUp = cbOwnerPropertiesCloseUp
           Style.StyleController = cxEditStyleController3
           TabOrder = 21
-          Width = 159
+          Width = 129
         end
         object eAT: TcxTextEdit
-          Left = 6
-          Top = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 5
+          Top = 42
           TabOrder = 0
           OnExit = eATExit
-          Width = 64
+          Width = 52
         end
         object eAB: TcxTextEdit
-          Left = 78
-          Top = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 63
+          Top = 42
           TabOrder = 1
           OnExit = eABExit
-          Width = 61
+          Width = 50
         end
         object eAL: TcxTextEdit
-          Left = 309
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 251
+          Top = 43
           TabOrder = 8
           OnExit = eALExit
-          Width = 61
+          Width = 50
         end
         object eTS: TcxTextEdit
-          Left = 379
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 308
+          Top = 43
           TabOrder = 9
           Visible = False
           OnExit = eTSExit
-          Width = 101
+          Width = 82
         end
         object eKV: TcxTextEdit
-          Left = 486
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 395
+          Top = 43
           TabOrder = 10
           Visible = False
           OnExit = eKVExit
-          Width = 137
+          Width = 111
         end
         object eSU: TcxTextEdit
-          Left = 629
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 511
+          Top = 43
           TabOrder = 11
           Visible = False
           OnExit = eSUExit
-          Width = 137
+          Width = 111
         end
         object eIMP: TcxTextEdit
-          Left = 774
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 629
+          Top = 43
           TabOrder = 12
           Visible = False
           OnExit = eIMPExit
-          Width = 137
+          Width = 111
         end
         object ccVarugrupp: TcxCheckComboBox
           Left = 1
-          Top = 94
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 76
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -4995,205 +4541,141 @@ object frmInventoryReport: TfrmInventoryReport
           Properties.Items = <>
           Style.StyleController = cxEditStyleController3
           TabOrder = 35
-          Width = 138
+          Width = 112
         end
         object cxLabel29: TcxLabel
           Left = 1
-          Top = 76
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 62
           Caption = 'Varugrupp'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cbInklNotInvoiced: TcxCheckBox
-          Left = 954
-          Top = 89
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 775
+          Top = 72
           Caption = 'Inkl.ej fakt.'
           Style.BorderStyle = ebsSingle
           TabOrder = 37
           Visible = False
-          Width = 93
+          Width = 76
         end
         object cbHideZeroColumns: TcxCheckBox
-          Left = 954
-          Top = 39
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 775
+          Top = 32
           Caption = 'G'#246'm noll kol.'
           State = cbsChecked
           Style.BorderStyle = ebsSingle
           Style.StyleController = cxEditStyleController3
           TabOrder = 38
           OnClick = cbHideZeroColumnsClick
-          Width = 103
+          Width = 84
         end
         object deStartPeriod: TcxDateEdit
-          Left = 156
-          Top = 94
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 127
+          Top = 76
           Properties.ImmediatePost = True
           TabOrder = 39
-          Width = 149
+          Width = 121
         end
         object deEndPeriod: TcxDateEdit
-          Left = 314
-          Top = 94
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 255
+          Top = 76
           Properties.ImmediatePost = True
           TabOrder = 40
-          Width = 149
+          Width = 121
         end
         object cxLabel31: TcxLabel
-          Left = 158
-          Top = 76
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 128
+          Top = 62
           AutoSize = False
           Caption = 'Prod.datum >='
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 20
-          Width = 116
+          Height = 16
+          Width = 95
         end
         object cxLabel32: TcxLabel
-          Left = 315
-          Top = 76
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 256
+          Top = 62
           AutoSize = False
           Caption = 'Prod.datum <='
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 20
-          Width = 117
+          Height = 16
+          Width = 95
         end
         object cxLabel14: TcxLabel
-          Left = 590
-          Top = 76
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 479
+          Top = 62
           AutoSize = False
           Caption = 'Info1'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 20
-          Width = 75
+          Height = 16
+          Width = 61
         end
         object teInfo1: TcxTextEdit
-          Left = 591
-          Top = 94
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 480
+          Top = 76
           TabOrder = 44
           OnExit = eATExit
-          Width = 97
+          Width = 79
         end
         object cxLabel15: TcxLabel
-          Left = 694
-          Top = 78
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 564
+          Top = 63
           AutoSize = False
           Caption = 'Info2'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 19
-          Width = 75
+          Height = 16
+          Width = 61
         end
         object teInfo2: TcxTextEdit
-          Left = 695
-          Top = 94
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 565
+          Top = 76
           TabOrder = 46
           OnExit = eATExit
-          Width = 98
+          Width = 79
         end
         object cxLabel30: TcxLabel
-          Left = 475
-          Top = 78
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 386
+          Top = 63
           AutoSize = False
           Caption = 'Referens'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
-          Height = 19
-          Width = 94
+          Height = 16
+          Width = 76
         end
         object teREF: TcxTextEdit
-          Left = 466
-          Top = 94
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 379
+          Top = 76
           TabOrder = 47
           OnExit = eATExit
-          Width = 117
+          Width = 95
         end
         object cxButton8: TcxButton
-          Left = 887
+          Left = 721
           Top = 1
-          Width = 110
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 89
+          Height = 25
           Caption = 'Rensa filter'
           TabOrder = 49
           OnClick = cxButton8Click
         end
         object cxButton9: TcxButton
-          Left = 1006
+          Left = 817
           Top = 1
-          Width = 109
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 89
+          Height = 25
           Caption = 'St'#228'ng'
           TabOrder = 50
           OnClick = cxButton9Click
         end
         object ccbNT: TcxCheckComboBox
-          Left = 146
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 119
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -5208,15 +4690,11 @@ object frmInventoryReport: TfrmInventoryReport
           Style.ButtonTransparency = ebtHideUnselected
           TabOrder = 6
           Visible = False
-          Width = 71
+          Width = 57
         end
         object ccbNB: TcxCheckComboBox
-          Left = 236
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 192
+          Top = 43
           Properties.EmptySelectionText = 'Alla'
           Properties.ClearKey = 46
           Properties.DropDownRows = 30
@@ -5232,101 +4710,69 @@ object frmInventoryReport: TfrmInventoryReport
           TabOrder = 7
           Visible = False
           OnExit = ccbNBExit
-          Width = 72
+          Width = 58
         end
         object cxLabel36: TcxLabel
-          Left = 231
-          Top = 37
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 188
+          Top = 30
           Caption = 'Bredd, nom'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object cxLabel35: TcxLabel
-          Left = 138
-          Top = 37
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 112
+          Top = 30
           Caption = 'Tjocklek, nom'
           ParentFont = False
           Style.StyleController = cxEditStyleController2
         end
         object eNB: TcxTextEdit
-          Left = 235
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 191
+          Top = 43
           TabOrder = 5
           OnExit = eNBExit
-          Width = 59
+          Width = 48
         end
         object eNT: TcxTextEdit
-          Left = 148
-          Top = 53
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 120
+          Top = 43
           TabOrder = 4
           OnExit = eNTExit
-          Width = 67
+          Width = 55
         end
         object cbShowSingleLengthPkgs: TcxCheckBox
-          Left = 954
-          Top = 64
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 775
+          Top = 52
           Caption = 'LP'
           Style.BorderStyle = ebsSingle
           TabOrder = 53
           Visible = False
-          Width = 93
+          Width = 76
         end
         object cbReportInProgress: TcxCheckBox
-          Left = 816
-          Top = 96
+          Left = 663
+          Top = 78
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
           Caption = 'cbReportInProgress'
           TabOrder = 54
-          Width = 121
+          Width = 98
         end
       end
     end
     object tsFakturaSpec: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Fakturaspec'
       ImageIndex = 0
       object cxLabel26: TcxLabel
-        Left = 30
-        Top = 5
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 24
+        Top = 4
         Caption = 'Fakturanr:'
       end
       object cbInvoiceType: TcxComboBox
-        Left = 315
+        Left = 256
         Top = 0
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         Properties.Items.Strings = (
           'VIDA K1'
           'PROFORMA'
@@ -5337,86 +4783,54 @@ object frmInventoryReport: TfrmInventoryReport
         Properties.MaxLength = 0
         TabOrder = 1
         Text = 'VIDA K1'
-        Width = 149
+        Width = 121
       end
       object cxLabel27: TcxLabel
-        Left = 226
-        Top = 5
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 184
+        Top = 4
         Caption = 'Fakturaserie:'
       end
       object mInvNos: TcxMemo
-        Left = 118
+        Left = 96
         Top = 0
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         TabOrder = 3
         OnEnter = mInvNosEnter
         OnExit = mInvNosExit
-        Height = 90
-        Width = 110
+        Height = 73
+        Width = 89
       end
     end
     object tsLoadOrderSpec: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Lastorderspec'
       ImageIndex = 3
       object mLONos: TcxMemo
-        Left = 118
+        Left = 96
         Top = 0
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         TabOrder = 0
         OnEnter = mInvNosEnter
         OnExit = mInvNosExit
-        Height = 90
-        Width = 110
+        Height = 73
+        Width = 89
       end
       object cxLabel28: TcxLabel
-        Left = 30
-        Top = 5
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 24
+        Top = 4
         Caption = 'Lastordernr:'
       end
     end
     object tsInventering: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Inventering'
       ImageIndex = 1
       object cxLabel23: TcxLabel
-        Left = 18
-        Top = 16
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 15
+        Top = 13
         Caption = 'Inventering:'
         Style.StyleController = cxEditStyleController1
         Style.TextColor = clBlue
       end
       object lcInventering: TcxDBLookupComboBox
-        Left = 201
-        Top = 14
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 163
+        Top = 11
         DataBinding.DataField = 'NewItemRow'
         DataBinding.DataSource = dsUserProp
         Properties.DropDownWidth = 500
@@ -5436,26 +4850,18 @@ object frmInventoryReport: TfrmInventoryReport
         Properties.MaxLength = 0
         Style.StyleController = cxEditStyleController3
         TabOrder = 1
-        Width = 136
+        Width = 111
       end
       object cxLabel24: TcxLabel
-        Left = 18
-        Top = 46
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 15
+        Top = 37
         Caption = 'Lista:'
         Style.StyleController = cxEditStyleController1
         Style.TextColor = clBlue
       end
       object cbInvLista: TcxComboBox
-        Left = 201
-        Top = 44
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 163
+        Top = 36
         Properties.Items.Strings = (
           'Kontroll'
           'Resultat')
@@ -5464,83 +4870,55 @@ object frmInventoryReport: TfrmInventoryReport
         Style.StyleController = cxEditStyleController3
         TabOrder = 3
         Text = 'Kontroll'
-        Width = 136
+        Width = 111
       end
       object cbAlVWInventories: TcxCheckBox
-        Left = 366
-        Top = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 297
+        Top = 14
         Caption = 'Alla lager (f'#246'rutom verk)'
         TabOrder = 4
-        Width = 190
+        Width = 155
       end
       object cxLabel42: TcxLabel
-        Left = 18
-        Top = 89
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 15
+        Top = 72
         Caption = 'Inventerings gruppnr:'
         ParentFont = False
         Style.StyleController = cxEditStyleController1
       end
       object teSetNo: TcxTextEdit
-        Left = 201
-        Top = 79
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 163
+        Top = 64
         Style.StyleController = cxEditStyleController3
         TabOrder = 6
         Text = '0'
-        Width = 136
+        Width = 111
       end
     end
     object tsPrintPkgTags: TcxTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Skriv ut paketlappar'
       ImageIndex = 4
       object Bevel3: TBevel
-        Left = 4
-        Top = 4
-        Width = 1096
-        Height = 149
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 3
+        Top = 3
+        Width = 891
+        Height = 121
       end
       object Label1: TLabel
-        Left = 1108
-        Top = 4
-        Width = 301
-        Height = 150
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 900
+        Top = 3
+        Width = 245
+        Height = 122
         AutoSize = False
         Color = clYellow
         ParentColor = False
         WordWrap = True
       end
       object bPrintPkgSpecLapp: TcxButton
-        Left = 11
-        Top = 110
-        Width = 421
-        Height = 30
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 9
+        Top = 89
+        Width = 342
+        Height = 25
         Action = acPrintPkgSpec
         Colors.Default = clYellow
         Colors.Disabled = clGray
@@ -5548,189 +4926,125 @@ object frmInventoryReport: TfrmInventoryReport
         TabOrder = 0
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -18
+        Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
       end
       object lcSizeFormatSpec: TcxDBLookupComboBox
-        Left = 86
-        Top = 47
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 70
+        Top = 38
         DataBinding.DataField = 'SizeFormat'
         DataBinding.DataSource = dsSpecData
         Properties.ListColumns = <>
         Properties.ListOptions.ShowHeader = False
         TabOrder = 1
-        Width = 132
+        Width = 107
       end
       object lcLengthFormatSpec: TcxDBLookupComboBox
-        Left = 302
-        Top = 47
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 245
+        Top = 38
         DataBinding.DataField = 'LengthFormat'
         DataBinding.DataSource = dsSpecData
         Properties.ListColumns = <>
         Properties.ListOptions.ShowHeader = False
         TabOrder = 2
-        Width = 131
+        Width = 107
       end
       object lcVolumeFormatSpec: TcxDBLookupComboBox
-        Left = 86
-        Top = 76
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 70
+        Top = 62
         DataBinding.DataField = 'VolumeFormat'
         DataBinding.DataSource = dsSpecData
         Properties.ListColumns = <>
         Properties.ListOptions.ShowHeader = False
         TabOrder = 3
-        Width = 132
+        Width = 107
       end
       object lcSprak: TcxDBLookupComboBox
-        Left = 302
-        Top = 76
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 245
+        Top = 62
         DataBinding.DataField = 'Spr'#229'k'
         DataBinding.DataSource = dsSpecData
         Properties.ListColumns = <>
         Properties.ListOptions.ShowHeader = False
         TabOrder = 4
-        Width = 131
+        Width = 107
       end
       object cxLabel3: TcxLabel
-        Left = 7
-        Top = 52
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 42
         Caption = 'Dimension:'
       end
       object cxLabel16: TcxLabel
-        Left = 244
-        Top = 52
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 198
+        Top = 42
         Caption = 'L'#228'ngd:'
       end
       object cxLabel33: TcxLabel
-        Left = 7
-        Top = 81
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 66
         Caption = 'Volym:'
       end
       object cxLabel34: TcxLabel
-        Left = 244
-        Top = 81
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 198
+        Top = 66
         Caption = 'Spr'#229'k:'
       end
       object cxLabel37: TcxLabel
-        Left = 460
-        Top = 81
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 374
+        Top = 66
         Caption = 'Artikelkod:'
       end
       object cxLabel38: TcxLabel
-        Left = 460
-        Top = 52
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 374
+        Top = 42
         Caption = 'Kundreferens:'
       end
       object teKundReferens: TcxDBTextEdit
-        Left = 575
-        Top = 47
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 467
+        Top = 38
         DataBinding.DataField = 'KundReferens'
         DataBinding.DataSource = dsSpecData
         TabOrder = 11
-        Width = 149
+        Width = 121
       end
       object teArtikelKod: TcxDBTextEdit
-        Left = 575
-        Top = 76
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 467
+        Top = 62
         DataBinding.DataField = 'ArtikelKod'
         DataBinding.DataSource = dsSpecData
         TabOrder = 12
-        Width = 149
+        Width = 121
       end
       object Panel8: TPanel
-        Left = 745
-        Top = 12
-        Width = 348
-        Height = 136
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 605
+        Top = 10
+        Width = 283
+        Height = 110
         TabOrder = 13
         object Panel13: TPanel
           Left = 1
           Top = 1
-          Width = 346
-          Height = 36
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 281
+          Height = 29
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
           object cxButton10: TcxButton
-            Left = 10
+            Left = 8
             Top = 2
-            Width = 92
-            Height = 31
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 75
+            Height = 25
             Action = acAddLayout
             SpeedButtonOptions.CanBeFocused = False
             TabOrder = 0
           end
           object cxButton11: TcxButton
-            Left = 101
+            Left = 82
             Top = 2
-            Width = 92
-            Height = 31
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 75
+            Height = 25
             Action = acRemoveLayout
             SpeedButtonOptions.CanBeFocused = False
             TabOrder = 1
@@ -5738,13 +5052,9 @@ object frmInventoryReport: TfrmInventoryReport
         end
         object grdLayout: TcxGrid
           Left = 1
-          Top = 37
-          Width = 346
-          Height = 98
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 30
+          Width = 281
+          Height = 79
           Align = alClient
           TabOrder = 1
           object grdLayoutDBTableView1: TcxGridDBTableView
@@ -5790,28 +5100,20 @@ object frmInventoryReport: TfrmInventoryReport
         end
       end
       object cxLabel39: TcxLabel
-        Left = 7
-        Top = 11
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 9
         Caption = 'Utskriftsalternativ'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
-        Style.Font.Height = -20
+        Style.Font.Height = -16
         Style.Font.Name = 'MS Sans Serif'
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
       end
       object bePath: TcxButtonEdit
-        Left = 297
-        Top = 18
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 241
+        Top = 15
         Properties.Buttons = <
           item
             Default = True
@@ -5820,36 +5122,24 @@ object frmInventoryReport: TfrmInventoryReport
         Properties.OnButtonClick = bePathPropertiesButtonClick
         TabOrder = 15
         Text = 'bePath'
-        Width = 422
+        Width = 343
       end
       object sePrintDelay: TcxDBSpinEdit
-        Left = 575
-        Top = 107
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 467
+        Top = 87
         DataBinding.DataField = 'CopyPcs'
         DataBinding.DataSource = dsUserProp
         TabOrder = 16
-        Width = 149
+        Width = 121
       end
       object cxLabel40: TcxLabel
-        Left = 460
-        Top = 111
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 374
+        Top = 90
         Caption = 'F'#246'rdr'#246'jning utskrift:'
       end
       object cxLabel41: TcxLabel
-        Left = 244
-        Top = 22
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 198
+        Top = 18
         Caption = 'Layouter:'
       end
     end
@@ -5857,7 +5147,7 @@ object frmInventoryReport: TfrmInventoryReport
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
@@ -6876,7 +6166,6 @@ object frmInventoryReport: TfrmInventoryReport
     Top = 457
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6893,14 +6182,12 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39085.979061331020000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPcsPerLength
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6916,12 +6203,10 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInvSum
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6937,12 +6222,10 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdPkgNoTbl
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6958,14 +6241,12 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdKilnPkgs
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -6981,7 +6262,6 @@ object frmInventoryReport: TfrmInventoryReport
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
@@ -7022,7 +6302,7 @@ object frmInventoryReport: TfrmInventoryReport
   object cxStyleRepository1: TcxStyleRepository
     Left = 312
     Top = 417
-    PixelsPerInch = 120
+    PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clMaroon
@@ -7681,12 +6961,12 @@ object frmInventoryReport: TfrmInventoryReport
     Style.TextStyle = [fsBold]
     Left = 320
     Top = 592
-    PixelsPerInch = 120
+    PixelsPerInch = 96
   end
   object cxEditStyleController2: TcxEditStyleController
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
-    Style.Font.Height = -10
+    Style.Font.Height = -8
     Style.Font.Name = 'Verdana'
     Style.Font.Style = []
     Style.LookAndFeel.Kind = lfFlat
@@ -7700,7 +6980,7 @@ object frmInventoryReport: TfrmInventoryReport
     StyleHot.LookAndFeel.Kind = lfFlat
     Left = 312
     Top = 312
-    PixelsPerInch = 120
+    PixelsPerInch = 96
   end
   object cxEditStyleController3: TcxEditStyleController
     Style.BorderStyle = ebsNone
@@ -7708,7 +6988,7 @@ object frmInventoryReport: TfrmInventoryReport
     Style.ButtonTransparency = ebtHideUnselected
     Left = 312
     Top = 368
-    PixelsPerInch = 120
+    PixelsPerInch = 96
   end
   object pmKilnPkgs: TdxBarPopupMenu
     BarManager = dxBarManager1

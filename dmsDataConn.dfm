@@ -4425,7 +4425,7 @@ object dmsConnector: TdmsConnector
   object cxStyleRepository1: TcxStyleRepository
     Left = 296
     Top = 144
-    PixelsPerInch = 120
+    PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont]
       Color = clSkyBlue
@@ -4915,14 +4915,17 @@ object dmsConnector: TdmsConnector
     Params.Strings = (
       'Server=visprodsql.vida.se'
       'Database=vis_vida'
-      'OSAuthent=Yes'
+      'OSAuthent=No'
       'MetaDefCatalog=vis_vida'
       'MetaDefSchema=dbo'
       'ApplicationName=Vis_Lager'
+      'User_Name=Lars'
+      'Password=woods2011'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRowsetSize, evCursorKind]
     FetchOptions.Mode = fmAll
     FetchOptions.RowsetSize = 500
+    Connected = True
     LoginPrompt = False
     AfterCommit = DataModuleDestroy
     Left = 56
