@@ -8946,6 +8946,8 @@
   object sp_SetMall: TFDStoredProc
     OnUpdateRecord = sp_SetMallUpdateRecord
     Connection = dmsConnector.FDConnection1
+    UpdateOptions.UpdateTableName = 'dbo.LogicalInventoryPoint'
+    UpdateOptions.KeyFields = 'LogicalInventoryPointNo'
     StoredProcName = 'dbo.vis_SetMall'
     Left = 1304
     Top = 520
@@ -8966,44 +8968,52 @@
     object sp_SetMallsp_SetMallclientno: TIntegerField
       FieldName = 'clientno'
       Origin = 'clientno'
+      ProviderFlags = [pfInUpdate]
       Required = True
     end
     object sp_SetMallsp_SetMallPIP: TStringField
       DisplayLabel = 'Lagerst'#228'lle'
       FieldName = 'PIP'
       Origin = 'PIP'
+      ProviderFlags = []
       Size = 50
     end
     object sp_SetMallsp_SetMallLIP: TStringField
       DisplayLabel = 'Lagergrupp'
       FieldName = 'LIP'
       Origin = 'LIP'
+      ProviderFlags = []
       Size = 50
     end
     object sp_SetMallsp_SetMallPIPNo: TIntegerField
       FieldName = 'PIPNo'
       Origin = 'PIPNo'
+      ProviderFlags = [pfInUpdate]
       Required = True
     end
     object sp_SetMallsp_SetMallAct: TIntegerField
       DisplayLabel = 'Aktiv'
       FieldName = 'Act'
       Origin = 'Act'
+      ProviderFlags = [pfInUpdate]
     end
     object sp_SetMallsp_SetMallSetMall: TIntegerField
       DisplayLabel = 'Anv'#228'nd som mall'
       FieldName = 'SetMall'
       Origin = 'SetMall'
+      ProviderFlags = [pfInUpdate]
       OnChange = sp_SetMallsp_SetMallSetMallChange
     end
     object sp_SetMallLogicalInventoryPointNo: TIntegerField
       FieldName = 'LogicalInventoryPointNo'
       Origin = 'LogicalInventoryPointNo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object sp_SetMallSetMallbu: TIntegerField
       FieldName = 'SetMallbu'
       Origin = 'SetMallbu'
+      ProviderFlags = [pfInUpdate]
     end
   end
   object ds_SetMall: TDataSource
@@ -9014,29 +9024,20 @@
   object upd_SetMall: TFDUpdateSQL
     Connection = dmsConnector.FDConnection1
     InsertSQL.Strings = (
-      'INSERT INTO dbo.LogicalInventoryPoint'
-      '(LogicalInventoryPointNo, PhysicalInventoryPointNo, '
-      '  LogicalInventoryName, SequenceNo, DateCreated, '
-      '  ModifiedUser, CreatedUser, InventoryType, '
-      '  AvRegByPkg, Grupp, InvCode, RegiShortCode, '
-      '  SetMall)'
+      'INSERT INTO LogicalInventoryPoint'
+      '(LogicalInventoryPointNo, SetMall, SetMallbu)'
       
-        'VALUES (:NEW_LogicalInventoryPointNo, :NEW_PhysicalInventoryPoin' +
-        'tNo, '
-      '  :NEW_LogicalInventoryName, :NEW_SequenceNo, :NEW_DateCreated, '
-      '  :NEW_ModifiedUser, :NEW_CreatedUser, :NEW_InventoryType, '
-      
-        '  :NEW_AvRegByPkg, :NEW_Grupp, :NEW_InvCode, :NEW_RegiShortCode,' +
-        ' '
-      '  :NEW_SetMall)')
+        'VALUES (:NEW_LogicalInventoryPointNo, :NEW_SetMall, :NEW_SetMall' +
+        'bu)')
     ModifySQL.Strings = (
-      'UPDATE dbo.LogicalInventoryPoint'
+      'UPDATE LogicalInventoryPoint'
       
         'SET LogicalInventoryPointNo = :NEW_LogicalInventoryPointNo, SetM' +
-        'all = :NEW_SetMall'
+        'all = :NEW_SetMall, '
+      '  SetMallbu = :NEW_SetMallbu'
       'WHERE LogicalInventoryPointNo = :OLD_LogicalInventoryPointNo')
     DeleteSQL.Strings = (
-      'DELETE FROM dbo.LogicalInventoryPoint'
+      'DELETE FROM LogicalInventoryPoint'
       'WHERE LogicalInventoryPointNo = :OLD_LogicalInventoryPointNo')
     FetchRowSQL.Strings = (
       
@@ -9045,8 +9046,11 @@
       
         '  SequenceNo, DateCreated, ModifiedUser, CreatedUser, InventoryT' +
         'ype, '
-      '  AvRegByPkg, Grupp, InvCode, RegiShortCode, SetMall'
-      'FROM dbo.LogicalInventoryPoint'
+      
+        '  AvRegByPkg, Grupp, InvCode, RegiShortCode, SetMall, SetMallbu,' +
+        ' '
+      '  CanAddToLoad'
+      'FROM LogicalInventoryPoint'
       'WHERE LogicalInventoryPointNo = :LogicalInventoryPointNo')
     Left = 1304
     Top = 472

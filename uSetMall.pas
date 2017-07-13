@@ -22,7 +22,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Menus,
   Vcl.StdCtrls, cxButtons, cxCheckBox, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  siComp, siLngLnk, System.Actions, Vcl.ActnList;
+  siComp, siLngLnk, System.Actions, Vcl.ActnList, cxLabel;
 
 type
   TfSetMall = class(TForm)

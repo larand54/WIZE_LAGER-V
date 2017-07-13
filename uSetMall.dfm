@@ -2,44 +2,36 @@ object fSetMall: TfSetMall
   Left = 137
   Top = 0
   Caption = 'Inventeringsmall'
-  ClientHeight = 868
-  ClientWidth = 1554
+  ClientHeight = 664
+  ClientWidth = 1188
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 17
+  PixelsPerInch = 96
+  TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 783
-    Width = 1554
-    Height = 85
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 599
+    Width = 1188
+    Height = 65
     Align = alBottom
     TabOrder = 0
     object cxButton1: TcxButton
-      Left = 722
-      Top = 8
-      Width = 179
-      Height = 67
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 552
+      Top = 6
+      Width = 137
+      Height = 51
       Caption = 'OK'
       ModalResult = 1
       TabOrder = 0
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -22
+      Font.Height = -17
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -47,18 +39,12 @@ object fSetMall: TfSetMall
   end
   object grdSetMall: TcxGrid
     Left = 0
-    Top = 81
-    Width = 1554
-    Height = 702
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 62
+    Width = 1188
+    Height = 537
     Align = alClient
     TabOrder = 1
     LookAndFeel.SkinName = 'Black'
-    ExplicitTop = 128
-    ExplicitHeight = 655
     object grdSetMallDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -88,40 +74,46 @@ object fSetMall: TfSetMall
       Styles.StyleSheet = GridTableViewStyleSheetWindowsClassiclarge
       object grdSetMallDBTableView1Owner: TcxGridDBColumn
         DataBinding.FieldName = 'Owner'
-        Width = 271
+        Width = 242
       end
       object grdSetMallDBTableView1PIP: TcxGridDBColumn
         DataBinding.FieldName = 'PIP'
-        Width = 296
+        Width = 265
       end
       object grdSetMallDBTableView1LIP: TcxGridDBColumn
         DataBinding.FieldName = 'LIP'
-        Width = 296
+        Width = 207
       end
       object grdSetMallDBTableView1SetMall: TcxGridDBColumn
         DataBinding.FieldName = 'SetMall'
         PropertiesClassName = 'TcxCheckBoxProperties'
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 111
+        Width = 114
       end
       object grdSetMallDBTableView1Act: TcxGridDBColumn
         DataBinding.FieldName = 'Act'
-        Width = 50
+        PropertiesClassName = 'TcxLabelProperties'
+        Width = 72
       end
       object grdSetMallDBTableView1clientno: TcxGridDBColumn
         DataBinding.FieldName = 'clientno'
-        Width = 51
+        PropertiesClassName = 'TcxLabelProperties'
+        Width = 48
       end
       object grdSetMallDBTableView1PIPNo: TcxGridDBColumn
         DataBinding.FieldName = 'PIPNo'
-        Width = 49
+        PropertiesClassName = 'TcxLabelProperties'
+        Width = 48
       end
       object grdSetMallDBTableView1LogicalInventoryPointNo: TcxGridDBColumn
         DataBinding.FieldName = 'LogicalInventoryPointNo'
+        PropertiesClassName = 'TcxLabelProperties'
+        Width = 88
       end
       object grdSetMallDBTableView1SetMallbu: TcxGridDBColumn
         DataBinding.FieldName = 'SetMallbu'
+        Width = 90
       end
     end
     object grdSetMallLevel1: TcxGridLevel
@@ -131,36 +123,49 @@ object fSetMall: TfSetMall
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 1554
-    Height = 81
+    Width = 1188
+    Height = 62
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 504
-    ExplicitTop = 16
-    ExplicitWidth = 865
     object cxButton2: TcxButton
-      Left = 8
-      Top = 8
-      Width = 129
-      Height = 65
+      Left = 6
+      Top = 6
+      Width = 99
+      Height = 50
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Action = acSetOnlyVerkActive
       TabOrder = 0
       WordWrap = True
     end
     object cxButton3: TcxButton
-      Left = 143
-      Top = 9
-      Width = 129
-      Height = 65
+      Left = 109
+      Top = 7
+      Width = 99
+      Height = 50
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Action = acSetAllExceptVerkActive
       TabOrder = 1
       WordWrap = True
     end
     object cxButton4: TcxButton
-      Left = 278
-      Top = 9
-      Width = 129
-      Height = 65
+      Left = 213
+      Top = 7
+      Width = 98
+      Height = 50
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Action = acSetAllActive
       TabOrder = 2
       WordWrap = True
@@ -169,7 +174,7 @@ object fSetMall: TfSetMall
   object cxStyleRepository1: TcxStyleRepository
     Left = 336
     Top = 168
-    PixelsPerInch = 120
+    PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clWhite

@@ -583,6 +583,7 @@ begin
    Begin
     cds_SelectProgressKiln.Active := False ;
     cds_SelectProgressKiln.ParamByName('ClientNo').AsInteger  := mtUserPropOwnerNo.AsInteger ;
+    cds_SelectProgressKiln.ParamByName('UserID').AsInteger    := ThisUser.UserID ;
     cds_SelectProgressKiln.Active := True ;
    End;
 
@@ -1388,7 +1389,8 @@ begin
   with dmInventory do
    Begin
     cds_SelectProgressKiln.Active := False ;
-    cds_SelectProgressKiln.ParamByName('ClientNo').AsInteger  := mtUserPropOwnerNo.AsInteger ;
+    cds_SelectProgressKiln.ParamByName('ClientNo').AsInteger      := mtUserPropOwnerNo.AsInteger ;
+    cds_SelectProgressKiln.ParamByName('UserID').AsInteger        := ThisUser.UserID ;
     cds_SelectProgressKiln.Active := True ;
    End;
  mtUserPropKilnChargeNo.AsInteger := -1 ;

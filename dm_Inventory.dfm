@@ -5574,12 +5574,26 @@
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       
-        'Select KP.KilnName + '#39' - '#39' + KCH.Info + '#39'  ['#39' + CAST(ISNULL(KCH.' +
-        'KilnChargeNo,'#39'-'#39') AS varchar(6)) + '#39']'#39' AS KilnName , KCH.*, KP.*'
+        'Select KP.KilnName + '#39' - '#39' + isnull(KCH.Info,'#39#39') + '#39'  ['#39' + CAST(' +
+        'ISNULL(KCH.KilnChargeNo,'#39'-'#39') AS varchar(6)) + '#39']'#39' AS KilnName , ' +
+        'KCH.*, KP.*'
       'FROM dbo.KilnChargeHdr KCH'
-      'Inner Join dbo.Kilns KP on KP.KilnNo = KCH.KilnNo'
-      'WHERE KP.ClientNo = :ClientNo '
+      
+        'Inner Join dbo.Kilns KP on KP.KilnNo = KCH.KilnNo and kp.KilnPro' +
+        'psID = KCH.KilnPropsID'
+      
+        'inner join [dbo].[Kilnprops] kpr on kpr.ClientNo = KCH.ClientNo ' +
+        'and kpr.KilnPropsID = KCH.KilnPropsID'
+      
+        'inner join dbo.PhysicalInventoryPoint pip2 on pip2.PhysicalInven' +
+        'toryPointNo = kpr.BeforeKiln_PIPNo'
+      'WHERE KP.ClientNo = :ClientNo'
       'and KP.TypeOfKiln = 2'
+      ''
+      'and exists (Select * from dbo.UserArrivalPoint uap'
+      'WHERE uap.PhyInvPointNameNo = pip2.PhyInvPointNameNo'
+      'and uap.UserID = :UserID)'
+      ''
       
         'Order By KP.KilnName, KCH.Info, CAST(KCH.KilnChargeNo AS varchar' +
         '(6))')
@@ -5588,6 +5602,11 @@
     ParamData = <
       item
         Name = 'CLIENTNO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'USERID'
         DataType = ftInteger
         ParamType = ptInput
       end>

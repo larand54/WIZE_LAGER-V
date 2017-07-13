@@ -2,12 +2,12 @@ object fKilnProps: TfKilnProps
   Left = 242
   Top = 107
   Caption = 'Torkparametrar'
-  ClientHeight = 846
-  ClientWidth = 1436
+  ClientHeight = 687
+  ClientWidth = 1167
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
@@ -15,148 +15,134 @@ object fKilnProps: TfKilnProps
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 96
+  TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1436
-    Height = 795
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 1167
+    Height = 646
     Align = alClient
+    BevelOuter = bvNone
     TabOrder = 0
     object Panel3: TPanel
-      Left = 1
-      Top = 1
-      Width = 1434
-      Height = 64
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 0
+      Top = 0
+      Width = 1167
+      Height = 52
       Align = alTop
+      BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 1165
       object Panel7: TPanel
-        Left = 1
-        Top = 1
-        Width = 424
-        Height = 62
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 0
+        Top = 0
+        Width = 344
+        Height = 52
         Align = alLeft
         TabOrder = 0
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitHeight = 50
         object dxBarDockControl2: TdxBarDockControl
           Left = 1
           Top = 1
-          Width = 422
-          Height = 47
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 342
+          Height = 45
           Align = dalTop
           BarManager = dxBarManager1
         end
       end
       object Panel8: TPanel
-        Left = 425
-        Top = 1
-        Width = 933
-        Height = 62
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 344
+        Top = 0
+        Width = 762
+        Height = 52
         Align = alClient
         TabOrder = 1
+        ExplicitLeft = 345
+        ExplicitTop = 1
+        ExplicitWidth = 758
+        ExplicitHeight = 50
       end
       object Panel9: TPanel
-        Left = 1358
-        Top = 1
-        Width = 75
-        Height = 62
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 1106
+        Top = 0
+        Width = 61
+        Height = 52
         Align = alRight
         TabOrder = 2
+        ExplicitLeft = 1103
+        ExplicitTop = 1
+        ExplicitHeight = 50
         object dxBarDockControl3: TdxBarDockControl
           Left = 1
           Top = 1
-          Width = 73
-          Height = 51
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 59
+          Height = 49
           Align = dalTop
           BarManager = dxBarManager1
         end
       end
     end
     object Panel4: TPanel
-      Left = 1
-      Top = 65
-      Width = 1434
-      Height = 729
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 0
+      Top = 52
+      Width = 1167
+      Height = 594
       Align = alClient
+      BevelOuter = bvNone
       TabOrder = 1
+      ExplicitLeft = 1
+      ExplicitTop = 53
+      ExplicitWidth = 1165
+      ExplicitHeight = 592
       object Panel5: TPanel
-        Left = 630
-        Top = 1
-        Width = 803
-        Height = 727
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 515
+        Top = 0
+        Width = 652
+        Height = 594
         Align = alRight
+        BevelOuter = bvNone
         TabOrder = 0
+        ExplicitLeft = 512
+        ExplicitTop = 1
+        ExplicitHeight = 590
         object Panel6: TPanel
-          Left = 1
-          Top = 1
-          Width = 801
-          Height = 57
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 0
+          Top = 0
+          Width = 652
+          Height = 46
           Align = alTop
+          BevelOuter = bvNone
           TabOrder = 0
+          ExplicitLeft = 1
+          ExplicitTop = 1
+          ExplicitWidth = 650
           object dxBarDockControl1: TdxBarDockControl
-            Left = 1
-            Top = 1
-            Width = 799
-            Height = 51
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 0
+            Top = 0
+            Width = 652
+            Height = 49
             Align = dalTop
             BarManager = dxBarManager1
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitWidth = 648
           end
         end
         object grdKilns: TcxGrid
-          Left = 1
-          Top = 58
-          Width = 801
-          Height = 252
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 0
+          Top = 46
+          Width = 652
+          Height = 205
           Align = alTop
           TabOrder = 1
+          ExplicitLeft = 1
+          ExplicitTop = 47
+          ExplicitWidth = 650
           object grdKilnsDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dm_DryKiln.ds_Kilns
@@ -243,63 +229,56 @@ object fKilnProps: TfKilnProps
           end
         end
         object Panel10: TPanel
-          Left = 1
-          Top = 310
-          Width = 801
-          Height = 416
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 0
+          Top = 251
+          Width = 652
+          Height = 343
           Align = alClient
+          BevelOuter = bvNone
           TabOrder = 2
+          ExplicitLeft = 1
+          ExplicitTop = 252
+          ExplicitWidth = 650
+          ExplicitHeight = 337
           object Panel11: TPanel
-            Left = 1
-            Top = 1
-            Width = 799
-            Height = 70
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 0
+            Top = 0
+            Width = 652
+            Height = 57
             Align = alTop
+            BevelOuter = bvNone
             TabOrder = 0
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitWidth = 648
             object cxButton1: TcxButton
-              Left = 10
-              Top = 6
-              Width = 149
-              Height = 51
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 8
+              Top = 5
+              Width = 121
+              Height = 41
               Action = acAddChannel
               TabOrder = 0
             end
             object cxButton2: TcxButton
-              Left = 166
-              Top = 6
-              Width = 149
-              Height = 51
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 135
+              Top = 5
+              Width = 121
+              Height = 41
               Action = acRemoveChannel
               TabOrder = 1
             end
           end
           object grdChannels: TcxGrid
-            Left = 1
-            Top = 71
-            Width = 799
-            Height = 344
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 0
+            Top = 57
+            Width = 652
+            Height = 286
             Align = alClient
             TabOrder = 1
+            ExplicitLeft = 1
+            ExplicitTop = 58
+            ExplicitWidth = 648
+            ExplicitHeight = 278
             object grdChannelsDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -381,19 +360,24 @@ object fKilnProps: TfKilnProps
         end
       end
       object Panel12: TPanel
-        Left = 1
-        Top = 1
-        Width = 629
-        Height = 727
+        Left = 0
+        Top = 0
+        Width = 515
+        Height = 594
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
         Align = alClient
+        BevelOuter = bvNone
         TabOrder = 1
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 511
+        ExplicitHeight = 590
         object lcVerk: TcxDBLookupComboBox
-          Left = 301
-          Top = 353
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 287
           DataBinding.DataField = 'Verk'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Enabled = False
@@ -404,15 +388,11 @@ object fKilnProps: TfKilnProps
             end>
           Properties.ListOptions.ShowHeader = False
           TabOrder = 0
-          Width = 179
+          Width = 145
         end
         object lcLagerstlleItork: TcxDBLookupComboBox
-          Left = 301
-          Top = 487
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 396
           DataBinding.DataField = 'Lagerst'#228'lle'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -423,15 +403,11 @@ object fKilnProps: TfKilnProps
             end>
           Properties.ListOptions.ShowHeader = False
           TabOrder = 4
-          Width = 179
+          Width = 145
         end
         object lcFretork: TcxDBLookupComboBox
-          Left = 301
-          Top = 447
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 363
           DataBinding.DataField = 'F'#246'retork'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -444,15 +420,11 @@ object fKilnProps: TfKilnProps
           TabOrder = 3
           OnEnter = lcFretorkEnter
           OnExit = lcFretorkExit
-          Width = 179
+          Width = 145
         end
         object lcI_tork: TcxDBLookupComboBox
-          Left = 301
-          Top = 513
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 417
           DataBinding.DataField = 'I_tork'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -465,15 +437,11 @@ object fKilnProps: TfKilnProps
           TabOrder = 5
           OnEnter = lcI_torkEnter
           OnExit = lcI_torkExit
-          Width = 179
+          Width = 145
         end
         object lcEfterTork: TcxDBLookupComboBox
-          Left = 301
-          Top = 584
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 475
           DataBinding.DataField = 'EfterTork'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -486,109 +454,109 @@ object fKilnProps: TfKilnProps
           TabOrder = 7
           OnEnter = lcEfterTorkEnter
           OnExit = lcEfterTorkExit
-          Width = 179
+          Width = 145
         end
         object cxLabel1: TcxLabel
-          Left = 75
-          Top = -61
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 61
+          Top = -50
           Caption = 'Verk:'
         end
         object cxLabel2: TcxLabel
-          Left = 155
-          Top = 485
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 126
+          Top = 394
           Caption = 'Lagerst'#228'lle i tork:'
         end
         object cxLabel3: TcxLabel
-          Left = 155
-          Top = 449
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 126
+          Top = 365
           Caption = 'Lagergrupp f'#246're tork:'
         end
         object cxLabel4: TcxLabel
-          Left = 156
-          Top = 513
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 127
+          Top = 417
           Caption = 'Lagergrupp i tork:'
         end
         object cxLabel5: TcxLabel
-          Left = 155
-          Top = 585
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 126
+          Top = 475
           Caption = 'Lagergrupp efter tork:'
         end
         object cxLabel6: TcxLabel
-          Left = 245
-          Top = 309
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 199
+          Top = 251
           Caption = 'Lagergrupper'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
-          Style.Font.Height = -15
+          Style.Font.Height = -12
           Style.Font.Name = 'MS Sans Serif'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
         end
         object teGroupName: TcxDBTextEdit
-          Left = 301
-          Top = 384
+          Left = 245
+          Top = 312
+          Margins.Left = 2
+          Margins.Top = 2
+          Margins.Right = 2
+          Margins.Bottom = 2
           DataBinding.DataField = 'GroupName'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           TabOrder = 1
-          Width = 178
+          Width = 144
         end
         object cxLabel7: TcxLabel
-          Left = 157
-          Top = 385
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 128
+          Top = 313
           Caption = 'Gruppnamn:'
         end
         object Panel13: TPanel
-          Left = 1
-          Top = 1
-          Width = 627
-          Height = 289
+          Left = 0
+          Top = 0
+          Width = 515
+          Height = 235
+          Margins.Left = 2
+          Margins.Top = 2
+          Margins.Right = 2
+          Margins.Bottom = 2
           Align = alTop
+          BevelOuter = bvNone
           TabOrder = 15
+          ExplicitLeft = 1
+          ExplicitTop = 1
+          ExplicitWidth = 509
           object Panel14: TPanel
-            Left = 1
-            Top = 1
-            Width = 625
-            Height = 65
+            Left = 0
+            Top = 0
+            Width = 515
+            Height = 53
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
             Align = alTop
+            BevelOuter = bvNone
             Caption = 'Panel14'
             TabOrder = 0
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitWidth = 507
           end
           object grdLagerGrupper: TcxGrid
-            Left = 1
-            Top = 66
-            Width = 625
-            Height = 222
+            Left = 0
+            Top = 53
+            Width = 515
+            Height = 182
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
             Align = alClient
             TabOrder = 1
+            ExplicitLeft = 1
+            ExplicitTop = 54
+            ExplicitWidth = 507
+            ExplicitHeight = 180
             object grdLagerGrupperDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               DataController.DataSource = dm_DryKiln.ds_KilnProps
@@ -675,12 +643,8 @@ object fKilnProps: TfKilnProps
           end
         end
         object lcLagerstalleBeforeKiln: TcxDBLookupComboBox
-          Left = 301
-          Top = 423
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 344
           DataBinding.DataField = 'Lagerst'#228'lleBeforeKiln'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -691,33 +655,21 @@ object fKilnProps: TfKilnProps
             end>
           Properties.ListOptions.ShowHeader = False
           TabOrder = 2
-          Width = 179
+          Width = 145
         end
         object cxLabel8: TcxLabel
-          Left = 156
-          Top = 421
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 127
+          Top = 342
           Caption = 'Lagerst'#228'lle f'#246're tork:'
         end
         object cxLabel9: TcxLabel
-          Left = 155
-          Top = 564
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 126
+          Top = 458
           Caption = 'Lagerst'#228'lle efter tork:'
         end
         object lcLagerstalleAfterKiln: TcxDBLookupComboBox
-          Left = 301
-          Top = 559
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 245
+          Top = 454
           DataBinding.DataField = 'Lagerst'#228'lleAfterKiln'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -728,15 +680,11 @@ object fKilnProps: TfKilnProps
             end>
           Properties.ListOptions.ShowHeader = False
           TabOrder = 6
-          Width = 179
+          Width = 145
         end
         object cxLabel10: TcxLabel
-          Left = 157
-          Top = 357
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 128
+          Top = 290
           Caption = 'Verk:'
         end
       end
@@ -744,20 +692,17 @@ object fKilnProps: TfKilnProps
   end
   object Panel2: TPanel
     Left = 0
-    Top = 795
-    Width = 1436
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 646
+    Width = 1167
+    Height = 41
     Align = alBottom
+    BevelOuter = bvNone
     TabOrder = 1
   end
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
