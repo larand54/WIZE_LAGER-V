@@ -4925,7 +4925,6 @@ object dmsConnector: TdmsConnector
     FetchOptions.AssignedValues = [evMode, evRowsetSize, evCursorKind]
     FetchOptions.Mode = fmAll
     FetchOptions.RowsetSize = 500
-    Connected = True
     LoginPrompt = False
     AfterCommit = DataModuleDestroy
     Left = 56

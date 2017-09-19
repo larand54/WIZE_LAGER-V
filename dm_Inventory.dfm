@@ -3652,9 +3652,8 @@
         'Inner Join dbo.PackageNumber pn on pn.packageTypeNo = pt.package' +
         'TypeNo'
       ''
-      
-        'WHERE pl.ActualLengthMM = :AL AND pt.ProductNo = :ProductNo AND ' +
-        'pn.LogicalInventoryPointNo = :LIPNo -- AND pn.Status = 1'
+      'WHERE pl.ActualLengthMM = :AL AND pt.ProductNo = :ProductNo'
+      'AND ((pn.LogicalInventoryPointNo = :LIPNo) or (0 = :LIPNo))'
       'AND (ls.NoOfLengths = 1)'
       
         'Group By pt.ProductNo, pn.PackageTypeNo, pl.ActualLengthMM, pn.L' +
@@ -5545,7 +5544,7 @@
       'AND PN.SupplierCode = :SupplierCode'
       'AND LIP.PhysicalInventoryPointNo = :PIPNo'
       'AND PN.Status = 1')
-    Left = 1032
+    Left = 1024
     Top = 208
     ParamData = <
       item

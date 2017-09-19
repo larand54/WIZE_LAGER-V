@@ -229,6 +229,9 @@
     object mtSelectedPkgNoProductNo: TIntegerField
       FieldName = 'ProductNo'
     end
+    object mtSelectedPkgNoMaxLengtrh: TFloatField
+      FieldName = 'MaxLengtrh'
+    end
     object mtSelectedPkgNoMARKERAD: TIntegerField
       FieldName = 'MARKERAD'
     end

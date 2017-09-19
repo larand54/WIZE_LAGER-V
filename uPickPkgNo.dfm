@@ -4,7 +4,7 @@ object fPickPkgNo: TfPickPkgNo
   ActiveControl = lcProduct
   Caption = 'Plocka paketnr'
   ClientHeight = 586
-  ClientWidth = 868
+  ClientWidth = 1108
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,11 +20,14 @@ object fPickPkgNo: TfPickPkgNo
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 73
-    Width = 868
-    Height = 454
+    Top = 121
+    Width = 1108
+    Height = 406
     Align = alClient
     TabOrder = 0
+    ExplicitTop = 73
+    ExplicitWidth = 868
+    ExplicitHeight = 454
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Cancel.Visible = True
@@ -64,7 +67,7 @@ object fPickPkgNo: TfPickPkgNo
         Properties.ReadOnly = False
         Properties.ValueChecked = '1'
         Properties.ValueUnchecked = '0'
-        Width = 91
+        Width = 113
       end
       object cxGrid1DBTableView1ColumnAngeAntalPkt: TcxGridDBColumn
         Caption = 'ANGE ANTAL PKT'
@@ -80,26 +83,26 @@ object fPickPkgNo: TfPickPkgNo
         Options.Filtering = False
         SortIndex = 0
         SortOrder = soAscending
-        Width = 72
+        Width = 89
       end
       object cxGrid1DBTableView1LEVKOD: TcxGridDBColumn
         DataBinding.FieldName = 'LEVKOD'
         PropertiesClassName = 'TcxMaskEditProperties'
         Properties.ReadOnly = True
-        Width = 64
+        Width = 79
       end
       object cxGrid1DBTableView1AM3: TcxGridDBColumn
         DataBinding.FieldName = 'AM3'
         PropertiesClassName = 'TcxMaskEditProperties'
         Properties.ReadOnly = True
         Options.Filtering = False
-        Width = 70
+        Width = 87
       end
       object cxGrid1DBTableView1STYCK: TcxGridDBColumn
         DataBinding.FieldName = 'STYCK'
         PropertiesClassName = 'TcxMaskEditProperties'
         Properties.ReadOnly = True
-        Width = 70
+        Width = 87
       end
       object cxGrid1DBTableView1REGISTRERAT: TcxGridDBColumn
         Caption = 'REGISTRERAD'
@@ -107,18 +110,23 @@ object fPickPkgNo: TfPickPkgNo
         PropertiesClassName = 'TcxDateEditProperties'
         Properties.ReadOnly = True
         Options.Filtering = False
-        Width = 112
+        Width = 138
       end
       object cxGrid1DBTableView1STYCKPERLNGD: TcxGridDBColumn
         DataBinding.FieldName = 'STYCKPERL'#196'NGD'
         PropertiesClassName = 'TcxMaskEditProperties'
         Properties.ReadOnly = True
-        Width = 269
+        Width = 310
       end
       object cxGrid1DBTableView1Column1: TcxGridDBColumn
         DataBinding.FieldName = 'ProductNo'
         Visible = False
         VisibleForCustomization = False
+      end
+      object cxGrid1DBTableView1MaxLengtrh: TcxGridDBColumn
+        Caption = 'MAXL'#196'NGD'
+        DataBinding.FieldName = 'MaxLengtrh'
+        Width = 103
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -128,10 +136,11 @@ object fPickPkgNo: TfPickPkgNo
   object Panel1: TPanel
     Left = 0
     Top = 527
-    Width = 868
+    Width = 1108
     Height = 59
     Align = alBottom
     TabOrder = 1
+    ExplicitWidth = 868
     object Label1: TLabel
       Left = 8
       Top = 16
@@ -147,19 +156,19 @@ object fPickPkgNo: TfPickPkgNo
       Caption = '0'
     end
     object BitBtn1: TBitBtn
-      Left = 328
-      Top = 16
-      Width = 75
-      Height = 25
+      Left = 440
+      Top = 6
+      Width = 107
+      Height = 41
       Kind = bkOK
       NumGlyphs = 2
       TabOrder = 0
     end
     object BitBtn2: TBitBtn
-      Left = 432
-      Top = 16
-      Width = 75
-      Height = 25
+      Left = 568
+      Top = 6
+      Width = 105
+      Height = 41
       Kind = bkCancel
       NumGlyphs = 2
       TabOrder = 1
@@ -168,10 +177,11 @@ object fPickPkgNo: TfPickPkgNo
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 868
-    Height = 73
+    Width = 1108
+    Height = 121
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 1008
     object LabelPIPName: TLabel
       Left = 56
       Top = 16
@@ -200,8 +210,8 @@ object fPickPkgNo: TfPickPkgNo
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 392
-      Top = 20
+      Left = 480
+      Top = 28
       Width = 40
       Height = 13
       Caption = 'Produkt:'
@@ -210,7 +220,7 @@ object fPickPkgNo: TfPickPkgNo
       Left = 18
       Top = 37
       Width = 86
-      Height = 25
+      Height = 36
       Caption = 'Markera alla'
       TabOrder = 0
       OnClick = bbMarkAllClick
@@ -219,14 +229,14 @@ object fPickPkgNo: TfPickPkgNo
       Left = 114
       Top = 37
       Width = 86
-      Height = 25
+      Height = 36
       Caption = 'Avmarkera alla'
       TabOrder = 1
       OnClick = bbUnMarkAllClick
     end
     object lcProduct: TcxDBLookupComboBox
-      Left = 440
-      Top = 12
+      Left = 528
+      Top = 20
       DataBinding.DataField = 'Product'
       DataBinding.DataSource = dsFilter
       Properties.ImmediatePost = True
@@ -236,8 +246,8 @@ object fPickPkgNo: TfPickPkgNo
       Width = 425
     end
     object BitBtn3: TBitBtn
-      Left = 528
-      Top = 40
+      Left = 975
+      Top = 14
       Width = 121
       Height = 25
       Caption = 'Uppdatera'
@@ -246,13 +256,30 @@ object fPickPkgNo: TfPickPkgNo
       OnClick = BitBtn3Click
     end
     object deProductNo: TcxDBTextEdit
-      Left = 728
-      Top = 8
+      Left = 816
+      Top = 16
       DataBinding.DataField = 'ProductNo'
       DataBinding.DataSource = dsFilter
       TabOrder = 4
       Visible = False
       Width = 121
+    end
+    object cxbVardaPaket: TcxButton
+      Left = 528
+      Top = 47
+      Width = 545
+      Height = 51
+      Caption = 
+        'L'#228'gg till paket till inventeringen, markera ett paket i gridden ' +
+        'nedan som mall'
+      TabOrder = 5
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = cxbVardaPaketClick
     end
   end
   object ds_SelectedPkgNo: TDataSource
@@ -310,6 +337,7 @@ object fPickPkgNo: TfPickPkgNo
     end
   end
   object sq_GetPkgNo: TFDQuery
+    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo,'
@@ -318,7 +346,13 @@ object fPickPkgNo: TfPickPkgNo
       'ptl.PcsPerLength,'
       'pt.Totalm3Actual AS AM3,'
       'pt.TotalNoOfPieces AS STYCK,'
-      'pn.DateCreated'
+      'pn.DateCreated,'
+      '(Select Max(pl.ActualLengthMM) FROM dbo.ProductLength pl'
+      
+        'Inner Join dbo.PackageTypeDetail ptd on ptd.ProductLengthno = pl' +
+        '.ProductLengthno'
+      'WHERE'
+      'ptd.packagetypeno = pt.packagetypeno) AS ALMM'
       ''
       'From dbo.packagenumber pn'
       'Inner Join dbo.InvControlrow icr on icr.PackageNo = pn.PackageNo'
@@ -392,8 +426,14 @@ object fPickPkgNo: TfPickPkgNo
       FieldName = 'productno'
       Origin = 'productno'
     end
+    object sq_GetPkgNoALMM: TFloatField
+      FieldName = 'ALMM'
+      Origin = 'ALMM'
+      ReadOnly = True
+    end
   end
   object sq_GetInActive: TFDQuery
+    Active = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
       'Select pn.PackageNo AS PackageNo,'
@@ -402,7 +442,13 @@ object fPickPkgNo: TfPickPkgNo
       'ptl.PcsPerLength,'
       'pt.Totalm3Actual AS AM3,'
       'pt.TotalNoOfPieces AS STYCK,'
-      'pn.DateCreated AS DateCreated'
+      'pn.DateCreated AS DateCreated,'
+      '(Select Max(pl.ActualLengthMM) FROM dbo.ProductLength pl'
+      
+        'Inner Join dbo.PackageTypeDetail ptd on ptd.ProductLengthno = pl' +
+        '.ProductLengthno'
+      'WHERE'
+      'ptd.packagetypeno = pt.packagetypeno) AS ALMM'
       ''
       'From dbo.packagenumber pn'
       
@@ -499,6 +545,11 @@ object fPickPkgNo: TfPickPkgNo
     object sq_GetInActiveProductNo: TIntegerField
       FieldName = 'ProductNo'
       Origin = 'ProductNo'
+    end
+    object sq_GetInActiveALMM: TFloatField
+      FieldName = 'ALMM'
+      Origin = 'ALMM'
+      ReadOnly = True
     end
   end
   object sq_GetAllProducts: TFDQuery

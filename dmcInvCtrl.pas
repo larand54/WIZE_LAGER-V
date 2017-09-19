@@ -852,6 +852,7 @@ type
     sp_SetAllExceptVerkMall: TFDStoredProc;
     sp_SetAllActiveMall: TFDStoredProc;
     sp_SetMallSetMallbu: TIntegerField;
+    mtSelectedPkgNoMaxLengtrh: TFloatField;
     procedure ds_InvCtrlGrpDataChange(Sender: TObject; Field: TField);
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);

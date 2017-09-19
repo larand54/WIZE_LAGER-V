@@ -744,6 +744,8 @@ type
     acAddToPaRegListan: TAction;
     cxButton12: TcxButton;
     acMoveSelectedPkgsToLIP: TAction;
+    BitBtn52: TBitBtn;
+    acAlvestaPickInActivePkgNos: TAction;
     procedure acExitExecute(Sender: TObject);
     procedure acNewExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1001,6 +1003,8 @@ type
     procedure acAddToPaRegListanExecute(Sender: TObject);
     procedure acMoveSelectedPkgsToLIPExecute(Sender: TObject);
     procedure acMoveSelectedPkgsToLIPUpdate(Sender: TObject);
+    procedure acAlvestaPickInActivePkgNosExecute(Sender: TObject);
+    procedure acAlvestaPickInActivePkgNosUpdate(Sender: TObject);
 
   private
     { Private declarations }
@@ -3074,6 +3078,40 @@ begin
  End;
 end;
 
+procedure TfInvCtrl.acAlvestaPickInActivePkgNosExecute(Sender: TObject);
+var fPickPkgNo: TfPickPkgNo;
+begin
+ With dmInvCtrl do
+ Begin
+  cds_InvCtrl_Pkgs.DisableControls ;
+  fPickPkgNo:= TfPickPkgNo.Create(nil);
+  try
+   fPickPkgNo.Caption               := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_173' (* 'Plocka paket att påregistrera' *) ) ;
+   dmInvCtrl.InventoryPkgs          := True ;
+   fPickPkgNo.LIPNo                 := cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger ;
+   fPickPkgNo.PIPNo                 := cds_InvCtrlMetodPIPNo.AsInteger ;
+   fPickPkgNo.ic_GrpNo              := cds_InvCtrlMetodIC_grpNo.AsInteger ;
+   fPickPkgNo.LabelPIPName.Caption  := dmInvCtrl.cds_InvCtrl_LagerStallenLagerstalle.AsString+'/'+dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString ;
+   if fPickPkgNo.ShowModal = mrOK then
+   Begin
+    Application.ProcessMessages ;
+    AddMarkedPkgsTo_PaRegPkgsTable ;
+   End ;
+  finally
+   FreeAndNil(fPickPkgNo) ;
+   cds_InvCtrl_Pkgs.EnableControls ;
+  end;
+ End ;
+end;
+
+procedure TfInvCtrl.acAlvestaPickInActivePkgNosUpdate(Sender: TObject);
+begin
+ With dmInvCtrl do
+ Begin
+     acAlvestaPickInActivePkgNos.Enabled  := cds_InvCtrlGrpVerkNo.AsInteger = 76 ;
+ End;
+end;
+
 procedure TfInvCtrl.acHamtaAllaLSExecute(Sender: TObject);
 begin
 //Hämta lagergrupper
@@ -4516,11 +4554,13 @@ begin
               ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_148' (* 'Paketet finns i kontrollistan' *) )) ;
               Action := eaREJECT ;
              End ;
-        -2 : Begin
-              ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_149' (* 'Paketet är aktivt ' *) )+ dmsSystem.Pkg_Info(mtSelectedPkgNoPAKETNR.AsInteger, Trim(mtSelectedPkgNoLEVKOD.AsString))) ;
-              Action := eaREJECT ;
-             End ;
+{
+          -2 : Begin
+                ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_149' (* 'Paketet är aktivt ' *) )+ dmsSystem.Pkg_Info(mtSelectedPkgNoPAKETNR.AsInteger, Trim(mtSelectedPkgNoLEVKOD.AsString))) ;
+                Action := eaREJECT ;
+               End ;
 
+}
         -3 : Begin
               ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_45' (* 'Paketnr ' *) )+inttostr(mtSelectedPkgNoPAKETNR.AsInteger)+'/'+mtSelectedPkgNoLEVKOD.AsString+siLangLinked_fInvCtrl.GetTextOrDefault('IDS_151' (* ' finns ej' *) )) ;
               Action := eaREJECT ;
@@ -4942,7 +4982,7 @@ begin
   try
    fPickPkgNo.Caption               := siLangLinked_fInvCtrl.GetTextOrDefault('IDS_173' (* 'Plocka paket att påregistrera' *) ) ;
    dmInvCtrl.InventoryPkgs          := False ;
-   fPickPkgNo.LIPNo                 := 0 ;//cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger ;
+   fPickPkgNo.LIPNo                 := cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger ;
    fPickPkgNo.PIPNo                 := cds_InvCtrlMetodPIPNo.AsInteger ;
    fPickPkgNo.ic_GrpNo              := cds_InvCtrlMetodIC_grpNo.AsInteger ;
    fPickPkgNo.LabelPIPName.Caption  := dmInvCtrl.cds_InvCtrl_LagerStallenLagerstalle.AsString+'/'+dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString ;

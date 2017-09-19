@@ -867,6 +867,8 @@ End ;
 function TdmInventory.VardaLager(const SupplierNo, LIPNo, LengthGroupNo, ProductNo, NoOfPkgs : Integer;const AL, Produkt : String) : Boolean ;
 Var fNoOfPkgs : Integer ;
 Begin
+ if mtPkgNos.Active then
+  mtPkgNos.Active:= False ;
  mtPkgNos.Active:= True ;
  Try
 //Ta bort paket
@@ -941,7 +943,7 @@ Begin
  End ;//for
  }
  Finally
-  mtPkgNos.Active:= False ;
+//  mtPkgNos.Active:= False ;
  End ;
 End ;
 

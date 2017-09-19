@@ -30,18 +30,18 @@ object fEntryField: TfEntryField
   end
   object bbok: TBitBtn
     Left = 232
-    Top = 184
+    Top = 176
     Width = 75
-    Height = 25
+    Height = 33
     Kind = bkOK
     NumGlyphs = 2
     TabOrder = 1
   end
   object bbcancel: TBitBtn
     Left = 320
-    Top = 184
+    Top = 176
     Width = 75
-    Height = 25
+    Height = 33
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 2

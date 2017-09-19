@@ -27,7 +27,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinWhiteprint, dxSkinVS2010,
   dxSkinXmas2008Blue, dxSkinscxPCPainter, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, cxNavigator, siComp, siLngLnk;
+  dxSkinOffice2013White, cxNavigator, siComp, siLngLnk, Vcl.Menus, cxButtons;
 
 type
   TfPickPkgNo = class(TForm)
@@ -98,6 +98,10 @@ type
     cds_ProductsSpeciesName: TStringField;
     cds_ProductsSurfacingName: TStringField;
     siLangLinked_fPickPkgNo: TsiLangLinked;
+    sq_GetPkgNoALMM: TFloatField;
+    sq_GetInActiveALMM: TFloatField;
+    cxGrid1DBTableView1MaxLengtrh: TcxGridDBColumn;
+    cxbVardaPaket: TcxButton;
     procedure mtSelectedPkgNoAfterInsert(DataSet: TDataSet);
     procedure bbMarkAllClick(Sender: TObject);
     procedure bbUnMarkAllClick(Sender: TObject);
@@ -113,8 +117,13 @@ type
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
     procedure FormDestroy(Sender: TObject);
+    procedure cxbVardaPaketClick(Sender: TObject);
   private
     { Private declarations }
+    CurrentNoOfPkgs,
+    SelectedProductNo     : Integer ;
+    SelectedLength        : String ;
+    procedure VardaPerSortiment(Sender: TObject);
     procedure RefreshPackageList ;
     procedure RefreshInventoryPackageList ;
     procedure RefreshInActivePackageList ;
@@ -127,7 +136,7 @@ type
 
 implementation
 
-uses dmsDataConn , dmcInvCtrl;
+uses dmsDataConn , dmcInvCtrl, dm_Inventory, uEntryField;
 
 {$R *.dfm}
 
@@ -231,7 +240,7 @@ begin
  While not  sq_GetPkgNo.Eof do
  Begin
   mtSelectedPkgNo.insert ;
-  For x := 0 to 5 do
+  For x := 0 to 7 do
    mtSelectedPkgNo.Fields.Fields[x].AsVariant:= sq_GetPkgNo.Fields.Fields[x].AsVariant ;
   mtSelectedPkgNoMARKERAD.AsInteger:= 0 ;
   mtSelectedPkgNo.post ;
@@ -267,7 +276,7 @@ begin
  While not sq_GetInActive.Eof do
  Begin
   mtSelectedPkgNo.insert ;
-  For x := 0 to 6 do
+  For x := 0 to 7 do
    mtSelectedPkgNo.Fields.Fields[x].AsVariant:= sq_GetInActive.Fields.Fields[x].AsVariant ;
   mtSelectedPkgNoMARKERAD.AsInteger:= 0 ;
   mtSelectedPkgNo.post ;
@@ -349,6 +358,11 @@ begin
   RefreshPackageList ;
 end;
 
+procedure TfPickPkgNo.cxbVardaPaketClick(Sender: TObject);
+begin
+ VardaPerSortiment(Sender) ;
+end;
+
 procedure TfPickPkgNo.cxGrid1DBTableView1CellClick(
   Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
@@ -374,6 +388,115 @@ begin
  Begin
   mtSelectedPkgNo.Active:= False ;
  End ;
+end;
+
+procedure TfPickPkgNo.VardaPerSortiment(Sender: TObject);
+var fEntryField   : TfEntryField;
+    NoOfPkgs      : Integer ;
+    Save_Cursor   : TCursor ;
+    LengthChoosen : String ;
+//  I: TdmInvCtrl;
+    I : Integer ;
+begin
+ With dmInvCtrl do
+ Begin
+  SelectedProductNo := 0 ;
+  SelectedLength    :=  mtSelectedPkgNoMaxLengtrh.AsString ;
+  SelectedProductNo :=  mtSelectedPkgNoProductNo.AsInteger ;
+  if SelectedProductNo > 0 then
+  Begin
+
+  if Length(SelectedLength) = 0 then
+  Begin
+   ShowMessage(siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_103' (* 'fick inte med längden, prova att högerklicka igen' *) )) ;
+   Exit ;
+  End ;
+   fEntryField := TfEntryField.Create(nil);
+   Try
+    fEntryField.seAntalPaket.Properties.MinValue:= 0 ;
+    fEntryField.seAntalPaket.Properties.MaxValue:= 100 ;
+
+    fEntryField.LExtraInfo.Caption:= siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_104' (* 'Vårda lager, ange negativt antal för att minska antal paket resp. positivt antal för att öka.' *) ) ;
+    if SelectedLength = 'ÖVRIGA' then
+    Begin
+     fEntryField.Caption:= siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_105' (* 'Ange antal pkt av ' *) ) + lcProduct.Text + siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_88' (* ' och välj längd.' *) ) ;
+     fEntryField.PanelLength.Visible  := True ;
+//     dmInventory.Open_sq_OtherLengths(dmInvCtrl.cds_InvCtrlGrpOwnerNo.AsInteger, SelectedProductNo, LIPNo, mtUserPropLengthGroupNo.AsInteger) ;
+    End
+      else
+       Begin
+        fEntryField.Caption:= siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_87' (* 'Ange antal av ' *) ) + lcProduct.Text + ' / ' + SelectedLength ;
+        fEntryField.PanelLength.Visible  := False ;
+       End ;
+    if fEntryField.ShowModal = mrOK then
+    Begin
+//     if SelectedLength = 'ÖVRIGA' then
+//      LengthChoosen:= dmInventory.Selected_sq_OtherLengths
+//       else
+        LengthChoosen:= SelectedLength ;
+     if LengthChoosen <> 'Not valid' then
+     Begin
+      NoOfPkgs:= fEntryField.seAntalPaket.Value ;// strtointdef(fEntryField.eValue.Text,-1) ;
+      if (CurrentNoOfPkgs + NoOfPkgs) >= 0 then
+    //   10 >= -10
+      Begin
+     //Now add pkgs to torksats!
+       if MessageDlg(siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_109' (* 'Vill du ändra antal paket med ' *) )+inttostr(NoOfPkgs)+siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_110' (* ' för produkt ' *) ) + lcProduct.Text
+       +siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_111' (* ' Längd ' *) ) + LengthChoosen
+       ,  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+       Begin
+//        LIPNo := 0 ;
+        if dmInventory.VardaLager (dmInvCtrl.cds_InvCtrlGrpOwnerNo.AsInteger, LIPNo, mtUserPropLengthGroupNo.AsInteger, SelectedProductNo, NoOfPkgs, LengthChoosen, lcProduct.Text) then
+        Begin
+         Save_Cursor    := Screen.Cursor;
+         Screen.Cursor  := crSQLWait;    { Show hourglass cursor }
+         Try
+
+//          dmInventory.cds_PkgList.Active := False ;
+          Screen.Cursor                  := crSQLWait;    { Show hourglass cursor }
+//          dmInventory.cds_PkgList.Active := True ;
+
+          mtSelectedPkgNo.Active  := False ;
+          mtSelectedPkgNo.Active  := True ;
+          dmInventory.mtPkgNos.First ;
+          while not dmInventory.mtPkgNos.Eof do
+          Begin
+            mtSelectedPkgNo.Insert ;
+            mtSelectedPkgNoPaketnr.AsInteger  := dmInventory.mtPkgNosPackageNo.AsInteger ;
+            mtSelectedPkgNoLEVKOD.AsString    := dmInventory.mtPkgNosSupplierCode.AsString ;
+            mtSelectedPkgNoMARKERAD.AsInteger := 1 ;
+            mtSelectedPkgNo.Post ;
+            dmInventory.mtPkgNos.Next ;
+          End ;
+
+
+         Finally
+          Screen.Cursor := Save_Cursor;  { Always restore to normal }
+         End ;
+        End ;//if dmInventory.VardaLager (dmInvento
+       End ;//if MessageDlg
+      End
+       else
+        ShowMessage(siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_91' (* 'Angivet antal paket överstiger antal paket i lager.' *) ));
+     End
+      else
+       ShowMessage(siLangLinked_fPickPkgNo.GetTextOrDefault('IDS_92' (* 'Paket med flera längder registreras paketnr vis.' *) ));
+    End ;
+
+   Finally
+     FreeAndNil(fEntryField) ;
+   End ;
+
+//   End ;
+
+   BitBtn1.Click ;
+  End
+   else
+    ShowMessage('Markera  ett paket som mall!') ;
+
+
+ End ;//with
+
 end;
 
 end.
