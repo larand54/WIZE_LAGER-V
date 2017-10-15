@@ -2,7 +2,7 @@ object dmsProduct: TdmsProduct
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 633
-  Width = 1017
+  Width = 1102
   object cds_ProductGroupLength: TFDQuery
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
