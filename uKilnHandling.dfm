@@ -124,7 +124,7 @@ object fkilnHandling: TfkilnHandling
               Width = 137
             end
             item
-              Caption = 'VAGNL'#196'GE'
+              Caption = 'KOKL'#196'GE'
               Options.HoldOwnColumnsOnly = True
               Options.Moving = False
               Width = 1127
@@ -594,7 +594,7 @@ object fkilnHandling: TfkilnHandling
         object cxLabel2: TcxLabel
           Left = 4
           Top = 13
-          Caption = #196'gare:'
+          Caption = 'Producent:'
           Style.StyleController = cxEditStyleController1
         end
         object cxLabelVagn: TcxLabel
@@ -603,7 +603,7 @@ object fkilnHandling: TfkilnHandling
           Caption = 'Markerad vagn:'
         end
         object lcProgressKiln: TcxDBLookupComboBox
-          Left = 45
+          Left = 77
           Top = 35
           DataBinding.DataField = 'ProgressKiln'
           DataBinding.DataSource = dsUserProp
@@ -616,7 +616,7 @@ object fkilnHandling: TfkilnHandling
           Properties.ListOptions.ShowHeader = False
           Style.StyleController = cxEditStyleController3
           TabOrder = 2
-          Width = 236
+          Width = 204
         end
         object cxButton3: TcxButton
           Left = 810
@@ -625,6 +625,12 @@ object fkilnHandling: TfkilnHandling
           Height = 50
           Action = acMoveFromKiln
           TabOrder = 4
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
         object cxButton1: TcxButton
@@ -634,6 +640,12 @@ object fkilnHandling: TfkilnHandling
           Height = 50
           Action = acMoveVagnIntoKiln
           TabOrder = 5
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
         object cxButton6: TcxButton
@@ -643,6 +655,12 @@ object fkilnHandling: TfkilnHandling
           Height = 50
           Action = acEditVagn
           TabOrder = 6
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
         object cxButton5: TcxButton
@@ -652,6 +670,12 @@ object fkilnHandling: TfkilnHandling
           Height = 50
           Action = acAddVagn
           TabOrder = 7
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
         object cxButton2: TcxButton
@@ -662,11 +686,17 @@ object fkilnHandling: TfkilnHandling
           Action = acPkgTypeTable
           OptionsImage.Layout = blGlyphTop
           TabOrder = 8
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
         end
         object cxLabel1: TcxLabel
           Left = 4
           Top = 36
-          Caption = 'Tork:'
+          Caption = 'Tub:'
           Style.StyleController = cxEditStyleController1
         end
         object cxButton4: TcxButton
@@ -677,6 +707,12 @@ object fkilnHandling: TfkilnHandling
           Action = acCancelMoveVagnIntoKiln
           LookAndFeel.SkinName = ''
           TabOrder = 10
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
         object cbColAutoWidth: TcxCheckBox
@@ -695,10 +731,16 @@ object fkilnHandling: TfkilnHandling
           Height = 50
           Action = acCancelMoveFromKiln
           TabOrder = 12
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
         object lcOWNER: TcxDBLookupComboBox
-          Left = 45
+          Left = 77
           Top = 11
           DataBinding.DataField = 'OWNER'
           DataBinding.DataSource = dsUserProp
@@ -712,7 +754,7 @@ object fkilnHandling: TfkilnHandling
           Properties.MaxLength = 0
           Style.StyleController = cxEditStyleController3
           TabOrder = 13
-          Width = 236
+          Width = 204
         end
         object lNoOfVagnarKiln: TcxDBLabel
           Left = 1058
@@ -754,10 +796,16 @@ object fkilnHandling: TfkilnHandling
         object cxButton8: TcxButton
           Left = 978
           Top = 12
-          Width = 69
+          Width = 79
           Height = 50
           Action = acSaveProps
           TabOrder = 18
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           WordWrap = True
         end
       end
@@ -1359,36 +1407,36 @@ object fkilnHandling: TfkilnHandling
     end
     object acAddVagn: TAction
       Category = 'TorkSats'
-      Caption = 'L'#228'gg till Vagn/Sats'
+      Caption = 'L'#228'gg till kok'
       OnExecute = acAddVagnExecute
       OnUpdate = acAddVagnUpdate
     end
     object acEditVagn: TAction
       Category = 'TorkSats'
-      Caption = #196'ndra Vagn/Sats'
+      Caption = #196'ndra kok'
       OnExecute = acEditVagnExecute
       OnUpdate = acEditVagnUpdate
     end
     object acMoveVagnIntoKiln: TAction
       Category = 'TorkSats'
-      Caption = 'Stega in Vagn/Sats i tork'
+      Caption = 'Stega in kok i tub'
       OnExecute = acMoveVagnIntoKilnExecute
       OnUpdate = acMoveVagnIntoKilnUpdate
     end
     object acMoveFromKiln: TAction
       Category = 'TorkSats'
-      Caption = 'Stega ut Vagn/Sats fr'#229'n tork'
+      Caption = 'Stega ut kok fr'#229'n tub'
       OnExecute = acMoveFromKilnExecute
       OnUpdate = acMoveFromKilnUpdate
     end
     object acCancelMoveVagnIntoKiln: TAction
       Category = 'TorkSats'
-      Caption = #197'ngra Stega in Vagn/Sats i tork'
+      Caption = #197'ngra Stega in kok i tub'
       OnExecute = acCancelMoveVagnIntoKilnExecute
     end
     object acCancelMoveFromKiln: TAction
       Category = 'TorkSats'
-      Caption = #197'ngra Stega ut Vagn/Sats fr'#229'n tork'
+      Caption = #197'ngra Stega ut kok fr'#229'n tub'
       OnExecute = acCancelMoveFromKilnExecute
     end
     object acSaveProps: TAction
@@ -1467,7 +1515,6 @@ object fkilnHandling: TfkilnHandling
     Top = 457
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = cxGrid1
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1484,13 +1531,11 @@ object fkilnHandling: TfkilnHandling
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39085.979061331020000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1506,11 +1551,9 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1526,11 +1569,9 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1546,13 +1587,11 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsSelection.ProcessExactSelection = True
       OptionsSelection.ProcessSelection = True
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1568,7 +1607,6 @@ object fkilnHandling: TfkilnHandling
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

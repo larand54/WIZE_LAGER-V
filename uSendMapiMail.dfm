@@ -2,24 +2,6 @@ object dm_SendMapiMail: Tdm_SendMapiMail
   OldCreateOrder = False
   Height = 249
   Width = 410
-  object MapiSession: TRwMAPISession
-    LogonInfo.UseExtendedMAPI = True
-    LogonInfo.Shared = False
-    LogonInfo.ProfileRequired = False
-    LogonInfo.ForceDownload = False
-    LogonInfo.ShowLogonDialog = True
-    LogonInfo.NewSession = True
-    LogonInfo.NoMail = False
-    LogonInfo.NTService = False
-    LogonInfo.ShowPasswordDialog = False
-    LogonInfo.ShowServiceDialog = False
-    LogonInfo.ShortTimeOut = True
-    LogonInfo.MultiThreadedNotifications = False
-    LogoffInfo.Shared = False
-    LogoffInfo.ShowLogoffDialog = False
-    Left = 48
-    Top = 24
-  end
   object siLang_dm_SendMapiMail: TsiLang
     Version = '7.2'
     StringsTypes.Strings = (
@@ -150,5 +132,18 @@ object dm_SendMapiMail: Tdm_SendMapiMail
       740069006F006E0073005F0055006E00690063006F00640065000D000A007300
       7400430068006100720053006500740073005F0055006E00690063006F006400
       65000D000A00}
+  end
+  object EWSSession: TRwEWSSession
+    UserAgent = 'RAPWare EWS Client'
+    AccessType = atDefault
+    SecurityFlags = []
+    ProfileRequired = True
+    ServiceUrl = ''
+    ConnectingSIDType = csSmtpAddress
+    NTService = False
+    LogonDialog = True
+    PasswordDialog = True
+    Left = 186
+    Top = 50
   end
 end

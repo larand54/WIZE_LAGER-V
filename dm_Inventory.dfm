@@ -5334,7 +5334,10 @@
       #9#9#9#9'and pg2.SpeciesNo = pg.SpeciesNo'
       #9#9#9#9'and pg2.SurfacingNo = pg.SurfacingNo'
       #9#9#9#9'and pg2.ProductCategoryNo = kv.IMPNo'
-      #9#9#9#9'and p2.GradeNo = p.GradeNo),'#39'NO matching P/T'#39') AS MatchingPT'
+      
+        #9#9#9#9'and p2.GradeNo = p.GradeNo),'#39'NO matching P/T'#39') AS MatchingPT' +
+        ','
+      '        pt.Totalm3Actual as AM3'
       ''
       'FROM dbo.KilnChargeRows kcr'
       'inner join dbo.PackageNumber pn on pn.PackageNo = kcr.PackageNo'
@@ -5436,6 +5439,12 @@
       ReadOnly = True
       Required = True
       Size = 15
+    end
+    object cds_KilnChargeRowsAM3: TFloatField
+      FieldName = 'AM3'
+      Origin = 'AM3'
+      ProviderFlags = []
+      DisplayFormat = '######.00'
     end
   end
   object cds_KilnChargeHdr: TFDQuery
@@ -5717,7 +5726,7 @@
   end
   object sp_MoveVagn: TFDStoredProc
     Connection = dmsConnector.FDConnection1
-    StoredProcName = 'dbo.vis_MoveVagn_v2'
+    StoredProcName = 'dbo.vis_MoveVagn_v3'
     Left = 704
     Top = 624
     ParamData = <
@@ -6173,7 +6182,7 @@
   end
   object sp_MovePackage: TFDStoredProc
     Connection = dmsConnector.FDConnection1
-    StoredProcName = 'dbo.vis_MovePackage_v2'
+    StoredProcName = 'dbo.vis_MovePackage_v3'
     Left = 1088
     Top = 640
     ParamData = <

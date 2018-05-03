@@ -37,7 +37,7 @@ object fKilnCharges: TfKilnCharges
         Left = 0
         Top = 0
         Width = 543
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -56,7 +56,7 @@ object fKilnCharges: TfKilnCharges
         Left = 0
         Top = 0
         Width = 56
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -277,7 +277,7 @@ object fKilnCharges: TfKilnCharges
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (

@@ -425,7 +425,7 @@ object frmLoadArrivals: TfrmLoadArrivals
         Left = 1
         Top = 1
         Width = 528
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -441,7 +441,7 @@ object frmLoadArrivals: TfrmLoadArrivals
         Left = 1
         Top = 1
         Width = 61
-        Height = 46
+        Height = 45
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -601,7 +601,7 @@ object frmLoadArrivals: TfrmLoadArrivals
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
@@ -2203,12 +2203,10 @@ object frmLoadArrivals: TfrmLoadArrivals
     Top = 136
     object acFS: TAction
       Caption = 'F'#246'rhandsgranska'
-      OnExecute = acFSExecute
       OnUpdate = acFSUpdate
     end
     object acFS_DK: TAction
       Caption = 'F'#246'ljesedel (DK)'
-      OnExecute = acFS_DKExecute
       OnUpdate = acFS_DKUpdate
     end
     object acPrintSamLast: TAction
@@ -2285,7 +2283,6 @@ object frmLoadArrivals: TfrmLoadArrivals
     end
     object acPrintTallyUSNote: TAction
       Caption = 'F'#246'rhandsgranska'
-      OnExecute = acPrintTallyUSNoteExecute
     end
     object acConfirmOneLoad: TAction
       Caption = 'Ankomstregistrera'

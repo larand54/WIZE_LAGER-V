@@ -33,9 +33,6 @@ object fKilnProps: TfKilnProps
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 1165
       object Panel7: TPanel
         Left = 0
         Top = 0
@@ -43,9 +40,6 @@ object fKilnProps: TfKilnProps
         Height = 52
         Align = alLeft
         TabOrder = 0
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitHeight = 50
         object dxBarDockControl2: TdxBarDockControl
           Left = 1
           Top = 1
@@ -62,10 +56,6 @@ object fKilnProps: TfKilnProps
         Height = 52
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 345
-        ExplicitTop = 1
-        ExplicitWidth = 758
-        ExplicitHeight = 50
       end
       object Panel9: TPanel
         Left = 1106
@@ -74,9 +64,6 @@ object fKilnProps: TfKilnProps
         Height = 52
         Align = alRight
         TabOrder = 2
-        ExplicitLeft = 1103
-        ExplicitTop = 1
-        ExplicitHeight = 50
         object dxBarDockControl3: TdxBarDockControl
           Left = 1
           Top = 1
@@ -95,10 +82,6 @@ object fKilnProps: TfKilnProps
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 53
-      ExplicitWidth = 1165
-      ExplicitHeight = 592
       object Panel5: TPanel
         Left = 515
         Top = 0
@@ -107,9 +90,6 @@ object fKilnProps: TfKilnProps
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitLeft = 512
-        ExplicitTop = 1
-        ExplicitHeight = 590
         object Panel6: TPanel
           Left = 0
           Top = 0
@@ -118,9 +98,6 @@ object fKilnProps: TfKilnProps
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitLeft = 1
-          ExplicitTop = 1
-          ExplicitWidth = 650
           object dxBarDockControl1: TdxBarDockControl
             Left = 0
             Top = 0
@@ -128,9 +105,6 @@ object fKilnProps: TfKilnProps
             Height = 49
             Align = dalTop
             BarManager = dxBarManager1
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 648
           end
         end
         object grdKilns: TcxGrid
@@ -140,9 +114,6 @@ object fKilnProps: TfKilnProps
           Height = 205
           Align = alTop
           TabOrder = 1
-          ExplicitLeft = 1
-          ExplicitTop = 47
-          ExplicitWidth = 650
           object grdKilnsDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dm_DryKiln.ds_Kilns
@@ -164,7 +135,7 @@ object fKilnProps: TfKilnProps
               Visible = False
             end
             object grdKilnsDBTableView1KilnName: TcxGridDBColumn
-              Caption = 'Torknamn'
+              Caption = 'Tubnamn'
               DataBinding.FieldName = 'KilnName'
               Width = 188
             end
@@ -236,10 +207,6 @@ object fKilnProps: TfKilnProps
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitLeft = 1
-          ExplicitTop = 252
-          ExplicitWidth = 650
-          ExplicitHeight = 337
           object Panel11: TPanel
             Left = 0
             Top = 0
@@ -248,9 +215,6 @@ object fKilnProps: TfKilnProps
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 648
             object cxButton1: TcxButton
               Left = 8
               Top = 5
@@ -275,10 +239,6 @@ object fKilnProps: TfKilnProps
             Height = 286
             Align = alClient
             TabOrder = 1
-            ExplicitLeft = 1
-            ExplicitTop = 58
-            ExplicitWidth = 648
-            ExplicitHeight = 278
             object grdChannelsDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -371,10 +331,6 @@ object fKilnProps: TfKilnProps
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitWidth = 511
-        ExplicitHeight = 590
         object lcVerk: TcxDBLookupComboBox
           Left = 245
           Top = 287
@@ -407,7 +363,7 @@ object fKilnProps: TfKilnProps
         end
         object lcFretork: TcxDBLookupComboBox
           Left = 245
-          Top = 363
+          Top = 365
           DataBinding.DataField = 'F'#246'retork'
           DataBinding.DataSource = dm_DryKiln.ds_KilnProps
           Properties.ImmediatePost = True
@@ -522,9 +478,6 @@ object fKilnProps: TfKilnProps
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 15
-          ExplicitLeft = 1
-          ExplicitTop = 1
-          ExplicitWidth = 509
           object Panel14: TPanel
             Left = 0
             Top = 0
@@ -538,9 +491,6 @@ object fKilnProps: TfKilnProps
             BevelOuter = bvNone
             Caption = 'Panel14'
             TabOrder = 0
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 507
           end
           object grdLagerGrupper: TcxGrid
             Left = 0
@@ -553,10 +503,6 @@ object fKilnProps: TfKilnProps
             Margins.Bottom = 2
             Align = alClient
             TabOrder = 1
-            ExplicitLeft = 1
-            ExplicitTop = 54
-            ExplicitWidth = 507
-            ExplicitHeight = 180
             object grdLagerGrupperDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               DataController.DataSource = dm_DryKiln.ds_KilnProps
@@ -1001,8 +947,8 @@ object fKilnProps: TfKilnProps
       'ProviderName'
       'ScriptLanguage'
       'ScriptText')
-    Left = 576
-    Top = 352
+    Left = 584
+    Top = 408
     TranslationData = {
       73007400430061007000740069006F006E0073005F0055006E00690063006F00
       640065000D000A00540066004B0069006C006E00500072006F00700073000100

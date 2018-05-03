@@ -78,6 +78,7 @@ type
     cxLabel5: TcxLabel;
     grdVagnPkgsDBTableView1MatchingPT: TcxGridDBColumn;
     cxButton3: TcxButton;
+    grdVagnPkgsDBTableView1AM3: TcxGridDBColumn;
     procedure mePackageNoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Timer1Timer(Sender: TObject);
@@ -137,7 +138,7 @@ begin
     CheckIMPProducts ;
 
   if CanClose then
-   dmsSystem.Delete_ReservedPkgs ('TfEnterKilnVagn') ;
+   dmsSystem.Delete_ReservedPkgs ('fEnterKilnVagn') ;
  End;
 end;
 
@@ -217,7 +218,7 @@ begin
  Begin
  //check that package is available in inventory and Get supplier code
 //                        ShowMessage('ThisUser.UserName+Self.Name ' + ThisUser.UserName+'/'+Self.Name);
-    PkgSupplierCode := dmsSystem.PkgNoToSuppCode_ByLIPNo(PkgNo, cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger, SupplierNo, ProductNo);
+    PkgSupplierCode := dmsSystem.PkgNoToSuppCode_ByLIPNo(PkgNo, '0'{Grupp}, SupplierNo, ProductNo);
     if PkgSupplierCode = '' then
     Begin
       Result := eaREJECT;
@@ -249,7 +250,7 @@ begin
    if dmInventory.cds_KilnVagn.State in [dsEdit, dsInsert] then
     dmInventory.cds_KilnVagn.Post ;
    Open_cds_KilnChargeHdr ;
-   fPickPkgNoTork.LIPNo := cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
+   fPickPkgNoTork.RegiShortCode := 0 ;//0 = före tub cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
    fPickPkgNoTork.PIPNo := cds_KilnChargeHdrKiln_PIPNo.AsInteger ;
    if fPickPkgNoTork.ShowModal = mrOK then
     AddSelectedPkgsToVagn(Sender) ;
@@ -304,7 +305,7 @@ Begin
    On E: EDatabaseError do
    Begin
     cds_KilnChargeRows.Cancel ;
-    ShowMessage(E.Message + siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_1' (* ' :Paketnr finns upptaget i en tork redan.' *) )) ;
+    ShowMessage(E.Message + siLangLinked_fEnterKilnVagn.GetTextOrDefault('IDS_1' (* ' :Paketnr finns upptaget i en tub redan.' *) )) ;
    End;
   End;
  End;
@@ -429,6 +430,7 @@ var
   ErrorText,
   RegPointName      : String ;
 begin
+
  if Key <> VK_RETURN then Exit;
  if Length(mePackageNo.Text) > 0 then
  Begin

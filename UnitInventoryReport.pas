@@ -32,6 +32,7 @@ uses
   dxPScxCheckListBoxLnk, dxPSLbxLnk, dxPSTextLnk, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet,
+
   dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
   dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
@@ -49,8 +50,8 @@ uses
   cxNavigator, cxDateUtils, cxSpinEdit, cxButtonEdit, SqlTimSt,
   cxShellBrowserDialog, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxBarBuiltInMenu, System.Actions, CRAXDRT_TLB, siComp, siLngLnk,
-  {CrystalActiveXReportViewerLib11_TLB,} CrystalActiveXReportViewerLib11_TLB;
+  dxBarBuiltInMenu, System.Actions, siComp, siLngLnk, frxClass, frxExportPDF,
+  frxDBSet, cxGroupBox, cxRadioGroup, frxBarcode ;
 
 
 type
@@ -58,7 +59,6 @@ type
     dxBarManager1: TdxBarManager;
     lbExit: TdxBarLargeButton;
     lbRefresh: TdxBarLargeButton;
-    Application1: TApplication;
     lbPkgNoReport: TdxBarLargeButton;
     lbPcsPerLengthReport: TdxBarLargeButton;
     lbPkgTypeReport: TdxBarLargeButton;
@@ -78,8 +78,6 @@ type
     acClose: TAction;
     Stng1: TMenuItem;
     pcInventory: TcxPageControl;
-    tsReport: TcxTabSheet;
-    CRViewer91: TCrystalActiveXReportViewer;
     tsInvSum: TcxTabSheet;
     grdInvSum: TcxGrid;
     grdInvSumDBTableView1: TcxGridDBTableView;
@@ -103,12 +101,6 @@ type
     dxBarLargeButton2: TdxBarLargeButton;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
-    Panel1: TPanel;
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
-    BitBtn3: TBitBtn;
-    BitBtn4: TBitBtn;
-    BitBtn5: TBitBtn;
     Panel2: TPanel;
     PakettabellF81: TMenuItem;
     LagersumtabellF71: TMenuItem;
@@ -714,20 +706,25 @@ type
     teSetNo: TcxTextEdit;
     siLangLinked_frmInventoryReport: TsiLangLinked;
     cbInklEjFakt2: TcxComboBox;
+    frxPaketLapp02KD: TfrxReport;
+    frxPaketLapp01KD: TfrxReport;
+    frxPaketLapp02: TfrxReport;
+    frxPaketLapp01: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
+    sp_Package: TFDStoredProc;
+    frxPDFExport1: TfrxPDFExport;
+    cbKD: TcxCheckBox;
+    rgDestinationUtskrift: TcxRadioGroup;
+    frxBarCodeObject1: TfrxBarCodeObject;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure acPkgCodeExecute(Sender: TObject);
-    procedure acPkgNoListExecute(Sender: TObject);
-    procedure acPkgSummaryExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acPackageTableExecute(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure acCRPkgNoReportExecute(Sender: TObject);
-    procedure acCRAntalPerLangdExecute(Sender: TObject);
     procedure acInvSummaryExecute(Sender: TObject);
     procedure grdPkgTblDBBandedTableView1L1GetDisplayText(
       Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
@@ -883,11 +880,12 @@ type
     { Private declarations }
 //    AT                    : String ;
 //    PktNrLevKod           : String ;
+    PrintSpec             : Integer ;
     ShowPackageSizeName   : Boolean ;
     cUserLipNoExists      : Boolean ;
     LanguageID            : String ;
     ReportInProgress      : Boolean ;
-    report                : IReport ;
+//    report                : IReport ;
     FilterString          : Widestring ;
     AterStallLayout       : Integer ;
     ShowDeActivatedPkgs,
@@ -896,6 +894,7 @@ type
     CurrentNoOfPkgs,
     SelectedProductNo     : Integer ;
     SelectedLength        : String ;
+    Procedure Print2 ;
     procedure GenPkgNoPrelLoadsTable_SQL(Sender: TObject);
     procedure GenPkgNosDetailTable_SQL_PrelLoads(Sender: TObject);
     procedure GenPrelLoadsTable_SQL(Sender: TObject);
@@ -921,7 +920,7 @@ type
     procedure MakePkgNoList (Sender: TObject);
     Procedure MakeSQL_VolByLength(Sender : TObject) ;
     procedure MakePkgByPkgCODE_SQL (Sender: TObject) ;
-    function  InitiateReport(AOwner: TComponent; ReportName: String) : Boolean ;
+
     procedure SaveFilterSettings (Sender: TObject) ;
     procedure GenPkgNoNotInvoicedTable_SQL(Sender: TObject);
     procedure GenPkgNoTable_SQL(Sender: TObject);
@@ -1553,22 +1552,6 @@ begin
  End ;
 end;
 
-function TfrmInventoryReport.InitiateReport(AOwner: TComponent; ReportName: String) : Boolean ;
-  var HostName, Database, UserName, Password, spath: String ;
-begin
- dmsSystem.GetLogonParams (HostName, Database, UserName, Password, spath) ;
- Result:= True ;
- if not(FileExists(sPath+ReportName)) then
- Begin
-  ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_0' (* 'Saknar crystal reports fil.  Sökväg och filnamn : ' *) )+sPath+ReportName) ;
-  Result:= False ;
-  Exit ;
- End ;
-
- report := Application1.OpenReport(sPath+ReportName, crOpenReportByTempCopy) ;
- report.Database.Tables.Item[1].SetLogOnInfo(HostName, Database, UserName, Password);
- Caption:= sPath+ReportName ;
-End;
 
 procedure TfrmInventoryReport.MakePkgNo_SQL(Sender: TObject);
 Var Save_Cursor : TCursor;
@@ -1977,8 +1960,8 @@ begin
  if Assigned(dm_DryKiln) then
  FreeAndNil(dm_DryKiln);
 
- Report:= Nil ;
- Application1:= Nil ;
+ //Report:= Nil ;
+// Application1:= Nil ;
  frmInventoryReport:= NIL ;
 end;
 
@@ -2463,80 +2446,14 @@ begin
  End ; //with
 End ;
 
-procedure TfrmInventoryReport.acPkgCodeExecute(Sender: TObject);
-Var Save_Cursor : TCursor;
-begin
- if ReportInProgress then  Exit ;
- Save_Cursor        := Screen.Cursor;
- Screen.Cursor      := crSQLWait;    { Show hourglass cursor }
- ReportInProgress   := True ;
- Try
- acPkgCode.Enabled := not ReportInProgress ;
- pcInventory.ActivePage:= tsReport ;
- MakePkgByPkgCODE_SQL(Sender) ;
- if not InitiateReport(Self, 'INV_BY_PKG_CODE.RPT') then Exit ;
- report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
- CRViewer91.ReportSource:= Report ;
- CRViewer91.ViewReport ;
- Finally
-  ReportInProgress  := False ;
-  Screen.Cursor     := Save_Cursor;  { Always restore to normal }
- End;
-end;
-
 procedure TfrmInventoryReport.acPkgCodeUpdate(Sender: TObject);
 begin
   acPkgCode.Enabled := not ReportInProgress ;
 end;
 
-procedure TfrmInventoryReport.acPkgNoListExecute(Sender: TObject);
-Var Save_Cursor : TCursor;
-begin
- if ReportInProgress then  Exit ;
- Save_Cursor        := Screen.Cursor;
- Screen.Cursor      := crSQLWait;    { Show hourglass cursor }
- ReportInProgress   := True ;
- Try
- acPkgNoList.Enabled := not ReportInProgress ;
- pcInventory.ActivePage:= tsReport ;
- MakePkgNoList (Sender) ;
-
- if not InitiateReport(Self, 'PKGNOLIST_I.RPT') then Exit ;
- report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
- CRViewer91.ReportSource:= Report ;
- CRViewer91.ViewReport ;
- Finally
-  ReportInProgress  := False ;
-  Screen.Cursor     := Save_Cursor;  { Always restore to normal }
- End;
-end;
-
 procedure TfrmInventoryReport.acPkgNoListUpdate(Sender: TObject);
 begin
   acPkgNoList.Enabled := not ReportInProgress ;
-end;
-
-procedure TfrmInventoryReport.acPkgSummaryExecute(Sender: TObject);
-Var Save_Cursor : TCursor;
-begin
- if ReportInProgress then  Exit ;
- Save_Cursor        := Screen.Cursor;
- Screen.Cursor      := crSQLWait;    { Show hourglass cursor }
- ReportInProgress   := True ;
- Try
- acPkgSummary.Enabled := not ReportInProgress ;
- pcInventory.ActivePage:= tsReport ;
- MakePkgNo_SQL(Sender) ;
-
- if not InitiateReport(Self, 'INV_BY_PKGNo_Summ.RPT') then Exit ;
- report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
- CRViewer91.ReportSource:= Report ;
- CRViewer91.ViewReport ;
-
- Finally
-  ReportInProgress  := False ;
- Screen.Cursor      := Save_Cursor;  { Always restore to normal }
- End;
 end;
 
 procedure TfrmInventoryReport.acPkgSummaryUpdate(Sender: TObject);
@@ -2664,8 +2581,8 @@ begin
  if mtUserProp.State in [dsEdit, dsInsert] then
  mtUserProp.Post ;
  ClickedF10 := False ;
- acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
- bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
+ acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till koksats' *) ) ;
+ bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till koksats' *) ) ;
  With dmInventory do
  Begin
   ReportInProgress    := True ;
@@ -3098,7 +3015,8 @@ begin
    End ;
 
 
-  if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_Lagervärde.txt');
+//  if thisuser.UserID = 258 then
+  cds_PkgList.SQL.SaveToFile('cds_PkgList_Lagervärde.txt');
 
  End ; //with
 
@@ -3744,35 +3662,6 @@ begin
 
 end;
 
-procedure TfrmInventoryReport.acCRPkgNoReportExecute(Sender: TObject);
-Var Save_Cursor : TCursor;
-begin
- cbReportInProgress.Checked := True ;
- if ReportInProgress then  Exit ;
-
-
- Save_Cursor    := Screen.Cursor;
- Screen.Cursor  := crSQLWait;    { Show hourglass cursor }
- Try
- ReportInProgress  := True ;
-
- acCRPkgNoReport.Enabled := not ReportInProgress ;
-
-
- pcInventory.ActivePage:= tsReport ;
- MakePkgNo_SQL(Sender) ;
-
- if not InitiateReport(Self, 'INV_BY_PKGNo.RPT') then Exit ;
- report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
- CRViewer91.ReportSource:= Report ;
- CRViewer91.ViewReport ;
- Finally
-  ReportInProgress  := False ;
-  cbReportInProgress.Checked := False ;
-  Screen.Cursor     := Save_Cursor;  { Always restore to normal }
- End;
-end;
-
 procedure TfrmInventoryReport.acCRPkgNoReportUpdate(Sender: TObject);
 begin
   acCRPkgNoReport.Enabled := not cbReportInProgress.Checked ;// not ReportInProgress ;
@@ -3797,32 +3686,6 @@ begin
    End;
    PopulateCheckBoxMallar ;
   End;
- End;
-end;
-
-procedure TfrmInventoryReport.acCRAntalPerLangdExecute(Sender: TObject);
-Var Save_Cursor : TCursor;
-begin
- if ReportInProgress then  Exit ;
-
- Save_Cursor        := Screen.Cursor;
- Screen.Cursor      := crSQLWait;    { Show hourglass cursor }
- ReportInProgress   := True ;
- Try
- acCRAntalPerLangd.Enabled := not ReportInProgress ;
- pcInventory.ActivePage:= tsReport ;
-
- SaveFilterSettings (Sender) ;
-
- MakeSQL_VolByLength (Sender) ;
-
- if not InitiateReport(Self, 'INV_BY_LENGTH.RPT') then Exit ;
- report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
- CRViewer91.ReportSource:= Report ;
- CRViewer91.ViewReport ;
- Finally
-  ReportInProgress  := False ;
-  Screen.Cursor     := Save_Cursor;  { Always restore to normal }
  End;
 end;
 
@@ -3881,7 +3744,7 @@ begin
 
    Try
     SelectedPkgsOfPkgTbl_V2 ;
-    PrintPkg ;
+    Print2 ;
    Except
    End ;
   Finally
@@ -3889,6 +3752,104 @@ begin
   End ;
  End ;//with
 end;
+
+procedure TfrmInventoryReport.Print2 ;
+
+procedure PrintReport_19 ;
+Begin
+ Try
+ if rgDestinationUtskrift.ItemIndex = 0 then
+ Begin
+//  frxPaketLapp01.ShowReport ;
+  frxPaketLapp02.ShowReport ;
+ End
+ else
+ Begin
+//  frxPaketLapp01.PrepareReport(true) ;
+//  frxPaketLapp01.PrintOptions.ShowDialog := false;
+//  frxPaketLapp01.Print ;
+  frxPaketLapp02.PrepareReport(true) ;
+  frxPaketLapp02.PrintOptions.ShowDialog := false;
+  frxPaketLapp02.Print ;
+ End;
+ Finally
+  if sp_Package.Active  then
+   sp_Package.Active := False ;
+ End;
+End;
+
+procedure PrintReport_1 ; //KD
+Begin
+ Try
+ if rgDestinationUtskrift.ItemIndex = 0 then
+ Begin
+//  frxPaketLapp01KD.ShowReport ;
+  frxPaketLapp02KD.ShowReport ;
+ End
+ else
+ Begin
+
+//  frxPaketLapp01KD.PrepareReport(true) ;
+//  frxPaketLapp01KD.PrintOptions.ShowDialog  := false;
+//  frxPaketLapp01KD.PrintOptions.Copies      :=  1 ;//cds_SpecLayOutAntalKopior.AsInteger ;
+//  frxPaketLapp01KD.Print ;
+
+  frxPaketLapp02KD.PrepareReport(true) ;
+  frxPaketLapp02KD.PrintOptions.ShowDialog  := false;
+  frxPaketLapp02KD.PrintOptions.Copies      :=  1 ;//cds_SpecLayOutAntalKopior.AsInteger ;
+  frxPaketLapp02KD.Print ;
+ End;
+ Finally
+  if sp_Package.Active  then
+   sp_Package.Active := False ;
+ End;
+End;
+
+Begin
+
+ With dmInventory do
+ Begin
+  Self.mtPkgNos.First ;
+  While not Self.mtPkgNos.Eof do
+  Begin
+     sp_Package.Active  := False ;
+     sp_Package.ParamByName('@PackageNo').AsInteger   := Self.mtPkgNosPackageNo.AsInteger ;
+     sp_Package.ParamByName('@SupplierCode').AsString := Self.mtPkgNosSupp_Code.AsString ;
+     sp_Package.Active  := True ;
+
+      Try
+    // PrintReport_19 ;
+    // PrintReport_1 ;
+
+{
+        cds_SpecLayOut.Active:= False ;
+        cds_SpecLayOut.ParamByName('PkgCodePPNo').AsInteger := StrToIntDef(cdsPkgPPNo.AsString, -1) ;
+        cds_SpecLayOut.Active:= True ;
+}
+
+
+       if cbKD.Checked then
+         PrintReport_1 //
+          else
+           PrintReport_19 ;
+
+
+     //FDoLog('PackageNo = ' + inttostr(PackageNo)) ;
+     //FDoLog('Prefix = ' + Prefix) ;
+
+     //ShowMessage('PackageNo = ' + inttostr(PackageNo) + ' Prefix = ' + Prefix) ;
+
+     Finally
+//      cds_SpecLayOut.Active := False ;
+      sp_Package.Active     := False ;
+     End ;
+    Self.mtPkgNos.Next ;
+  End;
+ End; //with
+End ;
+
+
+
 
 procedure TfrmInventoryReport.SelectedPkgsOfPkgTbl_V2 ;
  Var i, RecIDX  : Integer ;
@@ -4943,8 +4904,8 @@ begin
  mtUserProp.Post ;
 
  ClickedF10 := True ;
- acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
- bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till torksats' *) ) ;
+ acAddKilnRow.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till koksats' *) ) ;
+ bbAddPkgsToKilnCharge.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_2' (* 'Lägg paket till koksats' *) ) ;
  With dmInventory do                       //magnus
  Begin
   Save_Cursor       := Screen.Cursor;
@@ -5514,13 +5475,14 @@ begin
    GenNotInvoicedTable_SQL(Sender) ;
   End ;
 
-  if cbInklEjFakt2.ItemIndex = 4 then
+  if cbInklEjFakt2.ItemIndex = 3 then
   Begin
    cds_PkgList.SQL.Add('UNION') ;
    GenPrelLoadsTable_SQL(Sender) ;
   End ;
 
- //if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_5262.txt');
+ //if thisuser.UserID = 258 then
+  cds_PkgList.SQL.SaveToFile('cds_PkgList_5262.txt');
  End ; //with
 
  finally
@@ -7227,7 +7189,7 @@ begin
   +LF+'MVH/Best Regards, '
   +LF+''
   +'Lars',//dmsContact.GetFirstAndLastName(ThisUser.UserID),
-  'lars.makiaho@falubo.se',
+  'lars.makiaho@gmail.com',
   MailToAddress,
   InfogadHTMLFil,
   Attach) ;
@@ -7519,8 +7481,8 @@ begin
  Begin
   dxComponentPrinter1Link5.PrinterPage.PageHeader.LeftTitle.Clear ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Clear ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_83' (* 'Torksats: ' *) )+deStartTime.Text+' - '+deEndTime.Text) ;
-  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_84' (* 'Tork: ' *) )+lcTork.Text) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_83' (* 'Koksats: ' *) )+deStartTime.Text+' - '+deEndTime.Text) ;
+  dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_84' (* 'Tub: ' *) )+lcTork.Text) ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(' ') ;
   dxComponentPrinter1Link5.PrinterPage.PageHeader.CenterTitle.Add(cds_KilnChargeHdrNote.AsString) ;
 
@@ -7650,7 +7612,7 @@ begin
 //  or (cds_KilnPropsBeforeKiln_LIPNo.AsInteger <> mtUserPropLIPNo.AsInteger)
   then
   Begin
-   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_85' (* 'Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tork".' *) )) ;
+   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_85' (* 'Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tub".' *) )) ;
    Exit ;
   End ;
 {  if dmInventory.cds_PkgListSTD_Length.AsInteger = 0 then
@@ -7744,7 +7706,7 @@ begin
 //  or (cds_KilnPropsBeforeKiln_LIPNo.AsInteger <> mtUserPropLIPNo.AsInteger)
   then
   Begin
-   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_85' (* 'Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tork".' *) )) ;
+   ShowMessage(siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_85' (* 'Paket kan bara läggas till en torksats från lagergruppen som är definerad som "Före tub".' *) )) ;
    Exit ;
   End ;
 
@@ -7776,7 +7738,7 @@ begin
   Self.mtPkgNos.Active:= True ;
   fEntryField := TfEntryField.Create(nil);
   Try
-   fEntryField.LExtraInfo.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_94' (* 'Lägg paket tillbaka till lager före tork' *) ) ;
+   fEntryField.LExtraInfo.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_94' (* 'Lägg paket tillbaka till lager före tub' *) ) ;
    fEntryField.Caption:= siLangLinked_frmInventoryReport.GetTextOrDefault('IDS_87' (* 'Ange antal av ' *) ) + cds_SumKilnChargeRowsProdukt.AsString+' / ' + cds_SumKilnChargeRowsAntalperlängd.AsString ;
    if fEntryField.ShowModal = mrOK then
    Begin
@@ -7869,41 +7831,36 @@ procedure TfrmInventoryReport.cxGrid1DBBandedTableView1CellClick(
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
- if pcPktNrAndTorkSats.ActivePage <> tsTorkSats then
- Begin
-  if RightButton then
-  Begin
+
+   if pcPktNrAndTorkSats.ActivePage <> tsTorkSats then
+   Begin
+    if RightButton then
+    Begin
+     pmPkgTable.PopupFromCursorPos ;
+     Exit ;
+    End ;
+
+    SelectedLength     := ACellViewInfo.Item.Caption ;
+    SelectedProductNo  := cxGrid1DBBandedTableView1.DataController.DataSource.DataSet.FieldByName('ProductNo').AsInteger ;
+
+    Try
+     CurrentNoOfPkgs    := ACellViewInfo.Value ;
+    Except
+    End ;
+    Exit ;
+   End ;
+   AHandled:= True ;
+
+    SelectedProductNo  := cxGrid1DBBandedTableView1.DataController.DataSource.DataSet.FieldByName('ProductNo').AsInteger ;
+    SelectedLength     := ACellViewInfo.Item.Caption ;
+    Try
+    CurrentNoOfPkgs    := ACellViewInfo.Value ;
+    Except
+    End ;
+
+   if RightButton then
    pmPkgTable.PopupFromCursorPos ;
-   Exit ;
-  End ;
 
-  SelectedLength     := ACellViewInfo.Item.Caption ;
-  SelectedProductNo  := cxGrid1DBBandedTableView1.DataController.DataSource.DataSet.FieldByName('ProductNo').AsInteger ;
-
-  Try
-  CurrentNoOfPkgs    := ACellViewInfo.Value ;
-  Except
-  End ;
-  Exit ;
- End ; //if pcPktNrAndTorkSats.ActivePage <> tsTorkSats then
- AHandled:= True ;
-// if cxGrid1DBBandedTableView1.DataController.DataSource.DataSet.FieldByName('STD_Length').AsInteger = 1 then
-// Begin
-  SelectedProductNo  := cxGrid1DBBandedTableView1.DataController.DataSource.DataSet.FieldByName('ProductNo').AsInteger ;
-  SelectedLength     := ACellViewInfo.Item.Caption ;
-  Try
-  CurrentNoOfPkgs    := ACellViewInfo.Value ;
-  Except
-  End ;
-{ End
- else
- Begin
-  SelectedProductNo  := -1 ;
-  SelectedLength     := '' ;
-  CurrentNoOfPkgs    := 0 ;
- End ; }
- if RightButton then
- pmPkgTable.PopupFromCursorPos ;
 end;
 
 procedure TfrmInventoryReport.cxGrid1DBBandedTableView1DblClick(

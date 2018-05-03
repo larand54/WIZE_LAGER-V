@@ -45,7 +45,9 @@ type
     FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
+    sq_GetUserNameDescription: TStringField;
     procedure DataModuleDestroy          (Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
 
@@ -59,7 +61,7 @@ type
     DriveLetter : String ;
 //    DB_Name     : String ;
     function  Get_AD_Name : String ;
-    procedure GetUserNameLoggedIn(Var UserName, UserPswd : String;Const PFD_Name : String) ;
+    procedure GetUserNameLoggedIn(Var UserName, UserPswd, Email : String;Const PFD_Name : String) ;
     function NextSecondMaxNo(const TableName: String; const PrimaryKeyValue: Integer): Integer ;
     function  ExecProcedure(Proc: TFDStoredProc): Boolean;
     procedure InitProcedure(Proc: TFDStoredProc);
@@ -105,7 +107,7 @@ Begin
  sq_GetLoggedInUser.Close ;
 End ;
 
-procedure TdmsConnector.GetUserNameLoggedIn(Var UserName, UserPswd : String;Const PFD_Name : String) ;
+procedure TdmsConnector.GetUserNameLoggedIn(Var UserName, UserPswd, Email : String;Const PFD_Name : String) ;
 Var AD_Name : String ;
 Begin
  sq_GetLoggedInUser.Open ;
@@ -123,8 +125,9 @@ Begin
   sq_GetUserName.Open ;
   if not sq_GetUserName.Eof Then
   Begin
-   UserName:= sq_GetUserNameUserName.AsString ;
-   UserPswd:= sq_GetUserNamePassWord.AsString ;
+   UserName := sq_GetUserNameUserName.AsString ;
+   UserPswd := sq_GetUserNamePassWord.AsString ;
+   Email    := sq_GetUserNameDescription.AsString ;
   End
    else
     Begin
@@ -149,6 +152,55 @@ constructor TdmsConnector.Create(AOwner : TComponent);
 begin
   inherited;
   FLastTransNo := 0;
+end;
+
+procedure TdmsConnector.DataModuleCreate(Sender: TObject);
+begin
+{$IFDEF DEBUG}
+  if (Pos('CARMAK',GetEnvironmentVariable('COMPUTERNAME')) > 0) then begin
+    dmsConnector.DriveLetter := 'C:\';
+      with dmsConnector.FDConnection1 do begin
+        Params.Clear;
+        Params.Add('Server=carmak-speed\sqlexpress');
+        Params.Add('Database=woodsupport');
+        Params.Add('OSAuthent=No');
+        Params.add('MetaDefCatalog=woodsupport');
+        Params.Add('MetaDefSchema=dbo');
+        Params.Add('User_Name=sa');
+        Params.Add('Password=woods2011');
+        Params.Add('DriverID=MSSQL');
+        Params.Add('ApplicationName=WIZELAGER');
+      end;
+  end
+  else begin
+  end;
+{$ELSE}
+  if (GetEnvironmentVariable('COMPUTERNAME') = 'CARMAK-FASTER') then begin
+    dmsConnector.DriveLetter := 'C:\';
+      with dmsConnector.FDConnection1 do begin
+        Params.Clear;
+        Params.Add('Server=carmak-speed\sqlexpress');
+        Params.Add('Database=woodsupport');
+        Params.Add('OSAuthent=No');
+        Params.add('MetaDefCatalog=woodsupport');
+        Params.Add('MetaDefSchema=dbo');
+        Params.Add('User_Name=sa');
+        Params.Add('Password=woods2011');
+        Params.Add('DriverID=MSSQL');
+        Params.Add('ApplicationName=WIZELAGER');
+      end;
+  end else
+  with dmsConnector.FDConnection1 do begin
+      Params.Clear;
+      Params.Add('Server=VPS-NET-RDS-004\WOODSUPPORT');
+      Params.Add('Database=woodsupport');
+      Params.Add('OSAuthent=yes');
+      Params.add('MetaDefCatalog=woodsupport');
+      Params.Add('MetaDefSchema=dbo');
+      Params.Add('DriverID=MSSQL');
+      Params.Add('ApplicationName=WIZELAGER');
+  end;
+{$ENDIF}
 end;
 
 procedure TdmsConnector.DataModuleDestroy(Sender: TObject);

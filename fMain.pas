@@ -229,13 +229,13 @@ uses
   VidaConst,
   VidaType,
   VidaUser,
-  dmcVidaSystem, //UnitCRViewReport,
+  dmcVidaSystem,
   dmcVidaOrder, UnitAboutBox,
   UnitPkgInfo, dmsDataConn,
   UnitInventoryReport,
 
   dmsVidaSystem, 
-  UnitCRPrintReport, uProductionUnit, uBasMatPunkter,
+    uProductionUnit, uBasMatPunkter,
 
   uPktNrPos, uPkgNoPos, uInvCtrl,
   dm_Inventory,
@@ -332,43 +332,34 @@ begin
  dmsConnector.DriveLetter:= 'H:\' ;
  if dmsConnector.DriveLetter = 'C:\' then
   showmessage(siLangLinked1.GetTextOrDefault('Change to H:\'));
-// ThisUser.Database:= 'carmak-faster\sqlexpress:vis_vida' ;
- //ThisUser.Database:= 'carmak-speed\sqlexpress:vis_vida' ;
- ThisUser.Database:= 'visprodsql.vida.se:vis_vida' ;
-// ThisUser.Database:= 'alvesql03:vis_vida' ;
 
-// ThisUser.Database:= 'alvesqltest01:vis_vida' ;
+ThisUser.Database:= 'carmak-speed\sqlexpress:woodsupport' ;
 
-
-// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 {$IFDEF DEBUG}
   if (Pos('CARMAK',GetEnvironmentVariable('COMPUTERNAME')) > 0) then begin
     dmsConnector.DriveLetter := 'C:\';
-    ThisUser.Database:= 'alvesql03:vis_vida' ;
+    ThisUser.Database:= 'carmak-speed\sqlexpress:woodsupport' ;
       with dmsConnector.FDConnection1 do begin
         Params.Clear;
-        Params.Add('Server=alvesql03');
-        Params.Add('Database=vis_vida');
+        Params.Add('carmak-speed\sqlexpress:woodsupport') ;
+        Params.Add('Server=carmak-speed\sqlexpress');
+        Params.Add('Database=woodsupport');
         Params.Add('OSAuthent=No');
-        Params.add('MetaDefCatalog=vis_vida');
+        Params.add('MetaDefCatalog=woodsupport');
         Params.Add('MetaDefSchema=dbo');
-        Params.Add('User_Name=Lars');
+        Params.Add('User_Name=sa');
         Params.Add('Password=woods2011');
         Params.Add('DriverID=MSSQL');
         Params.Add('ApplicationName=VIS_LAGER');
       end;
   end
   else begin
-  //  ThisUser.Database:= 'alvesqltest01:vis_vida' ;
-    ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+    ThisUser.Database:= 'VPS-NET-RDS-004\WOODSUPPORT:woodsupport' ;
   end;
 {$ELSE}
- //ThisUser.Database:= 'alvesqltest01:vis_vida' ;
-  ThisUser.Database:= 'vis.vida.se:vis_vida' ;
+  ThisUser.Database:= 'VPS-NET-RDS-004\WOODSUPPORT:woodsupport' ;
 {$ENDIF}
-// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
-//ThisUser.Database:= 'alvesql03:vis_vida' ;
 
  dmsConnector.Org_DB_Name:= ThisUser.HostName + ':' + ThisUser.Database ;
    if not ThisUser.Logon then

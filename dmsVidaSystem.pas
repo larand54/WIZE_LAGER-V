@@ -398,7 +398,6 @@ type
     cds_Package_SizePackageSizeName: TStringField;
     ds_Package_Size: TDataSource;
     sp_PksByLIPNo: TFDStoredProc;
-    ds_PksByLIPNo: TDataSource;
     sp_GetAnyPkg: TFDStoredProc;
     ds_GetAnyPkg: TDataSource;
     sq_dbPropsLangPath: TStringField;
@@ -419,6 +418,9 @@ type
     sp_PkgInfoIIIMP: TStringField;
     mtMarkedProdVaruSlagNo: TIntegerField;
     sp_UserPerm: TFDStoredProc;
+    sq_dbPropsServiceUrl: TStringField;
+    sp_PkgsByLIPGroup: TFDStoredProc;
+    ds_PkgsByLIPGroup: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
 
     procedure mtMarkedCodesAfterInsert(DataSet: TDataSet);
@@ -427,6 +429,7 @@ type
   private
   { Private declarations }
      FOnAmbiguousPkgNo: TAmbiguityEvent;
+    procedure getPkgsByLIPGroup(const PkgNo : Integer;const Grupp : String) ;
     procedure getPkgsByLIPNo(const PkgNo, LIPNo : Integer);
     procedure getNonActivePkgsExt(const PkgNo  : Integer;const Prefix  : String3);
     procedure get_prefixForChanged(const PkgNo, IC_GrpNo : Integer);
@@ -452,6 +455,7 @@ type
     AntPosPktNr,
     LevKodPos,
     AntPosLevKod          : Cardinal ;
+    ds_PksByLIPNo: TDataSource;
 
     function  UserIsAllowedToMovePkgs(const UserID : Integer) : Integer ;
 
@@ -480,7 +484,7 @@ type
     function  LoadGridLayout_Special(const UserID : Integer;const Form, ViewName : String;AGridView: TcxGridTableView;const MallName : String) : Boolean ;
     function  GetRegPointNoOfRegPointName(const RegPointName : String) : Integer ;
     function  Get_SystemDir(const UserID : Integer; const Form, pFieldName : String) : String ;
-    function  GetLogonParams(var HostName, Database, UserName, Password, CRpath : String) : Boolean ;
+    function  GetLogonParams(var HostName, Database, UserName, Password, CRpath, ServiceUrl : String) : Boolean ;
     function  LoadPivotLayout(const UserID : Integer;const ViewName : String;APivot: TcxCustomPivotGrid;const Form, MallName : String)  : Boolean ;
     procedure StorePivotLayout(const UserID : Integer;const ViewName : String;APivot: TcxCustomPivotGrid;const Form, MallName : String) ;
     procedure StoreGridLayout(const UserID : Integer;const ViewName : String;AGridView: TcxGridTableView) ;
@@ -533,10 +537,9 @@ type
     Var ProductNo : Integer): string3;
 
     function  PkgNoToSuppCode_ByLIPNo(
-    const PkgNo,  LIPNo : Integer;
+    const PkgNo : Integer; const Grupp : String;
     var SupplierNo : Integer;
     Var ProductNo : Integer): string3;
-
 
     function Pkg_Reserved(const PkgNo: Integer; const PkgSupplierCode : string3;const Modul : String;Var Res_UserName : String): String ;
     function  GetLangPath(): String;
@@ -731,16 +734,17 @@ Begin
  sq_Props.Active:= False ;
 End ;
 
-function TdmsSystem.GetLogonParams(var HostName, Database, UserName, Password, CRpath : String) : Boolean ;
+function TdmsSystem.GetLogonParams(var HostName, Database, UserName, Password, CRpath, ServiceUrl : String) : Boolean ;
 Begin
  sq_dbProps.Open ;
  if not sq_dbProps.Eof then
  Begin
-  HostName  := sq_dbPropsHostName.AsString ;
-  DataBase  := sq_dbPropsDatabas.AsString ;
-  UserName  := sq_dbPropsUserName.AsString ;
-  Password  := sq_dbPropsPassWord.AsString ;
-  CRPath    := sq_dbPropsCRPath.AsString ;
+  HostName    := sq_dbPropsHostName.AsString ;
+  DataBase    := sq_dbPropsDatabas.AsString ;
+  UserName    := sq_dbPropsUserName.AsString ;
+  Password    := sq_dbPropsPassWord.AsString ;
+  CRPath      := sq_dbPropsCRPath.AsString ;
+  ServiceUrl  := sq_dbPropsServiceUrl.AsString ;
   Result:= True ;
  End
  else
@@ -939,39 +943,46 @@ begin
   sp_PksByLIPNo.ParamByName('@LIPNo').AsInteger            := LIPNo ;
 end;
 
+procedure TdmsSystem.getPkgsByLIPGroup(const PkgNo : Integer;const Grupp : String) ;
+begin
+  sp_PkgsByLIPGroup.ParamByName('@PkgNo').AsInteger           := PkgNo;
+  sp_PkgsByLIPGroup.ParamByName('@GruppLager').AsString       := Grupp ;
+end;
+
 function TdmsSystem.PkgNoToSuppCode_ByLIPNo(
-  const PkgNo, LIPNo : Integer;
+  const PkgNo : Integer; const Grupp : String;
   var SupplierNo : Integer;
   Var ProductNo : Integer): string3;
 var
   SuppCode : string3;
 begin
-  sp_PksByLIPNo.Close;
-  getPkgsByLIPNo(PkgNo, LIPNo);
+  sp_PkgsByLIPGroup.Close;
+  getPkgsByLIPGroup(PkgNo, Grupp);
+//  getPkgsByLIPNo(PkgNo, -1);
+  sp_PkgsByLIPGroup.Open;
 
-  sp_PksByLIPNo.Open;
-  case sp_PksByLIPNo.RecordCount of
+  case sp_PkgsByLIPGroup.RecordCount of
 
     0 :  begin
            // There are no packages in inventories owned by the specified owner that
            // have the specified package number.
            SuppCode := '';
-           end;
+         end;
 
     1 :  begin
            // There is only one package number with the specified package number in
            // inventories owned by the specified owner, so this must be the one
            // the user wants.
-           SuppCode   := sp_PksByLIPNo.FieldByName('SupplierCode').AsString;
-           SupplierNo := sp_PksByLIPNo.FieldByName('SupplierNo'  ).AsInteger;
-           ProductNo  := sp_PksByLIPNo.FieldByName('ProductNo'  ).AsInteger;
+           SuppCode   := sp_PkgsByLIPGroup.FieldByName('SupplierCode').AsString;
+           SupplierNo := sp_PkgsByLIPGroup.FieldByName('SupplierNo'  ).AsInteger;
+           ProductNo  := sp_PkgsByLIPGroup.FieldByName('ProductNo'  ).AsInteger;
            end;
     else begin
            // More than one package in inventories owned by the specified owner has
            // the specified package number. (They must have different suppliers).
            // Allow the user to specify which one they want.
            if assigned(FOnAmbiguousPkgNo) then
-             FOnAmbiguousPkgNo(Self,Self.ds_PksByLIPNo,SuppCode,SupplierNo, ProductNo);
+             FOnAmbiguousPkgNo(Self,Self.ds_PkgsByLIPGroup,SuppCode,SupplierNo, ProductNo);
            end;
     end;
 

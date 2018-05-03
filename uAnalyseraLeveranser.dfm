@@ -169,7 +169,7 @@
     Height = 786
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = tsProduction
+    Properties.ActivePage = tsDeliveries
     Properties.CustomButtons.Buttons = <>
     Properties.Images = imglistActions
     LookAndFeel.Kind = lfUltraFlat
@@ -515,6 +515,22 @@
           PropertiesClassName = 'TcxCalcEditProperties'
           Visible = True
           UniqueName = 'kg'
+        end
+        object pivLeveranserPaket: TcxDBPivotGridField
+          AreaIndex = 26
+          AllowedAreas = [faFilter, faData]
+          IsCaptionAssigned = True
+          Caption = 'Paket/Pall'
+          DataBinding.FieldName = 'Paket'
+          Visible = True
+          UniqueName = 'Paket/Pall'
+        end
+        object pivLeveranserPaketstorlek: TcxDBPivotGridField
+          AreaIndex = 27
+          AllowedAreas = [faColumn, faRow, faFilter]
+          DataBinding.FieldName = 'Paketstorlek'
+          Visible = True
+          UniqueName = 'Paketstorlek'
         end
       end
       object pnSettings: TPanel
@@ -3099,7 +3115,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Leveranser'
-      ReportDocument.CreationDate = 42922.452274756940000000
+      ReportDocument.CreationDate = 43222.439884328710000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3128,7 +3144,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Produktion'
-      ReportDocument.CreationDate = 42922.452274768520000000
+      ReportDocument.CreationDate = 43222.439884363430000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3155,7 +3171,7 @@
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Torksatser'
-      ReportDocument.CreationDate = 42922.452274780090000000
+      ReportDocument.CreationDate = 43222.439884386570000000
       OptionsView.ColumnFields = False
       OptionsView.DataFields = False
       OptionsView.RowFields = False
@@ -3177,7 +3193,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42922.452274791660000000
+      ReportDocument.CreationDate = 43222.439884421300000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
@@ -3240,7 +3256,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42922.452275069450000000
+      ReportDocument.CreationDate = 43222.439885324070000000
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {
@@ -3310,7 +3326,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42922.452275081020000000
+      ReportDocument.CreationDate = 43222.439885358800000000
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
@@ -3330,7 +3346,7 @@
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 42922.452275115740000000
+      ReportDocument.CreationDate = 43222.439885405100000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
@@ -6343,6 +6359,7 @@
     end
   end
   object cds_Data: TFDQuery
+    Active = True
     ConstraintsEnabled = True
     Connection = dmsConnector.FDConnection1
     SQL.Strings = (
@@ -6350,7 +6367,7 @@
       'case when int_destination = '#39'STD'#39' then ext_destination'
       'else int_destination'
       'end AS Destination,*,'
-      '0.0 AS M_Pris from dbo.LevSituationer_IIII'
+      '0.0 AS M_Pris from dbo.LevSituationer_VI'
       'WHERE Utlastad >= :StartPeriod'
       'AND Utlastad <= :EndPeriod')
     Left = 184
@@ -6538,6 +6555,15 @@
     object cds_Datakg: TFloatField
       FieldName = 'kg'
       Origin = 'kg'
+    end
+    object cds_DataPaket: TIntegerField
+      FieldName = 'Paket'
+      Origin = 'Paket'
+    end
+    object cds_DataPaketstorlek: TStringField
+      FieldName = 'Paketstorlek'
+      Origin = 'Paketstorlek'
+      Size = 30
     end
   end
   object cds_ProdData: TFDQuery

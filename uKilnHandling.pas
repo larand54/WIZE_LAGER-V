@@ -702,11 +702,11 @@ begin
 end;
 
 
-//Move vagn tillbaka till i Tork
+//Move vagn tillbaka till i Tub
 procedure TfkilnHandling.acCancelMoveFromKilnExecute(Sender: TObject);
 Var VagnNo, MoveToLIPNo, NewVagnStatus : Integer ;
 begin
- if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_0' (* 'Sista vagnen inmatad till efter tork flyttas tillbaka till i tork(om det finns plats i torken), fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_0' (* 'Sista vagnen inmatad till efter tub flyttas tillbaka till i tub (om det finns plats i torken), fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    With dmInventory do
    Begin
@@ -714,9 +714,9 @@ begin
     Begin
       KilnChargeNo  := mtUserPropKilnChargeNo.AsInteger ;
       Open_cds_KilnChargeHdr ;
-      MoveToLIPNo   := cds_KilnChargeHdrKiln_LIPNo.AsInteger ;  //Flytta tillbaka vagn till "i Tork"
+      MoveToLIPNo   := 2 ;//cds_KilnChargeHdrKiln_LIPNo.AsInteger ;  //Flytta tillbaka vagn till "i Tub"
       VagnNo        := GetFirstVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 2) ;
-      NewVagnStatus := 1 ; //1 = i Tork
+      NewVagnStatus := 1 ; //1 = i Tub
       if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
       Begin
        FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, CancelMoveOutOfUnit) ;//Ångra flytta ut
@@ -742,20 +742,20 @@ end;
 procedure TfkilnHandling.acCancelMoveVagnIntoKilnExecute(Sender: TObject);
 Var VagnNo, MoveToLIPNo, NewVagnStatus : Integer ;
 begin
- if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_5' (* 'Sista vagnen inmatad till tork flyttas tillbaka till "In till tork", fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_5' (* 'Sista vagnen inmatad till tub flyttas tillbaka till "In till tub", fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    With dmInventory do
    Begin
     KilnChargeNo  := mtUserPropKilnChargeNo.AsInteger ;
     Open_cds_KilnChargeHdr ;
-    //Flytta tillbaka paket till lager före tork
-    MoveToLIPNo   := cds_KilnChargeHdrKiln_LIPNo.AsInteger ;//cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
+    //Flytta tillbaka paket till lager före tub
+    MoveToLIPNo   := 1 ;//cds_KilnChargeHdrKiln_LIPNo.AsInteger ;//cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
     VagnNo        := GetFirstVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 1) ;
-    NewVagnStatus := 0 ; //0 = före Tork
+    NewVagnStatus := 0 ; //0 = före Tub
     if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
     Begin
-     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, CancelMoveIntoUnit) ; //Ånga flytta in i tork
-     //Om antal vagnar i tork nu är större än vad som ryms i torken så måste en vagn flyttas ut
+     FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, CancelMoveIntoUnit) ; //Ånga flytta in i tub
+     //Om antal vagnar i tub nu är större än vad som ryms i torken så måste en vagn flyttas ut
     End
       else
        ShowMessage(
@@ -801,6 +801,8 @@ begin
  dm_UserProps.SaveUserProps (Self.Name, mtUserProp) ;
 
  CanClose := True ;
+
+ dmsSystem.Delete_ReservedPkgs ('fEnterKilnVagn') ;
 end;
 
 procedure TfkilnHandling.SetGridParamsAfterOpenLayout ;
@@ -977,7 +979,7 @@ begin
      End;//if..
     End //if..
      else
-      ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_10' (* 'Endast vagnar "In till tork" kan ändras.' *) )) ;
+      ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_10' (* 'Endast vagnar "In till tub" kan ändras.' *) )) ;
    End
     else
      ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_11' (* 'Välj en vagn att ändra.' *) )) ;
@@ -1115,7 +1117,7 @@ begin
 
    if AntalStatus_1_Vagnar = -1 then
    Begin
-     ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_14' (* 'Antal vagnar för vald tork saknas' *) )) ;
+     ShowMessage(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_14' (* 'Antal vagnar för vald tub saknas' *) )) ;
      Exit ;
    End;
 
@@ -1353,7 +1355,7 @@ begin
 
 
 
-  //if thisuser.UserID = 8 then  cds_KilnVagnar.SQL.SaveToFile('cds_KilnVagnar.txt');
+  //if thisuser.UserID = 8 then cds_KilnVagnar.SQL.SaveToFile('cds_KilnVagnar.txt');
  End ; //with
 
  finally
@@ -1450,15 +1452,15 @@ end;
 procedure TfkilnHandling.acMoveFromKilnExecute(Sender: TObject);
 Var VagnNo, MoveToLIPNo, NewVagnStatus : Integer ;
 begin
- if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_26' (* 'En vagn stegas ut ur torken till lager efter tork, fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fkilnHandling.GetTextOrDefault('IDS_26' (* 'En vagn stegas ut ur torken till lager efter tub, fortsätta?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
    With dmInventory do
    Begin
     KilnChargeNo  := mtUserPropKilnChargeNo.AsInteger ;
     Open_cds_KilnChargeHdr ;
-    MoveToLIPNo   := cds_KilnChargeHdrAfterKiln_LIPNo.AsInteger ;
+    MoveToLIPNo   := 3 ;//cds_KilnChargeHdrAfterKiln_LIPNo.AsInteger ;
     VagnNo        := GetLastVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 1) ;
-    NewVagnStatus := 2 ; //2 = efter Tork
+    NewVagnStatus := 2 ; //2 = efter Tub
     if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
     Begin
 
@@ -1581,18 +1583,18 @@ begin
    Begin
     KilnChargeNo  := mtUserPropKilnChargeNo.AsInteger ;
     Open_cds_KilnChargeHdr ;
-    MoveToLIPNo   := cds_KilnChargeHdrKiln_LIPNo.AsInteger ;
+    MoveToLIPNo   := 2 ;//cds_KilnChargeHdrKiln_LIPNo.AsInteger ;
     VagnNo        := GetLastVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 0) ;
-    NewVagnStatus := 1 ; //1 = i Tork
+    NewVagnStatus := 1 ; //1 = i Tub
     if (KilnChargeNo > 0) and (VagnNo > -1) and (MoveToLIPNo > 0) then
     Begin
      FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, MoveInToUnit) ;
-     //Om antal vagnar i tork nu är större än vad som ryms i torken så måste en vagn flyttas ut
+     //Om antal vagnar i tub nu är större än vad som ryms i torken så måste en vagn flyttas ut
      if IsNoOfVagnarInKilnBiggerThenMaxVagnar(mtUserPropKilnChargeNo.AsInteger) then //AntalVagnarITork > MaxVagnar then
      Begin
-       MoveToLIPNo   := cds_KilnChargeHdrAfterKiln_LIPNo.AsInteger ;
+       MoveToLIPNo   := 3 ;//cds_KilnChargeHdrAfterKiln_LIPNo.AsInteger ;
        VagnNo        := GetLastVagnNoPerVagnStatus(mtUserPropKilnChargeNo.AsInteger, 1) ;
-       NewVagnStatus := 2 ; //2 = efter Tork
+       NewVagnStatus := 2 ; //2 = efter Tub
        FlyttaVagn(mtUserPropKilnChargeNo.AsInteger, VagnNo, MoveToLIPNo, NewVagnStatus, MoveOutOfUnit) ; //Move out of unit
      End;
     End
@@ -1622,13 +1624,13 @@ procedure TfkilnHandling.cxGrid1DBBandedTableView1V1GetDisplayText(
   var AText: string);
 begin
  if AText = '0' then
-  AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_37' (* 'In till Tork' *) )
+  AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_37' (* 'In till Tub' *) )
    else
     if AText = '1' then
-     AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_38' (* 'i Tork' *) )
+     AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_38' (* 'i Tub' *) )
       else
        if AText = '2' then
-        AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_39' (* 'Efter Tork' *) ) ;
+        AText := siLangLinked_fkilnHandling.GetTextOrDefault('IDS_39' (* 'Efter Tub' *) ) ;
 end;
 
 procedure TfkilnHandling.cxGrid1DBBandedTableView1V1StylesGetContentStyle(

@@ -22,17 +22,18 @@ object fchgPkgVard: TfchgPkgVard
     Left = 0
     Top = 0
     Width = 1011
-    Height = 46
+    Height = 45
     Align = dalTop
     BarManager = dxBarManager1
   end
   object pLoadHead: TPanel
     Left = 0
-    Top = 46
+    Top = 45
     Width = 1011
     Height = 258
     Align = alTop
     TabOrder = 1
+    ExplicitTop = 46
     object Label1: TLabel
       Left = 358
       Top = 59
@@ -515,11 +516,13 @@ object fchgPkgVard: TfchgPkgVard
   end
   object Panel6: TPanel
     Left = 0
-    Top = 304
+    Top = 303
     Width = 1011
-    Height = 254
+    Height = 255
     Align = alClient
     TabOrder = 6
+    ExplicitTop = 304
+    ExplicitHeight = 254
     object grdPaket: TcxGrid
       Left = 1
       Top = 31
@@ -1053,7 +1056,7 @@ object fchgPkgVard: TfchgPkgVard
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (

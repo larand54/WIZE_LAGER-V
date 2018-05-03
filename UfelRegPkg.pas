@@ -338,7 +338,7 @@ implementation
 
 uses dmcPkgs, VidaConst, dlgPickPkg_II,
   dmsVidaContact, dmsVidaProduct, 
-  VidaUser, UnitCRViewReport, UnitPkgInfo,
+  VidaUser,  UnitPkgInfo,
   UnitPkgNoSeries, dmcVidaSystem, //UnitGetProduct,
   dmsVidaSystem,
   UnitLONumber, dmsDataConn , uSearchRunNo, dmc_UserProps,

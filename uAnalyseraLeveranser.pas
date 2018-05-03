@@ -830,6 +830,10 @@ type
     cds_Datakg: TFloatField;
     pivLeveranserKG: TcxDBPivotGridField;
     pivDateAndTime: TcxDBPivotGridField;
+    cds_DataPaket: TIntegerField;
+    cds_DataPaketstorlek: TStringField;
+    pivLeveranserPaket: TcxDBPivotGridField;
+    pivLeveranserPaketstorlek: TcxDBPivotGridField;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acRefreshExecute(Sender: TObject);
     procedure acCloseExecute(Sender: TObject);
@@ -977,7 +981,7 @@ var
 implementation
 
 Uses VidaType, VidaUser , dmsDataConn, uSendMapiMail, dmsVidaContact, dmsVidaSystem,
-  uConfirmCodeDialog, WorkMinutesU, UnitCRViewReport, uEnterFieldValue,
+  uConfirmCodeDialog, WorkMinutesU,   uEnterFieldValue,
   udmLanguage;
 
 {$R *.dfm}
@@ -1253,7 +1257,7 @@ begin
         cds_Data.SQL.Clear ;
         cds_Data.SQL.Add('Select *, LoadingLocation,') ;
         cds_Data.SQL.Add('case when int_destination = ' + QuotedStr('STD') +  ' then ext_destination') ;
-        cds_Data.SQL.Add('else int_destination end AS Destination, 0.0 AS M_Pris from dbo.LevSituationer_IIII') ;
+        cds_Data.SQL.Add('else int_destination end AS Destination, 0.0 AS M_Pris from dbo.LevSituationer_VI') ;
         if lcVerk.Text = 'Alla' then
         Begin
          cds_verk.First ;
@@ -1276,12 +1280,14 @@ begin
 
         cds_Data.SQL.Add('AND Utlastad >= :StartPeriod') ;
         cds_Data.SQL.Add('AND Utlastad <= :EndPeriod') ;
+
+        cds_Data.SQL.Add('AND kg = 0') ;
        End ;
    1 : Begin
         cds_Data.SQL.Clear ;
         cds_Data.SQL.Add('Select *, LoadingLocation,') ;
         cds_Data.SQL.Add('case when int_destination = ' + QuotedStr('STD') +  ' then ext_destination') ;
-        cds_Data.SQL.Add('else int_destination end AS Destination, 0.0 AS M_Pris from dbo.LevSituationer_IIII') ;
+        cds_Data.SQL.Add('else int_destination end AS Destination, 0.0 AS M_Pris from dbo.LevSituationer_VI') ;
 
         if lcVerk.Text = 'Alla' then
         Begin
@@ -1304,6 +1310,7 @@ begin
 //        cds_Data.SQL.Add('WHERE ((Customer = :supplier) or (' + QuotedStr('Alla') + '= :supplier))') ;
         cds_Data.SQL.Add('AND Utlastad >= :StartPeriod') ;
         cds_Data.SQL.Add('AND Utlastad <= :EndPeriod') ;
+        cds_Data.SQL.Add('AND kg = 1') ;
        End ;
   End ;
 //  cds_Data.ParamByName('Supplier').AsString           := lcVerk.Text ;

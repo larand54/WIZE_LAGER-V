@@ -2248,14 +2248,14 @@ begin
 End ;
 
 function TfStopptidReport.InitiateReport(const ReportName: String) : Boolean ;
-  var HostName, Database, UserName, Password, spath: String ;
+  var HostName, Database, UserName, Password, spath, ServiceUrl : String ;
       Save_Cursor : TCursor;
 begin
  Save_Cursor := Screen.Cursor;
  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
  Try
 
- dmsSystem.GetLogonParams (HostName, Database, UserName, Password, spath) ;
+ dmsSystem.GetLogonParams (HostName, Database, UserName, Password, spath, ServiceUrl) ;
 
  Result:= True ;
  if not(FileExists(sPath+ReportName)) then

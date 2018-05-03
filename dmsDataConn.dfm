@@ -1,5 +1,6 @@
 object dmsConnector: TdmsConnector
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 558
   Width = 734
@@ -4891,7 +4892,7 @@ object dmsConnector: TdmsConnector
   object sq_GetUserName: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'Select UserName, PassWord from dbo.users'
+      'Select UserName, PassWord, Description from dbo.users'
       'where AD_Name = :AD_Name')
     Left = 296
     Top = 264
@@ -4910,16 +4911,21 @@ object dmsConnector: TdmsConnector
       FixedChar = True
       Size = 10
     end
+    object sq_GetUserNameDescription: TStringField
+      FieldName = 'Description'
+      Origin = 'Description'
+      Size = 50
+    end
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Server=visprodsql.vida.se'
-      'Database=vis_vida'
+      'Server=CARMAK-SPEED\sqlexpress'
+      'Database=woodsupport'
       'OSAuthent=No'
-      'MetaDefCatalog=vis_vida'
+      'MetaDefCatalog=woodsupport'
       'MetaDefSchema=dbo'
-      'ApplicationName=Vis_Lager'
-      'User_Name=Lars'
+      'ApplicationName=WIZE Lager'
+      'User_Name=sa'
       'Password=woods2011'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRowsetSize, evCursorKind]

@@ -329,7 +329,7 @@ uses
   VidaConst,
   VidaType,
   VidaUser,
-  VidaUtils, UnitCRViewReport,
+  VidaUtils,
   dmsVidaContact, dmcVidaSystem,
   dmsDataConn, uEntryField , dmcLoadPlan, uSelectPkgTypes, uSelectLoadPlan,
   dmsVidaSystem;
@@ -642,27 +642,7 @@ begin
 end;
 
 procedure TfrmLoadPlan.PrintCReport(Sender: TObject);
-Var FormCRViewReport : TFormCRViewReport ;
 begin
- if grdLoadPlanDBBandedTableView1.DataController.DataSet.FieldByName('LONumber').AsInteger < 1 then exit ;
-
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
- FormCRViewReport.CreateCo('SPEC_ALLA_LASTER_VERK_III.RPT') ;
-
- if FormCRViewReport.ReportFound then
- Begin
-  FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(grdLoadPlanDBBandedTableView1.DataController.DataSet.FieldByName('LONumber').AsInteger);
-  FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(grdLoadPlanDBBandedTableView1.DataController.DataSet.FieldByName('Supplier').AsInteger);
-  FormCRViewReport.report.ParameterFields.Item[3].AddCurrentValue(ThisUser.UserID);
-
-  FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-  FormCRViewReport.CRViewer91.ViewReport ;
-  FormCRViewReport.ShowModal ;
- End ;
- Finally
-    FreeAndNil(FormCRViewReport)  ;
- End ;
 end;
 
 procedure TfrmLoadPlan.acCloseExecute(Sender: TObject);

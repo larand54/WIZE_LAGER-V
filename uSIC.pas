@@ -239,7 +239,7 @@ type
 implementation
 
 uses VidaUser , dmcInvCtrl, uSicICgrp, uModifySIC, dmsVidaContact,
-  UnitCRViewReport, dmsVidaSystem, uInvCtrl, uSendMapiMail , dmsDataConn;
+   dmsVidaSystem, uInvCtrl, uSendMapiMail , dmsDataConn;
 
 {$R *.dfm}
 
@@ -721,44 +721,10 @@ begin
 end;
 
 procedure TfSIC.acPrintCRReportExecute(Sender: TObject);
-var FormCRViewReport: TFormCRViewReport ;
+var
     Save_Cursor : TCursor;
 begin
- With dmInvCtrl do
- Begin
-  eSetfocus.SetFocus ;
-  Save_Cursor := Screen.Cursor;
-  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-  FormCRViewReport:= TFormCRViewReport.Create(Nil);
-  Try
-   FormCRViewReport.CreateCo('Sic.rpt') ;
-   if FormCRViewReport.ReportFound then
-   Begin
-    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
 
-    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(mtTempDataClientNo.AsInteger) ;
-
-    if mtTempDataAllaPerioder.AsInteger = 0 then
-    Begin
-     FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(mtTempDatafiYear.AsInteger) ;
-     FormCRViewReport.report.ParameterFields.Item[3].AddCurrentValue(mtTempDatafiMonth.AsInteger) ;
-    End
-    else
-    Begin
-     FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(0) ;
-     FormCRViewReport.report.ParameterFields.Item[3].AddCurrentValue(0) ;
-    End ;
-    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-    FormCRViewReport.CRViewer91.ViewReport ;
-    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-    FormCRViewReport.ShowModal ;
-   End ;
-  Finally
-   FreeAndNil(FormCRViewReport)  ;
-   Screen.Cursor := Save_Cursor;  { Always restore to normal }
-  End ;
-
- End ;
 end;
 
 procedure TfSIC.grdSICRowActiveTabChanged(Sender: TcxCustomGrid;

@@ -1077,9 +1077,9 @@ begin
 end;
 
 function TfInventeringsRapport.InitiateReport(AOwner: TComponent; ReportName: String) : Boolean ;
-  var HostName, Database, UserName, Password, spath: String ;
+  var HostName, Database, UserName, Password, spath, ServiceUrl : String ;
 begin
- dmsSystem.GetLogonParams (HostName, Database, UserName, Password, spath) ;
+ dmsSystem.GetLogonParams (HostName, Database, UserName, Password, spath, ServiceUrl) ;
  Result:= True ;
  if not(FileExists(sPath+ReportName)) then
  Begin

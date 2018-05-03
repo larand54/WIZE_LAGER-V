@@ -808,7 +808,6 @@ type
     procedure acCreateNewPkgUpdate(Sender: TObject);
     procedure acPrintAvRegExecute(Sender: TObject);
     procedure acPrintPaRegExecute(Sender: TObject);
-    procedure acPrintPriceListKontrollExecute(Sender: TObject);
     procedure acPrintPriceListKontrollUpdate(Sender: TObject);
     procedure grdAvregDBTableView1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -1048,7 +1047,7 @@ var fInvCtrl: TfInvCtrl;
 
 implementation
 
-uses dmcInvCtrl, dmsVidaContact, VidaUser, UnitCRViewReport, //UnitRemovePkg, //VidaType,
+uses dmcInvCtrl, dmsVidaContact, VidaUser,
   dmcVidaSystem, dmcPkgs,
   dmsDataConn,
   uEntryField,
@@ -1598,43 +1597,10 @@ begin
 end;
 
 procedure TfInvCtrl.acPrintInvListPerLGExecute(Sender: TObject);
-Var FormCRViewReport: TFormCRViewReport ;
+Var
     Save_Cursor : TCursor;
 begin
-//dmInvCtrl.ds_InvCtrlMetod
- Save_Cursor := Screen.Cursor;
- Screen.Cursor := crSQLWait;    { Show hourglass cursor }
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
-// if dmInvCtrl.cds_InvCtrlGrpStatus.AsInteger < 3 then
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_15' (* 'InvListLGPktNr.RPT' *) ))
-    else
-      FormCRViewReport.CreateCo('InventeringPerPktTyp.RPT') ;
- End ;
-{ else
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InvenLagerListaPktNr.RPT')
-    else
-      FormCRViewReport.CreateCo('InvenLagerListaPktTyp.RPT') ;
- End ; }
 
-  if FormCRViewReport.ReportFound then
-  Begin
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
-   FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger);
-   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-   FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }   
-   FormCRViewReport.ShowModal ;
-  End ;
- Finally
-  FreeAndNil(FormCRViewReport)  ;
-  Screen.Cursor := Save_Cursor;  { Always restore to normal }
- End ;
 end;
 
 procedure TfInvCtrl.acGenFinalListExecute(Sender: TObject);
@@ -2685,27 +2651,8 @@ begin
 end;
 
 procedure TfInvCtrl.PrintSammanstallning(Sender: TObject);
-Var FormCRViewReport: TFormCRViewReport ;
-    Save_Cursor : TCursor;
 begin
- Save_Cursor := Screen.Cursor;
- Screen.Cursor := crSQLWait;    { Show hourglass cursor }
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
-  FormCRViewReport.CreateCo('InvenSummary.RPT') ;
-  if FormCRViewReport.ReportFound then
-  Begin
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlGrpIC_grpno.AsInteger);
-   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-   FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.ShowModal ;
-  End ;
- Finally
-  FreeAndNil(FormCRViewReport)  ;
-  Screen.Cursor := Save_Cursor;  { Always restore to normal }
- End ;
+
 end;
 
 procedure TfInvCtrl.acPrintSummaryReportUpdate(Sender: TObject);
@@ -3321,48 +3268,6 @@ begin
  End ;
 end;
 
-procedure TfInvCtrl.acPrintPriceListKontrollExecute(Sender: TObject);
-Var FormCRViewReport: TFormCRViewReport ;
-    Save_Cursor : TCursor;
-begin
-  if dmInvCtrl.cds_InvCtrlGrpMaxDatum.IsNull then
-  Begin
-   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_2' (* 'Ange Maxdatum!' *) )) ;
-   Exit ;
-  End ;
-
-  if dmInvCtrl.cds_InvCtrlGrpMaxDatum.AsDateTime < dmInvCtrl.cds_InvCtrlGrpInventeringsdatum.AsDateTime then
-  Begin
-   ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_3' (* 'Maxdatum måste vara senare än inventeringsdatum, var vänlig justera!' *) )) ;
-   Exit ;
-  End ;
-
- if dmInvCtrl.cds_InvCtrlGrpPriceListNo.IsNull then
- Begin
-  ShowMessage(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_88' (* 'Välj en prislista!' *) )) ;
-  Exit ;
- End ;
- acSaveExecute(Sender) ; 
- Save_Cursor := Screen.Cursor;
- Screen.Cursor := crSQLWait;    { Show hourglass cursor }
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
-  FormCRViewReport.CreateCo('ChkPriceList.RPT') ;
-  if FormCRViewReport.ReportFound then
-  Begin
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlGrpIC_grpno.AsInteger);
-   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-   FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.ShowModal ;
-  End ;
- Finally
-  FreeAndNil(FormCRViewReport)  ;
-  Screen.Cursor := Save_Cursor;  { Always restore to normal }
- End ;
-end;
-
 procedure TfInvCtrl.acPrintPriceListKontrollUpdate(Sender: TObject);
 begin
  With dmInvCtrl do
@@ -3807,45 +3712,10 @@ begin
 end;
 
 procedure TfInvCtrl.acPrintKontrollistaExecute(Sender: TObject);
-Var FormCRViewReport: TFormCRViewReport ;
+Var
     Save_Cursor : TCursor;
 begin
-//Med träslag
-//dmInvCtrl.ds_InvCtrlMetod
- Save_Cursor := Screen.Cursor;
- Screen.Cursor := crSQLWait;    { Show hourglass cursor }
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
-// if dmInvCtrl.cds_InvCtrlGrpStatus.AsInteger < 3 then
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InventeringPerPktNr.rpt')
-    else
-      FormCRViewReport.CreateCo('InventeringPerPktTyp.RPT') ;
 
- End ;
-{ else
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InvenLagerListaPktNr.RPT')
-    else
-      FormCRViewReport.CreateCo('InvenLagerListaPktTyp.RPT') ;
- End ; }
-
-  if FormCRViewReport.ReportFound then
-  Begin
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
-   FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger);
-   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-   FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.ShowModal ;
-  End ;
- Finally
-  FreeAndNil(FormCRViewReport)  ;
-  Screen.Cursor := Save_Cursor;  { Always restore to normal }
- End ;
 end;
 
 //utan träslag
@@ -3867,43 +3737,10 @@ begin
 end;
 
 procedure TfInvCtrl.acPrintAllLGExecute(Sender: TObject);
-Var FormCRViewReport: TFormCRViewReport ;
+Var
     Save_Cursor : TCursor;
 begin
-//dmInvCtrl.ds_InvCtrlMetod
- Save_Cursor := Screen.Cursor;
- Screen.Cursor := crSQLWait;    { Show hourglass cursor }
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
-// if dmInvCtrl.cds_InvCtrlGrpStatus.AsInteger < 3 then
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InvListPktNr.RPT')
-    else
-      FormCRViewReport.CreateCo('InventeringPerPktTyp.RPT') ;
- End ;
-{ else
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InvenLagerListaPktNr.RPT')
-    else
-      FormCRViewReport.CreateCo('InvenLagerListaPktTyp.RPT') ; 
- End ; }
 
-  if FormCRViewReport.ReportFound then
-  Begin
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
-//  FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryName.AsString);
-   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-   FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.ShowModal ;
-  End ;
- Finally
-  FreeAndNil(FormCRViewReport)  ;
-  Screen.Cursor := Save_Cursor;  { Always restore to normal }
- End ;
 end;
 
 procedure TfInvCtrl.acPrintAvRegUpdate(Sender: TObject);
@@ -3952,31 +3789,13 @@ begin
 end;
 
 procedure TfInvCtrl.acPrintLista_IIExecute(Sender: TObject);
-var FormCRViewReport: TFormCRViewReport ;
+var
     Save_Cursor : TCursor;
 begin
  With dmInvCtrl do
  Begin
   GetCtrlPkgs_OnlyStatus_Not_OK ;
 
-  Save_Cursor := Screen.Cursor;
-  Screen.Cursor := crSQLWait;
-  FormCRViewReport:= TFormCRViewReport.Create(Nil);
-  Try
-   FormCRViewReport.CreateCo('InvCtrlByPkgNo.rpt') ;
-   if FormCRViewReport.ReportFound then
-   Begin
-    Screen.Cursor := crSQLWait;
-    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
-    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-    FormCRViewReport.CRViewer91.ViewReport ;
-    Screen.Cursor := crSQLWait;
-    FormCRViewReport.ShowModal ;
-   End ;
-  Finally
-   FreeAndNil(FormCRViewReport)  ;
-   Screen.Cursor := Save_Cursor;
-  End ;
 
  End ;
 end;
@@ -4710,7 +4529,7 @@ begin
 end;
 
 procedure TfInvCtrl.acPrintInvListaIIExecute(Sender: TObject);
-var FormCRViewReport: TFormCRViewReport ;
+var
     Save_Cursor : TCursor;
 begin
  With dmInvCtrl do
@@ -4718,22 +4537,9 @@ begin
   GenInvListaII ;
   Save_Cursor := Screen.Cursor;
   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-  FormCRViewReport:= TFormCRViewReport.Create(Nil);
-  Try
-   FormCRViewReport.CreateCo('INVENT_BY_PKGNo.rpt') ;
-   if FormCRViewReport.ReportFound then
-   Begin
-    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
-    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-    FormCRViewReport.CRViewer91.ViewReport ;
-    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-    FormCRViewReport.ShowModal ;
-   End ;
-  Finally
-   FreeAndNil(FormCRViewReport)  ;
-   Screen.Cursor := Save_Cursor;  { Always restore to normal }
-  End ;
+
+
+
 
  End ;
 end;
@@ -4914,7 +4720,7 @@ begin
 end;
 
 procedure TfInvCtrl.PrintInvCtrlReport(Sender: TObject;const LIPs, STATUSs  : String;const ReportName : String) ;
-var FormCRViewReport  : TFormCRViewReport ;
+var
     Save_Cursor       : TCursor;
 begin
  With dmInvCtrl do
@@ -4922,29 +4728,13 @@ begin
   GetCtrlPkgs(LIPs, STATUSs) ;
   Save_Cursor   := Screen.Cursor;
   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-  FormCRViewReport:= TFormCRViewReport.Create(Nil);
-  Try
-//   FormCRViewReport.CreateCo('InvCtrlByPkgNo.rpt') ;
-    FormCRViewReport.CreateCo(ReportName) ;
-   if FormCRViewReport.ReportFound then
-   Begin
-    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
-    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-    FormCRViewReport.CRViewer91.ViewReport ;
-    Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-    FormCRViewReport.ShowModal ;
-   End ;
-  Finally
-   FreeAndNil(FormCRViewReport)  ;
-   Screen.Cursor := Save_Cursor;  { Always restore to normal }
-  End ;
+
 
  End ;
 end;
 
 procedure TfInvCtrl.PrintInvCtrlReportNotActiveWithEvents(Sender: TObject;const LIPs, STATUSs  : String;const ReportName : String) ;
-var FormCRViewReport  : TFormCRViewReport ;
+var
     Save_Cursor       : TCursor;
 begin
  acGenMissingPkgsListExecute(Sender) ;
@@ -4953,22 +4743,7 @@ begin
   GenListfromPkgsnotact(LIPs, STATUSs) ;
   Save_Cursor       := Screen.Cursor;
   Screen.Cursor     := crSQLWait;
-  FormCRViewReport  := TFormCRViewReport.Create(Nil);
-  Try
-    FormCRViewReport.CreateCo(ReportName) ;
-   if FormCRViewReport.ReportFound then
-   Begin
-    Screen.Cursor := crSQLWait;
-    FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(ThisUser.UserID);
-    FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-    FormCRViewReport.CRViewer91.ViewReport ;
-    Screen.Cursor := crSQLWait;
-    FormCRViewReport.ShowModal ;
-   End ;
-  Finally
-   FreeAndNil(FormCRViewReport)  ;
-   Screen.Cursor := Save_Cursor;
-  End ;
+
  End ;
 end;
 
@@ -6234,45 +6009,15 @@ begin
 end;
 
 procedure TfInvCtrl.acPrintKontrollista_NoSpeciesExecute(Sender: TObject);
-Var FormCRViewReport: TFormCRViewReport ;
+Var
     Save_Cursor : TCursor;
 begin
 //Utan träslag
 //dmInvCtrl.ds_InvCtrlMetod
  Save_Cursor := Screen.Cursor;
  Screen.Cursor := crSQLWait;    { Show hourglass cursor }
- FormCRViewReport:= TFormCRViewReport.Create(Nil);
- Try
-// if dmInvCtrl.cds_InvCtrlGrpStatus.AsInteger < 3 then
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo(siLangLinked_fInvCtrl.GetTextOrDefault('IDS_241' (* 'InventeringPerPktNr_NoSpecies.rpt' *) ))
-    else
-      FormCRViewReport.CreateCo('InventeringPerPktTyp.RPT') ;
 
- End ;
-{ else
- Begin
-  if dmInvCtrl.cds_InvCtrlMetodInventeringsMetod.AsInteger = 1 then
-   FormCRViewReport.CreateCo('InvenLagerListaPktNr.RPT')
-    else
-      FormCRViewReport.CreateCo('InvenLagerListaPktTyp.RPT') ;
- End ; }
 
-  if FormCRViewReport.ReportFound then
-  Begin
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.report.ParameterFields.Item[1].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodIC_grpNo.AsInteger);
-   FormCRViewReport.report.ParameterFields.Item[2].AddCurrentValue(dmInvCtrl.cds_InvCtrlMetodLogicalInventoryPointNo.AsInteger);
-   FormCRViewReport.CRViewer91.ReportSource:= FormCRViewReport.Report ;
-   FormCRViewReport.CRViewer91.ViewReport ;
-   Screen.Cursor := crSQLWait;    { Show hourglass cursor }
-   FormCRViewReport.ShowModal ;
-  End ;
- Finally
-  FreeAndNil(FormCRViewReport)  ;
-  Screen.Cursor := Save_Cursor;  { Always restore to normal }
- End ;
 end;
 
 procedure TfInvCtrl.acPrintKontrollista_NoSpeciesUpdate(Sender: TObject);

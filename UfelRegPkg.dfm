@@ -22,17 +22,18 @@ object ffelRegPkg: TffelRegPkg
     Left = 0
     Top = 0
     Width = 1115
-    Height = 46
+    Height = 45
     Align = dalTop
     BarManager = dxBarManager1
   end
   object pLoadHead: TPanel
     Left = 0
-    Top = 46
+    Top = 45
     Width = 1115
     Height = 298
     Align = alTop
     TabOrder = 1
+    ExplicitTop = 46
     object Label1: TLabel
       Left = 358
       Top = 59
@@ -592,11 +593,13 @@ object ffelRegPkg: TffelRegPkg
   end
   object Panel6: TPanel
     Left = 0
-    Top = 344
+    Top = 343
     Width = 1115
-    Height = 313
+    Height = 314
     Align = alClient
     TabOrder = 6
+    ExplicitTop = 344
+    ExplicitHeight = 313
     object grdPaket: TcxGrid
       Left = 1
       Top = 31
@@ -1101,7 +1104,7 @@ object ffelRegPkg: TffelRegPkg
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (

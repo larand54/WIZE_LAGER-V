@@ -648,6 +648,7 @@ type
     cds_KilnChargeRowsCheckIMPProductDisplayName: TStringField;
     cds_KilnChargeRowsCheckIMPPcsPerLength: TStringField;
     cds_KilnChargeRowsCheckIMPMatchingPT: TStringField;
+    cds_KilnChargeRowsAM3: TFloatField;
     procedure cds_PcsPerLenCalcFields(DataSet: TDataSet);
     procedure cds_PropsAfterInsert(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
@@ -788,7 +789,7 @@ begin
 //Put the package to inventory IN kiln direct as they are set on a Vagn
  sp_MovePackage.ParamByName('@PackageNo').AsInteger     :=  cds_KilnChargeRowsPackageNo.AsInteger ;
  sp_MovePackage.ParamByName('@SupplierCode').AsString   :=  cds_KilnChargeRowsSupplierCode.AsString ;
- sp_MovePackage.ParamByName('@NewLocation').AsInteger   :=  cds_KilnChargeHdrKiln_LIPNo.AsInteger ;
+ sp_MovePackage.ParamByName('@NewLocation').AsInteger   :=  2 ;//cds_KilnChargeHdrKiln_LIPNo.AsInteger ;
  sp_MovePackage.ParamByName('@UserID').AsInteger        :=  ThisUser.UserID ;
  sp_MovePackage.ParamByName('@KilnChargeNo').AsInteger  :=  cds_KilnChargeRowsKilnChargeNo.AsInteger ;
  sp_MovePackage.ParamByName('@Operation').AsInteger     :=  29 ; //Unit started
@@ -810,7 +811,7 @@ begin
 //Put the package back to inventory before kiln
  sp_MovePackage.ParamByName('@PackageNo').AsInteger     :=  cds_KilnChargeRowsPackageNo.AsInteger ;
  sp_MovePackage.ParamByName('@SupplierCode').AsString   :=  cds_KilnChargeRowsSupplierCode.AsString ;
- sp_MovePackage.ParamByName('@NewLocation').AsInteger   :=  cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
+ sp_MovePackage.ParamByName('@NewLocation').AsInteger   :=  1 ;//cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger ;
  sp_MovePackage.ParamByName('@UserID').AsInteger        :=  ThisUser.UserID ;
  sp_MovePackage.ParamByName('@KilnChargeNo').AsInteger  :=  cds_KilnChargeRowsKilnChargeNo.AsInteger ;
  sp_MovePackage.ParamByName('@Operation').AsInteger     :=  35 ; //Removed package

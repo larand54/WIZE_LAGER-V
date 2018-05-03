@@ -65,7 +65,7 @@ implementation
 {$R *.dfm}
 
 uses
-  vidaUser, dmsDataConn ;
+  vidaUser, dmsDataConn, dmsVidaSystem ;
 
 { TfrmPackagePicker }
 

@@ -240,7 +240,7 @@ begin
   ShowMessage(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_1' (* 'Sluttid saknas' *) )) ;
   Exit ;
  End ;
- if MessageDlg(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_2' (* 'Vill du flytta paket till efter tork och avsluta torksats?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+ if MessageDlg(siLangLinked_fKilnCharges.GetTextOrDefault('IDS_2' (* 'Vill du flytta paket till efter tub och avsluta koksats?' *) ),  mtConfirmation, [mbYes, mbNo], 0) = mrYes then
  Begin
   dm_DryKiln.MoveToAfterKilnAndSetKilnToComplete(dm_DryKiln.cds_KilnChargeHdrKilnChargeNo.AsInteger,
   DateTimeToSqlTimeStamp(dm_DryKiln.cds_KilnChargeHdrEndTime.AsDateTime)) ;

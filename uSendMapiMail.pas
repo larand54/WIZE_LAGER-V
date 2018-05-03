@@ -4,15 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, uRwMapiSession,
-  uRwMapiInterfaces ,
-  fRwMapiFolderDialog, uRwMapiBase, siComp, uRwEasyMAPI ;
+  StdCtrls, siComp, uRwEWSBase, VCL.uRwEWSSession, uRwEWSInterfaces,
+  VCL.uRwFormScaler, uRwEWS ;
   //, uRwMapiSession;
 
 type
   Tdm_SendMapiMail = class(TDataModule)
-    MapiSession: TRwMapiSession;
     siLang_dm_SendMapiMail: TsiLang;
+    EWSSession: TRwEWSSession;
     procedure MapiSessionAfterLogon(Sender: TObject);
     procedure MapiSessionBeforeLogoff(Sender: TObject);
   private
@@ -41,77 +40,158 @@ uses
   {$IFDEF VARIANTS}
    ,Variants
   {$ENDIF VARIANTS}
-  , uRwMapiUtils
-  , uRwMapiMessage
-  , uRwClasses
-  , fRwMapiFields
   , dmsDataConn
-  , udmLanguage;
+  , udmLanguage
+  , uRwClasses
+  , uRwSysUtils
+  , uRwEWSTypes , dmsVidaSystem, VidaUser;
+
 
 
 procedure Tdm_SendMapiMail.SendMail(const Subject, MessageText, MailFromAddress,
   MailToAddress, InfogadHTMLFil: String; const Attachments: array of String);
 var
-  MsgStore    : IRwMapiMsgStore;
-  Folder      : IRwMapiFolder;
-  NewMessage  : IRwMapiMailMessage;
-  Submitted   : Boolean;
-  i           : Integer;
-  tMsg        : TStringList ;
+  NewMessage: IRwEWSEMail;
+  HostName, Database, UserName, Password, spath, ServiceUrl : String ;
+  i: Integer;
 begin
- tMsg:= TStringList.Create ;
- Try
- if Length(InfogadHTMLFil) > 0 then
- tMsg.LoadFromFile(InfogadHTMLFil);
-
- if MapiSession.Active = False Then
- Self.MapiSession.Active := True ;
- //ShowLogonDlg(Self.MapiSession, True);
-
   if Trim(MailToAddress) = '' then
-   raise Exception.Create('No recipients specified');
+    raise Exception.Create('No recipients specified');
 
   if Trim(Subject) = '' then
-   raise EAbort.Create('There is no subject.');
+    if RwMsgBoxYesNo('There is no subject. Do you want to send the message anyway?') = mrNO then
+      raise EAbort.Create('');
 
-    // Logon, create and send the message
-  MapiSession.Logon;
+  // Setup the session so that it will ask the user for a profile
+  EWSSession.ProfileName := '';
+  EWSSession.ProfileRequired := False;
+  EWSSession.LogonDialog := False ;
+
+
+  if dmsSystem.GetLogonParams (HostName, Database, UserName, Password, spath, ServiceUrl) = False then
+  Begin
+   ShowMessage('Rapport inställningar saknas, kontakta admin.') ;
+   Exit ;
+  End  ;
+
+
+//  EWSSession.AutodiscoverEMail  := 'lars.makiaho@vida.se' ;
+
+{
+    EWSSession.ServiceUrl := 'https://outlook.office365.com/ews/exchange.asmx' ;
+    EWSSession.Credentials.UserName := 'kontor@woodsupport.se' ;
+    EWSSession.Credentials.Password := 'Wol72537' ;
+}
+
+//  EWSSession.Credentials.UserName := 'lars.makiaho@vida.se' ;
+//  EWSSession.Credentials.Password := 'Ketola77!' ;
+
+  EWSSession.ServiceUrl           := ServiceUrl ;//'https://outlook.office365.com/ews/exchange.asmx' ;
+  EWSSession.Credentials.UserName := ThisUser.UserEmail ;// 'lars.makiaho@vida.se' ;
+  EWSSession.Credentials.Password := ThisUser.UserPswd ;// 'Ketola77!' ;
+
+//  ShowMessage('ServiceUrl = ' + ServiceUrl + ' EWSSession.Credentials.UserName = ' + EWSSession.Credentials.UserName
+//  + ' EWSSession.Credentials.Password = ' + EWSSession.Credentials.Password) ;
+
+  // Logon, create and send the message
+  EWSSession.Active := True;
   try
+    Screen.Cursor := crHourGlass;
     // create a new message of class IPM.Note in the drafts folder of the default messagestore
-    NewMessage := MapiSession.CreateMessage(ftDraft) as IRwMapiMailMessage;
-
-    NewMessage.RecipTo := MailToAddress ;
-    NewMessage.Subject := Subject;
-    NewMessage.Body    := MessageText;
+    NewMessage := EWSSession.CreateMessage(dfinDrafts) as IRwEWSEMail;
 
 
-  NewMessage.SetMessageText(tMsg.Text, fmtHTML );
+    NewMessage.ToRecipients.AsString := 'lars.makiaho@gmail.com' ; // MailToAddress ;
+    NewMessage.Subject               := Subject ;
+    NewMessage.BodyText              := MessageText ;
+    NewMessage.Importance            := icHigh;
 
+    // Add the selected attachments
 
-  // Add the selected attachments
     for I := Low(Attachments) to High(Attachments) do
-    NewMessage.AddFileAttachment(Attachments[I]);
+    NewMessage.Attachments.AddAttachment(Attachments[I]);
 
-  // save the message
-   NewMessage.SaveChanges(smKeepOpenReadOnly) ;
-//    NewMessage.SubmitMessage(astMoveToSentItems);
 
+    NewMessage.SaveChanges();
+    RwMsgBoxInfo('The message is in draft folder.');
+
+    // Submit the message
+//    NewMessage.SubmitMessage(False);
   finally
-    MapiSession.Logoff;
+    Screen.Cursor := crDefault;
+    EWSSession.Active := False;
   end;
 
-  if Submitted then
-  begin
-    RwMsgBoxInfo('The message is submitted.');
-    //ClearMessage;
-  end;
-
-  ShowMessage('Meddelandet är sparat till utkast.');
-  Finally
-   tMsg.Free ;
-  End ;
+  RwMsgBoxInfo('The message is submitted.');
+//  ClearMessage;
 end;
 
+
+(*
+  procedure Tdm_SendMapiMail.SendMail(const Subject, MessageText, MailFromAddress,
+    MailToAddress, InfogadHTMLFil: String; const Attachments: array of String);
+  var
+    MsgStore    : IRwMapiMsgStore;
+    Folder      : IRwMapiFolder;
+    NewMessage  : IRwMapiMailMessage;
+    Submitted   : Boolean;
+    i           : Integer;
+    tMsg        : TStringList ;
+  begin
+   tMsg:= TStringList.Create ;
+   Try
+   if Length(InfogadHTMLFil) > 0 then
+   tMsg.LoadFromFile(InfogadHTMLFil);
+
+   if MapiSession.Active = False Then
+   Self.MapiSession.Active := True ;
+   //ShowLogonDlg(Self.MapiSession, True);
+
+    if Trim(MailToAddress) = '' then
+     raise Exception.Create('No recipients specified');
+
+    if Trim(Subject) = '' then
+     raise EAbort.Create('There is no subject.');
+
+      // Logon, create and send the message
+    MapiSession.Logon;
+    try
+      // create a new message of class IPM.Note in the drafts folder of the default messagestore
+      NewMessage := MapiSession.CreateMessage(ftDraft) as IRwMapiMailMessage;
+
+      NewMessage.RecipTo := MailToAddress ;
+      NewMessage.Subject := Subject;
+      NewMessage.Body    := MessageText;
+
+
+    NewMessage.SetMessageText(tMsg.Text, fmtHTML );
+
+
+    // Add the selected attachments
+      for I := Low(Attachments) to High(Attachments) do
+      NewMessage.AddFileAttachment(Attachments[I]);
+
+    // save the message
+     NewMessage.SaveChanges(smKeepOpenReadOnly) ;
+  //    NewMessage.SubmitMessage(astMoveToSentItems);
+
+    finally
+      MapiSession.Logoff;
+    end;
+
+    if Submitted then
+    begin
+      RwMsgBoxInfo('The message is submitted.');
+      //ClearMessage;
+    end;
+
+    ShowMessage('Meddelandet är sparat till utkast.');
+    Finally
+     tMsg.Free ;
+    End ;
+  end;
+
+*)
   (*
 procedure Tdm_SendMapiMail.SendMail(const Subject, MessageText, MailFromAddress,
   MailToAddress, InfogadHTMLFil: String; const Attachments: array of String);

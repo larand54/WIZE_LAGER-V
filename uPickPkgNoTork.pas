@@ -150,7 +150,7 @@ type
     procedure RefreshInActivePackageList ;
   public
     { Public declarations }
-   LIPNo, PIPNo : Integer ;
+   RegiShortCode, PIPNo : Integer ;
   end;
 
 //var fPickPkgNoTork: TfPickPkgNoTork;
@@ -259,8 +259,8 @@ begin
  mtSelectedPkgNo.DisableControls ;
  Try
  sq_GetPkgNo.Close ;
- sq_GetPkgNo.ParamByName('ProductNo').AsInteger := mtFilterProductNo.AsInteger ;
- sq_GetPkgNo.ParamByName('LIPNo').AsInteger     := LIPNo ;
+ sq_GetPkgNo.ParamByName('ProductNo').AsInteger       := mtFilterProductNo.AsInteger ;
+ sq_GetPkgNo.ParamByName('RegiShortCode').AsInteger    := RegiShortCode ;
  if mtFilterALMM.AsFloat > 0 then
   sq_GetPkgNo.ParamByName('ALMM').AsFloat        := mtFilterALMM.AsFloat
    else
@@ -350,7 +350,7 @@ begin
   mtFilterProduct.LookupDataSet := cds_Products ;
   cxGrid1DBTableView1.DataController.KeyFieldNames    := 'PAKETNR;LEVKOD' ;
   cds_Products.Active                                 := False ;
-  cds_Products.ParamByName('LIPNo').AsInteger         := LIPNo ;
+  cds_Products.ParamByName('RegiShortCode').AsInteger := RegiShortCode ;
 //  cds_Products.ParamByName('PIPNo').AsInteger         := PIPNo ;
   cds_Products.Active                                 := True ;
   cxGrid1DBTableView1ColumnAngeAntalPkt.Visible       := False ;
@@ -460,7 +460,7 @@ begin
  Begin
  //check that package is available in inventory and Get supplier code
 //                        ShowMessage('ThisUser.UserName+Self.Name ' + ThisUser.UserName+'/'+Self.Name);
-    PkgSupplierCode := dmsSystem.PkgNoToSuppCode_ByLIPNo(PkgNo, cds_KilnChargeHdrBeforeKiln_LIPNo.AsInteger, SupplierNo, ProductNo);
+    PkgSupplierCode := dmsSystem.PkgNoToSuppCode_ByLIPNo(PkgNo, '0'{Grupp}, SupplierNo, ProductNo);
     if PkgSupplierCode = '' then
     Begin
       Result := eaREJECT;

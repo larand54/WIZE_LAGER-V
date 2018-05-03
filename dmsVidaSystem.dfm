@@ -1500,6 +1500,11 @@
       Origin = 'FastPath'
       Size = 255
     end
+    object sq_dbPropsServiceUrl: TStringField
+      FieldName = 'ServiceUrl'
+      Origin = 'ServiceUrl'
+      Size = 255
+    end
   end
   object sp_NonActivePkgs: TFDStoredProc
     Connection = dmsConnector.FDConnection1
@@ -2781,14 +2786,15 @@
   object sp_PksByLIPNo: TFDStoredProc
     Connection = dmsConnector.FDConnection1
     StoredProcName = 'dbo.vis_PkgsByLIPNo'
-    Left = 1056
-    Top = 16
+    Left = 1048
+    Top = 64
     ParamData = <
       item
         Position = 1
         Name = '@RETURN_VALUE'
         DataType = ftInteger
         ParamType = ptResult
+        Value = 0
       end
       item
         Position = 2
@@ -2802,11 +2808,6 @@
         DataType = ftInteger
         ParamType = ptInput
       end>
-  end
-  object ds_PksByLIPNo: TDataSource
-    DataSet = sp_PksByLIPNo
-    Left = 1056
-    Top = 64
   end
   object sp_GetAnyPkg: TFDStoredProc
     Connection = dmsConnector.FDConnection1
@@ -2908,5 +2909,42 @@
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object sp_PkgsByLIPGroup: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    StoredProcName = 'dbo.vis_PkgsByLIPGroup'
+    Left = 1048
+    Top = 120
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+        Value = 0
+      end
+      item
+        Position = 2
+        Name = '@PkgNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@GruppLager'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 3
+      end>
+  end
+  object ds_PksByLIPNo: TDataSource
+    DataSet = sp_PksByLIPNo
+    Left = 1056
+    Top = 184
+  end
+  object ds_PkgsByLIPGroup: TDataSource
+    DataSet = sp_PkgsByLIPGroup
+    Left = 1048
+    Top = 16
   end
 end

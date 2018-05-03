@@ -20,6 +20,8 @@ object fInvCtrl: TfInvCtrl
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object dxPageControl1: TcxPageControl
@@ -42,9 +44,6 @@ object fInvCtrl: TfInvCtrl
     object tsSkapaKontrollistor: TcxTabSheet
       Caption = 'Kontrollista'
       ImageIndex = 15
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel16: TPanel
         Left = 0
         Top = 0
@@ -2412,6 +2411,9 @@ object fInvCtrl: TfInvCtrl
     object tsUnRegInProduction: TcxTabSheet
       Caption = 'Avreg. i prod'#39'n'
       ImageIndex = 20
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -7216,6 +7218,10 @@ object fInvCtrl: TfInvCtrl
     object tsInvHdr: TcxTabSheet
       Caption = 'Inventering'
       ImageIndex = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object TopPanel: TPanel
         Left = 0
         Top = 0
@@ -7962,7 +7968,6 @@ object fInvCtrl: TfInvCtrl
     object acPrintPriceListKontroll: TAction
       Caption = 'Skriv ut prislistkontroll'
       ImageIndex = 4
-      OnExecute = acPrintPriceListKontrollExecute
       OnUpdate = acPrintPriceListKontrollUpdate
     end
     object acPrintInLev: TAction
@@ -10532,7 +10537,6 @@ object fInvCtrl: TfInvCtrl
     Top = 577
     object dxComponentPrinter1Link1: TdxGridReportLink
       Component = grdAvreg
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10546,12 +10550,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdPaRegPkg
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10565,12 +10567,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link3: TdxGridReportLink
       Component = grdInLev
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10584,12 +10584,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link4: TdxGridReportLink
       Component = grdLevPkt
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10603,12 +10601,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link5: TdxGridReportLink
       Component = grdPrd
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10622,12 +10618,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link6: TdxGridReportLink
       Component = grdChanged
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10641,12 +10635,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link7: TdxGridReportLink
       Component = grdAvRegProd
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10660,12 +10652,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link8: TdxGridReportLink
       Component = grdAvregBeforeInvDate
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10679,12 +10669,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link9: TdxGridReportLink
       Component = grdProductionBeforeInvDate
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10698,12 +10686,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link10: TdxGridReportLink
       Component = grdCtrlList
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10717,13 +10703,11 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link11: TdxGridReportLink
       Active = True
       Component = grdResultat
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10737,8 +10721,7 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 43004.547005393520000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43033.233181967590000000
       OptionsFormatting.UseNativeStyles = True
       StyleRepository = cxStyleRepository2
       Styles.BandHeader = cxStyle1
@@ -10748,7 +10731,6 @@ object fInvCtrl: TfInvCtrl
     end
     object dxComponentPrinter1Link12: TdxGridReportLink
       Component = grdInLevOfCreditInvoices
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10762,12 +10744,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link13: TdxGridReportLink
       Component = grdDelAfterMaxDatum
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10787,12 +10767,10 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
     object dxComponentPrinter1Link14: TdxGridReportLink
       Component = grdTransitInLev
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -10812,7 +10790,6 @@ object fInvCtrl: TfInvCtrl
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

@@ -18,6 +18,8 @@ object frmLoadPlan: TfrmLoadPlan
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object pnlBottomGrid: TPanel
@@ -887,7 +889,7 @@ object frmLoadPlan: TfrmLoadPlan
         Left = 0
         Top = 0
         Width = 634
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
         SunkenBorder = False
@@ -906,7 +908,7 @@ object frmLoadPlan: TfrmLoadPlan
         Left = 0
         Top = 0
         Width = 68
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -923,7 +925,7 @@ object frmLoadPlan: TfrmLoadPlan
         Left = 0
         Top = 0
         Width = 320
-        Height = 46
+        Height = 44
         Align = dalTop
         BarManager = dxBarManager1
       end
@@ -932,8 +934,8 @@ object frmLoadPlan: TfrmLoadPlan
   object dxBarManager1: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Categories.Strings = (
       'Default'
@@ -4146,7 +4148,6 @@ object frmLoadPlan: TfrmLoadPlan
     Top = 348
     object dxComponentPrinter1Link2: TdxGridReportLink
       Component = grdLoadPlan
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 8
       PrinterPage.Footer = 5080
       PrinterPage.GrayShading = True
@@ -4161,7 +4162,6 @@ object frmLoadPlan: TfrmLoadPlan
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.CreationDate = 39091.016057314820000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
