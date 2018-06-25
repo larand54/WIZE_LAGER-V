@@ -246,7 +246,7 @@ uses
   uAccInv, uExtAterstall, //uLastListaII,
   uChangeLogins, UProductionReport, uDeliveryReport, uUserProfiles,
   uStopptidReport, fLoadPlan, uKilnHandling, uLagerBalans, udmLanguage,
-  ufrmChangeLanguage;
+  ufrmChangeLanguage, udmFR;
 
 
 
@@ -333,16 +333,13 @@ begin
  if dmsConnector.DriveLetter = 'C:\' then
   showmessage(siLangLinked1.GetTextOrDefault('Change to H:\'));
 
-ThisUser.Database:= 'carmak-speed\sqlexpress:woodsupport' ;
-
 {$IFDEF DEBUG}
-  if (Pos('CARMAK',GetEnvironmentVariable('COMPUTERNAME')) > 0) then begin
+  if (Pos('CARMAK',dmsConnector.localServer) > 0) then begin
     dmsConnector.DriveLetter := 'C:\';
-    ThisUser.Database:= 'carmak-speed\sqlexpress:woodsupport' ;
+    ThisUser.Database := dmsConnector.localServer +':woodsupport' ;
       with dmsConnector.FDConnection1 do begin
         Params.Clear;
-        Params.Add('carmak-speed\sqlexpress:woodsupport') ;
-        Params.Add('Server=carmak-speed\sqlexpress');
+        Params.Add('Server='+ dmsConnector.localServer);
         Params.Add('Database=woodsupport');
         Params.Add('OSAuthent=No');
         Params.add('MetaDefCatalog=woodsupport');
@@ -391,6 +388,7 @@ ThisUser.Database:= 'carmak-speed\sqlexpress:woodsupport' ;
    nvgLager.Expanded      := False ;
    nvgInventering.Expanded:= True ;
   End ;
+  dmFR.SetUpConnection(dmsConnector.FDConnection1);
 
   LanguageNo  :=  dmsSystem.GetLanguageNo ;
   if LanguageNo > -1 then

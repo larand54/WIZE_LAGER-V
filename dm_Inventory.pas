@@ -649,6 +649,8 @@ type
     cds_KilnChargeRowsCheckIMPPcsPerLength: TStringField;
     cds_KilnChargeRowsCheckIMPMatchingPT: TStringField;
     cds_KilnChargeRowsAM3: TFloatField;
+    sp_LagerRaport: TFDStoredProc;
+    qryTemp: TFDQuery;
     procedure cds_PcsPerLenCalcFields(DataSet: TDataSet);
     procedure cds_PropsAfterInsert(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);

@@ -12,6 +12,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, dxBar, dxBarExtItems, StdCtrls, ImgList, OleServer, OleCtrls,
   Menus, DB, ActnList,
+  System.Generics.Collections,
   cxStyles, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxLabel, cxCheckBox,
   cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
@@ -55,6 +56,22 @@ uses
 
 
 type
+  TReportFilter = class
+  private
+    FType: string;
+    FfltrID: string;
+    FValue: variant;
+    function getValue: variant;
+    function getfltrID: string;
+    function getType: string;
+  public
+    constructor create(aType, afltrID: string; aValue: variant);
+    property value: variant read getValue;
+    property vType: string read getType;
+    property fltrID: string read getfltrID;
+
+  end;
+  
   TfrmInventoryReport = class(TForm)
     dxBarManager1: TdxBarManager;
     lbExit: TdxBarLargeButton;
@@ -716,6 +733,13 @@ type
     cbKD: TcxCheckBox;
     rgDestinationUtskrift: TcxRadioGroup;
     frxBarCodeObject1: TfrxBarCodeObject;
+    btnLagerRapport: TBitBtn;
+    acLagerRapport: TAction;
+    pmPrintLagerRapport: TPopupMenu;
+    acPrintLagerrapport: TAction;
+    acPreviewLagerrapport: TAction;
+    Frhandsgranska1: TMenuItem;
+    acPrintLagerrapport1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -875,6 +899,9 @@ type
       AButtonIndex: Integer);
     procedure cbInklEjFaktPropertiesChange(Sender: TObject);
     procedure DataSource1DataChange(Sender: TObject; Field: TField);
+    procedure acLagerRapportExecute(Sender: TObject);
+    procedure acPreviewLagerrapportExecute(Sender: TObject);
+    procedure acPrintLagerrapportExecute(Sender: TObject);
 
   private
     { Private declarations }
@@ -894,6 +921,12 @@ type
     CurrentNoOfPkgs,
     SelectedProductNo     : Integer ;
     SelectedLength        : String ;
+    function getComboSelection(const combo : TcxCheckComboBox): TStringList;
+    procedure addFilter(const combo : TcxCheckComboBox; const aUserNo: integer; const afltrID, aType: string);
+    procedure addSingleFilter(const aFloat: double; const aInt: integer; const aStr: string; const aDate: TDate; const aUserNo: integer; const afltrID, aType: string);
+    procedure setUpFilter(const aUserNo: integer);
+    procedure cleanUpFiltertable(const aUserNo: integer);
+    procedure LagerRapport(const Sender: TObject; const aUserID, aOwner: Integer; const aLIPNos: TStrings);
     Procedure Print2 ;
     procedure GenPkgNoPrelLoadsTable_SQL(Sender: TObject);
     procedure GenPkgNosDetailTable_SQL_PrelLoads(Sender: TObject);
@@ -973,7 +1006,7 @@ uses VidaType, dmsDataConn, VidaUser, dm_Inventory, dmsVidaContact, VidaConst,
   uSinglePkgEntry, dmc_UserProps, dmsVidaSystem, UnitPkgEntry,
   dmsVidaPkg, UfelRegPkg, UnitRemovePkg, UnitMovePkgs, uSendMapiMail ,
   dmc_DryKiln, uEntryField, uKilnCharges, uKilnChargeNote, uKilnWizard,
-  uVardaBortPkt, uchgPkgVard, uSokAvropMall, uEntryPriceField, uAngeNyMall ;
+  uVardaBortPkt, uchgPkgVard, uSokAvropMall, uEntryPriceField, uAngeNyMall , uReportController, udmFR, uReport;
 
 {$R *.dfm}
 
@@ -2159,7 +2192,7 @@ begin
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'SUR.SurfacingCode', ccbSU2)) ;
 
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'va.VaruGruppNo', ccVarugrupp)) ;
-  
+
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'imp.ImpCode', ccbIMP)) ;
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'gs.GradeStampID', ccbGS)) ;
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'bc.BarCodeID', ccbBC)) ;
@@ -2370,7 +2403,7 @@ begin
 
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'va.VaruGruppNo', ccVarugrupp)) ;
 
-  
+
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'imp.ImpCode', ccbIMP)) ;
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'gs.GradeStampID', ccbGS)) ;
   sq_Temp_Inventory.SQL.Add(GetSQLofComboFilter(0, 'bc.BarCodeID', ccbBC)) ;
@@ -2426,7 +2459,7 @@ begin
   FilterString  := FilterString + GetComboFilterText(' AL: ', ccbAL) ;
   FilterString  := FilterString + GetComboFilterText(' TS: ', ccbTS2) ;
   FilterString:= FilterString + GetComboFilterText(' UT: ', ccbSU2) ;
-  FilterString:= FilterString + GetComboFilterText(' VG: ', ccVarugrupp) ;  
+  FilterString:= FilterString + GetComboFilterText(' VG: ', ccVarugrupp) ;
   FilterString:= FilterString + GetComboFilterText(' KV: ', ccbKV2) ;
   FilterString:= FilterString + GetComboFilterText(' IMP: ', ccbIMP) ;
   FilterString:= FilterString + GetComboFilterText(' Stamp: ', ccbGS) ;
@@ -3760,14 +3793,14 @@ Begin
  Try
  if rgDestinationUtskrift.ItemIndex = 0 then
  Begin
-//  frxPaketLapp01.ShowReport ;
+  frxPaketLapp01.ShowReport ;
   frxPaketLapp02.ShowReport ;
  End
  else
  Begin
-//  frxPaketLapp01.PrepareReport(true) ;
-//  frxPaketLapp01.PrintOptions.ShowDialog := false;
-//  frxPaketLapp01.Print ;
+  frxPaketLapp01.PrepareReport(true) ;
+  frxPaketLapp01.PrintOptions.ShowDialog := false;
+  frxPaketLapp01.Print ;
   frxPaketLapp02.PrepareReport(true) ;
   frxPaketLapp02.PrintOptions.ShowDialog := false;
   frxPaketLapp02.Print ;
@@ -3783,16 +3816,16 @@ Begin
  Try
  if rgDestinationUtskrift.ItemIndex = 0 then
  Begin
-//  frxPaketLapp01KD.ShowReport ;
+  frxPaketLapp01KD.ShowReport ;
   frxPaketLapp02KD.ShowReport ;
  End
  else
  Begin
 
-//  frxPaketLapp01KD.PrepareReport(true) ;
-//  frxPaketLapp01KD.PrintOptions.ShowDialog  := false;
-//  frxPaketLapp01KD.PrintOptions.Copies      :=  1 ;//cds_SpecLayOutAntalKopior.AsInteger ;
-//  frxPaketLapp01KD.Print ;
+  frxPaketLapp01KD.PrepareReport(true) ;
+  frxPaketLapp01KD.PrintOptions.ShowDialog  := false;
+  frxPaketLapp01KD.PrintOptions.Copies      :=  1 ;//cds_SpecLayOutAntalKopior.AsInteger ;
+  frxPaketLapp01KD.Print ;
 
   frxPaketLapp02KD.PrepareReport(true) ;
   frxPaketLapp02KD.PrintOptions.ShowDialog  := false;
@@ -4717,7 +4750,7 @@ begin
    End
    else
    Begin
-    grdPcsPerLengthDBTableView1PAKET.Visible:= False ;   
+    grdPcsPerLengthDBTableView1PAKET.Visible:= False ;
    End ;
 
    Finally
@@ -4964,7 +4997,7 @@ begin
    Screen.Cursor      := Save_Cursor ;
   End ;
  End ;
- cbHideZeroColumnsClick(Sender) ; 
+ cbHideZeroColumnsClick(Sender) ;
 end;
 
 procedure TfrmInventoryReport.acPkgTypeTableUpdate(Sender: TObject);
@@ -5101,6 +5134,38 @@ Begin
   end;
 End ;
 
+function TfrmInventoryReport.getComboSelection(const combo: TcxCheckComboBox): TStringList;
+var
+  APCheckStates: ^TcxCheckStates;
+  x: Integer;
+begin
+ //För att inte ett VP företag skall se alla lager VP har skall alla synliga items checkas om man tittar på alla
+ //I annat fall får man också med lager som är på andra orter.
+  if (ThisUser.CompanyNo = cVidaPackaging) or (ThisUser.CompanyNo = cOsterlovsta) then
+    CheckAllItems;
+
+  New(APCheckStates);
+  try
+    with combo do
+    begin
+      CalculateCheckStates(Value, Properties.Items, Properties.EditValueFormat, APCheckStates^);
+      if Properties.Items.Count > 0 then
+      begin
+        result := TStringList.create;
+        for x := 0 to Properties.Items.Count - 1 do
+        begin
+          if APCheckStates^[x] = cbsChecked then
+          begin
+            result.Add(combo.Properties.Items[x].ShortDescription)
+          end; //if..
+        end; //for..
+      end;
+    end; //With
+  finally
+    Dispose(APCheckStates)
+  end;
+end;
+
 Function TfrmInventoryReport.ComboBoxFilterChecked(const Kolumn : String;combo : TcxCheckComboBox) : Boolean ;
 Var
     APCheckStates : ^TcxCheckStates;
@@ -5166,8 +5231,8 @@ begin
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
   cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
-  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
-  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+  cds_PkgList.SQL.Add('pn.PackageNo,');//('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,');//(QuotedStr('xxx')+' AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -5467,7 +5532,7 @@ begin
 
 //  if ShowPackageSizeName then
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
-
+  cds_PkgList.SQL.Add(', pn.PackageNo, pn.SupplierCode');
 
   if cbInklEjFakt2.ItemIndex = 1 then
   Begin
@@ -5506,8 +5571,8 @@ begin
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
   cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
-  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
-  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+  cds_PkgList.SQL.Add('pn.PackageNo,');//('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,');//(QuotedStr('xxx')+' AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -5696,7 +5761,7 @@ begin
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'SUR.SurfacingCode', ccbSU2)) ;
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'va.VaruGruppNo', ccVarugrupp)) ;
-  
+
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'imp.ImpCode', ccbIMP)) ;
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'gs.GradeStampID', ccbGS)) ;
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'bc.BarCodeID', ccbBC)) ;
@@ -5715,6 +5780,7 @@ begin
   cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn') ;
    if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
    cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
+  cds_PkgList.SQL.Add(', pn.PackageNo, pn.SupplierCode');
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('sq_PkgSumListNOTInvoiced.txt');
  End ; //with
@@ -5740,8 +5806,8 @@ begin
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
   cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
-  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
-  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+  cds_PkgList.SQL.Add('pn.PackageNo,');//('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,');//(QuotedStr('xxx')+' AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -5952,6 +6018,7 @@ begin
   cds_PkgList.SQL.Add('Cy.CityName, lip.LogicalInventoryName, lip.LogicalInventoryPointNo, pip.PhysicalInventoryPointNo, va.VarugruppNamn') ;
    if (mtUserPropNewItemRow.AsInteger > 0) and (cbInvLista.ItemIndex = 0) then
    cds_PkgList.SQL.Add(',isnull(avrPkg.Status,1)') ;
+  cds_PkgList.SQL.Add(', pn.PackageNo, pn.SupplierCode');
 
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('GenPrelLoadsTable_SQL.txt');
  End ; //with
@@ -7163,7 +7230,7 @@ end;
 procedure TfrmInventoryReport.ExportPkgNoTables(Sender: TObject);
 const
   LF = #10;
-Var 
+Var
 //    A                       : Array of variant ;
     dm_SendMapiMail         : Tdm_SendMapiMail;
     Attach                  : Array of String ;
@@ -7420,7 +7487,7 @@ begin
   Begin
    cds_KilnChargeHdr.Delete ;
    acSaveTorkSatsExecute(Sender) ;
-  End ; 
+  End ;
  End ;
 end;
 
@@ -7685,6 +7752,24 @@ begin
   End ;
  End ;//with
 
+end;
+
+procedure TfrmInventoryReport.addSingleFilter(const aFloat: double; const aInt: integer; const aStr: string;
+  const aDate: TDate; const aUserNo: integer; const afltrID, aType: string);
+
+var
+  SQL: string;
+  s: string;
+begin
+  if      aType = 'F' then begin
+    s := floatToStr(aFloat);
+    s := ReplaceCommas(s)
+  end;
+  if      aType = 'F' then SQL := format('INSERT INTO dbo.params (UserNo, ParID, valueType, valueFloat) VALUES (%d,%s,%s,%s)',[aUserNo, quotedStr(afltrID), quotedStr(aType), s])
+  else if aType = 'I' then SQL := format('INSERT INTO dbo.params (UserNo, ParID, valueType, valueInt) VALUES (%d,%s,%s,%d)',[aUserNo, quotedStr(afltrID), quotedStr(aType), aInt])
+  else if aType = 'S' then SQL := format('INSERT INTO dbo.params (UserNo, ParID, valueType, valueString) VALUES (%d,%s,%s,%s)',[aUserNo, quotedStr(afltrID), quotedStr(aType), quotedStr(aStr)])
+  else if aType = 'D' then SQL := format('INSERT INTO dbo.params (UserNo, ParID, valueType, valueDate) VALUES (%d,%s,%s,%s)',[aUserNo, QuotedStr(afltrID), quotedStr(aType), quotedStr(DateToStr(aDate))]);
+  dmsConnector.FDConnection1.ExecSQL(SQL);
 end;
 
 procedure TfrmInventoryReport.bePathPropertiesButtonClick(Sender: TObject;
@@ -8256,8 +8341,8 @@ begin
   cds_PkgList.SQL.Add('pd.ProductNo,') ;
   cds_PkgList.SQL.Add('pde.ProductDisplayName AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
-  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
-  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+  cds_PkgList.SQL.Add('pn.PackageCode,');//('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,');//(QuotedStr('xxx')+' AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -8519,7 +8604,7 @@ begin
 
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'va.VaruGruppNo', ccVarugrupp)) ;
 
-  
+
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'imp.ImpCode', ccbIMP)) ;
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'gs.GradeStampID', ccbGS)) ;
   cds_PkgList.SQL.Add(GetSQLofComboFilter(0, 'bc.BarCodeID', ccbBC)) ;
@@ -8543,6 +8628,7 @@ begin
 //  if ShowPackageSizeName then
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
+  cds_PkgList.SQL.Add(', pn.PackageNo, pn.SupplierCode');
 
 
   if thisuser.UserID = 258 then  cds_PkgList.SQL.SaveToFile('cds_PkgList.txt');
@@ -8669,6 +8755,23 @@ end;
 procedure TfrmInventoryReport.acVardaLagretUpdate(Sender: TObject);
 begin
  acVardaLagret.Enabled:= pcPktNrAndTorkSats.ActivePage = tsTorkSats ;
+end;
+
+procedure TfrmInventoryReport.addFilter(const combo: TcxCheckComboBox; const aUserNo: integer; const afltrID,
+  aType: string);
+var
+  sl: TStringList;
+  s: string;
+begin
+  sl := getComboSelection(combo);
+  for s in sl do begin
+    if      aType='F' then addSingleFilter(strToFloat(s),0,'',0,aUserNo,afltrID,aType)
+    else if aType='I' then addSingleFilter(0,strToInt(s),'',0,aUserNo,afltrID,aType)
+    else if aType='S' then addSingleFilter(0,0,s,0,aUserNo,afltrID,aType)
+    else if aType='D' then addSingleFilter(0,0,'',strToDate(s),aUserNo,afltrID,aType)
+  end;
+    
+  if sl.Count > 0 then sl.SaveToFile(afltrID+'.txt');
 end;
 
 {Function TfrmInventoryReport.GetSQLofComboFilter(const dType : Byte;const Kolumn : String;combo : TcxCheckComboBox) : String ;
@@ -8961,7 +9064,7 @@ begin
 //   ccbTS2.Visible := False ;
 //   ccbKV2.Visible := False ;
 //   ccbSU2.Visible := False ;
-//   ccbIMP.Visible := False ;   
+//   ccbIMP.Visible := False ;
   End ;
 
 end;
@@ -9019,6 +9122,16 @@ begin
  Finally
   mtPkgNos.Active:= False ;
  End ;
+end;
+
+procedure TfrmInventoryReport.acPreviewLagerrapportExecute(Sender: TObject);
+begin
+  acLagerrapportExecute(Sender);
+end;
+
+procedure TfrmInventoryReport.acPrintLagerrapportExecute(Sender: TObject);
+begin
+  acLagerrapportExecute(Sender);
 end;
 
 procedure TfrmInventoryReport.acPrintPcsPerLengthExecute(Sender: TObject);
@@ -9197,8 +9310,8 @@ begin
   cds_PkgList.SQL.Add('0 AS ProductNo,') ;
   cds_PkgList.SQL.Add('OL.OrderLineDescription AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
-  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
-  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+  cds_PkgList.SQL.Add('pn.PackageNo,');//('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,');//(QuotedStr('xxx')+' AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -9405,6 +9518,7 @@ begin
   cds_PkgList.SQL.Add('IH.InvoiceType') ;
 //  if ShowPackageSizeName then
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
+  cds_PkgList.SQL.Add(', pn.PackageNo, pn.SupplierCode');
   if thisuser.UserID = 258 then cds_PkgList.SQL.SaveToFile('cds_PkgList_FakturaSpecSUM.txt');
  End ; //with
 
@@ -9727,12 +9841,87 @@ begin
  End;
 end;
 
+procedure TfrmInventoryReport.acLagerRapportExecute(Sender: TObject);
+var
+  i,
+  owner: integer;
+  sLIPs: TStringList;
+  s: string;
+
+
+begin
+  s := 'Server: ' + dmFR.FDConnection1.Params.values['server']+#10#13;
+  s := s + 'Username: ' +dmFR.FDConnection1.Params.values['User_Name']+#10#13;
+  s := s + 'Password: ' + dmFR.FDConnection1.Params.values['Password']+#10#13;
+//  ShowMessage(s);
+  dmFR.SaveCursor;
+  owner := StrToInt(cbOwner.Text);
+  sLIPs := TStringList.Create;
+
+  try
+  for I := 0 to cbLIP.Properties.Items.Count - 1 do
+   if cbLIP.States[I] = cbsChecked then
+     sLIPs.Add(cbLIP.Properties.Items[i].ShortDescription);
+   LagerRapport(Sender, ThisUser.UserID, Owner, sLIPs);
+  finally
+    FreeAndNil(sLIPs);
+    dmFR.RestoreCursor;
+  end;
+end;
+
+procedure TfrmInventoryReport.LagerRapport(const Sender: TObject; const aUserID, aOwner: Integer; const aLIPNos: TStrings);
+var
+  sLIPNo: string;
+  RC: TCMReportController;
+  params: TCMParams;
+  RepNo: Integer;
+  mt: TCMMediaType;
+begin
+  if Sender = acPreviewLagerrapport then mt := frPreview
+  else if Sender = acPrintLagerrapport then mt := frPrint
+  else mt := frPreview;
+
+  dmFR.SaveCursor;
+  with dmInventory do begin
+    try
+      // Clean table with LIPNos where userid is current user
+      dmsConnector.FDConnection1.ExecSQL(Format('DELETE FROM dbo.parLIPNo WHERE UserID = %d',[aUserID]));
+
+      // Add records to table for each selected LIPNo and user is current user.
+      if aLIPNos.Count > 0 then
+      begin
+        qryTemp.SQL.Clear;
+        qryTemp.SQL.Add('INSERT INTO dbo.parLIPNo VALUES');
+        for sLIPNo in aLIPNos do
+        begin
+          qryTemp.SQL.Add(Format('(%1d,%s),', [aUserID, sLIPNo]));
+        end;
+        qryTemp.SQL.Text := Copy(qryTemp.SQL.Text, 0, qryTemp.SQL.Text.Length - 3);
+//        qryTemp.SQL.SaveToFile('LagerRapport.sql');
+        qryTemp.ExecSQL;
+      end;
+      setUpFilter(aUserID);
+      // Set parameters for SP
+      RC := TCMReportController.create;
+      params := TCMParams.create;
+      RepNo := dmFR.reportByName('Lager_PaketLista.fr3');
+      params.Add('@OwnerNo',aOwner);
+      params.Add('@UserID',aUserID);
+      RC.RunReport(Repno, params, mt, 0, 0);
+    finally
+      dmFR.RestoreCursor;
+      freeAndNil(RC);
+      freeAndNil(params);
+    end;
+  end;
+end;
+
 procedure TfrmInventoryReport.acLoadGridLayoutExecute(Sender: TObject);
-Var //x,
-//    SupplierNo,
-//    LoadingLocationNo,
-//    ShipperNo,
-//    BookingTypeNo,
+Var // x,
+  // SupplierNo,
+  // LoadingLocationNo,
+  // ShipperNo,
+  // BookingTypeNo,
 //    MarketRegionNo,
 //    CustomerNo,
 //    AgentNo           : Integer ;
@@ -9903,8 +10092,8 @@ begin
   cds_PkgList.SQL.Add('0 AS ProductNo,') ;
   cds_PkgList.SQL.Add('OL.OrderLineDescription AS PRODUKT,') ;
   cds_PkgList.SQL.Add('0 AS PackageTypeNo,') ;
-  cds_PkgList.SQL.Add('0 AS PackageNo,') ;
-  cds_PkgList.SQL.Add(QuotedStr('xxx')+' AS SupplierCode,') ;
+  cds_PkgList.SQL.Add('pn.PackageNo,');//('0 AS PackageNo,') ;
+  cds_PkgList.SQL.Add('pn.SupplierCode,');//(QuotedStr('xxx')+' AS SupplierCode,') ;
 
   cds_PkgList.SQL.Add('pg.ActualThicknessMM AS AT,') ;
   cds_PkgList.SQL.Add('pg.ActualWidthMM AS AB,') ;
@@ -10072,7 +10261,7 @@ begin
   End ;
   End ;//for x..
 
-  cds_PkgList.SQL.Add('Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM') ;
+  cds_PkgList.SQL.Add('Group By OL.OrderLineDescription, pg.ActualThicknessMM, pg.ActualWidthMM, pn.PackageNo, pn.SupplierCode') ;
 //    if ShowPackageSizeName then
 //  cds_PkgList.SQL.Add(', ps.PackageSizeName') ;
 
@@ -10307,6 +10496,11 @@ Begin
   end;
 End ;
 
+procedure TfrmInventoryReport.cleanUpFiltertable(const aUserNo: integer);
+begin
+  dmsConnector.FDConnection1.ExecSQL('DELETE FROM dbo.Params WHERE UserNo = '+intToStr(aUserNo))
+end;
+
 procedure TfrmInventoryReport.acExportToExcelExecute(Sender: TObject);
 Var FileName  : String ;
 begin
@@ -10438,6 +10632,28 @@ Begin
  End ;
 End ;
 
+procedure TfrmInventoryReport.setUpFilter(const aUserNo: integer);
+begin
+  CleanUpFilterTable(aUserNo);
+  AddFilter(ccbAT,aUserNo,'AT','I');
+  AddFilter(ccbAB,aUserNo,'AB','I');
+  AddFilter(ccbNT,aUserNo,'NT','I');
+  AddFilter(ccbNB,aUserNo,'NB','I');
+  AddFilter(ccbAL,aUserNo,'AL','F');
+  AddFilter(ccbTS2,aUserNo,'TS','S');
+  AddFilter(ccbKV2,aUserNo,'KV','S');
+  AddFilter(ccbSU2,aUserNo,'SU','S');
+  AddFilter(ccbIMP,aUserNo,'IMP','S');
+ // AddFilter(ccVaruGrupp,aUserNo,'VG','S');
+  if deStartPeriod.EditValue > 0 then
+    AddSingleFilter(0,0,'',deStartPeriod.Date,aUserNo,'Date1','D');
+  if deEndPeriod.EditValue > 0 then
+    AddSingleFilter(0,0,'',deEndPeriod.Date,aUserNo,'Date2','D');
+  if teREF.Text   <> '' then AddSingleFilter(0,0,teREF.Text,0,aUserNo,'REF','S');
+  if teInfo1.Text <> '' then AddSingleFilter(0,0,teInfo1.Text,0,aUserNo,'Info1','S');
+  if teInfo2.Text <> '' then AddSingleFilter(0,0,teInfo2.Text,0,aUserNo,'Info2','S');
+end;
+
 procedure TfrmInventoryReport.sq_UserProfileAfterInsert(DataSet: TDataSet);
 begin
  sq_UserProfileUserID.AsInteger := ThisUser.UserID ;
@@ -10563,6 +10779,28 @@ Begin
  End;
 End;
 
+{ TReportFilter }
+
+constructor TReportFilter.create(aType, afltrID: string; aValue: variant);
+begin
+  FType := aType;
+  FfltrID := afltrID;
+  FValue := aValue;
+end;
+
+function TReportFilter.getfltrID: string;
+begin
+  result := FfltrID
+end;
+
+function TReportFilter.getType: string;
+begin
+  result := FType
+end;
+
+function TReportFilter.getValue: variant;
+begin
+  result := FValue
+end;
+
 End.
-
-

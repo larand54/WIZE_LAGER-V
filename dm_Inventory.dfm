@@ -6526,4 +6526,35 @@
       Size = 15
     end
   end
+  object sp_LagerRaport: TFDStoredProc
+    Connection = dmsConnector.FDConnection1
+    SchemaName = 'dbo'
+    StoredProcName = 'LGlager_PkgList_v2'
+    Left = 32
+    Top = 392
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@OwnerNo'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@UserID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object qryTemp: TFDQuery
+    Connection = dmsConnector.FDConnection1
+    Left = 32
+    Top = 448
+  end
 end

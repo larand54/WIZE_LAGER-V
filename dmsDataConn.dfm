@@ -4919,7 +4919,7 @@ object dmsConnector: TdmsConnector
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Server=CARMAK-SPEED\sqlexpress'
+      'Server=CARMAK-faster\sqlexpress'
       'Database=woodsupport'
       'OSAuthent=No'
       'MetaDefCatalog=woodsupport'

@@ -59,6 +59,7 @@ type
     Org_AD_Name : String ;
     Org_DB_Name : String ;
     DriveLetter : String ;
+    LocalServer: string;
 //    DB_Name     : String ;
     function  Get_AD_Name : String ;
     procedure GetUserNameLoggedIn(Var UserName, UserPswd, Email : String;Const PFD_Name : String) ;
@@ -156,12 +157,13 @@ end;
 
 procedure TdmsConnector.DataModuleCreate(Sender: TObject);
 begin
+  localServer := GetEnvironmentVariable('COMPUTERNAME')+'\sqlexpress';
 {$IFDEF DEBUG}
-  if (Pos('CARMAK',GetEnvironmentVariable('COMPUTERNAME')) > 0) then begin
+  if Pos('CARMAK',localServer) > 0 then begin
     dmsConnector.DriveLetter := 'C:\';
       with dmsConnector.FDConnection1 do begin
         Params.Clear;
-        Params.Add('Server=carmak-speed\sqlexpress');
+        Params.Add('Server=' + localServer);
         Params.Add('Database=woodsupport');
         Params.Add('OSAuthent=No');
         Params.add('MetaDefCatalog=woodsupport');
@@ -175,11 +177,11 @@ begin
   else begin
   end;
 {$ELSE}
-  if (GetEnvironmentVariable('COMPUTERNAME') = 'CARMAK-FASTER') then begin
+  if Pos('CARMAK',localServer) > 0 then begin
     dmsConnector.DriveLetter := 'C:\';
       with dmsConnector.FDConnection1 do begin
         Params.Clear;
-        Params.Add('Server=carmak-speed\sqlexpress');
+        Params.Add('Server='+localServer);
         Params.Add('Database=woodsupport');
         Params.Add('OSAuthent=No');
         Params.add('MetaDefCatalog=woodsupport');
